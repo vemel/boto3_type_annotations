@@ -123,6 +123,12 @@ class DescribeAccountLimitsPaginator(Boto3Paginator):
 
                   * target-groups
 
+                  * target-groups-per-action-on-application-load-balancer
+
+                  * target-groups-per-action-on-network-load-balancer
+
+                  * target-groups-per-application-load-balancer
+
                   * targets-per-application-load-balancer
 
                   * targets-per-availability-zone-per-network-load-balancer
@@ -373,6 +379,18 @@ class DescribeListenersPaginator(Boto3Paginator):
                                     'MessageBody': 'string',
                                     'StatusCode': 'string',
                                     'ContentType': 'string'
+                                },
+                                'ForwardConfig': {
+                                    'TargetGroups': [
+                                        {
+                                            'TargetGroupArn': 'string',
+                                            'Weight': 123
+                                        },
+                                    ],
+                                    'TargetGroupStickinessConfig': {
+                                        'Enabled': True|False,
+                                        'DurationSeconds': 123
+                                    }
                                 }
                             },
                         ]
@@ -446,7 +464,8 @@ class DescribeListenersPaginator(Boto3Paginator):
                     - **TargetGroupArn** *(string) --*
 
                       The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is
-                      ``forward`` .
+                      ``forward`` and you want to route to a single target group. To route to one or more
+                      target groups, use ``ForwardConfig`` instead.
 
                     - **AuthenticateOidcConfig** *(dict) --*
 
@@ -640,6 +659,45 @@ class DescribeListenersPaginator(Boto3Paginator):
 
                         Valid Values: text/plain | text/css | text/html | application/javascript |
                         application/json
+
+                    - **ForwardConfig** *(dict) --*
+
+                      Information for creating an action that distributes requests among one or more target
+                      groups. For Network Load Balancers, you can specify a single target group. Specify
+                      only when ``Type`` is ``forward`` . If you specify both ``ForwardConfig`` and
+                      ``TargetGroupArn`` , you can specify only one target group using ``ForwardConfig``
+                      and it must be the same target group specified in ``TargetGroupArn`` .
+
+                      - **TargetGroups** *(list) --*
+
+                        One or more target groups. For Network Load Balancers, you can specify a single
+                        target group.
+
+                        - *(dict) --*
+
+                          Information about how traffic will be distributed between multiple target groups
+                          in a forward rule.
+
+                          - **TargetGroupArn** *(string) --*
+
+                            The Amazon Resource Name (ARN) of the target group.
+
+                          - **Weight** *(integer) --*
+
+                            The weight. The range is 0 to 999.
+
+                      - **TargetGroupStickinessConfig** *(dict) --*
+
+                        The target group stickiness for the rule.
+
+                        - **Enabled** *(boolean) --*
+
+                          Indicates whether target group stickiness is enabled.
+
+                        - **DurationSeconds** *(integer) --*
+
+                          The time period, in seconds, during which requests from a client should be routed
+                          to the same target group. The range is 1-604800 seconds (7 days).
 
             - **NextToken** *(string) --*
 
@@ -1044,6 +1102,18 @@ class DescribeRulesPaginator(Boto3Paginator):
                                     'MessageBody': 'string',
                                     'StatusCode': 'string',
                                     'ContentType': 'string'
+                                },
+                                'ForwardConfig': {
+                                    'TargetGroups': [
+                                        {
+                                            'TargetGroupArn': 'string',
+                                            'Weight': 123
+                                        },
+                                    ],
+                                    'TargetGroupStickinessConfig': {
+                                        'Enabled': True|False,
+                                        'DurationSeconds': 123
+                                    }
                                 }
                             },
                         ],
@@ -1276,7 +1346,8 @@ class DescribeRulesPaginator(Boto3Paginator):
                     - **TargetGroupArn** *(string) --*
 
                       The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is
-                      ``forward`` .
+                      ``forward`` and you want to route to a single target group. To route to one or more
+                      target groups, use ``ForwardConfig`` instead.
 
                     - **AuthenticateOidcConfig** *(dict) --*
 
@@ -1470,6 +1541,45 @@ class DescribeRulesPaginator(Boto3Paginator):
 
                         Valid Values: text/plain | text/css | text/html | application/javascript |
                         application/json
+
+                    - **ForwardConfig** *(dict) --*
+
+                      Information for creating an action that distributes requests among one or more target
+                      groups. For Network Load Balancers, you can specify a single target group. Specify
+                      only when ``Type`` is ``forward`` . If you specify both ``ForwardConfig`` and
+                      ``TargetGroupArn`` , you can specify only one target group using ``ForwardConfig``
+                      and it must be the same target group specified in ``TargetGroupArn`` .
+
+                      - **TargetGroups** *(list) --*
+
+                        One or more target groups. For Network Load Balancers, you can specify a single
+                        target group.
+
+                        - *(dict) --*
+
+                          Information about how traffic will be distributed between multiple target groups
+                          in a forward rule.
+
+                          - **TargetGroupArn** *(string) --*
+
+                            The Amazon Resource Name (ARN) of the target group.
+
+                          - **Weight** *(integer) --*
+
+                            The weight. The range is 0 to 999.
+
+                      - **TargetGroupStickinessConfig** *(dict) --*
+
+                        The target group stickiness for the rule.
+
+                        - **Enabled** *(boolean) --*
+
+                          Indicates whether target group stickiness is enabled.
+
+                        - **DurationSeconds** *(integer) --*
+
+                          The time period, in seconds, during which requests from a client should be routed
+                          to the same target group. The range is 1-604800 seconds (7 days).
 
                 - **IsDefault** *(boolean) --*
 

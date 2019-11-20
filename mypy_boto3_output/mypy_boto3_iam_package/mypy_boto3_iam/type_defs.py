@@ -12,6 +12,7 @@ __all__ = (
     "ClientCreateGroupResponseGroupTypeDef",
     "ClientCreateGroupResponseTypeDef",
     "ClientCreateInstanceProfileResponseInstanceProfileRolesPermissionsBoundaryTypeDef",
+    "ClientCreateInstanceProfileResponseInstanceProfileRolesRoleLastUsedTypeDef",
     "ClientCreateInstanceProfileResponseInstanceProfileRolesTagsTypeDef",
     "ClientCreateInstanceProfileResponseInstanceProfileRolesTypeDef",
     "ClientCreateInstanceProfileResponseInstanceProfileTypeDef",
@@ -24,12 +25,14 @@ __all__ = (
     "ClientCreatePolicyVersionResponsePolicyVersionTypeDef",
     "ClientCreatePolicyVersionResponseTypeDef",
     "ClientCreateRoleResponseRolePermissionsBoundaryTypeDef",
+    "ClientCreateRoleResponseRoleRoleLastUsedTypeDef",
     "ClientCreateRoleResponseRoleTagsTypeDef",
     "ClientCreateRoleResponseRoleTypeDef",
     "ClientCreateRoleResponseTypeDef",
     "ClientCreateRoleTagsTypeDef",
     "ClientCreateSamlProviderResponseTypeDef",
     "ClientCreateServiceLinkedRoleResponseRolePermissionsBoundaryTypeDef",
+    "ClientCreateServiceLinkedRoleResponseRoleRoleLastUsedTypeDef",
     "ClientCreateServiceLinkedRoleResponseRoleTagsTypeDef",
     "ClientCreateServiceLinkedRoleResponseRoleTypeDef",
     "ClientCreateServiceLinkedRoleResponseTypeDef",
@@ -58,10 +61,12 @@ __all__ = (
     "ClientGetAccountAuthorizationDetailsResponsePoliciesTypeDef",
     "ClientGetAccountAuthorizationDetailsResponseRoleDetailListAttachedManagedPoliciesTypeDef",
     "ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListRolesPermissionsBoundaryTypeDef",
+    "ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListRolesRoleLastUsedTypeDef",
     "ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListRolesTagsTypeDef",
     "ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListRolesTypeDef",
     "ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListTypeDef",
     "ClientGetAccountAuthorizationDetailsResponseRoleDetailListPermissionsBoundaryTypeDef",
+    "ClientGetAccountAuthorizationDetailsResponseRoleDetailListRoleLastUsedTypeDef",
     "ClientGetAccountAuthorizationDetailsResponseRoleDetailListRolePolicyListTypeDef",
     "ClientGetAccountAuthorizationDetailsResponseRoleDetailListTagsTypeDef",
     "ClientGetAccountAuthorizationDetailsResponseRoleDetailListTypeDef",
@@ -84,6 +89,7 @@ __all__ = (
     "ClientGetGroupResponseUsersTypeDef",
     "ClientGetGroupResponseTypeDef",
     "ClientGetInstanceProfileResponseInstanceProfileRolesPermissionsBoundaryTypeDef",
+    "ClientGetInstanceProfileResponseInstanceProfileRolesRoleLastUsedTypeDef",
     "ClientGetInstanceProfileResponseInstanceProfileRolesTagsTypeDef",
     "ClientGetInstanceProfileResponseInstanceProfileRolesTypeDef",
     "ClientGetInstanceProfileResponseInstanceProfileTypeDef",
@@ -100,6 +106,7 @@ __all__ = (
     "ClientGetPolicyVersionResponseTypeDef",
     "ClientGetRolePolicyResponseTypeDef",
     "ClientGetRoleResponseRolePermissionsBoundaryTypeDef",
+    "ClientGetRoleResponseRoleRoleLastUsedTypeDef",
     "ClientGetRoleResponseRoleTagsTypeDef",
     "ClientGetRoleResponseRoleTypeDef",
     "ClientGetRoleResponseTypeDef",
@@ -143,11 +150,13 @@ __all__ = (
     "ClientListGroupsResponseGroupsTypeDef",
     "ClientListGroupsResponseTypeDef",
     "ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesPermissionsBoundaryTypeDef",
+    "ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesRoleLastUsedTypeDef",
     "ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesTagsTypeDef",
     "ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesTypeDef",
     "ClientListInstanceProfilesForRoleResponseInstanceProfilesTypeDef",
     "ClientListInstanceProfilesForRoleResponseTypeDef",
     "ClientListInstanceProfilesResponseInstanceProfilesRolesPermissionsBoundaryTypeDef",
+    "ClientListInstanceProfilesResponseInstanceProfilesRolesRoleLastUsedTypeDef",
     "ClientListInstanceProfilesResponseInstanceProfilesRolesTagsTypeDef",
     "ClientListInstanceProfilesResponseInstanceProfilesRolesTypeDef",
     "ClientListInstanceProfilesResponseInstanceProfilesTypeDef",
@@ -167,6 +176,7 @@ __all__ = (
     "ClientListRoleTagsResponseTagsTypeDef",
     "ClientListRoleTagsResponseTypeDef",
     "ClientListRolesResponseRolesPermissionsBoundaryTypeDef",
+    "ClientListRolesResponseRolesRoleLastUsedTypeDef",
     "ClientListRolesResponseRolesTagsTypeDef",
     "ClientListRolesResponseRolesTypeDef",
     "ClientListRolesResponseTypeDef",
@@ -199,6 +209,7 @@ __all__ = (
     "ClientTagRoleTagsTypeDef",
     "ClientTagUserTagsTypeDef",
     "ClientUpdateRoleDescriptionResponseRolePermissionsBoundaryTypeDef",
+    "ClientUpdateRoleDescriptionResponseRoleRoleLastUsedTypeDef",
     "ClientUpdateRoleDescriptionResponseRoleTagsTypeDef",
     "ClientUpdateRoleDescriptionResponseRoleTypeDef",
     "ClientUpdateRoleDescriptionResponseTypeDef",
@@ -217,10 +228,12 @@ __all__ = (
     "GetAccountAuthorizationDetailsPaginateResponsePoliciesTypeDef",
     "GetAccountAuthorizationDetailsPaginateResponseRoleDetailListAttachedManagedPoliciesTypeDef",
     "GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileListRolesPermissionsBoundaryTypeDef",
+    "GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileListRolesRoleLastUsedTypeDef",
     "GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileListRolesTagsTypeDef",
     "GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileListRolesTypeDef",
     "GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileListTypeDef",
     "GetAccountAuthorizationDetailsPaginateResponseRoleDetailListPermissionsBoundaryTypeDef",
+    "GetAccountAuthorizationDetailsPaginateResponseRoleDetailListRoleLastUsedTypeDef",
     "GetAccountAuthorizationDetailsPaginateResponseRoleDetailListRolePolicyListTypeDef",
     "GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTagsTypeDef",
     "GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTypeDef",
@@ -266,12 +279,14 @@ __all__ = (
     "ListGroupsPaginateResponseTypeDef",
     "ListInstanceProfilesForRolePaginatePaginationConfigTypeDef",
     "ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesPermissionsBoundaryTypeDef",
+    "ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesRoleLastUsedTypeDef",
     "ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesTagsTypeDef",
     "ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesTypeDef",
     "ListInstanceProfilesForRolePaginateResponseInstanceProfilesTypeDef",
     "ListInstanceProfilesForRolePaginateResponseTypeDef",
     "ListInstanceProfilesPaginatePaginationConfigTypeDef",
     "ListInstanceProfilesPaginateResponseInstanceProfilesRolesPermissionsBoundaryTypeDef",
+    "ListInstanceProfilesPaginateResponseInstanceProfilesRolesRoleLastUsedTypeDef",
     "ListInstanceProfilesPaginateResponseInstanceProfilesRolesTagsTypeDef",
     "ListInstanceProfilesPaginateResponseInstanceProfilesRolesTypeDef",
     "ListInstanceProfilesPaginateResponseInstanceProfilesTypeDef",
@@ -289,6 +304,7 @@ __all__ = (
     "ListRolePoliciesPaginateResponseTypeDef",
     "ListRolesPaginatePaginationConfigTypeDef",
     "ListRolesPaginateResponseRolesPermissionsBoundaryTypeDef",
+    "ListRolesPaginateResponseRolesRoleLastUsedTypeDef",
     "ListRolesPaginateResponseRolesTagsTypeDef",
     "ListRolesPaginateResponseRolesTypeDef",
     "ListRolesPaginateResponseTypeDef",
@@ -428,8 +444,8 @@ class ClientCreateGroupResponseGroupTypeDef(_ClientCreateGroupResponseGroupTypeD
     - **Path** *(string) --*
 
       The path to the group. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **GroupName** *(string) --*
 
@@ -439,15 +455,15 @@ class ClientCreateGroupResponseGroupTypeDef(_ClientCreateGroupResponseGroupTypeD
 
       The stable and unique string identifying the group. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
       how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -476,8 +492,8 @@ class ClientCreateGroupResponseTypeDef(_ClientCreateGroupResponseTypeDef):
       - **Path** *(string) --*
 
         The path to the group. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **GroupName** *(string) --*
 
@@ -487,15 +503,15 @@ class ClientCreateGroupResponseTypeDef(_ClientCreateGroupResponseTypeDef):
 
         The stable and unique string identifying the group. For more information about IDs, see
         `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **Arn** *(string) --*
 
         The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
         how to use them in policies, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **CreateDate** *(datetime) --*
 
@@ -533,6 +549,43 @@ class ClientCreateInstanceProfileResponseInstanceProfileRolesPermissionsBoundary
     - **PermissionsBoundaryArn** *(string) --*
 
       The ARN of the policy used to set the permissions boundary for the user or role.
+    """
+
+
+_ClientCreateInstanceProfileResponseInstanceProfileRolesRoleLastUsedTypeDef = TypedDict(
+    "_ClientCreateInstanceProfileResponseInstanceProfileRolesRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ClientCreateInstanceProfileResponseInstanceProfileRolesRoleLastUsedTypeDef(
+    _ClientCreateInstanceProfileResponseInstanceProfileRolesRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ClientCreateInstanceProfileResponseInstanceProfileRoles` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the
+    date and time and the Region in which the role was last used. Activity is only reported
+    for the trailing 400 days. This period can be shorter if your Region began supporting
+    these features within the last year. The role might have been used more than 400 days
+    ago. For more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+      that the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period. For
+      more information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
     """
 
 
@@ -592,6 +645,7 @@ _ClientCreateInstanceProfileResponseInstanceProfileRolesTypeDef = TypedDict(
         "Tags": List[
             ClientCreateInstanceProfileResponseInstanceProfileRolesTagsTypeDef
         ],
+        "RoleLastUsed": ClientCreateInstanceProfileResponseInstanceProfileRolesRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -610,7 +664,7 @@ class ClientCreateInstanceProfileResponseInstanceProfileRolesTypeDef(
 
       The path to the role. For more information about paths, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -621,7 +675,7 @@ class ClientCreateInstanceProfileResponseInstanceProfileRolesTypeDef(
       The stable and unique string identifying the role. For more information about IDs, see
       `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **Arn** *(string) --*
 
@@ -702,6 +756,30 @@ class ClientCreateInstanceProfileResponseInstanceProfileRolesTypeDef(
             AWS always interprets the tag ``Value`` as a single string. If you need to store
             an array, you can store comma-separated values in the string. However, you must
             interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the
+      date and time and the Region in which the role was last used. Activity is only reported
+      for the trailing 400 days. This period can be shorter if your Region began supporting
+      these features within the last year. The role might have been used more than 400 days
+      ago. For more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+        that the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period. For
+        more information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -730,8 +808,8 @@ class ClientCreateInstanceProfileResponseInstanceProfileTypeDef(
     - **Path** *(string) --*
 
       The path to the instance profile. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **InstanceProfileName** *(string) --*
 
@@ -741,15 +819,15 @@ class ClientCreateInstanceProfileResponseInstanceProfileTypeDef(
 
       The stable and unique string identifying the instance profile. For more information about
       IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the instance profile. For more information about
       ARNs and how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -768,7 +846,7 @@ class ClientCreateInstanceProfileResponseInstanceProfileTypeDef(
 
           The path to the role. For more information about paths, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -779,7 +857,7 @@ class ClientCreateInstanceProfileResponseInstanceProfileTypeDef(
           The stable and unique string identifying the role. For more information about IDs, see
           `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **Arn** *(string) --*
 
@@ -860,6 +938,30 @@ class ClientCreateInstanceProfileResponseInstanceProfileTypeDef(
                 AWS always interprets the tag ``Value`` as a single string. If you need to store
                 an array, you can store comma-separated values in the string. However, you must
                 interpret the value in your code.
+
+        - **RoleLastUsed** *(dict) --*
+
+          Contains information about the last time that an IAM role was used. This includes the
+          date and time and the Region in which the role was last used. Activity is only reported
+          for the trailing 400 days. This period can be shorter if your Region began supporting
+          these features within the last year. The role might have been used more than 400 days
+          ago. For more information, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+          - **LastUsedDate** *(datetime) --*
+
+            The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+            that the role was last used.
+
+            This field is null if the role has not been used within the IAM tracking period. For
+            more information about the tracking period, see `Regions Where Data Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+          - **Region** *(string) --*
+
+            The name of the AWS Region in which the role was last used.
     """
 
 
@@ -885,8 +987,8 @@ class ClientCreateInstanceProfileResponseTypeDef(
       - **Path** *(string) --*
 
         The path to the instance profile. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **InstanceProfileName** *(string) --*
 
@@ -896,15 +998,15 @@ class ClientCreateInstanceProfileResponseTypeDef(
 
         The stable and unique string identifying the instance profile. For more information about
         IDs, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **Arn** *(string) --*
 
         The Amazon Resource Name (ARN) specifying the instance profile. For more information about
         ARNs and how to use them in policies, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **CreateDate** *(datetime) --*
 
@@ -923,7 +1025,7 @@ class ClientCreateInstanceProfileResponseTypeDef(
 
             The path to the role. For more information about paths, see `IAM Identifiers
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-            *Using IAM* guide.
+            *IAM User Guide* .
 
           - **RoleName** *(string) --*
 
@@ -934,7 +1036,7 @@ class ClientCreateInstanceProfileResponseTypeDef(
             The stable and unique string identifying the role. For more information about IDs, see
             `IAM Identifiers
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-            *Using IAM* guide.
+            *IAM User Guide* .
 
           - **Arn** *(string) --*
 
@@ -1015,6 +1117,30 @@ class ClientCreateInstanceProfileResponseTypeDef(
                   AWS always interprets the tag ``Value`` as a single string. If you need to store
                   an array, you can store comma-separated values in the string. However, you must
                   interpret the value in your code.
+
+          - **RoleLastUsed** *(dict) --*
+
+            Contains information about the last time that an IAM role was used. This includes the
+            date and time and the Region in which the role was last used. Activity is only reported
+            for the trailing 400 days. This period can be shorter if your Region began supporting
+            these features within the last year. The role might have been used more than 400 days
+            ago. For more information, see `Regions Where Data Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+            - **LastUsedDate** *(datetime) --*
+
+              The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+              that the role was last used.
+
+              This field is null if the role has not been used within the IAM tracking period. For
+              more information about the tracking period, see `Regions Where Data Is Tracked
+              <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+              in the *IAM User Guide* .
+
+            - **Region** *(string) --*
+
+              The name of the AWS Region in which the role was last used.
     """
 
 
@@ -1134,8 +1260,8 @@ class ClientCreatePolicyResponsePolicyTypeDef(_ClientCreatePolicyResponsePolicyT
       The stable and unique string identifying the policy.
 
       For more information about IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -1150,8 +1276,8 @@ class ClientCreatePolicyResponsePolicyTypeDef(_ClientCreatePolicyResponsePolicyT
       The path to the policy.
 
       For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **DefaultVersionId** *(string) --*
 
@@ -1224,8 +1350,8 @@ class ClientCreatePolicyResponseTypeDef(_ClientCreatePolicyResponseTypeDef):
         The stable and unique string identifying the policy.
 
         For more information about IDs, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **Arn** *(string) --*
 
@@ -1240,8 +1366,8 @@ class ClientCreatePolicyResponseTypeDef(_ClientCreatePolicyResponseTypeDef):
         The path to the policy.
 
         For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **DefaultVersionId** *(string) --*
 
@@ -1423,6 +1549,43 @@ class ClientCreateRoleResponseRolePermissionsBoundaryTypeDef(
     """
 
 
+_ClientCreateRoleResponseRoleRoleLastUsedTypeDef = TypedDict(
+    "_ClientCreateRoleResponseRoleRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ClientCreateRoleResponseRoleRoleLastUsedTypeDef(
+    _ClientCreateRoleResponseRoleRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ClientCreateRoleResponseRole` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the date
+    and time and the Region in which the role was last used. Activity is only reported for the
+    trailing 400 days. This period can be shorter if your Region began supporting these
+    features within the last year. The role might have been used more than 400 days ago. For
+    more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__ that
+      the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period. For more
+      information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
+    """
+
+
 _ClientCreateRoleResponseRoleTagsTypeDef = TypedDict(
     "_ClientCreateRoleResponseRoleTagsTypeDef", {"Key": str, "Value": str}, total=False
 )
@@ -1471,6 +1634,7 @@ _ClientCreateRoleResponseRoleTypeDef = TypedDict(
         "MaxSessionDuration": int,
         "PermissionsBoundary": ClientCreateRoleResponseRolePermissionsBoundaryTypeDef,
         "Tags": List[ClientCreateRoleResponseRoleTagsTypeDef],
+        "RoleLastUsed": ClientCreateRoleResponseRoleRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -1485,8 +1649,8 @@ class ClientCreateRoleResponseRoleTypeDef(_ClientCreateRoleResponseRoleTypeDef):
     - **Path** *(string) --*
 
       The path to the role. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -1496,7 +1660,7 @@ class ClientCreateRoleResponseRoleTypeDef(_ClientCreateRoleResponseRoleTypeDef):
 
       The stable and unique string identifying the role. For more information about IDs, see `IAM
       Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-      the *Using IAM* guide.
+      the *IAM User Guide* .
 
     - **Arn** *(string) --*
 
@@ -1574,6 +1738,30 @@ class ClientCreateRoleResponseRoleTypeDef(_ClientCreateRoleResponseRoleTypeDef):
             AWS always interprets the tag ``Value`` as a single string. If you need to store an
             array, you can store comma-separated values in the string. However, you must
             interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the date
+      and time and the Region in which the role was last used. Activity is only reported for the
+      trailing 400 days. This period can be shorter if your Region began supporting these
+      features within the last year. The role might have been used more than 400 days ago. For
+      more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__ that
+        the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period. For more
+        information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -1597,8 +1785,8 @@ class ClientCreateRoleResponseTypeDef(_ClientCreateRoleResponseTypeDef):
       - **Path** *(string) --*
 
         The path to the role. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **RoleName** *(string) --*
 
@@ -1608,7 +1796,7 @@ class ClientCreateRoleResponseTypeDef(_ClientCreateRoleResponseTypeDef):
 
         The stable and unique string identifying the role. For more information about IDs, see `IAM
         Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
       - **Arn** *(string) --*
 
@@ -1686,6 +1874,30 @@ class ClientCreateRoleResponseTypeDef(_ClientCreateRoleResponseTypeDef):
               AWS always interprets the tag ``Value`` as a single string. If you need to store an
               array, you can store comma-separated values in the string. However, you must
               interpret the value in your code.
+
+      - **RoleLastUsed** *(dict) --*
+
+        Contains information about the last time that an IAM role was used. This includes the date
+        and time and the Region in which the role was last used. Activity is only reported for the
+        trailing 400 days. This period can be shorter if your Region began supporting these
+        features within the last year. The role might have been used more than 400 days ago. For
+        more information, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+        - **LastUsedDate** *(datetime) --*
+
+          The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__ that
+          the role was last used.
+
+          This field is null if the role has not been used within the IAM tracking period. For more
+          information about the tracking period, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+        - **Region** *(string) --*
+
+          The name of the AWS Region in which the role was last used.
     """
 
 
@@ -1772,6 +1984,43 @@ class ClientCreateServiceLinkedRoleResponseRolePermissionsBoundaryTypeDef(
     """
 
 
+_ClientCreateServiceLinkedRoleResponseRoleRoleLastUsedTypeDef = TypedDict(
+    "_ClientCreateServiceLinkedRoleResponseRoleRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ClientCreateServiceLinkedRoleResponseRoleRoleLastUsedTypeDef(
+    _ClientCreateServiceLinkedRoleResponseRoleRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ClientCreateServiceLinkedRoleResponseRole` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the date
+    and time and the Region in which the role was last used. Activity is only reported for the
+    trailing 400 days. This period can be shorter if your Region began supporting these
+    features within the last year. The role might have been used more than 400 days ago. For
+    more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__ that
+      the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period. For more
+      information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
+    """
+
+
 _ClientCreateServiceLinkedRoleResponseRoleTagsTypeDef = TypedDict(
     "_ClientCreateServiceLinkedRoleResponseRoleTagsTypeDef",
     {"Key": str, "Value": str},
@@ -1824,6 +2073,7 @@ _ClientCreateServiceLinkedRoleResponseRoleTypeDef = TypedDict(
         "MaxSessionDuration": int,
         "PermissionsBoundary": ClientCreateServiceLinkedRoleResponseRolePermissionsBoundaryTypeDef,
         "Tags": List[ClientCreateServiceLinkedRoleResponseRoleTagsTypeDef],
+        "RoleLastUsed": ClientCreateServiceLinkedRoleResponseRoleRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -1840,8 +2090,8 @@ class ClientCreateServiceLinkedRoleResponseRoleTypeDef(
     - **Path** *(string) --*
 
       The path to the role. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -1851,7 +2101,7 @@ class ClientCreateServiceLinkedRoleResponseRoleTypeDef(
 
       The stable and unique string identifying the role. For more information about IDs, see `IAM
       Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-      the *Using IAM* guide.
+      the *IAM User Guide* .
 
     - **Arn** *(string) --*
 
@@ -1929,6 +2179,30 @@ class ClientCreateServiceLinkedRoleResponseRoleTypeDef(
             AWS always interprets the tag ``Value`` as a single string. If you need to store an
             array, you can store comma-separated values in the string. However, you must
             interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the date
+      and time and the Region in which the role was last used. Activity is only reported for the
+      trailing 400 days. This period can be shorter if your Region began supporting these
+      features within the last year. The role might have been used more than 400 days ago. For
+      more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__ that
+        the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period. For more
+        information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -1952,8 +2226,8 @@ class ClientCreateServiceLinkedRoleResponseTypeDef(
       - **Path** *(string) --*
 
         The path to the role. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **RoleName** *(string) --*
 
@@ -1963,7 +2237,7 @@ class ClientCreateServiceLinkedRoleResponseTypeDef(
 
         The stable and unique string identifying the role. For more information about IDs, see `IAM
         Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
       - **Arn** *(string) --*
 
@@ -2041,6 +2315,30 @@ class ClientCreateServiceLinkedRoleResponseTypeDef(
               AWS always interprets the tag ``Value`` as a single string. If you need to store an
               array, you can store comma-separated values in the string. However, you must
               interpret the value in your code.
+
+      - **RoleLastUsed** *(dict) --*
+
+        Contains information about the last time that an IAM role was used. This includes the date
+        and time and the Region in which the role was last used. Activity is only reported for the
+        trailing 400 days. This period can be shorter if your Region began supporting these
+        features within the last year. The role might have been used more than 400 days ago. For
+        more information, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+        - **LastUsedDate** *(datetime) --*
+
+          The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__ that
+          the role was last used.
+
+          This field is null if the role has not been used within the IAM tracking period. For more
+          information about the tracking period, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+        - **Region** *(string) --*
+
+          The name of the AWS Region in which the role was last used.
     """
 
 
@@ -2256,8 +2554,8 @@ class ClientCreateUserResponseUserTypeDef(_ClientCreateUserResponseUserTypeDef):
     - **Path** *(string) --*
 
       The path to the user. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UserName** *(string) --*
 
@@ -2267,14 +2565,14 @@ class ClientCreateUserResponseUserTypeDef(_ClientCreateUserResponseUserTypeDef):
 
       The stable and unique string identifying the user. For more information about IDs, see `IAM
       Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-      the *Using IAM* guide.
+      the *IAM User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
       and how to use ARNs in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -2287,7 +2585,7 @@ class ClientCreateUserResponseUserTypeDef(_ClientCreateUserResponseUserTypeDef):
       the user's password was last used to sign in to an AWS website. For a list of AWS websites
       that capture a user's last sign-in time, see the `Credential Reports
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in the
-      *Using IAM* guide. If a password is used more than once in a five-minute span, only the
+      *IAM User Guide* . If a password is used more than once in a five-minute span, only the
       first use is returned in this field. If the field is null (no value), then it indicates
       that they never signed in with a password. This can be because:
 
@@ -2297,7 +2595,7 @@ class ClientCreateUserResponseUserTypeDef(_ClientCreateUserResponseUserTypeDef):
       October 20, 2014.
 
       A null value does not mean that the user *never* had a password. Also, if the user does not
-      currently have a password, but had one in the past, then this field contains the date and
+      currently have a password but had one in the past, then this field contains the date and
       time the most recent password was used.
 
       This value is returned only in the  GetUser and  ListUsers operations.
@@ -2375,8 +2673,8 @@ class ClientCreateUserResponseTypeDef(_ClientCreateUserResponseTypeDef):
       - **Path** *(string) --*
 
         The path to the user. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **UserName** *(string) --*
 
@@ -2386,14 +2684,14 @@ class ClientCreateUserResponseTypeDef(_ClientCreateUserResponseTypeDef):
 
         The stable and unique string identifying the user. For more information about IDs, see `IAM
         Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
       - **Arn** *(string) --*
 
         The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
         and how to use ARNs in policies, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **CreateDate** *(datetime) --*
 
@@ -2406,7 +2704,7 @@ class ClientCreateUserResponseTypeDef(_ClientCreateUserResponseTypeDef):
         the user's password was last used to sign in to an AWS website. For a list of AWS websites
         that capture a user's last sign-in time, see the `Credential Reports
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in the
-        *Using IAM* guide. If a password is used more than once in a five-minute span, only the
+        *IAM User Guide* . If a password is used more than once in a five-minute span, only the
         first use is returned in this field. If the field is null (no value), then it indicates
         that they never signed in with a password. This can be because:
 
@@ -2416,7 +2714,7 @@ class ClientCreateUserResponseTypeDef(_ClientCreateUserResponseTypeDef):
         October 20, 2014.
 
         A null value does not mean that the user *never* had a password. Also, if the user does not
-        currently have a password, but had one in the past, then this field contains the date and
+        currently have a password but had one in the past, then this field contains the date and
         time the most recent password was used.
 
         This value is returned only in the  GetUser and  ListUsers operations.
@@ -2608,8 +2906,8 @@ class ClientCreateVirtualMfaDeviceResponseVirtualMFADeviceUserTypeDef(
     - **Path** *(string) --*
 
       The path to the user. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UserName** *(string) --*
 
@@ -2619,15 +2917,15 @@ class ClientCreateVirtualMfaDeviceResponseVirtualMFADeviceUserTypeDef(
 
       The stable and unique string identifying the user. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
       and how to use ARNs in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -2640,7 +2938,7 @@ class ClientCreateVirtualMfaDeviceResponseVirtualMFADeviceUserTypeDef(
       when the user's password was last used to sign in to an AWS website. For a list of AWS
       websites that capture a user's last sign-in time, see the `Credential Reports
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-      the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+      the *IAM User Guide* . If a password is used more than once in a five-minute span, only
       the first use is returned in this field. If the field is null (no value), then it
       indicates that they never signed in with a password. This can be because:
 
@@ -2650,7 +2948,7 @@ class ClientCreateVirtualMfaDeviceResponseVirtualMFADeviceUserTypeDef(
       October 20, 2014.
 
       A null value does not mean that the user *never* had a password. Also, if the user does
-      not currently have a password, but had one in the past, then this field contains the date
+      not currently have a password but had one in the past, then this field contains the date
       and time the most recent password was used.
 
       This value is returned only in the  GetUser and  ListUsers operations.
@@ -2754,8 +3052,8 @@ class ClientCreateVirtualMfaDeviceResponseVirtualMFADeviceTypeDef(
       - **Path** *(string) --*
 
         The path to the user. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-        *Using IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **UserName** *(string) --*
 
@@ -2765,15 +3063,15 @@ class ClientCreateVirtualMfaDeviceResponseVirtualMFADeviceTypeDef(
 
         The stable and unique string identifying the user. For more information about IDs, see
         `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-        *Using IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **Arn** *(string) --*
 
         The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
         and how to use ARNs in policies, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-        *Using IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **CreateDate** *(datetime) --*
 
@@ -2786,7 +3084,7 @@ class ClientCreateVirtualMfaDeviceResponseVirtualMFADeviceTypeDef(
         when the user's password was last used to sign in to an AWS website. For a list of AWS
         websites that capture a user's last sign-in time, see the `Credential Reports
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-        the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+        the *IAM User Guide* . If a password is used more than once in a five-minute span, only
         the first use is returned in this field. If the field is null (no value), then it
         indicates that they never signed in with a password. This can be because:
 
@@ -2796,7 +3094,7 @@ class ClientCreateVirtualMfaDeviceResponseVirtualMFADeviceTypeDef(
         October 20, 2014.
 
         A null value does not mean that the user *never* had a password. Also, if the user does
-        not currently have a password, but had one in the past, then this field contains the date
+        not currently have a password but had one in the past, then this field contains the date
         and time the most recent password was used.
 
         This value is returned only in the  GetUser and  ListUsers operations.
@@ -2902,8 +3200,8 @@ class ClientCreateVirtualMfaDeviceResponseTypeDef(
         - **Path** *(string) --*
 
           The path to the user. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **UserName** *(string) --*
 
@@ -2913,15 +3211,15 @@ class ClientCreateVirtualMfaDeviceResponseTypeDef(
 
           The stable and unique string identifying the user. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
           and how to use ARNs in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -2934,7 +3232,7 @@ class ClientCreateVirtualMfaDeviceResponseTypeDef(
           when the user's password was last used to sign in to an AWS website. For a list of AWS
           websites that capture a user's last sign-in time, see the `Credential Reports
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-          the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+          the *IAM User Guide* . If a password is used more than once in a five-minute span, only
           the first use is returned in this field. If the field is null (no value), then it
           indicates that they never signed in with a password. This can be because:
 
@@ -2944,7 +3242,7 @@ class ClientCreateVirtualMfaDeviceResponseTypeDef(
           October 20, 2014.
 
           A null value does not mean that the user *never* had a password. Also, if the user does
-          not currently have a password, but had one in the past, then this field contains the date
+          not currently have a password but had one in the past, then this field contains the date
           and time the most recent password was used.
 
           This value is returned only in the  GetUser and  ListUsers operations.
@@ -3235,7 +3533,7 @@ class ClientGetAccountAuthorizationDetailsResponseGroupDetailListAttachedManaged
     For more information about managed policies, refer to `Managed Policies and Inline
     Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-    in the *Using IAM* guide.
+    in the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -3313,8 +3611,8 @@ class ClientGetAccountAuthorizationDetailsResponseGroupDetailListTypeDef(
     - **Path** *(string) --*
 
       The path to the group. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **GroupName** *(string) --*
 
@@ -3324,8 +3622,8 @@ class ClientGetAccountAuthorizationDetailsResponseGroupDetailListTypeDef(
 
       The stable and unique string identifying the group. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -3376,7 +3674,7 @@ class ClientGetAccountAuthorizationDetailsResponseGroupDetailListTypeDef(
         For more information about managed policies, refer to `Managed Policies and Inline
         Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-        in the *Using IAM* guide.
+        in the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -3419,7 +3717,7 @@ class ClientGetAccountAuthorizationDetailsResponsePoliciesPolicyVersionListTypeD
     For more information about managed policies, refer to `Managed Policies and Inline
     Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-    in the *Using IAM* guide.
+    in the *IAM User Guide* .
 
     - **Document** *(string) --*
 
@@ -3489,7 +3787,7 @@ class ClientGetAccountAuthorizationDetailsResponsePoliciesTypeDef(
 
     For more information about managed policies, see `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -3500,8 +3798,8 @@ class ClientGetAccountAuthorizationDetailsResponsePoliciesTypeDef(
       The stable and unique string identifying the policy.
 
       For more information about IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -3517,8 +3815,8 @@ class ClientGetAccountAuthorizationDetailsResponsePoliciesTypeDef(
       The path to the policy.
 
       For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **DefaultVersionId** *(string) --*
 
@@ -3527,7 +3825,7 @@ class ClientGetAccountAuthorizationDetailsResponsePoliciesTypeDef(
 
       For more information about policy versions, see `Versioning for Managed Policies
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html>`__ in
-      the *Using IAM* guide.
+      the *IAM User Guide* .
 
     - **AttachmentCount** *(integer) --*
 
@@ -3580,7 +3878,7 @@ class ClientGetAccountAuthorizationDetailsResponsePoliciesTypeDef(
         For more information about managed policies, refer to `Managed Policies and Inline
         Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-        in the *Using IAM* guide.
+        in the *IAM User Guide* .
 
         - **Document** *(string) --*
 
@@ -3637,7 +3935,7 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListAttachedManagedP
     For more information about managed policies, refer to `Managed Policies and Inline
     Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-    in the *Using IAM* guide.
+    in the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -3683,6 +3981,45 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileL
     - **PermissionsBoundaryArn** *(string) --*
 
       The ARN of the policy used to set the permissions boundary for the user or role.
+    """
+
+
+_ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListRolesRoleLastUsedTypeDef = TypedDict(
+    "_ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListRolesRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListRolesRoleLastUsedTypeDef(
+    _ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListRolesRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListRoles` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes
+    the date and time and the Region in which the role was last used. Activity is
+    only reported for the trailing 400 days. This period can be shorter if your
+    Region began supporting these features within the last year. The role might have
+    been used more than 400 days ago. For more information, see `Regions Where Data
+    Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format
+      <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking
+      period. For more information about the tracking period, see `Regions Where Data
+      Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
     """
 
 
@@ -3742,6 +4079,7 @@ _ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListRo
         "Tags": List[
             ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListRolesTagsTypeDef
         ],
+        "RoleLastUsed": ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileListRolesRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -3760,7 +4098,7 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileL
 
       The path to the role. For more information about paths, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-      the *Using IAM* guide.
+      the *IAM User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -3771,7 +4109,7 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileL
       The stable and unique string identifying the role. For more information about
       IDs, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-      the *Using IAM* guide.
+      the *IAM User Guide* .
 
     - **Arn** *(string) --*
 
@@ -3852,6 +4190,32 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileL
             AWS always interprets the tag ``Value`` as a single string. If you need to
             store an array, you can store comma-separated values in the string.
             However, you must interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes
+      the date and time and the Region in which the role was last used. Activity is
+      only reported for the trailing 400 days. This period can be shorter if your
+      Region began supporting these features within the last year. The role might have
+      been used more than 400 days ago. For more information, see `Regions Where Data
+      Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format
+        <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking
+        period. For more information about the tracking period, see `Regions Where Data
+        Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -3894,7 +4258,7 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileL
       The path to the instance profile. For more information about paths, see `IAM
       Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **InstanceProfileName** *(string) --*
 
@@ -3905,14 +4269,14 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileL
       The stable and unique string identifying the instance profile. For more information
       about IDs, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the instance profile. For more information
       about ARNs and how to use them in policies, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -3931,7 +4295,7 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileL
 
           The path to the role. For more information about paths, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-          the *Using IAM* guide.
+          the *IAM User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -3942,7 +4306,7 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileL
           The stable and unique string identifying the role. For more information about
           IDs, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-          the *Using IAM* guide.
+          the *IAM User Guide* .
 
         - **Arn** *(string) --*
 
@@ -4023,6 +4387,32 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListInstanceProfileL
                 AWS always interprets the tag ``Value`` as a single string. If you need to
                 store an array, you can store comma-separated values in the string.
                 However, you must interpret the value in your code.
+
+        - **RoleLastUsed** *(dict) --*
+
+          Contains information about the last time that an IAM role was used. This includes
+          the date and time and the Region in which the role was last used. Activity is
+          only reported for the trailing 400 days. This period can be shorter if your
+          Region began supporting these features within the last year. The role might have
+          been used more than 400 days ago. For more information, see `Regions Where Data
+          Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+          - **LastUsedDate** *(datetime) --*
+
+            The date and time, in `ISO 8601 date-time format
+            <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+            This field is null if the role has not been used within the IAM tracking
+            period. For more information about the tracking period, see `Regions Where Data
+            Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+          - **Region** *(string) --*
+
+            The name of the AWS Region in which the role was last used.
     """
 
 
@@ -4055,6 +4445,43 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListPermissionsBound
     - **PermissionsBoundaryArn** *(string) --*
 
       The ARN of the policy used to set the permissions boundary for the user or role.
+    """
+
+
+_ClientGetAccountAuthorizationDetailsResponseRoleDetailListRoleLastUsedTypeDef = TypedDict(
+    "_ClientGetAccountAuthorizationDetailsResponseRoleDetailListRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ClientGetAccountAuthorizationDetailsResponseRoleDetailListRoleLastUsedTypeDef(
+    _ClientGetAccountAuthorizationDetailsResponseRoleDetailListRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ClientGetAccountAuthorizationDetailsResponseRoleDetailList` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the
+    date and time and the Region in which the role was last used. Activity is only reported
+    for the trailing 400 days. This period can be shorter if your Region began supporting
+    these features within the last year. The role might have been used more than 400 days
+    ago. For more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+      that the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period. For
+      more information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
     """
 
 
@@ -4147,6 +4574,7 @@ _ClientGetAccountAuthorizationDetailsResponseRoleDetailListTypeDef = TypedDict(
         "Tags": List[
             ClientGetAccountAuthorizationDetailsResponseRoleDetailListTagsTypeDef
         ],
+        "RoleLastUsed": ClientGetAccountAuthorizationDetailsResponseRoleDetailListRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -4166,8 +4594,8 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListTypeDef(
     - **Path** *(string) --*
 
       The path to the role. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -4177,8 +4605,8 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListTypeDef(
 
       The stable and unique string identifying the role. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -4221,7 +4649,7 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListTypeDef(
           The path to the instance profile. For more information about paths, see `IAM
           Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **InstanceProfileName** *(string) --*
 
@@ -4232,14 +4660,14 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListTypeDef(
           The stable and unique string identifying the instance profile. For more information
           about IDs, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the instance profile. For more information
           about ARNs and how to use them in policies, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -4258,7 +4686,7 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListTypeDef(
 
               The path to the role. For more information about paths, see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-              the *Using IAM* guide.
+              the *IAM User Guide* .
 
             - **RoleName** *(string) --*
 
@@ -4269,7 +4697,7 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListTypeDef(
               The stable and unique string identifying the role. For more information about
               IDs, see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-              the *Using IAM* guide.
+              the *IAM User Guide* .
 
             - **Arn** *(string) --*
 
@@ -4351,6 +4779,32 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListTypeDef(
                     store an array, you can store comma-separated values in the string.
                     However, you must interpret the value in your code.
 
+            - **RoleLastUsed** *(dict) --*
+
+              Contains information about the last time that an IAM role was used. This includes
+              the date and time and the Region in which the role was last used. Activity is
+              only reported for the trailing 400 days. This period can be shorter if your
+              Region began supporting these features within the last year. The role might have
+              been used more than 400 days ago. For more information, see `Regions Where Data
+              Is Tracked
+              <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+              in the *IAM User Guide* .
+
+              - **LastUsedDate** *(datetime) --*
+
+                The date and time, in `ISO 8601 date-time format
+                <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+                This field is null if the role has not been used within the IAM tracking
+                period. For more information about the tracking period, see `Regions Where Data
+                Is Tracked
+                <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                in the *IAM User Guide* .
+
+              - **Region** *(string) --*
+
+                The name of the AWS Region in which the role was last used.
+
     - **RolePolicyList** *(list) --*
 
       A list of inline policies embedded in the role. These policies are the role's access
@@ -4388,7 +4842,7 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListTypeDef(
         For more information about managed policies, refer to `Managed Policies and Inline
         Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-        in the *Using IAM* guide.
+        in the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -4454,6 +4908,30 @@ class ClientGetAccountAuthorizationDetailsResponseRoleDetailListTypeDef(
             AWS always interprets the tag ``Value`` as a single string. If you need to store an
             array, you can store comma-separated values in the string. However, you must
             interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the
+      date and time and the Region in which the role was last used. Activity is only reported
+      for the trailing 400 days. This period can be shorter if your Region began supporting
+      these features within the last year. The role might have been used more than 400 days
+      ago. For more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+        that the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period. For
+        more information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -4480,7 +4958,7 @@ class ClientGetAccountAuthorizationDetailsResponseUserDetailListAttachedManagedP
     For more information about managed policies, refer to `Managed Policies and Inline
     Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-    in the *Using IAM* guide.
+    in the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -4635,8 +5113,8 @@ class ClientGetAccountAuthorizationDetailsResponseUserDetailListTypeDef(
     - **Path** *(string) --*
 
       The path to the user. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UserName** *(string) --*
 
@@ -4646,8 +5124,8 @@ class ClientGetAccountAuthorizationDetailsResponseUserDetailListTypeDef(
 
       The stable and unique string identifying the user. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -4704,7 +5182,7 @@ class ClientGetAccountAuthorizationDetailsResponseUserDetailListTypeDef(
         For more information about managed policies, refer to `Managed Policies and Inline
         Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-        in the *Using IAM* guide.
+        in the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -4816,8 +5294,8 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
         - **Path** *(string) --*
 
           The path to the user. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **UserName** *(string) --*
 
@@ -4827,8 +5305,8 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
 
           The stable and unique string identifying the user. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
@@ -4885,7 +5363,7 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
             For more information about managed policies, refer to `Managed Policies and Inline
             Policies
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-            in the *Using IAM* guide.
+            in the *IAM User Guide* .
 
             - **PolicyName** *(string) --*
 
@@ -4966,8 +5444,8 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
         - **Path** *(string) --*
 
           The path to the group. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **GroupName** *(string) --*
 
@@ -4977,8 +5455,8 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
 
           The stable and unique string identifying the group. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
@@ -5029,7 +5507,7 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
             For more information about managed policies, refer to `Managed Policies and Inline
             Policies
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-            in the *Using IAM* guide.
+            in the *IAM User Guide* .
 
             - **PolicyName** *(string) --*
 
@@ -5058,8 +5536,8 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
         - **Path** *(string) --*
 
           The path to the role. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -5069,8 +5547,8 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
 
           The stable and unique string identifying the role. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
@@ -5113,7 +5591,7 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
               The path to the instance profile. For more information about paths, see `IAM
               Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **InstanceProfileName** *(string) --*
 
@@ -5124,14 +5602,14 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
               The stable and unique string identifying the instance profile. For more information
               about IDs, see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **Arn** *(string) --*
 
               The Amazon Resource Name (ARN) specifying the instance profile. For more information
               about ARNs and how to use them in policies, see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **CreateDate** *(datetime) --*
 
@@ -5150,7 +5628,7 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
 
                   The path to the role. For more information about paths, see `IAM Identifiers
                   <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-                  the *Using IAM* guide.
+                  the *IAM User Guide* .
 
                 - **RoleName** *(string) --*
 
@@ -5161,7 +5639,7 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
                   The stable and unique string identifying the role. For more information about
                   IDs, see `IAM Identifiers
                   <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-                  the *Using IAM* guide.
+                  the *IAM User Guide* .
 
                 - **Arn** *(string) --*
 
@@ -5243,6 +5721,32 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
                         store an array, you can store comma-separated values in the string.
                         However, you must interpret the value in your code.
 
+                - **RoleLastUsed** *(dict) --*
+
+                  Contains information about the last time that an IAM role was used. This includes
+                  the date and time and the Region in which the role was last used. Activity is
+                  only reported for the trailing 400 days. This period can be shorter if your
+                  Region began supporting these features within the last year. The role might have
+                  been used more than 400 days ago. For more information, see `Regions Where Data
+                  Is Tracked
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                  in the *IAM User Guide* .
+
+                  - **LastUsedDate** *(datetime) --*
+
+                    The date and time, in `ISO 8601 date-time format
+                    <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+                    This field is null if the role has not been used within the IAM tracking
+                    period. For more information about the tracking period, see `Regions Where Data
+                    Is Tracked
+                    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                    in the *IAM User Guide* .
+
+                  - **Region** *(string) --*
+
+                    The name of the AWS Region in which the role was last used.
+
         - **RolePolicyList** *(list) --*
 
           A list of inline policies embedded in the role. These policies are the role's access
@@ -5280,7 +5784,7 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
             For more information about managed policies, refer to `Managed Policies and Inline
             Policies
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-            in the *Using IAM* guide.
+            in the *IAM User Guide* .
 
             - **PolicyName** *(string) --*
 
@@ -5347,6 +5851,30 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
                 array, you can store comma-separated values in the string. However, you must
                 interpret the value in your code.
 
+        - **RoleLastUsed** *(dict) --*
+
+          Contains information about the last time that an IAM role was used. This includes the
+          date and time and the Region in which the role was last used. Activity is only reported
+          for the trailing 400 days. This period can be shorter if your Region began supporting
+          these features within the last year. The role might have been used more than 400 days
+          ago. For more information, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+          - **LastUsedDate** *(datetime) --*
+
+            The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+            that the role was last used.
+
+            This field is null if the role has not been used within the IAM tracking period. For
+            more information about the tracking period, see `Regions Where Data Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+          - **Region** *(string) --*
+
+            The name of the AWS Region in which the role was last used.
+
     - **Policies** *(list) --*
 
       A list containing information about managed policies.
@@ -5361,7 +5889,7 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
 
         For more information about managed policies, see `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -5372,8 +5900,8 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
           The stable and unique string identifying the policy.
 
           For more information about IDs, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
@@ -5389,8 +5917,8 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
           The path to the policy.
 
           For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **DefaultVersionId** *(string) --*
 
@@ -5399,7 +5927,7 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
 
           For more information about policy versions, see `Versioning for Managed Policies
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html>`__ in
-          the *Using IAM* guide.
+          the *IAM User Guide* .
 
         - **AttachmentCount** *(integer) --*
 
@@ -5452,7 +5980,7 @@ class ClientGetAccountAuthorizationDetailsResponseTypeDef(
             For more information about managed policies, refer to `Managed Policies and Inline
             Policies
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-            in the *Using IAM* guide.
+            in the *IAM User Guide* .
 
             - **Document** *(string) --*
 
@@ -5780,8 +6308,8 @@ class ClientGetGroupResponseGroupTypeDef(_ClientGetGroupResponseGroupTypeDef):
     - **Path** *(string) --*
 
       The path to the group. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **GroupName** *(string) --*
 
@@ -5791,15 +6319,15 @@ class ClientGetGroupResponseGroupTypeDef(_ClientGetGroupResponseGroupTypeDef):
 
       The stable and unique string identifying the group. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
       how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -5908,8 +6436,8 @@ class ClientGetGroupResponseUsersTypeDef(_ClientGetGroupResponseUsersTypeDef):
     - **Path** *(string) --*
 
       The path to the user. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UserName** *(string) --*
 
@@ -5919,15 +6447,15 @@ class ClientGetGroupResponseUsersTypeDef(_ClientGetGroupResponseUsersTypeDef):
 
       The stable and unique string identifying the user. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
       and how to use ARNs in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -5940,7 +6468,7 @@ class ClientGetGroupResponseUsersTypeDef(_ClientGetGroupResponseUsersTypeDef):
       when the user's password was last used to sign in to an AWS website. For a list of AWS
       websites that capture a user's last sign-in time, see the `Credential Reports
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-      the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+      the *IAM User Guide* . If a password is used more than once in a five-minute span, only
       the first use is returned in this field. If the field is null (no value), then it
       indicates that they never signed in with a password. This can be because:
 
@@ -5950,7 +6478,7 @@ class ClientGetGroupResponseUsersTypeDef(_ClientGetGroupResponseUsersTypeDef):
       October 20, 2014.
 
       A null value does not mean that the user *never* had a password. Also, if the user does
-      not currently have a password, but had one in the past, then this field contains the date
+      not currently have a password but had one in the past, then this field contains the date
       and time the most recent password was used.
 
       This value is returned only in the  GetUser and  ListUsers operations.
@@ -6034,8 +6562,8 @@ class ClientGetGroupResponseTypeDef(_ClientGetGroupResponseTypeDef):
       - **Path** *(string) --*
 
         The path to the group. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **GroupName** *(string) --*
 
@@ -6045,15 +6573,15 @@ class ClientGetGroupResponseTypeDef(_ClientGetGroupResponseTypeDef):
 
         The stable and unique string identifying the group. For more information about IDs, see
         `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **Arn** *(string) --*
 
         The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
         how to use them in policies, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **CreateDate** *(datetime) --*
 
@@ -6079,8 +6607,8 @@ class ClientGetGroupResponseTypeDef(_ClientGetGroupResponseTypeDef):
         - **Path** *(string) --*
 
           The path to the user. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **UserName** *(string) --*
 
@@ -6090,15 +6618,15 @@ class ClientGetGroupResponseTypeDef(_ClientGetGroupResponseTypeDef):
 
           The stable and unique string identifying the user. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
           and how to use ARNs in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -6111,7 +6639,7 @@ class ClientGetGroupResponseTypeDef(_ClientGetGroupResponseTypeDef):
           when the user's password was last used to sign in to an AWS website. For a list of AWS
           websites that capture a user's last sign-in time, see the `Credential Reports
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-          the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+          the *IAM User Guide* . If a password is used more than once in a five-minute span, only
           the first use is returned in this field. If the field is null (no value), then it
           indicates that they never signed in with a password. This can be because:
 
@@ -6121,7 +6649,7 @@ class ClientGetGroupResponseTypeDef(_ClientGetGroupResponseTypeDef):
           October 20, 2014.
 
           A null value does not mean that the user *never* had a password. Also, if the user does
-          not currently have a password, but had one in the past, then this field contains the date
+          not currently have a password but had one in the past, then this field contains the date
           and time the most recent password was used.
 
           This value is returned only in the  GetUser and  ListUsers operations.
@@ -6225,6 +6753,43 @@ class ClientGetInstanceProfileResponseInstanceProfileRolesPermissionsBoundaryTyp
     """
 
 
+_ClientGetInstanceProfileResponseInstanceProfileRolesRoleLastUsedTypeDef = TypedDict(
+    "_ClientGetInstanceProfileResponseInstanceProfileRolesRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ClientGetInstanceProfileResponseInstanceProfileRolesRoleLastUsedTypeDef(
+    _ClientGetInstanceProfileResponseInstanceProfileRolesRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ClientGetInstanceProfileResponseInstanceProfileRoles` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the
+    date and time and the Region in which the role was last used. Activity is only reported
+    for the trailing 400 days. This period can be shorter if your Region began supporting
+    these features within the last year. The role might have been used more than 400 days
+    ago. For more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+      that the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period. For
+      more information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
+    """
+
+
 _ClientGetInstanceProfileResponseInstanceProfileRolesTagsTypeDef = TypedDict(
     "_ClientGetInstanceProfileResponseInstanceProfileRolesTagsTypeDef",
     {"Key": str, "Value": str},
@@ -6279,6 +6844,7 @@ _ClientGetInstanceProfileResponseInstanceProfileRolesTypeDef = TypedDict(
         "MaxSessionDuration": int,
         "PermissionsBoundary": ClientGetInstanceProfileResponseInstanceProfileRolesPermissionsBoundaryTypeDef,
         "Tags": List[ClientGetInstanceProfileResponseInstanceProfileRolesTagsTypeDef],
+        "RoleLastUsed": ClientGetInstanceProfileResponseInstanceProfileRolesRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -6297,7 +6863,7 @@ class ClientGetInstanceProfileResponseInstanceProfileRolesTypeDef(
 
       The path to the role. For more information about paths, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -6308,7 +6874,7 @@ class ClientGetInstanceProfileResponseInstanceProfileRolesTypeDef(
       The stable and unique string identifying the role. For more information about IDs, see
       `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **Arn** *(string) --*
 
@@ -6389,6 +6955,30 @@ class ClientGetInstanceProfileResponseInstanceProfileRolesTypeDef(
             AWS always interprets the tag ``Value`` as a single string. If you need to store
             an array, you can store comma-separated values in the string. However, you must
             interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the
+      date and time and the Region in which the role was last used. Activity is only reported
+      for the trailing 400 days. This period can be shorter if your Region began supporting
+      these features within the last year. The role might have been used more than 400 days
+      ago. For more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+        that the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period. For
+        more information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -6417,8 +7007,8 @@ class ClientGetInstanceProfileResponseInstanceProfileTypeDef(
     - **Path** *(string) --*
 
       The path to the instance profile. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **InstanceProfileName** *(string) --*
 
@@ -6428,15 +7018,15 @@ class ClientGetInstanceProfileResponseInstanceProfileTypeDef(
 
       The stable and unique string identifying the instance profile. For more information about
       IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the instance profile. For more information about
       ARNs and how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -6455,7 +7045,7 @@ class ClientGetInstanceProfileResponseInstanceProfileTypeDef(
 
           The path to the role. For more information about paths, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -6466,7 +7056,7 @@ class ClientGetInstanceProfileResponseInstanceProfileTypeDef(
           The stable and unique string identifying the role. For more information about IDs, see
           `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **Arn** *(string) --*
 
@@ -6547,6 +7137,30 @@ class ClientGetInstanceProfileResponseInstanceProfileTypeDef(
                 AWS always interprets the tag ``Value`` as a single string. If you need to store
                 an array, you can store comma-separated values in the string. However, you must
                 interpret the value in your code.
+
+        - **RoleLastUsed** *(dict) --*
+
+          Contains information about the last time that an IAM role was used. This includes the
+          date and time and the Region in which the role was last used. Activity is only reported
+          for the trailing 400 days. This period can be shorter if your Region began supporting
+          these features within the last year. The role might have been used more than 400 days
+          ago. For more information, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+          - **LastUsedDate** *(datetime) --*
+
+            The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+            that the role was last used.
+
+            This field is null if the role has not been used within the IAM tracking period. For
+            more information about the tracking period, see `Regions Where Data Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+          - **Region** *(string) --*
+
+            The name of the AWS Region in which the role was last used.
     """
 
 
@@ -6570,8 +7184,8 @@ class ClientGetInstanceProfileResponseTypeDef(_ClientGetInstanceProfileResponseT
       - **Path** *(string) --*
 
         The path to the instance profile. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **InstanceProfileName** *(string) --*
 
@@ -6581,15 +7195,15 @@ class ClientGetInstanceProfileResponseTypeDef(_ClientGetInstanceProfileResponseT
 
         The stable and unique string identifying the instance profile. For more information about
         IDs, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **Arn** *(string) --*
 
         The Amazon Resource Name (ARN) specifying the instance profile. For more information about
         ARNs and how to use them in policies, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **CreateDate** *(datetime) --*
 
@@ -6608,7 +7222,7 @@ class ClientGetInstanceProfileResponseTypeDef(_ClientGetInstanceProfileResponseT
 
             The path to the role. For more information about paths, see `IAM Identifiers
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-            *Using IAM* guide.
+            *IAM User Guide* .
 
           - **RoleName** *(string) --*
 
@@ -6619,7 +7233,7 @@ class ClientGetInstanceProfileResponseTypeDef(_ClientGetInstanceProfileResponseT
             The stable and unique string identifying the role. For more information about IDs, see
             `IAM Identifiers
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-            *Using IAM* guide.
+            *IAM User Guide* .
 
           - **Arn** *(string) --*
 
@@ -6700,6 +7314,30 @@ class ClientGetInstanceProfileResponseTypeDef(_ClientGetInstanceProfileResponseT
                   AWS always interprets the tag ``Value`` as a single string. If you need to store
                   an array, you can store comma-separated values in the string. However, you must
                   interpret the value in your code.
+
+          - **RoleLastUsed** *(dict) --*
+
+            Contains information about the last time that an IAM role was used. This includes the
+            date and time and the Region in which the role was last used. Activity is only reported
+            for the trailing 400 days. This period can be shorter if your Region began supporting
+            these features within the last year. The role might have been used more than 400 days
+            ago. For more information, see `Regions Where Data Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+            - **LastUsedDate** *(datetime) --*
+
+              The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+              that the role was last used.
+
+              This field is null if the role has not been used within the IAM tracking period. For
+              more information about the tracking period, see `Regions Where Data Is Tracked
+              <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+              in the *IAM User Guide* .
+
+            - **Region** *(string) --*
+
+              The name of the AWS Region in which the role was last used.
     """
 
 
@@ -6805,8 +7443,9 @@ class ClientGetOpenIdConnectProviderResponseTypeDef(
         Contains a thumbprint for an identity provider's server certificate.
 
         The identity provider's server certificate thumbprint is the hex-encoded SHA-1 hash value
-        of the self-signed X.509 certificate used by the domain where the OpenID Connect provider
-        makes its keys available. It is always a 40-character string.
+        of the self-signed X.509 certificate. This thumbprint is used by the domain where the
+        OpenID Connect provider makes its keys available. The thumbprint is always a 40-character
+        string.
 
     - **CreateDate** *(datetime) --*
 
@@ -7102,8 +7741,8 @@ class ClientGetPolicyResponsePolicyTypeDef(_ClientGetPolicyResponsePolicyTypeDef
       The stable and unique string identifying the policy.
 
       For more information about IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -7118,8 +7757,8 @@ class ClientGetPolicyResponsePolicyTypeDef(_ClientGetPolicyResponsePolicyTypeDef
       The path to the policy.
 
       For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **DefaultVersionId** *(string) --*
 
@@ -7192,8 +7831,8 @@ class ClientGetPolicyResponseTypeDef(_ClientGetPolicyResponseTypeDef):
         The stable and unique string identifying the policy.
 
         For more information about IDs, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **Arn** *(string) --*
 
@@ -7208,8 +7847,8 @@ class ClientGetPolicyResponseTypeDef(_ClientGetPolicyResponseTypeDef):
         The path to the policy.
 
         For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **DefaultVersionId** *(string) --*
 
@@ -7420,6 +8059,43 @@ class ClientGetRoleResponseRolePermissionsBoundaryTypeDef(
     """
 
 
+_ClientGetRoleResponseRoleRoleLastUsedTypeDef = TypedDict(
+    "_ClientGetRoleResponseRoleRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ClientGetRoleResponseRoleRoleLastUsedTypeDef(
+    _ClientGetRoleResponseRoleRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ClientGetRoleResponseRole` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the date
+    and time and the Region in which the role was last used. Activity is only reported for the
+    trailing 400 days. This period can be shorter if your Region began supporting these
+    features within the last year. The role might have been used more than 400 days ago. For
+    more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__ that
+      the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period. For more
+      information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
+    """
+
+
 _ClientGetRoleResponseRoleTagsTypeDef = TypedDict(
     "_ClientGetRoleResponseRoleTagsTypeDef", {"Key": str, "Value": str}, total=False
 )
@@ -7468,6 +8144,7 @@ _ClientGetRoleResponseRoleTypeDef = TypedDict(
         "MaxSessionDuration": int,
         "PermissionsBoundary": ClientGetRoleResponseRolePermissionsBoundaryTypeDef,
         "Tags": List[ClientGetRoleResponseRoleTagsTypeDef],
+        "RoleLastUsed": ClientGetRoleResponseRoleRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -7482,8 +8159,8 @@ class ClientGetRoleResponseRoleTypeDef(_ClientGetRoleResponseRoleTypeDef):
     - **Path** *(string) --*
 
       The path to the role. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -7493,7 +8170,7 @@ class ClientGetRoleResponseRoleTypeDef(_ClientGetRoleResponseRoleTypeDef):
 
       The stable and unique string identifying the role. For more information about IDs, see `IAM
       Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-      the *Using IAM* guide.
+      the *IAM User Guide* .
 
     - **Arn** *(string) --*
 
@@ -7571,6 +8248,30 @@ class ClientGetRoleResponseRoleTypeDef(_ClientGetRoleResponseRoleTypeDef):
             AWS always interprets the tag ``Value`` as a single string. If you need to store an
             array, you can store comma-separated values in the string. However, you must
             interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the date
+      and time and the Region in which the role was last used. Activity is only reported for the
+      trailing 400 days. This period can be shorter if your Region began supporting these
+      features within the last year. The role might have been used more than 400 days ago. For
+      more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__ that
+        the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period. For more
+        information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -7594,8 +8295,8 @@ class ClientGetRoleResponseTypeDef(_ClientGetRoleResponseTypeDef):
       - **Path** *(string) --*
 
         The path to the role. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **RoleName** *(string) --*
 
@@ -7605,7 +8306,7 @@ class ClientGetRoleResponseTypeDef(_ClientGetRoleResponseTypeDef):
 
         The stable and unique string identifying the role. For more information about IDs, see `IAM
         Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
       - **Arn** *(string) --*
 
@@ -7683,6 +8384,30 @@ class ClientGetRoleResponseTypeDef(_ClientGetRoleResponseTypeDef):
               AWS always interprets the tag ``Value`` as a single string. If you need to store an
               array, you can store comma-separated values in the string. However, you must
               interpret the value in your code.
+
+      - **RoleLastUsed** *(dict) --*
+
+        Contains information about the last time that an IAM role was used. This includes the date
+        and time and the Region in which the role was last used. Activity is only reported for the
+        trailing 400 days. This period can be shorter if your Region began supporting these
+        features within the last year. The role might have been used more than 400 days ago. For
+        more information, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+        - **LastUsedDate** *(datetime) --*
+
+          The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__ that
+          the role was last used.
+
+          This field is null if the role has not been used within the IAM tracking period. For more
+          information about the tracking period, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+        - **Region** *(string) --*
+
+          The name of the AWS Region in which the role was last used.
     """
 
 
@@ -7739,7 +8464,7 @@ class ClientGetServerCertificateResponseServerCertificateServerCertificateMetada
 
       The path to the server certificate. For more information about paths, see `IAM
       Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__
-      in the *Using IAM* guide.
+      in the *IAM User Guide* .
 
     - **ServerCertificateName** *(string) --*
 
@@ -7749,15 +8474,15 @@ class ClientGetServerCertificateResponseServerCertificateServerCertificateMetada
 
       The stable and unique string identifying the server certificate. For more information
       about IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the server certificate. For more information
       about ARNs and how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UploadDate** *(datetime) --*
 
@@ -7796,7 +8521,7 @@ class ClientGetServerCertificateResponseServerCertificateTypeDef(
 
         The path to the server certificate. For more information about paths, see `IAM
         Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__
-        in the *Using IAM* guide.
+        in the *IAM User Guide* .
 
       - **ServerCertificateName** *(string) --*
 
@@ -7806,15 +8531,15 @@ class ClientGetServerCertificateResponseServerCertificateTypeDef(
 
         The stable and unique string identifying the server certificate. For more information
         about IDs, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-        *Using IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **Arn** *(string) --*
 
         The Amazon Resource Name (ARN) specifying the server certificate. For more information
         about ARNs and how to use them in policies, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-        *Using IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **UploadDate** *(datetime) --*
 
@@ -7861,7 +8586,7 @@ class ClientGetServerCertificateResponseTypeDef(
 
           The path to the server certificate. For more information about paths, see `IAM
           Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__
-          in the *Using IAM* guide.
+          in the *IAM User Guide* .
 
         - **ServerCertificateName** *(string) --*
 
@@ -7871,15 +8596,15 @@ class ClientGetServerCertificateResponseTypeDef(
 
           The stable and unique string identifying the server certificate. For more information
           about IDs, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the server certificate. For more information
           about ARNs and how to use them in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **UploadDate** *(datetime) --*
 
@@ -8166,7 +8891,7 @@ class ClientGetServiceLastAccessedDetailsWithEntitiesResponseEntityDetailsListEn
       The path to the entity (user or role). For more information about paths, see `IAM
       Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
     """
 
 
@@ -8222,7 +8947,7 @@ class ClientGetServiceLastAccessedDetailsWithEntitiesResponseEntityDetailsListTy
         The path to the entity (user or role). For more information about paths, see `IAM
         Identifiers
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-        *Using IAM* guide.
+        *IAM User Guide* .
 
     - **LastAuthenticated** *(datetime) --*
 
@@ -8345,7 +9070,7 @@ class ClientGetServiceLastAccessedDetailsWithEntitiesResponseTypeDef(
             The path to the entity (user or role). For more information about paths, see `IAM
             Identifiers
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-            *Using IAM* guide.
+            *IAM User Guide* .
 
         - **LastAuthenticated** *(datetime) --*
 
@@ -8783,8 +9508,8 @@ class ClientGetUserResponseUserTypeDef(_ClientGetUserResponseUserTypeDef):
     - **Path** *(string) --*
 
       The path to the user. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UserName** *(string) --*
 
@@ -8794,14 +9519,14 @@ class ClientGetUserResponseUserTypeDef(_ClientGetUserResponseUserTypeDef):
 
       The stable and unique string identifying the user. For more information about IDs, see `IAM
       Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-      the *Using IAM* guide.
+      the *IAM User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
       and how to use ARNs in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -8814,7 +9539,7 @@ class ClientGetUserResponseUserTypeDef(_ClientGetUserResponseUserTypeDef):
       the user's password was last used to sign in to an AWS website. For a list of AWS websites
       that capture a user's last sign-in time, see the `Credential Reports
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in the
-      *Using IAM* guide. If a password is used more than once in a five-minute span, only the
+      *IAM User Guide* . If a password is used more than once in a five-minute span, only the
       first use is returned in this field. If the field is null (no value), then it indicates
       that they never signed in with a password. This can be because:
 
@@ -8824,7 +9549,7 @@ class ClientGetUserResponseUserTypeDef(_ClientGetUserResponseUserTypeDef):
       October 20, 2014.
 
       A null value does not mean that the user *never* had a password. Also, if the user does not
-      currently have a password, but had one in the past, then this field contains the date and
+      currently have a password but had one in the past, then this field contains the date and
       time the most recent password was used.
 
       This value is returned only in the  GetUser and  ListUsers operations.
@@ -8920,8 +9645,8 @@ class ClientGetUserResponseTypeDef(_ClientGetUserResponseTypeDef):
       - **Path** *(string) --*
 
         The path to the user. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **UserName** *(string) --*
 
@@ -8931,14 +9656,14 @@ class ClientGetUserResponseTypeDef(_ClientGetUserResponseTypeDef):
 
         The stable and unique string identifying the user. For more information about IDs, see `IAM
         Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
       - **Arn** *(string) --*
 
         The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
         and how to use ARNs in policies, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **CreateDate** *(datetime) --*
 
@@ -8951,7 +9676,7 @@ class ClientGetUserResponseTypeDef(_ClientGetUserResponseTypeDef):
         the user's password was last used to sign in to an AWS website. For a list of AWS websites
         that capture a user's last sign-in time, see the `Credential Reports
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in the
-        *Using IAM* guide. If a password is used more than once in a five-minute span, only the
+        *IAM User Guide* . If a password is used more than once in a five-minute span, only the
         first use is returned in this field. If the field is null (no value), then it indicates
         that they never signed in with a password. This can be because:
 
@@ -8961,7 +9686,7 @@ class ClientGetUserResponseTypeDef(_ClientGetUserResponseTypeDef):
         October 20, 2014.
 
         A null value does not mean that the user *never* had a password. Also, if the user does not
-        currently have a password, but had one in the past, then this field contains the date and
+        currently have a password but had one in the past, then this field contains the date and
         time the most recent password was used.
 
         This value is returned only in the  GetUser and  ListUsers operations.
@@ -9170,7 +9895,7 @@ class ClientListAttachedGroupPoliciesResponseAttachedPoliciesTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -9223,7 +9948,7 @@ class ClientListAttachedGroupPoliciesResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -9275,7 +10000,7 @@ class ClientListAttachedRolePoliciesResponseAttachedPoliciesTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -9328,7 +10053,7 @@ class ClientListAttachedRolePoliciesResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -9380,7 +10105,7 @@ class ClientListAttachedUserPoliciesResponseAttachedPoliciesTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -9433,7 +10158,7 @@ class ClientListAttachedUserPoliciesResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -9482,7 +10207,7 @@ class ClientListEntitiesForPolicyResponsePolicyGroupsTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **GroupName** *(string) --*
 
@@ -9516,7 +10241,7 @@ class ClientListEntitiesForPolicyResponsePolicyRolesTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -9550,7 +10275,7 @@ class ClientListEntitiesForPolicyResponsePolicyUsersTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **UserName** *(string) --*
 
@@ -9598,7 +10323,7 @@ class ClientListEntitiesForPolicyResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **GroupName** *(string) --*
 
@@ -9623,7 +10348,7 @@ class ClientListEntitiesForPolicyResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **UserName** *(string) --*
 
@@ -9648,7 +10373,7 @@ class ClientListEntitiesForPolicyResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -9740,8 +10465,8 @@ class ClientListGroupsForUserResponseGroupsTypeDef(
     - **Path** *(string) --*
 
       The path to the group. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **GroupName** *(string) --*
 
@@ -9751,15 +10476,15 @@ class ClientListGroupsForUserResponseGroupsTypeDef(
 
       The stable and unique string identifying the group. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
       how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -9804,8 +10529,8 @@ class ClientListGroupsForUserResponseTypeDef(_ClientListGroupsForUserResponseTyp
         - **Path** *(string) --*
 
           The path to the group. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **GroupName** *(string) --*
 
@@ -9815,15 +10540,15 @@ class ClientListGroupsForUserResponseTypeDef(_ClientListGroupsForUserResponseTyp
 
           The stable and unique string identifying the group. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
           how to use them in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -9869,8 +10594,8 @@ class ClientListGroupsResponseGroupsTypeDef(_ClientListGroupsResponseGroupsTypeD
     - **Path** *(string) --*
 
       The path to the group. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **GroupName** *(string) --*
 
@@ -9880,15 +10605,15 @@ class ClientListGroupsResponseGroupsTypeDef(_ClientListGroupsResponseGroupsTypeD
 
       The stable and unique string identifying the group. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
       how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -9933,8 +10658,8 @@ class ClientListGroupsResponseTypeDef(_ClientListGroupsResponseTypeDef):
         - **Path** *(string) --*
 
           The path to the group. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **GroupName** *(string) --*
 
@@ -9944,15 +10669,15 @@ class ClientListGroupsResponseTypeDef(_ClientListGroupsResponseTypeDef):
 
           The stable and unique string identifying the group. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
           how to use them in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -10003,6 +10728,43 @@ class ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesPermissionsB
     - **PermissionsBoundaryArn** *(string) --*
 
       The ARN of the policy used to set the permissions boundary for the user or role.
+    """
+
+
+_ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesRoleLastUsedTypeDef = TypedDict(
+    "_ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesRoleLastUsedTypeDef(
+    _ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ClientListInstanceProfilesForRoleResponseInstanceProfilesRoles` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the
+    date and time and the Region in which the role was last used. Activity is only
+    reported for the trailing 400 days. This period can be shorter if your Region began
+    supporting these features within the last year. The role might have been used more
+    than 400 days ago. For more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format
+      <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period.
+      For more information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
     """
 
 
@@ -10062,6 +10824,7 @@ _ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesTypeDef = TypedDi
         "Tags": List[
             ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesTagsTypeDef
         ],
+        "RoleLastUsed": ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -10080,7 +10843,7 @@ class ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesTypeDef(
 
       The path to the role. For more information about paths, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -10091,7 +10854,7 @@ class ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesTypeDef(
       The stable and unique string identifying the role. For more information about IDs,
       see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **Arn** *(string) --*
 
@@ -10172,6 +10935,30 @@ class ClientListInstanceProfilesForRoleResponseInstanceProfilesRolesTypeDef(
             AWS always interprets the tag ``Value`` as a single string. If you need to
             store an array, you can store comma-separated values in the string. However,
             you must interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the
+      date and time and the Region in which the role was last used. Activity is only
+      reported for the trailing 400 days. This period can be shorter if your Region began
+      supporting these features within the last year. The role might have been used more
+      than 400 days ago. For more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format
+        <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period.
+        For more information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -10212,8 +10999,8 @@ class ClientListInstanceProfilesForRoleResponseInstanceProfilesTypeDef(
     - **Path** *(string) --*
 
       The path to the instance profile. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **InstanceProfileName** *(string) --*
 
@@ -10223,15 +11010,15 @@ class ClientListInstanceProfilesForRoleResponseInstanceProfilesTypeDef(
 
       The stable and unique string identifying the instance profile. For more information about
       IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the instance profile. For more information
       about ARNs and how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -10250,7 +11037,7 @@ class ClientListInstanceProfilesForRoleResponseInstanceProfilesTypeDef(
 
           The path to the role. For more information about paths, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -10261,7 +11048,7 @@ class ClientListInstanceProfilesForRoleResponseInstanceProfilesTypeDef(
           The stable and unique string identifying the role. For more information about IDs,
           see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **Arn** *(string) --*
 
@@ -10342,6 +11129,30 @@ class ClientListInstanceProfilesForRoleResponseInstanceProfilesTypeDef(
                 AWS always interprets the tag ``Value`` as a single string. If you need to
                 store an array, you can store comma-separated values in the string. However,
                 you must interpret the value in your code.
+
+        - **RoleLastUsed** *(dict) --*
+
+          Contains information about the last time that an IAM role was used. This includes the
+          date and time and the Region in which the role was last used. Activity is only
+          reported for the trailing 400 days. This period can be shorter if your Region began
+          supporting these features within the last year. The role might have been used more
+          than 400 days ago. For more information, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+          - **LastUsedDate** *(datetime) --*
+
+            The date and time, in `ISO 8601 date-time format
+            <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+            This field is null if the role has not been used within the IAM tracking period.
+            For more information about the tracking period, see `Regions Where Data Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+          - **Region** *(string) --*
+
+            The name of the AWS Region in which the role was last used.
     """
 
 
@@ -10387,8 +11198,8 @@ class ClientListInstanceProfilesForRoleResponseTypeDef(
         - **Path** *(string) --*
 
           The path to the instance profile. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **InstanceProfileName** *(string) --*
 
@@ -10398,15 +11209,15 @@ class ClientListInstanceProfilesForRoleResponseTypeDef(
 
           The stable and unique string identifying the instance profile. For more information about
           IDs, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the instance profile. For more information
           about ARNs and how to use them in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -10425,7 +11236,7 @@ class ClientListInstanceProfilesForRoleResponseTypeDef(
 
               The path to the role. For more information about paths, see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **RoleName** *(string) --*
 
@@ -10436,7 +11247,7 @@ class ClientListInstanceProfilesForRoleResponseTypeDef(
               The stable and unique string identifying the role. For more information about IDs,
               see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **Arn** *(string) --*
 
@@ -10518,6 +11329,30 @@ class ClientListInstanceProfilesForRoleResponseTypeDef(
                     store an array, you can store comma-separated values in the string. However,
                     you must interpret the value in your code.
 
+            - **RoleLastUsed** *(dict) --*
+
+              Contains information about the last time that an IAM role was used. This includes the
+              date and time and the Region in which the role was last used. Activity is only
+              reported for the trailing 400 days. This period can be shorter if your Region began
+              supporting these features within the last year. The role might have been used more
+              than 400 days ago. For more information, see `Regions Where Data Is Tracked
+              <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+              in the *IAM User Guide* .
+
+              - **LastUsedDate** *(datetime) --*
+
+                The date and time, in `ISO 8601 date-time format
+                <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+                This field is null if the role has not been used within the IAM tracking period.
+                For more information about the tracking period, see `Regions Where Data Is Tracked
+                <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                in the *IAM User Guide* .
+
+              - **Region** *(string) --*
+
+                The name of the AWS Region in which the role was last used.
+
     - **IsTruncated** *(boolean) --*
 
       A flag that indicates whether there are more items to return. If your results were truncated,
@@ -10562,6 +11397,43 @@ class ClientListInstanceProfilesResponseInstanceProfilesRolesPermissionsBoundary
     - **PermissionsBoundaryArn** *(string) --*
 
       The ARN of the policy used to set the permissions boundary for the user or role.
+    """
+
+
+_ClientListInstanceProfilesResponseInstanceProfilesRolesRoleLastUsedTypeDef = TypedDict(
+    "_ClientListInstanceProfilesResponseInstanceProfilesRolesRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ClientListInstanceProfilesResponseInstanceProfilesRolesRoleLastUsedTypeDef(
+    _ClientListInstanceProfilesResponseInstanceProfilesRolesRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ClientListInstanceProfilesResponseInstanceProfilesRoles` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the
+    date and time and the Region in which the role was last used. Activity is only
+    reported for the trailing 400 days. This period can be shorter if your Region began
+    supporting these features within the last year. The role might have been used more
+    than 400 days ago. For more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format
+      <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period.
+      For more information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
     """
 
 
@@ -10621,6 +11493,7 @@ _ClientListInstanceProfilesResponseInstanceProfilesRolesTypeDef = TypedDict(
         "Tags": List[
             ClientListInstanceProfilesResponseInstanceProfilesRolesTagsTypeDef
         ],
+        "RoleLastUsed": ClientListInstanceProfilesResponseInstanceProfilesRolesRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -10639,7 +11512,7 @@ class ClientListInstanceProfilesResponseInstanceProfilesRolesTypeDef(
 
       The path to the role. For more information about paths, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -10650,7 +11523,7 @@ class ClientListInstanceProfilesResponseInstanceProfilesRolesTypeDef(
       The stable and unique string identifying the role. For more information about IDs,
       see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **Arn** *(string) --*
 
@@ -10731,6 +11604,30 @@ class ClientListInstanceProfilesResponseInstanceProfilesRolesTypeDef(
             AWS always interprets the tag ``Value`` as a single string. If you need to
             store an array, you can store comma-separated values in the string. However,
             you must interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the
+      date and time and the Region in which the role was last used. Activity is only
+      reported for the trailing 400 days. This period can be shorter if your Region began
+      supporting these features within the last year. The role might have been used more
+      than 400 days ago. For more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format
+        <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period.
+        For more information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -10769,8 +11666,8 @@ class ClientListInstanceProfilesResponseInstanceProfilesTypeDef(
     - **Path** *(string) --*
 
       The path to the instance profile. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **InstanceProfileName** *(string) --*
 
@@ -10780,15 +11677,15 @@ class ClientListInstanceProfilesResponseInstanceProfilesTypeDef(
 
       The stable and unique string identifying the instance profile. For more information about
       IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the instance profile. For more information
       about ARNs and how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -10807,7 +11704,7 @@ class ClientListInstanceProfilesResponseInstanceProfilesTypeDef(
 
           The path to the role. For more information about paths, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -10818,7 +11715,7 @@ class ClientListInstanceProfilesResponseInstanceProfilesTypeDef(
           The stable and unique string identifying the role. For more information about IDs,
           see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **Arn** *(string) --*
 
@@ -10899,6 +11796,30 @@ class ClientListInstanceProfilesResponseInstanceProfilesTypeDef(
                 AWS always interprets the tag ``Value`` as a single string. If you need to
                 store an array, you can store comma-separated values in the string. However,
                 you must interpret the value in your code.
+
+        - **RoleLastUsed** *(dict) --*
+
+          Contains information about the last time that an IAM role was used. This includes the
+          date and time and the Region in which the role was last used. Activity is only
+          reported for the trailing 400 days. This period can be shorter if your Region began
+          supporting these features within the last year. The role might have been used more
+          than 400 days ago. For more information, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+          - **LastUsedDate** *(datetime) --*
+
+            The date and time, in `ISO 8601 date-time format
+            <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+            This field is null if the role has not been used within the IAM tracking period.
+            For more information about the tracking period, see `Regions Where Data Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+          - **Region** *(string) --*
+
+            The name of the AWS Region in which the role was last used.
     """
 
 
@@ -10944,8 +11865,8 @@ class ClientListInstanceProfilesResponseTypeDef(
         - **Path** *(string) --*
 
           The path to the instance profile. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **InstanceProfileName** *(string) --*
 
@@ -10955,15 +11876,15 @@ class ClientListInstanceProfilesResponseTypeDef(
 
           The stable and unique string identifying the instance profile. For more information about
           IDs, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the instance profile. For more information
           about ARNs and how to use them in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -10982,7 +11903,7 @@ class ClientListInstanceProfilesResponseTypeDef(
 
               The path to the role. For more information about paths, see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **RoleName** *(string) --*
 
@@ -10993,7 +11914,7 @@ class ClientListInstanceProfilesResponseTypeDef(
               The stable and unique string identifying the role. For more information about IDs,
               see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **Arn** *(string) --*
 
@@ -11074,6 +11995,30 @@ class ClientListInstanceProfilesResponseTypeDef(
                     AWS always interprets the tag ``Value`` as a single string. If you need to
                     store an array, you can store comma-separated values in the string. However,
                     you must interpret the value in your code.
+
+            - **RoleLastUsed** *(dict) --*
+
+              Contains information about the last time that an IAM role was used. This includes the
+              date and time and the Region in which the role was last used. Activity is only
+              reported for the trailing 400 days. This period can be shorter if your Region began
+              supporting these features within the last year. The role might have been used more
+              than 400 days ago. For more information, see `Regions Where Data Is Tracked
+              <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+              in the *IAM User Guide* .
+
+              - **LastUsedDate** *(datetime) --*
+
+                The date and time, in `ISO 8601 date-time format
+                <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+                This field is null if the role has not been used within the IAM tracking period.
+                For more information about the tracking period, see `Regions Where Data Is Tracked
+                <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                in the *IAM User Guide* .
+
+              - **Region** *(string) --*
+
+                The name of the AWS Region in which the role was last used.
 
     - **IsTruncated** *(boolean) --*
 
@@ -11536,7 +12481,7 @@ class ClientListPoliciesResponsePoliciesTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -11547,8 +12492,8 @@ class ClientListPoliciesResponsePoliciesTypeDef(
       The stable and unique string identifying the policy.
 
       For more information about IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -11564,8 +12509,8 @@ class ClientListPoliciesResponsePoliciesTypeDef(
       The path to the policy.
 
       For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **DefaultVersionId** *(string) --*
 
@@ -11642,7 +12587,7 @@ class ClientListPoliciesResponseTypeDef(_ClientListPoliciesResponseTypeDef):
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -11653,8 +12598,8 @@ class ClientListPoliciesResponseTypeDef(_ClientListPoliciesResponseTypeDef):
           The stable and unique string identifying the policy.
 
           For more information about IDs, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
@@ -11670,8 +12615,8 @@ class ClientListPoliciesResponseTypeDef(_ClientListPoliciesResponseTypeDef):
           The path to the policy.
 
           For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **DefaultVersionId** *(string) --*
 
@@ -11756,7 +12701,7 @@ class ClientListPolicyVersionsResponseVersionsTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **Document** *(string) --*
 
@@ -11824,7 +12769,7 @@ class ClientListPolicyVersionsResponseTypeDef(_ClientListPolicyVersionsResponseT
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **Document** *(string) --*
 
@@ -12034,6 +12979,43 @@ class ClientListRolesResponseRolesPermissionsBoundaryTypeDef(
     """
 
 
+_ClientListRolesResponseRolesRoleLastUsedTypeDef = TypedDict(
+    "_ClientListRolesResponseRolesRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ClientListRolesResponseRolesRoleLastUsedTypeDef(
+    _ClientListRolesResponseRolesRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ClientListRolesResponseRoles` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the
+    date and time and the Region in which the role was last used. Activity is only reported
+    for the trailing 400 days. This period can be shorter if your Region began supporting
+    these features within the last year. The role might have been used more than 400 days
+    ago. For more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+      that the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period. For
+      more information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
+    """
+
+
 _ClientListRolesResponseRolesTagsTypeDef = TypedDict(
     "_ClientListRolesResponseRolesTagsTypeDef", {"Key": str, "Value": str}, total=False
 )
@@ -12082,6 +13064,7 @@ _ClientListRolesResponseRolesTypeDef = TypedDict(
         "MaxSessionDuration": int,
         "PermissionsBoundary": ClientListRolesResponseRolesPermissionsBoundaryTypeDef,
         "Tags": List[ClientListRolesResponseRolesTagsTypeDef],
+        "RoleLastUsed": ClientListRolesResponseRolesRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -12097,8 +13080,8 @@ class ClientListRolesResponseRolesTypeDef(_ClientListRolesResponseRolesTypeDef):
     - **Path** *(string) --*
 
       The path to the role. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -12108,8 +13091,8 @@ class ClientListRolesResponseRolesTypeDef(_ClientListRolesResponseRolesTypeDef):
 
       The stable and unique string identifying the role. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -12188,6 +13171,30 @@ class ClientListRolesResponseRolesTypeDef(_ClientListRolesResponseRolesTypeDef):
             AWS always interprets the tag ``Value`` as a single string. If you need to store an
             array, you can store comma-separated values in the string. However, you must
             interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the
+      date and time and the Region in which the role was last used. Activity is only reported
+      for the trailing 400 days. This period can be shorter if your Region began supporting
+      these features within the last year. The role might have been used more than 400 days
+      ago. For more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+        that the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period. For
+        more information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -12220,8 +13227,8 @@ class ClientListRolesResponseTypeDef(_ClientListRolesResponseTypeDef):
         - **Path** *(string) --*
 
           The path to the role. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -12231,8 +13238,8 @@ class ClientListRolesResponseTypeDef(_ClientListRolesResponseTypeDef):
 
           The stable and unique string identifying the role. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
@@ -12311,6 +13318,30 @@ class ClientListRolesResponseTypeDef(_ClientListRolesResponseTypeDef):
                 AWS always interprets the tag ``Value`` as a single string. If you need to store an
                 array, you can store comma-separated values in the string. However, you must
                 interpret the value in your code.
+
+        - **RoleLastUsed** *(dict) --*
+
+          Contains information about the last time that an IAM role was used. This includes the
+          date and time and the Region in which the role was last used. Activity is only reported
+          for the trailing 400 days. This period can be shorter if your Region began supporting
+          these features within the last year. The role might have been used more than 400 days
+          ago. For more information, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+          - **LastUsedDate** *(datetime) --*
+
+            The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+            that the role was last used.
+
+            This field is null if the role has not been used within the IAM tracking period. For
+            more information about the tracking period, see `Regions Where Data Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+          - **Region** *(string) --*
+
+            The name of the AWS Region in which the role was last used.
 
     - **IsTruncated** *(boolean) --*
 
@@ -12421,7 +13452,7 @@ class ClientListServerCertificatesResponseServerCertificateMetadataListTypeDef(
 
       The path to the server certificate. For more information about paths, see `IAM
       Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__
-      in the *Using IAM* guide.
+      in the *IAM User Guide* .
 
     - **ServerCertificateName** *(string) --*
 
@@ -12431,15 +13462,15 @@ class ClientListServerCertificatesResponseServerCertificateMetadataListTypeDef(
 
       The stable and unique string identifying the server certificate. For more information
       about IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the server certificate. For more information
       about ARNs and how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UploadDate** *(datetime) --*
 
@@ -12488,7 +13519,7 @@ class ClientListServerCertificatesResponseTypeDef(
 
           The path to the server certificate. For more information about paths, see `IAM
           Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__
-          in the *Using IAM* guide.
+          in the *IAM User Guide* .
 
         - **ServerCertificateName** *(string) --*
 
@@ -12498,15 +13529,15 @@ class ClientListServerCertificatesResponseTypeDef(
 
           The stable and unique string identifying the server certificate. For more information
           about IDs, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the server certificate. For more information
           about ARNs and how to use them in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **UploadDate** *(datetime) --*
 
@@ -13077,8 +14108,8 @@ class ClientListUsersResponseUsersTypeDef(_ClientListUsersResponseUsersTypeDef):
     - **Path** *(string) --*
 
       The path to the user. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UserName** *(string) --*
 
@@ -13088,15 +14119,15 @@ class ClientListUsersResponseUsersTypeDef(_ClientListUsersResponseUsersTypeDef):
 
       The stable and unique string identifying the user. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
       and how to use ARNs in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -13109,7 +14140,7 @@ class ClientListUsersResponseUsersTypeDef(_ClientListUsersResponseUsersTypeDef):
       when the user's password was last used to sign in to an AWS website. For a list of AWS
       websites that capture a user's last sign-in time, see the `Credential Reports
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-      the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+      the *IAM User Guide* . If a password is used more than once in a five-minute span, only
       the first use is returned in this field. If the field is null (no value), then it
       indicates that they never signed in with a password. This can be because:
 
@@ -13119,7 +14150,7 @@ class ClientListUsersResponseUsersTypeDef(_ClientListUsersResponseUsersTypeDef):
       October 20, 2014.
 
       A null value does not mean that the user *never* had a password. Also, if the user does
-      not currently have a password, but had one in the past, then this field contains the date
+      not currently have a password but had one in the past, then this field contains the date
       and time the most recent password was used.
 
       This value is returned only in the  GetUser and  ListUsers operations.
@@ -13214,8 +14245,8 @@ class ClientListUsersResponseTypeDef(_ClientListUsersResponseTypeDef):
         - **Path** *(string) --*
 
           The path to the user. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **UserName** *(string) --*
 
@@ -13225,15 +14256,15 @@ class ClientListUsersResponseTypeDef(_ClientListUsersResponseTypeDef):
 
           The stable and unique string identifying the user. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
           and how to use ARNs in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -13246,7 +14277,7 @@ class ClientListUsersResponseTypeDef(_ClientListUsersResponseTypeDef):
           when the user's password was last used to sign in to an AWS website. For a list of AWS
           websites that capture a user's last sign-in time, see the `Credential Reports
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-          the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+          the *IAM User Guide* . If a password is used more than once in a five-minute span, only
           the first use is returned in this field. If the field is null (no value), then it
           indicates that they never signed in with a password. This can be because:
 
@@ -13256,7 +14287,7 @@ class ClientListUsersResponseTypeDef(_ClientListUsersResponseTypeDef):
           October 20, 2014.
 
           A null value does not mean that the user *never* had a password. Also, if the user does
-          not currently have a password, but had one in the past, then this field contains the date
+          not currently have a password but had one in the past, then this field contains the date
           and time the most recent password was used.
 
           This value is returned only in the  GetUser and  ListUsers operations.
@@ -13431,7 +14462,7 @@ class ClientListVirtualMfaDevicesResponseVirtualMFADevicesUserTypeDef(
 
       The path to the user. For more information about paths, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **UserName** *(string) --*
 
@@ -13442,14 +14473,14 @@ class ClientListVirtualMfaDevicesResponseVirtualMFADevicesUserTypeDef(
       The stable and unique string identifying the user. For more information about IDs, see
       `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) that identifies the user. For more information about
       ARNs and how to use ARNs in policies, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -13462,7 +14493,7 @@ class ClientListVirtualMfaDevicesResponseVirtualMFADevicesUserTypeDef(
       when the user's password was last used to sign in to an AWS website. For a list of AWS
       websites that capture a user's last sign-in time, see the `Credential Reports
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-      the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+      the *IAM User Guide* . If a password is used more than once in a five-minute span, only
       the first use is returned in this field. If the field is null (no value), then it
       indicates that they never signed in with a password. This can be because:
 
@@ -13472,7 +14503,7 @@ class ClientListVirtualMfaDevicesResponseVirtualMFADevicesUserTypeDef(
       on October 20, 2014.
 
       A null value does not mean that the user *never* had a password. Also, if the user does
-      not currently have a password, but had one in the past, then this field contains the
+      not currently have a password but had one in the past, then this field contains the
       date and time the most recent password was used.
 
       This value is returned only in the  GetUser and  ListUsers operations.
@@ -13579,7 +14610,7 @@ class ClientListVirtualMfaDevicesResponseVirtualMFADevicesTypeDef(
 
         The path to the user. For more information about paths, see `IAM Identifiers
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-        *Using IAM* guide.
+        *IAM User Guide* .
 
       - **UserName** *(string) --*
 
@@ -13590,14 +14621,14 @@ class ClientListVirtualMfaDevicesResponseVirtualMFADevicesTypeDef(
         The stable and unique string identifying the user. For more information about IDs, see
         `IAM Identifiers
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-        *Using IAM* guide.
+        *IAM User Guide* .
 
       - **Arn** *(string) --*
 
         The Amazon Resource Name (ARN) that identifies the user. For more information about
         ARNs and how to use ARNs in policies, see `IAM Identifiers
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-        *Using IAM* guide.
+        *IAM User Guide* .
 
       - **CreateDate** *(datetime) --*
 
@@ -13610,7 +14641,7 @@ class ClientListVirtualMfaDevicesResponseVirtualMFADevicesTypeDef(
         when the user's password was last used to sign in to an AWS website. For a list of AWS
         websites that capture a user's last sign-in time, see the `Credential Reports
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-        the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+        the *IAM User Guide* . If a password is used more than once in a five-minute span, only
         the first use is returned in this field. If the field is null (no value), then it
         indicates that they never signed in with a password. This can be because:
 
@@ -13620,7 +14651,7 @@ class ClientListVirtualMfaDevicesResponseVirtualMFADevicesTypeDef(
         on October 20, 2014.
 
         A null value does not mean that the user *never* had a password. Also, if the user does
-        not currently have a password, but had one in the past, then this field contains the
+        not currently have a password but had one in the past, then this field contains the
         date and time the most recent password was used.
 
         This value is returned only in the  GetUser and  ListUsers operations.
@@ -13740,7 +14771,7 @@ class ClientListVirtualMfaDevicesResponseTypeDef(
 
             The path to the user. For more information about paths, see `IAM Identifiers
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-            *Using IAM* guide.
+            *IAM User Guide* .
 
           - **UserName** *(string) --*
 
@@ -13751,14 +14782,14 @@ class ClientListVirtualMfaDevicesResponseTypeDef(
             The stable and unique string identifying the user. For more information about IDs, see
             `IAM Identifiers
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-            *Using IAM* guide.
+            *IAM User Guide* .
 
           - **Arn** *(string) --*
 
             The Amazon Resource Name (ARN) that identifies the user. For more information about
             ARNs and how to use ARNs in policies, see `IAM Identifiers
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-            *Using IAM* guide.
+            *IAM User Guide* .
 
           - **CreateDate** *(datetime) --*
 
@@ -13771,7 +14802,7 @@ class ClientListVirtualMfaDevicesResponseTypeDef(
             when the user's password was last used to sign in to an AWS website. For a list of AWS
             websites that capture a user's last sign-in time, see the `Credential Reports
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-            the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+            the *IAM User Guide* . If a password is used more than once in a five-minute span, only
             the first use is returned in this field. If the field is null (no value), then it
             indicates that they never signed in with a password. This can be because:
 
@@ -13781,7 +14812,7 @@ class ClientListVirtualMfaDevicesResponseTypeDef(
             on October 20, 2014.
 
             A null value does not mean that the user *never* had a password. Also, if the user does
-            not currently have a password, but had one in the past, then this field contains the
+            not currently have a password but had one in the past, then this field contains the
             date and time the most recent password was used.
 
             This value is returned only in the  GetUser and  ListUsers operations.
@@ -14159,6 +15190,43 @@ class ClientUpdateRoleDescriptionResponseRolePermissionsBoundaryTypeDef(
     """
 
 
+_ClientUpdateRoleDescriptionResponseRoleRoleLastUsedTypeDef = TypedDict(
+    "_ClientUpdateRoleDescriptionResponseRoleRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ClientUpdateRoleDescriptionResponseRoleRoleLastUsedTypeDef(
+    _ClientUpdateRoleDescriptionResponseRoleRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ClientUpdateRoleDescriptionResponseRole` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the date
+    and time and the Region in which the role was last used. Activity is only reported for the
+    trailing 400 days. This period can be shorter if your Region began supporting these
+    features within the last year. The role might have been used more than 400 days ago. For
+    more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__ that
+      the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period. For more
+      information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
+    """
+
+
 _ClientUpdateRoleDescriptionResponseRoleTagsTypeDef = TypedDict(
     "_ClientUpdateRoleDescriptionResponseRoleTagsTypeDef",
     {"Key": str, "Value": str},
@@ -14211,6 +15279,7 @@ _ClientUpdateRoleDescriptionResponseRoleTypeDef = TypedDict(
         "MaxSessionDuration": int,
         "PermissionsBoundary": ClientUpdateRoleDescriptionResponseRolePermissionsBoundaryTypeDef,
         "Tags": List[ClientUpdateRoleDescriptionResponseRoleTagsTypeDef],
+        "RoleLastUsed": ClientUpdateRoleDescriptionResponseRoleRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -14227,8 +15296,8 @@ class ClientUpdateRoleDescriptionResponseRoleTypeDef(
     - **Path** *(string) --*
 
       The path to the role. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -14238,7 +15307,7 @@ class ClientUpdateRoleDescriptionResponseRoleTypeDef(
 
       The stable and unique string identifying the role. For more information about IDs, see `IAM
       Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-      the *Using IAM* guide.
+      the *IAM User Guide* .
 
     - **Arn** *(string) --*
 
@@ -14316,6 +15385,30 @@ class ClientUpdateRoleDescriptionResponseRoleTypeDef(
             AWS always interprets the tag ``Value`` as a single string. If you need to store an
             array, you can store comma-separated values in the string. However, you must
             interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the date
+      and time and the Region in which the role was last used. Activity is only reported for the
+      trailing 400 days. This period can be shorter if your Region began supporting these
+      features within the last year. The role might have been used more than 400 days ago. For
+      more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__ that
+        the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period. For more
+        information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -14339,8 +15432,8 @@ class ClientUpdateRoleDescriptionResponseTypeDef(
       - **Path** *(string) --*
 
         The path to the role. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **RoleName** *(string) --*
 
@@ -14350,7 +15443,7 @@ class ClientUpdateRoleDescriptionResponseTypeDef(
 
         The stable and unique string identifying the role. For more information about IDs, see `IAM
         Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
       - **Arn** *(string) --*
 
@@ -14428,6 +15521,30 @@ class ClientUpdateRoleDescriptionResponseTypeDef(
               AWS always interprets the tag ``Value`` as a single string. If you need to store an
               array, you can store comma-separated values in the string. However, you must
               interpret the value in your code.
+
+      - **RoleLastUsed** *(dict) --*
+
+        Contains information about the last time that an IAM role was used. This includes the date
+        and time and the Region in which the role was last used. Activity is only reported for the
+        trailing 400 days. This period can be shorter if your Region began supporting these
+        features within the last year. The role might have been used more than 400 days ago. For
+        more information, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+        - **LastUsedDate** *(datetime) --*
+
+          The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__ that
+          the role was last used.
+
+          This field is null if the role has not been used within the IAM tracking period. For more
+          information about the tracking period, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+        - **Region** *(string) --*
+
+          The name of the AWS Region in which the role was last used.
     """
 
 
@@ -14474,8 +15591,8 @@ class ClientUploadServerCertificateResponseServerCertificateMetadataTypeDef(
     - **Path** *(string) --*
 
       The path to the server certificate. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **ServerCertificateName** *(string) --*
 
@@ -14485,15 +15602,15 @@ class ClientUploadServerCertificateResponseServerCertificateMetadataTypeDef(
 
       The stable and unique string identifying the server certificate. For more information about
       IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the server certificate. For more information
       about ARNs and how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UploadDate** *(datetime) --*
 
@@ -14530,8 +15647,8 @@ class ClientUploadServerCertificateResponseTypeDef(
       - **Path** *(string) --*
 
         The path to the server certificate. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **ServerCertificateName** *(string) --*
 
@@ -14541,15 +15658,15 @@ class ClientUploadServerCertificateResponseTypeDef(
 
         The stable and unique string identifying the server certificate. For more information about
         IDs, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **Arn** *(string) --*
 
         The Amazon Resource Name (ARN) specifying the server certificate. For more information
         about ARNs and how to use them in policies, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **UploadDate** *(datetime) --*
 
@@ -14799,7 +15916,7 @@ class GetAccountAuthorizationDetailsPaginateResponseGroupDetailListAttachedManag
     For more information about managed policies, refer to `Managed Policies and Inline
     Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-    in the *Using IAM* guide.
+    in the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -14877,8 +15994,8 @@ class GetAccountAuthorizationDetailsPaginateResponseGroupDetailListTypeDef(
     - **Path** *(string) --*
 
       The path to the group. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **GroupName** *(string) --*
 
@@ -14888,8 +16005,8 @@ class GetAccountAuthorizationDetailsPaginateResponseGroupDetailListTypeDef(
 
       The stable and unique string identifying the group. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -14940,7 +16057,7 @@ class GetAccountAuthorizationDetailsPaginateResponseGroupDetailListTypeDef(
         For more information about managed policies, refer to `Managed Policies and Inline
         Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-        in the *Using IAM* guide.
+        in the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -14983,7 +16100,7 @@ class GetAccountAuthorizationDetailsPaginateResponsePoliciesPolicyVersionListTyp
     For more information about managed policies, refer to `Managed Policies and Inline
     Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-    in the *Using IAM* guide.
+    in the *IAM User Guide* .
 
     - **Document** *(string) --*
 
@@ -15053,7 +16170,7 @@ class GetAccountAuthorizationDetailsPaginateResponsePoliciesTypeDef(
 
     For more information about managed policies, see `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -15064,8 +16181,8 @@ class GetAccountAuthorizationDetailsPaginateResponsePoliciesTypeDef(
       The stable and unique string identifying the policy.
 
       For more information about IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -15081,8 +16198,8 @@ class GetAccountAuthorizationDetailsPaginateResponsePoliciesTypeDef(
       The path to the policy.
 
       For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **DefaultVersionId** *(string) --*
 
@@ -15091,7 +16208,7 @@ class GetAccountAuthorizationDetailsPaginateResponsePoliciesTypeDef(
 
       For more information about policy versions, see `Versioning for Managed Policies
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html>`__ in
-      the *Using IAM* guide.
+      the *IAM User Guide* .
 
     - **AttachmentCount** *(integer) --*
 
@@ -15144,7 +16261,7 @@ class GetAccountAuthorizationDetailsPaginateResponsePoliciesTypeDef(
         For more information about managed policies, refer to `Managed Policies and Inline
         Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-        in the *Using IAM* guide.
+        in the *IAM User Guide* .
 
         - **Document** *(string) --*
 
@@ -15201,7 +16318,7 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListAttachedManage
     For more information about managed policies, refer to `Managed Policies and Inline
     Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-    in the *Using IAM* guide.
+    in the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -15247,6 +16364,45 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfil
     - **PermissionsBoundaryArn** *(string) --*
 
       The ARN of the policy used to set the permissions boundary for the user or role.
+    """
+
+
+_GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileListRolesRoleLastUsedTypeDef = TypedDict(
+    "_GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileListRolesRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileListRolesRoleLastUsedTypeDef(
+    _GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileListRolesRoleLastUsedTypeDef
+):
+    """
+    Type definition for `GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileListRoles` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes
+    the date and time and the Region in which the role was last used. Activity is
+    only reported for the trailing 400 days. This period can be shorter if your
+    Region began supporting these features within the last year. The role might have
+    been used more than 400 days ago. For more information, see `Regions Where Data
+    Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format
+      <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking
+      period. For more information about the tracking period, see `Regions Where Data
+      Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
     """
 
 
@@ -15306,6 +16462,7 @@ _GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileList
         "Tags": List[
             GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileListRolesTagsTypeDef
         ],
+        "RoleLastUsed": GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfileListRolesRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -15324,7 +16481,7 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfil
 
       The path to the role. For more information about paths, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-      the *Using IAM* guide.
+      the *IAM User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -15335,7 +16492,7 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfil
       The stable and unique string identifying the role. For more information about
       IDs, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-      the *Using IAM* guide.
+      the *IAM User Guide* .
 
     - **Arn** *(string) --*
 
@@ -15416,6 +16573,32 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfil
             AWS always interprets the tag ``Value`` as a single string. If you need to
             store an array, you can store comma-separated values in the string.
             However, you must interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes
+      the date and time and the Region in which the role was last used. Activity is
+      only reported for the trailing 400 days. This period can be shorter if your
+      Region began supporting these features within the last year. The role might have
+      been used more than 400 days ago. For more information, see `Regions Where Data
+      Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format
+        <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking
+        period. For more information about the tracking period, see `Regions Where Data
+        Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -15458,7 +16641,7 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfil
       The path to the instance profile. For more information about paths, see `IAM
       Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **InstanceProfileName** *(string) --*
 
@@ -15469,14 +16652,14 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfil
       The stable and unique string identifying the instance profile. For more information
       about IDs, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the instance profile. For more information
       about ARNs and how to use them in policies, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -15495,7 +16678,7 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfil
 
           The path to the role. For more information about paths, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-          the *Using IAM* guide.
+          the *IAM User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -15506,7 +16689,7 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfil
           The stable and unique string identifying the role. For more information about
           IDs, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-          the *Using IAM* guide.
+          the *IAM User Guide* .
 
         - **Arn** *(string) --*
 
@@ -15587,6 +16770,32 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListInstanceProfil
                 AWS always interprets the tag ``Value`` as a single string. If you need to
                 store an array, you can store comma-separated values in the string.
                 However, you must interpret the value in your code.
+
+        - **RoleLastUsed** *(dict) --*
+
+          Contains information about the last time that an IAM role was used. This includes
+          the date and time and the Region in which the role was last used. Activity is
+          only reported for the trailing 400 days. This period can be shorter if your
+          Region began supporting these features within the last year. The role might have
+          been used more than 400 days ago. For more information, see `Regions Where Data
+          Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+          - **LastUsedDate** *(datetime) --*
+
+            The date and time, in `ISO 8601 date-time format
+            <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+            This field is null if the role has not been used within the IAM tracking
+            period. For more information about the tracking period, see `Regions Where Data
+            Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+          - **Region** *(string) --*
+
+            The name of the AWS Region in which the role was last used.
     """
 
 
@@ -15619,6 +16828,43 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListPermissionsBou
     - **PermissionsBoundaryArn** *(string) --*
 
       The ARN of the policy used to set the permissions boundary for the user or role.
+    """
+
+
+_GetAccountAuthorizationDetailsPaginateResponseRoleDetailListRoleLastUsedTypeDef = TypedDict(
+    "_GetAccountAuthorizationDetailsPaginateResponseRoleDetailListRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListRoleLastUsedTypeDef(
+    _GetAccountAuthorizationDetailsPaginateResponseRoleDetailListRoleLastUsedTypeDef
+):
+    """
+    Type definition for `GetAccountAuthorizationDetailsPaginateResponseRoleDetailList` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the
+    date and time and the Region in which the role was last used. Activity is only reported
+    for the trailing 400 days. This period can be shorter if your Region began supporting
+    these features within the last year. The role might have been used more than 400 days
+    ago. For more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+      that the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period. For
+      more information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
     """
 
 
@@ -15711,6 +16957,7 @@ _GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTypeDef = TypedDict
         "Tags": List[
             GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTagsTypeDef
         ],
+        "RoleLastUsed": GetAccountAuthorizationDetailsPaginateResponseRoleDetailListRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -15730,8 +16977,8 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTypeDef(
     - **Path** *(string) --*
 
       The path to the role. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -15741,8 +16988,8 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTypeDef(
 
       The stable and unique string identifying the role. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -15785,7 +17032,7 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTypeDef(
           The path to the instance profile. For more information about paths, see `IAM
           Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **InstanceProfileName** *(string) --*
 
@@ -15796,14 +17043,14 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTypeDef(
           The stable and unique string identifying the instance profile. For more information
           about IDs, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the instance profile. For more information
           about ARNs and how to use them in policies, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -15822,7 +17069,7 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTypeDef(
 
               The path to the role. For more information about paths, see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-              the *Using IAM* guide.
+              the *IAM User Guide* .
 
             - **RoleName** *(string) --*
 
@@ -15833,7 +17080,7 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTypeDef(
               The stable and unique string identifying the role. For more information about
               IDs, see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-              the *Using IAM* guide.
+              the *IAM User Guide* .
 
             - **Arn** *(string) --*
 
@@ -15915,6 +17162,32 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTypeDef(
                     store an array, you can store comma-separated values in the string.
                     However, you must interpret the value in your code.
 
+            - **RoleLastUsed** *(dict) --*
+
+              Contains information about the last time that an IAM role was used. This includes
+              the date and time and the Region in which the role was last used. Activity is
+              only reported for the trailing 400 days. This period can be shorter if your
+              Region began supporting these features within the last year. The role might have
+              been used more than 400 days ago. For more information, see `Regions Where Data
+              Is Tracked
+              <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+              in the *IAM User Guide* .
+
+              - **LastUsedDate** *(datetime) --*
+
+                The date and time, in `ISO 8601 date-time format
+                <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+                This field is null if the role has not been used within the IAM tracking
+                period. For more information about the tracking period, see `Regions Where Data
+                Is Tracked
+                <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                in the *IAM User Guide* .
+
+              - **Region** *(string) --*
+
+                The name of the AWS Region in which the role was last used.
+
     - **RolePolicyList** *(list) --*
 
       A list of inline policies embedded in the role. These policies are the role's access
@@ -15952,7 +17225,7 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTypeDef(
         For more information about managed policies, refer to `Managed Policies and Inline
         Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-        in the *Using IAM* guide.
+        in the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -16018,6 +17291,30 @@ class GetAccountAuthorizationDetailsPaginateResponseRoleDetailListTypeDef(
             AWS always interprets the tag ``Value`` as a single string. If you need to store an
             array, you can store comma-separated values in the string. However, you must
             interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the
+      date and time and the Region in which the role was last used. Activity is only reported
+      for the trailing 400 days. This period can be shorter if your Region began supporting
+      these features within the last year. The role might have been used more than 400 days
+      ago. For more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+        that the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period. For
+        more information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -16044,7 +17341,7 @@ class GetAccountAuthorizationDetailsPaginateResponseUserDetailListAttachedManage
     For more information about managed policies, refer to `Managed Policies and Inline
     Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-    in the *Using IAM* guide.
+    in the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -16199,8 +17496,8 @@ class GetAccountAuthorizationDetailsPaginateResponseUserDetailListTypeDef(
     - **Path** *(string) --*
 
       The path to the user. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UserName** *(string) --*
 
@@ -16210,8 +17507,8 @@ class GetAccountAuthorizationDetailsPaginateResponseUserDetailListTypeDef(
 
       The stable and unique string identifying the user. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -16268,7 +17565,7 @@ class GetAccountAuthorizationDetailsPaginateResponseUserDetailListTypeDef(
         For more information about managed policies, refer to `Managed Policies and Inline
         Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-        in the *Using IAM* guide.
+        in the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -16380,8 +17677,8 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
         - **Path** *(string) --*
 
           The path to the user. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **UserName** *(string) --*
 
@@ -16391,8 +17688,8 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
 
           The stable and unique string identifying the user. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
@@ -16449,7 +17746,7 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
             For more information about managed policies, refer to `Managed Policies and Inline
             Policies
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-            in the *Using IAM* guide.
+            in the *IAM User Guide* .
 
             - **PolicyName** *(string) --*
 
@@ -16530,8 +17827,8 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
         - **Path** *(string) --*
 
           The path to the group. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **GroupName** *(string) --*
 
@@ -16541,8 +17838,8 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
 
           The stable and unique string identifying the group. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
@@ -16593,7 +17890,7 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
             For more information about managed policies, refer to `Managed Policies and Inline
             Policies
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-            in the *Using IAM* guide.
+            in the *IAM User Guide* .
 
             - **PolicyName** *(string) --*
 
@@ -16622,8 +17919,8 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
         - **Path** *(string) --*
 
           The path to the role. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -16633,8 +17930,8 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
 
           The stable and unique string identifying the role. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
@@ -16677,7 +17974,7 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
               The path to the instance profile. For more information about paths, see `IAM
               Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **InstanceProfileName** *(string) --*
 
@@ -16688,14 +17985,14 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
               The stable and unique string identifying the instance profile. For more information
               about IDs, see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **Arn** *(string) --*
 
               The Amazon Resource Name (ARN) specifying the instance profile. For more information
               about ARNs and how to use them in policies, see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **CreateDate** *(datetime) --*
 
@@ -16714,7 +18011,7 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
 
                   The path to the role. For more information about paths, see `IAM Identifiers
                   <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-                  the *Using IAM* guide.
+                  the *IAM User Guide* .
 
                 - **RoleName** *(string) --*
 
@@ -16725,7 +18022,7 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
                   The stable and unique string identifying the role. For more information about
                   IDs, see `IAM Identifiers
                   <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-                  the *Using IAM* guide.
+                  the *IAM User Guide* .
 
                 - **Arn** *(string) --*
 
@@ -16807,6 +18104,32 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
                         store an array, you can store comma-separated values in the string.
                         However, you must interpret the value in your code.
 
+                - **RoleLastUsed** *(dict) --*
+
+                  Contains information about the last time that an IAM role was used. This includes
+                  the date and time and the Region in which the role was last used. Activity is
+                  only reported for the trailing 400 days. This period can be shorter if your
+                  Region began supporting these features within the last year. The role might have
+                  been used more than 400 days ago. For more information, see `Regions Where Data
+                  Is Tracked
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                  in the *IAM User Guide* .
+
+                  - **LastUsedDate** *(datetime) --*
+
+                    The date and time, in `ISO 8601 date-time format
+                    <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+                    This field is null if the role has not been used within the IAM tracking
+                    period. For more information about the tracking period, see `Regions Where Data
+                    Is Tracked
+                    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                    in the *IAM User Guide* .
+
+                  - **Region** *(string) --*
+
+                    The name of the AWS Region in which the role was last used.
+
         - **RolePolicyList** *(list) --*
 
           A list of inline policies embedded in the role. These policies are the role's access
@@ -16844,7 +18167,7 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
             For more information about managed policies, refer to `Managed Policies and Inline
             Policies
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-            in the *Using IAM* guide.
+            in the *IAM User Guide* .
 
             - **PolicyName** *(string) --*
 
@@ -16911,6 +18234,30 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
                 array, you can store comma-separated values in the string. However, you must
                 interpret the value in your code.
 
+        - **RoleLastUsed** *(dict) --*
+
+          Contains information about the last time that an IAM role was used. This includes the
+          date and time and the Region in which the role was last used. Activity is only reported
+          for the trailing 400 days. This period can be shorter if your Region began supporting
+          these features within the last year. The role might have been used more than 400 days
+          ago. For more information, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+          - **LastUsedDate** *(datetime) --*
+
+            The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+            that the role was last used.
+
+            This field is null if the role has not been used within the IAM tracking period. For
+            more information about the tracking period, see `Regions Where Data Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+          - **Region** *(string) --*
+
+            The name of the AWS Region in which the role was last used.
+
     - **Policies** *(list) --*
 
       A list containing information about managed policies.
@@ -16925,7 +18272,7 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
 
         For more information about managed policies, see `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -16936,8 +18283,8 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
           The stable and unique string identifying the policy.
 
           For more information about IDs, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
@@ -16953,8 +18300,8 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
           The path to the policy.
 
           For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **DefaultVersionId** *(string) --*
 
@@ -16963,7 +18310,7 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
 
           For more information about policy versions, see `Versioning for Managed Policies
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html>`__ in
-          the *Using IAM* guide.
+          the *IAM User Guide* .
 
         - **AttachmentCount** *(integer) --*
 
@@ -17016,7 +18363,7 @@ class GetAccountAuthorizationDetailsPaginateResponseTypeDef(
             For more information about managed policies, refer to `Managed Policies and Inline
             Policies
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-            in the *Using IAM* guide.
+            in the *IAM User Guide* .
 
             - **Document** *(string) --*
 
@@ -17108,8 +18455,8 @@ class GetGroupPaginateResponseGroupTypeDef(_GetGroupPaginateResponseGroupTypeDef
     - **Path** *(string) --*
 
       The path to the group. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **GroupName** *(string) --*
 
@@ -17119,15 +18466,15 @@ class GetGroupPaginateResponseGroupTypeDef(_GetGroupPaginateResponseGroupTypeDef
 
       The stable and unique string identifying the group. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
       how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-      IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -17238,8 +18585,8 @@ class GetGroupPaginateResponseUsersTypeDef(_GetGroupPaginateResponseUsersTypeDef
     - **Path** *(string) --*
 
       The path to the user. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UserName** *(string) --*
 
@@ -17249,15 +18596,15 @@ class GetGroupPaginateResponseUsersTypeDef(_GetGroupPaginateResponseUsersTypeDef
 
       The stable and unique string identifying the user. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
       and how to use ARNs in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -17270,7 +18617,7 @@ class GetGroupPaginateResponseUsersTypeDef(_GetGroupPaginateResponseUsersTypeDef
       when the user's password was last used to sign in to an AWS website. For a list of AWS
       websites that capture a user's last sign-in time, see the `Credential Reports
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-      the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+      the *IAM User Guide* . If a password is used more than once in a five-minute span, only
       the first use is returned in this field. If the field is null (no value), then it
       indicates that they never signed in with a password. This can be because:
 
@@ -17280,7 +18627,7 @@ class GetGroupPaginateResponseUsersTypeDef(_GetGroupPaginateResponseUsersTypeDef
       October 20, 2014.
 
       A null value does not mean that the user *never* had a password. Also, if the user does
-      not currently have a password, but had one in the past, then this field contains the date
+      not currently have a password but had one in the past, then this field contains the date
       and time the most recent password was used.
 
       This value is returned only in the  GetUser and  ListUsers operations.
@@ -17364,8 +18711,8 @@ class GetGroupPaginateResponseTypeDef(_GetGroupPaginateResponseTypeDef):
       - **Path** *(string) --*
 
         The path to the group. For more information about paths, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **GroupName** *(string) --*
 
@@ -17375,15 +18722,15 @@ class GetGroupPaginateResponseTypeDef(_GetGroupPaginateResponseTypeDef):
 
         The stable and unique string identifying the group. For more information about IDs, see
         `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **Arn** *(string) --*
 
         The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
         how to use them in policies, see `IAM Identifiers
-        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-        IAM* guide.
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+        User Guide* .
 
       - **CreateDate** *(datetime) --*
 
@@ -17409,8 +18756,8 @@ class GetGroupPaginateResponseTypeDef(_GetGroupPaginateResponseTypeDef):
         - **Path** *(string) --*
 
           The path to the user. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **UserName** *(string) --*
 
@@ -17420,15 +18767,15 @@ class GetGroupPaginateResponseTypeDef(_GetGroupPaginateResponseTypeDef):
 
           The stable and unique string identifying the user. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
           and how to use ARNs in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -17441,7 +18788,7 @@ class GetGroupPaginateResponseTypeDef(_GetGroupPaginateResponseTypeDef):
           when the user's password was last used to sign in to an AWS website. For a list of AWS
           websites that capture a user's last sign-in time, see the `Credential Reports
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-          the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+          the *IAM User Guide* . If a password is used more than once in a five-minute span, only
           the first use is returned in this field. If the field is null (no value), then it
           indicates that they never signed in with a password. This can be because:
 
@@ -17451,7 +18798,7 @@ class GetGroupPaginateResponseTypeDef(_GetGroupPaginateResponseTypeDef):
           October 20, 2014.
 
           A null value does not mean that the user *never* had a password. Also, if the user does
-          not currently have a password, but had one in the past, then this field contains the date
+          not currently have a password but had one in the past, then this field contains the date
           and time the most recent password was used.
 
           This value is returned only in the  GetUser and  ListUsers operations.
@@ -17796,7 +19143,7 @@ class ListAttachedGroupPoliciesPaginateResponseAttachedPoliciesTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -17849,7 +19196,7 @@ class ListAttachedGroupPoliciesPaginateResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -17932,7 +19279,7 @@ class ListAttachedRolePoliciesPaginateResponseAttachedPoliciesTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -17985,7 +19332,7 @@ class ListAttachedRolePoliciesPaginateResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -18068,7 +19415,7 @@ class ListAttachedUserPoliciesPaginateResponseAttachedPoliciesTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -18121,7 +19468,7 @@ class ListAttachedUserPoliciesPaginateResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -18201,7 +19548,7 @@ class ListEntitiesForPolicyPaginateResponsePolicyGroupsTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **GroupName** *(string) --*
 
@@ -18235,7 +19582,7 @@ class ListEntitiesForPolicyPaginateResponsePolicyRolesTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -18269,7 +19616,7 @@ class ListEntitiesForPolicyPaginateResponsePolicyUsersTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **UserName** *(string) --*
 
@@ -18317,7 +19664,7 @@ class ListEntitiesForPolicyPaginateResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **GroupName** *(string) --*
 
@@ -18342,7 +19689,7 @@ class ListEntitiesForPolicyPaginateResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **UserName** *(string) --*
 
@@ -18367,7 +19714,7 @@ class ListEntitiesForPolicyPaginateResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -18523,8 +19870,8 @@ class ListGroupsForUserPaginateResponseGroupsTypeDef(
     - **Path** *(string) --*
 
       The path to the group. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **GroupName** *(string) --*
 
@@ -18534,15 +19881,15 @@ class ListGroupsForUserPaginateResponseGroupsTypeDef(
 
       The stable and unique string identifying the group. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
       how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -18589,8 +19936,8 @@ class ListGroupsForUserPaginateResponseTypeDef(
         - **Path** *(string) --*
 
           The path to the group. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **GroupName** *(string) --*
 
@@ -18600,15 +19947,15 @@ class ListGroupsForUserPaginateResponseTypeDef(
 
           The stable and unique string identifying the group. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
           how to use them in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -18685,8 +20032,8 @@ class ListGroupsPaginateResponseGroupsTypeDef(_ListGroupsPaginateResponseGroupsT
     - **Path** *(string) --*
 
       The path to the group. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **GroupName** *(string) --*
 
@@ -18696,15 +20043,15 @@ class ListGroupsPaginateResponseGroupsTypeDef(_ListGroupsPaginateResponseGroupsT
 
       The stable and unique string identifying the group. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
       how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -18749,8 +20096,8 @@ class ListGroupsPaginateResponseTypeDef(_ListGroupsPaginateResponseTypeDef):
         - **Path** *(string) --*
 
           The path to the group. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **GroupName** *(string) --*
 
@@ -18760,15 +20107,15 @@ class ListGroupsPaginateResponseTypeDef(_ListGroupsPaginateResponseTypeDef):
 
           The stable and unique string identifying the group. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
           how to use them in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -18853,6 +20200,43 @@ class ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesPermission
     """
 
 
+_ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesRoleLastUsedTypeDef = TypedDict(
+    "_ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesRoleLastUsedTypeDef(
+    _ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ListInstanceProfilesForRolePaginateResponseInstanceProfilesRoles` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the
+    date and time and the Region in which the role was last used. Activity is only
+    reported for the trailing 400 days. This period can be shorter if your Region began
+    supporting these features within the last year. The role might have been used more
+    than 400 days ago. For more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format
+      <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period.
+      For more information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
+    """
+
+
 _ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesTagsTypeDef = TypedDict(
     "_ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesTagsTypeDef",
     {"Key": str, "Value": str},
@@ -18909,6 +20293,7 @@ _ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesTypeDef = Typed
         "Tags": List[
             ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesTagsTypeDef
         ],
+        "RoleLastUsed": ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -18927,7 +20312,7 @@ class ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesTypeDef(
 
       The path to the role. For more information about paths, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -18938,7 +20323,7 @@ class ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesTypeDef(
       The stable and unique string identifying the role. For more information about IDs,
       see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **Arn** *(string) --*
 
@@ -19019,6 +20404,30 @@ class ListInstanceProfilesForRolePaginateResponseInstanceProfilesRolesTypeDef(
             AWS always interprets the tag ``Value`` as a single string. If you need to
             store an array, you can store comma-separated values in the string. However,
             you must interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the
+      date and time and the Region in which the role was last used. Activity is only
+      reported for the trailing 400 days. This period can be shorter if your Region began
+      supporting these features within the last year. The role might have been used more
+      than 400 days ago. For more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format
+        <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period.
+        For more information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -19059,8 +20468,8 @@ class ListInstanceProfilesForRolePaginateResponseInstanceProfilesTypeDef(
     - **Path** *(string) --*
 
       The path to the instance profile. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **InstanceProfileName** *(string) --*
 
@@ -19070,15 +20479,15 @@ class ListInstanceProfilesForRolePaginateResponseInstanceProfilesTypeDef(
 
       The stable and unique string identifying the instance profile. For more information about
       IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the instance profile. For more information
       about ARNs and how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -19097,7 +20506,7 @@ class ListInstanceProfilesForRolePaginateResponseInstanceProfilesTypeDef(
 
           The path to the role. For more information about paths, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -19108,7 +20517,7 @@ class ListInstanceProfilesForRolePaginateResponseInstanceProfilesTypeDef(
           The stable and unique string identifying the role. For more information about IDs,
           see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **Arn** *(string) --*
 
@@ -19189,6 +20598,30 @@ class ListInstanceProfilesForRolePaginateResponseInstanceProfilesTypeDef(
                 AWS always interprets the tag ``Value`` as a single string. If you need to
                 store an array, you can store comma-separated values in the string. However,
                 you must interpret the value in your code.
+
+        - **RoleLastUsed** *(dict) --*
+
+          Contains information about the last time that an IAM role was used. This includes the
+          date and time and the Region in which the role was last used. Activity is only
+          reported for the trailing 400 days. This period can be shorter if your Region began
+          supporting these features within the last year. The role might have been used more
+          than 400 days ago. For more information, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+          - **LastUsedDate** *(datetime) --*
+
+            The date and time, in `ISO 8601 date-time format
+            <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+            This field is null if the role has not been used within the IAM tracking period.
+            For more information about the tracking period, see `Regions Where Data Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+          - **Region** *(string) --*
+
+            The name of the AWS Region in which the role was last used.
     """
 
 
@@ -19234,8 +20667,8 @@ class ListInstanceProfilesForRolePaginateResponseTypeDef(
         - **Path** *(string) --*
 
           The path to the instance profile. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **InstanceProfileName** *(string) --*
 
@@ -19245,15 +20678,15 @@ class ListInstanceProfilesForRolePaginateResponseTypeDef(
 
           The stable and unique string identifying the instance profile. For more information about
           IDs, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the instance profile. For more information
           about ARNs and how to use them in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -19272,7 +20705,7 @@ class ListInstanceProfilesForRolePaginateResponseTypeDef(
 
               The path to the role. For more information about paths, see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **RoleName** *(string) --*
 
@@ -19283,7 +20716,7 @@ class ListInstanceProfilesForRolePaginateResponseTypeDef(
               The stable and unique string identifying the role. For more information about IDs,
               see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **Arn** *(string) --*
 
@@ -19364,6 +20797,30 @@ class ListInstanceProfilesForRolePaginateResponseTypeDef(
                     AWS always interprets the tag ``Value`` as a single string. If you need to
                     store an array, you can store comma-separated values in the string. However,
                     you must interpret the value in your code.
+
+            - **RoleLastUsed** *(dict) --*
+
+              Contains information about the last time that an IAM role was used. This includes the
+              date and time and the Region in which the role was last used. Activity is only
+              reported for the trailing 400 days. This period can be shorter if your Region began
+              supporting these features within the last year. The role might have been used more
+              than 400 days ago. For more information, see `Regions Where Data Is Tracked
+              <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+              in the *IAM User Guide* .
+
+              - **LastUsedDate** *(datetime) --*
+
+                The date and time, in `ISO 8601 date-time format
+                <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+                This field is null if the role has not been used within the IAM tracking period.
+                For more information about the tracking period, see `Regions Where Data Is Tracked
+                <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                in the *IAM User Guide* .
+
+              - **Region** *(string) --*
+
+                The name of the AWS Region in which the role was last used.
 
     - **IsTruncated** *(boolean) --*
 
@@ -19443,6 +20900,43 @@ class ListInstanceProfilesPaginateResponseInstanceProfilesRolesPermissionsBounda
     """
 
 
+_ListInstanceProfilesPaginateResponseInstanceProfilesRolesRoleLastUsedTypeDef = TypedDict(
+    "_ListInstanceProfilesPaginateResponseInstanceProfilesRolesRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ListInstanceProfilesPaginateResponseInstanceProfilesRolesRoleLastUsedTypeDef(
+    _ListInstanceProfilesPaginateResponseInstanceProfilesRolesRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ListInstanceProfilesPaginateResponseInstanceProfilesRoles` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the
+    date and time and the Region in which the role was last used. Activity is only
+    reported for the trailing 400 days. This period can be shorter if your Region began
+    supporting these features within the last year. The role might have been used more
+    than 400 days ago. For more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format
+      <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period.
+      For more information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
+    """
+
+
 _ListInstanceProfilesPaginateResponseInstanceProfilesRolesTagsTypeDef = TypedDict(
     "_ListInstanceProfilesPaginateResponseInstanceProfilesRolesTagsTypeDef",
     {"Key": str, "Value": str},
@@ -19499,6 +20993,7 @@ _ListInstanceProfilesPaginateResponseInstanceProfilesRolesTypeDef = TypedDict(
         "Tags": List[
             ListInstanceProfilesPaginateResponseInstanceProfilesRolesTagsTypeDef
         ],
+        "RoleLastUsed": ListInstanceProfilesPaginateResponseInstanceProfilesRolesRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -19517,7 +21012,7 @@ class ListInstanceProfilesPaginateResponseInstanceProfilesRolesTypeDef(
 
       The path to the role. For more information about paths, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -19528,7 +21023,7 @@ class ListInstanceProfilesPaginateResponseInstanceProfilesRolesTypeDef(
       The stable and unique string identifying the role. For more information about IDs,
       see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **Arn** *(string) --*
 
@@ -19609,6 +21104,30 @@ class ListInstanceProfilesPaginateResponseInstanceProfilesRolesTypeDef(
             AWS always interprets the tag ``Value`` as a single string. If you need to
             store an array, you can store comma-separated values in the string. However,
             you must interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the
+      date and time and the Region in which the role was last used. Activity is only
+      reported for the trailing 400 days. This period can be shorter if your Region began
+      supporting these features within the last year. The role might have been used more
+      than 400 days ago. For more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format
+        <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period.
+        For more information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -19647,8 +21166,8 @@ class ListInstanceProfilesPaginateResponseInstanceProfilesTypeDef(
     - **Path** *(string) --*
 
       The path to the instance profile. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **InstanceProfileName** *(string) --*
 
@@ -19658,15 +21177,15 @@ class ListInstanceProfilesPaginateResponseInstanceProfilesTypeDef(
 
       The stable and unique string identifying the instance profile. For more information about
       IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the instance profile. For more information
       about ARNs and how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -19685,7 +21204,7 @@ class ListInstanceProfilesPaginateResponseInstanceProfilesTypeDef(
 
           The path to the role. For more information about paths, see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -19696,7 +21215,7 @@ class ListInstanceProfilesPaginateResponseInstanceProfilesTypeDef(
           The stable and unique string identifying the role. For more information about IDs,
           see `IAM Identifiers
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          *IAM User Guide* .
 
         - **Arn** *(string) --*
 
@@ -19777,6 +21296,30 @@ class ListInstanceProfilesPaginateResponseInstanceProfilesTypeDef(
                 AWS always interprets the tag ``Value`` as a single string. If you need to
                 store an array, you can store comma-separated values in the string. However,
                 you must interpret the value in your code.
+
+        - **RoleLastUsed** *(dict) --*
+
+          Contains information about the last time that an IAM role was used. This includes the
+          date and time and the Region in which the role was last used. Activity is only
+          reported for the trailing 400 days. This period can be shorter if your Region began
+          supporting these features within the last year. The role might have been used more
+          than 400 days ago. For more information, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+          - **LastUsedDate** *(datetime) --*
+
+            The date and time, in `ISO 8601 date-time format
+            <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+            This field is null if the role has not been used within the IAM tracking period.
+            For more information about the tracking period, see `Regions Where Data Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+          - **Region** *(string) --*
+
+            The name of the AWS Region in which the role was last used.
     """
 
 
@@ -19822,8 +21365,8 @@ class ListInstanceProfilesPaginateResponseTypeDef(
         - **Path** *(string) --*
 
           The path to the instance profile. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **InstanceProfileName** *(string) --*
 
@@ -19833,15 +21376,15 @@ class ListInstanceProfilesPaginateResponseTypeDef(
 
           The stable and unique string identifying the instance profile. For more information about
           IDs, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the instance profile. For more information
           about ARNs and how to use them in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -19860,7 +21403,7 @@ class ListInstanceProfilesPaginateResponseTypeDef(
 
               The path to the role. For more information about paths, see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **RoleName** *(string) --*
 
@@ -19871,7 +21414,7 @@ class ListInstanceProfilesPaginateResponseTypeDef(
               The stable and unique string identifying the role. For more information about IDs,
               see `IAM Identifiers
               <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-              *Using IAM* guide.
+              *IAM User Guide* .
 
             - **Arn** *(string) --*
 
@@ -19952,6 +21495,30 @@ class ListInstanceProfilesPaginateResponseTypeDef(
                     AWS always interprets the tag ``Value`` as a single string. If you need to
                     store an array, you can store comma-separated values in the string. However,
                     you must interpret the value in your code.
+
+            - **RoleLastUsed** *(dict) --*
+
+              Contains information about the last time that an IAM role was used. This includes the
+              date and time and the Region in which the role was last used. Activity is only
+              reported for the trailing 400 days. This period can be shorter if your Region began
+              supporting these features within the last year. The role might have been used more
+              than 400 days ago. For more information, see `Regions Where Data Is Tracked
+              <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+              in the *IAM User Guide* .
+
+              - **LastUsedDate** *(datetime) --*
+
+                The date and time, in `ISO 8601 date-time format
+                <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+                This field is null if the role has not been used within the IAM tracking period.
+                For more information about the tracking period, see `Regions Where Data Is Tracked
+                <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                in the *IAM User Guide* .
+
+              - **Region** *(string) --*
+
+                The name of the AWS Region in which the role was last used.
 
     - **IsTruncated** *(boolean) --*
 
@@ -20149,7 +21716,7 @@ class ListPoliciesPaginateResponsePoliciesTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **PolicyName** *(string) --*
 
@@ -20160,8 +21727,8 @@ class ListPoliciesPaginateResponsePoliciesTypeDef(
       The stable and unique string identifying the policy.
 
       For more information about IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -20177,8 +21744,8 @@ class ListPoliciesPaginateResponsePoliciesTypeDef(
       The path to the policy.
 
       For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **DefaultVersionId** *(string) --*
 
@@ -20255,7 +21822,7 @@ class ListPoliciesPaginateResponseTypeDef(_ListPoliciesPaginateResponseTypeDef):
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **PolicyName** *(string) --*
 
@@ -20266,8 +21833,8 @@ class ListPoliciesPaginateResponseTypeDef(_ListPoliciesPaginateResponseTypeDef):
           The stable and unique string identifying the policy.
 
           For more information about IDs, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
@@ -20283,8 +21850,8 @@ class ListPoliciesPaginateResponseTypeDef(_ListPoliciesPaginateResponseTypeDef):
           The path to the policy.
 
           For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **DefaultVersionId** *(string) --*
 
@@ -20400,7 +21967,7 @@ class ListPolicyVersionsPaginateResponseVersionsTypeDef(
 
     For more information about managed policies, refer to `Managed Policies and Inline Policies
     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-    the *Using IAM* guide.
+    the *IAM User Guide* .
 
     - **Document** *(string) --*
 
@@ -20470,7 +22037,7 @@ class ListPolicyVersionsPaginateResponseTypeDef(
 
         For more information about managed policies, refer to `Managed Policies and Inline Policies
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-        the *Using IAM* guide.
+        the *IAM User Guide* .
 
         - **Document** *(string) --*
 
@@ -20645,6 +22212,43 @@ class ListRolesPaginateResponseRolesPermissionsBoundaryTypeDef(
     """
 
 
+_ListRolesPaginateResponseRolesRoleLastUsedTypeDef = TypedDict(
+    "_ListRolesPaginateResponseRolesRoleLastUsedTypeDef",
+    {"LastUsedDate": datetime, "Region": str},
+    total=False,
+)
+
+
+class ListRolesPaginateResponseRolesRoleLastUsedTypeDef(
+    _ListRolesPaginateResponseRolesRoleLastUsedTypeDef
+):
+    """
+    Type definition for `ListRolesPaginateResponseRoles` `RoleLastUsed`
+
+    Contains information about the last time that an IAM role was used. This includes the
+    date and time and the Region in which the role was last used. Activity is only reported
+    for the trailing 400 days. This period can be shorter if your Region began supporting
+    these features within the last year. The role might have been used more than 400 days
+    ago. For more information, see `Regions Where Data Is Tracked
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+    in the *IAM User Guide* .
+
+    - **LastUsedDate** *(datetime) --*
+
+      The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+      that the role was last used.
+
+      This field is null if the role has not been used within the IAM tracking period. For
+      more information about the tracking period, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+    - **Region** *(string) --*
+
+      The name of the AWS Region in which the role was last used.
+    """
+
+
 _ListRolesPaginateResponseRolesTagsTypeDef = TypedDict(
     "_ListRolesPaginateResponseRolesTagsTypeDef",
     {"Key": str, "Value": str},
@@ -20697,6 +22301,7 @@ _ListRolesPaginateResponseRolesTypeDef = TypedDict(
         "MaxSessionDuration": int,
         "PermissionsBoundary": ListRolesPaginateResponseRolesPermissionsBoundaryTypeDef,
         "Tags": List[ListRolesPaginateResponseRolesTagsTypeDef],
+        "RoleLastUsed": ListRolesPaginateResponseRolesRoleLastUsedTypeDef,
     },
     total=False,
 )
@@ -20712,8 +22317,8 @@ class ListRolesPaginateResponseRolesTypeDef(_ListRolesPaginateResponseRolesTypeD
     - **Path** *(string) --*
 
       The path to the role. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **RoleName** *(string) --*
 
@@ -20723,8 +22328,8 @@ class ListRolesPaginateResponseRolesTypeDef(_ListRolesPaginateResponseRolesTypeD
 
       The stable and unique string identifying the role. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
@@ -20803,6 +22408,30 @@ class ListRolesPaginateResponseRolesTypeDef(_ListRolesPaginateResponseRolesTypeD
             AWS always interprets the tag ``Value`` as a single string. If you need to store an
             array, you can store comma-separated values in the string. However, you must
             interpret the value in your code.
+
+    - **RoleLastUsed** *(dict) --*
+
+      Contains information about the last time that an IAM role was used. This includes the
+      date and time and the Region in which the role was last used. Activity is only reported
+      for the trailing 400 days. This period can be shorter if your Region began supporting
+      these features within the last year. The role might have been used more than 400 days
+      ago. For more information, see `Regions Where Data Is Tracked
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+      in the *IAM User Guide* .
+
+      - **LastUsedDate** *(datetime) --*
+
+        The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+        that the role was last used.
+
+        This field is null if the role has not been used within the IAM tracking period. For
+        more information about the tracking period, see `Regions Where Data Is Tracked
+        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+        in the *IAM User Guide* .
+
+      - **Region** *(string) --*
+
+        The name of the AWS Region in which the role was last used.
     """
 
 
@@ -20835,8 +22464,8 @@ class ListRolesPaginateResponseTypeDef(_ListRolesPaginateResponseTypeDef):
         - **Path** *(string) --*
 
           The path to the role. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **RoleName** *(string) --*
 
@@ -20846,8 +22475,8 @@ class ListRolesPaginateResponseTypeDef(_ListRolesPaginateResponseTypeDef):
 
           The stable and unique string identifying the role. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
@@ -20926,6 +22555,30 @@ class ListRolesPaginateResponseTypeDef(_ListRolesPaginateResponseTypeDef):
                 AWS always interprets the tag ``Value`` as a single string. If you need to store an
                 array, you can store comma-separated values in the string. However, you must
                 interpret the value in your code.
+
+        - **RoleLastUsed** *(dict) --*
+
+          Contains information about the last time that an IAM role was used. This includes the
+          date and time and the Region in which the role was last used. Activity is only reported
+          for the trailing 400 days. This period can be shorter if your Region began supporting
+          these features within the last year. The role might have been used more than 400 days
+          ago. For more information, see `Regions Where Data Is Tracked
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+          in the *IAM User Guide* .
+
+          - **LastUsedDate** *(datetime) --*
+
+            The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+            that the role was last used.
+
+            This field is null if the role has not been used within the IAM tracking period. For
+            more information about the tracking period, see `Regions Where Data Is Tracked
+            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+            in the *IAM User Guide* .
+
+          - **Region** *(string) --*
+
+            The name of the AWS Region in which the role was last used.
 
     - **IsTruncated** *(boolean) --*
 
@@ -21135,7 +22788,7 @@ class ListServerCertificatesPaginateResponseServerCertificateMetadataListTypeDef
 
       The path to the server certificate. For more information about paths, see `IAM
       Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__
-      in the *Using IAM* guide.
+      in the *IAM User Guide* .
 
     - **ServerCertificateName** *(string) --*
 
@@ -21145,15 +22798,15 @@ class ListServerCertificatesPaginateResponseServerCertificateMetadataListTypeDef
 
       The stable and unique string identifying the server certificate. For more information
       about IDs, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) specifying the server certificate. For more information
       about ARNs and how to use them in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UploadDate** *(datetime) --*
 
@@ -21202,7 +22855,7 @@ class ListServerCertificatesPaginateResponseTypeDef(
 
           The path to the server certificate. For more information about paths, see `IAM
           Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__
-          in the *Using IAM* guide.
+          in the *IAM User Guide* .
 
         - **ServerCertificateName** *(string) --*
 
@@ -21212,15 +22865,15 @@ class ListServerCertificatesPaginateResponseTypeDef(
 
           The stable and unique string identifying the server certificate. For more information
           about IDs, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) specifying the server certificate. For more information
           about ARNs and how to use them in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **UploadDate** *(datetime) --*
 
@@ -21591,8 +23244,8 @@ class ListUsersPaginateResponseUsersTypeDef(_ListUsersPaginateResponseUsersTypeD
     - **Path** *(string) --*
 
       The path to the user. For more information about paths, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **UserName** *(string) --*
 
@@ -21602,15 +23255,15 @@ class ListUsersPaginateResponseUsersTypeDef(_ListUsersPaginateResponseUsersTypeD
 
       The stable and unique string identifying the user. For more information about IDs, see
       `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
       and how to use ARNs in policies, see `IAM Identifiers
-      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+      User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -21623,7 +23276,7 @@ class ListUsersPaginateResponseUsersTypeDef(_ListUsersPaginateResponseUsersTypeD
       when the user's password was last used to sign in to an AWS website. For a list of AWS
       websites that capture a user's last sign-in time, see the `Credential Reports
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-      the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+      the *IAM User Guide* . If a password is used more than once in a five-minute span, only
       the first use is returned in this field. If the field is null (no value), then it
       indicates that they never signed in with a password. This can be because:
 
@@ -21633,7 +23286,7 @@ class ListUsersPaginateResponseUsersTypeDef(_ListUsersPaginateResponseUsersTypeD
       October 20, 2014.
 
       A null value does not mean that the user *never* had a password. Also, if the user does
-      not currently have a password, but had one in the past, then this field contains the date
+      not currently have a password but had one in the past, then this field contains the date
       and time the most recent password was used.
 
       This value is returned only in the  GetUser and  ListUsers operations.
@@ -21728,8 +23381,8 @@ class ListUsersPaginateResponseTypeDef(_ListUsersPaginateResponseTypeDef):
         - **Path** *(string) --*
 
           The path to the user. For more information about paths, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **UserName** *(string) --*
 
@@ -21739,15 +23392,15 @@ class ListUsersPaginateResponseTypeDef(_ListUsersPaginateResponseTypeDef):
 
           The stable and unique string identifying the user. For more information about IDs, see
           `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **Arn** *(string) --*
 
           The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
           and how to use ARNs in policies, see `IAM Identifiers
-          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-          *Using IAM* guide.
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+          User Guide* .
 
         - **CreateDate** *(datetime) --*
 
@@ -21760,7 +23413,7 @@ class ListUsersPaginateResponseTypeDef(_ListUsersPaginateResponseTypeDef):
           when the user's password was last used to sign in to an AWS website. For a list of AWS
           websites that capture a user's last sign-in time, see the `Credential Reports
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-          the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+          the *IAM User Guide* . If a password is used more than once in a five-minute span, only
           the first use is returned in this field. If the field is null (no value), then it
           indicates that they never signed in with a password. This can be because:
 
@@ -21770,7 +23423,7 @@ class ListUsersPaginateResponseTypeDef(_ListUsersPaginateResponseTypeDef):
           October 20, 2014.
 
           A null value does not mean that the user *never* had a password. Also, if the user does
-          not currently have a password, but had one in the past, then this field contains the date
+          not currently have a password but had one in the past, then this field contains the date
           and time the most recent password was used.
 
           This value is returned only in the  GetUser and  ListUsers operations.
@@ -21976,7 +23629,7 @@ class ListVirtualMFADevicesPaginateResponseVirtualMFADevicesUserTypeDef(
 
       The path to the user. For more information about paths, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **UserName** *(string) --*
 
@@ -21987,14 +23640,14 @@ class ListVirtualMFADevicesPaginateResponseVirtualMFADevicesUserTypeDef(
       The stable and unique string identifying the user. For more information about IDs, see
       `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **Arn** *(string) --*
 
       The Amazon Resource Name (ARN) that identifies the user. For more information about
       ARNs and how to use ARNs in policies, see `IAM Identifiers
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-      *Using IAM* guide.
+      *IAM User Guide* .
 
     - **CreateDate** *(datetime) --*
 
@@ -22007,7 +23660,7 @@ class ListVirtualMFADevicesPaginateResponseVirtualMFADevicesUserTypeDef(
       when the user's password was last used to sign in to an AWS website. For a list of AWS
       websites that capture a user's last sign-in time, see the `Credential Reports
       <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-      the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+      the *IAM User Guide* . If a password is used more than once in a five-minute span, only
       the first use is returned in this field. If the field is null (no value), then it
       indicates that they never signed in with a password. This can be because:
 
@@ -22017,7 +23670,7 @@ class ListVirtualMFADevicesPaginateResponseVirtualMFADevicesUserTypeDef(
       on October 20, 2014.
 
       A null value does not mean that the user *never* had a password. Also, if the user does
-      not currently have a password, but had one in the past, then this field contains the
+      not currently have a password but had one in the past, then this field contains the
       date and time the most recent password was used.
 
       This value is returned only in the  GetUser and  ListUsers operations.
@@ -22124,7 +23777,7 @@ class ListVirtualMFADevicesPaginateResponseVirtualMFADevicesTypeDef(
 
         The path to the user. For more information about paths, see `IAM Identifiers
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-        *Using IAM* guide.
+        *IAM User Guide* .
 
       - **UserName** *(string) --*
 
@@ -22135,14 +23788,14 @@ class ListVirtualMFADevicesPaginateResponseVirtualMFADevicesTypeDef(
         The stable and unique string identifying the user. For more information about IDs, see
         `IAM Identifiers
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-        *Using IAM* guide.
+        *IAM User Guide* .
 
       - **Arn** *(string) --*
 
         The Amazon Resource Name (ARN) that identifies the user. For more information about
         ARNs and how to use ARNs in policies, see `IAM Identifiers
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-        *Using IAM* guide.
+        *IAM User Guide* .
 
       - **CreateDate** *(datetime) --*
 
@@ -22155,7 +23808,7 @@ class ListVirtualMFADevicesPaginateResponseVirtualMFADevicesTypeDef(
         when the user's password was last used to sign in to an AWS website. For a list of AWS
         websites that capture a user's last sign-in time, see the `Credential Reports
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-        the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+        the *IAM User Guide* . If a password is used more than once in a five-minute span, only
         the first use is returned in this field. If the field is null (no value), then it
         indicates that they never signed in with a password. This can be because:
 
@@ -22165,7 +23818,7 @@ class ListVirtualMFADevicesPaginateResponseVirtualMFADevicesTypeDef(
         on October 20, 2014.
 
         A null value does not mean that the user *never* had a password. Also, if the user does
-        not currently have a password, but had one in the past, then this field contains the
+        not currently have a password but had one in the past, then this field contains the
         date and time the most recent password was used.
 
         This value is returned only in the  GetUser and  ListUsers operations.
@@ -22285,7 +23938,7 @@ class ListVirtualMFADevicesPaginateResponseTypeDef(
 
             The path to the user. For more information about paths, see `IAM Identifiers
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-            *Using IAM* guide.
+            *IAM User Guide* .
 
           - **UserName** *(string) --*
 
@@ -22296,14 +23949,14 @@ class ListVirtualMFADevicesPaginateResponseTypeDef(
             The stable and unique string identifying the user. For more information about IDs, see
             `IAM Identifiers
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-            *Using IAM* guide.
+            *IAM User Guide* .
 
           - **Arn** *(string) --*
 
             The Amazon Resource Name (ARN) that identifies the user. For more information about
             ARNs and how to use ARNs in policies, see `IAM Identifiers
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-            *Using IAM* guide.
+            *IAM User Guide* .
 
           - **CreateDate** *(datetime) --*
 
@@ -22316,7 +23969,7 @@ class ListVirtualMFADevicesPaginateResponseTypeDef(
             when the user's password was last used to sign in to an AWS website. For a list of AWS
             websites that capture a user's last sign-in time, see the `Credential Reports
             <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-            the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+            the *IAM User Guide* . If a password is used more than once in a five-minute span, only
             the first use is returned in this field. If the field is null (no value), then it
             indicates that they never signed in with a password. This can be because:
 
@@ -22326,7 +23979,7 @@ class ListVirtualMFADevicesPaginateResponseTypeDef(
             on October 20, 2014.
 
             A null value does not mean that the user *never* had a password. Also, if the user does
-            not currently have a password, but had one in the past, then this field contains the
+            not currently have a password but had one in the past, then this field contains the
             date and time the most recent password was used.
 
             This value is returned only in the  GetUser and  ListUsers operations.

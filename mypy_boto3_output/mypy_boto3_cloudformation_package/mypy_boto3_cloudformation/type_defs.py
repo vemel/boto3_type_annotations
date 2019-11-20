@@ -55,6 +55,7 @@ __all__ = (
     "ClientDescribeStackResourcesResponseStackResourcesTypeDef",
     "ClientDescribeStackResourcesResponseTypeDef",
     "ClientDescribeStackSetOperationResponseStackSetOperationOperationPreferencesTypeDef",
+    "ClientDescribeStackSetOperationResponseStackSetOperationStackSetDriftDetectionDetailsTypeDef",
     "ClientDescribeStackSetOperationResponseStackSetOperationTypeDef",
     "ClientDescribeStackSetOperationResponseTypeDef",
     "ClientDescribeStacksResponseStacksDriftInformationTypeDef",
@@ -65,11 +66,16 @@ __all__ = (
     "ClientDescribeStacksResponseStacksTagsTypeDef",
     "ClientDescribeStacksResponseStacksTypeDef",
     "ClientDescribeStacksResponseTypeDef",
+    "ClientDescribeTypeRegistrationResponseTypeDef",
+    "ClientDescribeTypeResponseLoggingConfigTypeDef",
+    "ClientDescribeTypeResponseTypeDef",
     "ClientDetectStackDriftResponseTypeDef",
     "ClientDetectStackResourceDriftResponseStackResourceDriftPhysicalResourceIdContextTypeDef",
     "ClientDetectStackResourceDriftResponseStackResourceDriftPropertyDifferencesTypeDef",
     "ClientDetectStackResourceDriftResponseStackResourceDriftTypeDef",
     "ClientDetectStackResourceDriftResponseTypeDef",
+    "ClientDetectStackSetDriftOperationPreferencesTypeDef",
+    "ClientDetectStackSetDriftResponseTypeDef",
     "ClientEstimateTemplateCostParametersTypeDef",
     "ClientEstimateTemplateCostResponseTypeDef",
     "ClientGetStackPolicyResponseTypeDef",
@@ -98,6 +104,13 @@ __all__ = (
     "ClientListStacksResponseStackSummariesDriftInformationTypeDef",
     "ClientListStacksResponseStackSummariesTypeDef",
     "ClientListStacksResponseTypeDef",
+    "ClientListTypeRegistrationsResponseTypeDef",
+    "ClientListTypeVersionsResponseTypeVersionSummariesTypeDef",
+    "ClientListTypeVersionsResponseTypeDef",
+    "ClientListTypesResponseTypeSummariesTypeDef",
+    "ClientListTypesResponseTypeDef",
+    "ClientRegisterTypeLoggingConfigTypeDef",
+    "ClientRegisterTypeResponseTypeDef",
     "ClientUpdateStackInstancesOperationPreferencesTypeDef",
     "ClientUpdateStackInstancesParameterOverridesTypeDef",
     "ClientUpdateStackInstancesResponseTypeDef",
@@ -181,6 +194,7 @@ __all__ = (
     "StackUpdateRollbackConfigurationRollbackTriggersTypeDef",
     "StackUpdateRollbackConfigurationTypeDef",
     "StackUpdateTagsTypeDef",
+    "TypeRegistrationCompleteWaitWaiterConfigTypeDef",
 )
 
 
@@ -2352,6 +2366,8 @@ _ClientDescribeStackInstanceResponseStackInstanceTypeDef = TypedDict(
         ],
         "Status": str,
         "StatusReason": str,
+        "DriftStatus": str,
+        "LastDriftCheckTimestamp": datetime,
     },
     total=False,
 )
@@ -2435,6 +2451,29 @@ class ClientDescribeStackInstanceResponseStackInstanceTypeDef(
     - **StatusReason** *(string) --*
 
       The explanation for the specific status code that is assigned to this stack instance.
+
+    - **DriftStatus** *(string) --*
+
+      Status of the stack instance's actual configuration compared to the expected template and
+      parameter configuration of the stack set to which it belongs.
+
+      * ``DRIFTED`` : The stack differs from the expected template and parameter configuration of
+      the stack set to which it belongs. A stack instance is considered to have drifted if one or
+      more of the resources in the associated stack have drifted.
+
+      * ``NOT_CHECKED`` : AWS CloudFormation has not checked if the stack instance differs from
+      its expected stack set configuration.
+
+      * ``IN_SYNC`` : The stack instance's actual configuration matches its expected stack set
+      configuration.
+
+      * ``UNKNOWN`` : This value is reserved for future use.
+
+    - **LastDriftCheckTimestamp** *(datetime) --*
+
+      Most recent time when CloudFormation performed a drift detection operation on the stack
+      instance. This value will be ``NULL`` for any stack instance on which drift detection has
+      not yet been performed.
     """
 
 
@@ -2525,6 +2564,29 @@ class ClientDescribeStackInstanceResponseTypeDef(
       - **StatusReason** *(string) --*
 
         The explanation for the specific status code that is assigned to this stack instance.
+
+      - **DriftStatus** *(string) --*
+
+        Status of the stack instance's actual configuration compared to the expected template and
+        parameter configuration of the stack set to which it belongs.
+
+        * ``DRIFTED`` : The stack differs from the expected template and parameter configuration of
+        the stack set to which it belongs. A stack instance is considered to have drifted if one or
+        more of the resources in the associated stack have drifted.
+
+        * ``NOT_CHECKED`` : AWS CloudFormation has not checked if the stack instance differs from
+        its expected stack set configuration.
+
+        * ``IN_SYNC`` : The stack instance's actual configuration matches its expected stack set
+        configuration.
+
+        * ``UNKNOWN`` : This value is reserved for future use.
+
+      - **LastDriftCheckTimestamp** *(datetime) --*
+
+        Most recent time when CloudFormation performed a drift detection operation on the stack
+        instance. This value will be ``NULL`` for any stack instance on which drift detection has
+        not yet been performed.
     """
 
 
@@ -3516,6 +3578,111 @@ class ClientDescribeStackSetOperationResponseStackSetOperationOperationPreferenc
     """
 
 
+_ClientDescribeStackSetOperationResponseStackSetOperationStackSetDriftDetectionDetailsTypeDef = TypedDict(
+    "_ClientDescribeStackSetOperationResponseStackSetOperationStackSetDriftDetectionDetailsTypeDef",
+    {
+        "DriftStatus": str,
+        "DriftDetectionStatus": str,
+        "LastDriftCheckTimestamp": datetime,
+        "TotalStackInstancesCount": int,
+        "DriftedStackInstancesCount": int,
+        "InSyncStackInstancesCount": int,
+        "InProgressStackInstancesCount": int,
+        "FailedStackInstancesCount": int,
+    },
+    total=False,
+)
+
+
+class ClientDescribeStackSetOperationResponseStackSetOperationStackSetDriftDetectionDetailsTypeDef(
+    _ClientDescribeStackSetOperationResponseStackSetOperationStackSetDriftDetectionDetailsTypeDef
+):
+    """
+    Type definition for `ClientDescribeStackSetOperationResponseStackSetOperation` `StackSetDriftDetectionDetails`
+
+    Detailed information about the drift status of the stack set. This includes information
+    about drift operations currently being performed on the stack set.
+
+    this information will only be present for stack set operations whose ``Action`` type is
+    ``DETECT_DRIFT`` .
+
+    For more information, see `Detecting Unmanaged Changes in Stack Sets
+    <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html>`__ in
+    the AWS CloudFormation User Guide.
+
+    - **DriftStatus** *(string) --*
+
+      Status of the stack set's actual configuration compared to its expected template and
+      parameter configuration. A stack set is considered to have drifted if one or more of its
+      stack instances have drifted from their expected template and parameter configuration.
+
+      * ``DRIFTED`` : One or more of the stack instances belonging to the stack set stack
+      differs from the expected template and parameter configuration. A stack instance is
+      considered to have drifted if one or more of the resources in the associated stack have
+      drifted.
+
+      * ``NOT_CHECKED`` : AWS CloudFormation has not checked the stack set for drift.
+
+      * ``IN_SYNC`` : All of the stack instances belonging to the stack set stack match from
+      the expected template and parameter configuration.
+
+    - **DriftDetectionStatus** *(string) --*
+
+      The status of the stack set drift detection operation.
+
+      * ``COMPLETED`` : The drift detection operation completed without failing on any stack
+      instances.
+
+      * ``FAILED`` : The drift detection operation exceeded the specified failure tolerance.
+
+      * ``PARTIAL_SUCCESS`` : The drift detection operation completed without exceeding the
+      failure tolerance for the operation.
+
+      * ``IN_PROGRESS`` : The drift detection operation is currently being performed.
+
+      * ``STOPPED`` : The user has cancelled the drift detection operation.
+
+    - **LastDriftCheckTimestamp** *(datetime) --*
+
+      Most recent time when CloudFormation performed a drift detection operation on the stack
+      set. This value will be ``NULL`` for any stack set on which drift detection has not yet
+      been performed.
+
+    - **TotalStackInstancesCount** *(integer) --*
+
+      The total number of stack instances belonging to this stack set.
+
+      The total number of stack instances is equal to the total of:
+
+      * Stack instances that match the stack set configuration.
+
+      * Stack instances that have drifted from the stack set configuration.
+
+      * Stack instances where the drift detection operation has failed.
+
+      * Stack instances currently being checked for drift.
+
+    - **DriftedStackInstancesCount** *(integer) --*
+
+      The number of stack instances that have drifted from the expected template and parameter
+      configuration of the stack set. A stack instance is considered to have drifted if one or
+      more of the resources in the associated stack do not match their expected configuration.
+
+    - **InSyncStackInstancesCount** *(integer) --*
+
+      The number of stack instances which match the expected template and parameter
+      configuration of the stack set.
+
+    - **InProgressStackInstancesCount** *(integer) --*
+
+      The number of stack instances that are currently being checked for drift.
+
+    - **FailedStackInstancesCount** *(integer) --*
+
+      The number of stack instances for which the drift detection operation failed.
+    """
+
+
 _ClientDescribeStackSetOperationResponseStackSetOperationTypeDef = TypedDict(
     "_ClientDescribeStackSetOperationResponseStackSetOperationTypeDef",
     {
@@ -3529,6 +3696,7 @@ _ClientDescribeStackSetOperationResponseStackSetOperationTypeDef = TypedDict(
         "ExecutionRoleName": str,
         "CreationTimestamp": datetime,
         "EndTimestamp": datetime,
+        "StackSetDriftDetectionDetails": ClientDescribeStackSetOperationResponseStackSetOperationStackSetDriftDetectionDetailsTypeDef,
     },
     total=False,
 )
@@ -3672,6 +3840,89 @@ class ClientDescribeStackSetOperationResponseStackSetOperationTypeDef(
       The time at which the stack set operation ended, across all accounts and regions specified.
       Note that this doesn't necessarily mean that the stack set operation was successful, or
       even attempted, in each account or region.
+
+    - **StackSetDriftDetectionDetails** *(dict) --*
+
+      Detailed information about the drift status of the stack set. This includes information
+      about drift operations currently being performed on the stack set.
+
+      this information will only be present for stack set operations whose ``Action`` type is
+      ``DETECT_DRIFT`` .
+
+      For more information, see `Detecting Unmanaged Changes in Stack Sets
+      <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html>`__ in
+      the AWS CloudFormation User Guide.
+
+      - **DriftStatus** *(string) --*
+
+        Status of the stack set's actual configuration compared to its expected template and
+        parameter configuration. A stack set is considered to have drifted if one or more of its
+        stack instances have drifted from their expected template and parameter configuration.
+
+        * ``DRIFTED`` : One or more of the stack instances belonging to the stack set stack
+        differs from the expected template and parameter configuration. A stack instance is
+        considered to have drifted if one or more of the resources in the associated stack have
+        drifted.
+
+        * ``NOT_CHECKED`` : AWS CloudFormation has not checked the stack set for drift.
+
+        * ``IN_SYNC`` : All of the stack instances belonging to the stack set stack match from
+        the expected template and parameter configuration.
+
+      - **DriftDetectionStatus** *(string) --*
+
+        The status of the stack set drift detection operation.
+
+        * ``COMPLETED`` : The drift detection operation completed without failing on any stack
+        instances.
+
+        * ``FAILED`` : The drift detection operation exceeded the specified failure tolerance.
+
+        * ``PARTIAL_SUCCESS`` : The drift detection operation completed without exceeding the
+        failure tolerance for the operation.
+
+        * ``IN_PROGRESS`` : The drift detection operation is currently being performed.
+
+        * ``STOPPED`` : The user has cancelled the drift detection operation.
+
+      - **LastDriftCheckTimestamp** *(datetime) --*
+
+        Most recent time when CloudFormation performed a drift detection operation on the stack
+        set. This value will be ``NULL`` for any stack set on which drift detection has not yet
+        been performed.
+
+      - **TotalStackInstancesCount** *(integer) --*
+
+        The total number of stack instances belonging to this stack set.
+
+        The total number of stack instances is equal to the total of:
+
+        * Stack instances that match the stack set configuration.
+
+        * Stack instances that have drifted from the stack set configuration.
+
+        * Stack instances where the drift detection operation has failed.
+
+        * Stack instances currently being checked for drift.
+
+      - **DriftedStackInstancesCount** *(integer) --*
+
+        The number of stack instances that have drifted from the expected template and parameter
+        configuration of the stack set. A stack instance is considered to have drifted if one or
+        more of the resources in the associated stack do not match their expected configuration.
+
+      - **InSyncStackInstancesCount** *(integer) --*
+
+        The number of stack instances which match the expected template and parameter
+        configuration of the stack set.
+
+      - **InProgressStackInstancesCount** *(integer) --*
+
+        The number of stack instances that are currently being checked for drift.
+
+      - **FailedStackInstancesCount** *(integer) --*
+
+        The number of stack instances for which the drift detection operation failed.
     """
 
 
@@ -3824,6 +4075,89 @@ class ClientDescribeStackSetOperationResponseTypeDef(
         The time at which the stack set operation ended, across all accounts and regions specified.
         Note that this doesn't necessarily mean that the stack set operation was successful, or
         even attempted, in each account or region.
+
+      - **StackSetDriftDetectionDetails** *(dict) --*
+
+        Detailed information about the drift status of the stack set. This includes information
+        about drift operations currently being performed on the stack set.
+
+        this information will only be present for stack set operations whose ``Action`` type is
+        ``DETECT_DRIFT`` .
+
+        For more information, see `Detecting Unmanaged Changes in Stack Sets
+        <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html>`__ in
+        the AWS CloudFormation User Guide.
+
+        - **DriftStatus** *(string) --*
+
+          Status of the stack set's actual configuration compared to its expected template and
+          parameter configuration. A stack set is considered to have drifted if one or more of its
+          stack instances have drifted from their expected template and parameter configuration.
+
+          * ``DRIFTED`` : One or more of the stack instances belonging to the stack set stack
+          differs from the expected template and parameter configuration. A stack instance is
+          considered to have drifted if one or more of the resources in the associated stack have
+          drifted.
+
+          * ``NOT_CHECKED`` : AWS CloudFormation has not checked the stack set for drift.
+
+          * ``IN_SYNC`` : All of the stack instances belonging to the stack set stack match from
+          the expected template and parameter configuration.
+
+        - **DriftDetectionStatus** *(string) --*
+
+          The status of the stack set drift detection operation.
+
+          * ``COMPLETED`` : The drift detection operation completed without failing on any stack
+          instances.
+
+          * ``FAILED`` : The drift detection operation exceeded the specified failure tolerance.
+
+          * ``PARTIAL_SUCCESS`` : The drift detection operation completed without exceeding the
+          failure tolerance for the operation.
+
+          * ``IN_PROGRESS`` : The drift detection operation is currently being performed.
+
+          * ``STOPPED`` : The user has cancelled the drift detection operation.
+
+        - **LastDriftCheckTimestamp** *(datetime) --*
+
+          Most recent time when CloudFormation performed a drift detection operation on the stack
+          set. This value will be ``NULL`` for any stack set on which drift detection has not yet
+          been performed.
+
+        - **TotalStackInstancesCount** *(integer) --*
+
+          The total number of stack instances belonging to this stack set.
+
+          The total number of stack instances is equal to the total of:
+
+          * Stack instances that match the stack set configuration.
+
+          * Stack instances that have drifted from the stack set configuration.
+
+          * Stack instances where the drift detection operation has failed.
+
+          * Stack instances currently being checked for drift.
+
+        - **DriftedStackInstancesCount** *(integer) --*
+
+          The number of stack instances that have drifted from the expected template and parameter
+          configuration of the stack set. A stack instance is considered to have drifted if one or
+          more of the resources in the associated stack do not match their expected configuration.
+
+        - **InSyncStackInstancesCount** *(integer) --*
+
+          The number of stack instances which match the expected template and parameter
+          configuration of the stack set.
+
+        - **InProgressStackInstancesCount** *(integer) --*
+
+          The number of stack instances that are currently being checked for drift.
+
+        - **FailedStackInstancesCount** *(integer) --*
+
+          The number of stack instances for which the drift detection operation failed.
     """
 
 
@@ -4702,6 +5036,216 @@ class ClientDescribeStacksResponseTypeDef(_ClientDescribeStacksResponseTypeDef):
     """
 
 
+_ClientDescribeTypeRegistrationResponseTypeDef = TypedDict(
+    "_ClientDescribeTypeRegistrationResponseTypeDef",
+    {"ProgressStatus": str, "Description": str, "TypeArn": str, "TypeVersionArn": str},
+    total=False,
+)
+
+
+class ClientDescribeTypeRegistrationResponseTypeDef(
+    _ClientDescribeTypeRegistrationResponseTypeDef
+):
+    """
+    Type definition for `ClientDescribeTypeRegistration` `Response`
+
+    - **ProgressStatus** *(string) --*
+
+      The current status of the type registration request.
+
+    - **Description** *(string) --*
+
+      The description of the type registration request.
+
+    - **TypeArn** *(string) --*
+
+      The Amazon Resource Name (ARN) of the type being registered.
+
+      For registration requests with a ``ProgressStatus`` of other than ``COMPLETE`` , this will be
+      ``null`` .
+
+    - **TypeVersionArn** *(string) --*
+
+      The Amazon Resource Name (ARN) of this specific version of the type being registered.
+
+      For registration requests with a ``ProgressStatus`` of other than ``COMPLETE`` , this will be
+      ``null`` .
+    """
+
+
+_ClientDescribeTypeResponseLoggingConfigTypeDef = TypedDict(
+    "_ClientDescribeTypeResponseLoggingConfigTypeDef",
+    {"LogRoleArn": str, "LogGroupName": str},
+    total=False,
+)
+
+
+class ClientDescribeTypeResponseLoggingConfigTypeDef(
+    _ClientDescribeTypeResponseLoggingConfigTypeDef
+):
+    """
+    Type definition for `ClientDescribeTypeResponse` `LoggingConfig`
+
+    Contains logging configuration information for a type.
+
+    - **LogRoleArn** *(string) --*
+
+      The ARN of the role that CloudFormation should assume when sending log entries to
+      CloudWatch logs.
+
+    - **LogGroupName** *(string) --*
+
+      The Amazon CloudWatch log group to which CloudFormation sends error logging information
+      when invoking the type's handlers.
+    """
+
+
+_ClientDescribeTypeResponseTypeDef = TypedDict(
+    "_ClientDescribeTypeResponseTypeDef",
+    {
+        "Arn": str,
+        "Type": str,
+        "TypeName": str,
+        "DefaultVersionId": str,
+        "Description": str,
+        "Schema": str,
+        "ProvisioningType": str,
+        "DeprecatedStatus": str,
+        "LoggingConfig": ClientDescribeTypeResponseLoggingConfigTypeDef,
+        "ExecutionRoleArn": str,
+        "Visibility": str,
+        "SourceUrl": str,
+        "DocumentationUrl": str,
+        "LastUpdated": datetime,
+        "TimeCreated": datetime,
+    },
+    total=False,
+)
+
+
+class ClientDescribeTypeResponseTypeDef(_ClientDescribeTypeResponseTypeDef):
+    """
+    Type definition for `ClientDescribeType` `Response`
+
+    - **Arn** *(string) --*
+
+      The Amazon Resource Name (ARN) of the type.
+
+    - **Type** *(string) --*
+
+      The kind of type.
+
+      Currently the only valid value is ``RESOURCE`` .
+
+    - **TypeName** *(string) --*
+
+      The name of the registered type.
+
+    - **DefaultVersionId** *(string) --*
+
+      The ID of the default version of the type. The default version is used when the type version
+      is not specified.
+
+      To set the default version of a type, use ``  SetTypeDefaultVersion `` .
+
+    - **Description** *(string) --*
+
+      The description of the registered type.
+
+    - **Schema** *(string) --*
+
+      The schema that defines the type.
+
+      For more information on type schemas, see `Resource Provider Schema
+      <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-schema.html>`__
+      in the *CloudFormation CLI User Guide* .
+
+    - **ProvisioningType** *(string) --*
+
+      The provisioning behavior of the type. AWS CloudFormation determines the provisioning type
+      during registration, based on the types of handlers in the schema handler package submitted.
+
+      Valid values include:
+
+      * ``FULLY_MUTABLE`` : The type includes an update handler to process updates to the type
+      during stack update operations.
+
+      * ``IMMUTABLE`` : The type does not include an update handler, so the type cannot be updated
+      and must instead be replaced during stack update operations.
+
+      * ``NON_PROVISIONABLE`` : The type does not include all of the following handlers, and
+      therefore cannot actually be provisioned.
+
+        * create
+
+        * read
+
+        * delete
+
+    - **DeprecatedStatus** *(string) --*
+
+      The deprecation status of the type.
+
+      Valid values include:
+
+      * ``LIVE`` : The type is registered and can be used in CloudFormation operations, dependent
+      on its provisioning behavior and visibility scope.
+
+      * ``DEPRECATED`` : The type has been deregistered and can no longer be used in CloudFormation
+      operations.
+
+    - **LoggingConfig** *(dict) --*
+
+      Contains logging configuration information for a type.
+
+      - **LogRoleArn** *(string) --*
+
+        The ARN of the role that CloudFormation should assume when sending log entries to
+        CloudWatch logs.
+
+      - **LogGroupName** *(string) --*
+
+        The Amazon CloudWatch log group to which CloudFormation sends error logging information
+        when invoking the type's handlers.
+
+    - **ExecutionRoleArn** *(string) --*
+
+      The Amazon Resource Name (ARN) of the IAM execution role used to register the type. If your
+      resource type calls AWS APIs in any of its handlers, you must create an * `IAM execution role
+      <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html>`__ * that includes the
+      necessary permissions to call those AWS APIs, and provision that execution role in your
+      account. CloudFormation then assumes that execution role to provide your resource type with
+      the appropriate credentials.
+
+    - **Visibility** *(string) --*
+
+      The scope at which the type is visible and usable in CloudFormation operations.
+
+      Valid values include:
+
+      * ``PRIVATE`` : The type is only visible and usable within the account in which it is
+      registered. Currently, AWS CloudFormation marks any types you register as ``PRIVATE`` .
+
+      * ``PUBLIC`` : The type is publically visible and usable within any Amazon account.
+
+    - **SourceUrl** *(string) --*
+
+      The URL of the source code for the type.
+
+    - **DocumentationUrl** *(string) --*
+
+      The URL of a page providing detailed documentation for this type.
+
+    - **LastUpdated** *(datetime) --*
+
+      When the specified type version was registered.
+
+    - **TimeCreated** *(datetime) --*
+
+      When the specified type version was registered.
+    """
+
+
 _ClientDetectStackDriftResponseTypeDef = TypedDict(
     "_ClientDetectStackDriftResponseTypeDef",
     {"StackDriftDetectionId": str},
@@ -5086,6 +5630,109 @@ class ClientDetectStackResourceDriftResponseTypeDef(
       - **Timestamp** *(datetime) --*
 
         Time at which AWS CloudFormation performed drift detection on the stack resource.
+    """
+
+
+_ClientDetectStackSetDriftOperationPreferencesTypeDef = TypedDict(
+    "_ClientDetectStackSetDriftOperationPreferencesTypeDef",
+    {
+        "RegionOrder": List[str],
+        "FailureToleranceCount": int,
+        "FailureTolerancePercentage": int,
+        "MaxConcurrentCount": int,
+        "MaxConcurrentPercentage": int,
+    },
+    total=False,
+)
+
+
+class ClientDetectStackSetDriftOperationPreferencesTypeDef(
+    _ClientDetectStackSetDriftOperationPreferencesTypeDef
+):
+    """
+    Type definition for `ClientDetectStackSetDrift` `OperationPreferences`
+
+    The user-specified preferences for how AWS CloudFormation performs a stack set operation.
+
+    For more information on maximum concurrent accounts and failure tolerance, see `Stack set
+    operation options
+    <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options>`__
+    .
+
+    - **RegionOrder** *(list) --*
+
+      The order of the regions in where you want to perform the stack operation.
+
+      - *(string) --*
+
+    - **FailureToleranceCount** *(integer) --*
+
+      The number of accounts, per region, for which this operation can fail before AWS CloudFormation
+      stops the operation in that region. If the operation is stopped in a region, AWS CloudFormation
+      doesn't attempt the operation in any subsequent regions.
+
+      Conditional: You must specify either ``FailureToleranceCount`` or
+      ``FailureTolerancePercentage`` (but not both).
+
+    - **FailureTolerancePercentage** *(integer) --*
+
+      The percentage of accounts, per region, for which this stack operation can fail before AWS
+      CloudFormation stops the operation in that region. If the operation is stopped in a region, AWS
+      CloudFormation doesn't attempt the operation in any subsequent regions.
+
+      When calculating the number of accounts based on the specified percentage, AWS CloudFormation
+      rounds *down* to the next whole number.
+
+      Conditional: You must specify either ``FailureToleranceCount`` or
+      ``FailureTolerancePercentage`` , but not both.
+
+    - **MaxConcurrentCount** *(integer) --*
+
+      The maximum number of accounts in which to perform this operation at one time. This is
+      dependent on the value of ``FailureToleranceCount`` —``MaxConcurrentCount`` is at most one more
+      than the ``FailureToleranceCount`` .
+
+      Note that this setting lets you specify the *maximum* for operations. For large deployments,
+      under certain circumstances the actual number of accounts acted upon concurrently may be lower
+      due to service throttling.
+
+      Conditional: You must specify either ``MaxConcurrentCount`` or ``MaxConcurrentPercentage`` ,
+      but not both.
+
+    - **MaxConcurrentPercentage** *(integer) --*
+
+      The maximum percentage of accounts in which to perform this operation at one time.
+
+      When calculating the number of accounts based on the specified percentage, AWS CloudFormation
+      rounds down to the next whole number. This is true except in cases where rounding down would
+      result is zero. In this case, CloudFormation sets the number as one instead.
+
+      Note that this setting lets you specify the *maximum* for operations. For large deployments,
+      under certain circumstances the actual number of accounts acted upon concurrently may be lower
+      due to service throttling.
+
+      Conditional: You must specify either ``MaxConcurrentCount`` or ``MaxConcurrentPercentage`` ,
+      but not both.
+    """
+
+
+_ClientDetectStackSetDriftResponseTypeDef = TypedDict(
+    "_ClientDetectStackSetDriftResponseTypeDef", {"OperationId": str}, total=False
+)
+
+
+class ClientDetectStackSetDriftResponseTypeDef(
+    _ClientDetectStackSetDriftResponseTypeDef
+):
+    """
+    Type definition for `ClientDetectStackSetDrift` `Response`
+
+    - **OperationId** *(string) --*
+
+      The ID of the drift detection stack set operation.
+
+      you can use this operation id with ``  DescribeStackSetOperation `` to monitor the progress
+      of the drift detection operation.
     """
 
 
@@ -5706,6 +6353,8 @@ _ClientListStackInstancesResponseSummariesTypeDef = TypedDict(
         "StackId": str,
         "Status": str,
         "StatusReason": str,
+        "DriftStatus": str,
+        "LastDriftCheckTimestamp": datetime,
     },
     total=False,
 )
@@ -5759,6 +6408,29 @@ class ClientListStackInstancesResponseSummariesTypeDef(
     - **StatusReason** *(string) --*
 
       The explanation for the specific status code assigned to this stack instance.
+
+    - **DriftStatus** *(string) --*
+
+      Status of the stack instance's actual configuration compared to the expected template and
+      parameter configuration of the stack set to which it belongs.
+
+      * ``DRIFTED`` : The stack differs from the expected template and parameter configuration
+      of the stack set to which it belongs. A stack instance is considered to have drifted if
+      one or more of the resources in the associated stack have drifted.
+
+      * ``NOT_CHECKED`` : AWS CloudFormation has not checked if the stack instance differs from
+      its expected stack set configuration.
+
+      * ``IN_SYNC`` : The stack instance's actual configuration matches its expected stack set
+      configuration.
+
+      * ``UNKNOWN`` : This value is reserved for future use.
+
+    - **LastDriftCheckTimestamp** *(datetime) --*
+
+      Most recent time when CloudFormation performed a drift detection operation on the stack
+      instance. This value will be ``NULL`` for any stack instance on which drift detection has
+      not yet been performed.
     """
 
 
@@ -5825,6 +6497,29 @@ class ClientListStackInstancesResponseTypeDef(_ClientListStackInstancesResponseT
         - **StatusReason** *(string) --*
 
           The explanation for the specific status code assigned to this stack instance.
+
+        - **DriftStatus** *(string) --*
+
+          Status of the stack instance's actual configuration compared to the expected template and
+          parameter configuration of the stack set to which it belongs.
+
+          * ``DRIFTED`` : The stack differs from the expected template and parameter configuration
+          of the stack set to which it belongs. A stack instance is considered to have drifted if
+          one or more of the resources in the associated stack have drifted.
+
+          * ``NOT_CHECKED`` : AWS CloudFormation has not checked if the stack instance differs from
+          its expected stack set configuration.
+
+          * ``IN_SYNC`` : The stack instance's actual configuration matches its expected stack set
+          configuration.
+
+          * ``UNKNOWN`` : This value is reserved for future use.
+
+        - **LastDriftCheckTimestamp** *(datetime) --*
+
+          Most recent time when CloudFormation performed a drift detection operation on the stack
+          instance. This value will be ``NULL`` for any stack instance on which drift detection has
+          not yet been performed.
 
     - **NextToken** *(string) --*
 
@@ -6462,7 +7157,14 @@ class ClientListStackSetOperationsResponseTypeDef(
 
 _ClientListStackSetsResponseSummariesTypeDef = TypedDict(
     "_ClientListStackSetsResponseSummariesTypeDef",
-    {"StackSetName": str, "StackSetId": str, "Description": str, "Status": str},
+    {
+        "StackSetName": str,
+        "StackSetId": str,
+        "Description": str,
+        "Status": str,
+        "DriftStatus": str,
+        "LastDriftCheckTimestamp": datetime,
+    },
     total=False,
 )
 
@@ -6490,6 +7192,30 @@ class ClientListStackSetsResponseSummariesTypeDef(
     - **Status** *(string) --*
 
       The status of the stack set.
+
+    - **DriftStatus** *(string) --*
+
+      Status of the stack set's actual configuration compared to its expected template and
+      parameter configuration. A stack set is considered to have drifted if one or more of its
+      stack instances have drifted from their expected template and parameter configuration.
+
+      * ``DRIFTED`` : One or more of the stack instances belonging to the stack set stack
+      differs from the expected template and parameter configuration. A stack instance is
+      considered to have drifted if one or more of the resources in the associated stack have
+      drifted.
+
+      * ``NOT_CHECKED`` : AWS CloudFormation has not checked the stack set for drift.
+
+      * ``IN_SYNC`` : All of the stack instances belonging to the stack set stack match from
+      the expected template and parameter configuration.
+
+      * ``UNKNOWN`` : This value is reserved for future use.
+
+    - **LastDriftCheckTimestamp** *(datetime) --*
+
+      Most recent time when CloudFormation performed a drift detection operation on the stack
+      set. This value will be ``NULL`` for any stack set on which drift detection has not yet
+      been performed.
     """
 
 
@@ -6527,6 +7253,30 @@ class ClientListStackSetsResponseTypeDef(_ClientListStackSetsResponseTypeDef):
         - **Status** *(string) --*
 
           The status of the stack set.
+
+        - **DriftStatus** *(string) --*
+
+          Status of the stack set's actual configuration compared to its expected template and
+          parameter configuration. A stack set is considered to have drifted if one or more of its
+          stack instances have drifted from their expected template and parameter configuration.
+
+          * ``DRIFTED`` : One or more of the stack instances belonging to the stack set stack
+          differs from the expected template and parameter configuration. A stack instance is
+          considered to have drifted if one or more of the resources in the associated stack have
+          drifted.
+
+          * ``NOT_CHECKED`` : AWS CloudFormation has not checked the stack set for drift.
+
+          * ``IN_SYNC`` : All of the stack instances belonging to the stack set stack match from
+          the expected template and parameter configuration.
+
+          * ``UNKNOWN`` : This value is reserved for future use.
+
+        - **LastDriftCheckTimestamp** *(datetime) --*
+
+          Most recent time when CloudFormation performed a drift detection operation on the stack
+          set. This value will be ``NULL`` for any stack set on which drift detection has not yet
+          been performed.
 
     - **NextToken** *(string) --*
 
@@ -6801,6 +7551,295 @@ class ClientListStacksResponseTypeDef(_ClientListStacksResponseTypeDef):
 
       If the output exceeds 1 MB in size, a string that identifies the next page of stacks. If no
       additional page exists, this value is null.
+    """
+
+
+_ClientListTypeRegistrationsResponseTypeDef = TypedDict(
+    "_ClientListTypeRegistrationsResponseTypeDef",
+    {"RegistrationTokenList": List[str], "NextToken": str},
+    total=False,
+)
+
+
+class ClientListTypeRegistrationsResponseTypeDef(
+    _ClientListTypeRegistrationsResponseTypeDef
+):
+    """
+    Type definition for `ClientListTypeRegistrations` `Response`
+
+    - **RegistrationTokenList** *(list) --*
+
+      A list of type registration tokens.
+
+      Use ``  DescribeTypeRegistration `` to return detailed information about a type registration
+      request.
+
+      - *(string) --*
+
+    - **NextToken** *(string) --*
+
+      If the request doesn't return all of the remaining results, ``NextToken`` is set to a token.
+      To retrieve the next set of results, call this action again and assign that token to the
+      request object's ``NextToken`` parameter. If the request returns all results, ``NextToken``
+      is set to ``null`` .
+    """
+
+
+_ClientListTypeVersionsResponseTypeVersionSummariesTypeDef = TypedDict(
+    "_ClientListTypeVersionsResponseTypeVersionSummariesTypeDef",
+    {
+        "Type": str,
+        "TypeName": str,
+        "VersionId": str,
+        "Arn": str,
+        "TimeCreated": datetime,
+        "Description": str,
+    },
+    total=False,
+)
+
+
+class ClientListTypeVersionsResponseTypeVersionSummariesTypeDef(
+    _ClientListTypeVersionsResponseTypeVersionSummariesTypeDef
+):
+    """
+    Type definition for `ClientListTypeVersionsResponse` `TypeVersionSummaries`
+
+    Contains summary information about a specific version of a CloudFormation type.
+
+    - **Type** *(string) --*
+
+      The kind of type.
+
+    - **TypeName** *(string) --*
+
+      The name of the type.
+
+    - **VersionId** *(string) --*
+
+      The ID of a specific version of the type. The version ID is the value at the end of the
+      Amazon Resource Name (ARN) assigned to the type version when it is registered.
+
+    - **Arn** *(string) --*
+
+      The Amazon Resource Name (ARN) of the type version.
+
+    - **TimeCreated** *(datetime) --*
+
+      When the version was registered.
+
+    - **Description** *(string) --*
+
+      The description of the type version.
+    """
+
+
+_ClientListTypeVersionsResponseTypeDef = TypedDict(
+    "_ClientListTypeVersionsResponseTypeDef",
+    {
+        "TypeVersionSummaries": List[
+            ClientListTypeVersionsResponseTypeVersionSummariesTypeDef
+        ],
+        "NextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientListTypeVersionsResponseTypeDef(_ClientListTypeVersionsResponseTypeDef):
+    """
+    Type definition for `ClientListTypeVersions` `Response`
+
+    - **TypeVersionSummaries** *(list) --*
+
+      A list of ``TypeVersionSummary`` structures that contain information about the specified
+      type's versions.
+
+      - *(dict) --*
+
+        Contains summary information about a specific version of a CloudFormation type.
+
+        - **Type** *(string) --*
+
+          The kind of type.
+
+        - **TypeName** *(string) --*
+
+          The name of the type.
+
+        - **VersionId** *(string) --*
+
+          The ID of a specific version of the type. The version ID is the value at the end of the
+          Amazon Resource Name (ARN) assigned to the type version when it is registered.
+
+        - **Arn** *(string) --*
+
+          The Amazon Resource Name (ARN) of the type version.
+
+        - **TimeCreated** *(datetime) --*
+
+          When the version was registered.
+
+        - **Description** *(string) --*
+
+          The description of the type version.
+
+    - **NextToken** *(string) --*
+
+      If the request doesn't return all of the remaining results, ``NextToken`` is set to a token.
+      To retrieve the next set of results, call this action again and assign that token to the
+      request object's ``NextToken`` parameter. If the request returns all results, ``NextToken``
+      is set to ``null`` .
+    """
+
+
+_ClientListTypesResponseTypeSummariesTypeDef = TypedDict(
+    "_ClientListTypesResponseTypeSummariesTypeDef",
+    {
+        "Type": str,
+        "TypeName": str,
+        "DefaultVersionId": str,
+        "TypeArn": str,
+        "LastUpdated": datetime,
+        "Description": str,
+    },
+    total=False,
+)
+
+
+class ClientListTypesResponseTypeSummariesTypeDef(
+    _ClientListTypesResponseTypeSummariesTypeDef
+):
+    """
+    Type definition for `ClientListTypesResponse` `TypeSummaries`
+
+    Contains summary information about the specified CloudFormation type.
+
+    - **Type** *(string) --*
+
+      The kind of type.
+
+    - **TypeName** *(string) --*
+
+      The name of the type.
+
+    - **DefaultVersionId** *(string) --*
+
+      The ID of the default version of the type. The default version is used when the type
+      version is not specified.
+
+      To set the default version of a type, use ``  SetTypeDefaultVersion `` .
+
+    - **TypeArn** *(string) --*
+
+      The Amazon Resource Name (ARN) of the type.
+
+    - **LastUpdated** *(datetime) --*
+
+      When the current default version of the type was registered.
+
+    - **Description** *(string) --*
+
+      The description of the type.
+    """
+
+
+_ClientListTypesResponseTypeDef = TypedDict(
+    "_ClientListTypesResponseTypeDef",
+    {
+        "TypeSummaries": List[ClientListTypesResponseTypeSummariesTypeDef],
+        "NextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientListTypesResponseTypeDef(_ClientListTypesResponseTypeDef):
+    """
+    Type definition for `ClientListTypes` `Response`
+
+    - **TypeSummaries** *(list) --*
+
+      A list of ``TypeSummary`` structures that contain information about the specified types.
+
+      - *(dict) --*
+
+        Contains summary information about the specified CloudFormation type.
+
+        - **Type** *(string) --*
+
+          The kind of type.
+
+        - **TypeName** *(string) --*
+
+          The name of the type.
+
+        - **DefaultVersionId** *(string) --*
+
+          The ID of the default version of the type. The default version is used when the type
+          version is not specified.
+
+          To set the default version of a type, use ``  SetTypeDefaultVersion `` .
+
+        - **TypeArn** *(string) --*
+
+          The Amazon Resource Name (ARN) of the type.
+
+        - **LastUpdated** *(datetime) --*
+
+          When the current default version of the type was registered.
+
+        - **Description** *(string) --*
+
+          The description of the type.
+
+    - **NextToken** *(string) --*
+
+      If the request doesn't return all of the remaining results, ``NextToken`` is set to a token.
+      To retrieve the next set of results, call this action again and assign that token to the
+      request object's ``NextToken`` parameter. If the request returns all results, ``NextToken``
+      is set to ``null`` .
+    """
+
+
+_ClientRegisterTypeLoggingConfigTypeDef = TypedDict(
+    "_ClientRegisterTypeLoggingConfigTypeDef", {"LogRoleArn": str, "LogGroupName": str}
+)
+
+
+class ClientRegisterTypeLoggingConfigTypeDef(_ClientRegisterTypeLoggingConfigTypeDef):
+    """
+    Type definition for `ClientRegisterType` `LoggingConfig`
+
+    Specifies logging configuration information for a type.
+
+    - **LogRoleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the role that CloudFormation should assume when sending log entries to CloudWatch
+      logs.
+
+    - **LogGroupName** *(string) --* **[REQUIRED]**
+
+      The Amazon CloudWatch log group to which CloudFormation sends error logging information when
+      invoking the type's handlers.
+    """
+
+
+_ClientRegisterTypeResponseTypeDef = TypedDict(
+    "_ClientRegisterTypeResponseTypeDef", {"RegistrationToken": str}, total=False
+)
+
+
+class ClientRegisterTypeResponseTypeDef(_ClientRegisterTypeResponseTypeDef):
+    """
+    Type definition for `ClientRegisterType` `Response`
+
+    - **RegistrationToken** *(string) --*
+
+      The identifier for this registration request.
+
+      Use this registration token when calling ``  DescribeTypeRegistration `` , which returns
+      information about the status and IDs of the type registration.
     """
 
 
@@ -9990,6 +11029,8 @@ _ListStackInstancesPaginateResponseSummariesTypeDef = TypedDict(
         "StackId": str,
         "Status": str,
         "StatusReason": str,
+        "DriftStatus": str,
+        "LastDriftCheckTimestamp": datetime,
     },
     total=False,
 )
@@ -10043,6 +11084,29 @@ class ListStackInstancesPaginateResponseSummariesTypeDef(
     - **StatusReason** *(string) --*
 
       The explanation for the specific status code assigned to this stack instance.
+
+    - **DriftStatus** *(string) --*
+
+      Status of the stack instance's actual configuration compared to the expected template and
+      parameter configuration of the stack set to which it belongs.
+
+      * ``DRIFTED`` : The stack differs from the expected template and parameter configuration
+      of the stack set to which it belongs. A stack instance is considered to have drifted if
+      one or more of the resources in the associated stack have drifted.
+
+      * ``NOT_CHECKED`` : AWS CloudFormation has not checked if the stack instance differs from
+      its expected stack set configuration.
+
+      * ``IN_SYNC`` : The stack instance's actual configuration matches its expected stack set
+      configuration.
+
+      * ``UNKNOWN`` : This value is reserved for future use.
+
+    - **LastDriftCheckTimestamp** *(datetime) --*
+
+      Most recent time when CloudFormation performed a drift detection operation on the stack
+      instance. This value will be ``NULL`` for any stack instance on which drift detection has
+      not yet been performed.
     """
 
 
@@ -10108,6 +11172,29 @@ class ListStackInstancesPaginateResponseTypeDef(
         - **StatusReason** *(string) --*
 
           The explanation for the specific status code assigned to this stack instance.
+
+        - **DriftStatus** *(string) --*
+
+          Status of the stack instance's actual configuration compared to the expected template and
+          parameter configuration of the stack set to which it belongs.
+
+          * ``DRIFTED`` : The stack differs from the expected template and parameter configuration
+          of the stack set to which it belongs. A stack instance is considered to have drifted if
+          one or more of the resources in the associated stack have drifted.
+
+          * ``NOT_CHECKED`` : AWS CloudFormation has not checked if the stack instance differs from
+          its expected stack set configuration.
+
+          * ``IN_SYNC`` : The stack instance's actual configuration matches its expected stack set
+          configuration.
+
+          * ``UNKNOWN`` : This value is reserved for future use.
+
+        - **LastDriftCheckTimestamp** *(datetime) --*
+
+          Most recent time when CloudFormation performed a drift detection operation on the stack
+          instance. This value will be ``NULL`` for any stack instance on which drift detection has
+          not yet been performed.
     """
 
 
@@ -10838,7 +11925,14 @@ class ListStackSetsPaginatePaginationConfigTypeDef(
 
 _ListStackSetsPaginateResponseSummariesTypeDef = TypedDict(
     "_ListStackSetsPaginateResponseSummariesTypeDef",
-    {"StackSetName": str, "StackSetId": str, "Description": str, "Status": str},
+    {
+        "StackSetName": str,
+        "StackSetId": str,
+        "Description": str,
+        "Status": str,
+        "DriftStatus": str,
+        "LastDriftCheckTimestamp": datetime,
+    },
     total=False,
 )
 
@@ -10866,6 +11960,30 @@ class ListStackSetsPaginateResponseSummariesTypeDef(
     - **Status** *(string) --*
 
       The status of the stack set.
+
+    - **DriftStatus** *(string) --*
+
+      Status of the stack set's actual configuration compared to its expected template and
+      parameter configuration. A stack set is considered to have drifted if one or more of its
+      stack instances have drifted from their expected template and parameter configuration.
+
+      * ``DRIFTED`` : One or more of the stack instances belonging to the stack set stack
+      differs from the expected template and parameter configuration. A stack instance is
+      considered to have drifted if one or more of the resources in the associated stack have
+      drifted.
+
+      * ``NOT_CHECKED`` : AWS CloudFormation has not checked the stack set for drift.
+
+      * ``IN_SYNC`` : All of the stack instances belonging to the stack set stack match from
+      the expected template and parameter configuration.
+
+      * ``UNKNOWN`` : This value is reserved for future use.
+
+    - **LastDriftCheckTimestamp** *(datetime) --*
+
+      Most recent time when CloudFormation performed a drift detection operation on the stack
+      set. This value will be ``NULL`` for any stack set on which drift detection has not yet
+      been performed.
     """
 
 
@@ -10903,6 +12021,30 @@ class ListStackSetsPaginateResponseTypeDef(_ListStackSetsPaginateResponseTypeDef
         - **Status** *(string) --*
 
           The status of the stack set.
+
+        - **DriftStatus** *(string) --*
+
+          Status of the stack set's actual configuration compared to its expected template and
+          parameter configuration. A stack set is considered to have drifted if one or more of its
+          stack instances have drifted from their expected template and parameter configuration.
+
+          * ``DRIFTED`` : One or more of the stack instances belonging to the stack set stack
+          differs from the expected template and parameter configuration. A stack instance is
+          considered to have drifted if one or more of the resources in the associated stack have
+          drifted.
+
+          * ``NOT_CHECKED`` : AWS CloudFormation has not checked the stack set for drift.
+
+          * ``IN_SYNC`` : All of the stack instances belonging to the stack set stack match from
+          the expected template and parameter configuration.
+
+          * ``UNKNOWN`` : This value is reserved for future use.
+
+        - **LastDriftCheckTimestamp** *(datetime) --*
+
+          Most recent time when CloudFormation performed a drift detection operation on the stack
+          set. This value will be ``NULL`` for any stack set on which drift detection has not yet
+          been performed.
     """
 
 
@@ -11680,4 +12822,29 @@ class StackUpdateTagsTypeDef(_StackUpdateTagsTypeDef):
 
        *Required* . A string containing the value for this tag. You can specify a maximum of 256
        characters for a tag value.
+    """
+
+
+_TypeRegistrationCompleteWaitWaiterConfigTypeDef = TypedDict(
+    "_TypeRegistrationCompleteWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class TypeRegistrationCompleteWaitWaiterConfigTypeDef(
+    _TypeRegistrationCompleteWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `TypeRegistrationCompleteWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 120
     """

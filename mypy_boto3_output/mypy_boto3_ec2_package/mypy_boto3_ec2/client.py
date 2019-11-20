@@ -419,6 +419,7 @@ from mypy_boto3_ec2.type_defs import (
     ClientModifyInstanceCreditSpecificationInstanceCreditSpecificationsTypeDef,
     ClientModifyInstanceCreditSpecificationResponseTypeDef,
     ClientModifyInstanceEventStartTimeResponseTypeDef,
+    ClientModifyInstanceMetadataOptionsResponseTypeDef,
     ClientModifyInstancePlacementResponseTypeDef,
     ClientModifyLaunchTemplateResponseTypeDef,
     ClientModifyNetworkInterfaceAttributeAttachmentTypeDef,
@@ -497,6 +498,7 @@ from mypy_boto3_ec2.type_defs import (
     ClientRunInstancesIpv6AddressesTypeDef,
     ClientRunInstancesLaunchTemplateTypeDef,
     ClientRunInstancesLicenseSpecificationsTypeDef,
+    ClientRunInstancesMetadataOptionsTypeDef,
     ClientRunInstancesMonitoringTypeDef,
     ClientRunInstancesNetworkInterfacesTypeDef,
     ClientRunInstancesPlacementTypeDef,
@@ -5806,6 +5808,7 @@ class Client(BaseClient):
         Type: str,
         PublicIp: str = None,
         CertificateArn: str = None,
+        DeviceName: str = None,
         DryRun: bool = None,
     ) -> ClientCreateCustomerGatewayResponseTypeDef:
         """
@@ -5831,10 +5834,9 @@ class Client(BaseClient):
 
         .. warning::
 
-          You cannot create more than one customer gateway with the same VPN type, IP address, and BGP ASN
-          parameter values. If you run an identical request more than one time, the first request creates
-          the customer gateway, and subsequent requests return information about the existing customer
-          gateway. The subsequent requests do not create new customer gateway resources.
+          To create more than one customer gateway with the same VPN type, IP address, and BGP ASN, specify
+          a unique device name for each customer gateway. Identical requests return information about the
+          existing customer gateway and do not create new customer gateways.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateCustomerGateway>`_
@@ -5847,6 +5849,7 @@ class Client(BaseClient):
               PublicIp='string',
               CertificateArn='string',
               Type='ipsec.1',
+              DeviceName='string',
               DryRun=True|False
           )
         :type BgpAsn: integer
@@ -5872,6 +5875,13 @@ class Client(BaseClient):
 
           The type of VPN connection that this customer gateway supports (``ipsec.1`` ).
 
+        :type DeviceName: string
+        :param DeviceName:
+
+          A name for the customer gateway device.
+
+          Length Constraints: Up to 255 characters.
+
         :type DryRun: boolean
         :param DryRun:
 
@@ -5894,6 +5904,7 @@ class Client(BaseClient):
                     'CertificateArn': 'string',
                     'State': 'string',
                     'Type': 'string',
+                    'DeviceName': 'string',
                     'Tags': [
                         {
                             'Key': 'string',
@@ -5935,6 +5946,10 @@ class Client(BaseClient):
               - **Type** *(string) --*
 
                 The type of VPN connection the customer gateway supports (``ipsec.1`` ).
+
+              - **DeviceName** *(string) --*
+
+                The name of customer gateway device.
 
               - **Tags** *(list) --*
 
@@ -23593,6 +23608,7 @@ class Client(BaseClient):
                         'CertificateArn': 'string',
                         'State': 'string',
                         'Type': 'string',
+                        'DeviceName': 'string',
                         'Tags': [
                             {
                                 'Key': 'string',
@@ -23639,6 +23655,10 @@ class Client(BaseClient):
                 - **Type** *(string) --*
 
                   The type of VPN connection the customer gateway supports (``ipsec.1`` ).
+
+                - **DeviceName** *(string) --*
+
+                  The name of customer gateway device.
 
                 - **Tags** *(list) --*
 
@@ -29836,9 +29856,7 @@ class Client(BaseClient):
           * ``hypervisor`` - The hypervisor type of the instance (``ovm`` | ``xen`` ).
 
           * ``iam-instance-profile.arn`` - The instance profile associated with the instance. Specified as
-          an ARN.
-
-          * ``image-id`` - The ID of the image used to launch the instance.
+          an ARN. ``image-id`` - The ID of the image used to launch the instance.
 
           * ``instance-id`` - The ID of the instance.
 
@@ -29869,6 +29887,15 @@ class Client(BaseClient):
           launch group (for example, 0, 1, 2, and so on).
 
           * ``launch-time`` - The time when the instance was launched.
+
+          * ``metadata-http-tokens`` - The metadata request authorization state (``optional`` |
+          ``required`` )
+
+          * ``metadata-http-put-response-hop-limit`` - The http metadata request put response hop limit
+          (integer, possible values ``1`` to ``64`` )
+
+          * ``metadata-http-endpoint`` - Enable or disable metadata access on http endpoint (``enabled`` |
+          ``disabled`` )
 
           * ``monitoring-state`` - Indicates whether detailed monitoring is enabled (``disabled`` |
           ``enabled`` ).
@@ -30318,7 +30345,13 @@ class Client(BaseClient):
                                     {
                                         'LicenseConfigurationArn': 'string'
                                     },
-                                ]
+                                ],
+                                'MetadataOptions': {
+                                    'State': 'pending'|'applied',
+                                    'HttpTokens': 'optional'|'required',
+                                    'HttpPutResponseHopLimit': 123,
+                                    'HttpEndpoint': 'disabled'|'enabled'
+                                }
                             },
                         ],
                         'OwnerId': 'string',
@@ -30998,6 +31031,54 @@ class Client(BaseClient):
                         - **LicenseConfigurationArn** *(string) --*
 
                           The Amazon Resource Name (ARN) of the license configuration.
+
+                    - **MetadataOptions** *(dict) --*
+
+                      The metadata options for the instance.
+
+                      - **State** *(string) --*
+
+                        The state of the metadata option changes.
+
+                         ``pending`` - The metadata options are being updated and the instance is not ready
+                         to process metadata traffic with the new selection.
+
+                         ``applied`` - The metadata options have been successfully applied on the instance.
+
+                      - **HttpTokens** *(string) --*
+
+                        The state of token usage for your instance metadata requests. If the parameter is
+                        not specified in the request, the default state is ``optional`` .
+
+                        If the state is ``optional`` , you can choose to retrieve instance metadata with or
+                        without a signed token header on your request. If you retrieve the IAM role
+                        credentials without a token, the version 1.0 role credentials are returned. If you
+                        retrieve the IAM role credentials using a valid signed token, the version 2.0 role
+                        credentials are returned.
+
+                        If the state is ``required`` , you must send a signed token header with any
+                        instance metadata retrieval requests. In this state, retrieving the IAM role
+                        credential always returns the version 2.0 credentials; the version 1.0 credentials
+                        are not available.
+
+                      - **HttpPutResponseHopLimit** *(integer) --*
+
+                        The desired HTTP PUT response hop limit for instance metadata requests. The larger
+                        the number, the further instance metadata requests can travel.
+
+                        Default: 1
+
+                        Possible values: Integers from 1 to 64
+
+                      - **HttpEndpoint** *(string) --*
+
+                        This parameter enables or disables the HTTP metadata endpoint on your instances. If
+                        the parameter is not specified, the default state is ``enabled`` .
+
+                        .. note::
+
+                          If you specify a value of ``disabled`` , you will not be able to access your
+                          instance metadata.
 
                 - **OwnerId** *(string) --*
 
@@ -46920,6 +47001,8 @@ class Client(BaseClient):
 
           * ``vpn-gateway-id`` - The ID of a virtual private gateway associated with the VPN connection.
 
+          * ``transit-gateway-id`` - The ID of a transit gateway associated with the VPN connection.
+
           - *(dict) --*
 
             A filter name and value pair that is used to return a more specific list of results from a
@@ -54548,6 +54631,155 @@ class Client(BaseClient):
               - **NotBeforeDeadline** *(datetime) --*
 
                 The deadline for starting the event.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def modify_instance_metadata_options(
+        self,
+        InstanceId: str,
+        HttpTokens: str = None,
+        HttpPutResponseHopLimit: int = None,
+        HttpEndpoint: str = None,
+        DryRun: bool = None,
+    ) -> ClientModifyInstanceMetadataOptionsResponseTypeDef:
+        """
+        Modify the instance metadata parameters on a running or stopped instance. When you modify the
+        parameters on a stopped instance, they are applied when the instance is started. When you modify
+        the parameters on a running instance, the API responds with a state of “pending”. After the
+        parameter modifications are successfully applied to the instance, the state of the modifications
+        changes from “pending” to “applied” in subsequent describe-instances API calls. For more
+        information, see `Instance Metadata and User Data
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html>`__ .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceMetadataOptions>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.modify_instance_metadata_options(
+              InstanceId='string',
+              HttpTokens='optional'|'required',
+              HttpPutResponseHopLimit=123,
+              HttpEndpoint='disabled'|'enabled',
+              DryRun=True|False
+          )
+        :type InstanceId: string
+        :param InstanceId: **[REQUIRED]**
+
+          The ID of the instance.
+
+        :type HttpTokens: string
+        :param HttpTokens:
+
+          The state of token usage for your instance metadata requests. If the parameter is not specified
+          in the request, the default state is ``optional`` .
+
+          If the state is ``optional`` , you can choose to retrieve instance metadata with or without a
+          signed token header on your request. If you retrieve the IAM role credentials without a token,
+          the version 1.0 role credentials are returned. If you retrieve the IAM role credentials using a
+          valid signed token, the version 2.0 role credentials are returned.
+
+          If the state is ``required`` , you must send a signed token header with any instance metadata
+          retrieval requests. In this state, retrieving the IAM role credential always returns the version
+          2.0 credentials; the version 1.0 credentials are not available.
+
+        :type HttpPutResponseHopLimit: integer
+        :param HttpPutResponseHopLimit:
+
+          The desired HTTP PUT response hop limit for instance metadata requests. The larger the number,
+          the further instance metadata requests can travel. If no parameter is specified, the existing
+          state is maintained.
+
+          Possible values: Integers from 1 to 64
+
+        :type HttpEndpoint: string
+        :param HttpEndpoint:
+
+          This parameter enables or disables the HTTP metadata endpoint on your instances. If the parameter
+          is not specified, the existing state is maintained.
+
+          .. note::
+
+            If you specify a value of ``disabled`` , you will not be able to access your instance metadata.
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'InstanceId': 'string',
+                'InstanceMetadataOptions': {
+                    'State': 'pending'|'applied',
+                    'HttpTokens': 'optional'|'required',
+                    'HttpPutResponseHopLimit': 123,
+                    'HttpEndpoint': 'disabled'|'enabled'
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **InstanceId** *(string) --*
+
+              The ID of the instance.
+
+            - **InstanceMetadataOptions** *(dict) --*
+
+              The metadata options for the instance.
+
+              - **State** *(string) --*
+
+                The state of the metadata option changes.
+
+                 ``pending`` - The metadata options are being updated and the instance is not ready to
+                 process metadata traffic with the new selection.
+
+                 ``applied`` - The metadata options have been successfully applied on the instance.
+
+              - **HttpTokens** *(string) --*
+
+                The state of token usage for your instance metadata requests. If the parameter is not
+                specified in the request, the default state is ``optional`` .
+
+                If the state is ``optional`` , you can choose to retrieve instance metadata with or without
+                a signed token header on your request. If you retrieve the IAM role credentials without a
+                token, the version 1.0 role credentials are returned. If you retrieve the IAM role
+                credentials using a valid signed token, the version 2.0 role credentials are returned.
+
+                If the state is ``required`` , you must send a signed token header with any instance
+                metadata retrieval requests. In this state, retrieving the IAM role credential always
+                returns the version 2.0 credentials; the version 1.0 credentials are not available.
+
+              - **HttpPutResponseHopLimit** *(integer) --*
+
+                The desired HTTP PUT response hop limit for instance metadata requests. The larger the
+                number, the further instance metadata requests can travel.
+
+                Default: 1
+
+                Possible values: Integers from 1 to 64
+
+              - **HttpEndpoint** *(string) --*
+
+                This parameter enables or disables the HTTP metadata endpoint on your instances. If the
+                parameter is not specified, the default state is ``enabled`` .
+
+                .. note::
+
+                  If you specify a value of ``disabled`` , you will not be able to access your instance
+                  metadata.
 
         """
 
@@ -64047,6 +64279,7 @@ class Client(BaseClient):
         LicenseSpecifications: List[
             ClientRunInstancesLicenseSpecificationsTypeDef
         ] = None,
+        MetadataOptions: ClientRunInstancesMetadataOptionsTypeDef = None,
     ) -> ClientRunInstancesResponseTypeDef:
         """
         Launches the specified number of instances using an AMI for which you have permissions.
@@ -64304,7 +64537,12 @@ class Client(BaseClient):
                   {
                       'LicenseConfigurationArn': 'string'
                   },
-              ]
+              ],
+              MetadataOptions={
+                  'HttpTokens': 'optional'|'required',
+                  'HttpPutResponseHopLimit': 123,
+                  'HttpEndpoint': 'disabled'|'enabled'
+              }
           )
         :type BlockDeviceMappings: list
         :param BlockDeviceMappings:
@@ -65044,6 +65282,45 @@ class Client(BaseClient):
 
               The Amazon Resource Name (ARN) of the license configuration.
 
+        :type MetadataOptions: dict
+        :param MetadataOptions:
+
+          The metadata options for the instance. For more information, see `Instance Metadata and User Data
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html>`__ .
+
+          - **HttpTokens** *(string) --*
+
+            The state of token usage for your instance metadata requests. If the parameter is not specified
+            in the request, the default state is ``optional`` .
+
+            If the state is ``optional`` , you can choose to retrieve instance metadata with or without a
+            signed token header on your request. If you retrieve the IAM role credentials without a token,
+            the version 1.0 role credentials are returned. If you retrieve the IAM role credentials using a
+            valid signed token, the version 2.0 role credentials are returned.
+
+            If the state is ``required`` , you must send a signed token header with any instance metadata
+            retrieval requests. In this state, retrieving the IAM role credentials always returns the
+            version 2.0 credentials; the version 1.0 credentials are not available.
+
+          - **HttpPutResponseHopLimit** *(integer) --*
+
+            The desired HTTP PUT response hop limit for instance metadata requests. The larger the number,
+            the further instance metadata requests can travel.
+
+            Default: 1
+
+            Possible values: Integers from 1 to 64
+
+          - **HttpEndpoint** *(string) --*
+
+            This parameter enables or disables the HTTP metadata endpoint on your instances. If the
+            parameter is not specified, the default state is ``enabled`` .
+
+            .. note::
+
+              If you specify a value of ``disabled`` , you will not be able to access your instance
+              metadata.
+
         :rtype: dict
         :returns:
 
@@ -65272,7 +65549,13 @@ class Client(BaseClient):
                             {
                                 'LicenseConfigurationArn': 'string'
                             },
-                        ]
+                        ],
+                        'MetadataOptions': {
+                            'State': 'pending'|'applied',
+                            'HttpTokens': 'optional'|'required',
+                            'HttpPutResponseHopLimit': 123,
+                            'HttpEndpoint': 'disabled'|'enabled'
+                        }
                     },
                 ],
                 'OwnerId': 'string',
@@ -65937,6 +66220,53 @@ class Client(BaseClient):
                     - **LicenseConfigurationArn** *(string) --*
 
                       The Amazon Resource Name (ARN) of the license configuration.
+
+                - **MetadataOptions** *(dict) --*
+
+                  The metadata options for the instance.
+
+                  - **State** *(string) --*
+
+                    The state of the metadata option changes.
+
+                     ``pending`` - The metadata options are being updated and the instance is not ready to
+                     process metadata traffic with the new selection.
+
+                     ``applied`` - The metadata options have been successfully applied on the instance.
+
+                  - **HttpTokens** *(string) --*
+
+                    The state of token usage for your instance metadata requests. If the parameter is not
+                    specified in the request, the default state is ``optional`` .
+
+                    If the state is ``optional`` , you can choose to retrieve instance metadata with or
+                    without a signed token header on your request. If you retrieve the IAM role credentials
+                    without a token, the version 1.0 role credentials are returned. If you retrieve the IAM
+                    role credentials using a valid signed token, the version 2.0 role credentials are
+                    returned.
+
+                    If the state is ``required`` , you must send a signed token header with any instance
+                    metadata retrieval requests. In this state, retrieving the IAM role credential always
+                    returns the version 2.0 credentials; the version 1.0 credentials are not available.
+
+                  - **HttpPutResponseHopLimit** *(integer) --*
+
+                    The desired HTTP PUT response hop limit for instance metadata requests. The larger the
+                    number, the further instance metadata requests can travel.
+
+                    Default: 1
+
+                    Possible values: Integers from 1 to 64
+
+                  - **HttpEndpoint** *(string) --*
+
+                    This parameter enables or disables the HTTP metadata endpoint on your instances. If the
+                    parameter is not specified, the default state is ``enabled`` .
+
+                    .. note::
+
+                      If you specify a value of ``disabled`` , you will not be able to access your instance
+                      metadata.
 
             - **OwnerId** *(string) --*
 

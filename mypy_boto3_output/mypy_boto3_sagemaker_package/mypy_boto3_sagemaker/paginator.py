@@ -3233,8 +3233,8 @@ class SearchPaginator(Boto3Paginator):
 
             - *(dict) --*
 
-              A conditional statement for a search expression that includes a Boolean operator, a resource
-              property, and a value.
+              A conditional statement for a search expression that includes a resource property, a Boolean
+              operator, and a value.
 
               If you don't specify an ``Operator`` and a ``Value`` , the filter searches for only the
               specified property. For example, defining a ``Filter`` for the ``FailureReason`` for the
@@ -3326,7 +3326,7 @@ class SearchPaginator(Boto3Paginator):
                   Contains
 
                 Only supported for text-based properties. The word-list of the property contains the
-                specified ``Value`` .
+                specified ``Value`` . A ``SearchExpression`` can include only one ``Contains`` operator.
 
                 If you have specified a filter ``Value`` , the default is ``Equals`` .
 
@@ -3373,8 +3373,8 @@ class SearchPaginator(Boto3Paginator):
 
                 - *(dict) --*
 
-                  A conditional statement for a search expression that includes a Boolean operator, a
-                  resource property, and a value.
+                  A conditional statement for a search expression that includes a resource property, a
+                  Boolean operator, and a value.
 
                   If you don't specify an ``Operator`` and a ``Value`` , the filter searches for only the
                   specified property. For example, defining a ``Filter`` for the ``FailureReason`` for the
@@ -3467,7 +3467,7 @@ class SearchPaginator(Boto3Paginator):
                       Contains
 
                     Only supported for text-based properties. The word-list of the property contains the
-                    specified ``Value`` .
+                    specified ``Value`` . A ``SearchExpression`` can include only one ``Contains`` operator.
 
                     If you have specified a filter ``Value`` , the default is ``Equals`` .
 
@@ -3492,7 +3492,8 @@ class SearchPaginator(Boto3Paginator):
               A ``SearchExpression`` contains the following components:
 
               * A list of ``Filter`` objects. Each filter defines a simple Boolean expression comprised of
-              a resource property name, Boolean operator, and value.
+              a resource property name, Boolean operator, and value. A ``SearchExpression`` can include
+              only one ``Contains`` operator.
 
               * A list of ``NestedFilter`` objects. Each nested filter defines a list of Boolean
               expressions using a list of resource properties. A nested filter is satisfied if a single
@@ -3915,15 +3916,17 @@ class SearchPaginator(Boto3Paginator):
                             * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                             * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                            manifest is an S3 object which is a JSON file with the following format:
-                            ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-                            ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                            ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-                            ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                            ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-                            complete set of ``s3uris`` in this manifest is the input data for the channel
-                            for this datasource. The object that each ``s3uris`` points to must be readable
-                            by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+                            manifest is an S3 object which is a JSON file with the following format:  The
+                            preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+                            "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+                             ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+                              ``]``   The preceding JSON matches the following ``s3Uris`` :
+                              ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                              ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+                              set of ``s3uris`` in this manifest is the input data for the channel for this
+                              datasource. The object that each ``s3uris`` points to must be readable by the
+                              IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
                           - **S3DataDistributionType** *(string) --*
 
@@ -4103,11 +4106,41 @@ class SearchPaginator(Boto3Paginator):
 
                         Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+                      .. note::
+
+                        Certain Nitro-based instances include local storage with a fixed total size,
+                        dependent on the instance type. When using these instances for training, Amazon
+                        SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+                        can't request a ``VolumeSizeInGB`` greater than the total size of the local
+                        instance storage.
+
+                        For a list of instance types that support local instance storage, including the
+                        total size per instance type, see `Instance Store Volumes
+                        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+                        .
+
                     - **VolumeKmsKeyId** *(string) --*
 
-                      The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-                      data on the storage volume attached to the ML compute instance(s) that run the
-                      training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+                      The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+                      attached to the ML compute instance(s) that run the training job.
+
+                      .. note::
+
+                        Certain Nitro-based instances include local storage, dependent on the instance
+                        type. Local storage volumes are encrypted using a hardware module on the instance.
+                        You can't request a ``VolumeKmsKeyId`` when using an instance type with local
+                        storage.
+
+                        For a list of instance types that support local instance storage, see `Instance
+                        Store Volumes
+                        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+                        .
+
+                        For more information about local instance storage encryption, see `SSD Instance
+                        Store Volumes
+                        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+                      The ``VolumeKmsKeyId`` can be in any of the following formats:
 
                       * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 

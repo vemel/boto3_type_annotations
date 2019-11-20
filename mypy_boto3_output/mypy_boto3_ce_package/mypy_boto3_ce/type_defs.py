@@ -8213,6 +8213,7 @@ _ClientGetSavingsPlansPurchaseRecommendationResponseSavingsPlansPurchaseRecommen
         "CurrencyCode": str,
         "EstimatedSPCost": str,
         "EstimatedOnDemandCost": str,
+        "EstimatedOnDemandCostWithCurrentCommitment": str,
         "EstimatedSavingsAmount": str,
         "EstimatedSavingsPercentage": str,
         "HourlyCommitmentToPurchase": str,
@@ -8278,6 +8279,11 @@ class ClientGetSavingsPlansPurchaseRecommendationResponseSavingsPlansPurchaseRec
       The remaining On-Demand cost estimated to not be covered by the recommended Savings
       Plans, over the length of the lookback period.
 
+    - **EstimatedOnDemandCostWithCurrentCommitment** *(string) --*
+
+      The estimated On-Demand costs you would expect with no additional commitment, based on
+      your usage of the selected time period and the Savings Plans you own.
+
     - **EstimatedSavingsAmount** *(string) --*
 
       The estimated savings amount based on the recommended Savings Plans over the length of
@@ -8331,6 +8337,7 @@ _ClientGetSavingsPlansPurchaseRecommendationResponseSavingsPlansPurchaseRecommen
         "HourlyCommitmentToPurchase": str,
         "EstimatedSavingsPercentage": str,
         "EstimatedMonthlySavingsAmount": str,
+        "EstimatedOnDemandCostWithCurrentCommitment": str,
     },
     total=False,
 )
@@ -8389,6 +8396,11 @@ class ClientGetSavingsPlansPurchaseRecommendationResponseSavingsPlansPurchaseRec
     - **EstimatedMonthlySavingsAmount** *(string) --*
 
       The estimated monthly savings amount, based on the recommended Savings Plans purchase.
+
+    - **EstimatedOnDemandCostWithCurrentCommitment** *(string) --*
+
+      The estimated On-Demand costs you would expect with no additional commitment, based on
+      your usage of the selected time period and the Savings Plans you own.
     """
 
 
@@ -8485,6 +8497,11 @@ class ClientGetSavingsPlansPurchaseRecommendationResponseSavingsPlansPurchaseRec
           The remaining On-Demand cost estimated to not be covered by the recommended Savings
           Plans, over the length of the lookback period.
 
+        - **EstimatedOnDemandCostWithCurrentCommitment** *(string) --*
+
+          The estimated On-Demand costs you would expect with no additional commitment, based on
+          your usage of the selected time period and the Savings Plans you own.
+
         - **EstimatedSavingsAmount** *(string) --*
 
           The estimated savings amount based on the recommended Savings Plans over the length of
@@ -8572,6 +8589,11 @@ class ClientGetSavingsPlansPurchaseRecommendationResponseSavingsPlansPurchaseRec
       - **EstimatedMonthlySavingsAmount** *(string) --*
 
         The estimated monthly savings amount, based on the recommended Savings Plans purchase.
+
+      - **EstimatedOnDemandCostWithCurrentCommitment** *(string) --*
+
+        The estimated On-Demand costs you would expect with no additional commitment, based on
+        your usage of the selected time period and the Savings Plans you own.
     """
 
 
@@ -8677,6 +8699,11 @@ class ClientGetSavingsPlansPurchaseRecommendationResponseTypeDef(
             The remaining On-Demand cost estimated to not be covered by the recommended Savings
             Plans, over the length of the lookback period.
 
+          - **EstimatedOnDemandCostWithCurrentCommitment** *(string) --*
+
+            The estimated On-Demand costs you would expect with no additional commitment, based on
+            your usage of the selected time period and the Savings Plans you own.
+
           - **EstimatedSavingsAmount** *(string) --*
 
             The estimated savings amount based on the recommended Savings Plans over the length of
@@ -8764,6 +8791,11 @@ class ClientGetSavingsPlansPurchaseRecommendationResponseTypeDef(
         - **EstimatedMonthlySavingsAmount** *(string) --*
 
           The estimated monthly savings amount, based on the recommended Savings Plans purchase.
+
+        - **EstimatedOnDemandCostWithCurrentCommitment** *(string) --*
+
+          The estimated On-Demand costs you would expect with no additional commitment, based on
+          your usage of the selected time period and the Savings Plans you own.
 
     - **NextPageToken** *(string) --*
 

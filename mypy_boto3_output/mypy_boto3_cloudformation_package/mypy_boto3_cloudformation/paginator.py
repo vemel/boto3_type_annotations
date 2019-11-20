@@ -1579,7 +1579,9 @@ class ListStackInstancesPaginator(Boto3Paginator):
                         'Account': 'string',
                         'StackId': 'string',
                         'Status': 'CURRENT'|'OUTDATED'|'INOPERABLE',
-                        'StatusReason': 'string'
+                        'StatusReason': 'string',
+                        'DriftStatus': 'DRIFTED'|'IN_SYNC'|'UNKNOWN'|'NOT_CHECKED',
+                        'LastDriftCheckTimestamp': datetime(2015, 1, 1)
                     },
                 ],
 
@@ -1637,6 +1639,29 @@ class ListStackInstancesPaginator(Boto3Paginator):
                 - **StatusReason** *(string) --*
 
                   The explanation for the specific status code assigned to this stack instance.
+
+                - **DriftStatus** *(string) --*
+
+                  Status of the stack instance's actual configuration compared to the expected template and
+                  parameter configuration of the stack set to which it belongs.
+
+                  * ``DRIFTED`` : The stack differs from the expected template and parameter configuration
+                  of the stack set to which it belongs. A stack instance is considered to have drifted if
+                  one or more of the resources in the associated stack have drifted.
+
+                  * ``NOT_CHECKED`` : AWS CloudFormation has not checked if the stack instance differs from
+                  its expected stack set configuration.
+
+                  * ``IN_SYNC`` : The stack instance's actual configuration matches its expected stack set
+                  configuration.
+
+                  * ``UNKNOWN`` : This value is reserved for future use.
+
+                - **LastDriftCheckTimestamp** *(datetime) --*
+
+                  Most recent time when CloudFormation performed a drift detection operation on the stack
+                  instance. This value will be ``NULL`` for any stack instance on which drift detection has
+                  not yet been performed.
 
         """
 
@@ -2039,7 +2064,7 @@ class ListStackSetOperationsPaginator(Boto3Paginator):
                 'Summaries': [
                     {
                         'OperationId': 'string',
-                        'Action': 'CREATE'|'UPDATE'|'DELETE',
+                        'Action': 'CREATE'|'UPDATE'|'DELETE'|'DETECT_DRIFT',
                         'Status': 'RUNNING'|'SUCCEEDED'|'FAILED'|'STOPPING'|'STOPPED',
                         'CreationTimestamp': datetime(2015, 1, 1),
                         'EndTimestamp': datetime(2015, 1, 1)
@@ -2175,7 +2200,9 @@ class ListStackSetsPaginator(Boto3Paginator):
                         'StackSetName': 'string',
                         'StackSetId': 'string',
                         'Description': 'string',
-                        'Status': 'ACTIVE'|'DELETED'
+                        'Status': 'ACTIVE'|'DELETED',
+                        'DriftStatus': 'DRIFTED'|'IN_SYNC'|'UNKNOWN'|'NOT_CHECKED',
+                        'LastDriftCheckTimestamp': datetime(2015, 1, 1)
                     },
                 ],
 
@@ -2207,6 +2234,30 @@ class ListStackSetsPaginator(Boto3Paginator):
                 - **Status** *(string) --*
 
                   The status of the stack set.
+
+                - **DriftStatus** *(string) --*
+
+                  Status of the stack set's actual configuration compared to its expected template and
+                  parameter configuration. A stack set is considered to have drifted if one or more of its
+                  stack instances have drifted from their expected template and parameter configuration.
+
+                  * ``DRIFTED`` : One or more of the stack instances belonging to the stack set stack
+                  differs from the expected template and parameter configuration. A stack instance is
+                  considered to have drifted if one or more of the resources in the associated stack have
+                  drifted.
+
+                  * ``NOT_CHECKED`` : AWS CloudFormation has not checked the stack set for drift.
+
+                  * ``IN_SYNC`` : All of the stack instances belonging to the stack set stack match from
+                  the expected template and parameter configuration.
+
+                  * ``UNKNOWN`` : This value is reserved for future use.
+
+                - **LastDriftCheckTimestamp** *(datetime) --*
+
+                  Most recent time when CloudFormation performed a drift detection operation on the stack
+                  set. This value will be ``NULL`` for any stack set on which drift detection has not yet
+                  been performed.
 
         """
 

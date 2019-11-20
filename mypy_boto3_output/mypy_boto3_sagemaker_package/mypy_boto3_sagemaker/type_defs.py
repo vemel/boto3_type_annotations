@@ -1377,15 +1377,17 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTrainingJobD
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-      manifest is an S3 object which is a JSON file with the following format:   ``[``
-        ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-        ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-        ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-        ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-        complete set of ``s3uris`` in this manifest is the input data for the channel
-        for this datasource. The object that each ``s3uris`` points to must be readable
-        by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+      manifest is an S3 object which is a JSON file with the following format:  The
+      preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+      "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+      ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+      ``]``   The preceding JSON matches the following ``s3Uris`` :
+      ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set
+      of ``s3uris`` in this manifest is the input data for the channel for this
+      datasource. The object that each ``s3uris`` points to must be readable by the IAM
+      role that Amazon SageMaker uses to perform tasks on your behalf.
 
     - **S3DataDistributionType** *(string) --*
 
@@ -1462,15 +1464,17 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTrainingJobD
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-        manifest is an S3 object which is a JSON file with the following format:   ``[``
-          ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-          ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-          ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-          ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-          complete set of ``s3uris`` in this manifest is the input data for the channel
-          for this datasource. The object that each ``s3uris`` points to must be readable
-          by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+        manifest is an S3 object which is a JSON file with the following format:  The
+        preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+        "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+        ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+        ``]``   The preceding JSON matches the following ``s3Uris`` :
+        ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set
+        of ``s3uris`` in this manifest is the input data for the channel for this
+        datasource. The object that each ``s3uris`` points to must be readable by the IAM
+        role that Amazon SageMaker uses to perform tasks on your behalf.
 
       - **S3DataDistributionType** *(string) --*
 
@@ -1619,15 +1623,17 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTrainingJobD
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-          manifest is an S3 object which is a JSON file with the following format:   ``[``
-            ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-            ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-            ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-            ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-            ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-            complete set of ``s3uris`` in this manifest is the input data for the channel
-            for this datasource. The object that each ``s3uris`` points to must be readable
-            by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+          manifest is an S3 object which is a JSON file with the following format:  The
+          preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+          "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+          ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+          ``]``   The preceding JSON matches the following ``s3Uris`` :
+          ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set
+          of ``s3uris`` in this manifest is the input data for the channel for this
+          datasource. The object that each ``s3uris`` points to must be readable by the IAM
+          role that Amazon SageMaker uses to perform tasks on your behalf.
 
         - **S3DataDistributionType** *(string) --*
 
@@ -1841,11 +1847,40 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTrainingJobD
 
         Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+      .. note::
+
+        Certain Nitro-based instances include local storage with a fixed total size,
+        dependent on the instance type. When using these instances for training, Amazon
+        SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+        can't request a ``VolumeSizeInGB`` greater than the total size of the local instance
+        storage.
+
+        For a list of instance types that support local instance storage, including the total
+        size per instance type, see `Instance Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
     - **VolumeKmsKeyId** *(string) --*
 
-      The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data
-      on the storage volume attached to the ML compute instance(s) that run the training job.
-      The ``VolumeKmsKeyId`` can be any of the following formats:
+      The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+      attached to the ML compute instance(s) that run the training job.
+
+      .. note::
+
+        Certain Nitro-based instances include local storage, dependent on the instance type.
+        Local storage volumes are encrypted using a hardware module on the instance. You
+        can't request a ``VolumeKmsKeyId`` when using an instance type with local storage.
+
+        For a list of instance types that support local instance storage, see `Instance Store
+        Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
+        For more information about local instance storage encryption, see `SSD Instance Store
+        Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+      The ``VolumeKmsKeyId`` can be in any of the following formats:
 
       * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -1980,15 +2015,17 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTrainingJobD
               * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
               * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-              manifest is an S3 object which is a JSON file with the following format:   ``[``
-                ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-                ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-                ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-                complete set of ``s3uris`` in this manifest is the input data for the channel
-                for this datasource. The object that each ``s3uris`` points to must be readable
-                by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+              manifest is an S3 object which is a JSON file with the following format:  The
+              preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+              "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+              ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+              ``]``   The preceding JSON matches the following ``s3Uris`` :
+              ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set
+              of ``s3uris`` in this manifest is the input data for the channel for this
+              datasource. The object that each ``s3uris`` points to must be readable by the IAM
+              role that Amazon SageMaker uses to perform tasks on your behalf.
 
             - **S3DataDistributionType** *(string) --*
 
@@ -2166,11 +2203,40 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTrainingJobD
 
           Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+        .. note::
+
+          Certain Nitro-based instances include local storage with a fixed total size,
+          dependent on the instance type. When using these instances for training, Amazon
+          SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+          can't request a ``VolumeSizeInGB`` greater than the total size of the local instance
+          storage.
+
+          For a list of instance types that support local instance storage, including the total
+          size per instance type, see `Instance Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
       - **VolumeKmsKeyId** *(string) --*
 
-        The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data
-        on the storage volume attached to the ML compute instance(s) that run the training job.
-        The ``VolumeKmsKeyId`` can be any of the following formats:
+        The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+        attached to the ML compute instance(s) that run the training job.
+
+        .. note::
+
+          Certain Nitro-based instances include local storage, dependent on the instance type.
+          Local storage volumes are encrypted using a hardware module on the instance. You
+          can't request a ``VolumeKmsKeyId`` when using an instance type with local storage.
+
+          For a list of instance types that support local instance storage, see `Instance Store
+          Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
+          For more information about local instance storage encryption, see `SSD Instance Store
+          Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+        The ``VolumeKmsKeyId`` can be in any of the following formats:
 
         * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -2236,15 +2302,16 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTransformJob
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-      manifest is an S3 object which is a JSON file with the following format:   ``[``
-      ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+      manifest is an S3 object which is a JSON file with the following format:   ``[
+      {"prefix": "s3://customer_bucket/some/prefix/"},``
       ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-      ``]``   The preceding JSON matches the following ``S3Uris`` :
-      ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-      ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-      complete set of ``S3Uris`` in this manifest constitutes the input data for the
-      channel for this datasource. The object that each ``S3Uris`` points to must be
-      readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+      ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+      ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+      ``S3Uris`` in this manifest constitutes the input data for the channel for this
+      datasource. The object that each ``S3Uris`` points to must be readable by the IAM
+      role that Amazon SageMaker uses to perform tasks on your behalf.
     """
 
 
@@ -2290,15 +2357,16 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTransformJob
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-        manifest is an S3 object which is a JSON file with the following format:   ``[``
-        ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+        manifest is an S3 object which is a JSON file with the following format:   ``[
+        {"prefix": "s3://customer_bucket/some/prefix/"},``
         ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-        ``]``   The preceding JSON matches the following ``S3Uris`` :
-        ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-        ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-        complete set of ``S3Uris`` in this manifest constitutes the input data for the
-        channel for this datasource. The object that each ``S3Uris`` points to must be
-        readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+        ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+        ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+        ``S3Uris`` in this manifest constitutes the input data for the channel for this
+        datasource. The object that each ``S3Uris`` points to must be readable by the IAM
+        role that Amazon SageMaker uses to perform tasks on your behalf.
     """
 
 
@@ -2354,15 +2422,16 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTransformJob
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-          manifest is an S3 object which is a JSON file with the following format:   ``[``
-          ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+          manifest is an S3 object which is a JSON file with the following format:   ``[
+          {"prefix": "s3://customer_bucket/some/prefix/"},``
           ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-          ``]``   The preceding JSON matches the following ``S3Uris`` :
-          ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-          ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-          complete set of ``S3Uris`` in this manifest constitutes the input data for the
-          channel for this datasource. The object that each ``S3Uris`` points to must be
-          readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+          ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+          ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+          ``S3Uris`` in this manifest constitutes the input data for the channel for this
+          datasource. The object that each ``S3Uris`` points to must be readable by the IAM
+          role that Amazon SageMaker uses to perform tasks on your behalf.
 
     - **ContentType** *(string) --*
 
@@ -2400,9 +2469,9 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTransformJob
         value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is not removed if the
         value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-        For more information about the RecordIO, see `Data Format
-        <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-        documentation. For more information about the TFRecord, see `Consuming TFRecord data
+        For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+        <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For more
+        information about ``TFRecord`` , see `Consuming TFRecord data
         <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
         TensorFlow documentation.
     """
@@ -2481,9 +2550,9 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTransformJob
       *Amazon Simple Storage Service Developer Guide.*
 
       The KMS key policy must grant permission to the IAM role that you specify in your
-      ``CreateTramsformJob`` request. For more information, see `Using Key Policies in AWS
-      KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
-      *AWS Key Management Service Developer Guide* .
+      CreateModel request. For more information, see `Using Key Policies in AWS KMS
+      <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the *AWS
+      Key Management Service Developer Guide* .
     """
 
 
@@ -2622,15 +2691,16 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTransformJob
             * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
             * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-            manifest is an S3 object which is a JSON file with the following format:   ``[``
-            ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+            manifest is an S3 object which is a JSON file with the following format:   ``[
+            {"prefix": "s3://customer_bucket/some/prefix/"},``
             ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-            ``]``   The preceding JSON matches the following ``S3Uris`` :
-            ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-            ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-            complete set of ``S3Uris`` in this manifest constitutes the input data for the
-            channel for this datasource. The object that each ``S3Uris`` points to must be
-            readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+            ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+            ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+            ``S3Uris`` in this manifest constitutes the input data for the channel for this
+            datasource. The object that each ``S3Uris`` points to must be readable by the IAM
+            role that Amazon SageMaker uses to perform tasks on your behalf.
 
       - **ContentType** *(string) --*
 
@@ -2668,9 +2738,9 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTransformJob
           value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is not removed if the
           value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-          For more information about the RecordIO, see `Data Format
-          <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-          documentation. For more information about the TFRecord, see `Consuming TFRecord data
+          For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+          <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For more
+          information about ``TFRecord`` , see `Consuming TFRecord data
           <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
           TensorFlow documentation.
 
@@ -2731,9 +2801,9 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTransformJob
         *Amazon Simple Storage Service Developer Guide.*
 
         The KMS key policy must grant permission to the IAM role that you specify in your
-        ``CreateTramsformJob`` request. For more information, see `Using Key Policies in AWS
-        KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
-        *AWS Key Management Service Developer Guide* .
+        CreateModel request. For more information, see `Using Key Policies in AWS KMS
+        <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the *AWS
+        Key Management Service Developer Guide* .
 
     - **TransformResources** *(dict) --* **[REQUIRED]**
 
@@ -2864,15 +2934,17 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTypeDef(
                 * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                 * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                manifest is an S3 object which is a JSON file with the following format:   ``[``
-                  ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-                  ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                  ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-                  ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                  ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-                  complete set of ``s3uris`` in this manifest is the input data for the channel
-                  for this datasource. The object that each ``s3uris`` points to must be readable
-                  by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+                manifest is an S3 object which is a JSON file with the following format:  The
+                preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+                "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+                ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+                ``]``   The preceding JSON matches the following ``s3Uris`` :
+                ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set
+                of ``s3uris`` in this manifest is the input data for the channel for this
+                datasource. The object that each ``s3uris`` points to must be readable by the IAM
+                role that Amazon SageMaker uses to perform tasks on your behalf.
 
               - **S3DataDistributionType** *(string) --*
 
@@ -3050,11 +3122,40 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTypeDef(
 
             Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+          .. note::
+
+            Certain Nitro-based instances include local storage with a fixed total size,
+            dependent on the instance type. When using these instances for training, Amazon
+            SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+            can't request a ``VolumeSizeInGB`` greater than the total size of the local instance
+            storage.
+
+            For a list of instance types that support local instance storage, including the total
+            size per instance type, see `Instance Store Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+            .
+
         - **VolumeKmsKeyId** *(string) --*
 
-          The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data
-          on the storage volume attached to the ML compute instance(s) that run the training job.
-          The ``VolumeKmsKeyId`` can be any of the following formats:
+          The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+          attached to the ML compute instance(s) that run the training job.
+
+          .. note::
+
+            Certain Nitro-based instances include local storage, dependent on the instance type.
+            Local storage volumes are encrypted using a hardware module on the instance. You
+            can't request a ``VolumeKmsKeyId`` when using an instance type with local storage.
+
+            For a list of instance types that support local instance storage, see `Instance Store
+            Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+            .
+
+            For more information about local instance storage encryption, see `SSD Instance Store
+            Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+          The ``VolumeKmsKeyId`` can be in any of the following formats:
 
           * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -3149,15 +3250,16 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTypeDef(
               * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
               * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-              manifest is an S3 object which is a JSON file with the following format:   ``[``
-              ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+              manifest is an S3 object which is a JSON file with the following format:   ``[
+              {"prefix": "s3://customer_bucket/some/prefix/"},``
               ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-              ``]``   The preceding JSON matches the following ``S3Uris`` :
-              ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-              ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-              complete set of ``S3Uris`` in this manifest constitutes the input data for the
-              channel for this datasource. The object that each ``S3Uris`` points to must be
-              readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+              ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+              ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+              ``S3Uris`` in this manifest constitutes the input data for the channel for this
+              datasource. The object that each ``S3Uris`` points to must be readable by the IAM
+              role that Amazon SageMaker uses to perform tasks on your behalf.
 
         - **ContentType** *(string) --*
 
@@ -3195,9 +3297,9 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTypeDef(
             value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is not removed if the
             value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-            For more information about the RecordIO, see `Data Format
-            <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-            documentation. For more information about the TFRecord, see `Consuming TFRecord data
+            For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+            <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For more
+            information about ``TFRecord`` , see `Consuming TFRecord data
             <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
             TensorFlow documentation.
 
@@ -3258,9 +3360,9 @@ class ClientCreateAlgorithmValidationSpecificationValidationProfilesTypeDef(
           *Amazon Simple Storage Service Developer Guide.*
 
           The KMS key policy must grant permission to the IAM role that you specify in your
-          ``CreateTramsformJob`` request. For more information, see `Using Key Policies in AWS
-          KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
-          *AWS Key Management Service Developer Guide* .
+          CreateModel request. For more information, see `Using Key Policies in AWS KMS
+          <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the *AWS
+          Key Management Service Developer Guide* .
 
       - **TransformResources** *(dict) --* **[REQUIRED]**
 
@@ -3400,15 +3502,17 @@ class ClientCreateAlgorithmValidationSpecificationTypeDef(
                     * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                     * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                    manifest is an S3 object which is a JSON file with the following format:   ``[``
-                      ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-                      ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                      ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-                      ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-                      complete set of ``s3uris`` in this manifest is the input data for the channel
-                      for this datasource. The object that each ``s3uris`` points to must be readable
-                      by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+                    manifest is an S3 object which is a JSON file with the following format:  The
+                    preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+                    "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+                    ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+                    ``]``   The preceding JSON matches the following ``s3Uris`` :
+                    ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                    ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                    ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set
+                    of ``s3uris`` in this manifest is the input data for the channel for this
+                    datasource. The object that each ``s3uris`` points to must be readable by the IAM
+                    role that Amazon SageMaker uses to perform tasks on your behalf.
 
                   - **S3DataDistributionType** *(string) --*
 
@@ -3586,11 +3690,40 @@ class ClientCreateAlgorithmValidationSpecificationTypeDef(
 
                 Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+              .. note::
+
+                Certain Nitro-based instances include local storage with a fixed total size,
+                dependent on the instance type. When using these instances for training, Amazon
+                SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+                can't request a ``VolumeSizeInGB`` greater than the total size of the local instance
+                storage.
+
+                For a list of instance types that support local instance storage, including the total
+                size per instance type, see `Instance Store Volumes
+                <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+                .
+
             - **VolumeKmsKeyId** *(string) --*
 
-              The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data
-              on the storage volume attached to the ML compute instance(s) that run the training job.
-              The ``VolumeKmsKeyId`` can be any of the following formats:
+              The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+              attached to the ML compute instance(s) that run the training job.
+
+              .. note::
+
+                Certain Nitro-based instances include local storage, dependent on the instance type.
+                Local storage volumes are encrypted using a hardware module on the instance. You
+                can't request a ``VolumeKmsKeyId`` when using an instance type with local storage.
+
+                For a list of instance types that support local instance storage, see `Instance Store
+                Volumes
+                <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+                .
+
+                For more information about local instance storage encryption, see `SSD Instance Store
+                Volumes
+                <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+              The ``VolumeKmsKeyId`` can be in any of the following formats:
 
               * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -3685,15 +3818,16 @@ class ClientCreateAlgorithmValidationSpecificationTypeDef(
                   * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                   * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                  manifest is an S3 object which is a JSON file with the following format:   ``[``
-                  ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+                  manifest is an S3 object which is a JSON file with the following format:   ``[
+                  {"prefix": "s3://customer_bucket/some/prefix/"},``
                   ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-                  ``]``   The preceding JSON matches the following ``S3Uris`` :
-                  ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                  ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-                  complete set of ``S3Uris`` in this manifest constitutes the input data for the
-                  channel for this datasource. The object that each ``S3Uris`` points to must be
-                  readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+                  ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+                  ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+                  ``S3Uris`` in this manifest constitutes the input data for the channel for this
+                  datasource. The object that each ``S3Uris`` points to must be readable by the IAM
+                  role that Amazon SageMaker uses to perform tasks on your behalf.
 
             - **ContentType** *(string) --*
 
@@ -3731,9 +3865,9 @@ class ClientCreateAlgorithmValidationSpecificationTypeDef(
                 value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is not removed if the
                 value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-                For more information about the RecordIO, see `Data Format
-                <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-                documentation. For more information about the TFRecord, see `Consuming TFRecord data
+                For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+                <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For more
+                information about ``TFRecord`` , see `Consuming TFRecord data
                 <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
                 TensorFlow documentation.
 
@@ -3794,9 +3928,9 @@ class ClientCreateAlgorithmValidationSpecificationTypeDef(
               *Amazon Simple Storage Service Developer Guide.*
 
               The KMS key policy must grant permission to the IAM role that you specify in your
-              ``CreateTramsformJob`` request. For more information, see `Using Key Policies in AWS
-              KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
-              *AWS Key Management Service Developer Guide* .
+              CreateModel request. For more information, see `Using Key Policies in AWS KMS
+              <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the *AWS
+              Key Management Service Developer Guide* .
 
           - **TransformResources** *(dict) --* **[REQUIRED]**
 
@@ -4295,7 +4429,7 @@ class ClientCreateHyperParameterTuningJobHyperParameterTuningJobConfigParameterR
 
         ReverseLogarithmic
 
-      Hyperparemeter tuning searches the values in the hyperparameter range by using a reverse
+      Hyperparameter tuning searches the values in the hyperparameter range by using a reverse
       logarithmic scale.
 
       Reverse logarithmic scaling works only for ranges that are entirely within the range
@@ -4354,7 +4488,7 @@ class ClientCreateHyperParameterTuningJobHyperParameterTuningJobConfigParameterR
 
         Logarithmic
 
-      Hyperparemeter tuning searches the values in the hyperparameter range by using a
+      Hyperparameter tuning searches the values in the hyperparameter range by using a
       logarithmic scale.
 
       Logarithmic scaling works only for ranges that have only values greater than 0.
@@ -4427,7 +4561,7 @@ class ClientCreateHyperParameterTuningJobHyperParameterTuningJobConfigParameterR
 
             Logarithmic
 
-          Hyperparemeter tuning searches the values in the hyperparameter range by using a
+          Hyperparameter tuning searches the values in the hyperparameter range by using a
           logarithmic scale.
 
           Logarithmic scaling works only for ranges that have only values greater than 0.
@@ -4480,7 +4614,7 @@ class ClientCreateHyperParameterTuningJobHyperParameterTuningJobConfigParameterR
 
             ReverseLogarithmic
 
-          Hyperparemeter tuning searches the values in the hyperparameter range by using a reverse
+          Hyperparameter tuning searches the values in the hyperparameter range by using a reverse
           logarithmic scale.
 
           Reverse logarithmic scaling works only for ranges that are entirely within the range
@@ -4640,7 +4774,7 @@ class ClientCreateHyperParameterTuningJobHyperParameterTuningJobConfigTypeDef(
 
               Logarithmic
 
-            Hyperparemeter tuning searches the values in the hyperparameter range by using a
+            Hyperparameter tuning searches the values in the hyperparameter range by using a
             logarithmic scale.
 
             Logarithmic scaling works only for ranges that have only values greater than 0.
@@ -4693,7 +4827,7 @@ class ClientCreateHyperParameterTuningJobHyperParameterTuningJobConfigTypeDef(
 
               ReverseLogarithmic
 
-            Hyperparemeter tuning searches the values in the hyperparameter range by using a reverse
+            Hyperparameter tuning searches the values in the hyperparameter range by using a reverse
             logarithmic scale.
 
             Reverse logarithmic scaling works only for ranges that are entirely within the range
@@ -5004,15 +5138,17 @@ class ClientCreateHyperParameterTuningJobTrainingJobDefinitionInputDataConfigDat
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest
-      is an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
+      is an S3 object which is a JSON file with the following format:  The preceding JSON
+      matches the following ``s3Uris`` :   ``[ {"prefix":
       "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-      ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-      following ``s3Uris`` :
+      ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``
+      The preceding JSON matches the following ``s3Uris`` :
       ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The complete
-      set of ``s3uris`` in this manifest is the input data for the channel for this
-      datasource. The object that each ``s3uris`` points to must be readable by the IAM role
-      that Amazon SageMaker uses to perform tasks on your behalf.
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+      ``s3uris`` in this manifest is the input data for the channel for this datasource. The
+      object that each ``s3uris`` points to must be readable by the IAM role that Amazon
+      SageMaker uses to perform tasks on your behalf.
 
     - **S3DataDistributionType** *(string) --*
 
@@ -5088,15 +5224,17 @@ class ClientCreateHyperParameterTuningJobTrainingJobDefinitionInputDataConfigDat
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest
-        is an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
+        is an S3 object which is a JSON file with the following format:  The preceding JSON
+        matches the following ``s3Uris`` :   ``[ {"prefix":
         "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-        ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-        following ``s3Uris`` :
+        ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``
+        The preceding JSON matches the following ``s3Uris`` :
         ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The complete
-        set of ``s3uris`` in this manifest is the input data for the channel for this
-        datasource. The object that each ``s3uris`` points to must be readable by the IAM role
-        that Amazon SageMaker uses to perform tasks on your behalf.
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+        ``s3uris`` in this manifest is the input data for the channel for this datasource. The
+        object that each ``s3uris`` points to must be readable by the IAM role that Amazon
+        SageMaker uses to perform tasks on your behalf.
 
       - **S3DataDistributionType** *(string) --*
 
@@ -5244,15 +5382,17 @@ class ClientCreateHyperParameterTuningJobTrainingJobDefinitionInputDataConfigTyp
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest
-          is an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
+          is an S3 object which is a JSON file with the following format:  The preceding JSON
+          matches the following ``s3Uris`` :   ``[ {"prefix":
           "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-          ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-          following ``s3Uris`` :
+          ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``
+          The preceding JSON matches the following ``s3Uris`` :
           ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The complete
-          set of ``s3uris`` in this manifest is the input data for the channel for this
-          datasource. The object that each ``s3uris`` points to must be readable by the IAM role
-          that Amazon SageMaker uses to perform tasks on your behalf.
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+          ``s3uris`` in this manifest is the input data for the channel for this datasource. The
+          object that each ``s3uris`` points to must be readable by the IAM role that Amazon
+          SageMaker uses to perform tasks on your behalf.
 
         - **S3DataDistributionType** *(string) --*
 
@@ -5468,11 +5608,38 @@ class ClientCreateHyperParameterTuningJobTrainingJobDefinitionResourceConfigType
 
         Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+      .. note::
+
+        Certain Nitro-based instances include local storage with a fixed total size, dependent on
+        the instance type. When using these instances for training, Amazon SageMaker mounts the
+        local instance storage instead of Amazon EBS gp2 storage. You can't request a
+        ``VolumeSizeInGB`` greater than the total size of the local instance storage.
+
+        For a list of instance types that support local instance storage, including the total size
+        per instance type, see `Instance Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
     - **VolumeKmsKeyId** *(string) --*
 
-      The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data on
-      the storage volume attached to the ML compute instance(s) that run the training job. The
-      ``VolumeKmsKeyId`` can be any of the following formats:
+      The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume attached to
+      the ML compute instance(s) that run the training job.
+
+      .. note::
+
+        Certain Nitro-based instances include local storage, dependent on the instance type. Local
+        storage volumes are encrypted using a hardware module on the instance. You can't request a
+        ``VolumeKmsKeyId`` when using an instance type with local storage.
+
+        For a list of instance types that support local instance storage, see `Instance Store
+        Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
+        For more information about local instance storage encryption, see `SSD Instance Store
+        Volumes <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+      The ``VolumeKmsKeyId`` can be in any of the following formats:
 
       * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -5705,15 +5872,17 @@ class ClientCreateHyperParameterTuningJobTrainingJobDefinitionTypeDef(
               * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
               * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest
-              is an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
+              is an S3 object which is a JSON file with the following format:  The preceding JSON
+              matches the following ``s3Uris`` :   ``[ {"prefix":
               "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-              ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-              following ``s3Uris`` :
+              ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``
+              The preceding JSON matches the following ``s3Uris`` :
               ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The complete
-              set of ``s3uris`` in this manifest is the input data for the channel for this
-              datasource. The object that each ``s3uris`` points to must be readable by the IAM role
-              that Amazon SageMaker uses to perform tasks on your behalf.
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+              ``s3uris`` in this manifest is the input data for the channel for this datasource. The
+              object that each ``s3uris`` points to must be readable by the IAM role that Amazon
+              SageMaker uses to perform tasks on your behalf.
 
             - **S3DataDistributionType** *(string) --*
 
@@ -5920,11 +6089,38 @@ class ClientCreateHyperParameterTuningJobTrainingJobDefinitionTypeDef(
 
           Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+        .. note::
+
+          Certain Nitro-based instances include local storage with a fixed total size, dependent on
+          the instance type. When using these instances for training, Amazon SageMaker mounts the
+          local instance storage instead of Amazon EBS gp2 storage. You can't request a
+          ``VolumeSizeInGB`` greater than the total size of the local instance storage.
+
+          For a list of instance types that support local instance storage, including the total size
+          per instance type, see `Instance Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
       - **VolumeKmsKeyId** *(string) --*
 
-        The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data on
-        the storage volume attached to the ML compute instance(s) that run the training job. The
-        ``VolumeKmsKeyId`` can be any of the following formats:
+        The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume attached to
+        the ML compute instance(s) that run the training job.
+
+        .. note::
+
+          Certain Nitro-based instances include local storage, dependent on the instance type. Local
+          storage volumes are encrypted using a hardware module on the instance. You can't request a
+          ``VolumeKmsKeyId`` when using an instance type with local storage.
+
+          For a list of instance types that support local instance storage, see `Instance Store
+          Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
+          For more information about local instance storage encryption, see `SSD Instance Store
+          Volumes <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+        The ``VolumeKmsKeyId`` can be in any of the following formats:
 
         * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -6948,6 +7144,7 @@ _ClientCreateModelContainersTypeDef = TypedDict(
     {
         "ContainerHostname": str,
         "Image": str,
+        "Mode": str,
         "ModelDataUrl": str,
         "Environment": Dict[str, str],
         "ModelPackageName": str,
@@ -6985,6 +7182,10 @@ class ClientCreateModelContainersTypeDef(_ClientCreateModelContainersTypeDef):
       ``registry/repository[:tag]`` and ``registry/repository[@digest]`` image path formats. For
       more information, see `Using Your Own Algorithms with Amazon SageMaker
       <https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html>`__
+
+    - **Mode** *(string) --*
+
+      Specifies whether the container hosts a single model or multiple models.
 
     - **ModelDataUrl** *(string) --*
 
@@ -7296,15 +7497,16 @@ class ClientCreateModelPackageValidationSpecificationValidationProfilesTransform
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-      manifest is an S3 object which is a JSON file with the following format:   ``[``
-      ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+      manifest is an S3 object which is a JSON file with the following format:   ``[
+      {"prefix": "s3://customer_bucket/some/prefix/"},``
       ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-      ``]``   The preceding JSON matches the following ``S3Uris`` :
-      ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-      ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-      complete set of ``S3Uris`` in this manifest constitutes the input data for the
-      channel for this datasource. The object that each ``S3Uris`` points to must be
-      readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+      ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+      ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+      ``S3Uris`` in this manifest constitutes the input data for the channel for this
+      datasource. The object that each ``S3Uris`` points to must be readable by the IAM
+      role that Amazon SageMaker uses to perform tasks on your behalf.
     """
 
 
@@ -7350,15 +7552,16 @@ class ClientCreateModelPackageValidationSpecificationValidationProfilesTransform
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-        manifest is an S3 object which is a JSON file with the following format:   ``[``
-        ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+        manifest is an S3 object which is a JSON file with the following format:   ``[
+        {"prefix": "s3://customer_bucket/some/prefix/"},``
         ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-        ``]``   The preceding JSON matches the following ``S3Uris`` :
-        ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-        ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-        complete set of ``S3Uris`` in this manifest constitutes the input data for the
-        channel for this datasource. The object that each ``S3Uris`` points to must be
-        readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+        ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+        ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+        ``S3Uris`` in this manifest constitutes the input data for the channel for this
+        datasource. The object that each ``S3Uris`` points to must be readable by the IAM
+        role that Amazon SageMaker uses to perform tasks on your behalf.
     """
 
 
@@ -7414,15 +7617,16 @@ class ClientCreateModelPackageValidationSpecificationValidationProfilesTransform
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-          manifest is an S3 object which is a JSON file with the following format:   ``[``
-          ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+          manifest is an S3 object which is a JSON file with the following format:   ``[
+          {"prefix": "s3://customer_bucket/some/prefix/"},``
           ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-          ``]``   The preceding JSON matches the following ``S3Uris`` :
-          ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-          ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-          complete set of ``S3Uris`` in this manifest constitutes the input data for the
-          channel for this datasource. The object that each ``S3Uris`` points to must be
-          readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+          ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+          ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+          ``S3Uris`` in this manifest constitutes the input data for the channel for this
+          datasource. The object that each ``S3Uris`` points to must be readable by the IAM
+          role that Amazon SageMaker uses to perform tasks on your behalf.
 
     - **ContentType** *(string) --*
 
@@ -7460,9 +7664,9 @@ class ClientCreateModelPackageValidationSpecificationValidationProfilesTransform
         value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is not removed if the
         value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-        For more information about the RecordIO, see `Data Format
-        <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-        documentation. For more information about the TFRecord, see `Consuming TFRecord data
+        For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+        <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For more
+        information about ``TFRecord`` , see `Consuming TFRecord data
         <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
         TensorFlow documentation.
     """
@@ -7541,9 +7745,9 @@ class ClientCreateModelPackageValidationSpecificationValidationProfilesTransform
       *Amazon Simple Storage Service Developer Guide.*
 
       The KMS key policy must grant permission to the IAM role that you specify in your
-      ``CreateTramsformJob`` request. For more information, see `Using Key Policies in AWS
-      KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
-      *AWS Key Management Service Developer Guide* .
+      CreateModel request. For more information, see `Using Key Policies in AWS KMS
+      <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the *AWS
+      Key Management Service Developer Guide* .
     """
 
 
@@ -7682,15 +7886,16 @@ class ClientCreateModelPackageValidationSpecificationValidationProfilesTransform
             * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
             * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-            manifest is an S3 object which is a JSON file with the following format:   ``[``
-            ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+            manifest is an S3 object which is a JSON file with the following format:   ``[
+            {"prefix": "s3://customer_bucket/some/prefix/"},``
             ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-            ``]``   The preceding JSON matches the following ``S3Uris`` :
-            ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-            ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-            complete set of ``S3Uris`` in this manifest constitutes the input data for the
-            channel for this datasource. The object that each ``S3Uris`` points to must be
-            readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+            ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+            ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+            ``S3Uris`` in this manifest constitutes the input data for the channel for this
+            datasource. The object that each ``S3Uris`` points to must be readable by the IAM
+            role that Amazon SageMaker uses to perform tasks on your behalf.
 
       - **ContentType** *(string) --*
 
@@ -7728,9 +7933,9 @@ class ClientCreateModelPackageValidationSpecificationValidationProfilesTransform
           value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is not removed if the
           value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-          For more information about the RecordIO, see `Data Format
-          <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-          documentation. For more information about the TFRecord, see `Consuming TFRecord data
+          For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+          <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For more
+          information about ``TFRecord`` , see `Consuming TFRecord data
           <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
           TensorFlow documentation.
 
@@ -7791,9 +7996,9 @@ class ClientCreateModelPackageValidationSpecificationValidationProfilesTransform
         *Amazon Simple Storage Service Developer Guide.*
 
         The KMS key policy must grant permission to the IAM role that you specify in your
-        ``CreateTramsformJob`` request. For more information, see `Using Key Policies in AWS
-        KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
-        *AWS Key Management Service Developer Guide* .
+        CreateModel request. For more information, see `Using Key Policies in AWS KMS
+        <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the *AWS
+        Key Management Service Developer Guide* .
 
     - **TransformResources** *(dict) --* **[REQUIRED]**
 
@@ -7914,15 +8119,16 @@ class ClientCreateModelPackageValidationSpecificationValidationProfilesTypeDef(
               * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
               * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-              manifest is an S3 object which is a JSON file with the following format:   ``[``
-              ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+              manifest is an S3 object which is a JSON file with the following format:   ``[
+              {"prefix": "s3://customer_bucket/some/prefix/"},``
               ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-              ``]``   The preceding JSON matches the following ``S3Uris`` :
-              ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-              ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-              complete set of ``S3Uris`` in this manifest constitutes the input data for the
-              channel for this datasource. The object that each ``S3Uris`` points to must be
-              readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+              ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+              ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+              ``S3Uris`` in this manifest constitutes the input data for the channel for this
+              datasource. The object that each ``S3Uris`` points to must be readable by the IAM
+              role that Amazon SageMaker uses to perform tasks on your behalf.
 
         - **ContentType** *(string) --*
 
@@ -7960,9 +8166,9 @@ class ClientCreateModelPackageValidationSpecificationValidationProfilesTypeDef(
             value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is not removed if the
             value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-            For more information about the RecordIO, see `Data Format
-            <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-            documentation. For more information about the TFRecord, see `Consuming TFRecord data
+            For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+            <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For more
+            information about ``TFRecord`` , see `Consuming TFRecord data
             <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
             TensorFlow documentation.
 
@@ -8023,9 +8229,9 @@ class ClientCreateModelPackageValidationSpecificationValidationProfilesTypeDef(
           *Amazon Simple Storage Service Developer Guide.*
 
           The KMS key policy must grant permission to the IAM role that you specify in your
-          ``CreateTramsformJob`` request. For more information, see `Using Key Policies in AWS
-          KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
-          *AWS Key Management Service Developer Guide* .
+          CreateModel request. For more information, see `Using Key Policies in AWS KMS
+          <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the *AWS
+          Key Management Service Developer Guide* .
 
       - **TransformResources** *(dict) --* **[REQUIRED]**
 
@@ -8162,15 +8368,16 @@ class ClientCreateModelPackageValidationSpecificationTypeDef(
                   * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                   * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                  manifest is an S3 object which is a JSON file with the following format:   ``[``
-                  ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+                  manifest is an S3 object which is a JSON file with the following format:   ``[
+                  {"prefix": "s3://customer_bucket/some/prefix/"},``
                   ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-                  ``]``   The preceding JSON matches the following ``S3Uris`` :
-                  ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                  ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-                  complete set of ``S3Uris`` in this manifest constitutes the input data for the
-                  channel for this datasource. The object that each ``S3Uris`` points to must be
-                  readable by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+                  ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+                  ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+                  ``S3Uris`` in this manifest constitutes the input data for the channel for this
+                  datasource. The object that each ``S3Uris`` points to must be readable by the IAM
+                  role that Amazon SageMaker uses to perform tasks on your behalf.
 
             - **ContentType** *(string) --*
 
@@ -8208,9 +8415,9 @@ class ClientCreateModelPackageValidationSpecificationTypeDef(
                 value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is not removed if the
                 value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-                For more information about the RecordIO, see `Data Format
-                <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-                documentation. For more information about the TFRecord, see `Consuming TFRecord data
+                For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+                <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For more
+                information about ``TFRecord`` , see `Consuming TFRecord data
                 <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
                 TensorFlow documentation.
 
@@ -8271,9 +8478,9 @@ class ClientCreateModelPackageValidationSpecificationTypeDef(
               *Amazon Simple Storage Service Developer Guide.*
 
               The KMS key policy must grant permission to the IAM role that you specify in your
-              ``CreateTramsformJob`` request. For more information, see `Using Key Policies in AWS
-              KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
-              *AWS Key Management Service Developer Guide* .
+              CreateModel request. For more information, see `Using Key Policies in AWS KMS
+              <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the *AWS
+              Key Management Service Developer Guide* .
 
           - **TransformResources** *(dict) --* **[REQUIRED]**
 
@@ -8308,6 +8515,7 @@ _ClientCreateModelPrimaryContainerTypeDef = TypedDict(
     {
         "ContainerHostname": str,
         "Image": str,
+        "Mode": str,
         "ModelDataUrl": str,
         "Environment": Dict[str, str],
         "ModelPackageName": str,
@@ -8347,6 +8555,10 @@ class ClientCreateModelPrimaryContainerTypeDef(
       ``registry/repository[:tag]`` and ``registry/repository[@digest]`` image path formats. For more
       information, see `Using Your Own Algorithms with Amazon SageMaker
       <https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html>`__
+
+    - **Mode** *(string) --*
+
+      Specifies whether the container hosts a single model or multiple models.
 
     - **ModelDataUrl** *(string) --*
 
@@ -8848,14 +9060,16 @@ class ClientCreateTrainingJobInputDataConfigDataSourceS3DataSourceTypeDef(
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest is
-      an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
-      "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-      ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-      following ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-         ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-         complete set of ``s3uris`` in this manifest is the input data for the channel for this
-         datasource. The object that each ``s3uris`` points to must be readable by the IAM role
-         that Amazon SageMaker uses to perform tasks on your behalf.
+      an S3 object which is a JSON file with the following format:  The preceding JSON matches
+      the following ``s3Uris`` :   ``[ {"prefix": "s3://customer_bucket/some/prefix/"},``
+      ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
+      ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+      ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+      ``s3uris`` in this manifest is the input data for the channel for this datasource. The
+      object that each ``s3uris`` points to must be readable by the IAM role that Amazon
+      SageMaker uses to perform tasks on your behalf.
 
     - **S3DataDistributionType** *(string) --*
 
@@ -8930,14 +9144,16 @@ class ClientCreateTrainingJobInputDataConfigDataSourceTypeDef(
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest is
-        an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
-        "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-        ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-        following ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-           ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-           complete set of ``s3uris`` in this manifest is the input data for the channel for this
-           datasource. The object that each ``s3uris`` points to must be readable by the IAM role
-           that Amazon SageMaker uses to perform tasks on your behalf.
+        an S3 object which is a JSON file with the following format:  The preceding JSON matches
+        the following ``s3Uris`` :   ``[ {"prefix": "s3://customer_bucket/some/prefix/"},``
+        ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
+        ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+        ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+        ``s3uris`` in this manifest is the input data for the channel for this datasource. The
+        object that each ``s3uris`` points to must be readable by the IAM role that Amazon
+        SageMaker uses to perform tasks on your behalf.
 
       - **S3DataDistributionType** *(string) --*
 
@@ -9083,14 +9299,16 @@ class ClientCreateTrainingJobInputDataConfigTypeDef(
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest is
-          an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
-          "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-          ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-          following ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-             ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-             complete set of ``s3uris`` in this manifest is the input data for the channel for this
-             datasource. The object that each ``s3uris`` points to must be readable by the IAM role
-             that Amazon SageMaker uses to perform tasks on your behalf.
+          an S3 object which is a JSON file with the following format:  The preceding JSON matches
+          the following ``s3Uris`` :   ``[ {"prefix": "s3://customer_bucket/some/prefix/"},``
+          ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
+          ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the following
+          ``s3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+          ``s3uris`` in this manifest is the input data for the channel for this datasource. The
+          object that each ``s3uris`` points to must be readable by the IAM role that Amazon
+          SageMaker uses to perform tasks on your behalf.
 
         - **S3DataDistributionType** *(string) --*
 
@@ -9303,11 +9521,37 @@ class ClientCreateTrainingJobResourceConfigTypeDef(
 
         Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+      .. note::
+
+        Certain Nitro-based instances include local storage with a fixed total size, dependent on the
+        instance type. When using these instances for training, Amazon SageMaker mounts the local
+        instance storage instead of Amazon EBS gp2 storage. You can't request a ``VolumeSizeInGB``
+        greater than the total size of the local instance storage.
+
+        For a list of instance types that support local instance storage, including the total size
+        per instance type, see `Instance Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
     - **VolumeKmsKeyId** *(string) --*
 
-      The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data on the
-      storage volume attached to the ML compute instance(s) that run the training job. The
-      ``VolumeKmsKeyId`` can be any of the following formats:
+      The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume attached to
+      the ML compute instance(s) that run the training job.
+
+      .. note::
+
+        Certain Nitro-based instances include local storage, dependent on the instance type. Local
+        storage volumes are encrypted using a hardware module on the instance. You can't request a
+        ``VolumeKmsKeyId`` when using an instance type with local storage.
+
+        For a list of instance types that support local instance storage, see `Instance Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
+        For more information about local instance storage encryption, see `SSD Instance Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+      The ``VolumeKmsKeyId`` can be in any of the following formats:
 
       * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -9469,9 +9713,9 @@ class ClientCreateTransformJobDataProcessingTypeDef(
     - **JoinSource** *(string) --*
 
       Specifies the source of the data to join with the transformed data. The valid values are
-      ``None`` and ``Input`` The default value is ``None`` which specifies not to join the input with
-      the transformed data. If you want the batch transform job to join the original input data with
-      the transformed data, set ``JoinSource`` to ``Input`` .
+      ``None`` and ``Input`` . The default value is ``None`` , which specifies not to join the input
+      with the transformed data. If you want the batch transform job to join the original input data
+      with the transformed data, set ``JoinSource`` to ``Input`` .
 
       For JSON or JSONLines objects, such as a JSON array, Amazon SageMaker adds the transformed data
       to the input JSON object in an attribute called ``SageMakerOutput`` . The joined result for
@@ -9555,14 +9799,16 @@ class ClientCreateTransformJobTransformInputDataSourceS3DataSourceTypeDef(
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest is
-      an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
+      an S3 object which is a JSON file with the following format:   ``[ {"prefix":
       "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-      ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-      following ``S3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-       ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The complete
-       set of ``S3Uris`` in this manifest constitutes the input data for the channel for this
-       datasource. The object that each ``S3Uris`` points to must be readable by the IAM role
-       that Amazon SageMaker uses to perform tasks on your behalf.
+      ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``   The
+      preceding JSON matches the following ``s3Uris`` :
+      ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+      ``S3Uris`` in this manifest constitutes the input data for the channel for this datasource.
+      The object that each ``S3Uris`` points to must be readable by the IAM role that Amazon
+      SageMaker uses to perform tasks on your behalf.
     """
 
 
@@ -9607,14 +9853,16 @@ class ClientCreateTransformJobTransformInputDataSourceTypeDef(
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest is
-        an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
+        an S3 object which is a JSON file with the following format:   ``[ {"prefix":
         "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-        ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-        following ``S3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-         ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The complete
-         set of ``S3Uris`` in this manifest constitutes the input data for the channel for this
-         datasource. The object that each ``S3Uris`` points to must be readable by the IAM role
-         that Amazon SageMaker uses to perform tasks on your behalf.
+        ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``   The
+        preceding JSON matches the following ``s3Uris`` :
+        ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+        ``S3Uris`` in this manifest constitutes the input data for the channel for this datasource.
+        The object that each ``S3Uris`` points to must be readable by the IAM role that Amazon
+        SageMaker uses to perform tasks on your behalf.
     """
 
 
@@ -9667,14 +9915,16 @@ class ClientCreateTransformJobTransformInputTypeDef(
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest is
-          an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
+          an S3 object which is a JSON file with the following format:   ``[ {"prefix":
           "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-          ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-          following ``S3Uris`` :   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-           ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The complete
-           set of ``S3Uris`` in this manifest constitutes the input data for the channel for this
-           datasource. The object that each ``S3Uris`` points to must be readable by the IAM role
-           that Amazon SageMaker uses to perform tasks on your behalf.
+          ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``   The
+          preceding JSON matches the following ``s3Uris`` :
+          ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+          ``S3Uris`` in this manifest constitutes the input data for the channel for this datasource.
+          The object that each ``S3Uris`` points to must be readable by the IAM role that Amazon
+          SageMaker uses to perform tasks on your behalf.
 
     - **ContentType** *(string) --*
 
@@ -9710,9 +9960,9 @@ class ClientCreateTransformJobTransformInputTypeDef(
         ``BatchStrategy`` is set to ``SingleRecord`` . Padding is not removed if the value of
         ``BatchStrategy`` is set to ``MultiRecord`` .
 
-        For more information about the RecordIO, see `Data Format
-        <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-        documentation. For more information about the TFRecord, see `Consuming TFRecord data
+        For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+        <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For more
+        information about ``TFRecord`` , see `Consuming TFRecord data
         <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the TensorFlow
         documentation.
     """
@@ -9786,8 +10036,8 @@ class ClientCreateTransformJobTransformOutputTypeDef(
       <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html>`__ in the *Amazon
       Simple Storage Service Developer Guide.*
 
-      The KMS key policy must grant permission to the IAM role that you specify in your
-      ``CreateTramsformJob`` request. For more information, see `Using Key Policies in AWS KMS
+      The KMS key policy must grant permission to the IAM role that you specify in your  CreateModel
+      request. For more information, see `Using Key Policies in AWS KMS
       <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the *AWS Key
       Management Service Developer Guide* .
     """
@@ -10888,16 +11138,19 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-      manifest is an S3 object which is a JSON file with the following format:
-      ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-      ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-      ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-      ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
-      The complete set of ``s3uris`` in this manifest is the input data for the
-      channel for this datasource. The object that each ``s3uris`` points to must
-      be readable by the IAM role that Amazon SageMaker uses to perform tasks on
-      your behalf.
+      manifest is an S3 object which is a JSON file with the following format:  The
+      preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+      "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+         ``"relative/path/custdata-2",``    ``...``
+         ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the
+         following ``s3Uris`` :
+         ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+         ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The
+          complete set of ``s3uris`` in this manifest is the input data for the
+          channel for this datasource. The object that each ``s3uris`` points to
+          must be readable by the IAM role that Amazon SageMaker uses to perform
+          tasks on your behalf.
 
     - **S3DataDistributionType** *(string) --*
 
@@ -10975,16 +11228,19 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-        manifest is an S3 object which is a JSON file with the following format:
-        ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-        ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-        ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-        ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
-        The complete set of ``s3uris`` in this manifest is the input data for the
-        channel for this datasource. The object that each ``s3uris`` points to must
-        be readable by the IAM role that Amazon SageMaker uses to perform tasks on
-        your behalf.
+        manifest is an S3 object which is a JSON file with the following format:  The
+        preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+        "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+           ``"relative/path/custdata-2",``    ``...``
+           ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the
+           following ``s3Uris`` :
+           ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+           ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The
+            complete set of ``s3uris`` in this manifest is the input data for the
+            channel for this datasource. The object that each ``s3uris`` points to
+            must be readable by the IAM role that Amazon SageMaker uses to perform
+            tasks on your behalf.
 
       - **S3DataDistributionType** *(string) --*
 
@@ -11131,16 +11387,19 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-          manifest is an S3 object which is a JSON file with the following format:
-          ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-          ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-          ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-          ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
-          The complete set of ``s3uris`` in this manifest is the input data for the
-          channel for this datasource. The object that each ``s3uris`` points to must
-          be readable by the IAM role that Amazon SageMaker uses to perform tasks on
-          your behalf.
+          manifest is an S3 object which is a JSON file with the following format:  The
+          preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+          "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+             ``"relative/path/custdata-2",``    ``...``
+             ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the
+             following ``s3Uris`` :
+             ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+             ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The
+              complete set of ``s3uris`` in this manifest is the input data for the
+              channel for this datasource. The object that each ``s3uris`` points to
+              must be readable by the IAM role that Amazon SageMaker uses to perform
+              tasks on your behalf.
 
         - **S3DataDistributionType** *(string) --*
 
@@ -11354,11 +11613,41 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
         Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume
         type.
 
+      .. note::
+
+        Certain Nitro-based instances include local storage with a fixed total size,
+        dependent on the instance type. When using these instances for training, Amazon
+        SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage.
+        You can't request a ``VolumeSizeInGB`` greater than the total size of the local
+        instance storage.
+
+        For a list of instance types that support local instance storage, including the
+        total size per instance type, see `Instance Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
     - **VolumeKmsKeyId** *(string) --*
 
-      The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-      data on the storage volume attached to the ML compute instance(s) that run the
-      training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+      The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+      attached to the ML compute instance(s) that run the training job.
+
+      .. note::
+
+        Certain Nitro-based instances include local storage, dependent on the instance
+        type. Local storage volumes are encrypted using a hardware module on the
+        instance. You can't request a ``VolumeKmsKeyId`` when using an instance type with
+        local storage.
+
+        For a list of instance types that support local instance storage, see `Instance
+        Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
+        For more information about local instance storage encryption, see `SSD Instance
+        Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+      The ``VolumeKmsKeyId`` can be in any of the following formats:
 
       * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -11490,16 +11779,19 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
               * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
               * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-              manifest is an S3 object which is a JSON file with the following format:
-              ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-              ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-              ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-              ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
-              The complete set of ``s3uris`` in this manifest is the input data for the
-              channel for this datasource. The object that each ``s3uris`` points to must
-              be readable by the IAM role that Amazon SageMaker uses to perform tasks on
-              your behalf.
+              manifest is an S3 object which is a JSON file with the following format:  The
+              preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+              "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+                 ``"relative/path/custdata-2",``    ``...``
+                 ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the
+                 following ``s3Uris`` :
+                 ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                 ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The
+                  complete set of ``s3uris`` in this manifest is the input data for the
+                  channel for this datasource. The object that each ``s3uris`` points to
+                  must be readable by the IAM role that Amazon SageMaker uses to perform
+                  tasks on your behalf.
 
             - **S3DataDistributionType** *(string) --*
 
@@ -11682,11 +11974,41 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
           Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume
           type.
 
+        .. note::
+
+          Certain Nitro-based instances include local storage with a fixed total size,
+          dependent on the instance type. When using these instances for training, Amazon
+          SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage.
+          You can't request a ``VolumeSizeInGB`` greater than the total size of the local
+          instance storage.
+
+          For a list of instance types that support local instance storage, including the
+          total size per instance type, see `Instance Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
       - **VolumeKmsKeyId** *(string) --*
 
-        The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-        data on the storage volume attached to the ML compute instance(s) that run the
-        training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+        The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+        attached to the ML compute instance(s) that run the training job.
+
+        .. note::
+
+          Certain Nitro-based instances include local storage, dependent on the instance
+          type. Local storage volumes are encrypted using a hardware module on the
+          instance. You can't request a ``VolumeKmsKeyId`` when using an instance type with
+          local storage.
+
+          For a list of instance types that support local instance storage, see `Instance
+          Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
+          For more information about local instance storage encryption, see `SSD Instance
+          Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+        The ``VolumeKmsKeyId`` can be in any of the following formats:
 
         * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -11755,16 +12077,17 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-      manifest is an S3 object which is a JSON file with the following format:
-      ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+      manifest is an S3 object which is a JSON file with the following format:   ``[
+      {"prefix": "s3://customer_bucket/some/prefix/"},``
       ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-      ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+      ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+      the following ``s3Uris`` :
       ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-      ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-      complete set of ``S3Uris`` in this manifest constitutes the input data for the
-      channel for this datasource. The object that each ``S3Uris`` points to must be
-      readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-      behalf.
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+      set of ``S3Uris`` in this manifest constitutes the input data for the channel
+      for this datasource. The object that each ``S3Uris`` points to must be readable
+      by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
     """
 
 
@@ -11812,16 +12135,17 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-        manifest is an S3 object which is a JSON file with the following format:
-        ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+        manifest is an S3 object which is a JSON file with the following format:   ``[
+        {"prefix": "s3://customer_bucket/some/prefix/"},``
         ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-        ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+        ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+        the following ``s3Uris`` :
         ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-        ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-        complete set of ``S3Uris`` in this manifest constitutes the input data for the
-        channel for this datasource. The object that each ``S3Uris`` points to must be
-        readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-        behalf.
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+        set of ``S3Uris`` in this manifest constitutes the input data for the channel
+        for this datasource. The object that each ``S3Uris`` points to must be readable
+        by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
     """
 
 
@@ -11876,16 +12200,17 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-          manifest is an S3 object which is a JSON file with the following format:
-          ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+          manifest is an S3 object which is a JSON file with the following format:   ``[
+          {"prefix": "s3://customer_bucket/some/prefix/"},``
           ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-          ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+          ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+          the following ``s3Uris`` :
           ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-          ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-          complete set of ``S3Uris`` in this manifest constitutes the input data for the
-          channel for this datasource. The object that each ``S3Uris`` points to must be
-          readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-          behalf.
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+          set of ``S3Uris`` in this manifest constitutes the input data for the channel
+          for this datasource. The object that each ``S3Uris`` points to must be readable
+          by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
     - **ContentType** *(string) --*
 
@@ -11923,11 +12248,11 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
         removed if the value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is
         not removed if the value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-        For more information about the RecordIO, see `Data Format
-        <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-        documentation. For more information about the TFRecord, see `Consuming TFRecord
-        data <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in
-        the TensorFlow documentation.
+        For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+        <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For
+        more information about ``TFRecord`` , see `Consuming TFRecord data
+        <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
+        TensorFlow documentation.
     """
 
 
@@ -12000,9 +12325,9 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
       *Amazon Simple Storage Service Developer Guide.*
 
       The KMS key policy must grant permission to the IAM role that you specify in your
-      ``CreateTramsformJob`` request. For more information, see `Using Key Policies in
-      AWS KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__
-      in the *AWS Key Management Service Developer Guide* .
+      CreateModel request. For more information, see `Using Key Policies in AWS KMS
+      <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
+      *AWS Key Management Service Developer Guide* .
     """
 
 
@@ -12131,16 +12456,17 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
             * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
             * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-            manifest is an S3 object which is a JSON file with the following format:
-            ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+            manifest is an S3 object which is a JSON file with the following format:   ``[
+            {"prefix": "s3://customer_bucket/some/prefix/"},``
             ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-            ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+            ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+            the following ``s3Uris`` :
             ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-            ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-            complete set of ``S3Uris`` in this manifest constitutes the input data for the
-            channel for this datasource. The object that each ``S3Uris`` points to must be
-            readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-            behalf.
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+            set of ``S3Uris`` in this manifest constitutes the input data for the channel
+            for this datasource. The object that each ``S3Uris`` points to must be readable
+            by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
       - **ContentType** *(string) --*
 
@@ -12178,11 +12504,11 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
           removed if the value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is
           not removed if the value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-          For more information about the RecordIO, see `Data Format
-          <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-          documentation. For more information about the TFRecord, see `Consuming TFRecord
-          data <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in
-          the TensorFlow documentation.
+          For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+          <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For
+          more information about ``TFRecord`` , see `Consuming TFRecord data
+          <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
+          TensorFlow documentation.
 
     - **TransformOutput** *(dict) --*
 
@@ -12242,9 +12568,9 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTr
         *Amazon Simple Storage Service Developer Guide.*
 
         The KMS key policy must grant permission to the IAM role that you specify in your
-        ``CreateTramsformJob`` request. For more information, see `Using Key Policies in
-        AWS KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__
-        in the *AWS Key Management Service Developer Guide* .
+        CreateModel request. For more information, see `Using Key Policies in AWS KMS
+        <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
+        *AWS Key Management Service Developer Guide* .
 
     - **TransformResources** *(dict) --*
 
@@ -12369,16 +12695,19 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTy
                 * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                 * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                manifest is an S3 object which is a JSON file with the following format:
-                ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-                ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-                ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
-                The complete set of ``s3uris`` in this manifest is the input data for the
-                channel for this datasource. The object that each ``s3uris`` points to must
-                be readable by the IAM role that Amazon SageMaker uses to perform tasks on
-                your behalf.
+                manifest is an S3 object which is a JSON file with the following format:  The
+                preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+                "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+                   ``"relative/path/custdata-2",``    ``...``
+                   ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the
+                   following ``s3Uris`` :
+                   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                   ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                    ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The
+                    complete set of ``s3uris`` in this manifest is the input data for the
+                    channel for this datasource. The object that each ``s3uris`` points to
+                    must be readable by the IAM role that Amazon SageMaker uses to perform
+                    tasks on your behalf.
 
               - **S3DataDistributionType** *(string) --*
 
@@ -12561,11 +12890,41 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTy
             Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume
             type.
 
+          .. note::
+
+            Certain Nitro-based instances include local storage with a fixed total size,
+            dependent on the instance type. When using these instances for training, Amazon
+            SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage.
+            You can't request a ``VolumeSizeInGB`` greater than the total size of the local
+            instance storage.
+
+            For a list of instance types that support local instance storage, including the
+            total size per instance type, see `Instance Store Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+            .
+
         - **VolumeKmsKeyId** *(string) --*
 
-          The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-          data on the storage volume attached to the ML compute instance(s) that run the
-          training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+          The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+          attached to the ML compute instance(s) that run the training job.
+
+          .. note::
+
+            Certain Nitro-based instances include local storage, dependent on the instance
+            type. Local storage volumes are encrypted using a hardware module on the
+            instance. You can't request a ``VolumeKmsKeyId`` when using an instance type with
+            local storage.
+
+            For a list of instance types that support local instance storage, see `Instance
+            Store Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+            .
+
+            For more information about local instance storage encryption, see `SSD Instance
+            Store Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+          The ``VolumeKmsKeyId`` can be in any of the following formats:
 
           * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -12662,16 +13021,17 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTy
               * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
               * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-              manifest is an S3 object which is a JSON file with the following format:
-              ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+              manifest is an S3 object which is a JSON file with the following format:   ``[
+              {"prefix": "s3://customer_bucket/some/prefix/"},``
               ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-              ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+              ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+              the following ``s3Uris`` :
               ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-              ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-              complete set of ``S3Uris`` in this manifest constitutes the input data for the
-              channel for this datasource. The object that each ``S3Uris`` points to must be
-              readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-              behalf.
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+              set of ``S3Uris`` in this manifest constitutes the input data for the channel
+              for this datasource. The object that each ``S3Uris`` points to must be readable
+              by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
         - **ContentType** *(string) --*
 
@@ -12709,11 +13069,11 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTy
             removed if the value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is
             not removed if the value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-            For more information about the RecordIO, see `Data Format
-            <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-            documentation. For more information about the TFRecord, see `Consuming TFRecord
-            data <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in
-            the TensorFlow documentation.
+            For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+            <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For
+            more information about ``TFRecord`` , see `Consuming TFRecord data
+            <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
+            TensorFlow documentation.
 
       - **TransformOutput** *(dict) --*
 
@@ -12773,9 +13133,9 @@ class ClientDescribeAlgorithmResponseValidationSpecificationValidationProfilesTy
           *Amazon Simple Storage Service Developer Guide.*
 
           The KMS key policy must grant permission to the IAM role that you specify in your
-          ``CreateTramsformJob`` request. For more information, see `Using Key Policies in
-          AWS KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__
-          in the *AWS Key Management Service Developer Guide* .
+          CreateModel request. For more information, see `Using Key Policies in AWS KMS
+          <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
+          *AWS Key Management Service Developer Guide* .
 
       - **TransformResources** *(dict) --*
 
@@ -12915,16 +13275,19 @@ class ClientDescribeAlgorithmResponseValidationSpecificationTypeDef(
                     * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                     * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                    manifest is an S3 object which is a JSON file with the following format:
-                    ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-                    ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                    ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-                    ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                    ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
-                    The complete set of ``s3uris`` in this manifest is the input data for the
-                    channel for this datasource. The object that each ``s3uris`` points to must
-                    be readable by the IAM role that Amazon SageMaker uses to perform tasks on
-                    your behalf.
+                    manifest is an S3 object which is a JSON file with the following format:  The
+                    preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+                    "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+                       ``"relative/path/custdata-2",``    ``...``
+                       ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the
+                       following ``s3Uris`` :
+                       ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                       ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The
+                        complete set of ``s3uris`` in this manifest is the input data for the
+                        channel for this datasource. The object that each ``s3uris`` points to
+                        must be readable by the IAM role that Amazon SageMaker uses to perform
+                        tasks on your behalf.
 
                   - **S3DataDistributionType** *(string) --*
 
@@ -13107,11 +13470,41 @@ class ClientDescribeAlgorithmResponseValidationSpecificationTypeDef(
                 Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume
                 type.
 
+              .. note::
+
+                Certain Nitro-based instances include local storage with a fixed total size,
+                dependent on the instance type. When using these instances for training, Amazon
+                SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage.
+                You can't request a ``VolumeSizeInGB`` greater than the total size of the local
+                instance storage.
+
+                For a list of instance types that support local instance storage, including the
+                total size per instance type, see `Instance Store Volumes
+                <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+                .
+
             - **VolumeKmsKeyId** *(string) --*
 
-              The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-              data on the storage volume attached to the ML compute instance(s) that run the
-              training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+              The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+              attached to the ML compute instance(s) that run the training job.
+
+              .. note::
+
+                Certain Nitro-based instances include local storage, dependent on the instance
+                type. Local storage volumes are encrypted using a hardware module on the
+                instance. You can't request a ``VolumeKmsKeyId`` when using an instance type with
+                local storage.
+
+                For a list of instance types that support local instance storage, see `Instance
+                Store Volumes
+                <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+                .
+
+                For more information about local instance storage encryption, see `SSD Instance
+                Store Volumes
+                <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+              The ``VolumeKmsKeyId`` can be in any of the following formats:
 
               * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -13208,16 +13601,17 @@ class ClientDescribeAlgorithmResponseValidationSpecificationTypeDef(
                   * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                   * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                  manifest is an S3 object which is a JSON file with the following format:
-                  ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+                  manifest is an S3 object which is a JSON file with the following format:   ``[
+                  {"prefix": "s3://customer_bucket/some/prefix/"},``
                   ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                  ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+                  ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+                  the following ``s3Uris`` :
                   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                  ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-                  complete set of ``S3Uris`` in this manifest constitutes the input data for the
-                  channel for this datasource. The object that each ``S3Uris`` points to must be
-                  readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-                  behalf.
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+                  set of ``S3Uris`` in this manifest constitutes the input data for the channel
+                  for this datasource. The object that each ``S3Uris`` points to must be readable
+                  by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
             - **ContentType** *(string) --*
 
@@ -13255,11 +13649,11 @@ class ClientDescribeAlgorithmResponseValidationSpecificationTypeDef(
                 removed if the value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is
                 not removed if the value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-                For more information about the RecordIO, see `Data Format
-                <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-                documentation. For more information about the TFRecord, see `Consuming TFRecord
-                data <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in
-                the TensorFlow documentation.
+                For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+                <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For
+                more information about ``TFRecord`` , see `Consuming TFRecord data
+                <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
+                TensorFlow documentation.
 
           - **TransformOutput** *(dict) --*
 
@@ -13319,9 +13713,9 @@ class ClientDescribeAlgorithmResponseValidationSpecificationTypeDef(
               *Amazon Simple Storage Service Developer Guide.*
 
               The KMS key policy must grant permission to the IAM role that you specify in your
-              ``CreateTramsformJob`` request. For more information, see `Using Key Policies in
-              AWS KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__
-              in the *AWS Key Management Service Developer Guide* .
+              CreateModel request. For more information, see `Using Key Policies in AWS KMS
+              <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
+              *AWS Key Management Service Developer Guide* .
 
           - **TransformResources** *(dict) --*
 
@@ -13739,16 +14133,19 @@ class ClientDescribeAlgorithmResponseTypeDef(_ClientDescribeAlgorithmResponseTyp
                       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                       * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                      manifest is an S3 object which is a JSON file with the following format:
-                      ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-                      ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                      ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-                      ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
-                      The complete set of ``s3uris`` in this manifest is the input data for the
-                      channel for this datasource. The object that each ``s3uris`` points to must
-                      be readable by the IAM role that Amazon SageMaker uses to perform tasks on
-                      your behalf.
+                      manifest is an S3 object which is a JSON file with the following format:  The
+                      preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+                      "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+                         ``"relative/path/custdata-2",``    ``...``
+                         ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches the
+                         following ``s3Uris`` :
+                         ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                         ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The
+                          complete set of ``s3uris`` in this manifest is the input data for the
+                          channel for this datasource. The object that each ``s3uris`` points to
+                          must be readable by the IAM role that Amazon SageMaker uses to perform
+                          tasks on your behalf.
 
                     - **S3DataDistributionType** *(string) --*
 
@@ -13931,11 +14328,41 @@ class ClientDescribeAlgorithmResponseTypeDef(_ClientDescribeAlgorithmResponseTyp
                   Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume
                   type.
 
+                .. note::
+
+                  Certain Nitro-based instances include local storage with a fixed total size,
+                  dependent on the instance type. When using these instances for training, Amazon
+                  SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage.
+                  You can't request a ``VolumeSizeInGB`` greater than the total size of the local
+                  instance storage.
+
+                  For a list of instance types that support local instance storage, including the
+                  total size per instance type, see `Instance Store Volumes
+                  <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+                  .
+
               - **VolumeKmsKeyId** *(string) --*
 
-                The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-                data on the storage volume attached to the ML compute instance(s) that run the
-                training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+                The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+                attached to the ML compute instance(s) that run the training job.
+
+                .. note::
+
+                  Certain Nitro-based instances include local storage, dependent on the instance
+                  type. Local storage volumes are encrypted using a hardware module on the
+                  instance. You can't request a ``VolumeKmsKeyId`` when using an instance type with
+                  local storage.
+
+                  For a list of instance types that support local instance storage, see `Instance
+                  Store Volumes
+                  <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+                  .
+
+                  For more information about local instance storage encryption, see `SSD Instance
+                  Store Volumes
+                  <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+                The ``VolumeKmsKeyId`` can be in any of the following formats:
 
                 * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -14032,16 +14459,17 @@ class ClientDescribeAlgorithmResponseTypeDef(_ClientDescribeAlgorithmResponseTyp
                     * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                     * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                    manifest is an S3 object which is a JSON file with the following format:
-                    ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+                    manifest is an S3 object which is a JSON file with the following format:   ``[
+                    {"prefix": "s3://customer_bucket/some/prefix/"},``
                     ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                    ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+                    ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+                    the following ``s3Uris`` :
                     ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                    ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-                    complete set of ``S3Uris`` in this manifest constitutes the input data for the
-                    channel for this datasource. The object that each ``S3Uris`` points to must be
-                    readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-                    behalf.
+                    ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                    ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+                    set of ``S3Uris`` in this manifest constitutes the input data for the channel
+                    for this datasource. The object that each ``S3Uris`` points to must be readable
+                    by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
               - **ContentType** *(string) --*
 
@@ -14079,11 +14507,11 @@ class ClientDescribeAlgorithmResponseTypeDef(_ClientDescribeAlgorithmResponseTyp
                   removed if the value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is
                   not removed if the value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-                  For more information about the RecordIO, see `Data Format
-                  <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-                  documentation. For more information about the TFRecord, see `Consuming TFRecord
-                  data <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in
-                  the TensorFlow documentation.
+                  For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+                  <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For
+                  more information about ``TFRecord`` , see `Consuming TFRecord data
+                  <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
+                  TensorFlow documentation.
 
             - **TransformOutput** *(dict) --*
 
@@ -14143,9 +14571,9 @@ class ClientDescribeAlgorithmResponseTypeDef(_ClientDescribeAlgorithmResponseTyp
                 *Amazon Simple Storage Service Developer Guide.*
 
                 The KMS key policy must grant permission to the IAM role that you specify in your
-                ``CreateTramsformJob`` request. For more information, see `Using Key Policies in
-                AWS KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__
-                in the *AWS Key Management Service Developer Guide* .
+                CreateModel request. For more information, see `Using Key Policies in AWS KMS
+                <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
+                *AWS Key Management Service Developer Guide* .
 
             - **TransformResources** *(dict) --*
 
@@ -15320,7 +15748,7 @@ class ClientDescribeHyperParameterTuningJobResponseHyperParameterTuningJobConfig
 
         ReverseLogarithmic
 
-      Hyperparemeter tuning searches the values in the hyperparameter range by using a
+      Hyperparameter tuning searches the values in the hyperparameter range by using a
       reverse logarithmic scale.
 
       Reverse logarithmic scaling works only for ranges that are entirely within the range
@@ -15374,7 +15802,7 @@ class ClientDescribeHyperParameterTuningJobResponseHyperParameterTuningJobConfig
 
         Logarithmic
 
-      Hyperparemeter tuning searches the values in the hyperparameter range by using a
+      Hyperparameter tuning searches the values in the hyperparameter range by using a
       logarithmic scale.
 
       Logarithmic scaling works only for ranges that have only values greater than 0.
@@ -15447,7 +15875,7 @@ class ClientDescribeHyperParameterTuningJobResponseHyperParameterTuningJobConfig
 
             Logarithmic
 
-          Hyperparemeter tuning searches the values in the hyperparameter range by using a
+          Hyperparameter tuning searches the values in the hyperparameter range by using a
           logarithmic scale.
 
           Logarithmic scaling works only for ranges that have only values greater than 0.
@@ -15500,7 +15928,7 @@ class ClientDescribeHyperParameterTuningJobResponseHyperParameterTuningJobConfig
 
             ReverseLogarithmic
 
-          Hyperparemeter tuning searches the values in the hyperparameter range by using a
+          Hyperparameter tuning searches the values in the hyperparameter range by using a
           reverse logarithmic scale.
 
           Reverse logarithmic scaling works only for ranges that are entirely within the range
@@ -15656,7 +16084,7 @@ class ClientDescribeHyperParameterTuningJobResponseHyperParameterTuningJobConfig
 
               Logarithmic
 
-            Hyperparemeter tuning searches the values in the hyperparameter range by using a
+            Hyperparameter tuning searches the values in the hyperparameter range by using a
             logarithmic scale.
 
             Logarithmic scaling works only for ranges that have only values greater than 0.
@@ -15709,7 +16137,7 @@ class ClientDescribeHyperParameterTuningJobResponseHyperParameterTuningJobConfig
 
               ReverseLogarithmic
 
-            Hyperparemeter tuning searches the values in the hyperparameter range by using a
+            Hyperparameter tuning searches the values in the hyperparameter range by using a
             reverse logarithmic scale.
 
             Reverse logarithmic scaling works only for ranges that are entirely within the range
@@ -16145,15 +16573,17 @@ class ClientDescribeHyperParameterTuningJobResponseTrainingJobDefinitionInputDat
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-      manifest is an S3 object which is a JSON file with the following format:   ``[``
-      ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-      ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
+      manifest is an S3 object which is a JSON file with the following format:  The
+      preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+      "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+      ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
       ``]``   The preceding JSON matches the following ``s3Uris`` :
       ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-      complete set of ``s3uris`` in this manifest is the input data for the channel for
-      this datasource. The object that each ``s3uris`` points to must be readable by the
-      IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+      ``s3uris`` in this manifest is the input data for the channel for this datasource.
+      The object that each ``s3uris`` points to must be readable by the IAM role that
+      Amazon SageMaker uses to perform tasks on your behalf.
 
     - **S3DataDistributionType** *(string) --*
 
@@ -16230,15 +16660,17 @@ class ClientDescribeHyperParameterTuningJobResponseTrainingJobDefinitionInputDat
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-        manifest is an S3 object which is a JSON file with the following format:   ``[``
-        ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-        ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
+        manifest is an S3 object which is a JSON file with the following format:  The
+        preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+        "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+        ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
         ``]``   The preceding JSON matches the following ``s3Uris`` :
         ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-        complete set of ``s3uris`` in this manifest is the input data for the channel for
-        this datasource. The object that each ``s3uris`` points to must be readable by the
-        IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+        ``s3uris`` in this manifest is the input data for the channel for this datasource.
+        The object that each ``s3uris`` points to must be readable by the IAM role that
+        Amazon SageMaker uses to perform tasks on your behalf.
 
       - **S3DataDistributionType** *(string) --*
 
@@ -16382,15 +16814,17 @@ class ClientDescribeHyperParameterTuningJobResponseTrainingJobDefinitionInputDat
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-          manifest is an S3 object which is a JSON file with the following format:   ``[``
-          ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-          ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
+          manifest is an S3 object which is a JSON file with the following format:  The
+          preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+          "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+          ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
           ``]``   The preceding JSON matches the following ``s3Uris`` :
           ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-          complete set of ``s3uris`` in this manifest is the input data for the channel for
-          this datasource. The object that each ``s3uris`` points to must be readable by the
-          IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+          ``s3uris`` in this manifest is the input data for the channel for this datasource.
+          The object that each ``s3uris`` points to must be readable by the IAM role that
+          Amazon SageMaker uses to perform tasks on your behalf.
 
         - **S3DataDistributionType** *(string) --*
 
@@ -16605,11 +17039,39 @@ class ClientDescribeHyperParameterTuningJobResponseTrainingJobDefinitionResource
 
         Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+      .. note::
+
+        Certain Nitro-based instances include local storage with a fixed total size, dependent
+        on the instance type. When using these instances for training, Amazon SageMaker mounts
+        the local instance storage instead of Amazon EBS gp2 storage. You can't request a
+        ``VolumeSizeInGB`` greater than the total size of the local instance storage.
+
+        For a list of instance types that support local instance storage, including the total
+        size per instance type, see `Instance Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
     - **VolumeKmsKeyId** *(string) --*
 
-      The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data
-      on the storage volume attached to the ML compute instance(s) that run the training job.
-      The ``VolumeKmsKeyId`` can be any of the following formats:
+      The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume attached
+      to the ML compute instance(s) that run the training job.
+
+      .. note::
+
+        Certain Nitro-based instances include local storage, dependent on the instance type.
+        Local storage volumes are encrypted using a hardware module on the instance. You can't
+        request a ``VolumeKmsKeyId`` when using an instance type with local storage.
+
+        For a list of instance types that support local instance storage, see `Instance Store
+        Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
+        For more information about local instance storage encryption, see `SSD Instance Store
+        Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+      The ``VolumeKmsKeyId`` can be in any of the following formats:
 
       * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -16839,15 +17301,17 @@ class ClientDescribeHyperParameterTuningJobResponseTrainingJobDefinitionTypeDef(
               * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
               * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-              manifest is an S3 object which is a JSON file with the following format:   ``[``
-              ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-              ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
+              manifest is an S3 object which is a JSON file with the following format:  The
+              preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+              "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+              ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
               ``]``   The preceding JSON matches the following ``s3Uris`` :
               ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-              complete set of ``s3uris`` in this manifest is the input data for the channel for
-              this datasource. The object that each ``s3uris`` points to must be readable by the
-              IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+              ``s3uris`` in this manifest is the input data for the channel for this datasource.
+              The object that each ``s3uris`` points to must be readable by the IAM role that
+              Amazon SageMaker uses to perform tasks on your behalf.
 
             - **S3DataDistributionType** *(string) --*
 
@@ -17059,11 +17523,39 @@ class ClientDescribeHyperParameterTuningJobResponseTrainingJobDefinitionTypeDef(
 
           Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+        .. note::
+
+          Certain Nitro-based instances include local storage with a fixed total size, dependent
+          on the instance type. When using these instances for training, Amazon SageMaker mounts
+          the local instance storage instead of Amazon EBS gp2 storage. You can't request a
+          ``VolumeSizeInGB`` greater than the total size of the local instance storage.
+
+          For a list of instance types that support local instance storage, including the total
+          size per instance type, see `Instance Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
       - **VolumeKmsKeyId** *(string) --*
 
-        The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data
-        on the storage volume attached to the ML compute instance(s) that run the training job.
-        The ``VolumeKmsKeyId`` can be any of the following formats:
+        The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume attached
+        to the ML compute instance(s) that run the training job.
+
+        .. note::
+
+          Certain Nitro-based instances include local storage, dependent on the instance type.
+          Local storage volumes are encrypted using a hardware module on the instance. You can't
+          request a ``VolumeKmsKeyId`` when using an instance type with local storage.
+
+          For a list of instance types that support local instance storage, see `Instance Store
+          Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
+          For more information about local instance storage encryption, see `SSD Instance Store
+          Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+        The ``VolumeKmsKeyId`` can be in any of the following formats:
 
         * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -17393,7 +17885,7 @@ class ClientDescribeHyperParameterTuningJobResponseTypeDef(
 
                 Logarithmic
 
-              Hyperparemeter tuning searches the values in the hyperparameter range by using a
+              Hyperparameter tuning searches the values in the hyperparameter range by using a
               logarithmic scale.
 
               Logarithmic scaling works only for ranges that have only values greater than 0.
@@ -17446,7 +17938,7 @@ class ClientDescribeHyperParameterTuningJobResponseTypeDef(
 
                 ReverseLogarithmic
 
-              Hyperparemeter tuning searches the values in the hyperparameter range by using a
+              Hyperparameter tuning searches the values in the hyperparameter range by using a
               reverse logarithmic scale.
 
               Reverse logarithmic scaling works only for ranges that are entirely within the range
@@ -17609,15 +18101,17 @@ class ClientDescribeHyperParameterTuningJobResponseTypeDef(
                 * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                 * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                manifest is an S3 object which is a JSON file with the following format:   ``[``
-                ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-                ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
+                manifest is an S3 object which is a JSON file with the following format:  The
+                preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+                "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+                ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
                 ``]``   The preceding JSON matches the following ``s3Uris`` :
                 ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-                complete set of ``s3uris`` in this manifest is the input data for the channel for
-                this datasource. The object that each ``s3uris`` points to must be readable by the
-                IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+                ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+                ``s3uris`` in this manifest is the input data for the channel for this datasource.
+                The object that each ``s3uris`` points to must be readable by the IAM role that
+                Amazon SageMaker uses to perform tasks on your behalf.
 
               - **S3DataDistributionType** *(string) --*
 
@@ -17829,11 +18323,39 @@ class ClientDescribeHyperParameterTuningJobResponseTypeDef(
 
             Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+          .. note::
+
+            Certain Nitro-based instances include local storage with a fixed total size, dependent
+            on the instance type. When using these instances for training, Amazon SageMaker mounts
+            the local instance storage instead of Amazon EBS gp2 storage. You can't request a
+            ``VolumeSizeInGB`` greater than the total size of the local instance storage.
+
+            For a list of instance types that support local instance storage, including the total
+            size per instance type, see `Instance Store Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+            .
+
         - **VolumeKmsKeyId** *(string) --*
 
-          The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data
-          on the storage volume attached to the ML compute instance(s) that run the training job.
-          The ``VolumeKmsKeyId`` can be any of the following formats:
+          The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume attached
+          to the ML compute instance(s) that run the training job.
+
+          .. note::
+
+            Certain Nitro-based instances include local storage, dependent on the instance type.
+            Local storage volumes are encrypted using a hardware module on the instance. You can't
+            request a ``VolumeKmsKeyId`` when using an instance type with local storage.
+
+            For a list of instance types that support local instance storage, see `Instance Store
+            Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+            .
+
+            For more information about local instance storage encryption, see `SSD Instance Store
+            Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+          The ``VolumeKmsKeyId`` can be in any of the following formats:
 
           * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -20054,16 +20576,17 @@ class ClientDescribeModelPackageResponseValidationSpecificationValidationProfile
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-      manifest is an S3 object which is a JSON file with the following format:
-      ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+      manifest is an S3 object which is a JSON file with the following format:   ``[
+      {"prefix": "s3://customer_bucket/some/prefix/"},``
       ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-      ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+      ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+      the following ``s3Uris`` :
       ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-      ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-      complete set of ``S3Uris`` in this manifest constitutes the input data for the
-      channel for this datasource. The object that each ``S3Uris`` points to must be
-      readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-      behalf.
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+      set of ``S3Uris`` in this manifest constitutes the input data for the channel
+      for this datasource. The object that each ``S3Uris`` points to must be readable
+      by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
     """
 
 
@@ -20111,16 +20634,17 @@ class ClientDescribeModelPackageResponseValidationSpecificationValidationProfile
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-        manifest is an S3 object which is a JSON file with the following format:
-        ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+        manifest is an S3 object which is a JSON file with the following format:   ``[
+        {"prefix": "s3://customer_bucket/some/prefix/"},``
         ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-        ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+        ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+        the following ``s3Uris`` :
         ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-        ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-        complete set of ``S3Uris`` in this manifest constitutes the input data for the
-        channel for this datasource. The object that each ``S3Uris`` points to must be
-        readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-        behalf.
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+        set of ``S3Uris`` in this manifest constitutes the input data for the channel
+        for this datasource. The object that each ``S3Uris`` points to must be readable
+        by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
     """
 
 
@@ -20175,16 +20699,17 @@ class ClientDescribeModelPackageResponseValidationSpecificationValidationProfile
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-          manifest is an S3 object which is a JSON file with the following format:
-          ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+          manifest is an S3 object which is a JSON file with the following format:   ``[
+          {"prefix": "s3://customer_bucket/some/prefix/"},``
           ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-          ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+          ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+          the following ``s3Uris`` :
           ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-          ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-          complete set of ``S3Uris`` in this manifest constitutes the input data for the
-          channel for this datasource. The object that each ``S3Uris`` points to must be
-          readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-          behalf.
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+          set of ``S3Uris`` in this manifest constitutes the input data for the channel
+          for this datasource. The object that each ``S3Uris`` points to must be readable
+          by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
     - **ContentType** *(string) --*
 
@@ -20222,11 +20747,11 @@ class ClientDescribeModelPackageResponseValidationSpecificationValidationProfile
         removed if the value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is
         not removed if the value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-        For more information about the RecordIO, see `Data Format
-        <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-        documentation. For more information about the TFRecord, see `Consuming TFRecord
-        data <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in
-        the TensorFlow documentation.
+        For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+        <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For
+        more information about ``TFRecord`` , see `Consuming TFRecord data
+        <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
+        TensorFlow documentation.
     """
 
 
@@ -20299,9 +20824,9 @@ class ClientDescribeModelPackageResponseValidationSpecificationValidationProfile
       *Amazon Simple Storage Service Developer Guide.*
 
       The KMS key policy must grant permission to the IAM role that you specify in your
-      ``CreateTramsformJob`` request. For more information, see `Using Key Policies in
-      AWS KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__
-      in the *AWS Key Management Service Developer Guide* .
+      CreateModel request. For more information, see `Using Key Policies in AWS KMS
+      <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
+      *AWS Key Management Service Developer Guide* .
     """
 
 
@@ -20430,16 +20955,17 @@ class ClientDescribeModelPackageResponseValidationSpecificationValidationProfile
             * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
             * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-            manifest is an S3 object which is a JSON file with the following format:
-            ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+            manifest is an S3 object which is a JSON file with the following format:   ``[
+            {"prefix": "s3://customer_bucket/some/prefix/"},``
             ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-            ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+            ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+            the following ``s3Uris`` :
             ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-            ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-            complete set of ``S3Uris`` in this manifest constitutes the input data for the
-            channel for this datasource. The object that each ``S3Uris`` points to must be
-            readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-            behalf.
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+            set of ``S3Uris`` in this manifest constitutes the input data for the channel
+            for this datasource. The object that each ``S3Uris`` points to must be readable
+            by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
       - **ContentType** *(string) --*
 
@@ -20477,11 +21003,11 @@ class ClientDescribeModelPackageResponseValidationSpecificationValidationProfile
           removed if the value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is
           not removed if the value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-          For more information about the RecordIO, see `Data Format
-          <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-          documentation. For more information about the TFRecord, see `Consuming TFRecord
-          data <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in
-          the TensorFlow documentation.
+          For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+          <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For
+          more information about ``TFRecord`` , see `Consuming TFRecord data
+          <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
+          TensorFlow documentation.
 
     - **TransformOutput** *(dict) --*
 
@@ -20541,9 +21067,9 @@ class ClientDescribeModelPackageResponseValidationSpecificationValidationProfile
         *Amazon Simple Storage Service Developer Guide.*
 
         The KMS key policy must grant permission to the IAM role that you specify in your
-        ``CreateTramsformJob`` request. For more information, see `Using Key Policies in
-        AWS KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__
-        in the *AWS Key Management Service Developer Guide* .
+        CreateModel request. For more information, see `Using Key Policies in AWS KMS
+        <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
+        *AWS Key Management Service Developer Guide* .
 
     - **TransformResources** *(dict) --*
 
@@ -20666,16 +21192,17 @@ class ClientDescribeModelPackageResponseValidationSpecificationValidationProfile
               * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
               * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-              manifest is an S3 object which is a JSON file with the following format:
-              ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+              manifest is an S3 object which is a JSON file with the following format:   ``[
+              {"prefix": "s3://customer_bucket/some/prefix/"},``
               ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-              ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+              ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+              the following ``s3Uris`` :
               ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-              ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-              complete set of ``S3Uris`` in this manifest constitutes the input data for the
-              channel for this datasource. The object that each ``S3Uris`` points to must be
-              readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-              behalf.
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+              ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+              set of ``S3Uris`` in this manifest constitutes the input data for the channel
+              for this datasource. The object that each ``S3Uris`` points to must be readable
+              by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
         - **ContentType** *(string) --*
 
@@ -20713,11 +21240,11 @@ class ClientDescribeModelPackageResponseValidationSpecificationValidationProfile
             removed if the value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is
             not removed if the value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-            For more information about the RecordIO, see `Data Format
-            <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-            documentation. For more information about the TFRecord, see `Consuming TFRecord
-            data <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in
-            the TensorFlow documentation.
+            For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+            <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For
+            more information about ``TFRecord`` , see `Consuming TFRecord data
+            <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
+            TensorFlow documentation.
 
       - **TransformOutput** *(dict) --*
 
@@ -20777,9 +21304,9 @@ class ClientDescribeModelPackageResponseValidationSpecificationValidationProfile
           *Amazon Simple Storage Service Developer Guide.*
 
           The KMS key policy must grant permission to the IAM role that you specify in your
-          ``CreateTramsformJob`` request. For more information, see `Using Key Policies in
-          AWS KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__
-          in the *AWS Key Management Service Developer Guide* .
+          CreateModel request. For more information, see `Using Key Policies in AWS KMS
+          <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
+          *AWS Key Management Service Developer Guide* .
 
       - **TransformResources** *(dict) --*
 
@@ -20918,16 +21445,17 @@ class ClientDescribeModelPackageResponseValidationSpecificationTypeDef(
                   * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                   * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                  manifest is an S3 object which is a JSON file with the following format:
-                  ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+                  manifest is an S3 object which is a JSON file with the following format:   ``[
+                  {"prefix": "s3://customer_bucket/some/prefix/"},``
                   ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                  ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+                  ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+                  the following ``s3Uris`` :
                   ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                  ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-                  complete set of ``S3Uris`` in this manifest constitutes the input data for the
-                  channel for this datasource. The object that each ``S3Uris`` points to must be
-                  readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-                  behalf.
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+                  set of ``S3Uris`` in this manifest constitutes the input data for the channel
+                  for this datasource. The object that each ``S3Uris`` points to must be readable
+                  by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
             - **ContentType** *(string) --*
 
@@ -20965,11 +21493,11 @@ class ClientDescribeModelPackageResponseValidationSpecificationTypeDef(
                 removed if the value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is
                 not removed if the value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-                For more information about the RecordIO, see `Data Format
-                <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-                documentation. For more information about the TFRecord, see `Consuming TFRecord
-                data <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in
-                the TensorFlow documentation.
+                For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+                <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For
+                more information about ``TFRecord`` , see `Consuming TFRecord data
+                <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
+                TensorFlow documentation.
 
           - **TransformOutput** *(dict) --*
 
@@ -21029,9 +21557,9 @@ class ClientDescribeModelPackageResponseValidationSpecificationTypeDef(
               *Amazon Simple Storage Service Developer Guide.*
 
               The KMS key policy must grant permission to the IAM role that you specify in your
-              ``CreateTramsformJob`` request. For more information, see `Using Key Policies in
-              AWS KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__
-              in the *AWS Key Management Service Developer Guide* .
+              CreateModel request. For more information, see `Using Key Policies in AWS KMS
+              <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
+              *AWS Key Management Service Developer Guide* .
 
           - **TransformResources** *(dict) --*
 
@@ -21286,16 +21814,17 @@ class ClientDescribeModelPackageResponseTypeDef(
                     * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                     * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                    manifest is an S3 object which is a JSON file with the following format:
-                    ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
+                    manifest is an S3 object which is a JSON file with the following format:   ``[
+                    {"prefix": "s3://customer_bucket/some/prefix/"},``
                     ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                    ``...``    ``]``   The preceding JSON matches the following ``S3Uris`` :
+                    ``...``    ``"relative/path/custdata-N"``    ``]``   The preceding JSON matches
+                    the following ``s3Uris`` :
                     ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                    ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The
-                    complete set of ``S3Uris`` in this manifest constitutes the input data for the
-                    channel for this datasource. The object that each ``S3Uris`` points to must be
-                    readable by the IAM role that Amazon SageMaker uses to perform tasks on your
-                    behalf.
+                    ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                    ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+                    set of ``S3Uris`` in this manifest constitutes the input data for the channel
+                    for this datasource. The object that each ``S3Uris`` points to must be readable
+                    by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
               - **ContentType** *(string) --*
 
@@ -21333,11 +21862,11 @@ class ClientDescribeModelPackageResponseTypeDef(
                   removed if the value of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is
                   not removed if the value of ``BatchStrategy`` is set to ``MultiRecord`` .
 
-                  For more information about the RecordIO, see `Data Format
-                  <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-                  documentation. For more information about the TFRecord, see `Consuming TFRecord
-                  data <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in
-                  the TensorFlow documentation.
+                  For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+                  <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For
+                  more information about ``TFRecord`` , see `Consuming TFRecord data
+                  <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the
+                  TensorFlow documentation.
 
             - **TransformOutput** *(dict) --*
 
@@ -21397,9 +21926,9 @@ class ClientDescribeModelPackageResponseTypeDef(
                 *Amazon Simple Storage Service Developer Guide.*
 
                 The KMS key policy must grant permission to the IAM role that you specify in your
-                ``CreateTramsformJob`` request. For more information, see `Using Key Policies in
-                AWS KMS <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__
-                in the *AWS Key Management Service Developer Guide* .
+                CreateModel request. For more information, see `Using Key Policies in AWS KMS
+                <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the
+                *AWS Key Management Service Developer Guide* .
 
             - **TransformResources** *(dict) --*
 
@@ -21486,6 +22015,7 @@ _ClientDescribeModelResponseContainersTypeDef = TypedDict(
     {
         "ContainerHostname": str,
         "Image": str,
+        "Mode": str,
         "ModelDataUrl": str,
         "Environment": Dict[str, str],
         "ModelPackageName": str,
@@ -21525,6 +22055,10 @@ class ClientDescribeModelResponseContainersTypeDef(
       supports both ``registry/repository[:tag]`` and ``registry/repository[@digest]`` image
       path formats. For more information, see `Using Your Own Algorithms with Amazon SageMaker
       <https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html>`__
+
+    - **Mode** *(string) --*
+
+      Specifies whether the container hosts a single model or multiple models.
 
     - **ModelDataUrl** *(string) --*
 
@@ -21569,6 +22103,7 @@ _ClientDescribeModelResponsePrimaryContainerTypeDef = TypedDict(
     {
         "ContainerHostname": str,
         "Image": str,
+        "Mode": str,
         "ModelDataUrl": str,
         "Environment": Dict[str, str],
         "ModelPackageName": str,
@@ -21609,6 +22144,10 @@ class ClientDescribeModelResponsePrimaryContainerTypeDef(
       ``registry/repository[:tag]`` and ``registry/repository[@digest]`` image path formats. For
       more information, see `Using Your Own Algorithms with Amazon SageMaker
       <https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html>`__
+
+    - **Mode** *(string) --*
+
+      Specifies whether the container hosts a single model or multiple models.
 
     - **ModelDataUrl** *(string) --*
 
@@ -21739,6 +22278,10 @@ class ClientDescribeModelResponseTypeDef(_ClientDescribeModelResponseTypeDef):
         more information, see `Using Your Own Algorithms with Amazon SageMaker
         <https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html>`__
 
+      - **Mode** *(string) --*
+
+        Specifies whether the container hosts a single model or multiple models.
+
       - **ModelDataUrl** *(string) --*
 
         The S3 path where the model artifacts, which result from model training, are stored. This
@@ -21806,6 +22349,10 @@ class ClientDescribeModelResponseTypeDef(_ClientDescribeModelResponseTypeDef):
           supports both ``registry/repository[:tag]`` and ``registry/repository[@digest]`` image
           path formats. For more information, see `Using Your Own Algorithms with Amazon SageMaker
           <https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html>`__
+
+        - **Mode** *(string) --*
+
+          Specifies whether the container hosts a single model or multiple models.
 
         - **ModelDataUrl** *(string) --*
 
@@ -22560,15 +23107,17 @@ class ClientDescribeTrainingJobResponseInputDataConfigDataSourceS3DataSourceType
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-      manifest is an S3 object which is a JSON file with the following format:   ``[``
-      ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-      ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-      ``]``   The preceding JSON matches the following ``s3Uris`` :
-      ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-      complete set of ``s3uris`` in this manifest is the input data for the channel for
-      this datasource. The object that each ``s3uris`` points to must be readable by the
-      IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+      manifest is an S3 object which is a JSON file with the following format:  The
+      preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+      "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+      ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``
+        The preceding JSON matches the following ``s3Uris`` :
+        ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+        ``s3uris`` in this manifest is the input data for the channel for this datasource.
+        The object that each ``s3uris`` points to must be readable by the IAM role that
+        Amazon SageMaker uses to perform tasks on your behalf.
 
     - **S3DataDistributionType** *(string) --*
 
@@ -22644,15 +23193,17 @@ class ClientDescribeTrainingJobResponseInputDataConfigDataSourceTypeDef(
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-        manifest is an S3 object which is a JSON file with the following format:   ``[``
-        ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-        ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-        ``]``   The preceding JSON matches the following ``s3Uris`` :
-        ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-        complete set of ``s3uris`` in this manifest is the input data for the channel for
-        this datasource. The object that each ``s3uris`` points to must be readable by the
-        IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+        manifest is an S3 object which is a JSON file with the following format:  The
+        preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+        "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+        ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``
+          The preceding JSON matches the following ``s3Uris`` :
+          ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+          ``s3uris`` in this manifest is the input data for the channel for this datasource.
+          The object that each ``s3uris`` points to must be readable by the IAM role that
+          Amazon SageMaker uses to perform tasks on your behalf.
 
       - **S3DataDistributionType** *(string) --*
 
@@ -22795,15 +23346,17 @@ class ClientDescribeTrainingJobResponseInputDataConfigTypeDef(
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-          manifest is an S3 object which is a JSON file with the following format:   ``[``
-          ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-          ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-          ``]``   The preceding JSON matches the following ``s3Uris`` :
-          ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-          complete set of ``s3uris`` in this manifest is the input data for the channel for
-          this datasource. The object that each ``s3uris`` points to must be readable by the
-          IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+          manifest is an S3 object which is a JSON file with the following format:  The
+          preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+          "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+          ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``
+            The preceding JSON matches the following ``s3Uris`` :
+            ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+            ``s3uris`` in this manifest is the input data for the channel for this datasource.
+            The object that each ``s3uris`` points to must be readable by the IAM role that
+            Amazon SageMaker uses to perform tasks on your behalf.
 
         - **S3DataDistributionType** *(string) --*
 
@@ -23031,11 +23584,38 @@ class ClientDescribeTrainingJobResponseResourceConfigTypeDef(
 
         Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+      .. note::
+
+        Certain Nitro-based instances include local storage with a fixed total size, dependent on
+        the instance type. When using these instances for training, Amazon SageMaker mounts the
+        local instance storage instead of Amazon EBS gp2 storage. You can't request a
+        ``VolumeSizeInGB`` greater than the total size of the local instance storage.
+
+        For a list of instance types that support local instance storage, including the total
+        size per instance type, see `Instance Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
     - **VolumeKmsKeyId** *(string) --*
 
-      The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data on
-      the storage volume attached to the ML compute instance(s) that run the training job. The
-      ``VolumeKmsKeyId`` can be any of the following formats:
+      The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume attached
+      to the ML compute instance(s) that run the training job.
+
+      .. note::
+
+        Certain Nitro-based instances include local storage, dependent on the instance type.
+        Local storage volumes are encrypted using a hardware module on the instance. You can't
+        request a ``VolumeKmsKeyId`` when using an instance type with local storage.
+
+        For a list of instance types that support local instance storage, see `Instance Store
+        Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
+        For more information about local instance storage encryption, see `SSD Instance Store
+        Volumes <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+      The ``VolumeKmsKeyId`` can be in any of the following formats:
 
       * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -23512,15 +24092,17 @@ class ClientDescribeTrainingJobResponseTypeDef(
               * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
               * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-              manifest is an S3 object which is a JSON file with the following format:   ``[``
-              ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-              ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``    ``...``
-              ``]``   The preceding JSON matches the following ``s3Uris`` :
-              ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-              complete set of ``s3uris`` in this manifest is the input data for the channel for
-              this datasource. The object that each ``s3uris`` points to must be readable by the
-              IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+              manifest is an S3 object which is a JSON file with the following format:  The
+              preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+              "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+              ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``
+                The preceding JSON matches the following ``s3Uris`` :
+                ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+                ``s3uris`` in this manifest is the input data for the channel for this datasource.
+                The object that each ``s3uris`` points to must be readable by the IAM role that
+                Amazon SageMaker uses to perform tasks on your behalf.
 
             - **S3DataDistributionType** *(string) --*
 
@@ -23695,11 +24277,38 @@ class ClientDescribeTrainingJobResponseTypeDef(
 
           Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+        .. note::
+
+          Certain Nitro-based instances include local storage with a fixed total size, dependent on
+          the instance type. When using these instances for training, Amazon SageMaker mounts the
+          local instance storage instead of Amazon EBS gp2 storage. You can't request a
+          ``VolumeSizeInGB`` greater than the total size of the local instance storage.
+
+          For a list of instance types that support local instance storage, including the total
+          size per instance type, see `Instance Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
       - **VolumeKmsKeyId** *(string) --*
 
-        The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data on
-        the storage volume attached to the ML compute instance(s) that run the training job. The
-        ``VolumeKmsKeyId`` can be any of the following formats:
+        The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume attached
+        to the ML compute instance(s) that run the training job.
+
+        .. note::
+
+          Certain Nitro-based instances include local storage, dependent on the instance type.
+          Local storage volumes are encrypted using a hardware module on the instance. You can't
+          request a ``VolumeKmsKeyId`` when using an instance type with local storage.
+
+          For a list of instance types that support local instance storage, see `Instance Store
+          Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
+          For more information about local instance storage encryption, see `SSD Instance Store
+          Volumes <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+        The ``VolumeKmsKeyId`` can be in any of the following formats:
 
         * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -24004,9 +24613,9 @@ class ClientDescribeTransformJobResponseDataProcessingTypeDef(
     - **JoinSource** *(string) --*
 
       Specifies the source of the data to join with the transformed data. The valid values are
-      ``None`` and ``Input`` The default value is ``None`` which specifies not to join the input
-      with the transformed data. If you want the batch transform job to join the original input
-      data with the transformed data, set ``JoinSource`` to ``Input`` .
+      ``None`` and ``Input`` . The default value is ``None`` , which specifies not to join the
+      input with the transformed data. If you want the batch transform job to join the original
+      input data with the transformed data, set ``JoinSource`` to ``Input`` .
 
       For JSON or JSONLines objects, such as a JSON array, Amazon SageMaker adds the transformed
       data to the input JSON object in an attribute called ``SageMakerOutput`` . The joined
@@ -24057,13 +24666,14 @@ class ClientDescribeTransformJobResponseTransformInputDataSourceS3DataSourceType
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest
-      is an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
+      is an S3 object which is a JSON file with the following format:   ``[ {"prefix":
       "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-      ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-      following ``S3Uris`` :
+      ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``
+      The preceding JSON matches the following ``s3Uris`` :
       ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-      ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The complete
-      set of ``S3Uris`` in this manifest constitutes the input data for the channel for this
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+      ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+      ``S3Uris`` in this manifest constitutes the input data for the channel for this
       datasource. The object that each ``S3Uris`` points to must be readable by the IAM role
       that Amazon SageMaker uses to perform tasks on your behalf.
     """
@@ -24112,13 +24722,14 @@ class ClientDescribeTransformJobResponseTransformInputDataSourceTypeDef(
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest
-        is an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
+        is an S3 object which is a JSON file with the following format:   ``[ {"prefix":
         "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-        ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-        following ``S3Uris`` :
+        ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``
+        The preceding JSON matches the following ``s3Uris`` :
         ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-        ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The complete
-        set of ``S3Uris`` in this manifest constitutes the input data for the channel for this
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+        ``S3Uris`` in this manifest constitutes the input data for the channel for this
         datasource. The object that each ``S3Uris`` points to must be readable by the IAM role
         that Amazon SageMaker uses to perform tasks on your behalf.
     """
@@ -24174,13 +24785,14 @@ class ClientDescribeTransformJobResponseTransformInputTypeDef(
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest
-          is an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
+          is an S3 object which is a JSON file with the following format:   ``[ {"prefix":
           "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-          ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-          following ``S3Uris`` :
+          ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``
+          The preceding JSON matches the following ``s3Uris`` :
           ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-          ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The complete
-          set of ``S3Uris`` in this manifest constitutes the input data for the channel for this
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+          ``S3Uris`` in this manifest constitutes the input data for the channel for this
           datasource. The object that each ``S3Uris`` points to must be readable by the IAM role
           that Amazon SageMaker uses to perform tasks on your behalf.
 
@@ -24218,9 +24830,9 @@ class ClientDescribeTransformJobResponseTransformInputTypeDef(
         of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is not removed if the value of
         ``BatchStrategy`` is set to ``MultiRecord`` .
 
-        For more information about the RecordIO, see `Data Format
-        <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-        documentation. For more information about the TFRecord, see `Consuming TFRecord data
+        For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+        <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For more
+        information about ``TFRecord`` , see `Consuming TFRecord data
         <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the TensorFlow
         documentation.
     """
@@ -24293,7 +24905,7 @@ class ClientDescribeTransformJobResponseTransformOutputTypeDef(
       Simple Storage Service Developer Guide.*
 
       The KMS key policy must grant permission to the IAM role that you specify in your
-      ``CreateTramsformJob`` request. For more information, see `Using Key Policies in AWS KMS
+      CreateModel request. For more information, see `Using Key Policies in AWS KMS
       <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the *AWS Key
       Management Service Developer Guide* .
     """
@@ -24455,13 +25067,14 @@ class ClientDescribeTransformJobResponseTypeDef(
             * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
             * A manifest might look like this: ``s3://bucketname/example.manifest``   The manifest
-            is an S3 object which is a JSON file with the following format:   ``[``    ``{"prefix":
+            is an S3 object which is a JSON file with the following format:   ``[ {"prefix":
             "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
-            ``"relative/path/custdata-2",``    ``...``    ``]``   The preceding JSON matches the
-            following ``S3Uris`` :
+            ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``    ``]``
+            The preceding JSON matches the following ``s3Uris`` :
             ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-            ``s3://customer_bucket/some/prefix/relative/path/custdata-1``    ``...``   The complete
-            set of ``S3Uris`` in this manifest constitutes the input data for the channel for this
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete set of
+            ``S3Uris`` in this manifest constitutes the input data for the channel for this
             datasource. The object that each ``S3Uris`` points to must be readable by the IAM role
             that Amazon SageMaker uses to perform tasks on your behalf.
 
@@ -24499,9 +25112,9 @@ class ClientDescribeTransformJobResponseTypeDef(
           of ``BatchStrategy`` is set to ``SingleRecord`` . Padding is not removed if the value of
           ``BatchStrategy`` is set to ``MultiRecord`` .
 
-          For more information about the RecordIO, see `Data Format
-          <http://mxnet.io/architecture/note_data_loading.html#data-format>`__ in the MXNet
-          documentation. For more information about the TFRecord, see `Consuming TFRecord data
+          For more information about ``RecordIO`` , see `Create a Dataset Using RecordIO
+          <https://mxnet.apache.org/api/faq/recordio>`__ in the MXNet documentation. For more
+          information about ``TFRecord`` , see `Consuming TFRecord data
           <https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data>`__ in the TensorFlow
           documentation.
 
@@ -24561,7 +25174,7 @@ class ClientDescribeTransformJobResponseTypeDef(
         Simple Storage Service Developer Guide.*
 
         The KMS key policy must grant permission to the IAM role that you specify in your
-        ``CreateTramsformJob`` request. For more information, see `Using Key Policies in AWS KMS
+        CreateModel request. For more information, see `Using Key Policies in AWS KMS
         <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html>`__ in the *AWS Key
         Management Service Developer Guide* .
 
@@ -24646,9 +25259,9 @@ class ClientDescribeTransformJobResponseTypeDef(
       - **JoinSource** *(string) --*
 
         Specifies the source of the data to join with the transformed data. The valid values are
-        ``None`` and ``Input`` The default value is ``None`` which specifies not to join the input
-        with the transformed data. If you want the batch transform job to join the original input
-        data with the transformed data, set ``JoinSource`` to ``Input`` .
+        ``None`` and ``Input`` . The default value is ``None`` , which specifies not to join the
+        input with the transformed data. If you want the batch transform job to join the original
+        input data with the transformed data, set ``JoinSource`` to ``Input`` .
 
         For JSON or JSONLines objects, such as a JSON array, Amazon SageMaker adds the transformed
         data to the input JSON object in an attribute called ``SageMakerOutput`` . The joined
@@ -28276,15 +28889,17 @@ class ClientSearchResponseResultsTrainingJobInputDataConfigDataSourceS3DataSourc
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-      manifest is an S3 object which is a JSON file with the following format:
-      ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-      ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-      ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-      ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-      complete set of ``s3uris`` in this manifest is the input data for the channel
-      for this datasource. The object that each ``s3uris`` points to must be readable
-      by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+      manifest is an S3 object which is a JSON file with the following format:  The
+      preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+      "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+       ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+        ``]``   The preceding JSON matches the following ``s3Uris`` :
+        ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+        set of ``s3uris`` in this manifest is the input data for the channel for this
+        datasource. The object that each ``s3uris`` points to must be readable by the
+        IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
     - **S3DataDistributionType** *(string) --*
 
@@ -28361,15 +28976,17 @@ class ClientSearchResponseResultsTrainingJobInputDataConfigDataSourceTypeDef(
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-        manifest is an S3 object which is a JSON file with the following format:
-        ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-        ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-        ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-        ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-        complete set of ``s3uris`` in this manifest is the input data for the channel
-        for this datasource. The object that each ``s3uris`` points to must be readable
-        by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+        manifest is an S3 object which is a JSON file with the following format:  The
+        preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+        "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+         ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+          ``]``   The preceding JSON matches the following ``s3Uris`` :
+          ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+          set of ``s3uris`` in this manifest is the input data for the channel for this
+          datasource. The object that each ``s3uris`` points to must be readable by the
+          IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
       - **S3DataDistributionType** *(string) --*
 
@@ -28515,15 +29132,17 @@ class ClientSearchResponseResultsTrainingJobInputDataConfigTypeDef(
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-          manifest is an S3 object which is a JSON file with the following format:
-          ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-          ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-          ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-          ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-          complete set of ``s3uris`` in this manifest is the input data for the channel
-          for this datasource. The object that each ``s3uris`` points to must be readable
-          by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+          manifest is an S3 object which is a JSON file with the following format:  The
+          preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+          "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+           ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+            ``]``   The preceding JSON matches the following ``s3Uris`` :
+            ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+            set of ``s3uris`` in this manifest is the input data for the channel for this
+            datasource. The object that each ``s3uris`` points to must be readable by the
+            IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
         - **S3DataDistributionType** *(string) --*
 
@@ -28756,11 +29375,41 @@ class ClientSearchResponseResultsTrainingJobResourceConfigTypeDef(
 
         Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+      .. note::
+
+        Certain Nitro-based instances include local storage with a fixed total size,
+        dependent on the instance type. When using these instances for training, Amazon
+        SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+        can't request a ``VolumeSizeInGB`` greater than the total size of the local
+        instance storage.
+
+        For a list of instance types that support local instance storage, including the
+        total size per instance type, see `Instance Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
     - **VolumeKmsKeyId** *(string) --*
 
-      The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-      data on the storage volume attached to the ML compute instance(s) that run the
-      training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+      The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+      attached to the ML compute instance(s) that run the training job.
+
+      .. note::
+
+        Certain Nitro-based instances include local storage, dependent on the instance
+        type. Local storage volumes are encrypted using a hardware module on the instance.
+        You can't request a ``VolumeKmsKeyId`` when using an instance type with local
+        storage.
+
+        For a list of instance types that support local instance storage, see `Instance
+        Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
+        For more information about local instance storage encryption, see `SSD Instance
+        Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+      The ``VolumeKmsKeyId`` can be in any of the following formats:
 
       * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -29262,15 +29911,17 @@ class ClientSearchResponseResultsTrainingJobTypeDef(
               * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
               * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-              manifest is an S3 object which is a JSON file with the following format:
-              ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-              ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-              ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-              ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-              complete set of ``s3uris`` in this manifest is the input data for the channel
-              for this datasource. The object that each ``s3uris`` points to must be readable
-              by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+              manifest is an S3 object which is a JSON file with the following format:  The
+              preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+              "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+               ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+                ``]``   The preceding JSON matches the following ``s3Uris`` :
+                ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+                set of ``s3uris`` in this manifest is the input data for the channel for this
+                datasource. The object that each ``s3uris`` points to must be readable by the
+                IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
             - **S3DataDistributionType** *(string) --*
 
@@ -29450,11 +30101,41 @@ class ClientSearchResponseResultsTrainingJobTypeDef(
 
           Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+        .. note::
+
+          Certain Nitro-based instances include local storage with a fixed total size,
+          dependent on the instance type. When using these instances for training, Amazon
+          SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+          can't request a ``VolumeSizeInGB`` greater than the total size of the local
+          instance storage.
+
+          For a list of instance types that support local instance storage, including the
+          total size per instance type, see `Instance Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
       - **VolumeKmsKeyId** *(string) --*
 
-        The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-        data on the storage volume attached to the ML compute instance(s) that run the
-        training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+        The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+        attached to the ML compute instance(s) that run the training job.
+
+        .. note::
+
+          Certain Nitro-based instances include local storage, dependent on the instance
+          type. Local storage volumes are encrypted using a hardware module on the instance.
+          You can't request a ``VolumeKmsKeyId`` when using an instance type with local
+          storage.
+
+          For a list of instance types that support local instance storage, see `Instance
+          Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
+          For more information about local instance storage encryption, see `SSD Instance
+          Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+        The ``VolumeKmsKeyId`` can be in any of the following formats:
 
         * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -29942,15 +30623,17 @@ class ClientSearchResponseResultsTypeDef(_ClientSearchResponseResultsTypeDef):
                 * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                 * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                manifest is an S3 object which is a JSON file with the following format:
-                ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-                ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-                ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-                complete set of ``s3uris`` in this manifest is the input data for the channel
-                for this datasource. The object that each ``s3uris`` points to must be readable
-                by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+                manifest is an S3 object which is a JSON file with the following format:  The
+                preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+                "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+                 ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+                  ``]``   The preceding JSON matches the following ``s3Uris`` :
+                  ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+                  set of ``s3uris`` in this manifest is the input data for the channel for this
+                  datasource. The object that each ``s3uris`` points to must be readable by the
+                  IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
               - **S3DataDistributionType** *(string) --*
 
@@ -30130,11 +30813,41 @@ class ClientSearchResponseResultsTypeDef(_ClientSearchResponseResultsTypeDef):
 
             Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+          .. note::
+
+            Certain Nitro-based instances include local storage with a fixed total size,
+            dependent on the instance type. When using these instances for training, Amazon
+            SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+            can't request a ``VolumeSizeInGB`` greater than the total size of the local
+            instance storage.
+
+            For a list of instance types that support local instance storage, including the
+            total size per instance type, see `Instance Store Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+            .
+
         - **VolumeKmsKeyId** *(string) --*
 
-          The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-          data on the storage volume attached to the ML compute instance(s) that run the
-          training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+          The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+          attached to the ML compute instance(s) that run the training job.
+
+          .. note::
+
+            Certain Nitro-based instances include local storage, dependent on the instance
+            type. Local storage volumes are encrypted using a hardware module on the instance.
+            You can't request a ``VolumeKmsKeyId`` when using an instance type with local
+            storage.
+
+            For a list of instance types that support local instance storage, see `Instance
+            Store Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+            .
+
+            For more information about local instance storage encryption, see `SSD Instance
+            Store Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+          The ``VolumeKmsKeyId`` can be in any of the following formats:
 
           * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -30628,15 +31341,17 @@ class ClientSearchResponseTypeDef(_ClientSearchResponseTypeDef):
                     * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                     * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                    manifest is an S3 object which is a JSON file with the following format:
-                    ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-                    ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                    ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-                    ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                    ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-                    complete set of ``s3uris`` in this manifest is the input data for the channel
-                    for this datasource. The object that each ``s3uris`` points to must be readable
-                    by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+                    manifest is an S3 object which is a JSON file with the following format:  The
+                    preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+                    "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+                     ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+                      ``]``   The preceding JSON matches the following ``s3Uris`` :
+                      ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                      ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+                      set of ``s3uris`` in this manifest is the input data for the channel for this
+                      datasource. The object that each ``s3uris`` points to must be readable by the
+                      IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
                   - **S3DataDistributionType** *(string) --*
 
@@ -30816,11 +31531,41 @@ class ClientSearchResponseTypeDef(_ClientSearchResponseTypeDef):
 
                 Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+              .. note::
+
+                Certain Nitro-based instances include local storage with a fixed total size,
+                dependent on the instance type. When using these instances for training, Amazon
+                SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+                can't request a ``VolumeSizeInGB`` greater than the total size of the local
+                instance storage.
+
+                For a list of instance types that support local instance storage, including the
+                total size per instance type, see `Instance Store Volumes
+                <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+                .
+
             - **VolumeKmsKeyId** *(string) --*
 
-              The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-              data on the storage volume attached to the ML compute instance(s) that run the
-              training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+              The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+              attached to the ML compute instance(s) that run the training job.
+
+              .. note::
+
+                Certain Nitro-based instances include local storage, dependent on the instance
+                type. Local storage volumes are encrypted using a hardware module on the instance.
+                You can't request a ``VolumeKmsKeyId`` when using an instance type with local
+                storage.
+
+                For a list of instance types that support local instance storage, see `Instance
+                Store Volumes
+                <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+                .
+
+                For more information about local instance storage encryption, see `SSD Instance
+                Store Volumes
+                <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+              The ``VolumeKmsKeyId`` can be in any of the following formats:
 
               * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -31088,8 +31833,8 @@ class ClientSearchSearchExpressionFiltersTypeDef(
     """
     Type definition for `ClientSearchSearchExpression` `Filters`
 
-    A conditional statement for a search expression that includes a Boolean operator, a resource
-    property, and a value.
+    A conditional statement for a search expression that includes a resource property, a Boolean
+    operator, and a value.
 
     If you don't specify an ``Operator`` and a ``Value`` , the filter searches for only the
     specified property. For example, defining a ``Filter`` for the ``FailureReason`` for the
@@ -31181,7 +31926,7 @@ class ClientSearchSearchExpressionFiltersTypeDef(
         Contains
 
       Only supported for text-based properties. The word-list of the property contains the
-      specified ``Value`` .
+      specified ``Value`` . A ``SearchExpression`` can include only one ``Contains`` operator.
 
       If you have specified a filter ``Value`` , the default is ``Equals`` .
 
@@ -31211,8 +31956,8 @@ class ClientSearchSearchExpressionNestedFiltersFiltersTypeDef(
     """
     Type definition for `ClientSearchSearchExpressionNestedFilters` `Filters`
 
-    A conditional statement for a search expression that includes a Boolean operator, a
-    resource property, and a value.
+    A conditional statement for a search expression that includes a resource property, a
+    Boolean operator, and a value.
 
     If you don't specify an ``Operator`` and a ``Value`` , the filter searches for only the
     specified property. For example, defining a ``Filter`` for the ``FailureReason`` for the
@@ -31305,7 +32050,7 @@ class ClientSearchSearchExpressionNestedFiltersFiltersTypeDef(
         Contains
 
       Only supported for text-based properties. The word-list of the property contains the
-      specified ``Value`` .
+      specified ``Value`` . A ``SearchExpression`` can include only one ``Contains`` operator.
 
       If you have specified a filter ``Value`` , the default is ``Equals`` .
 
@@ -31363,8 +32108,8 @@ class ClientSearchSearchExpressionNestedFiltersTypeDef(
 
       - *(dict) --*
 
-        A conditional statement for a search expression that includes a Boolean operator, a
-        resource property, and a value.
+        A conditional statement for a search expression that includes a resource property, a
+        Boolean operator, and a value.
 
         If you don't specify an ``Operator`` and a ``Value`` , the filter searches for only the
         specified property. For example, defining a ``Filter`` for the ``FailureReason`` for the
@@ -31457,7 +32202,7 @@ class ClientSearchSearchExpressionNestedFiltersTypeDef(
             Contains
 
           Only supported for text-based properties. The word-list of the property contains the
-          specified ``Value`` .
+          specified ``Value`` . A ``SearchExpression`` can include only one ``Contains`` operator.
 
           If you have specified a filter ``Value`` , the default is ``Equals`` .
 
@@ -31497,8 +32242,8 @@ class ClientSearchSearchExpressionTypeDef(_ClientSearchSearchExpressionTypeDef):
 
       - *(dict) --*
 
-        A conditional statement for a search expression that includes a Boolean operator, a resource
-        property, and a value.
+        A conditional statement for a search expression that includes a resource property, a Boolean
+        operator, and a value.
 
         If you don't specify an ``Operator`` and a ``Value`` , the filter searches for only the
         specified property. For example, defining a ``Filter`` for the ``FailureReason`` for the
@@ -31590,7 +32335,7 @@ class ClientSearchSearchExpressionTypeDef(_ClientSearchSearchExpressionTypeDef):
             Contains
 
           Only supported for text-based properties. The word-list of the property contains the
-          specified ``Value`` .
+          specified ``Value`` . A ``SearchExpression`` can include only one ``Contains`` operator.
 
           If you have specified a filter ``Value`` , the default is ``Equals`` .
 
@@ -31637,8 +32382,8 @@ class ClientSearchSearchExpressionTypeDef(_ClientSearchSearchExpressionTypeDef):
 
           - *(dict) --*
 
-            A conditional statement for a search expression that includes a Boolean operator, a
-            resource property, and a value.
+            A conditional statement for a search expression that includes a resource property, a
+            Boolean operator, and a value.
 
             If you don't specify an ``Operator`` and a ``Value`` , the filter searches for only the
             specified property. For example, defining a ``Filter`` for the ``FailureReason`` for the
@@ -31731,7 +32476,7 @@ class ClientSearchSearchExpressionTypeDef(_ClientSearchSearchExpressionTypeDef):
                 Contains
 
               Only supported for text-based properties. The word-list of the property contains the
-              specified ``Value`` .
+              specified ``Value`` . A ``SearchExpression`` can include only one ``Contains`` operator.
 
               If you have specified a filter ``Value`` , the default is ``Equals`` .
 
@@ -31756,7 +32501,8 @@ class ClientSearchSearchExpressionTypeDef(_ClientSearchSearchExpressionTypeDef):
         A ``SearchExpression`` contains the following components:
 
         * A list of ``Filter`` objects. Each filter defines a simple Boolean expression comprised of
-        a resource property name, Boolean operator, and value.
+        a resource property name, Boolean operator, and value. A ``SearchExpression`` can include
+        only one ``Contains`` operator.
 
         * A list of ``NestedFilter`` objects. Each nested filter defines a list of Boolean
         expressions using a list of resource properties. A nested filter is satisfied if a single
@@ -36084,15 +36830,17 @@ class SearchPaginateResponseResultsTrainingJobInputDataConfigDataSourceS3DataSou
       * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
       * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-      manifest is an S3 object which is a JSON file with the following format:
-      ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-      ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-      ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-      ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-      complete set of ``s3uris`` in this manifest is the input data for the channel
-      for this datasource. The object that each ``s3uris`` points to must be readable
-      by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+      manifest is an S3 object which is a JSON file with the following format:  The
+      preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+      "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+       ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+        ``]``   The preceding JSON matches the following ``s3Uris`` :
+        ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+        ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+        set of ``s3uris`` in this manifest is the input data for the channel for this
+        datasource. The object that each ``s3uris`` points to must be readable by the
+        IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
     - **S3DataDistributionType** *(string) --*
 
@@ -36169,15 +36917,17 @@ class SearchPaginateResponseResultsTrainingJobInputDataConfigDataSourceTypeDef(
         * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
         * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-        manifest is an S3 object which is a JSON file with the following format:
-        ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-        ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-        ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-        ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-        ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-        complete set of ``s3uris`` in this manifest is the input data for the channel
-        for this datasource. The object that each ``s3uris`` points to must be readable
-        by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+        manifest is an S3 object which is a JSON file with the following format:  The
+        preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+        "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+         ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+          ``]``   The preceding JSON matches the following ``s3Uris`` :
+          ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+          ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+          set of ``s3uris`` in this manifest is the input data for the channel for this
+          datasource. The object that each ``s3uris`` points to must be readable by the
+          IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
       - **S3DataDistributionType** *(string) --*
 
@@ -36323,15 +37073,17 @@ class SearchPaginateResponseResultsTrainingJobInputDataConfigTypeDef(
           * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
           * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-          manifest is an S3 object which is a JSON file with the following format:
-          ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-          ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-          ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-          ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-          ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-          complete set of ``s3uris`` in this manifest is the input data for the channel
-          for this datasource. The object that each ``s3uris`` points to must be readable
-          by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+          manifest is an S3 object which is a JSON file with the following format:  The
+          preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+          "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+           ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+            ``]``   The preceding JSON matches the following ``s3Uris`` :
+            ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+            ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+            set of ``s3uris`` in this manifest is the input data for the channel for this
+            datasource. The object that each ``s3uris`` points to must be readable by the
+            IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
         - **S3DataDistributionType** *(string) --*
 
@@ -36564,11 +37316,41 @@ class SearchPaginateResponseResultsTrainingJobResourceConfigTypeDef(
 
         Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+      .. note::
+
+        Certain Nitro-based instances include local storage with a fixed total size,
+        dependent on the instance type. When using these instances for training, Amazon
+        SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+        can't request a ``VolumeSizeInGB`` greater than the total size of the local
+        instance storage.
+
+        For a list of instance types that support local instance storage, including the
+        total size per instance type, see `Instance Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
     - **VolumeKmsKeyId** *(string) --*
 
-      The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-      data on the storage volume attached to the ML compute instance(s) that run the
-      training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+      The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+      attached to the ML compute instance(s) that run the training job.
+
+      .. note::
+
+        Certain Nitro-based instances include local storage, dependent on the instance
+        type. Local storage volumes are encrypted using a hardware module on the instance.
+        You can't request a ``VolumeKmsKeyId`` when using an instance type with local
+        storage.
+
+        For a list of instance types that support local instance storage, see `Instance
+        Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+        .
+
+        For more information about local instance storage encryption, see `SSD Instance
+        Store Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+      The ``VolumeKmsKeyId`` can be in any of the following formats:
 
       * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -37070,15 +37852,17 @@ class SearchPaginateResponseResultsTrainingJobTypeDef(
               * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
               * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-              manifest is an S3 object which is a JSON file with the following format:
-              ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-              ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-              ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-              ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-              ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-              complete set of ``s3uris`` in this manifest is the input data for the channel
-              for this datasource. The object that each ``s3uris`` points to must be readable
-              by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+              manifest is an S3 object which is a JSON file with the following format:  The
+              preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+              "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+               ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+                ``]``   The preceding JSON matches the following ``s3Uris`` :
+                ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+                set of ``s3uris`` in this manifest is the input data for the channel for this
+                datasource. The object that each ``s3uris`` points to must be readable by the
+                IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
             - **S3DataDistributionType** *(string) --*
 
@@ -37258,11 +38042,41 @@ class SearchPaginateResponseResultsTrainingJobTypeDef(
 
           Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+        .. note::
+
+          Certain Nitro-based instances include local storage with a fixed total size,
+          dependent on the instance type. When using these instances for training, Amazon
+          SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+          can't request a ``VolumeSizeInGB`` greater than the total size of the local
+          instance storage.
+
+          For a list of instance types that support local instance storage, including the
+          total size per instance type, see `Instance Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
       - **VolumeKmsKeyId** *(string) --*
 
-        The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-        data on the storage volume attached to the ML compute instance(s) that run the
-        training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+        The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+        attached to the ML compute instance(s) that run the training job.
+
+        .. note::
+
+          Certain Nitro-based instances include local storage, dependent on the instance
+          type. Local storage volumes are encrypted using a hardware module on the instance.
+          You can't request a ``VolumeKmsKeyId`` when using an instance type with local
+          storage.
+
+          For a list of instance types that support local instance storage, see `Instance
+          Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+          .
+
+          For more information about local instance storage encryption, see `SSD Instance
+          Store Volumes
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+        The ``VolumeKmsKeyId`` can be in any of the following formats:
 
         * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -37750,15 +38564,17 @@ class SearchPaginateResponseResultsTypeDef(_SearchPaginateResponseResultsTypeDef
                 * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                 * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                manifest is an S3 object which is a JSON file with the following format:
-                ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-                ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-                ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-                complete set of ``s3uris`` in this manifest is the input data for the channel
-                for this datasource. The object that each ``s3uris`` points to must be readable
-                by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+                manifest is an S3 object which is a JSON file with the following format:  The
+                preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+                "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+                 ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+                  ``]``   The preceding JSON matches the following ``s3Uris`` :
+                  ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                  ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+                  set of ``s3uris`` in this manifest is the input data for the channel for this
+                  datasource. The object that each ``s3uris`` points to must be readable by the
+                  IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
               - **S3DataDistributionType** *(string) --*
 
@@ -37938,11 +38754,41 @@ class SearchPaginateResponseResultsTypeDef(_SearchPaginateResponseResultsTypeDef
 
             Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+          .. note::
+
+            Certain Nitro-based instances include local storage with a fixed total size,
+            dependent on the instance type. When using these instances for training, Amazon
+            SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+            can't request a ``VolumeSizeInGB`` greater than the total size of the local
+            instance storage.
+
+            For a list of instance types that support local instance storage, including the
+            total size per instance type, see `Instance Store Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+            .
+
         - **VolumeKmsKeyId** *(string) --*
 
-          The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-          data on the storage volume attached to the ML compute instance(s) that run the
-          training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+          The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+          attached to the ML compute instance(s) that run the training job.
+
+          .. note::
+
+            Certain Nitro-based instances include local storage, dependent on the instance
+            type. Local storage volumes are encrypted using a hardware module on the instance.
+            You can't request a ``VolumeKmsKeyId`` when using an instance type with local
+            storage.
+
+            For a list of instance types that support local instance storage, see `Instance
+            Store Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+            .
+
+            For more information about local instance storage encryption, see `SSD Instance
+            Store Volumes
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+          The ``VolumeKmsKeyId`` can be in any of the following formats:
 
           * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -38436,15 +39282,17 @@ class SearchPaginateResponseTypeDef(_SearchPaginateResponseTypeDef):
                     * A key name prefix might look like this: ``s3://bucketname/exampleprefix`` .
 
                     * A manifest might look like this: ``s3://bucketname/example.manifest``   The
-                    manifest is an S3 object which is a JSON file with the following format:
-                    ``[``    ``{"prefix": "s3://customer_bucket/some/prefix/"},``
-                    ``"relative/path/to/custdata-1",``    ``"relative/path/custdata-2",``
-                    ``...``    ``]``   The preceding JSON matches the following ``s3Uris`` :
-                    ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
-                    ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``   The
-                    complete set of ``s3uris`` in this manifest is the input data for the channel
-                    for this datasource. The object that each ``s3uris`` points to must be readable
-                    by the IAM role that Amazon SageMaker uses to perform tasks on your behalf.
+                    manifest is an S3 object which is a JSON file with the following format:  The
+                    preceding JSON matches the following ``s3Uris`` :   ``[ {"prefix":
+                    "s3://customer_bucket/some/prefix/"},``    ``"relative/path/to/custdata-1",``
+                     ``"relative/path/custdata-2",``    ``...``    ``"relative/path/custdata-N"``
+                      ``]``   The preceding JSON matches the following ``s3Uris`` :
+                      ``s3://customer_bucket/some/prefix/relative/path/to/custdata-1``
+                      ``s3://customer_bucket/some/prefix/relative/path/custdata-2``    ``...``
+                      ``s3://customer_bucket/some/prefix/relative/path/custdata-N``   The complete
+                      set of ``s3uris`` in this manifest is the input data for the channel for this
+                      datasource. The object that each ``s3uris`` points to must be readable by the
+                      IAM role that Amazon SageMaker uses to perform tasks on your behalf.
 
                   - **S3DataDistributionType** *(string) --*
 
@@ -38624,11 +39472,41 @@ class SearchPaginateResponseTypeDef(_SearchPaginateResponseTypeDef):
 
                 Amazon SageMaker supports only the General Purpose SSD (gp2) ML storage volume type.
 
+              .. note::
+
+                Certain Nitro-based instances include local storage with a fixed total size,
+                dependent on the instance type. When using these instances for training, Amazon
+                SageMaker mounts the local instance storage instead of Amazon EBS gp2 storage. You
+                can't request a ``VolumeSizeInGB`` greater than the total size of the local
+                instance storage.
+
+                For a list of instance types that support local instance storage, including the
+                total size per instance type, see `Instance Store Volumes
+                <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+                .
+
             - **VolumeKmsKeyId** *(string) --*
 
-              The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt
-              data on the storage volume attached to the ML compute instance(s) that run the
-              training job. The ``VolumeKmsKeyId`` can be any of the following formats:
+              The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume
+              attached to the ML compute instance(s) that run the training job.
+
+              .. note::
+
+                Certain Nitro-based instances include local storage, dependent on the instance
+                type. Local storage volumes are encrypted using a hardware module on the instance.
+                You can't request a ``VolumeKmsKeyId`` when using an instance type with local
+                storage.
+
+                For a list of instance types that support local instance storage, see `Instance
+                Store Volumes
+                <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes>`__
+                .
+
+                For more information about local instance storage encryption, see `SSD Instance
+                Store Volumes
+                <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html>`__ .
+
+              The ``VolumeKmsKeyId`` can be in any of the following formats:
 
               * // KMS Key ID  ``"1234abcd-12ab-34cd-56ef-1234567890ab"``
 
@@ -38891,8 +39769,8 @@ class SearchPaginateSearchExpressionFiltersTypeDef(
     """
     Type definition for `SearchPaginateSearchExpression` `Filters`
 
-    A conditional statement for a search expression that includes a Boolean operator, a resource
-    property, and a value.
+    A conditional statement for a search expression that includes a resource property, a Boolean
+    operator, and a value.
 
     If you don't specify an ``Operator`` and a ``Value`` , the filter searches for only the
     specified property. For example, defining a ``Filter`` for the ``FailureReason`` for the
@@ -38984,7 +39862,7 @@ class SearchPaginateSearchExpressionFiltersTypeDef(
         Contains
 
       Only supported for text-based properties. The word-list of the property contains the
-      specified ``Value`` .
+      specified ``Value`` . A ``SearchExpression`` can include only one ``Contains`` operator.
 
       If you have specified a filter ``Value`` , the default is ``Equals`` .
 
@@ -39014,8 +39892,8 @@ class SearchPaginateSearchExpressionNestedFiltersFiltersTypeDef(
     """
     Type definition for `SearchPaginateSearchExpressionNestedFilters` `Filters`
 
-    A conditional statement for a search expression that includes a Boolean operator, a
-    resource property, and a value.
+    A conditional statement for a search expression that includes a resource property, a
+    Boolean operator, and a value.
 
     If you don't specify an ``Operator`` and a ``Value`` , the filter searches for only the
     specified property. For example, defining a ``Filter`` for the ``FailureReason`` for the
@@ -39108,7 +39986,7 @@ class SearchPaginateSearchExpressionNestedFiltersFiltersTypeDef(
         Contains
 
       Only supported for text-based properties. The word-list of the property contains the
-      specified ``Value`` .
+      specified ``Value`` . A ``SearchExpression`` can include only one ``Contains`` operator.
 
       If you have specified a filter ``Value`` , the default is ``Equals`` .
 
@@ -39166,8 +40044,8 @@ class SearchPaginateSearchExpressionNestedFiltersTypeDef(
 
       - *(dict) --*
 
-        A conditional statement for a search expression that includes a Boolean operator, a
-        resource property, and a value.
+        A conditional statement for a search expression that includes a resource property, a
+        Boolean operator, and a value.
 
         If you don't specify an ``Operator`` and a ``Value`` , the filter searches for only the
         specified property. For example, defining a ``Filter`` for the ``FailureReason`` for the
@@ -39260,7 +40138,7 @@ class SearchPaginateSearchExpressionNestedFiltersTypeDef(
             Contains
 
           Only supported for text-based properties. The word-list of the property contains the
-          specified ``Value`` .
+          specified ``Value`` . A ``SearchExpression`` can include only one ``Contains`` operator.
 
           If you have specified a filter ``Value`` , the default is ``Equals`` .
 
@@ -39300,8 +40178,8 @@ class SearchPaginateSearchExpressionTypeDef(_SearchPaginateSearchExpressionTypeD
 
       - *(dict) --*
 
-        A conditional statement for a search expression that includes a Boolean operator, a resource
-        property, and a value.
+        A conditional statement for a search expression that includes a resource property, a Boolean
+        operator, and a value.
 
         If you don't specify an ``Operator`` and a ``Value`` , the filter searches for only the
         specified property. For example, defining a ``Filter`` for the ``FailureReason`` for the
@@ -39393,7 +40271,7 @@ class SearchPaginateSearchExpressionTypeDef(_SearchPaginateSearchExpressionTypeD
             Contains
 
           Only supported for text-based properties. The word-list of the property contains the
-          specified ``Value`` .
+          specified ``Value`` . A ``SearchExpression`` can include only one ``Contains`` operator.
 
           If you have specified a filter ``Value`` , the default is ``Equals`` .
 
@@ -39440,8 +40318,8 @@ class SearchPaginateSearchExpressionTypeDef(_SearchPaginateSearchExpressionTypeD
 
           - *(dict) --*
 
-            A conditional statement for a search expression that includes a Boolean operator, a
-            resource property, and a value.
+            A conditional statement for a search expression that includes a resource property, a
+            Boolean operator, and a value.
 
             If you don't specify an ``Operator`` and a ``Value`` , the filter searches for only the
             specified property. For example, defining a ``Filter`` for the ``FailureReason`` for the
@@ -39534,7 +40412,7 @@ class SearchPaginateSearchExpressionTypeDef(_SearchPaginateSearchExpressionTypeD
                 Contains
 
               Only supported for text-based properties. The word-list of the property contains the
-              specified ``Value`` .
+              specified ``Value`` . A ``SearchExpression`` can include only one ``Contains`` operator.
 
               If you have specified a filter ``Value`` , the default is ``Equals`` .
 
@@ -39559,7 +40437,8 @@ class SearchPaginateSearchExpressionTypeDef(_SearchPaginateSearchExpressionTypeD
         A ``SearchExpression`` contains the following components:
 
         * A list of ``Filter`` objects. Each filter defines a simple Boolean expression comprised of
-        a resource property name, Boolean operator, and value.
+        a resource property name, Boolean operator, and value. A ``SearchExpression`` can include
+        only one ``Contains`` operator.
 
         * A list of ``NestedFilter`` objects. Each nested filter defines a list of Boolean
         expressions using a list of resource properties. A nested filter is satisfied if a single

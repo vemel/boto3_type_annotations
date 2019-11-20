@@ -58,6 +58,8 @@ from mypy_boto3_iot.type_defs import (
     ClientCreateThingTypetagsTypeDef,
     ClientCreateThingTypethingTypePropertiesTypeDef,
     ClientCreateThingattributePayloadTypeDef,
+    ClientCreateTopicRuleDestinationResponseTypeDef,
+    ClientCreateTopicRuleDestinationdestinationConfigurationTypeDef,
     ClientCreateTopicRuletopicRulePayloadTypeDef,
     ClientDescribeAccountAuditConfigurationResponseTypeDef,
     ClientDescribeAuditFindingResponseTypeDef,
@@ -93,6 +95,7 @@ from mypy_boto3_iot.type_defs import (
     ClientGetPolicyVersionResponseTypeDef,
     ClientGetRegistrationCodeResponseTypeDef,
     ClientGetStatisticsResponseTypeDef,
+    ClientGetTopicRuleDestinationResponseTypeDef,
     ClientGetTopicRuleResponseTypeDef,
     ClientGetV2LoggingOptionsResponseTypeDef,
     ClientListActiveViolationsResponseTypeDef,
@@ -136,6 +139,7 @@ from mypy_boto3_iot.type_defs import (
     ClientListThingsInBillingGroupResponseTypeDef,
     ClientListThingsInThingGroupResponseTypeDef,
     ClientListThingsResponseTypeDef,
+    ClientListTopicRuleDestinationsResponseTypeDef,
     ClientListTopicRulesResponseTypeDef,
     ClientListV2LoggingLevelsResponseTypeDef,
     ClientListViolationEventsResponseTypeDef,
@@ -845,6 +849,41 @@ class Client(BaseClient):
         ::
 
           response = client.clear_default_authorizer()
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def confirm_topic_rule_destination(self, confirmationToken: str) -> Dict[str, Any]:
+        """
+        Confirms a topic rule destination. When you create a rule requiring a destination, AWS IoT sends a
+        confirmation message to the endpoint or base address you specify. The message includes a token
+        which you pass back when calling ``ConfirmTopicRuleDestination`` to confirm that you own or have
+        access to the endpoint.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ConfirmTopicRuleDestination>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.confirm_topic_rule_destination(
+              confirmationToken='string'
+          )
+        :type confirmationToken: string
+        :param confirmationToken: **[REQUIRED]**
+
+          The token used to confirm ownership or access to the topic rule confirmation URL.
 
         :rtype: dict
         :returns:
@@ -3295,6 +3334,23 @@ class Client(BaseClient):
                               'executionNamePrefix': 'string',
                               'stateMachineName': 'string',
                               'roleArn': 'string'
+                          },
+                          'http': {
+                              'url': 'string',
+                              'confirmationUrl': 'string',
+                              'headers': [
+                                  {
+                                      'key': 'string',
+                                      'value': 'string'
+                                  },
+                              ],
+                              'auth': {
+                                  'sigv4': {
+                                      'signingRegion': 'string',
+                                      'serviceName': 'string',
+                                      'roleArn': 'string'
+                                  }
+                              }
                           }
                       },
                   ],
@@ -3394,6 +3450,23 @@ class Client(BaseClient):
                           'executionNamePrefix': 'string',
                           'stateMachineName': 'string',
                           'roleArn': 'string'
+                      },
+                      'http': {
+                          'url': 'string',
+                          'confirmationUrl': 'string',
+                          'headers': [
+                              {
+                                  'key': 'string',
+                                  'value': 'string'
+                              },
+                          ],
+                          'auth': {
+                              'sigv4': {
+                                  'signingRegion': 'string',
+                                  'serviceName': 'string',
+                                  'roleArn': 'string'
+                              }
+                          }
                       }
                   }
               },
@@ -3759,6 +3832,61 @@ class Client(BaseClient):
                   The ARN of the role that grants IoT permission to start execution of a state machine
                   ("Action":"states:StartExecution").
 
+              - **http** *(dict) --*
+
+                Send data to an HTTPS endpoint.
+
+                - **url** *(string) --* **[REQUIRED]**
+
+                  The endpoint URL. If substitution templates are used in the URL, you must also specify a
+                  ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+                  created if possible.
+
+                - **confirmationUrl** *(string) --*
+
+                  The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+                  must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT
+                  uses the endpoint URL as the confirmation URL. If you use substitution templates in the
+                  confirmationUrl, you must create and enable topic rule destinations that match each
+                  possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+                - **headers** *(list) --*
+
+                  The HTTP headers to send with the message data.
+
+                  - *(dict) --*
+
+                    The HTTP action header.
+
+                    - **key** *(string) --* **[REQUIRED]**
+
+                      The HTTP header key.
+
+                    - **value** *(string) --* **[REQUIRED]**
+
+                      The HTTP header value. Substitution templates are supported.
+
+                - **auth** *(dict) --*
+
+                  The authentication method to use when sending data to an HTTPS endpoint.
+
+                  - **sigv4** *(dict) --*
+
+                    Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+                    Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+                    - **signingRegion** *(string) --* **[REQUIRED]**
+
+                      The signing region.
+
+                    - **serviceName** *(string) --* **[REQUIRED]**
+
+                      The service name to use while signing with Sig V4.
+
+                    - **roleArn** *(string) --* **[REQUIRED]**
+
+                      The ARN of the signing role.
+
           - **ruleDisabled** *(boolean) --*
 
             Specifies whether the rule is disabled.
@@ -4102,6 +4230,61 @@ class Client(BaseClient):
                 The ARN of the role that grants IoT permission to start execution of a state machine
                 ("Action":"states:StartExecution").
 
+            - **http** *(dict) --*
+
+              Send data to an HTTPS endpoint.
+
+              - **url** *(string) --* **[REQUIRED]**
+
+                The endpoint URL. If substitution templates are used in the URL, you must also specify a
+                ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+                created if possible.
+
+              - **confirmationUrl** *(string) --*
+
+                The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+                must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT uses
+                the endpoint URL as the confirmation URL. If you use substitution templates in the
+                confirmationUrl, you must create and enable topic rule destinations that match each
+                possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+              - **headers** *(list) --*
+
+                The HTTP headers to send with the message data.
+
+                - *(dict) --*
+
+                  The HTTP action header.
+
+                  - **key** *(string) --* **[REQUIRED]**
+
+                    The HTTP header key.
+
+                  - **value** *(string) --* **[REQUIRED]**
+
+                    The HTTP header value. Substitution templates are supported.
+
+              - **auth** *(dict) --*
+
+                The authentication method to use when sending data to an HTTPS endpoint.
+
+                - **sigv4** *(dict) --*
+
+                  Use Sig V4 authorization. For more information, see `Signature Version 4 Signing Process
+                  <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+                  - **signingRegion** *(string) --* **[REQUIRED]**
+
+                    The signing region.
+
+                  - **serviceName** *(string) --* **[REQUIRED]**
+
+                    The service name to use while signing with Sig V4.
+
+                  - **roleArn** *(string) --* **[REQUIRED]**
+
+                    The ARN of the signing role.
+
         :type tags: string
         :param tags:
 
@@ -4116,6 +4299,112 @@ class Client(BaseClient):
             For the cli-input-json file use format: "tags": "key1=value1&key2=value2..."
 
         :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_topic_rule_destination(
+        self,
+        destinationConfiguration: ClientCreateTopicRuleDestinationdestinationConfigurationTypeDef,
+    ) -> ClientCreateTopicRuleDestinationResponseTypeDef:
+        """
+        Creates a topic rule destination. The destination must be confirmed prior to use.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/CreateTopicRuleDestination>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.create_topic_rule_destination(
+              destinationConfiguration={
+                  'httpUrlConfiguration': {
+                      'confirmationUrl': 'string'
+                  }
+              }
+          )
+        :type destinationConfiguration: dict
+        :param destinationConfiguration: **[REQUIRED]**
+
+          The topic rule destination configuration.
+
+          - **httpUrlConfiguration** *(dict) --*
+
+            Configuration of the HTTP URL.
+
+            - **confirmationUrl** *(string) --* **[REQUIRED]**
+
+              The URL AWS IoT uses to confirm ownership of or access to the topic rule destination URL.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'topicRuleDestination': {
+                    'arn': 'string',
+                    'status': 'ENABLED'|'IN_PROGRESS'|'DISABLED'|'ERROR',
+                    'statusReason': 'string',
+                    'httpUrlProperties': {
+                        'confirmationUrl': 'string'
+                    }
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **topicRuleDestination** *(dict) --*
+
+              The topic rule destination.
+
+              - **arn** *(string) --*
+
+                The topic rule destination URL.
+
+              - **status** *(string) --*
+
+                The status of the topic rule destination. Valid values are:
+
+                  IN_PROGRESS
+
+                A topic rule destination was created but has not been confirmed. You can set ``status`` to
+                ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+                ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+                confirmation endpoint.
+
+                  ENABLED
+
+                Confirmation was completed, and traffic to this destination is allowed. You can set
+                ``status`` to ``DISABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+                  DISABLED
+
+                Confirmation was completed, and traffic to this destination is not allowed. You can set
+                ``status`` to ``ENABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+                  ERROR
+
+                Confirmation could not be completed, for example if the confirmation timed out. You can
+                call ``GetTopicRuleDestination`` for details about the error. You can set ``status`` to
+                ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+                ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+                confirmation endpoint.
+
+              - **statusReason** *(string) --*
+
+                Additional details or reason why the topic rule destination is in the current status.
+
+              - **httpUrlProperties** *(dict) --*
+
+                Properties of the HTTP URL.
+
+                - **confirmationUrl** *(string) --*
+
+                  The URL used to confirm the HTTP topic rule destination URL.
+
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -4889,6 +5178,38 @@ class Client(BaseClient):
           The name of the rule.
 
         :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_topic_rule_destination(self, arn: str) -> Dict[str, Any]:
+        """
+        Deletes a topic rule destination.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/DeleteTopicRuleDestination>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.delete_topic_rule_destination(
+              arn='string'
+          )
+        :type arn: string
+        :param arn: **[REQUIRED]**
+
+          The ARN of the topic rule destination to delete.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -8184,7 +8505,7 @@ class Client(BaseClient):
         queryVersion: str = None,
     ) -> ClientGetCardinalityResponseTypeDef:
         """
-        Returns the number of things with distinct values for the aggregation field.
+        Returns the approximate count of unique values that match the query.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetCardinality>`_
@@ -8234,7 +8555,7 @@ class Client(BaseClient):
 
             - **cardinality** *(integer) --*
 
-              The number of things that match the query.
+              The approximate count of unique values that match the query.
 
         """
 
@@ -8401,12 +8722,11 @@ class Client(BaseClient):
 
               - **managedFields** *(list) --*
 
-                Contains fields that are indexed and whose types are already known by the Fleet Indexing
-                service.
+                A list of automatically indexed thing fields.
 
                 - *(dict) --*
 
-                  Describes the name and data type at a field.
+                  The field to aggregate.
 
                   - **name** *(string) --*
 
@@ -8414,15 +8734,16 @@ class Client(BaseClient):
 
                   - **type** *(string) --*
 
-                    The datatype of the field.
+                    The data type of the field.
 
               - **customFields** *(list) --*
 
-                Contains custom field names and their data type.
+                A list of thing fields to index. This list cannot contain any managed fields. Use the
+                GetIndexingConfiguration API to get a list of managed fields.
 
                 - *(dict) --*
 
-                  Describes the name and data type at a field.
+                  The field to aggregate.
 
                   - **name** *(string) --*
 
@@ -8430,7 +8751,7 @@ class Client(BaseClient):
 
                   - **type** *(string) --*
 
-                    The datatype of the field.
+                    The data type of the field.
 
             - **thingGroupIndexingConfiguration** *(dict) --*
 
@@ -8442,12 +8763,11 @@ class Client(BaseClient):
 
               - **managedFields** *(list) --*
 
-                Contains fields that are indexed and whose types are already known by the Fleet Indexing
-                service.
+                A list of automatically indexed thing group fields.
 
                 - *(dict) --*
 
-                  Describes the name and data type at a field.
+                  The field to aggregate.
 
                   - **name** *(string) --*
 
@@ -8455,15 +8775,16 @@ class Client(BaseClient):
 
                   - **type** *(string) --*
 
-                    The datatype of the field.
+                    The data type of the field.
 
               - **customFields** *(list) --*
 
-                Contains custom field names and their data type.
+                A list of thing group fields to index. This list cannot contain any managed fields. Use the
+                GetIndexingConfiguration API to get a list of managed fields.
 
                 - *(dict) --*
 
-                  Describes the name and data type at a field.
+                  The field to aggregate.
 
                   - **name** *(string) --*
 
@@ -8471,7 +8792,7 @@ class Client(BaseClient):
 
                   - **type** *(string) --*
 
-                    The datatype of the field.
+                    The data type of the field.
 
         """
 
@@ -8889,9 +9210,14 @@ class Client(BaseClient):
         percents: List[float] = None,
     ) -> ClientGetPercentilesResponseTypeDef:
         """
-        Returns the percentile values for the aggregation field. The results from GetPercentiles is an
-        approximation. The default percentile groupings are: 1,5,25,50,75,95,99. You can specify custom
-        percentile grouping using the percents argument to the GetPercentiles API.
+        Groups the aggregated values that match the query into percentile groupings. The default percentile
+        groupings are: 1,5,25,50,75,95,99, although you can specify your own when you call
+        ``GetPercentiles`` . This function returns a value for each percentile group specified (or the
+        default percentile groupings). The percentile group "1" contains the aggregated field value that
+        occurs in approximately one percent of the values that match the query. The percentile group "5"
+        contains the aggregated field value that occurs in approximately five percent of the values that
+        match the query, and so on. The result is an approximation, the more values that match the query,
+        the more accurate the percentile values.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetPercentiles>`_
@@ -8968,7 +9294,7 @@ class Client(BaseClient):
 
                 - **value** *(float) --*
 
-                  The value.
+                  The value of the percentile.
 
         """
 
@@ -9115,11 +9441,11 @@ class Client(BaseClient):
 
             - **creationDate** *(datetime) --*
 
-              The date the policy was created.
+              The date the policy version was created.
 
             - **lastModifiedDate** *(datetime) --*
 
-              The date the policy was last modified.
+              The date the policy version was last modified.
 
             - **generationId** *(string) --*
 
@@ -9173,9 +9499,7 @@ class Client(BaseClient):
         queryVersion: str = None,
     ) -> ClientGetStatisticsResponseTypeDef:
         """
-        Gets statistics returns the count, average, sum, minimum, maximum, sumOfSquares, variance, and
-        standard deviation for the specified aggregated field. If the aggregation field is of type String,
-        only the count statistic is returned.
+        Gets statistics about things that match the specified query.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetStatistics>`_
@@ -9203,7 +9527,7 @@ class Client(BaseClient):
         :type aggregationField: string
         :param aggregationField:
 
-          The aggregation field name.
+          The aggregation field name. Currently not supported.
 
         :type queryVersion: string
         :param queryVersion:
@@ -9244,19 +9568,23 @@ class Client(BaseClient):
 
               - **average** *(float) --*
 
-                The average of the aggregated field values.
+                The average of the aggregated fields. If the field data type is String this value is
+                indeterminate.
 
               - **sum** *(float) --*
 
-                The sum of the aggregated field values.
+                The sum of the aggregated fields. If the field data type is String this value is
+                indeterminate.
 
               - **minimum** *(float) --*
 
-                The minimum aggregated field value.
+                The minimum value of the aggregated fields. If the field data type is String this value is
+                indeterminate.
 
               - **maximum** *(float) --*
 
-                The maximum aggregated field value.
+                The maximum value of the aggregated fields. If the field data type is String this value is
+                indeterminate.
 
               - **sumOfSquares** *(float) --*
 
@@ -9268,7 +9596,7 @@ class Client(BaseClient):
 
               - **stdDeviation** *(float) --*
 
-                The standard deviation of the aggregated field valuesl
+                The standard deviation of the aggregated field values.
 
         """
 
@@ -9401,6 +9729,23 @@ class Client(BaseClient):
                                 'executionNamePrefix': 'string',
                                 'stateMachineName': 'string',
                                 'roleArn': 'string'
+                            },
+                            'http': {
+                                'url': 'string',
+                                'confirmationUrl': 'string',
+                                'headers': [
+                                    {
+                                        'key': 'string',
+                                        'value': 'string'
+                                    },
+                                ],
+                                'auth': {
+                                    'sigv4': {
+                                        'signingRegion': 'string',
+                                        'serviceName': 'string',
+                                        'roleArn': 'string'
+                                    }
+                                }
                             }
                         },
                     ],
@@ -9501,6 +9846,23 @@ class Client(BaseClient):
                             'executionNamePrefix': 'string',
                             'stateMachineName': 'string',
                             'roleArn': 'string'
+                        },
+                        'http': {
+                            'url': 'string',
+                            'confirmationUrl': 'string',
+                            'headers': [
+                                {
+                                    'key': 'string',
+                                    'value': 'string'
+                                },
+                            ],
+                            'auth': {
+                                'sigv4': {
+                                    'signingRegion': 'string',
+                                    'serviceName': 'string',
+                                    'roleArn': 'string'
+                                }
+                            }
                         }
                     }
                 }
@@ -9877,6 +10239,63 @@ class Client(BaseClient):
                       The ARN of the role that grants IoT permission to start execution of a state machine
                       ("Action":"states:StartExecution").
 
+                  - **http** *(dict) --*
+
+                    Send data to an HTTPS endpoint.
+
+                    - **url** *(string) --*
+
+                      The endpoint URL. If substitution templates are used in the URL, you must also
+                      specify a ``confirmationUrl`` . If this is a new destination, a new
+                      ``TopicRuleDestination`` is created if possible.
+
+                    - **confirmationUrl** *(string) --*
+
+                      The URL to which AWS IoT sends a confirmation message. The value of the confirmation
+                      URL must be a prefix of the endpoint URL. If you do not specify a confirmation URL
+                      AWS IoT uses the endpoint URL as the confirmation URL. If you use substitution
+                      templates in the confirmationUrl, you must create and enable topic rule destinations
+                      that match each possible value of the substituion template before traffic is allowed
+                      to your endpoint URL.
+
+                    - **headers** *(list) --*
+
+                      The HTTP headers to send with the message data.
+
+                      - *(dict) --*
+
+                        The HTTP action header.
+
+                        - **key** *(string) --*
+
+                          The HTTP header key.
+
+                        - **value** *(string) --*
+
+                          The HTTP header value. Substitution templates are supported.
+
+                    - **auth** *(dict) --*
+
+                      The authentication method to use when sending data to an HTTPS endpoint.
+
+                      - **sigv4** *(dict) --*
+
+                        Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+                        Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__
+                        .
+
+                        - **signingRegion** *(string) --*
+
+                          The signing region.
+
+                        - **serviceName** *(string) --*
+
+                          The service name to use while signing with Sig V4.
+
+                        - **roleArn** *(string) --*
+
+                          The ARN of the signing role.
+
               - **ruleDisabled** *(boolean) --*
 
                 Specifies whether the rule is disabled.
@@ -10221,6 +10640,155 @@ class Client(BaseClient):
 
                     The ARN of the role that grants IoT permission to start execution of a state machine
                     ("Action":"states:StartExecution").
+
+                - **http** *(dict) --*
+
+                  Send data to an HTTPS endpoint.
+
+                  - **url** *(string) --*
+
+                    The endpoint URL. If substitution templates are used in the URL, you must also specify
+                    a ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+                    created if possible.
+
+                  - **confirmationUrl** *(string) --*
+
+                    The URL to which AWS IoT sends a confirmation message. The value of the confirmation
+                    URL must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS
+                    IoT uses the endpoint URL as the confirmation URL. If you use substitution templates in
+                    the confirmationUrl, you must create and enable topic rule destinations that match each
+                    possible value of the substituion template before traffic is allowed to your endpoint
+                    URL.
+
+                  - **headers** *(list) --*
+
+                    The HTTP headers to send with the message data.
+
+                    - *(dict) --*
+
+                      The HTTP action header.
+
+                      - **key** *(string) --*
+
+                        The HTTP header key.
+
+                      - **value** *(string) --*
+
+                        The HTTP header value. Substitution templates are supported.
+
+                  - **auth** *(dict) --*
+
+                    The authentication method to use when sending data to an HTTPS endpoint.
+
+                    - **sigv4** *(dict) --*
+
+                      Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+                      Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+                      - **signingRegion** *(string) --*
+
+                        The signing region.
+
+                      - **serviceName** *(string) --*
+
+                        The service name to use while signing with Sig V4.
+
+                      - **roleArn** *(string) --*
+
+                        The ARN of the signing role.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_topic_rule_destination(
+        self, arn: str
+    ) -> ClientGetTopicRuleDestinationResponseTypeDef:
+        """
+        Gets information about a topic rule destination.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/GetTopicRuleDestination>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.get_topic_rule_destination(
+              arn='string'
+          )
+        :type arn: string
+        :param arn: **[REQUIRED]**
+
+          The ARN of the topic rule destination.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'topicRuleDestination': {
+                    'arn': 'string',
+                    'status': 'ENABLED'|'IN_PROGRESS'|'DISABLED'|'ERROR',
+                    'statusReason': 'string',
+                    'httpUrlProperties': {
+                        'confirmationUrl': 'string'
+                    }
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **topicRuleDestination** *(dict) --*
+
+              The topic rule destination.
+
+              - **arn** *(string) --*
+
+                The topic rule destination URL.
+
+              - **status** *(string) --*
+
+                The status of the topic rule destination. Valid values are:
+
+                  IN_PROGRESS
+
+                A topic rule destination was created but has not been confirmed. You can set ``status`` to
+                ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+                ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+                confirmation endpoint.
+
+                  ENABLED
+
+                Confirmation was completed, and traffic to this destination is allowed. You can set
+                ``status`` to ``DISABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+                  DISABLED
+
+                Confirmation was completed, and traffic to this destination is not allowed. You can set
+                ``status`` to ``ENABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+                  ERROR
+
+                Confirmation could not be completed, for example if the confirmation timed out. You can
+                call ``GetTopicRuleDestination`` for details about the error. You can set ``status`` to
+                ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+                ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+                confirmation endpoint.
+
+              - **statusReason** *(string) --*
+
+                Additional details or reason why the topic rule destination is in the current status.
+
+              - **httpUrlProperties** *(dict) --*
+
+                Properties of the HTTP URL.
+
+                - **confirmationUrl** *(string) --*
+
+                  The URL used to confirm the HTTP topic rule destination URL.
 
         """
 
@@ -14140,6 +14708,116 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def list_topic_rule_destinations(
+        self, maxResults: int = None, nextToken: str = None
+    ) -> ClientListTopicRuleDestinationsResponseTypeDef:
+        """
+        Lists all the topic rule destinations in your AWS account.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/ListTopicRuleDestinations>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.list_topic_rule_destinations(
+              maxResults=123,
+              nextToken='string'
+          )
+        :type maxResults: integer
+        :param maxResults:
+
+          The maximum number of results to return at one time.
+
+        :type nextToken: string
+        :param nextToken:
+
+          The token to retrieve the next set of results.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'destinationSummaries': [
+                    {
+                        'arn': 'string',
+                        'status': 'ENABLED'|'IN_PROGRESS'|'DISABLED'|'ERROR',
+                        'statusReason': 'string',
+                        'httpUrlSummary': {
+                            'confirmationUrl': 'string'
+                        }
+                    },
+                ],
+                'nextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **destinationSummaries** *(list) --*
+
+              Information about a topic rule destination.
+
+              - *(dict) --*
+
+                Information about the topic rule destination.
+
+                - **arn** *(string) --*
+
+                  The topic rule destination ARN.
+
+                - **status** *(string) --*
+
+                  The status of the topic rule destination. Valid values are:
+
+                    IN_PROGRESS
+
+                  A topic rule destination was created but has not been confirmed. You can set ``status``
+                  to ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+                  ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+                  confirmation endpoint.
+
+                    ENABLED
+
+                  Confirmation was completed, and traffic to this destination is allowed. You can set
+                  ``status`` to ``DISABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+                    DISABLED
+
+                  Confirmation was completed, and traffic to this destination is not allowed. You can set
+                  ``status`` to ``ENABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+                    ERROR
+
+                  Confirmation could not be completed, for example if the confirmation timed out. You can
+                  call ``GetTopicRuleDestination`` for details about the error. You can set ``status`` to
+                  ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+                  ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+                  confirmation endpoint.
+
+                - **statusReason** *(string) --*
+
+                  The reason the topic rule destination is in the current status.
+
+                - **httpUrlSummary** *(dict) --*
+
+                  Information about the HTTP URL.
+
+                  - **confirmationUrl** *(string) --*
+
+                    The URL used to confirm ownership of or access to the HTTP topic rule destination URL.
+
+            - **nextToken** *(string) --*
+
+              The token to retrieve the next set of results.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_topic_rules(
         self,
         topic: str = None,
@@ -14753,11 +15431,7 @@ class Client(BaseClient):
         self, templateBody: str, parameters: Dict[str, str] = None
     ) -> ClientRegisterThingResponseTypeDef:
         """
-        Provisions a thing in the device registry. RegisterThing calls other AWS IoT control plane APIs.
-        These calls might exceed your account level `AWS IoT Throttling Limits
-        <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot>`__ and cause
-        throttle errors. Please contact `AWS Customer Support
-        <https://console.aws.amazon.com/support/home>`__ to raise your throttling limits if necessary.
+        Provisions a thing.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/RegisterThing>`_
@@ -15086,6 +15760,23 @@ class Client(BaseClient):
                               'executionNamePrefix': 'string',
                               'stateMachineName': 'string',
                               'roleArn': 'string'
+                          },
+                          'http': {
+                              'url': 'string',
+                              'confirmationUrl': 'string',
+                              'headers': [
+                                  {
+                                      'key': 'string',
+                                      'value': 'string'
+                                  },
+                              ],
+                              'auth': {
+                                  'sigv4': {
+                                      'signingRegion': 'string',
+                                      'serviceName': 'string',
+                                      'roleArn': 'string'
+                                  }
+                              }
                           }
                       },
                   ],
@@ -15185,6 +15876,23 @@ class Client(BaseClient):
                           'executionNamePrefix': 'string',
                           'stateMachineName': 'string',
                           'roleArn': 'string'
+                      },
+                      'http': {
+                          'url': 'string',
+                          'confirmationUrl': 'string',
+                          'headers': [
+                              {
+                                  'key': 'string',
+                                  'value': 'string'
+                              },
+                          ],
+                          'auth': {
+                              'sigv4': {
+                                  'signingRegion': 'string',
+                                  'serviceName': 'string',
+                                  'roleArn': 'string'
+                              }
+                          }
                       }
                   }
               }
@@ -15549,6 +16257,61 @@ class Client(BaseClient):
                   The ARN of the role that grants IoT permission to start execution of a state machine
                   ("Action":"states:StartExecution").
 
+              - **http** *(dict) --*
+
+                Send data to an HTTPS endpoint.
+
+                - **url** *(string) --* **[REQUIRED]**
+
+                  The endpoint URL. If substitution templates are used in the URL, you must also specify a
+                  ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+                  created if possible.
+
+                - **confirmationUrl** *(string) --*
+
+                  The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+                  must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT
+                  uses the endpoint URL as the confirmation URL. If you use substitution templates in the
+                  confirmationUrl, you must create and enable topic rule destinations that match each
+                  possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+                - **headers** *(list) --*
+
+                  The HTTP headers to send with the message data.
+
+                  - *(dict) --*
+
+                    The HTTP action header.
+
+                    - **key** *(string) --* **[REQUIRED]**
+
+                      The HTTP header key.
+
+                    - **value** *(string) --* **[REQUIRED]**
+
+                      The HTTP header value. Substitution templates are supported.
+
+                - **auth** *(dict) --*
+
+                  The authentication method to use when sending data to an HTTPS endpoint.
+
+                  - **sigv4** *(dict) --*
+
+                    Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+                    Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+                    - **signingRegion** *(string) --* **[REQUIRED]**
+
+                      The signing region.
+
+                    - **serviceName** *(string) --* **[REQUIRED]**
+
+                      The service name to use while signing with Sig V4.
+
+                    - **roleArn** *(string) --* **[REQUIRED]**
+
+                      The ARN of the signing role.
+
           - **ruleDisabled** *(boolean) --*
 
             Specifies whether the rule is disabled.
@@ -15891,6 +16654,61 @@ class Client(BaseClient):
 
                 The ARN of the role that grants IoT permission to start execution of a state machine
                 ("Action":"states:StartExecution").
+
+            - **http** *(dict) --*
+
+              Send data to an HTTPS endpoint.
+
+              - **url** *(string) --* **[REQUIRED]**
+
+                The endpoint URL. If substitution templates are used in the URL, you must also specify a
+                ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+                created if possible.
+
+              - **confirmationUrl** *(string) --*
+
+                The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+                must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT uses
+                the endpoint URL as the confirmation URL. If you use substitution templates in the
+                confirmationUrl, you must create and enable topic rule destinations that match each
+                possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+              - **headers** *(list) --*
+
+                The HTTP headers to send with the message data.
+
+                - *(dict) --*
+
+                  The HTTP action header.
+
+                  - **key** *(string) --* **[REQUIRED]**
+
+                    The HTTP header key.
+
+                  - **value** *(string) --* **[REQUIRED]**
+
+                    The HTTP header value. Substitution templates are supported.
+
+              - **auth** *(dict) --*
+
+                The authentication method to use when sending data to an HTTPS endpoint.
+
+                - **sigv4** *(dict) --*
+
+                  Use Sig V4 authorization. For more information, see `Signature Version 4 Signing Process
+                  <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+                  - **signingRegion** *(string) --* **[REQUIRED]**
+
+                    The signing region.
+
+                  - **serviceName** *(string) --* **[REQUIRED]**
+
+                    The service name to use while signing with Sig V4.
+
+                  - **roleArn** *(string) --* **[REQUIRED]**
+
+                    The ARN of the signing role.
 
         :returns: None
         """
@@ -17639,12 +18457,11 @@ class Client(BaseClient):
 
           - **managedFields** *(list) --*
 
-            Contains fields that are indexed and whose types are already known by the Fleet Indexing
-            service.
+            A list of automatically indexed thing fields.
 
             - *(dict) --*
 
-              Describes the name and data type at a field.
+              The field to aggregate.
 
               - **name** *(string) --*
 
@@ -17652,15 +18469,16 @@ class Client(BaseClient):
 
               - **type** *(string) --*
 
-                The datatype of the field.
+                The data type of the field.
 
           - **customFields** *(list) --*
 
-            Contains custom field names and their data type.
+            A list of thing fields to index. This list cannot contain any managed fields. Use the
+            GetIndexingConfiguration API to get a list of managed fields.
 
             - *(dict) --*
 
-              Describes the name and data type at a field.
+              The field to aggregate.
 
               - **name** *(string) --*
 
@@ -17668,7 +18486,7 @@ class Client(BaseClient):
 
               - **type** *(string) --*
 
-                The datatype of the field.
+                The data type of the field.
 
         :type thingGroupIndexingConfiguration: dict
         :param thingGroupIndexingConfiguration:
@@ -17681,12 +18499,11 @@ class Client(BaseClient):
 
           - **managedFields** *(list) --*
 
-            Contains fields that are indexed and whose types are already known by the Fleet Indexing
-            service.
+            A list of automatically indexed thing group fields.
 
             - *(dict) --*
 
-              Describes the name and data type at a field.
+              The field to aggregate.
 
               - **name** *(string) --*
 
@@ -17694,15 +18511,16 @@ class Client(BaseClient):
 
               - **type** *(string) --*
 
-                The datatype of the field.
+                The data type of the field.
 
           - **customFields** *(list) --*
 
-            Contains custom field names and their data type.
+            A list of thing group fields to index. This list cannot contain any managed fields. Use the
+            GetIndexingConfiguration API to get a list of managed fields.
 
             - *(dict) --*
 
-              Describes the name and data type at a field.
+              The field to aggregate.
 
               - **name** *(string) --*
 
@@ -17710,7 +18528,7 @@ class Client(BaseClient):
 
               - **type** *(string) --*
 
-                The datatype of the field.
+                The data type of the field.
 
         :rtype: dict
         :returns:
@@ -18953,6 +19771,70 @@ class Client(BaseClient):
           Override dynamic thing groups with static thing groups when 10-group limit is reached. If a thing
           belongs to 10 thing groups, and one or more of those groups are dynamic thing groups, adding a
           thing to a static group removes the thing from the last dynamic group.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def update_topic_rule_destination(self, arn: str, status: str) -> Dict[str, Any]:
+        """
+        Updates a topic rule destination. You use this to change the status, endpoint URL, or confirmation
+        URL of the destination.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iot-2015-05-28/UpdateTopicRuleDestination>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.update_topic_rule_destination(
+              arn='string',
+              status='ENABLED'|'IN_PROGRESS'|'DISABLED'|'ERROR'
+          )
+        :type arn: string
+        :param arn: **[REQUIRED]**
+
+          The ARN of the topic rule destination.
+
+        :type status: string
+        :param status: **[REQUIRED]**
+
+          The status of the topic rule destination. Valid values are:
+
+            IN_PROGRESS
+
+          A topic rule destination was created but has not been confirmed. You can set ``status`` to
+          ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+          ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+          confirmation endpoint.
+
+            ENABLED
+
+          Confirmation was completed, and traffic to this destination is allowed. You can set ``status`` to
+          ``DISABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+            DISABLED
+
+          Confirmation was completed, and traffic to this destination is not allowed. You can set
+          ``status`` to ``ENABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+            ERROR
+
+          Confirmation could not be completed, for example if the confirmation timed out. You can call
+          ``GetTopicRuleDestination`` for details about the error. You can set ``status`` to
+          ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+          ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+          confirmation endpoint.
 
         :rtype: dict
         :returns:

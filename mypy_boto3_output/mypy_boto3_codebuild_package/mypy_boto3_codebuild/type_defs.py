@@ -536,6 +536,21 @@ class ClientBatchGetBuildsResponsebuildsenvironmentTypeDef(
 
       The type of build environment to use for related builds.
 
+      * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+      Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+      * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+      is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+      (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+      (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+      (Beijing), and China (Ningxia).
+
+      * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+      (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+      (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
     - **image** *(string) --*
 
       The image tag or image digest that identifies the Docker image to use for this build
@@ -559,7 +574,22 @@ class ClientBatchGetBuildsResponsebuildsenvironmentTypeDef(
 
       * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-      * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+      * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending
+      on your environment type.
+
+      * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+      storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+      If you use ``BUILD_GENERAL1_LARGE`` :
+
+      * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+      for builds.
+
+      * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+      vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+      * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs
+      on ARM-based processors for builds.
 
       For more information, see `Build Environment Compute Types
       <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -2258,6 +2288,21 @@ class ClientBatchGetBuildsResponsebuildsTypeDef(
 
         The type of build environment to use for related builds.
 
+        * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+        Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+        Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+        * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+        is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+        (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+        (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+        (Beijing), and China (Ningxia).
+
+        * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+        Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+        (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+        (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
       - **image** *(string) --*
 
         The image tag or image digest that identifies the Docker image to use for this build
@@ -2281,7 +2326,22 @@ class ClientBatchGetBuildsResponsebuildsTypeDef(
 
         * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-        * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+        * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending
+        on your environment type.
+
+        * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+        storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+        If you use ``BUILD_GENERAL1_LARGE`` :
+
+        * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+        for builds.
+
+        * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+        vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+        * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs
+        on ARM-based processors for builds.
 
         For more information, see `Build Environment Compute Types
         <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -3209,6 +3269,21 @@ class ClientBatchGetBuildsResponseTypeDef(_ClientBatchGetBuildsResponseTypeDef):
 
             The type of build environment to use for related builds.
 
+            * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+            Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+            Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+            * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+            is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+            (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+            (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+            (Beijing), and China (Ningxia).
+
+            * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+            Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+            (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+            (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
           - **image** *(string) --*
 
             The image tag or image digest that identifies the Docker image to use for this build
@@ -3232,7 +3307,22 @@ class ClientBatchGetBuildsResponseTypeDef(_ClientBatchGetBuildsResponseTypeDef):
 
             * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-            * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+            * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending
+            on your environment type.
+
+            * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+            storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+            If you use ``BUILD_GENERAL1_LARGE`` :
+
+            * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+            for builds.
+
+            * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+            vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+            * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs
+            on ARM-based processors for builds.
 
             For more information, see `Build Environment Compute Types
             <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -3883,6 +3973,21 @@ class ClientBatchGetProjectsResponseprojectsenvironmentTypeDef(
 
       The type of build environment to use for related builds.
 
+      * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+      Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+      * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+      is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+      (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+      (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+      (Beijing), and China (Ningxia).
+
+      * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+      (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+      (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
     - **image** *(string) --*
 
       The image tag or image digest that identifies the Docker image to use for this build
@@ -3906,7 +4011,22 @@ class ClientBatchGetProjectsResponseprojectsenvironmentTypeDef(
 
       * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-      * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+      * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending
+      on your environment type.
+
+      * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+      storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+      If you use ``BUILD_GENERAL1_LARGE`` :
+
+      * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+      for builds.
+
+      * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+      vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+      * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs
+      on ARM-based processors for builds.
 
       For more information, see `Build Environment Compute Types
       <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -5801,6 +5921,21 @@ class ClientBatchGetProjectsResponseprojectsTypeDef(
 
         The type of build environment to use for related builds.
 
+        * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+        Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+        Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+        * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+        is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+        (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+        (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+        (Beijing), and China (Ningxia).
+
+        * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+        Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+        (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+        (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
       - **image** *(string) --*
 
         The image tag or image digest that identifies the Docker image to use for this build
@@ -5824,7 +5959,22 @@ class ClientBatchGetProjectsResponseprojectsTypeDef(
 
         * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-        * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+        * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending
+        on your environment type.
+
+        * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+        storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+        If you use ``BUILD_GENERAL1_LARGE`` :
+
+        * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+        for builds.
+
+        * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+        vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+        * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs
+        on ARM-based processors for builds.
 
         For more information, see `Build Environment Compute Types
         <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -6907,6 +7057,21 @@ class ClientBatchGetProjectsResponseTypeDef(_ClientBatchGetProjectsResponseTypeD
 
             The type of build environment to use for related builds.
 
+            * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+            Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+            Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+            * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+            is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+            (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+            (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+            (Beijing), and China (Ningxia).
+
+            * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+            Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+            (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+            (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
           - **image** *(string) --*
 
             The image tag or image digest that identifies the Docker image to use for this build
@@ -6930,7 +7095,22 @@ class ClientBatchGetProjectsResponseTypeDef(_ClientBatchGetProjectsResponseTypeD
 
             * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-            * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+            * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending
+            on your environment type.
+
+            * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+            storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+            If you use ``BUILD_GENERAL1_LARGE`` :
+
+            * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+            for builds.
+
+            * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+            vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+            * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs
+            on ARM-based processors for builds.
 
             For more information, see `Build Environment Compute Types
             <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -7675,6 +7855,21 @@ class ClientCreateProjectResponseprojectenvironmentTypeDef(
 
       The type of build environment to use for related builds.
 
+      * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+      Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+      * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+      is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+      (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+      (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+      (Beijing), and China (Ningxia).
+
+      * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+      (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+      (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
     - **image** *(string) --*
 
       The image tag or image digest that identifies the Docker image to use for this build
@@ -7697,7 +7892,22 @@ class ClientCreateProjectResponseprojectenvironmentTypeDef(
 
       * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-      * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+      * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on
+      your environment type.
+
+      * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+      storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+      If you use ``BUILD_GENERAL1_LARGE`` :
+
+      * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+      for builds.
+
+      * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+      vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+      * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+      ARM-based processors for builds.
 
       For more information, see `Build Environment Compute Types
       <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -9585,6 +9795,21 @@ class ClientCreateProjectResponseprojectTypeDef(
 
         The type of build environment to use for related builds.
 
+        * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+        Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+        Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+        * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+        is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+        (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+        (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+        (Beijing), and China (Ningxia).
+
+        * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+        Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+        (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+        (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
       - **image** *(string) --*
 
         The image tag or image digest that identifies the Docker image to use for this build
@@ -9607,7 +9832,22 @@ class ClientCreateProjectResponseprojectTypeDef(
 
         * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-        * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+        * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on
+        your environment type.
+
+        * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+        storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+        If you use ``BUILD_GENERAL1_LARGE`` :
+
+        * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+        for builds.
+
+        * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+        vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+        * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+        ARM-based processors for builds.
 
         For more information, see `Build Environment Compute Types
         <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -10677,6 +10917,21 @@ class ClientCreateProjectResponseTypeDef(_ClientCreateProjectResponseTypeDef):
 
           The type of build environment to use for related builds.
 
+          * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+          Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+          Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+          * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+          is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+          (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+          (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+          (Beijing), and China (Ningxia).
+
+          * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+          Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+          (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+          (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
         - **image** *(string) --*
 
           The image tag or image digest that identifies the Docker image to use for this build
@@ -10699,7 +10954,22 @@ class ClientCreateProjectResponseTypeDef(_ClientCreateProjectResponseTypeDef):
 
           * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-          * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+          * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on
+          your environment type.
+
+          * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+          storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+          If you use ``BUILD_GENERAL1_LARGE`` :
+
+          * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+          for builds.
+
+          * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+          vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+          * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+          ARM-based processors for builds.
 
           For more information, see `Build Environment Compute Types
           <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -11411,6 +11681,20 @@ class ClientCreateProjectenvironmentTypeDef(
 
       The type of build environment to use for related builds.
 
+      * The environment type ``ARM_CONTAINER`` is available only in regions US East (N. Virginia), US
+      East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia Pacific (Tokyo), Asia
+      Pacific (Sydney), and EU (Frankfurt).
+
+      * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge`` is
+      available only in regions US East (N. Virginia), US East (N. Virginia), US West (Oregon),
+      Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific
+      (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China (Beijing), and China (Ningxia).
+
+      * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+      (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore),
+      Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
     - **image** *(string) --* **[REQUIRED]**
 
       The image tag or image digest that identifies the Docker image to use for this build project.
@@ -11432,7 +11716,22 @@ class ClientCreateProjectenvironmentTypeDef(
 
       * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-      * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+      * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on your
+      environment type.
+
+      * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD storage for
+      builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+      If you use ``BUILD_GENERAL1_LARGE`` :
+
+      * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs for
+      builds.
+
+      * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32 vCPUs, and
+      4 NVIDIA Tesla V100 GPUs for builds.
+
+      * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+      ARM-based processors for builds.
 
       For more information, see `Build Environment Compute Types
       <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__ in
@@ -13426,6 +13725,21 @@ class ClientStartBuildResponsebuildenvironmentTypeDef(
 
       The type of build environment to use for related builds.
 
+      * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+      Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+      * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+      is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+      (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+      (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+      (Beijing), and China (Ningxia).
+
+      * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+      (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+      (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
     - **image** *(string) --*
 
       The image tag or image digest that identifies the Docker image to use for this build
@@ -13448,7 +13762,22 @@ class ClientStartBuildResponsebuildenvironmentTypeDef(
 
       * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-      * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+      * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on
+      your environment type.
+
+      * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+      storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+      If you use ``BUILD_GENERAL1_LARGE`` :
+
+      * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+      for builds.
+
+      * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+      vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+      * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+      ARM-based processors for builds.
 
       For more information, see `Build Environment Compute Types
       <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -15131,6 +15460,21 @@ class ClientStartBuildResponsebuildTypeDef(_ClientStartBuildResponsebuildTypeDef
 
         The type of build environment to use for related builds.
 
+        * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+        Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+        Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+        * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+        is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+        (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+        (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+        (Beijing), and China (Ningxia).
+
+        * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+        Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+        (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+        (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
       - **image** *(string) --*
 
         The image tag or image digest that identifies the Docker image to use for this build
@@ -15153,7 +15497,22 @@ class ClientStartBuildResponsebuildTypeDef(_ClientStartBuildResponsebuildTypeDef
 
         * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-        * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+        * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on
+        your environment type.
+
+        * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+        storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+        If you use ``BUILD_GENERAL1_LARGE`` :
+
+        * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+        for builds.
+
+        * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+        vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+        * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+        ARM-based processors for builds.
 
         For more information, see `Build Environment Compute Types
         <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -16067,6 +16426,21 @@ class ClientStartBuildResponseTypeDef(_ClientStartBuildResponseTypeDef):
 
           The type of build environment to use for related builds.
 
+          * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+          Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+          Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+          * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+          is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+          (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+          (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+          (Beijing), and China (Ningxia).
+
+          * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+          Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+          (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+          (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
         - **image** *(string) --*
 
           The image tag or image digest that identifies the Docker image to use for this build
@@ -16089,7 +16463,22 @@ class ClientStartBuildResponseTypeDef(_ClientStartBuildResponseTypeDef):
 
           * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-          * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+          * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on
+          your environment type.
+
+          * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+          storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+          If you use ``BUILD_GENERAL1_LARGE`` :
+
+          * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+          for builds.
+
+          * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+          vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+          * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+          ARM-based processors for builds.
 
           For more information, see `Build Environment Compute Types
           <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -17539,6 +17928,21 @@ class ClientStopBuildResponsebuildenvironmentTypeDef(
 
       The type of build environment to use for related builds.
 
+      * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+      Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+      * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+      is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+      (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+      (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+      (Beijing), and China (Ningxia).
+
+      * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+      (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+      (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
     - **image** *(string) --*
 
       The image tag or image digest that identifies the Docker image to use for this build
@@ -17561,7 +17965,22 @@ class ClientStopBuildResponsebuildenvironmentTypeDef(
 
       * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-      * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+      * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on
+      your environment type.
+
+      * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+      storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+      If you use ``BUILD_GENERAL1_LARGE`` :
+
+      * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+      for builds.
+
+      * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+      vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+      * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+      ARM-based processors for builds.
 
       For more information, see `Build Environment Compute Types
       <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -19242,6 +19661,21 @@ class ClientStopBuildResponsebuildTypeDef(_ClientStopBuildResponsebuildTypeDef):
 
         The type of build environment to use for related builds.
 
+        * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+        Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+        Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+        * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+        is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+        (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+        (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+        (Beijing), and China (Ningxia).
+
+        * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+        Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+        (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+        (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
       - **image** *(string) --*
 
         The image tag or image digest that identifies the Docker image to use for this build
@@ -19264,7 +19698,22 @@ class ClientStopBuildResponsebuildTypeDef(_ClientStopBuildResponsebuildTypeDef):
 
         * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-        * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+        * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on
+        your environment type.
+
+        * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+        storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+        If you use ``BUILD_GENERAL1_LARGE`` :
+
+        * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+        for builds.
+
+        * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+        vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+        * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+        ARM-based processors for builds.
 
         For more information, see `Build Environment Compute Types
         <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -20178,6 +20627,21 @@ class ClientStopBuildResponseTypeDef(_ClientStopBuildResponseTypeDef):
 
           The type of build environment to use for related builds.
 
+          * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+          Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+          Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+          * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+          is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+          (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+          (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+          (Beijing), and China (Ningxia).
+
+          * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+          Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+          (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+          (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
         - **image** *(string) --*
 
           The image tag or image digest that identifies the Docker image to use for this build
@@ -20200,7 +20664,22 @@ class ClientStopBuildResponseTypeDef(_ClientStopBuildResponseTypeDef):
 
           * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-          * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+          * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on
+          your environment type.
+
+          * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+          storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+          If you use ``BUILD_GENERAL1_LARGE`` :
+
+          * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+          for builds.
+
+          * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+          vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+          * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+          ARM-based processors for builds.
 
           For more information, see `Build Environment Compute Types
           <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -20841,6 +21320,21 @@ class ClientUpdateProjectResponseprojectenvironmentTypeDef(
 
       The type of build environment to use for related builds.
 
+      * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+      Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+      * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+      is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+      (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+      (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+      (Beijing), and China (Ningxia).
+
+      * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+      (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+      (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
     - **image** *(string) --*
 
       The image tag or image digest that identifies the Docker image to use for this build
@@ -20863,7 +21357,22 @@ class ClientUpdateProjectResponseprojectenvironmentTypeDef(
 
       * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-      * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+      * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on
+      your environment type.
+
+      * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+      storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+      If you use ``BUILD_GENERAL1_LARGE`` :
+
+      * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+      for builds.
+
+      * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+      vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+      * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+      ARM-based processors for builds.
 
       For more information, see `Build Environment Compute Types
       <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -22751,6 +23260,21 @@ class ClientUpdateProjectResponseprojectTypeDef(
 
         The type of build environment to use for related builds.
 
+        * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+        Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+        Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+        * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+        is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+        (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+        (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+        (Beijing), and China (Ningxia).
+
+        * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+        Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+        (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+        (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
       - **image** *(string) --*
 
         The image tag or image digest that identifies the Docker image to use for this build
@@ -22773,7 +23297,22 @@ class ClientUpdateProjectResponseprojectTypeDef(
 
         * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-        * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+        * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on
+        your environment type.
+
+        * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+        storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+        If you use ``BUILD_GENERAL1_LARGE`` :
+
+        * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+        for builds.
+
+        * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+        vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+        * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+        ARM-based processors for builds.
 
         For more information, see `Build Environment Compute Types
         <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -23843,6 +24382,21 @@ class ClientUpdateProjectResponseTypeDef(_ClientUpdateProjectResponseTypeDef):
 
           The type of build environment to use for related builds.
 
+          * The environment type ``ARM_CONTAINER`` is available only in regions US East (N.
+          Virginia), US East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia
+          Pacific (Tokyo), Asia Pacific (Sydney), and EU (Frankfurt).
+
+          * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge``
+          is available only in regions US East (N. Virginia), US East (N. Virginia), US West
+          (Oregon), Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+          (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
+          (Beijing), and China (Ningxia).
+
+          * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+          Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+          (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
+          (Singapore), Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
         - **image** *(string) --*
 
           The image tag or image digest that identifies the Docker image to use for this build
@@ -23865,7 +24419,22 @@ class ClientUpdateProjectResponseTypeDef(_ClientUpdateProjectResponseTypeDef):
 
           * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-          * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+          * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on
+          your environment type.
+
+          * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD
+          storage for builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+          If you use ``BUILD_GENERAL1_LARGE`` :
+
+          * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs
+          for builds.
+
+          * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32
+          vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+
+          * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+          ARM-based processors for builds.
 
           For more information, see `Build Environment Compute Types
           <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__
@@ -24577,6 +25146,20 @@ class ClientUpdateProjectenvironmentTypeDef(
 
       The type of build environment to use for related builds.
 
+      * The environment type ``ARM_CONTAINER`` is available only in regions US East (N. Virginia), US
+      East (Ohio), US West (Oregon), EU (Ireland), Asia Pacific (Mumbai), Asia Pacific (Tokyo), Asia
+      Pacific (Sydney), and EU (Frankfurt).
+
+      * The environment type ``LINUX_CONTAINER`` with compute type ``build.general1.2xlarge`` is
+      available only in regions US East (N. Virginia), US East (N. Virginia), US West (Oregon),
+      Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific
+      (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China (Beijing), and China (Ningxia).
+
+      * The environment type ``LINUX_GPU_CONTAINER`` is available only in regions US East (N.
+      Virginia), US East (N. Virginia), US West (Oregon), Canada (Central), EU (Ireland), EU
+      (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore),
+      Asia Pacific (Sydney) , China (Beijing), and China (Ningxia).
+
     - **image** *(string) --* **[REQUIRED]**
 
       The image tag or image digest that identifies the Docker image to use for this build project.
@@ -24598,7 +25181,22 @@ class ClientUpdateProjectenvironmentTypeDef(
 
       * ``BUILD_GENERAL1_MEDIUM`` : Use up to 7 GB memory and 4 vCPUs for builds.
 
-      * ``BUILD_GENERAL1_LARGE`` : Use up to 15 GB memory and 8 vCPUs for builds.
+      * ``BUILD_GENERAL1_LARGE`` : Use up to 16 GB memory and 8 vCPUs for builds, depending on your
+      environment type.
+
+      * ``BUILD_GENERAL1_2XLARGE`` : Use up to 145 GB memory, 72 vCPUs, and 824 GB of SSD storage for
+      builds. This compute type supports Docker images up to 100 GB uncompressed.
+
+      If you use ``BUILD_GENERAL1_LARGE`` :
+
+      * For environment type ``LINUX_CONTAINER`` , you can use up to 15 GB memory and 8 vCPUs for
+      builds.
+
+      * For environment type ``LINUX_GPU_CONTAINER`` , you can use up to 255 GB memory, 32 vCPUs, and
+      4 NVIDIA Tesla V100 GPUs for builds.
+
+      * For environment type ``ARM_CONTAINER`` , you can use up to 16 GB memory and 8 vCPUs on
+      ARM-based processors for builds.
 
       For more information, see `Build Environment Compute Types
       <https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html>`__ in

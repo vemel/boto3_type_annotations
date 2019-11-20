@@ -28,6 +28,7 @@ from mypy_boto3_cloudformation.waiter import (
     StackExistsWaiter,
     StackImportCompleteWaiter,
     StackUpdateCompleteWaiter,
+    TypeRegistrationCompleteWaiter,
 )
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -268,3 +269,13 @@ def get_stack_update_complete_waiter(client: Client) -> StackUpdateCompleteWaite
     Equivalent of `client.get_waiter('stack_update_complete')`, returns a correct type.
     """
     return client.get_waiter("stack_update_complete")
+
+
+# pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+def get_type_registration_complete_waiter(
+    client: Client,
+) -> TypeRegistrationCompleteWaiter:
+    """
+    Equivalent of `client.get_waiter('type_registration_complete')`, returns a correct type.
+    """
+    return client.get_waiter("type_registration_complete")

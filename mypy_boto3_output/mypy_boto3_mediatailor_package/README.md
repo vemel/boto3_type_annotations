@@ -1,4 +1,4 @@
 # mypy-boto3-mediatailor
 
-Mypy-friendly type annotations for `boto3` 1.10.19 `mediatailor` service.
+Mypy-friendly type annotations for `boto3` 1.10.22 `mediatailor` service.
 More information can be found [here](https://github.com/vemel/mypy_boto3).

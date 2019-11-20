@@ -1,4 +1,4 @@
 # mypy-boto3-opsworkscm
 
-Mypy-friendly type annotations for `boto3` 1.10.19 `opsworkscm` service.
+Mypy-friendly type annotations for `boto3` 1.10.22 `opsworkscm` service.
 More information can be found [here](https://github.com/vemel/mypy_boto3).

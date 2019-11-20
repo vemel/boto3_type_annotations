@@ -348,6 +348,18 @@ class Client(BaseClient):
                           'MessageBody': 'string',
                           'StatusCode': 'string',
                           'ContentType': 'string'
+                      },
+                      'ForwardConfig': {
+                          'TargetGroups': [
+                              {
+                                  'TargetGroupArn': 'string',
+                                  'Weight': 123
+                              },
+                          ],
+                          'TargetGroupStickinessConfig': {
+                              'Enabled': True|False,
+                              'DurationSeconds': 123
+                          }
                       }
                   },
               ]
@@ -403,9 +415,9 @@ class Client(BaseClient):
           The actions for the default rule. The rule must include one forward action or one or more
           fixed-response actions.
 
-          If the action type is ``forward`` , you specify a target group. The protocol of the target group
-          must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be
-          TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
+          If the action type is ``forward`` , you specify one or more target groups. The protocol of the
+          target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target
+          group must be TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
 
           [HTTPS listeners] If the action type is ``authenticate-oidc`` , you authenticate users through an
           identity provider that is OpenID Connect (OIDC) compliant.
@@ -430,7 +442,8 @@ class Client(BaseClient):
             - **TargetGroupArn** *(string) --*
 
               The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is ``forward``
-              .
+              and you want to route to a single target group. To route to one or more target groups, use
+              ``ForwardConfig`` instead.
 
             - **AuthenticateOidcConfig** *(dict) --*
 
@@ -620,6 +633,45 @@ class Client(BaseClient):
 
                 Valid Values: text/plain | text/css | text/html | application/javascript | application/json
 
+            - **ForwardConfig** *(dict) --*
+
+              Information for creating an action that distributes requests among one or more target groups.
+              For Network Load Balancers, you can specify a single target group. Specify only when ``Type``
+              is ``forward`` . If you specify both ``ForwardConfig`` and ``TargetGroupArn`` , you can
+              specify only one target group using ``ForwardConfig`` and it must be the same target group
+              specified in ``TargetGroupArn`` .
+
+              - **TargetGroups** *(list) --*
+
+                One or more target groups. For Network Load Balancers, you can specify a single target
+                group.
+
+                - *(dict) --*
+
+                  Information about how traffic will be distributed between multiple target groups in a
+                  forward rule.
+
+                  - **TargetGroupArn** *(string) --*
+
+                    The Amazon Resource Name (ARN) of the target group.
+
+                  - **Weight** *(integer) --*
+
+                    The weight. The range is 0 to 999.
+
+              - **TargetGroupStickinessConfig** *(dict) --*
+
+                The target group stickiness for the rule.
+
+                - **Enabled** *(boolean) --*
+
+                  Indicates whether target group stickiness is enabled.
+
+                - **DurationSeconds** *(integer) --*
+
+                  The time period, in seconds, during which requests from a client should be routed to the
+                  same target group. The range is 1-604800 seconds (7 days).
+
         :rtype: dict
         :returns:
 
@@ -688,6 +740,18 @@ class Client(BaseClient):
                                     'MessageBody': 'string',
                                     'StatusCode': 'string',
                                     'ContentType': 'string'
+                                },
+                                'ForwardConfig': {
+                                    'TargetGroups': [
+                                        {
+                                            'TargetGroupArn': 'string',
+                                            'Weight': 123
+                                        },
+                                    ],
+                                    'TargetGroupStickinessConfig': {
+                                        'Enabled': True|False,
+                                        'DurationSeconds': 123
+                                    }
                                 }
                             },
                         ]
@@ -760,7 +824,8 @@ class Client(BaseClient):
                     - **TargetGroupArn** *(string) --*
 
                       The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is
-                      ``forward`` .
+                      ``forward`` and you want to route to a single target group. To route to one or more
+                      target groups, use ``ForwardConfig`` instead.
 
                     - **AuthenticateOidcConfig** *(dict) --*
 
@@ -954,6 +1019,45 @@ class Client(BaseClient):
 
                         Valid Values: text/plain | text/css | text/html | application/javascript |
                         application/json
+
+                    - **ForwardConfig** *(dict) --*
+
+                      Information for creating an action that distributes requests among one or more target
+                      groups. For Network Load Balancers, you can specify a single target group. Specify
+                      only when ``Type`` is ``forward`` . If you specify both ``ForwardConfig`` and
+                      ``TargetGroupArn`` , you can specify only one target group using ``ForwardConfig``
+                      and it must be the same target group specified in ``TargetGroupArn`` .
+
+                      - **TargetGroups** *(list) --*
+
+                        One or more target groups. For Network Load Balancers, you can specify a single
+                        target group.
+
+                        - *(dict) --*
+
+                          Information about how traffic will be distributed between multiple target groups
+                          in a forward rule.
+
+                          - **TargetGroupArn** *(string) --*
+
+                            The Amazon Resource Name (ARN) of the target group.
+
+                          - **Weight** *(integer) --*
+
+                            The weight. The range is 0 to 999.
+
+                      - **TargetGroupStickinessConfig** *(dict) --*
+
+                        The target group stickiness for the rule.
+
+                        - **Enabled** *(boolean) --*
+
+                          Indicates whether target group stickiness is enabled.
+
+                        - **DurationSeconds** *(integer) --*
+
+                          The time period, in seconds, during which requests from a client should be routed
+                          to the same target group. The range is 1-604800 seconds (7 days).
 
         """
 
@@ -1392,6 +1496,18 @@ class Client(BaseClient):
                           'MessageBody': 'string',
                           'StatusCode': 'string',
                           'ContentType': 'string'
+                      },
+                      'ForwardConfig': {
+                          'TargetGroups': [
+                              {
+                                  'TargetGroupArn': 'string',
+                                  'Weight': 123
+                              },
+                          ],
+                          'TargetGroupStickinessConfig': {
+                              'Enabled': True|False,
+                              'DurationSeconds': 123
+                          }
                       }
                   },
               ]
@@ -1594,9 +1710,9 @@ class Client(BaseClient):
           The actions. Each rule must include exactly one of the following types of actions: ``forward`` ,
           ``fixed-response`` , or ``redirect`` , and it must be the last action to be performed.
 
-          If the action type is ``forward`` , you specify a target group. The protocol of the target group
-          must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be
-          TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
+          If the action type is ``forward`` , you specify one or more target groups. The protocol of the
+          target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target
+          group must be TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
 
           [HTTPS listeners] If the action type is ``authenticate-oidc`` , you authenticate users through an
           identity provider that is OpenID Connect (OIDC) compliant.
@@ -1621,7 +1737,8 @@ class Client(BaseClient):
             - **TargetGroupArn** *(string) --*
 
               The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is ``forward``
-              .
+              and you want to route to a single target group. To route to one or more target groups, use
+              ``ForwardConfig`` instead.
 
             - **AuthenticateOidcConfig** *(dict) --*
 
@@ -1811,6 +1928,45 @@ class Client(BaseClient):
 
                 Valid Values: text/plain | text/css | text/html | application/javascript | application/json
 
+            - **ForwardConfig** *(dict) --*
+
+              Information for creating an action that distributes requests among one or more target groups.
+              For Network Load Balancers, you can specify a single target group. Specify only when ``Type``
+              is ``forward`` . If you specify both ``ForwardConfig`` and ``TargetGroupArn`` , you can
+              specify only one target group using ``ForwardConfig`` and it must be the same target group
+              specified in ``TargetGroupArn`` .
+
+              - **TargetGroups** *(list) --*
+
+                One or more target groups. For Network Load Balancers, you can specify a single target
+                group.
+
+                - *(dict) --*
+
+                  Information about how traffic will be distributed between multiple target groups in a
+                  forward rule.
+
+                  - **TargetGroupArn** *(string) --*
+
+                    The Amazon Resource Name (ARN) of the target group.
+
+                  - **Weight** *(integer) --*
+
+                    The weight. The range is 0 to 999.
+
+              - **TargetGroupStickinessConfig** *(dict) --*
+
+                The target group stickiness for the rule.
+
+                - **Enabled** *(boolean) --*
+
+                  Indicates whether target group stickiness is enabled.
+
+                - **DurationSeconds** *(integer) --*
+
+                  The time period, in seconds, during which requests from a client should be routed to the
+                  same target group. The range is 1-604800 seconds (7 days).
+
         :rtype: dict
         :returns:
 
@@ -1912,6 +2068,18 @@ class Client(BaseClient):
                                     'MessageBody': 'string',
                                     'StatusCode': 'string',
                                     'ContentType': 'string'
+                                },
+                                'ForwardConfig': {
+                                    'TargetGroups': [
+                                        {
+                                            'TargetGroupArn': 'string',
+                                            'Weight': 123
+                                        },
+                                    ],
+                                    'TargetGroupStickinessConfig': {
+                                        'Enabled': True|False,
+                                        'DurationSeconds': 123
+                                    }
                                 }
                             },
                         ],
@@ -2143,7 +2311,8 @@ class Client(BaseClient):
                     - **TargetGroupArn** *(string) --*
 
                       The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is
-                      ``forward`` .
+                      ``forward`` and you want to route to a single target group. To route to one or more
+                      target groups, use ``ForwardConfig`` instead.
 
                     - **AuthenticateOidcConfig** *(dict) --*
 
@@ -2337,6 +2506,45 @@ class Client(BaseClient):
 
                         Valid Values: text/plain | text/css | text/html | application/javascript |
                         application/json
+
+                    - **ForwardConfig** *(dict) --*
+
+                      Information for creating an action that distributes requests among one or more target
+                      groups. For Network Load Balancers, you can specify a single target group. Specify
+                      only when ``Type`` is ``forward`` . If you specify both ``ForwardConfig`` and
+                      ``TargetGroupArn`` , you can specify only one target group using ``ForwardConfig``
+                      and it must be the same target group specified in ``TargetGroupArn`` .
+
+                      - **TargetGroups** *(list) --*
+
+                        One or more target groups. For Network Load Balancers, you can specify a single
+                        target group.
+
+                        - *(dict) --*
+
+                          Information about how traffic will be distributed between multiple target groups
+                          in a forward rule.
+
+                          - **TargetGroupArn** *(string) --*
+
+                            The Amazon Resource Name (ARN) of the target group.
+
+                          - **Weight** *(integer) --*
+
+                            The weight. The range is 0 to 999.
+
+                      - **TargetGroupStickinessConfig** *(dict) --*
+
+                        The target group stickiness for the rule.
+
+                        - **Enabled** *(boolean) --*
+
+                          Indicates whether target group stickiness is enabled.
+
+                        - **DurationSeconds** *(integer) --*
+
+                          The time period, in seconds, during which requests from a client should be routed
+                          to the same target group. The range is 1-604800 seconds (7 days).
 
                 - **IsDefault** *(boolean) --*
 
@@ -2954,6 +3162,12 @@ class Client(BaseClient):
 
                   * target-groups
 
+                  * target-groups-per-action-on-application-load-balancer
+
+                  * target-groups-per-action-on-network-load-balancer
+
+                  * target-groups-per-application-load-balancer
+
                   * targets-per-application-load-balancer
 
                   * targets-per-availability-zone-per-network-load-balancer
@@ -3176,6 +3390,18 @@ class Client(BaseClient):
                                     'MessageBody': 'string',
                                     'StatusCode': 'string',
                                     'ContentType': 'string'
+                                },
+                                'ForwardConfig': {
+                                    'TargetGroups': [
+                                        {
+                                            'TargetGroupArn': 'string',
+                                            'Weight': 123
+                                        },
+                                    ],
+                                    'TargetGroupStickinessConfig': {
+                                        'Enabled': True|False,
+                                        'DurationSeconds': 123
+                                    }
                                 }
                             },
                         ]
@@ -3249,7 +3475,8 @@ class Client(BaseClient):
                     - **TargetGroupArn** *(string) --*
 
                       The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is
-                      ``forward`` .
+                      ``forward`` and you want to route to a single target group. To route to one or more
+                      target groups, use ``ForwardConfig`` instead.
 
                     - **AuthenticateOidcConfig** *(dict) --*
 
@@ -3443,6 +3670,45 @@ class Client(BaseClient):
 
                         Valid Values: text/plain | text/css | text/html | application/javascript |
                         application/json
+
+                    - **ForwardConfig** *(dict) --*
+
+                      Information for creating an action that distributes requests among one or more target
+                      groups. For Network Load Balancers, you can specify a single target group. Specify
+                      only when ``Type`` is ``forward`` . If you specify both ``ForwardConfig`` and
+                      ``TargetGroupArn`` , you can specify only one target group using ``ForwardConfig``
+                      and it must be the same target group specified in ``TargetGroupArn`` .
+
+                      - **TargetGroups** *(list) --*
+
+                        One or more target groups. For Network Load Balancers, you can specify a single
+                        target group.
+
+                        - *(dict) --*
+
+                          Information about how traffic will be distributed between multiple target groups
+                          in a forward rule.
+
+                          - **TargetGroupArn** *(string) --*
+
+                            The Amazon Resource Name (ARN) of the target group.
+
+                          - **Weight** *(integer) --*
+
+                            The weight. The range is 0 to 999.
+
+                      - **TargetGroupStickinessConfig** *(dict) --*
+
+                        The target group stickiness for the rule.
+
+                        - **Enabled** *(boolean) --*
+
+                          Indicates whether target group stickiness is enabled.
+
+                        - **DurationSeconds** *(integer) --*
+
+                          The time period, in seconds, during which requests from a client should be routed
+                          to the same target group. The range is 1-604800 seconds (7 days).
 
             - **NextMarker** *(string) --*
 
@@ -3914,6 +4180,18 @@ class Client(BaseClient):
                                     'MessageBody': 'string',
                                     'StatusCode': 'string',
                                     'ContentType': 'string'
+                                },
+                                'ForwardConfig': {
+                                    'TargetGroups': [
+                                        {
+                                            'TargetGroupArn': 'string',
+                                            'Weight': 123
+                                        },
+                                    ],
+                                    'TargetGroupStickinessConfig': {
+                                        'Enabled': True|False,
+                                        'DurationSeconds': 123
+                                    }
                                 }
                             },
                         ],
@@ -4146,7 +4424,8 @@ class Client(BaseClient):
                     - **TargetGroupArn** *(string) --*
 
                       The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is
-                      ``forward`` .
+                      ``forward`` and you want to route to a single target group. To route to one or more
+                      target groups, use ``ForwardConfig`` instead.
 
                     - **AuthenticateOidcConfig** *(dict) --*
 
@@ -4340,6 +4619,45 @@ class Client(BaseClient):
 
                         Valid Values: text/plain | text/css | text/html | application/javascript |
                         application/json
+
+                    - **ForwardConfig** *(dict) --*
+
+                      Information for creating an action that distributes requests among one or more target
+                      groups. For Network Load Balancers, you can specify a single target group. Specify
+                      only when ``Type`` is ``forward`` . If you specify both ``ForwardConfig`` and
+                      ``TargetGroupArn`` , you can specify only one target group using ``ForwardConfig``
+                      and it must be the same target group specified in ``TargetGroupArn`` .
+
+                      - **TargetGroups** *(list) --*
+
+                        One or more target groups. For Network Load Balancers, you can specify a single
+                        target group.
+
+                        - *(dict) --*
+
+                          Information about how traffic will be distributed between multiple target groups
+                          in a forward rule.
+
+                          - **TargetGroupArn** *(string) --*
+
+                            The Amazon Resource Name (ARN) of the target group.
+
+                          - **Weight** *(integer) --*
+
+                            The weight. The range is 0 to 999.
+
+                      - **TargetGroupStickinessConfig** *(dict) --*
+
+                        The target group stickiness for the rule.
+
+                        - **Enabled** *(boolean) --*
+
+                          Indicates whether target group stickiness is enabled.
+
+                        - **DurationSeconds** *(integer) --*
+
+                          The time period, in seconds, during which requests from a client should be routed
+                          to the same target group. The range is 1-604800 seconds (7 days).
 
                 - **IsDefault** *(boolean) --*
 
@@ -5096,12 +5414,16 @@ class Client(BaseClient):
         DefaultActions: List[ClientModifyListenerDefaultActionsTypeDef] = None,
     ) -> ClientModifyListenerResponseTypeDef:
         """
-        Modifies the specified properties of the specified listener.
+        Replaces the specified properties of the specified listener. Any properties that you do not specify
+        remain unchanged.
 
-        Any properties that you do not specify retain their current values. However, changing the protocol
-        from HTTPS to HTTP, or from TLS to TCP, removes the security policy and default certificate
-        properties. If you change the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the
-        security policy and default certificate properties.
+        Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes the security policy and
+        default certificate properties. If you change the protocol from HTTP to HTTPS, or from TCP to TLS,
+        you must add the security policy and default certificate properties.
+
+        To add an item to a list, remove an item from a list, or update an item in a list, you must provide
+        the entire list. For example, to add an action, specify a list with the current actions plus the
+        new action.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyListener>`_
@@ -5166,6 +5488,18 @@ class Client(BaseClient):
                           'MessageBody': 'string',
                           'StatusCode': 'string',
                           'ContentType': 'string'
+                      },
+                      'ForwardConfig': {
+                          'TargetGroups': [
+                              {
+                                  'TargetGroupArn': 'string',
+                                  'Weight': 123
+                              },
+                          ],
+                          'TargetGroupStickinessConfig': {
+                              'Enabled': True|False,
+                              'DurationSeconds': 123
+                          }
                       }
                   },
               ]
@@ -5223,9 +5557,9 @@ class Client(BaseClient):
           The actions for the default rule. The rule must include one forward action or one or more
           fixed-response actions.
 
-          If the action type is ``forward`` , you specify a target group. The protocol of the target group
-          must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be
-          TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
+          If the action type is ``forward`` , you specify one or more target groups. The protocol of the
+          target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target
+          group must be TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
 
           [HTTPS listeners] If the action type is ``authenticate-oidc`` , you authenticate users through an
           identity provider that is OpenID Connect (OIDC) compliant.
@@ -5250,7 +5584,8 @@ class Client(BaseClient):
             - **TargetGroupArn** *(string) --*
 
               The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is ``forward``
-              .
+              and you want to route to a single target group. To route to one or more target groups, use
+              ``ForwardConfig`` instead.
 
             - **AuthenticateOidcConfig** *(dict) --*
 
@@ -5440,6 +5775,45 @@ class Client(BaseClient):
 
                 Valid Values: text/plain | text/css | text/html | application/javascript | application/json
 
+            - **ForwardConfig** *(dict) --*
+
+              Information for creating an action that distributes requests among one or more target groups.
+              For Network Load Balancers, you can specify a single target group. Specify only when ``Type``
+              is ``forward`` . If you specify both ``ForwardConfig`` and ``TargetGroupArn`` , you can
+              specify only one target group using ``ForwardConfig`` and it must be the same target group
+              specified in ``TargetGroupArn`` .
+
+              - **TargetGroups** *(list) --*
+
+                One or more target groups. For Network Load Balancers, you can specify a single target
+                group.
+
+                - *(dict) --*
+
+                  Information about how traffic will be distributed between multiple target groups in a
+                  forward rule.
+
+                  - **TargetGroupArn** *(string) --*
+
+                    The Amazon Resource Name (ARN) of the target group.
+
+                  - **Weight** *(integer) --*
+
+                    The weight. The range is 0 to 999.
+
+              - **TargetGroupStickinessConfig** *(dict) --*
+
+                The target group stickiness for the rule.
+
+                - **Enabled** *(boolean) --*
+
+                  Indicates whether target group stickiness is enabled.
+
+                - **DurationSeconds** *(integer) --*
+
+                  The time period, in seconds, during which requests from a client should be routed to the
+                  same target group. The range is 1-604800 seconds (7 days).
+
         :rtype: dict
         :returns:
 
@@ -5508,6 +5882,18 @@ class Client(BaseClient):
                                     'MessageBody': 'string',
                                     'StatusCode': 'string',
                                     'ContentType': 'string'
+                                },
+                                'ForwardConfig': {
+                                    'TargetGroups': [
+                                        {
+                                            'TargetGroupArn': 'string',
+                                            'Weight': 123
+                                        },
+                                    ],
+                                    'TargetGroupStickinessConfig': {
+                                        'Enabled': True|False,
+                                        'DurationSeconds': 123
+                                    }
                                 }
                             },
                         ]
@@ -5580,7 +5966,8 @@ class Client(BaseClient):
                     - **TargetGroupArn** *(string) --*
 
                       The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is
-                      ``forward`` .
+                      ``forward`` and you want to route to a single target group. To route to one or more
+                      target groups, use ``ForwardConfig`` instead.
 
                     - **AuthenticateOidcConfig** *(dict) --*
 
@@ -5775,6 +6162,45 @@ class Client(BaseClient):
                         Valid Values: text/plain | text/css | text/html | application/javascript |
                         application/json
 
+                    - **ForwardConfig** *(dict) --*
+
+                      Information for creating an action that distributes requests among one or more target
+                      groups. For Network Load Balancers, you can specify a single target group. Specify
+                      only when ``Type`` is ``forward`` . If you specify both ``ForwardConfig`` and
+                      ``TargetGroupArn`` , you can specify only one target group using ``ForwardConfig``
+                      and it must be the same target group specified in ``TargetGroupArn`` .
+
+                      - **TargetGroups** *(list) --*
+
+                        One or more target groups. For Network Load Balancers, you can specify a single
+                        target group.
+
+                        - *(dict) --*
+
+                          Information about how traffic will be distributed between multiple target groups
+                          in a forward rule.
+
+                          - **TargetGroupArn** *(string) --*
+
+                            The Amazon Resource Name (ARN) of the target group.
+
+                          - **Weight** *(integer) --*
+
+                            The weight. The range is 0 to 999.
+
+                      - **TargetGroupStickinessConfig** *(dict) --*
+
+                        The target group stickiness for the rule.
+
+                        - **Enabled** *(boolean) --*
+
+                          Indicates whether target group stickiness is enabled.
+
+                        - **DurationSeconds** *(integer) --*
+
+                          The time period, in seconds, during which requests from a client should be routed
+                          to the same target group. The range is 1-604800 seconds (7 days).
+
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -5941,9 +6367,12 @@ class Client(BaseClient):
         Actions: List[ClientModifyRuleActionsTypeDef] = None,
     ) -> ClientModifyRuleResponseTypeDef:
         """
-        Modifies the specified rule.
+        Replaces the specified properties of the specified rule. Any properties that you do not specify are
+        unchanged.
 
-        Any existing properties that you do not modify retain their current values.
+        To add an item to a list, remove an item from a list, or update an item in a list, you must provide
+        the entire list. For example, to add an action, specify a list with the current actions plus the
+        new action.
 
         To modify the actions for the default rule, use  ModifyListener .
 
@@ -6043,6 +6472,18 @@ class Client(BaseClient):
                           'MessageBody': 'string',
                           'StatusCode': 'string',
                           'ContentType': 'string'
+                      },
+                      'ForwardConfig': {
+                          'TargetGroups': [
+                              {
+                                  'TargetGroupArn': 'string',
+                                  'Weight': 123
+                              },
+                          ],
+                          'TargetGroupStickinessConfig': {
+                              'Enabled': True|False,
+                              'DurationSeconds': 123
+                          }
                       }
                   },
               ]
@@ -6240,9 +6681,9 @@ class Client(BaseClient):
           The actions. Each rule must include exactly one of the following types of actions: ``forward`` ,
           ``fixed-response`` , or ``redirect`` , and it must be the last action to be performed.
 
-          If the action type is ``forward`` , you specify a target group. The protocol of the target group
-          must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be
-          TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
+          If the action type is ``forward`` , you specify one or more target groups. The protocol of the
+          target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target
+          group must be TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
 
           [HTTPS listeners] If the action type is ``authenticate-oidc`` , you authenticate users through an
           identity provider that is OpenID Connect (OIDC) compliant.
@@ -6267,7 +6708,8 @@ class Client(BaseClient):
             - **TargetGroupArn** *(string) --*
 
               The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is ``forward``
-              .
+              and you want to route to a single target group. To route to one or more target groups, use
+              ``ForwardConfig`` instead.
 
             - **AuthenticateOidcConfig** *(dict) --*
 
@@ -6457,6 +6899,45 @@ class Client(BaseClient):
 
                 Valid Values: text/plain | text/css | text/html | application/javascript | application/json
 
+            - **ForwardConfig** *(dict) --*
+
+              Information for creating an action that distributes requests among one or more target groups.
+              For Network Load Balancers, you can specify a single target group. Specify only when ``Type``
+              is ``forward`` . If you specify both ``ForwardConfig`` and ``TargetGroupArn`` , you can
+              specify only one target group using ``ForwardConfig`` and it must be the same target group
+              specified in ``TargetGroupArn`` .
+
+              - **TargetGroups** *(list) --*
+
+                One or more target groups. For Network Load Balancers, you can specify a single target
+                group.
+
+                - *(dict) --*
+
+                  Information about how traffic will be distributed between multiple target groups in a
+                  forward rule.
+
+                  - **TargetGroupArn** *(string) --*
+
+                    The Amazon Resource Name (ARN) of the target group.
+
+                  - **Weight** *(integer) --*
+
+                    The weight. The range is 0 to 999.
+
+              - **TargetGroupStickinessConfig** *(dict) --*
+
+                The target group stickiness for the rule.
+
+                - **Enabled** *(boolean) --*
+
+                  Indicates whether target group stickiness is enabled.
+
+                - **DurationSeconds** *(integer) --*
+
+                  The time period, in seconds, during which requests from a client should be routed to the
+                  same target group. The range is 1-604800 seconds (7 days).
+
         :rtype: dict
         :returns:
 
@@ -6558,6 +7039,18 @@ class Client(BaseClient):
                                     'MessageBody': 'string',
                                     'StatusCode': 'string',
                                     'ContentType': 'string'
+                                },
+                                'ForwardConfig': {
+                                    'TargetGroups': [
+                                        {
+                                            'TargetGroupArn': 'string',
+                                            'Weight': 123
+                                        },
+                                    ],
+                                    'TargetGroupStickinessConfig': {
+                                        'Enabled': True|False,
+                                        'DurationSeconds': 123
+                                    }
                                 }
                             },
                         ],
@@ -6789,7 +7282,8 @@ class Client(BaseClient):
                     - **TargetGroupArn** *(string) --*
 
                       The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is
-                      ``forward`` .
+                      ``forward`` and you want to route to a single target group. To route to one or more
+                      target groups, use ``ForwardConfig`` instead.
 
                     - **AuthenticateOidcConfig** *(dict) --*
 
@@ -6983,6 +7477,45 @@ class Client(BaseClient):
 
                         Valid Values: text/plain | text/css | text/html | application/javascript |
                         application/json
+
+                    - **ForwardConfig** *(dict) --*
+
+                      Information for creating an action that distributes requests among one or more target
+                      groups. For Network Load Balancers, you can specify a single target group. Specify
+                      only when ``Type`` is ``forward`` . If you specify both ``ForwardConfig`` and
+                      ``TargetGroupArn`` , you can specify only one target group using ``ForwardConfig``
+                      and it must be the same target group specified in ``TargetGroupArn`` .
+
+                      - **TargetGroups** *(list) --*
+
+                        One or more target groups. For Network Load Balancers, you can specify a single
+                        target group.
+
+                        - *(dict) --*
+
+                          Information about how traffic will be distributed between multiple target groups
+                          in a forward rule.
+
+                          - **TargetGroupArn** *(string) --*
+
+                            The Amazon Resource Name (ARN) of the target group.
+
+                          - **Weight** *(integer) --*
+
+                            The weight. The range is 0 to 999.
+
+                      - **TargetGroupStickinessConfig** *(dict) --*
+
+                        The target group stickiness for the rule.
+
+                        - **Enabled** *(boolean) --*
+
+                          Indicates whether target group stickiness is enabled.
+
+                        - **DurationSeconds** *(integer) --*
+
+                          The time period, in seconds, during which requests from a client should be routed
+                          to the same target group. The range is 1-604800 seconds (7 days).
 
                 - **IsDefault** *(boolean) --*
 
@@ -7800,6 +8333,18 @@ class Client(BaseClient):
                                     'MessageBody': 'string',
                                     'StatusCode': 'string',
                                     'ContentType': 'string'
+                                },
+                                'ForwardConfig': {
+                                    'TargetGroups': [
+                                        {
+                                            'TargetGroupArn': 'string',
+                                            'Weight': 123
+                                        },
+                                    ],
+                                    'TargetGroupStickinessConfig': {
+                                        'Enabled': True|False,
+                                        'DurationSeconds': 123
+                                    }
                                 }
                             },
                         ],
@@ -8031,7 +8576,8 @@ class Client(BaseClient):
                     - **TargetGroupArn** *(string) --*
 
                       The Amazon Resource Name (ARN) of the target group. Specify only when ``Type`` is
-                      ``forward`` .
+                      ``forward`` and you want to route to a single target group. To route to one or more
+                      target groups, use ``ForwardConfig`` instead.
 
                     - **AuthenticateOidcConfig** *(dict) --*
 
@@ -8225,6 +8771,45 @@ class Client(BaseClient):
 
                         Valid Values: text/plain | text/css | text/html | application/javascript |
                         application/json
+
+                    - **ForwardConfig** *(dict) --*
+
+                      Information for creating an action that distributes requests among one or more target
+                      groups. For Network Load Balancers, you can specify a single target group. Specify
+                      only when ``Type`` is ``forward`` . If you specify both ``ForwardConfig`` and
+                      ``TargetGroupArn`` , you can specify only one target group using ``ForwardConfig``
+                      and it must be the same target group specified in ``TargetGroupArn`` .
+
+                      - **TargetGroups** *(list) --*
+
+                        One or more target groups. For Network Load Balancers, you can specify a single
+                        target group.
+
+                        - *(dict) --*
+
+                          Information about how traffic will be distributed between multiple target groups
+                          in a forward rule.
+
+                          - **TargetGroupArn** *(string) --*
+
+                            The Amazon Resource Name (ARN) of the target group.
+
+                          - **Weight** *(integer) --*
+
+                            The weight. The range is 0 to 999.
+
+                      - **TargetGroupStickinessConfig** *(dict) --*
+
+                        The target group stickiness for the rule.
+
+                        - **Enabled** *(boolean) --*
+
+                          Indicates whether target group stickiness is enabled.
+
+                        - **DurationSeconds** *(integer) --*
+
+                          The time period, in seconds, during which requests from a client should be routed
+                          to the same target group. The range is 1-604800 seconds (7 days).
 
                 - **IsDefault** *(boolean) --*
 
@@ -8595,4 +9180,5 @@ class Exceptions:
     TooManyTagsException: Boto3ClientError
     TooManyTargetGroupsException: Boto3ClientError
     TooManyTargetsException: Boto3ClientError
+    TooManyUniqueTargetGroupsPerLoadBalancerException: Boto3ClientError
     UnsupportedProtocolException: Boto3ClientError

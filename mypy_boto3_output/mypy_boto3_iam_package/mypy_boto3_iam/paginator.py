@@ -249,7 +249,11 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                                                 'Key': 'string',
                                                 'Value': 'string'
                                             },
-                                        ]
+                                        ],
+                                        'RoleLastUsed': {
+                                            'LastUsedDate': datetime(2015, 1, 1),
+                                            'Region': 'string'
+                                        }
                                     },
                                 ]
                             },
@@ -275,7 +279,11 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                                 'Key': 'string',
                                 'Value': 'string'
                             },
-                        ]
+                        ],
+                        'RoleLastUsed': {
+                            'LastUsedDate': datetime(2015, 1, 1),
+                            'Region': 'string'
+                        }
                     },
                 ],
                 'Policies': [
@@ -325,8 +333,8 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                 - **Path** *(string) --*
 
                   The path to the user. For more information about paths, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **UserName** *(string) --*
 
@@ -336,8 +344,8 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
 
                   The stable and unique string identifying the user. For more information about IDs, see
                   `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
@@ -394,7 +402,7 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                     For more information about managed policies, refer to `Managed Policies and Inline
                     Policies
                     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-                    in the *Using IAM* guide.
+                    in the *IAM User Guide* .
 
                     - **PolicyName** *(string) --*
 
@@ -475,8 +483,8 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                 - **Path** *(string) --*
 
                   The path to the group. For more information about paths, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **GroupName** *(string) --*
 
@@ -486,8 +494,8 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
 
                   The stable and unique string identifying the group. For more information about IDs, see
                   `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
@@ -538,7 +546,7 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                     For more information about managed policies, refer to `Managed Policies and Inline
                     Policies
                     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-                    in the *Using IAM* guide.
+                    in the *IAM User Guide* .
 
                     - **PolicyName** *(string) --*
 
@@ -567,8 +575,8 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                 - **Path** *(string) --*
 
                   The path to the role. For more information about paths, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **RoleName** *(string) --*
 
@@ -578,8 +586,8 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
 
                   The stable and unique string identifying the role. For more information about IDs, see
                   `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
@@ -622,7 +630,7 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                       The path to the instance profile. For more information about paths, see `IAM
                       Identifiers
                       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                      *Using IAM* guide.
+                      *IAM User Guide* .
 
                     - **InstanceProfileName** *(string) --*
 
@@ -633,14 +641,14 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                       The stable and unique string identifying the instance profile. For more information
                       about IDs, see `IAM Identifiers
                       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                      *Using IAM* guide.
+                      *IAM User Guide* .
 
                     - **Arn** *(string) --*
 
                       The Amazon Resource Name (ARN) specifying the instance profile. For more information
                       about ARNs and how to use them in policies, see `IAM Identifiers
                       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                      *Using IAM* guide.
+                      *IAM User Guide* .
 
                     - **CreateDate** *(datetime) --*
 
@@ -659,7 +667,7 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
 
                           The path to the role. For more information about paths, see `IAM Identifiers
                           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-                          the *Using IAM* guide.
+                          the *IAM User Guide* .
 
                         - **RoleName** *(string) --*
 
@@ -670,7 +678,7 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                           The stable and unique string identifying the role. For more information about
                           IDs, see `IAM Identifiers
                           <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in
-                          the *Using IAM* guide.
+                          the *IAM User Guide* .
 
                         - **Arn** *(string) --*
 
@@ -752,6 +760,32 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                                 store an array, you can store comma-separated values in the string.
                                 However, you must interpret the value in your code.
 
+                        - **RoleLastUsed** *(dict) --*
+
+                          Contains information about the last time that an IAM role was used. This includes
+                          the date and time and the Region in which the role was last used. Activity is
+                          only reported for the trailing 400 days. This period can be shorter if your
+                          Region began supporting these features within the last year. The role might have
+                          been used more than 400 days ago. For more information, see `Regions Where Data
+                          Is Tracked
+                          <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                          in the *IAM User Guide* .
+
+                          - **LastUsedDate** *(datetime) --*
+
+                            The date and time, in `ISO 8601 date-time format
+                            <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+                            This field is null if the role has not been used within the IAM tracking
+                            period. For more information about the tracking period, see `Regions Where Data
+                            Is Tracked
+                            <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                            in the *IAM User Guide* .
+
+                          - **Region** *(string) --*
+
+                            The name of the AWS Region in which the role was last used.
+
                 - **RolePolicyList** *(list) --*
 
                   A list of inline policies embedded in the role. These policies are the role's access
@@ -789,7 +823,7 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                     For more information about managed policies, refer to `Managed Policies and Inline
                     Policies
                     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-                    in the *Using IAM* guide.
+                    in the *IAM User Guide* .
 
                     - **PolicyName** *(string) --*
 
@@ -856,6 +890,30 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                         array, you can store comma-separated values in the string. However, you must
                         interpret the value in your code.
 
+                - **RoleLastUsed** *(dict) --*
+
+                  Contains information about the last time that an IAM role was used. This includes the
+                  date and time and the Region in which the role was last used. Activity is only reported
+                  for the trailing 400 days. This period can be shorter if your Region began supporting
+                  these features within the last year. The role might have been used more than 400 days
+                  ago. For more information, see `Regions Where Data Is Tracked
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                  in the *IAM User Guide* .
+
+                  - **LastUsedDate** *(datetime) --*
+
+                    The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+                    that the role was last used.
+
+                    This field is null if the role has not been used within the IAM tracking period. For
+                    more information about the tracking period, see `Regions Where Data Is Tracked
+                    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                    in the *IAM User Guide* .
+
+                  - **Region** *(string) --*
+
+                    The name of the AWS Region in which the role was last used.
+
             - **Policies** *(list) --*
 
               A list containing information about managed policies.
@@ -870,7 +928,7 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
 
                 For more information about managed policies, see `Managed Policies and Inline Policies
                 <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-                the *Using IAM* guide.
+                the *IAM User Guide* .
 
                 - **PolicyName** *(string) --*
 
@@ -881,8 +939,8 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                   The stable and unique string identifying the policy.
 
                   For more information about IDs, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
@@ -898,8 +956,8 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                   The path to the policy.
 
                   For more information about paths, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **DefaultVersionId** *(string) --*
 
@@ -908,7 +966,7 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
 
                   For more information about policy versions, see `Versioning for Managed Policies
                   <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html>`__ in
-                  the *Using IAM* guide.
+                  the *IAM User Guide* .
 
                 - **AttachmentCount** *(integer) --*
 
@@ -961,7 +1019,7 @@ class GetAccountAuthorizationDetailsPaginator(Boto3Paginator):
                     For more information about managed policies, refer to `Managed Policies and Inline
                     Policies
                     <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__
-                    in the *Using IAM* guide.
+                    in the *IAM User Guide* .
 
                     - **Document** *(string) --*
 
@@ -1115,8 +1173,8 @@ class GetGroupPaginator(Boto3Paginator):
               - **Path** *(string) --*
 
                 The path to the group. For more information about paths, see `IAM Identifiers
-                <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-                IAM* guide.
+                <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                User Guide* .
 
               - **GroupName** *(string) --*
 
@@ -1126,15 +1184,15 @@ class GetGroupPaginator(Boto3Paginator):
 
                 The stable and unique string identifying the group. For more information about IDs, see
                 `IAM Identifiers
-                <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-                IAM* guide.
+                <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                User Guide* .
 
               - **Arn** *(string) --*
 
                 The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
                 how to use them in policies, see `IAM Identifiers
-                <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *Using
-                IAM* guide.
+                <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                User Guide* .
 
               - **CreateDate** *(datetime) --*
 
@@ -1160,8 +1218,8 @@ class GetGroupPaginator(Boto3Paginator):
                 - **Path** *(string) --*
 
                   The path to the user. For more information about paths, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **UserName** *(string) --*
 
@@ -1171,15 +1229,15 @@ class GetGroupPaginator(Boto3Paginator):
 
                   The stable and unique string identifying the user. For more information about IDs, see
                   `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
                   The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
                   and how to use ARNs in policies, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **CreateDate** *(datetime) --*
 
@@ -1192,7 +1250,7 @@ class GetGroupPaginator(Boto3Paginator):
                   when the user's password was last used to sign in to an AWS website. For a list of AWS
                   websites that capture a user's last sign-in time, see the `Credential Reports
                   <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-                  the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+                  the *IAM User Guide* . If a password is used more than once in a five-minute span, only
                   the first use is returned in this field. If the field is null (no value), then it
                   indicates that they never signed in with a password. This can be because:
 
@@ -1202,7 +1260,7 @@ class GetGroupPaginator(Boto3Paginator):
                   October 20, 2014.
 
                   A null value does not mean that the user *never* had a password. Also, if the user does
-                  not currently have a password, but had one in the past, then this field contains the date
+                  not currently have a password but had one in the past, then this field contains the date
                   and time the most recent password was used.
 
                   This value is returned only in the  GetUser and  ListUsers operations.
@@ -1596,7 +1654,7 @@ class ListAttachedGroupPoliciesPaginator(Boto3Paginator):
 
                 For more information about managed policies, refer to `Managed Policies and Inline Policies
                 <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-                the *Using IAM* guide.
+                the *IAM User Guide* .
 
                 - **PolicyName** *(string) --*
 
@@ -1736,7 +1794,7 @@ class ListAttachedRolePoliciesPaginator(Boto3Paginator):
 
                 For more information about managed policies, refer to `Managed Policies and Inline Policies
                 <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-                the *Using IAM* guide.
+                the *IAM User Guide* .
 
                 - **PolicyName** *(string) --*
 
@@ -1876,7 +1934,7 @@ class ListAttachedUserPoliciesPaginator(Boto3Paginator):
 
                 For more information about managed policies, refer to `Managed Policies and Inline Policies
                 <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-                the *Using IAM* guide.
+                the *IAM User Guide* .
 
                 - **PolicyName** *(string) --*
 
@@ -2049,7 +2107,7 @@ class ListEntitiesForPolicyPaginator(Boto3Paginator):
 
                 For more information about managed policies, refer to `Managed Policies and Inline Policies
                 <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-                the *Using IAM* guide.
+                the *IAM User Guide* .
 
                 - **GroupName** *(string) --*
 
@@ -2074,7 +2132,7 @@ class ListEntitiesForPolicyPaginator(Boto3Paginator):
 
                 For more information about managed policies, refer to `Managed Policies and Inline Policies
                 <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-                the *Using IAM* guide.
+                the *IAM User Guide* .
 
                 - **UserName** *(string) --*
 
@@ -2099,7 +2157,7 @@ class ListEntitiesForPolicyPaginator(Boto3Paginator):
 
                 For more information about managed policies, refer to `Managed Policies and Inline Policies
                 <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-                the *Using IAM* guide.
+                the *IAM User Guide* .
 
                 - **RoleName** *(string) --*
 
@@ -2337,8 +2395,8 @@ class ListGroupsPaginator(Boto3Paginator):
                 - **Path** *(string) --*
 
                   The path to the group. For more information about paths, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **GroupName** *(string) --*
 
@@ -2348,15 +2406,15 @@ class ListGroupsPaginator(Boto3Paginator):
 
                   The stable and unique string identifying the group. For more information about IDs, see
                   `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
                   The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
                   how to use them in policies, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **CreateDate** *(datetime) --*
 
@@ -2481,8 +2539,8 @@ class ListGroupsForUserPaginator(Boto3Paginator):
                 - **Path** *(string) --*
 
                   The path to the group. For more information about paths, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **GroupName** *(string) --*
 
@@ -2492,15 +2550,15 @@ class ListGroupsForUserPaginator(Boto3Paginator):
 
                   The stable and unique string identifying the group. For more information about IDs, see
                   `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
                   The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and
                   how to use them in policies, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **CreateDate** *(datetime) --*
 
@@ -2619,7 +2677,11 @@ class ListInstanceProfilesPaginator(Boto3Paginator):
                                         'Key': 'string',
                                         'Value': 'string'
                                     },
-                                ]
+                                ],
+                                'RoleLastUsed': {
+                                    'LastUsedDate': datetime(2015, 1, 1),
+                                    'Region': 'string'
+                                }
                             },
                         ]
                     },
@@ -2654,8 +2716,8 @@ class ListInstanceProfilesPaginator(Boto3Paginator):
                 - **Path** *(string) --*
 
                   The path to the instance profile. For more information about paths, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **InstanceProfileName** *(string) --*
 
@@ -2665,15 +2727,15 @@ class ListInstanceProfilesPaginator(Boto3Paginator):
 
                   The stable and unique string identifying the instance profile. For more information about
                   IDs, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
                   The Amazon Resource Name (ARN) specifying the instance profile. For more information
                   about ARNs and how to use them in policies, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **CreateDate** *(datetime) --*
 
@@ -2692,7 +2754,7 @@ class ListInstanceProfilesPaginator(Boto3Paginator):
 
                       The path to the role. For more information about paths, see `IAM Identifiers
                       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                      *Using IAM* guide.
+                      *IAM User Guide* .
 
                     - **RoleName** *(string) --*
 
@@ -2703,7 +2765,7 @@ class ListInstanceProfilesPaginator(Boto3Paginator):
                       The stable and unique string identifying the role. For more information about IDs,
                       see `IAM Identifiers
                       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                      *Using IAM* guide.
+                      *IAM User Guide* .
 
                     - **Arn** *(string) --*
 
@@ -2784,6 +2846,30 @@ class ListInstanceProfilesPaginator(Boto3Paginator):
                             AWS always interprets the tag ``Value`` as a single string. If you need to
                             store an array, you can store comma-separated values in the string. However,
                             you must interpret the value in your code.
+
+                    - **RoleLastUsed** *(dict) --*
+
+                      Contains information about the last time that an IAM role was used. This includes the
+                      date and time and the Region in which the role was last used. Activity is only
+                      reported for the trailing 400 days. This period can be shorter if your Region began
+                      supporting these features within the last year. The role might have been used more
+                      than 400 days ago. For more information, see `Regions Where Data Is Tracked
+                      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                      in the *IAM User Guide* .
+
+                      - **LastUsedDate** *(datetime) --*
+
+                        The date and time, in `ISO 8601 date-time format
+                        <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+                        This field is null if the role has not been used within the IAM tracking period.
+                        For more information about the tracking period, see `Regions Where Data Is Tracked
+                        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                        in the *IAM User Guide* .
+
+                      - **Region** *(string) --*
+
+                        The name of the AWS Region in which the role was last used.
 
             - **IsTruncated** *(boolean) --*
 
@@ -2892,7 +2978,11 @@ class ListInstanceProfilesForRolePaginator(Boto3Paginator):
                                         'Key': 'string',
                                         'Value': 'string'
                                     },
-                                ]
+                                ],
+                                'RoleLastUsed': {
+                                    'LastUsedDate': datetime(2015, 1, 1),
+                                    'Region': 'string'
+                                }
                             },
                         ]
                     },
@@ -2927,8 +3017,8 @@ class ListInstanceProfilesForRolePaginator(Boto3Paginator):
                 - **Path** *(string) --*
 
                   The path to the instance profile. For more information about paths, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **InstanceProfileName** *(string) --*
 
@@ -2938,15 +3028,15 @@ class ListInstanceProfilesForRolePaginator(Boto3Paginator):
 
                   The stable and unique string identifying the instance profile. For more information about
                   IDs, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
                   The Amazon Resource Name (ARN) specifying the instance profile. For more information
                   about ARNs and how to use them in policies, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **CreateDate** *(datetime) --*
 
@@ -2965,7 +3055,7 @@ class ListInstanceProfilesForRolePaginator(Boto3Paginator):
 
                       The path to the role. For more information about paths, see `IAM Identifiers
                       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                      *Using IAM* guide.
+                      *IAM User Guide* .
 
                     - **RoleName** *(string) --*
 
@@ -2976,7 +3066,7 @@ class ListInstanceProfilesForRolePaginator(Boto3Paginator):
                       The stable and unique string identifying the role. For more information about IDs,
                       see `IAM Identifiers
                       <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                      *Using IAM* guide.
+                      *IAM User Guide* .
 
                     - **Arn** *(string) --*
 
@@ -3057,6 +3147,30 @@ class ListInstanceProfilesForRolePaginator(Boto3Paginator):
                             AWS always interprets the tag ``Value`` as a single string. If you need to
                             store an array, you can store comma-separated values in the string. However,
                             you must interpret the value in your code.
+
+                    - **RoleLastUsed** *(dict) --*
+
+                      Contains information about the last time that an IAM role was used. This includes the
+                      date and time and the Region in which the role was last used. Activity is only
+                      reported for the trailing 400 days. This period can be shorter if your Region began
+                      supporting these features within the last year. The role might have been used more
+                      than 400 days ago. For more information, see `Regions Where Data Is Tracked
+                      <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                      in the *IAM User Guide* .
+
+                      - **LastUsedDate** *(datetime) --*
+
+                        The date and time, in `ISO 8601 date-time format
+                        <http://www.iso.org/iso/iso8601>`__ that the role was last used.
+
+                        This field is null if the role has not been used within the IAM tracking period.
+                        For more information about the tracking period, see `Regions Where Data Is Tracked
+                        <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                        in the *IAM User Guide* .
+
+                      - **Region** *(string) --*
+
+                        The name of the AWS Region in which the role was last used.
 
             - **IsTruncated** *(boolean) --*
 
@@ -3332,7 +3446,7 @@ class ListPoliciesPaginator(Boto3Paginator):
 
                 For more information about managed policies, refer to `Managed Policies and Inline Policies
                 <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-                the *Using IAM* guide.
+                the *IAM User Guide* .
 
                 - **PolicyName** *(string) --*
 
@@ -3343,8 +3457,8 @@ class ListPoliciesPaginator(Boto3Paginator):
                   The stable and unique string identifying the policy.
 
                   For more information about IDs, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
@@ -3360,8 +3474,8 @@ class ListPoliciesPaginator(Boto3Paginator):
                   The path to the policy.
 
                   For more information about paths, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **DefaultVersionId** *(string) --*
 
@@ -3521,7 +3635,7 @@ class ListPolicyVersionsPaginator(Boto3Paginator):
 
                 For more information about managed policies, refer to `Managed Policies and Inline Policies
                 <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html>`__ in
-                the *Using IAM* guide.
+                the *IAM User Guide* .
 
                 - **Document** *(string) --*
 
@@ -3756,7 +3870,11 @@ class ListRolesPaginator(Boto3Paginator):
                                 'Key': 'string',
                                 'Value': 'string'
                             },
-                        ]
+                        ],
+                        'RoleLastUsed': {
+                            'LastUsedDate': datetime(2015, 1, 1),
+                            'Region': 'string'
+                        }
                     },
                 ],
                 'IsTruncated': True|False,
@@ -3780,8 +3898,8 @@ class ListRolesPaginator(Boto3Paginator):
                 - **Path** *(string) --*
 
                   The path to the role. For more information about paths, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **RoleName** *(string) --*
 
@@ -3791,8 +3909,8 @@ class ListRolesPaginator(Boto3Paginator):
 
                   The stable and unique string identifying the role. For more information about IDs, see
                   `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
@@ -3871,6 +3989,30 @@ class ListRolesPaginator(Boto3Paginator):
                         AWS always interprets the tag ``Value`` as a single string. If you need to store an
                         array, you can store comma-separated values in the string. However, you must
                         interpret the value in your code.
+
+                - **RoleLastUsed** *(dict) --*
+
+                  Contains information about the last time that an IAM role was used. This includes the
+                  date and time and the Region in which the role was last used. Activity is only reported
+                  for the trailing 400 days. This period can be shorter if your Region began supporting
+                  these features within the last year. The role might have been used more than 400 days
+                  ago. For more information, see `Regions Where Data Is Tracked
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                  in the *IAM User Guide* .
+
+                  - **LastUsedDate** *(datetime) --*
+
+                    The date and time, in `ISO 8601 date-time format <http://www.iso.org/iso/iso8601>`__
+                    that the role was last used.
+
+                    This field is null if the role has not been used within the IAM tracking period. For
+                    more information about the tracking period, see `Regions Where Data Is Tracked
+                    <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period>`__
+                    in the *IAM User Guide* .
+
+                  - **Region** *(string) --*
+
+                    The name of the AWS Region in which the role was last used.
 
             - **IsTruncated** *(boolean) --*
 
@@ -4120,7 +4262,7 @@ class ListServerCertificatesPaginator(Boto3Paginator):
 
                   The path to the server certificate. For more information about paths, see `IAM
                   Identifiers <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__
-                  in the *Using IAM* guide.
+                  in the *IAM User Guide* .
 
                 - **ServerCertificateName** *(string) --*
 
@@ -4130,15 +4272,15 @@ class ListServerCertificatesPaginator(Boto3Paginator):
 
                   The stable and unique string identifying the server certificate. For more information
                   about IDs, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
                   The Amazon Resource Name (ARN) specifying the server certificate. For more information
                   about ARNs and how to use them in policies, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **UploadDate** *(datetime) --*
 
@@ -4510,8 +4652,8 @@ class ListUsersPaginator(Boto3Paginator):
                 - **Path** *(string) --*
 
                   The path to the user. For more information about paths, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **UserName** *(string) --*
 
@@ -4521,15 +4663,15 @@ class ListUsersPaginator(Boto3Paginator):
 
                   The stable and unique string identifying the user. For more information about IDs, see
                   `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **Arn** *(string) --*
 
                   The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs
                   and how to use ARNs in policies, see `IAM Identifiers
-                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                  *Using IAM* guide.
+                  <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the *IAM
+                  User Guide* .
 
                 - **CreateDate** *(datetime) --*
 
@@ -4542,7 +4684,7 @@ class ListUsersPaginator(Boto3Paginator):
                   when the user's password was last used to sign in to an AWS website. For a list of AWS
                   websites that capture a user's last sign-in time, see the `Credential Reports
                   <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-                  the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+                  the *IAM User Guide* . If a password is used more than once in a five-minute span, only
                   the first use is returned in this field. If the field is null (no value), then it
                   indicates that they never signed in with a password. This can be because:
 
@@ -4552,7 +4694,7 @@ class ListUsersPaginator(Boto3Paginator):
                   October 20, 2014.
 
                   A null value does not mean that the user *never* had a password. Also, if the user does
-                  not currently have a password, but had one in the past, then this field contains the date
+                  not currently have a password but had one in the past, then this field contains the date
                   and time the most recent password was used.
 
                   This value is returned only in the  GetUser and  ListUsers operations.
@@ -4757,7 +4899,7 @@ class ListVirtualMFADevicesPaginator(Boto3Paginator):
 
                     The path to the user. For more information about paths, see `IAM Identifiers
                     <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                    *Using IAM* guide.
+                    *IAM User Guide* .
 
                   - **UserName** *(string) --*
 
@@ -4768,14 +4910,14 @@ class ListVirtualMFADevicesPaginator(Boto3Paginator):
                     The stable and unique string identifying the user. For more information about IDs, see
                     `IAM Identifiers
                     <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                    *Using IAM* guide.
+                    *IAM User Guide* .
 
                   - **Arn** *(string) --*
 
                     The Amazon Resource Name (ARN) that identifies the user. For more information about
                     ARNs and how to use ARNs in policies, see `IAM Identifiers
                     <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html>`__ in the
-                    *Using IAM* guide.
+                    *IAM User Guide* .
 
                   - **CreateDate** *(datetime) --*
 
@@ -4788,7 +4930,7 @@ class ListVirtualMFADevicesPaginator(Boto3Paginator):
                     when the user's password was last used to sign in to an AWS website. For a list of AWS
                     websites that capture a user's last sign-in time, see the `Credential Reports
                     <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html>`__ topic in
-                    the *Using IAM* guide. If a password is used more than once in a five-minute span, only
+                    the *IAM User Guide* . If a password is used more than once in a five-minute span, only
                     the first use is returned in this field. If the field is null (no value), then it
                     indicates that they never signed in with a password. This can be because:
 
@@ -4798,7 +4940,7 @@ class ListVirtualMFADevicesPaginator(Boto3Paginator):
                     on October 20, 2014.
 
                     A null value does not mean that the user *never* had a password. Also, if the user does
-                    not currently have a password, but had one in the past, then this field contains the
+                    not currently have a password but had one in the past, then this field contains the
                     date and time the most recent password was used.
 
                     This value is returned only in the  GetUser and  ListUsers operations.

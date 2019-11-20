@@ -27,6 +27,8 @@ from mypy_boto3_pinpoint.type_defs import (
     ClientCreateSegmentWriteSegmentRequestTypeDef,
     ClientCreateSmsTemplateResponseTypeDef,
     ClientCreateSmsTemplateSMSTemplateRequestTypeDef,
+    ClientCreateVoiceTemplateResponseTypeDef,
+    ClientCreateVoiceTemplateVoiceTemplateRequestTypeDef,
     ClientDeleteAdmChannelResponseTypeDef,
     ClientDeleteApnsChannelResponseTypeDef,
     ClientDeleteApnsSandboxChannelResponseTypeDef,
@@ -47,6 +49,7 @@ from mypy_boto3_pinpoint.type_defs import (
     ClientDeleteSmsTemplateResponseTypeDef,
     ClientDeleteUserEndpointsResponseTypeDef,
     ClientDeleteVoiceChannelResponseTypeDef,
+    ClientDeleteVoiceTemplateResponseTypeDef,
     ClientGetAdmChannelResponseTypeDef,
     ClientGetApnsChannelResponseTypeDef,
     ClientGetApnsSandboxChannelResponseTypeDef,
@@ -88,6 +91,7 @@ from mypy_boto3_pinpoint.type_defs import (
     ClientGetSmsTemplateResponseTypeDef,
     ClientGetUserEndpointsResponseTypeDef,
     ClientGetVoiceChannelResponseTypeDef,
+    ClientGetVoiceTemplateResponseTypeDef,
     ClientListJourneysResponseTypeDef,
     ClientListTagsForResourceResponseTypeDef,
     ClientListTemplatesResponseTypeDef,
@@ -144,6 +148,8 @@ from mypy_boto3_pinpoint.type_defs import (
     ClientUpdateSmsTemplateSMSTemplateRequestTypeDef,
     ClientUpdateVoiceChannelResponseTypeDef,
     ClientUpdateVoiceChannelVoiceChannelRequestTypeDef,
+    ClientUpdateVoiceTemplateResponseTypeDef,
+    ClientUpdateVoiceTemplateVoiceTemplateRequestTypeDef,
 )
 
 
@@ -412,6 +418,9 @@ class Client(BaseClient):
                               },
                               'SMSTemplate': {
                                   'Name': 'string'
+                              },
+                              'VoiceTemplate': {
+                                  'Name': 'string'
                               }
                           },
                           'TreatmentDescription': 'string',
@@ -566,6 +575,9 @@ class Client(BaseClient):
                       },
                       'SMSTemplate': {
                           'Name': 'string'
+                      },
+                      'VoiceTemplate': {
+                          'Name': 'string'
                       }
                   },
                   'TreatmentDescription': 'string',
@@ -643,8 +655,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -719,8 +731,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -795,8 +807,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -871,8 +883,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -907,7 +919,7 @@ class Client(BaseClient):
 
                   - **Body** *(string) --*
 
-                    The body of the email for recipients whose email clients don't support HTML content.
+                    The body of the email for recipients whose email clients don't render HTML content.
 
                   - **FromAddress** *(string) --*
 
@@ -916,7 +928,7 @@ class Client(BaseClient):
 
                   - **HtmlBody** *(string) --*
 
-                    The body of the email, in HTML format, for recipients whose email clients support HTML
+                    The body of the email, in HTML format, for recipients whose email clients render HTML
                     content.
 
                   - **Title** *(string) --* **[REQUIRED]**
@@ -970,8 +982,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -1193,9 +1205,18 @@ class Client(BaseClient):
                     The name of the message template to use for the message. If specified, this value must
                     match the name of an existing message template.
 
+                - **VoiceTemplate** *(dict) --*
+
+                  The voice template to use for the message.
+
+                  - **Name** *(string) --*
+
+                    The name of the message template to use for the message. If specified, this value must
+                    match the name of an existing message template.
+
               - **TreatmentDescription** *(string) --*
 
-                The custom description of the treatment.
+                A custom description of the treatment.
 
               - **TreatmentName** *(string) --*
 
@@ -1204,7 +1225,7 @@ class Client(BaseClient):
 
           - **Description** *(string) --*
 
-            The custom description of the campaign.
+            A custom description of the campaign.
 
           - **HoldoutPercent** *(integer) --*
 
@@ -1306,8 +1327,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides other values for the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -1381,8 +1402,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides other values for the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -1456,8 +1477,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides other values for the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -1531,8 +1552,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides other values for the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -1567,7 +1588,7 @@ class Client(BaseClient):
 
               - **Body** *(string) --*
 
-                The body of the email for recipients whose email clients don't support HTML content.
+                The body of the email for recipients whose email clients don't render HTML content.
 
               - **FromAddress** *(string) --*
 
@@ -1576,7 +1597,7 @@ class Client(BaseClient):
 
               - **HtmlBody** *(string) --*
 
-                The body of the email, in HTML format, for recipients whose email clients support HTML
+                The body of the email, in HTML format, for recipients whose email clients render HTML
                 content.
 
               - **Title** *(string) --* **[REQUIRED]**
@@ -1629,8 +1650,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides other values for the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -1869,9 +1890,18 @@ class Client(BaseClient):
                 The name of the message template to use for the message. If specified, this value must
                 match the name of an existing message template.
 
+            - **VoiceTemplate** *(dict) --*
+
+              The voice template to use for the message.
+
+              - **Name** *(string) --*
+
+                The name of the message template to use for the message. If specified, this value must
+                match the name of an existing message template.
+
           - **TreatmentDescription** *(string) --*
 
-            The custom description of a variation of the campaign to use for A/B testing.
+            A custom description of a variation of the campaign to use for A/B testing.
 
           - **TreatmentName** *(string) --*
 
@@ -2021,6 +2051,9 @@ class Client(BaseClient):
                                     'Name': 'string'
                                 },
                                 'SMSTemplate': {
+                                    'Name': 'string'
+                                },
+                                'VoiceTemplate': {
                                     'Name': 'string'
                                 }
                             },
@@ -2189,6 +2222,9 @@ class Client(BaseClient):
                         },
                         'SMSTemplate': {
                             'Name': 'string'
+                        },
+                        'VoiceTemplate': {
+                            'Name': 'string'
                         }
                     },
                     'TreatmentDescription': 'string',
@@ -2271,7 +2307,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -2348,7 +2384,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -2425,7 +2461,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -2502,7 +2538,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -2538,7 +2574,7 @@ class Client(BaseClient):
 
                       - **Body** *(string) --*
 
-                        The body of the email for recipients whose email clients don't support HTML content.
+                        The body of the email for recipients whose email clients don't render HTML content.
 
                       - **FromAddress** *(string) --*
 
@@ -2547,7 +2583,7 @@ class Client(BaseClient):
 
                       - **HtmlBody** *(string) --*
 
-                        The body of the email, in HTML format, for recipients whose email clients support
+                        The body of the email, in HTML format, for recipients whose email clients render
                         HTML content.
 
                       - **Title** *(string) --*
@@ -2603,7 +2639,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -2844,6 +2880,15 @@ class Client(BaseClient):
                         The name of the message template to use for the message. If specified, this value
                         must match the name of an existing message template.
 
+                    - **VoiceTemplate** *(dict) --*
+
+                      The voice template to use for the message.
+
+                      - **Name** *(string) --*
+
+                        The name of the message template to use for the message. If specified, this value
+                        must match the name of an existing message template.
+
                   - **TreatmentDescription** *(string) --*
 
                     The custom description of the treatment.
@@ -2989,8 +3034,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -3065,8 +3110,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -3141,8 +3186,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -3217,8 +3262,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -3253,7 +3298,7 @@ class Client(BaseClient):
 
                   - **Body** *(string) --*
 
-                    The body of the email for recipients whose email clients don't support HTML content.
+                    The body of the email for recipients whose email clients don't render HTML content.
 
                   - **FromAddress** *(string) --*
 
@@ -3262,7 +3307,7 @@ class Client(BaseClient):
 
                   - **HtmlBody** *(string) --*
 
-                    The body of the email, in HTML format, for recipients whose email clients support HTML
+                    The body of the email, in HTML format, for recipients whose email clients render HTML
                     content.
 
                   - **Title** *(string) --*
@@ -3316,8 +3361,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -3566,6 +3611,15 @@ class Client(BaseClient):
                     The name of the message template to use for the message. If specified, this value must
                     match the name of an existing message template.
 
+                - **VoiceTemplate** *(dict) --*
+
+                  The voice template to use for the message.
+
+                  - **Name** *(string) --*
+
+                    The name of the message template to use for the message. If specified, this value must
+                    match the name of an existing message template.
+
               - **TreatmentDescription** *(string) --*
 
                 The custom description of a variation of the campaign that's used for A/B testing.
@@ -3597,11 +3651,13 @@ class Client(BaseClient):
 
           response = client.create_email_template(
               EmailTemplateRequest={
+                  'DefaultSubstitutions': 'string',
                   'HtmlPart': 'string',
                   'Subject': 'string',
                   'tags': {
                       'string': 'string'
                   },
+                  'TemplateDescription': 'string',
                   'TextPart': 'string'
               },
               TemplateName='string'
@@ -3612,11 +3668,19 @@ class Client(BaseClient):
           Creates a new message template that you can use in messages that are sent through the email
           channel.
 
+          - **DefaultSubstitutions** *(string) --*
+
+            A JSON object that specifies the default values to use for message variables in the message
+            template. This object is a set of key-value pairs. Each key defines a message variable in the
+            template. The corresponding value defines the default value for that variable. When you create
+            a message that's based on the template, you can override these defaults with message-specific
+            and address-specific variables and values.
+
           - **HtmlPart** *(string) --*
 
             The message body, in HTML format, to use in email messages that are based on the message
-            template. We recommend using HTML format for email clients that support HTML. You can include
-            links, formatted text, and more in an HTML message.
+            template. We recommend using HTML format for email clients that render HTML content. You can
+            include links, formatted text, and more in an HTML message.
 
           - **Subject** *(string) --*
 
@@ -3631,11 +3695,15 @@ class Client(BaseClient):
 
               - *(string) --*
 
+          - **TemplateDescription** *(string) --*
+
+            A custom description of the message template.
+
           - **TextPart** *(string) --*
 
-            The message body, in text format, to use in email messages that are based on the message
-            template. We recommend using text format for email clients that don't support HTML and clients
-            that are connected to high-latency networks, such as mobile devices.
+            The message body, in plain text format, to use in email messages that are based on the message
+            template. We recommend using plain text format for email clients that don't render HTML content
+            and clients that are connected to high-latency networks, such as mobile devices.
 
         :type TemplateName: string
         :param TemplateName: **[REQUIRED]**
@@ -4853,7 +4921,7 @@ class Client(BaseClient):
 
                     - **WaitFor** *(string) --*
 
-                      The amount of time, as a duration in ISO 8601 format, to wait before determining
+                      The amount of time to wait, as a duration in ISO 8601 format, before determining
                       whether the activity's conditions have been met or moving participants to the next
                       activity in the journey.
 
@@ -5292,7 +5360,7 @@ class Client(BaseClient):
 
                     - **WaitFor** *(string) --*
 
-                      The amount of time, as a duration in ISO 8601 format, to wait before determining
+                      The amount of time to wait, as a duration in ISO 8601 format, before determining
                       whether the activity's conditions have been met or moving participants to the next
                       activity in the journey.
 
@@ -5344,7 +5412,7 @@ class Client(BaseClient):
 
                     - **WaitFor** *(string) --*
 
-                      The amount of time, as a duration in ISO 8601 format, to wait before determining
+                      The amount of time to wait, as a duration in ISO 8601 format, before determining
                       whether the activity's conditions have been met or moving participants to the next
                       activity in the journey.
 
@@ -6217,7 +6285,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -6670,7 +6738,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -6722,7 +6790,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -6909,6 +6977,7 @@ class Client(BaseClient):
                       'Body': 'string',
                       'ImageIconUrl': 'string',
                       'ImageUrl': 'string',
+                      'RawContent': 'string',
                       'SmallImageIconUrl': 'string',
                       'Sound': 'string',
                       'Title': 'string',
@@ -6918,6 +6987,7 @@ class Client(BaseClient):
                       'Action': 'OPEN_APP'|'DEEP_LINK'|'URL',
                       'Body': 'string',
                       'MediaUrl': 'string',
+                      'RawContent': 'string',
                       'Sound': 'string',
                       'Title': 'string',
                       'Url': 'string'
@@ -6927,6 +6997,7 @@ class Client(BaseClient):
                       'Body': 'string',
                       'ImageIconUrl': 'string',
                       'ImageUrl': 'string',
+                      'RawContent': 'string',
                       'SmallImageIconUrl': 'string',
                       'Sound': 'string',
                       'Title': 'string',
@@ -6939,11 +7010,13 @@ class Client(BaseClient):
                       'Title': 'string',
                       'Url': 'string'
                   },
+                  'DefaultSubstitutions': 'string',
                   'GCM': {
                       'Action': 'OPEN_APP'|'DEEP_LINK'|'URL',
                       'Body': 'string',
                       'ImageIconUrl': 'string',
                       'ImageUrl': 'string',
+                      'RawContent': 'string',
                       'SmallImageIconUrl': 'string',
                       'Sound': 'string',
                       'Title': 'string',
@@ -6951,7 +7024,8 @@ class Client(BaseClient):
                   },
                   'tags': {
                       'string': 'string'
-                  }
+                  },
+                  'TemplateDescription': 'string'
               },
               TemplateName='string'
           )
@@ -6993,6 +7067,12 @@ class Client(BaseClient):
             - **ImageUrl** *(string) --*
 
               The URL of an image to display in a push notification that's based on the message template.
+
+            - **RawContent** *(string) --*
+
+              The raw, JSON-formatted string to use as the payload for a push notification that's based on
+              the message template. If specified, this value overrides all other content for the message
+              template.
 
             - **SmallImageIconUrl** *(string) --*
 
@@ -7044,6 +7124,12 @@ class Client(BaseClient):
               The URL of an image or video to display in push notifications that are based on the message
               template.
 
+            - **RawContent** *(string) --*
+
+              The raw, JSON-formatted string to use as the payload for push notifications that are based on
+              the message template. If specified, this value overrides all other content for the message
+              template.
+
             - **Sound** *(string) --*
 
               The key for the sound to play when the recipient receives a push notification that's based on
@@ -7092,6 +7178,12 @@ class Client(BaseClient):
             - **ImageUrl** *(string) --*
 
               The URL of an image to display in a push notification that's based on the message template.
+
+            - **RawContent** *(string) --*
+
+              The raw, JSON-formatted string to use as the payload for a push notification that's based on
+              the message template. If specified, this value overrides all other content for the message
+              template.
 
             - **SmallImageIconUrl** *(string) --*
 
@@ -7156,6 +7248,14 @@ class Client(BaseClient):
               The URL to open in a recipient's default mobile browser, if a recipient taps a push
               notification that's based on the message template and the value of the Action property is URL.
 
+          - **DefaultSubstitutions** *(string) --*
+
+            A JSON object that specifies the default values to use for message variables in the message
+            template. This object is a set of key-value pairs. Each key defines a message variable in the
+            template. The corresponding value defines the default value for that variable. When you create
+            a message that's based on the template, you can override these defaults with message-specific
+            and address-specific variables and values.
+
           - **GCM** *(dict) --*
 
             The message template to use for the GCM channel, which is used to send notifications through
@@ -7190,6 +7290,12 @@ class Client(BaseClient):
 
               The URL of an image to display in a push notification that's based on the message template.
 
+            - **RawContent** *(string) --*
+
+              The raw, JSON-formatted string to use as the payload for a push notification that's based on
+              the message template. If specified, this value overrides all other content for the message
+              template.
+
             - **SmallImageIconUrl** *(string) --*
 
               The URL of the small icon image to display in the status bar and the content view of a push
@@ -7219,6 +7325,10 @@ class Client(BaseClient):
             - *(string) --*
 
               - *(string) --*
+
+          - **TemplateDescription** *(string) --*
+
+            A custom description of the message template.
 
         :type TemplateName: string
         :param TemplateName: **[REQUIRED]**
@@ -8946,9 +9056,11 @@ class Client(BaseClient):
           response = client.create_sms_template(
               SMSTemplateRequest={
                   'Body': 'string',
+                  'DefaultSubstitutions': 'string',
                   'tags': {
                       'string': 'string'
-                  }
+                  },
+                  'TemplateDescription': 'string'
               },
               TemplateName='string'
           )
@@ -8961,6 +9073,14 @@ class Client(BaseClient):
 
             The message body to use in text messages that are based on the message template.
 
+          - **DefaultSubstitutions** *(string) --*
+
+            A JSON object that specifies the default values to use for message variables in the message
+            template. This object is a set of key-value pairs. Each key defines a message variable in the
+            template. The corresponding value defines the default value for that variable. When you create
+            a message that's based on the template, you can override these defaults with message-specific
+            and address-specific variables and values.
+
           - **tags** *(dict) --*
 
             A string-to-string map of key-value pairs that defines the tags to associate with the message
@@ -8970,12 +9090,134 @@ class Client(BaseClient):
 
               - *(string) --*
 
+          - **TemplateDescription** *(string) --*
+
+            A custom description of the message template.
+
         :type TemplateName: string
         :param TemplateName: **[REQUIRED]**
 
           The name of the message template. A template name must start with an alphanumeric character and
           can contain a maximum of 128 characters. The characters can be alphanumeric characters,
           underscores (_), or hyphens (-). Template names are case sensitive.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'CreateTemplateMessageBody': {
+                    'Arn': 'string',
+                    'Message': 'string',
+                    'RequestID': 'string'
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            The request succeeded and the specified resource was created.
+
+            - **CreateTemplateMessageBody** *(dict) --*
+
+              Provides information about a request to create a message template.
+
+              - **Arn** *(string) --*
+
+                The Amazon Resource Name (ARN) of the message template that was created.
+
+              - **Message** *(string) --*
+
+                The message that's returned from the API for the request to create the message template.
+
+              - **RequestID** *(string) --*
+
+                The unique identifier for the request to create the message template.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_voice_template(
+        self,
+        TemplateName: str,
+        VoiceTemplateRequest: ClientCreateVoiceTemplateVoiceTemplateRequestTypeDef,
+    ) -> ClientCreateVoiceTemplateResponseTypeDef:
+        """
+        Creates a message template that you can use in messages that are sent through the voice channel.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateVoiceTemplate>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.create_voice_template(
+              TemplateName='string',
+              VoiceTemplateRequest={
+                  'Body': 'string',
+                  'DefaultSubstitutions': 'string',
+                  'LanguageCode': 'string',
+                  'tags': {
+                      'string': 'string'
+                  },
+                  'TemplateDescription': 'string',
+                  'VoiceId': 'string'
+              }
+          )
+        :type TemplateName: string
+        :param TemplateName: **[REQUIRED]**
+
+          The name of the message template. A template name must start with an alphanumeric character and
+          can contain a maximum of 128 characters. The characters can be alphanumeric characters,
+          underscores (_), or hyphens (-). Template names are case sensitive.
+
+        :type VoiceTemplateRequest: dict
+        :param VoiceTemplateRequest: **[REQUIRED]**
+
+          Specifies the content and settings for a message template that can be used in messages that are
+          sent through the voice channel.
+
+          - **Body** *(string) --*
+
+            The text of the script to use in messages that are based on the message template, in plain text
+            format.
+
+          - **DefaultSubstitutions** *(string) --*
+
+            A JSON object that specifies the default values to use for message variables in the message
+            template. This object is a set of key-value pairs. Each key defines a message variable in the
+            template. The corresponding value defines the default value for that variable. When you create
+            a message that's based on the template, you can override these defaults with message-specific
+            and address-specific variables and values.
+
+          - **LanguageCode** *(string) --*
+
+            The code for the language to use when synthesizing the text of the script in messages that are
+            based on the message template. For a list of supported languages and the code for each one, see
+            the `Amazon Polly Developer Guide <https://docs.aws.amazon.com/polly/latest/dg/what-is.html>`__
+            .
+
+          - **tags** *(dict) --*
+
+            A string-to-string map of key-value pairs that defines the tags to associate with the message
+            template. Each tag consists of a required tag key and an associated tag value.
+
+            - *(string) --*
+
+              - *(string) --*
+
+          - **TemplateDescription** *(string) --*
+
+            A custom description of the message template.
+
+          - **VoiceId** *(string) --*
+
+            The name of the voice to use when delivering messages that are based on the message template.
+            For a list of supported voices, see the `Amazon Polly Developer Guide
+            <https://docs.aws.amazon.com/polly/latest/dg/what-is.html>`__ .
 
         :rtype: dict
         :returns:
@@ -9908,6 +10150,9 @@ class Client(BaseClient):
                                 },
                                 'SMSTemplate': {
                                     'Name': 'string'
+                                },
+                                'VoiceTemplate': {
+                                    'Name': 'string'
                                 }
                             },
                             'TreatmentDescription': 'string',
@@ -10075,6 +10320,9 @@ class Client(BaseClient):
                         },
                         'SMSTemplate': {
                             'Name': 'string'
+                        },
+                        'VoiceTemplate': {
+                            'Name': 'string'
                         }
                     },
                     'TreatmentDescription': 'string',
@@ -10157,7 +10405,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -10234,7 +10482,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -10311,7 +10559,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -10388,7 +10636,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -10424,7 +10672,7 @@ class Client(BaseClient):
 
                       - **Body** *(string) --*
 
-                        The body of the email for recipients whose email clients don't support HTML content.
+                        The body of the email for recipients whose email clients don't render HTML content.
 
                       - **FromAddress** *(string) --*
 
@@ -10433,7 +10681,7 @@ class Client(BaseClient):
 
                       - **HtmlBody** *(string) --*
 
-                        The body of the email, in HTML format, for recipients whose email clients support
+                        The body of the email, in HTML format, for recipients whose email clients render
                         HTML content.
 
                       - **Title** *(string) --*
@@ -10489,7 +10737,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -10730,6 +10978,15 @@ class Client(BaseClient):
                         The name of the message template to use for the message. If specified, this value
                         must match the name of an existing message template.
 
+                    - **VoiceTemplate** *(dict) --*
+
+                      The voice template to use for the message.
+
+                      - **Name** *(string) --*
+
+                        The name of the message template to use for the message. If specified, this value
+                        must match the name of an existing message template.
+
                   - **TreatmentDescription** *(string) --*
 
                     The custom description of the treatment.
@@ -10875,8 +11132,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -10951,8 +11208,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -11027,8 +11284,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -11103,8 +11360,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -11139,7 +11396,7 @@ class Client(BaseClient):
 
                   - **Body** *(string) --*
 
-                    The body of the email for recipients whose email clients don't support HTML content.
+                    The body of the email for recipients whose email clients don't render HTML content.
 
                   - **FromAddress** *(string) --*
 
@@ -11148,7 +11405,7 @@ class Client(BaseClient):
 
                   - **HtmlBody** *(string) --*
 
-                    The body of the email, in HTML format, for recipients whose email clients support HTML
+                    The body of the email, in HTML format, for recipients whose email clients render HTML
                     content.
 
                   - **Title** *(string) --*
@@ -11202,8 +11459,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -11446,6 +11703,15 @@ class Client(BaseClient):
                 - **SMSTemplate** *(dict) --*
 
                   The SMS template to use for the message.
+
+                  - **Name** *(string) --*
+
+                    The name of the message template to use for the message. If specified, this value must
+                    match the name of an existing message template.
+
+                - **VoiceTemplate** *(dict) --*
+
+                  The voice template to use for the message.
 
                   - **Name** *(string) --*
 
@@ -12876,7 +13142,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -13329,7 +13595,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -13381,7 +13647,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -15068,6 +15334,63 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_voice_template(
+        self, TemplateName: str
+    ) -> ClientDeleteVoiceTemplateResponseTypeDef:
+        """
+        Deletes a message template that was designed for use in messages that were sent through the voice
+        channel.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteVoiceTemplate>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.delete_voice_template(
+              TemplateName='string'
+          )
+        :type TemplateName: string
+        :param TemplateName: **[REQUIRED]**
+
+          The name of the message template. A template name must start with an alphanumeric character and
+          can contain a maximum of 128 characters. The characters can be alphanumeric characters,
+          underscores (_), or hyphens (-). Template names are case sensitive.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'MessageBody': {
+                    'Message': 'string',
+                    'RequestID': 'string'
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            The request was accepted for processing. Processing may not be complete.
+
+            - **MessageBody** *(dict) --*
+
+              Provides information about an API request or response.
+
+              - **Message** *(string) --*
+
+                The message that's returned from the API.
+
+              - **RequestID** *(string) --*
+
+                The unique identifier for the request or response.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -16439,6 +16762,9 @@ class Client(BaseClient):
                                 },
                                 'SMSTemplate': {
                                     'Name': 'string'
+                                },
+                                'VoiceTemplate': {
+                                    'Name': 'string'
                                 }
                             },
                             'TreatmentDescription': 'string',
@@ -16606,6 +16932,9 @@ class Client(BaseClient):
                         },
                         'SMSTemplate': {
                             'Name': 'string'
+                        },
+                        'VoiceTemplate': {
+                            'Name': 'string'
                         }
                     },
                     'TreatmentDescription': 'string',
@@ -16688,7 +17017,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -16765,7 +17094,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -16842,7 +17171,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -16919,7 +17248,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -16955,7 +17284,7 @@ class Client(BaseClient):
 
                       - **Body** *(string) --*
 
-                        The body of the email for recipients whose email clients don't support HTML content.
+                        The body of the email for recipients whose email clients don't render HTML content.
 
                       - **FromAddress** *(string) --*
 
@@ -16964,7 +17293,7 @@ class Client(BaseClient):
 
                       - **HtmlBody** *(string) --*
 
-                        The body of the email, in HTML format, for recipients whose email clients support
+                        The body of the email, in HTML format, for recipients whose email clients render
                         HTML content.
 
                       - **Title** *(string) --*
@@ -17020,7 +17349,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -17261,6 +17590,15 @@ class Client(BaseClient):
                         The name of the message template to use for the message. If specified, this value
                         must match the name of an existing message template.
 
+                    - **VoiceTemplate** *(dict) --*
+
+                      The voice template to use for the message.
+
+                      - **Name** *(string) --*
+
+                        The name of the message template to use for the message. If specified, this value
+                        must match the name of an existing message template.
+
                   - **TreatmentDescription** *(string) --*
 
                     The custom description of the treatment.
@@ -17406,8 +17744,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -17482,8 +17820,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -17558,8 +17896,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -17634,8 +17972,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -17670,7 +18008,7 @@ class Client(BaseClient):
 
                   - **Body** *(string) --*
 
-                    The body of the email for recipients whose email clients don't support HTML content.
+                    The body of the email for recipients whose email clients don't render HTML content.
 
                   - **FromAddress** *(string) --*
 
@@ -17679,7 +18017,7 @@ class Client(BaseClient):
 
                   - **HtmlBody** *(string) --*
 
-                    The body of the email, in HTML format, for recipients whose email clients support HTML
+                    The body of the email, in HTML format, for recipients whose email clients render HTML
                     content.
 
                   - **Title** *(string) --*
@@ -17733,8 +18071,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -17977,6 +18315,15 @@ class Client(BaseClient):
                 - **SMSTemplate** *(dict) --*
 
                   The SMS template to use for the message.
+
+                  - **Name** *(string) --*
+
+                    The name of the message template to use for the message. If specified, this value must
+                    match the name of an existing message template.
+
+                - **VoiceTemplate** *(dict) --*
+
+                  The voice template to use for the message.
 
                   - **Name** *(string) --*
 
@@ -18553,6 +18900,9 @@ class Client(BaseClient):
                                 },
                                 'SMSTemplate': {
                                     'Name': 'string'
+                                },
+                                'VoiceTemplate': {
+                                    'Name': 'string'
                                 }
                             },
                             'TreatmentDescription': 'string',
@@ -18720,6 +19070,9 @@ class Client(BaseClient):
                         },
                         'SMSTemplate': {
                             'Name': 'string'
+                        },
+                        'VoiceTemplate': {
+                            'Name': 'string'
                         }
                     },
                     'TreatmentDescription': 'string',
@@ -18802,7 +19155,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -18879,7 +19232,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -18956,7 +19309,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -19033,7 +19386,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -19069,7 +19422,7 @@ class Client(BaseClient):
 
                       - **Body** *(string) --*
 
-                        The body of the email for recipients whose email clients don't support HTML content.
+                        The body of the email for recipients whose email clients don't render HTML content.
 
                       - **FromAddress** *(string) --*
 
@@ -19078,7 +19431,7 @@ class Client(BaseClient):
 
                       - **HtmlBody** *(string) --*
 
-                        The body of the email, in HTML format, for recipients whose email clients support
+                        The body of the email, in HTML format, for recipients whose email clients render
                         HTML content.
 
                       - **Title** *(string) --*
@@ -19134,7 +19487,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -19375,6 +19728,15 @@ class Client(BaseClient):
                         The name of the message template to use for the message. If specified, this value
                         must match the name of an existing message template.
 
+                    - **VoiceTemplate** *(dict) --*
+
+                      The voice template to use for the message.
+
+                      - **Name** *(string) --*
+
+                        The name of the message template to use for the message. If specified, this value
+                        must match the name of an existing message template.
+
                   - **TreatmentDescription** *(string) --*
 
                     The custom description of the treatment.
@@ -19520,8 +19882,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -19596,8 +19958,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -19672,8 +20034,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -19748,8 +20110,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -19784,7 +20146,7 @@ class Client(BaseClient):
 
                   - **Body** *(string) --*
 
-                    The body of the email for recipients whose email clients don't support HTML content.
+                    The body of the email for recipients whose email clients don't render HTML content.
 
                   - **FromAddress** *(string) --*
 
@@ -19793,7 +20155,7 @@ class Client(BaseClient):
 
                   - **HtmlBody** *(string) --*
 
-                    The body of the email, in HTML format, for recipients whose email clients support HTML
+                    The body of the email, in HTML format, for recipients whose email clients render HTML
                     content.
 
                   - **Title** *(string) --*
@@ -19847,8 +20209,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -20097,6 +20459,15 @@ class Client(BaseClient):
                     The name of the message template to use for the message. If specified, this value must
                     match the name of an existing message template.
 
+                - **VoiceTemplate** *(dict) --*
+
+                  The voice template to use for the message.
+
+                  - **Name** *(string) --*
+
+                    The name of the message template to use for the message. If specified, this value must
+                    match the name of an existing message template.
+
               - **TreatmentDescription** *(string) --*
 
                 The custom description of a variation of the campaign that's used for A/B testing.
@@ -20305,6 +20676,9 @@ class Client(BaseClient):
                                         },
                                         'SMSTemplate': {
                                             'Name': 'string'
+                                        },
+                                        'VoiceTemplate': {
+                                            'Name': 'string'
                                         }
                                     },
                                     'TreatmentDescription': 'string',
@@ -20472,6 +20846,9 @@ class Client(BaseClient):
                                 },
                                 'SMSTemplate': {
                                     'Name': 'string'
+                                },
+                                'VoiceTemplate': {
+                                    'Name': 'string'
                                 }
                             },
                             'TreatmentDescription': 'string',
@@ -20566,7 +20943,7 @@ class Client(BaseClient):
                           - **RawContent** *(string) --*
 
                             The raw, JSON-formatted string to use as the payload for the notification
-                            message. This value overrides other values for the message.
+                            message. If specified, this value overrides all other content for the message.
 
                           - **SilentPush** *(boolean) --*
 
@@ -20644,7 +21021,7 @@ class Client(BaseClient):
                           - **RawContent** *(string) --*
 
                             The raw, JSON-formatted string to use as the payload for the notification
-                            message. This value overrides other values for the message.
+                            message. If specified, this value overrides all other content for the message.
 
                           - **SilentPush** *(boolean) --*
 
@@ -20722,7 +21099,7 @@ class Client(BaseClient):
                           - **RawContent** *(string) --*
 
                             The raw, JSON-formatted string to use as the payload for the notification
-                            message. This value overrides other values for the message.
+                            message. If specified, this value overrides all other content for the message.
 
                           - **SilentPush** *(boolean) --*
 
@@ -20800,7 +21177,7 @@ class Client(BaseClient):
                           - **RawContent** *(string) --*
 
                             The raw, JSON-formatted string to use as the payload for the notification
-                            message. This value overrides other values for the message.
+                            message. If specified, this value overrides all other content for the message.
 
                           - **SilentPush** *(boolean) --*
 
@@ -20837,7 +21214,7 @@ class Client(BaseClient):
 
                           - **Body** *(string) --*
 
-                            The body of the email for recipients whose email clients don't support HTML
+                            The body of the email for recipients whose email clients don't render HTML
                             content.
 
                           - **FromAddress** *(string) --*
@@ -20848,7 +21225,7 @@ class Client(BaseClient):
                           - **HtmlBody** *(string) --*
 
                             The body of the email, in HTML format, for recipients whose email clients
-                            support HTML content.
+                            render HTML content.
 
                           - **Title** *(string) --*
 
@@ -20903,7 +21280,7 @@ class Client(BaseClient):
                           - **RawContent** *(string) --*
 
                             The raw, JSON-formatted string to use as the payload for the notification
-                            message. This value overrides other values for the message.
+                            message. If specified, this value overrides all other content for the message.
 
                           - **SilentPush** *(boolean) --*
 
@@ -21151,6 +21528,15 @@ class Client(BaseClient):
                             The name of the message template to use for the message. If specified, this
                             value must match the name of an existing message template.
 
+                        - **VoiceTemplate** *(dict) --*
+
+                          The voice template to use for the message.
+
+                          - **Name** *(string) --*
+
+                            The name of the message template to use for the message. If specified, this
+                            value must match the name of an existing message template.
+
                       - **TreatmentDescription** *(string) --*
 
                         The custom description of the treatment.
@@ -21298,7 +21684,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -21375,7 +21761,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -21452,7 +21838,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -21529,7 +21915,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -21565,7 +21951,7 @@ class Client(BaseClient):
 
                       - **Body** *(string) --*
 
-                        The body of the email for recipients whose email clients don't support HTML content.
+                        The body of the email for recipients whose email clients don't render HTML content.
 
                       - **FromAddress** *(string) --*
 
@@ -21574,7 +21960,7 @@ class Client(BaseClient):
 
                       - **HtmlBody** *(string) --*
 
-                        The body of the email, in HTML format, for recipients whose email clients support
+                        The body of the email, in HTML format, for recipients whose email clients render
                         HTML content.
 
                       - **Title** *(string) --*
@@ -21630,7 +22016,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -21882,6 +22268,15 @@ class Client(BaseClient):
                     - **SMSTemplate** *(dict) --*
 
                       The SMS template to use for the message.
+
+                      - **Name** *(string) --*
+
+                        The name of the message template to use for the message. If specified, this value
+                        must match the name of an existing message template.
+
+                    - **VoiceTemplate** *(dict) --*
+
+                      The voice template to use for the message.
 
                       - **Name** *(string) --*
 
@@ -22091,6 +22486,9 @@ class Client(BaseClient):
                                         },
                                         'SMSTemplate': {
                                             'Name': 'string'
+                                        },
+                                        'VoiceTemplate': {
+                                            'Name': 'string'
                                         }
                                     },
                                     'TreatmentDescription': 'string',
@@ -22258,6 +22656,9 @@ class Client(BaseClient):
                                 },
                                 'SMSTemplate': {
                                     'Name': 'string'
+                                },
+                                'VoiceTemplate': {
+                                    'Name': 'string'
                                 }
                             },
                             'TreatmentDescription': 'string',
@@ -22352,7 +22753,7 @@ class Client(BaseClient):
                           - **RawContent** *(string) --*
 
                             The raw, JSON-formatted string to use as the payload for the notification
-                            message. This value overrides other values for the message.
+                            message. If specified, this value overrides all other content for the message.
 
                           - **SilentPush** *(boolean) --*
 
@@ -22430,7 +22831,7 @@ class Client(BaseClient):
                           - **RawContent** *(string) --*
 
                             The raw, JSON-formatted string to use as the payload for the notification
-                            message. This value overrides other values for the message.
+                            message. If specified, this value overrides all other content for the message.
 
                           - **SilentPush** *(boolean) --*
 
@@ -22508,7 +22909,7 @@ class Client(BaseClient):
                           - **RawContent** *(string) --*
 
                             The raw, JSON-formatted string to use as the payload for the notification
-                            message. This value overrides other values for the message.
+                            message. If specified, this value overrides all other content for the message.
 
                           - **SilentPush** *(boolean) --*
 
@@ -22586,7 +22987,7 @@ class Client(BaseClient):
                           - **RawContent** *(string) --*
 
                             The raw, JSON-formatted string to use as the payload for the notification
-                            message. This value overrides other values for the message.
+                            message. If specified, this value overrides all other content for the message.
 
                           - **SilentPush** *(boolean) --*
 
@@ -22623,7 +23024,7 @@ class Client(BaseClient):
 
                           - **Body** *(string) --*
 
-                            The body of the email for recipients whose email clients don't support HTML
+                            The body of the email for recipients whose email clients don't render HTML
                             content.
 
                           - **FromAddress** *(string) --*
@@ -22634,7 +23035,7 @@ class Client(BaseClient):
                           - **HtmlBody** *(string) --*
 
                             The body of the email, in HTML format, for recipients whose email clients
-                            support HTML content.
+                            render HTML content.
 
                           - **Title** *(string) --*
 
@@ -22689,7 +23090,7 @@ class Client(BaseClient):
                           - **RawContent** *(string) --*
 
                             The raw, JSON-formatted string to use as the payload for the notification
-                            message. This value overrides other values for the message.
+                            message. If specified, this value overrides all other content for the message.
 
                           - **SilentPush** *(boolean) --*
 
@@ -22937,6 +23338,15 @@ class Client(BaseClient):
                             The name of the message template to use for the message. If specified, this
                             value must match the name of an existing message template.
 
+                        - **VoiceTemplate** *(dict) --*
+
+                          The voice template to use for the message.
+
+                          - **Name** *(string) --*
+
+                            The name of the message template to use for the message. If specified, this
+                            value must match the name of an existing message template.
+
                       - **TreatmentDescription** *(string) --*
 
                         The custom description of the treatment.
@@ -23084,7 +23494,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -23161,7 +23571,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -23238,7 +23648,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -23315,7 +23725,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -23351,7 +23761,7 @@ class Client(BaseClient):
 
                       - **Body** *(string) --*
 
-                        The body of the email for recipients whose email clients don't support HTML content.
+                        The body of the email for recipients whose email clients don't render HTML content.
 
                       - **FromAddress** *(string) --*
 
@@ -23360,7 +23770,7 @@ class Client(BaseClient):
 
                       - **HtmlBody** *(string) --*
 
-                        The body of the email, in HTML format, for recipients whose email clients support
+                        The body of the email, in HTML format, for recipients whose email clients render
                         HTML content.
 
                       - **Title** *(string) --*
@@ -23416,7 +23826,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -23668,6 +24078,15 @@ class Client(BaseClient):
                     - **SMSTemplate** *(dict) --*
 
                       The SMS template to use for the message.
+
+                      - **Name** *(string) --*
+
+                        The name of the message template to use for the message. If specified, this value
+                        must match the name of an existing message template.
+
+                    - **VoiceTemplate** *(dict) --*
+
+                      The voice template to use for the message.
 
                       - **Name** *(string) --*
 
@@ -23959,12 +24378,14 @@ class Client(BaseClient):
                 'EmailTemplateResponse': {
                     'Arn': 'string',
                     'CreationDate': 'string',
+                    'DefaultSubstitutions': 'string',
                     'HtmlPart': 'string',
                     'LastModifiedDate': 'string',
                     'Subject': 'string',
                     'tags': {
                         'string': 'string'
                     },
+                    'TemplateDescription': 'string',
                     'TemplateName': 'string',
                     'TemplateType': 'EMAIL'|'SMS'|'VOICE'|'PUSH',
                     'TextPart': 'string'
@@ -23989,6 +24410,13 @@ class Client(BaseClient):
 
                 The date when the message template was created.
 
+              - **DefaultSubstitutions** *(string) --*
+
+                The JSON object that specifies the default values that are used for message variables in
+                the message template. This object is a set of key-value pairs. Each key defines a message
+                variable in the template. The corresponding value defines the default value for that
+                variable.
+
               - **HtmlPart** *(string) --*
 
                 The message body, in HTML format, that's used in email messages that are based on the
@@ -24012,6 +24440,10 @@ class Client(BaseClient):
 
                   - *(string) --*
 
+              - **TemplateDescription** *(string) --*
+
+                The custom description of the message template.
+
               - **TemplateName** *(string) --*
 
                 The name of the message template.
@@ -24023,7 +24455,7 @@ class Client(BaseClient):
 
               - **TextPart** *(string) --*
 
-                The message body, in text format, that's used in email messages that are based on the
+                The message body, in plain text format, that's used in email messages that are based on the
                 message template.
 
         """
@@ -26016,7 +26448,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -26469,7 +26901,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -26521,7 +26953,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -27116,7 +27548,7 @@ class Client(BaseClient):
             - **JourneyExecutionMetricsResponse** *(dict) --*
 
               Provides the results of a query that retrieved the data for a standard execution metric that
-              applies to a journey.
+              applies to a journey, and provides information about that query.
 
               - **ApplicationId** *(string) --*
 
@@ -27181,6 +27613,7 @@ class Client(BaseClient):
                         'Body': 'string',
                         'ImageIconUrl': 'string',
                         'ImageUrl': 'string',
+                        'RawContent': 'string',
                         'SmallImageIconUrl': 'string',
                         'Sound': 'string',
                         'Title': 'string',
@@ -27190,6 +27623,7 @@ class Client(BaseClient):
                         'Action': 'OPEN_APP'|'DEEP_LINK'|'URL',
                         'Body': 'string',
                         'MediaUrl': 'string',
+                        'RawContent': 'string',
                         'Sound': 'string',
                         'Title': 'string',
                         'Url': 'string'
@@ -27200,6 +27634,7 @@ class Client(BaseClient):
                         'Body': 'string',
                         'ImageIconUrl': 'string',
                         'ImageUrl': 'string',
+                        'RawContent': 'string',
                         'SmallImageIconUrl': 'string',
                         'Sound': 'string',
                         'Title': 'string',
@@ -27213,11 +27648,13 @@ class Client(BaseClient):
                         'Title': 'string',
                         'Url': 'string'
                     },
+                    'DefaultSubstitutions': 'string',
                     'GCM': {
                         'Action': 'OPEN_APP'|'DEEP_LINK'|'URL',
                         'Body': 'string',
                         'ImageIconUrl': 'string',
                         'ImageUrl': 'string',
+                        'RawContent': 'string',
                         'SmallImageIconUrl': 'string',
                         'Sound': 'string',
                         'Title': 'string',
@@ -27227,6 +27664,7 @@ class Client(BaseClient):
                     'tags': {
                         'string': 'string'
                     },
+                    'TemplateDescription': 'string',
                     'TemplateName': 'string',
                     'TemplateType': 'EMAIL'|'SMS'|'VOICE'|'PUSH'
                 }
@@ -27275,6 +27713,12 @@ class Client(BaseClient):
 
                   The URL of an image to display in a push notification that's based on the message
                   template.
+
+                - **RawContent** *(string) --*
+
+                  The raw, JSON-formatted string to use as the payload for a push notification that's based
+                  on the message template. If specified, this value overrides all other content for the
+                  message template.
 
                 - **SmallImageIconUrl** *(string) --*
 
@@ -27327,6 +27771,12 @@ class Client(BaseClient):
 
                   The URL of an image or video to display in push notifications that are based on the
                   message template.
+
+                - **RawContent** *(string) --*
+
+                  The raw, JSON-formatted string to use as the payload for push notifications that are
+                  based on the message template. If specified, this value overrides all other content for
+                  the message template.
 
                 - **Sound** *(string) --*
 
@@ -27384,6 +27834,12 @@ class Client(BaseClient):
 
                   The URL of an image to display in a push notification that's based on the message
                   template.
+
+                - **RawContent** *(string) --*
+
+                  The raw, JSON-formatted string to use as the payload for a push notification that's based
+                  on the message template. If specified, this value overrides all other content for the
+                  message template.
 
                 - **SmallImageIconUrl** *(string) --*
 
@@ -27457,6 +27913,13 @@ class Client(BaseClient):
                   notification that's based on the message template and the value of the Action property is
                   URL.
 
+              - **DefaultSubstitutions** *(string) --*
+
+                The JSON object that specifies the default values that are used for message variables in
+                the message template. This object is a set of key-value pairs. Each key defines a message
+                variable in the template. The corresponding value defines the default value for that
+                variable.
+
               - **GCM** *(dict) --*
 
                 The message template that's used for the GCM channel, which is used to send notifications
@@ -27491,6 +27954,12 @@ class Client(BaseClient):
 
                   The URL of an image to display in a push notification that's based on the message
                   template.
+
+                - **RawContent** *(string) --*
+
+                  The raw, JSON-formatted string to use as the payload for a push notification that's based
+                  on the message template. If specified, this value overrides all other content for the
+                  message template.
 
                 - **SmallImageIconUrl** *(string) --*
 
@@ -27527,6 +27996,10 @@ class Client(BaseClient):
                 - *(string) --*
 
                   - *(string) --*
+
+              - **TemplateDescription** *(string) --*
+
+                The custom description of the message template.
 
               - **TemplateName** *(string) --*
 
@@ -31839,10 +32312,12 @@ class Client(BaseClient):
                     'Arn': 'string',
                     'Body': 'string',
                     'CreationDate': 'string',
+                    'DefaultSubstitutions': 'string',
                     'LastModifiedDate': 'string',
                     'tags': {
                         'string': 'string'
                     },
+                    'TemplateDescription': 'string',
                     'TemplateName': 'string',
                     'TemplateType': 'EMAIL'|'SMS'|'VOICE'|'PUSH'
                 }
@@ -31870,6 +32345,13 @@ class Client(BaseClient):
 
                 The date when the message template was created.
 
+              - **DefaultSubstitutions** *(string) --*
+
+                The JSON object that specifies the default values that are used for message variables in
+                the message template. This object is a set of key-value pairs. Each key defines a message
+                variable in the template. The corresponding value defines the default value for that
+                variable.
+
               - **LastModifiedDate** *(string) --*
 
                 The date when the message template was last modified.
@@ -31882,6 +32364,10 @@ class Client(BaseClient):
                 - *(string) --*
 
                   - *(string) --*
+
+              - **TemplateDescription** *(string) --*
+
+                The custom description of the message template.
 
               - **TemplateName** *(string) --*
 
@@ -32275,6 +32761,126 @@ class Client(BaseClient):
               - **Version** *(integer) --*
 
                 The current version of the voice channel.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_voice_template(
+        self, TemplateName: str
+    ) -> ClientGetVoiceTemplateResponseTypeDef:
+        """
+        Retrieves the content and settings for a message template that you can use in messages that are
+        sent through the voice channel.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetVoiceTemplate>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.get_voice_template(
+              TemplateName='string'
+          )
+        :type TemplateName: string
+        :param TemplateName: **[REQUIRED]**
+
+          The name of the message template. A template name must start with an alphanumeric character and
+          can contain a maximum of 128 characters. The characters can be alphanumeric characters,
+          underscores (_), or hyphens (-). Template names are case sensitive.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'VoiceTemplateResponse': {
+                    'Arn': 'string',
+                    'Body': 'string',
+                    'CreationDate': 'string',
+                    'DefaultSubstitutions': 'string',
+                    'LanguageCode': 'string',
+                    'LastModifiedDate': 'string',
+                    'tags': {
+                        'string': 'string'
+                    },
+                    'TemplateDescription': 'string',
+                    'TemplateName': 'string',
+                    'TemplateType': 'EMAIL'|'SMS'|'VOICE'|'PUSH',
+                    'VoiceId': 'string'
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            The request succeeded.
+
+            - **VoiceTemplateResponse** *(dict) --*
+
+              Provides information about the content and settings for a message template that can be used
+              in messages that are sent through the voice channel.
+
+              - **Arn** *(string) --*
+
+                The Amazon Resource Name (ARN) of the message template.
+
+              - **Body** *(string) --*
+
+                The text of the script that's used in messages that are based on the message template, in
+                plain text format.
+
+              - **CreationDate** *(string) --*
+
+                The date when the message template was created.
+
+              - **DefaultSubstitutions** *(string) --*
+
+                The JSON object that specifies the default values that are used for message variables in
+                the message template. This object is a set of key-value pairs. Each key defines a message
+                variable in the template. The corresponding value defines the default value for that
+                variable.
+
+              - **LanguageCode** *(string) --*
+
+                The code for the language that's used when synthesizing the text of the script in messages
+                that are based on the message template. For a list of supported languages and the code for
+                each one, see the `Amazon Polly Developer Guide
+                <https://docs.aws.amazon.com/polly/latest/dg/what-is.html>`__ .
+
+              - **LastModifiedDate** *(string) --*
+
+                The date when the message template was last modified.
+
+              - **tags** *(dict) --*
+
+                A string-to-string map of key-value pairs that identifies the tags that are associated with
+                the message template. Each tag consists of a required tag key and an associated tag value.
+
+                - *(string) --*
+
+                  - *(string) --*
+
+              - **TemplateDescription** *(string) --*
+
+                The custom description of the message template.
+
+              - **TemplateName** *(string) --*
+
+                The name of the message template.
+
+              - **TemplateType** *(string) --*
+
+                The type of channel that the message template is designed for. For a voice template, this
+                value is VOICE.
+
+              - **VoiceId** *(string) --*
+
+                The name of the voice that's used when delivering messages that are based on the message
+                template. For a list of supported voices, see the `Amazon Polly Developer Guide
+                <https://docs.aws.amazon.com/polly/latest/dg/what-is.html>`__ .
 
         """
 
@@ -33074,7 +33680,7 @@ class Client(BaseClient):
 
                             - **WaitFor** *(string) --*
 
-                              The amount of time, as a duration in ISO 8601 format, to wait before
+                              The amount of time to wait, as a duration in ISO 8601 format, before
                               determining whether the activity's conditions have been met or moving
                               participants to the next activity in the journey.
 
@@ -33533,7 +34139,7 @@ class Client(BaseClient):
 
                             - **WaitFor** *(string) --*
 
-                              The amount of time, as a duration in ISO 8601 format, to wait before
+                              The amount of time to wait, as a duration in ISO 8601 format, before
                               determining whether the activity's conditions have been met or moving
                               participants to the next activity in the journey.
 
@@ -33585,7 +34191,7 @@ class Client(BaseClient):
 
                             - **WaitFor** *(string) --*
 
-                              The amount of time, as a duration in ISO 8601 format, to wait before
+                              The amount of time to wait, as a duration in ISO 8601 format, before
                               determining whether the activity's conditions have been met or moving
                               participants to the next activity in the journey.
 
@@ -33866,8 +34472,9 @@ class Client(BaseClient):
         :type TemplateType: string
         :param TemplateType:
 
-          The type of message template to include in the results. Valid values are: EMAIL, SMS, and PUSH.
-          To include all types of templates in the results, don't include this parameter in your request.
+          The type of message template to include in the results. Valid values are: EMAIL, SMS, PUSH, and
+          VOICE. To include all types of templates in the results, don't include this parameter in your
+          request.
 
         :rtype: dict
         :returns:
@@ -33882,10 +34489,12 @@ class Client(BaseClient):
                         {
                             'Arn': 'string',
                             'CreationDate': 'string',
+                            'DefaultSubstitutions': 'string',
                             'LastModifiedDate': 'string',
                             'tags': {
                                 'string': 'string'
                             },
+                            'TemplateDescription': 'string',
                             'TemplateName': 'string',
                             'TemplateType': 'EMAIL'|'SMS'|'VOICE'|'PUSH'
                         },
@@ -33922,6 +34531,13 @@ class Client(BaseClient):
 
                     The date when the message template was created.
 
+                  - **DefaultSubstitutions** *(string) --*
+
+                    The JSON object that specifies the default values that are used for message variables
+                    in the message template. This object is a set of key-value pairs. Each key defines a
+                    message variable in the template. The corresponding value defines the default value for
+                    that variable.
+
                   - **LastModifiedDate** *(string) --*
 
                     The date when the message template was last modified.
@@ -33935,6 +34551,10 @@ class Client(BaseClient):
                     - *(string) --*
 
                       - *(string) --*
+
+                  - **TemplateDescription** *(string) --*
+
+                    The custom description of the message template.
 
                   - **TemplateName** *(string) --*
 
@@ -34981,6 +35601,9 @@ class Client(BaseClient):
                       },
                       'SMSTemplate': {
                           'Name': 'string'
+                      },
+                      'VoiceTemplate': {
+                          'Name': 'string'
                       }
                   },
                   'TraceId': 'string'
@@ -34995,7 +35618,7 @@ class Client(BaseClient):
         :type MessageRequest: dict
         :param MessageRequest: **[REQUIRED]**
 
-          Specifies the objects that define configuration and other settings for a message.
+          Specifies the configuration and other settings for a message.
 
           - **Addresses** *(dict) --*
 
@@ -35033,14 +35656,14 @@ class Client(BaseClient):
 
                 - **RawContent** *(string) --*
 
-                  The raw, JSON-formatted string to use as the payload for the notification message. This
-                  value overrides the message.
+                  The raw, JSON-formatted string to use as the payload for the message. If specified, this
+                  value overrides all other values for the message.
 
                 - **Substitutions** *(dict) --*
 
-                  An object that maps variable values for the message. Amazon Pinpoint merges these values
-                  with the variable values specified by properties of the DefaultMessage object. The
-                  substitutions in this map take precedence over all other substitutions.
+                  A map of the message variables to merge with the variables specified by properties of the
+                  DefaultMessage object. The variables specified in this map take precedence over all other
+                  variables.
 
                   - *(string) --*
 
@@ -35093,7 +35716,7 @@ class Client(BaseClient):
                 - **RawContent** *(string) --*
 
                   The raw, JSON-formatted string to use as the payload for the message. If specified, this
-                  value overrides the message.
+                  value overrides all other values for the message.
 
                 - **Substitutions** *(dict) --*
 
@@ -35114,7 +35737,8 @@ class Client(BaseClient):
 
           - **MessageConfiguration** *(dict) --* **[REQUIRED]**
 
-            The set of properties that defines the configuration settings for the message.
+            The settings and content for the default message and any default messages that you defined for
+            specific channels.
 
             - **ADMMessage** *(dict) --*
 
@@ -35179,8 +35803,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -35329,8 +35953,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides all other content for the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
                 .. note::
 
@@ -35463,8 +36087,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -35512,16 +36136,16 @@ class Client(BaseClient):
 
             - **DefaultMessage** *(dict) --*
 
-              The default message body for all channels.
+              The default message for all channels.
 
               - **Body** *(string) --*
 
-                The default message body of the push notification, email, or SMS message.
+                The default body of the message.
 
               - **Substitutions** *(dict) --*
 
-                The default message variables to use in the push notification, email, or SMS message. You
-                can override these default variables with individual address variables.
+                The default message variables to use in the message. You can override these default
+                variables with individual address variables.
 
                 - *(string) --*
 
@@ -35627,9 +36251,9 @@ class Client(BaseClient):
 
                 - **HtmlPart** *(dict) --*
 
-                  The body of the email message, in HTML format. We recommend using an HTML part for email
-                  clients that support HTML. You can include links, formatted text, and more in an HTML
-                  message.
+                  The body of the email message, in HTML format. We recommend using HTML format for email
+                  clients that render HTML content. You can include links, formatted text, and more in an
+                  HTML message.
 
                   - **Charset** *(string) --*
 
@@ -35653,9 +36277,9 @@ class Client(BaseClient):
 
                 - **TextPart** *(dict) --*
 
-                  The body of the email message, in text format. We recommend using a text part for email
-                  clients that don't support HTML and clients that are connected to high-latency networks,
-                  such as mobile devices.
+                  The body of the email message, in plain text format. We recommend using plain text format
+                  for email clients that don't render HTML content and clients that are connected to
+                  high-latency networks, such as mobile devices.
 
                   - **Charset** *(string) --*
 
@@ -35750,8 +36374,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **RestrictedPackageName** *(string) --*
 
@@ -35856,12 +36480,13 @@ class Client(BaseClient):
 
               - **Body** *(string) --*
 
-                The text script for the voice message.
+                The text of the script to use for the voice message.
 
               - **LanguageCode** *(string) --*
 
-                The language to use when delivering the message. For a list of supported languages, see the
-                `Amazon Polly Developer Guide <AmazonPollyDG.html>`__ .
+                The code for the language to use when synthesizing the text of the message script. For a
+                list of supported languages and the code for each one, see the `Amazon Polly Developer
+                Guide <https://docs.aws.amazon.com/polly/latest/dg/what-is.html>`__ .
 
               - **OriginationNumber** *(string) --*
 
@@ -35884,7 +36509,8 @@ class Client(BaseClient):
               - **VoiceId** *(string) --*
 
                 The name of the voice to use when delivering the message. For a list of supported voices,
-                see the `Amazon Polly Developer Guide <AmazonPollyDG.html>`__ .
+                see the `Amazon Polly Developer Guide
+                <https://docs.aws.amazon.com/polly/latest/dg/what-is.html>`__ .
 
           - **TemplateConfiguration** *(dict) --*
 
@@ -35911,6 +36537,15 @@ class Client(BaseClient):
             - **SMSTemplate** *(dict) --*
 
               The SMS template to use for the message.
+
+              - **Name** *(string) --*
+
+                The name of the message template to use for the message. If specified, this value must
+                match the name of an existing message template.
+
+            - **VoiceTemplate** *(dict) --*
+
+              The voice template to use for the message.
 
               - **Name** *(string) --*
 
@@ -36295,6 +36930,9 @@ class Client(BaseClient):
                       },
                       'SMSTemplate': {
                           'Name': 'string'
+                      },
+                      'VoiceTemplate': {
+                          'Name': 'string'
                       }
                   },
                   'TraceId': 'string',
@@ -36339,7 +36977,7 @@ class Client(BaseClient):
 
           - **MessageConfiguration** *(dict) --* **[REQUIRED]**
 
-            The message definitions for the default message and any default messages that you defined for
+            The settings and content for the default message and any default messages that you defined for
             specific channels.
 
             - **ADMMessage** *(dict) --*
@@ -36405,8 +37043,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -36555,8 +37193,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides all other content for the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
                 .. note::
 
@@ -36689,8 +37327,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -36738,16 +37376,16 @@ class Client(BaseClient):
 
             - **DefaultMessage** *(dict) --*
 
-              The default message body for all channels.
+              The default message for all channels.
 
               - **Body** *(string) --*
 
-                The default message body of the push notification, email, or SMS message.
+                The default body of the message.
 
               - **Substitutions** *(dict) --*
 
-                The default message variables to use in the push notification, email, or SMS message. You
-                can override these default variables with individual address variables.
+                The default message variables to use in the message. You can override these default
+                variables with individual address variables.
 
                 - *(string) --*
 
@@ -36853,9 +37491,9 @@ class Client(BaseClient):
 
                 - **HtmlPart** *(dict) --*
 
-                  The body of the email message, in HTML format. We recommend using an HTML part for email
-                  clients that support HTML. You can include links, formatted text, and more in an HTML
-                  message.
+                  The body of the email message, in HTML format. We recommend using HTML format for email
+                  clients that render HTML content. You can include links, formatted text, and more in an
+                  HTML message.
 
                   - **Charset** *(string) --*
 
@@ -36879,9 +37517,9 @@ class Client(BaseClient):
 
                 - **TextPart** *(dict) --*
 
-                  The body of the email message, in text format. We recommend using a text part for email
-                  clients that don't support HTML and clients that are connected to high-latency networks,
-                  such as mobile devices.
+                  The body of the email message, in plain text format. We recommend using plain text format
+                  for email clients that don't render HTML content and clients that are connected to
+                  high-latency networks, such as mobile devices.
 
                   - **Charset** *(string) --*
 
@@ -36976,8 +37614,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **RestrictedPackageName** *(string) --*
 
@@ -37082,12 +37720,13 @@ class Client(BaseClient):
 
               - **Body** *(string) --*
 
-                The text script for the voice message.
+                The text of the script to use for the voice message.
 
               - **LanguageCode** *(string) --*
 
-                The language to use when delivering the message. For a list of supported languages, see the
-                `Amazon Polly Developer Guide <AmazonPollyDG.html>`__ .
+                The code for the language to use when synthesizing the text of the message script. For a
+                list of supported languages and the code for each one, see the `Amazon Polly Developer
+                Guide <https://docs.aws.amazon.com/polly/latest/dg/what-is.html>`__ .
 
               - **OriginationNumber** *(string) --*
 
@@ -37110,7 +37749,8 @@ class Client(BaseClient):
               - **VoiceId** *(string) --*
 
                 The name of the voice to use when delivering the message. For a list of supported voices,
-                see the `Amazon Polly Developer Guide <AmazonPollyDG.html>`__ .
+                see the `Amazon Polly Developer Guide
+                <https://docs.aws.amazon.com/polly/latest/dg/what-is.html>`__ .
 
           - **TemplateConfiguration** *(dict) --*
 
@@ -37137,6 +37777,15 @@ class Client(BaseClient):
             - **SMSTemplate** *(dict) --*
 
               The SMS template to use for the message.
+
+              - **Name** *(string) --*
+
+                The name of the message template to use for the message. If specified, this value must
+                match the name of an existing message template.
+
+            - **VoiceTemplate** *(dict) --*
+
+              The voice template to use for the message.
 
               - **Name** *(string) --*
 
@@ -37177,7 +37826,7 @@ class Client(BaseClient):
                 - **RawContent** *(string) --*
 
                   The raw, JSON-formatted string to use as the payload for the message. If specified, this
-                  value overrides the message.
+                  value overrides all other values for the message.
 
                 - **Substitutions** *(dict) --*
 
@@ -38713,6 +39362,9 @@ class Client(BaseClient):
                               },
                               'SMSTemplate': {
                                   'Name': 'string'
+                              },
+                              'VoiceTemplate': {
+                                  'Name': 'string'
                               }
                           },
                           'TreatmentDescription': 'string',
@@ -38867,6 +39519,9 @@ class Client(BaseClient):
                       },
                       'SMSTemplate': {
                           'Name': 'string'
+                      },
+                      'VoiceTemplate': {
+                          'Name': 'string'
                       }
                   },
                   'TreatmentDescription': 'string',
@@ -38949,8 +39604,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -39025,8 +39680,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -39101,8 +39756,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -39177,8 +39832,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -39213,7 +39868,7 @@ class Client(BaseClient):
 
                   - **Body** *(string) --*
 
-                    The body of the email for recipients whose email clients don't support HTML content.
+                    The body of the email for recipients whose email clients don't render HTML content.
 
                   - **FromAddress** *(string) --*
 
@@ -39222,7 +39877,7 @@ class Client(BaseClient):
 
                   - **HtmlBody** *(string) --*
 
-                    The body of the email, in HTML format, for recipients whose email clients support HTML
+                    The body of the email, in HTML format, for recipients whose email clients render HTML
                     content.
 
                   - **Title** *(string) --* **[REQUIRED]**
@@ -39276,8 +39931,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -39499,9 +40154,18 @@ class Client(BaseClient):
                     The name of the message template to use for the message. If specified, this value must
                     match the name of an existing message template.
 
+                - **VoiceTemplate** *(dict) --*
+
+                  The voice template to use for the message.
+
+                  - **Name** *(string) --*
+
+                    The name of the message template to use for the message. If specified, this value must
+                    match the name of an existing message template.
+
               - **TreatmentDescription** *(string) --*
 
-                The custom description of the treatment.
+                A custom description of the treatment.
 
               - **TreatmentName** *(string) --*
 
@@ -39510,7 +40174,7 @@ class Client(BaseClient):
 
           - **Description** *(string) --*
 
-            The custom description of the campaign.
+            A custom description of the campaign.
 
           - **HoldoutPercent** *(integer) --*
 
@@ -39612,8 +40276,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides other values for the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -39687,8 +40351,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides other values for the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -39762,8 +40426,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides other values for the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -39837,8 +40501,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides other values for the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -39873,7 +40537,7 @@ class Client(BaseClient):
 
               - **Body** *(string) --*
 
-                The body of the email for recipients whose email clients don't support HTML content.
+                The body of the email for recipients whose email clients don't render HTML content.
 
               - **FromAddress** *(string) --*
 
@@ -39882,7 +40546,7 @@ class Client(BaseClient):
 
               - **HtmlBody** *(string) --*
 
-                The body of the email, in HTML format, for recipients whose email clients support HTML
+                The body of the email, in HTML format, for recipients whose email clients render HTML
                 content.
 
               - **Title** *(string) --* **[REQUIRED]**
@@ -39935,8 +40599,8 @@ class Client(BaseClient):
 
               - **RawContent** *(string) --*
 
-                The raw, JSON-formatted string to use as the payload for the notification message. This
-                value overrides other values for the message.
+                The raw, JSON-formatted string to use as the payload for the notification message. If
+                specified, this value overrides all other content for the message.
 
               - **SilentPush** *(boolean) --*
 
@@ -40175,9 +40839,18 @@ class Client(BaseClient):
                 The name of the message template to use for the message. If specified, this value must
                 match the name of an existing message template.
 
+            - **VoiceTemplate** *(dict) --*
+
+              The voice template to use for the message.
+
+              - **Name** *(string) --*
+
+                The name of the message template to use for the message. If specified, this value must
+                match the name of an existing message template.
+
           - **TreatmentDescription** *(string) --*
 
-            The custom description of a variation of the campaign to use for A/B testing.
+            A custom description of a variation of the campaign to use for A/B testing.
 
           - **TreatmentName** *(string) --*
 
@@ -40327,6 +41000,9 @@ class Client(BaseClient):
                                     'Name': 'string'
                                 },
                                 'SMSTemplate': {
+                                    'Name': 'string'
+                                },
+                                'VoiceTemplate': {
                                     'Name': 'string'
                                 }
                             },
@@ -40495,6 +41171,9 @@ class Client(BaseClient):
                         },
                         'SMSTemplate': {
                             'Name': 'string'
+                        },
+                        'VoiceTemplate': {
+                            'Name': 'string'
                         }
                     },
                     'TreatmentDescription': 'string',
@@ -40577,7 +41256,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -40654,7 +41333,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -40731,7 +41410,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -40808,7 +41487,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -40844,7 +41523,7 @@ class Client(BaseClient):
 
                       - **Body** *(string) --*
 
-                        The body of the email for recipients whose email clients don't support HTML content.
+                        The body of the email for recipients whose email clients don't render HTML content.
 
                       - **FromAddress** *(string) --*
 
@@ -40853,7 +41532,7 @@ class Client(BaseClient):
 
                       - **HtmlBody** *(string) --*
 
-                        The body of the email, in HTML format, for recipients whose email clients support
+                        The body of the email, in HTML format, for recipients whose email clients render
                         HTML content.
 
                       - **Title** *(string) --*
@@ -40909,7 +41588,7 @@ class Client(BaseClient):
                       - **RawContent** *(string) --*
 
                         The raw, JSON-formatted string to use as the payload for the notification message.
-                        This value overrides other values for the message.
+                        If specified, this value overrides all other content for the message.
 
                       - **SilentPush** *(boolean) --*
 
@@ -41150,6 +41829,15 @@ class Client(BaseClient):
                         The name of the message template to use for the message. If specified, this value
                         must match the name of an existing message template.
 
+                    - **VoiceTemplate** *(dict) --*
+
+                      The voice template to use for the message.
+
+                      - **Name** *(string) --*
+
+                        The name of the message template to use for the message. If specified, this value
+                        must match the name of an existing message template.
+
                   - **TreatmentDescription** *(string) --*
 
                     The custom description of the treatment.
@@ -41295,8 +41983,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -41371,8 +42059,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -41447,8 +42135,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -41523,8 +42211,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -41559,7 +42247,7 @@ class Client(BaseClient):
 
                   - **Body** *(string) --*
 
-                    The body of the email for recipients whose email clients don't support HTML content.
+                    The body of the email for recipients whose email clients don't render HTML content.
 
                   - **FromAddress** *(string) --*
 
@@ -41568,7 +42256,7 @@ class Client(BaseClient):
 
                   - **HtmlBody** *(string) --*
 
-                    The body of the email, in HTML format, for recipients whose email clients support HTML
+                    The body of the email, in HTML format, for recipients whose email clients render HTML
                     content.
 
                   - **Title** *(string) --*
@@ -41622,8 +42310,8 @@ class Client(BaseClient):
 
                   - **RawContent** *(string) --*
 
-                    The raw, JSON-formatted string to use as the payload for the notification message. This
-                    value overrides other values for the message.
+                    The raw, JSON-formatted string to use as the payload for the notification message. If
+                    specified, this value overrides all other content for the message.
 
                   - **SilentPush** *(boolean) --*
 
@@ -41872,6 +42560,15 @@ class Client(BaseClient):
                     The name of the message template to use for the message. If specified, this value must
                     match the name of an existing message template.
 
+                - **VoiceTemplate** *(dict) --*
+
+                  The voice template to use for the message.
+
+                  - **Name** *(string) --*
+
+                    The name of the message template to use for the message. If specified, this value must
+                    match the name of an existing message template.
+
               - **TreatmentDescription** *(string) --*
 
                 The custom description of a variation of the campaign that's used for A/B testing.
@@ -42068,11 +42765,13 @@ class Client(BaseClient):
 
           response = client.update_email_template(
               EmailTemplateRequest={
+                  'DefaultSubstitutions': 'string',
                   'HtmlPart': 'string',
                   'Subject': 'string',
                   'tags': {
                       'string': 'string'
                   },
+                  'TemplateDescription': 'string',
                   'TextPart': 'string'
               },
               TemplateName='string'
@@ -42083,11 +42782,19 @@ class Client(BaseClient):
           Specifies the content and settings for a message template that can be used in messages that are
           sent through the email channel.
 
+          - **DefaultSubstitutions** *(string) --*
+
+            A JSON object that specifies the default values to use for message variables in the message
+            template. This object is a set of key-value pairs. Each key defines a message variable in the
+            template. The corresponding value defines the default value for that variable. When you create
+            a message that's based on the template, you can override these defaults with message-specific
+            and address-specific variables and values.
+
           - **HtmlPart** *(string) --*
 
             The message body, in HTML format, to use in email messages that are based on the message
-            template. We recommend using HTML format for email clients that support HTML. You can include
-            links, formatted text, and more in an HTML message.
+            template. We recommend using HTML format for email clients that render HTML content. You can
+            include links, formatted text, and more in an HTML message.
 
           - **Subject** *(string) --*
 
@@ -42102,11 +42809,15 @@ class Client(BaseClient):
 
               - *(string) --*
 
+          - **TemplateDescription** *(string) --*
+
+            A custom description of the message template.
+
           - **TextPart** *(string) --*
 
-            The message body, in text format, to use in email messages that are based on the message
-            template. We recommend using text format for email clients that don't support HTML and clients
-            that are connected to high-latency networks, such as mobile devices.
+            The message body, in plain text format, to use in email messages that are based on the message
+            template. We recommend using plain text format for email clients that don't render HTML content
+            and clients that are connected to high-latency networks, such as mobile devices.
 
         :type TemplateName: string
         :param TemplateName: **[REQUIRED]**
@@ -43567,7 +44278,7 @@ class Client(BaseClient):
 
                     - **WaitFor** *(string) --*
 
-                      The amount of time, as a duration in ISO 8601 format, to wait before determining
+                      The amount of time to wait, as a duration in ISO 8601 format, before determining
                       whether the activity's conditions have been met or moving participants to the next
                       activity in the journey.
 
@@ -44006,7 +44717,7 @@ class Client(BaseClient):
 
                     - **WaitFor** *(string) --*
 
-                      The amount of time, as a duration in ISO 8601 format, to wait before determining
+                      The amount of time to wait, as a duration in ISO 8601 format, before determining
                       whether the activity's conditions have been met or moving participants to the next
                       activity in the journey.
 
@@ -44058,7 +44769,7 @@ class Client(BaseClient):
 
                     - **WaitFor** *(string) --*
 
-                      The amount of time, as a duration in ISO 8601 format, to wait before determining
+                      The amount of time to wait, as a duration in ISO 8601 format, before determining
                       whether the activity's conditions have been met or moving participants to the next
                       activity in the journey.
 
@@ -44931,7 +45642,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -45384,7 +46095,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -45436,7 +46147,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -46388,7 +47099,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -46841,7 +47552,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -46893,7 +47604,7 @@ class Client(BaseClient):
 
                         - **WaitFor** *(string) --*
 
-                          The amount of time, as a duration in ISO 8601 format, to wait before determining
+                          The amount of time to wait, as a duration in ISO 8601 format, before determining
                           whether the activity's conditions have been met or moving participants to the
                           next activity in the journey.
 
@@ -47080,6 +47791,7 @@ class Client(BaseClient):
                       'Body': 'string',
                       'ImageIconUrl': 'string',
                       'ImageUrl': 'string',
+                      'RawContent': 'string',
                       'SmallImageIconUrl': 'string',
                       'Sound': 'string',
                       'Title': 'string',
@@ -47089,6 +47801,7 @@ class Client(BaseClient):
                       'Action': 'OPEN_APP'|'DEEP_LINK'|'URL',
                       'Body': 'string',
                       'MediaUrl': 'string',
+                      'RawContent': 'string',
                       'Sound': 'string',
                       'Title': 'string',
                       'Url': 'string'
@@ -47098,6 +47811,7 @@ class Client(BaseClient):
                       'Body': 'string',
                       'ImageIconUrl': 'string',
                       'ImageUrl': 'string',
+                      'RawContent': 'string',
                       'SmallImageIconUrl': 'string',
                       'Sound': 'string',
                       'Title': 'string',
@@ -47110,11 +47824,13 @@ class Client(BaseClient):
                       'Title': 'string',
                       'Url': 'string'
                   },
+                  'DefaultSubstitutions': 'string',
                   'GCM': {
                       'Action': 'OPEN_APP'|'DEEP_LINK'|'URL',
                       'Body': 'string',
                       'ImageIconUrl': 'string',
                       'ImageUrl': 'string',
+                      'RawContent': 'string',
                       'SmallImageIconUrl': 'string',
                       'Sound': 'string',
                       'Title': 'string',
@@ -47122,7 +47838,8 @@ class Client(BaseClient):
                   },
                   'tags': {
                       'string': 'string'
-                  }
+                  },
+                  'TemplateDescription': 'string'
               },
               TemplateName='string'
           )
@@ -47164,6 +47881,12 @@ class Client(BaseClient):
             - **ImageUrl** *(string) --*
 
               The URL of an image to display in a push notification that's based on the message template.
+
+            - **RawContent** *(string) --*
+
+              The raw, JSON-formatted string to use as the payload for a push notification that's based on
+              the message template. If specified, this value overrides all other content for the message
+              template.
 
             - **SmallImageIconUrl** *(string) --*
 
@@ -47215,6 +47938,12 @@ class Client(BaseClient):
               The URL of an image or video to display in push notifications that are based on the message
               template.
 
+            - **RawContent** *(string) --*
+
+              The raw, JSON-formatted string to use as the payload for push notifications that are based on
+              the message template. If specified, this value overrides all other content for the message
+              template.
+
             - **Sound** *(string) --*
 
               The key for the sound to play when the recipient receives a push notification that's based on
@@ -47263,6 +47992,12 @@ class Client(BaseClient):
             - **ImageUrl** *(string) --*
 
               The URL of an image to display in a push notification that's based on the message template.
+
+            - **RawContent** *(string) --*
+
+              The raw, JSON-formatted string to use as the payload for a push notification that's based on
+              the message template. If specified, this value overrides all other content for the message
+              template.
 
             - **SmallImageIconUrl** *(string) --*
 
@@ -47327,6 +48062,14 @@ class Client(BaseClient):
               The URL to open in a recipient's default mobile browser, if a recipient taps a push
               notification that's based on the message template and the value of the Action property is URL.
 
+          - **DefaultSubstitutions** *(string) --*
+
+            A JSON object that specifies the default values to use for message variables in the message
+            template. This object is a set of key-value pairs. Each key defines a message variable in the
+            template. The corresponding value defines the default value for that variable. When you create
+            a message that's based on the template, you can override these defaults with message-specific
+            and address-specific variables and values.
+
           - **GCM** *(dict) --*
 
             The message template to use for the GCM channel, which is used to send notifications through
@@ -47361,6 +48104,12 @@ class Client(BaseClient):
 
               The URL of an image to display in a push notification that's based on the message template.
 
+            - **RawContent** *(string) --*
+
+              The raw, JSON-formatted string to use as the payload for a push notification that's based on
+              the message template. If specified, this value overrides all other content for the message
+              template.
+
             - **SmallImageIconUrl** *(string) --*
 
               The URL of the small icon image to display in the status bar and the content view of a push
@@ -47390,6 +48139,10 @@ class Client(BaseClient):
             - *(string) --*
 
               - *(string) --*
+
+          - **TemplateDescription** *(string) --*
+
+            A custom description of the message template.
 
         :type TemplateName: string
         :param TemplateName: **[REQUIRED]**
@@ -49266,9 +50019,11 @@ class Client(BaseClient):
           response = client.update_sms_template(
               SMSTemplateRequest={
                   'Body': 'string',
+                  'DefaultSubstitutions': 'string',
                   'tags': {
                       'string': 'string'
-                  }
+                  },
+                  'TemplateDescription': 'string'
               },
               TemplateName='string'
           )
@@ -49282,6 +50037,14 @@ class Client(BaseClient):
 
             The message body to use in text messages that are based on the message template.
 
+          - **DefaultSubstitutions** *(string) --*
+
+            A JSON object that specifies the default values to use for message variables in the message
+            template. This object is a set of key-value pairs. Each key defines a message variable in the
+            template. The corresponding value defines the default value for that variable. When you create
+            a message that's based on the template, you can override these defaults with message-specific
+            and address-specific variables and values.
+
           - **tags** *(dict) --*
 
             A string-to-string map of key-value pairs that defines the tags to associate with the message
@@ -49290,6 +50053,10 @@ class Client(BaseClient):
             - *(string) --*
 
               - *(string) --*
+
+          - **TemplateDescription** *(string) --*
+
+            A custom description of the message template.
 
         :type TemplateName: string
         :param TemplateName: **[REQUIRED]**
@@ -49440,6 +50207,120 @@ class Client(BaseClient):
               - **Version** *(integer) --*
 
                 The current version of the voice channel.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def update_voice_template(
+        self,
+        TemplateName: str,
+        VoiceTemplateRequest: ClientUpdateVoiceTemplateVoiceTemplateRequestTypeDef,
+    ) -> ClientUpdateVoiceTemplateResponseTypeDef:
+        """
+        Updates an existing message template that you can use in messages that are sent through the voice
+        channel.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateVoiceTemplate>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.update_voice_template(
+              TemplateName='string',
+              VoiceTemplateRequest={
+                  'Body': 'string',
+                  'DefaultSubstitutions': 'string',
+                  'LanguageCode': 'string',
+                  'tags': {
+                      'string': 'string'
+                  },
+                  'TemplateDescription': 'string',
+                  'VoiceId': 'string'
+              }
+          )
+        :type TemplateName: string
+        :param TemplateName: **[REQUIRED]**
+
+          The name of the message template. A template name must start with an alphanumeric character and
+          can contain a maximum of 128 characters. The characters can be alphanumeric characters,
+          underscores (_), or hyphens (-). Template names are case sensitive.
+
+        :type VoiceTemplateRequest: dict
+        :param VoiceTemplateRequest: **[REQUIRED]**
+
+          Specifies the content and settings for a message template that can be used in messages that are
+          sent through the voice channel.
+
+          - **Body** *(string) --*
+
+            The text of the script to use in messages that are based on the message template, in plain text
+            format.
+
+          - **DefaultSubstitutions** *(string) --*
+
+            A JSON object that specifies the default values to use for message variables in the message
+            template. This object is a set of key-value pairs. Each key defines a message variable in the
+            template. The corresponding value defines the default value for that variable. When you create
+            a message that's based on the template, you can override these defaults with message-specific
+            and address-specific variables and values.
+
+          - **LanguageCode** *(string) --*
+
+            The code for the language to use when synthesizing the text of the script in messages that are
+            based on the message template. For a list of supported languages and the code for each one, see
+            the `Amazon Polly Developer Guide <https://docs.aws.amazon.com/polly/latest/dg/what-is.html>`__
+            .
+
+          - **tags** *(dict) --*
+
+            A string-to-string map of key-value pairs that defines the tags to associate with the message
+            template. Each tag consists of a required tag key and an associated tag value.
+
+            - *(string) --*
+
+              - *(string) --*
+
+          - **TemplateDescription** *(string) --*
+
+            A custom description of the message template.
+
+          - **VoiceId** *(string) --*
+
+            The name of the voice to use when delivering messages that are based on the message template.
+            For a list of supported voices, see the `Amazon Polly Developer Guide
+            <https://docs.aws.amazon.com/polly/latest/dg/what-is.html>`__ .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'MessageBody': {
+                    'Message': 'string',
+                    'RequestID': 'string'
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            The request was accepted for processing. Processing may not be complete.
+
+            - **MessageBody** *(dict) --*
+
+              Provides information about an API request or response.
+
+              - **Message** *(string) --*
+
+                The message that's returned from the API.
+
+              - **RequestID** *(string) --*
+
+                The unique identifier for the request or response.
 
         """
 

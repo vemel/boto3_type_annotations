@@ -120,10 +120,29 @@ class Client(BaseClient):
         self, Bucket: str, Key: str, UploadId: str, RequestPayer: str = None
     ) -> ClientAbortMultipartUploadResponseTypeDef:
         """
-        Aborts a multipart upload.
+        This operation aborts a multipart upload. After a multipart upload is aborted, no additional parts
+        can be uploaded using that upload ID. The storage consumed by any previously uploaded parts will be
+        freed. However, if any part uploads are currently in progress, those part uploads might or might
+        not succeed. As a result, it might be necessary to abort a given multipart upload multiple times in
+        order to completely free all storage consumed by all parts.
 
         To verify that all parts have been removed, so you don't get charged for the part storage, you
-        should call the List Parts operation and ensure the parts list is empty.
+        should call the  ListParts operation and ensure the parts list is empty.
+
+        For information on permissions required to use the multipart upload API, see `Multipart Upload API
+        and Permissions <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html>`__ .
+
+        The following operations are related to ``AbortMultipartUpload``
+
+        *  CreateMultipartUpload
+
+        *  UploadPart
+
+        *  CompleteMultipartUpload
+
+        *  ListParts
+
+        *  ListMultipartUploads
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/AbortMultipartUpload>`_
@@ -140,7 +159,7 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
-          Name of the bucket to which the multipart upload was initiated.
+          The bucket to which the upload was taking place.
 
         :type Key: string
         :param Key: **[REQUIRED]**
@@ -209,6 +228,73 @@ class Client(BaseClient):
         """
         Completes a multipart upload by assembling previously uploaded parts.
 
+        You first initiate the multipart upload and then upload all parts using the  UploadPart operation.
+        After successfully uploading all relevant parts of an upload, you call this operation to complete
+        the upload. Upon receiving this request, Amazon S3 concatenates all the parts in ascending order by
+        part number to create a new object. In the Complete Multipart Upload request, you must provide the
+        parts list. You must ensure the parts list is complete, this operation concatenates the parts you
+        provide in the list. For each part in the list, you must provide the part number and the ``ETag``
+        value, returned after that part was uploaded.
+
+        Processing of a Complete Multipart Upload request could take several minutes to complete. After
+        Amazon S3 begins processing the request, it sends an HTTP response header that specifies a 200 OK
+        response. While processing is in progress, Amazon S3 periodically sends whitespace characters to
+        keep the connection from timing out. Because a request could fail after the initial 200 OK response
+        has been sent, it is important that you check the response body to determine whether the request
+        succeeded.
+
+        Note that if ``CompleteMultipartUpload`` fails, applications should be prepared to retry the failed
+        requests. For more information, see `Amazon S3 Error Best Practices
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/ErrorBestPractices.html>`__ .
+
+        For more information on multipart uploads, see `Uploading Objects Using Multipart Upload
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html>`__ .
+
+        For information on permissions required to use the multipart upload API, see `Multipart Upload API
+        and Permissions <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html>`__ .
+
+         ``GetBucketLifecycle`` has the following special errors:
+
+        * Error code: ``EntityTooSmall``
+
+          * Description: Your proposed upload is smaller than the minimum allowed object size. Each part
+          must be at least 5 MB in size, except the last part.
+
+          * 400 Bad Request
+
+        * Error code: ``InvalidPart``
+
+          * Description: One or more of the specified parts could not be found. The part might not have
+          been uploaded, or the specified entity tag might not have matched the part's entity tag.
+
+          * 400 Bad Request
+
+        * Error code: ``InvalidPartOrder``
+
+          * Description: The list of parts was not in ascending order. The parts list must be specified in
+          order by part number.
+
+          * 400 Bad Request
+
+        * Error code: ``NoSuchUpload``
+
+          * Description: The specified multipart upload does not exist. The upload ID might be invalid, or
+          the multipart upload might have been aborted or completed.
+
+          * 404 Not Found
+
+        The following operations are related to ``DeleteBucketMetricsConfiguration`` :
+
+        *  CreateMultipartUpload
+
+        *  UploadPart
+
+        *  AbortMultipartUpload
+
+        *  ListParts
+
+        *  ListMultipartUploads
+
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CompleteMultipartUpload>`_
 
@@ -232,15 +318,25 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          Name of the bucket to which the multipart upload was initiated.
+
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          Object key for which the multipart upload was initiated.
 
         :type MultipartUpload: dict
         :param MultipartUpload:
 
+          The container for the multipart upload request information.
+
           - **Parts** *(list) --*
 
+            Array of CompletedPart data types.
+
             - *(dict) --*
+
+              Details of the parts that were uploaded.
 
               - **ETag** *(string) --*
 
@@ -252,6 +348,8 @@ class Client(BaseClient):
 
         :type UploadId: string
         :param UploadId: **[REQUIRED]**
+
+          ID for the initiated multipart upload.
 
         :type RequestPayer: string
         :param RequestPayer:
@@ -285,9 +383,15 @@ class Client(BaseClient):
 
             - **Location** *(string) --*
 
+              The URI that identifies the newly created object.
+
             - **Bucket** *(string) --*
 
+              The name of the bucket that contains the newly created object.
+
             - **Key** *(string) --*
+
+              The object key of the newly created object.
 
             - **Expiration** *(string) --*
 
@@ -296,21 +400,27 @@ class Client(BaseClient):
 
             - **ETag** *(string) --*
 
-              Entity tag of the object.
+              Entity tag that identifies the newly created object's data. Objects with different object
+              data will have different entity tags. The entity tag is an opaque string. The entity tag may
+              or may not be an MD5 digest of the object data. If the entity tag is not an MD5 digest of the
+              object data, it will contain one or more nonhexadecimal characters and/or will consist of
+              less than 32 or more than 32 hexadecimal digits.
 
             - **ServerSideEncryption** *(string) --*
 
-              The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256,
-              aws:kms).
+              If you specified server-side encryption either with an Amazon S3-managed encryption key or an
+              AWS KMS customer master key (CMK) in your initiate multipart upload request, the response
+              includes this header. It confirms the encryption algorithm that Amazon S3 used to encrypt the
+              object.
 
             - **VersionId** *(string) --*
 
-              Version of the object.
+              Version ID of the newly created object, in case the bucket has versioning turned on.
 
             - **SSEKMSKeyId** *(string) --*
 
-              If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-              that was used for the object.
+              If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+              (CMK) that was used for the object.
 
             - **RequestCharged** *(string) --*
 
@@ -422,6 +532,226 @@ class Client(BaseClient):
         """
         Creates a copy of an object that is already stored in Amazon S3.
 
+        .. note::
+
+          You can store individual objects of up to 5 TB in Amazon S3. You create a copy of your object up
+          to 5 GB in size in a single atomic operation using this API. However, for copying an object
+          greater than 5 GB, you must use the multipart upload Upload Part - Copy API. For conceptual
+          information, see `Copy Object Using the REST Multipart Upload API
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjctsUsingRESTMPUapi.html>`__ .
+
+        When copying an object, you can preserve all metadata (default) or specify new metadata. However,
+        the ACL is not preserved and is set to private for the user making the request. To override the
+        default ACL setting, specify a new ACL when generating a copy request. For more information, see
+        `Using ACLs <https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html>`__ .
+
+        .. warning::
+
+          Amazon S3 Transfer Acceleration does not support cross-region copies. If you request a
+          cross-region copy using a Transfer Acceleration endpoint, you get a 400 ``Bad Request`` error.
+          For more information about transfer acceleration, see `Transfer Acceleration
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html>`__ .
+
+        All copy requests must be authenticated. Additionally, you must have *read* access to the source
+        object and *write* access to the destination bucket. For more information, see `REST Authentication
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html>`__ . Both the Region that
+        you want to copy the object from and the Region that you want to copy the object to must be enabled
+        for your account.
+
+        To only copy an object under certain conditions, such as whether the Etag matches or whether the
+        object was modified before or after a specified date, use the request parameters
+        ``x-amz-copy-source-if-match`` , ``x-amz-copy-source-if-none-match`` ,
+        ``x-amz-copy-source-if-unmodified-since`` , or ``x-amz-copy-source-if-modified-since`` .
+
+        .. note::
+
+          All headers with the x-amz- prefix, including x-amz-copy-source, must be signed.
+
+        You can use this operation to change the storage class of an object that is already stored in
+        Amazon S3 using the StorageClass parameter. For more information, see `Storage Classes
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html>`__ .
+
+        The source object that you are copying can be encrypted or unencrypted. If the source object is
+        encrypted, it can be encrypted by server-side encryption using AWS-managed encryption keys or by
+        using a customer-provided encryption key. When copying an object, you can request that Amazon S3
+        encrypt the target object by using either the AWS-managed encryption keys or by using your own
+        encryption key. You can do this regardless of the form of server-side encryption that was used to
+        encrypt the source, or even if the source object was not encrypted. For more information about
+        server-side encryption, see `Using Server-Side Encryption
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html>`__ .
+
+        A copy request might return an error when Amazon S3 receives the copy request or while Amazon S3 is
+        copying the files. If the error occurs before the copy operation starts, you receive a standard
+        Amazon S3 error. If the error occurs during the copy operation, the error response is embedded in
+        the 200 OK response. This means that a ``200 OK`` response can contain either a success or an
+        error. Design your application to parse the contents of the response and handle it appropriately.
+
+        If the copy is successful, you receive a response with information about the copied object.
+
+        .. note::
+
+          If the request is an HTTP 1.1 request, the response is chunk encoded. If it were not, it would
+          not contain the content-length, and you would need to read the entire body.
+
+        Consider the following when using request headers:
+
+        * Consideration 1 – If both the x-amz-copy-source-if-match and
+        x-amz-copy-source-if-unmodified-since headers are present in the request and evaluate as follows,
+        Amazon S3 returns 200 OK and copies the data:
+
+          * x-amz-copy-source-if-match condition evaluates to true
+
+          * x-amz-copy-source-if-unmodified-since condition evaluates to false
+
+        * Consideration 2 – If both of the x-amz-copy-source-if-none-match and
+        x-amz-copy-source-if-modified-since headers are present in the request and evaluate as follows,
+        Amazon S3 returns the 412 Precondition Failed response code:
+
+          * x-amz-copy-source-if-none-match condition evaluates to false
+
+          * x-amz-copy-source-if-modified-since condition evaluates to true
+
+        The copy request charge is based on the storage class and Region you specify for the destination
+        object. For pricing information, see `Amazon S3 Pricing <https://aws.amazon.com/s3/pricing/>`__ .
+
+        Following are other considerations when using ``CopyObject`` :
+
+          Versioning
+
+        By default, ``x-amz-copy-source`` identifies the current version of an object to copy. (If the
+        current version is a delete marker, Amazon S3 behaves as if the object was deleted.) To copy a
+        different version, use the ``versionId`` subresource.
+
+        If you enable versioning on the target bucket, Amazon S3 generates a unique version ID for the
+        object being copied. This version ID is different from the version ID of the source object. Amazon
+        S3 returns the version ID of the copied object in the x-amz-version-id response header in the
+        response.
+
+        If you do not enable versioning or suspend it on the target bucket, the version ID that Amazon S3
+        generates is always null.
+
+        If the source object's storage class is GLACIER, then you must restore a copy of this object before
+        you can use it as a source object for the copy operation. For more information, see .
+
+          Access Permissions
+
+        When copying an object, you can optionally specify the accounts or groups that should be granted
+        specific permissions on the new object. There are two ways to grant the permissions using the
+        request headers:
+
+        * Specify a canned ACL with the ``x-amz-acl`` request header. For more information, see `Canned ACL
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL>`__ .
+
+        * Specify access permissions explicitly with the ``x-amz-grant-read`` , ``x-amz-grant-read-acp`` ,
+        ``x-amz-grant-write-acp`` , and ``x-amz-grant-full-control`` headers. These parameters map to the
+        set of permissions that Amazon S3 supports in an ACL. For more information, see `Access Control
+        List (ACL) Overview <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html>`__ .
+
+        You can use either a canned ACL or specify access permissions explicitly. You cannot do both.
+
+          Server-Side- Encryption-Specific Request Headers
+
+        To encrypt the target object, you must provide the appropriate encryption-related request headers.
+        The one you use depends on whether you want to use AWS-managed encryption keys or provide your own
+        encryption key.
+
+        * To encrypt the target object using server-side encryption with an AWS-managed encryption key,
+        provide the following request headers, as appropriate.
+
+          * x-amz-server-side​-encryption
+
+          * x-amz-server-side-encryption-aws-kms-key-id
+
+          * x-amz-server-side-encryption-context
+
+        .. note::
+
+          If you specify x-amz-server-side-encryption:aws:kms, but don't provide x-amz-server-side-
+          encryption-aws-kms-key-id, Amazon S3 uses the AWS managed customer master key (CMK) in KMS to
+          protect the data.
+
+        .. warning::
+
+          All GET and PUT requests for an object protected by AWS KMS fail if you don't make them with SSL
+          or by using SigV4.
+
+        For more information on Server-Side Encryption with CMKs stored in Amazon KMS (SSE-KMS), see
+        `Protecting Data Using Server-Side Encryption with CMKs stored in KMS
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html>`__ .
+
+        * To encrypt the target object using server-side encryption with an encryption key that you
+        provide, use the following headers.
+
+          * x-amz-server-side​-encryption​-customer-algorithm
+
+          * x-amz-server-side​-encryption​-customer-key
+
+          * x-amz-server-side​-encryption​-customer-key-MD5
+
+        * If the source object is encrypted using server-side encryption with customer-provided encryption
+        keys, you must use the following headers.
+
+          * x-amz-copy-source​-server-side​-encryption​-customer-algorithm
+
+          * x-amz-copy-source​-server-side​-encryption​-customer-key
+
+          * x-amz-copy-source-​server-side​-encryption​-customer-key-MD5
+
+        For more information on Server-Side Encryption with CMKs stored in Amazon KMS (SSE-KMS), see
+        `Protecting Data Using Server-Side Encryption with CMKs stored in Amazon KMS
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html>`__ .
+
+          Access-Control-List (ACL)-Specific Request Headers
+
+        You also can use the following access control–related headers with this operation. By default, all
+        objects are private. Only the owner has full access control. When adding a new object, you can
+        grant permissions to individual AWS accounts or to predefined groups defined by Amazon S3. These
+        permissions are then added to the Access Control List (ACL) on the object. For more information,
+        see `Using ACLs <https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html>`__ . With
+        this operation, you can grant access permissions using one of the following two methods:
+
+        * Specify a canned ACL (x-amz-acl) — Amazon S3 supports a set of predefined ACLs, known as canned
+        ACLs. Each canned ACL has a predefined set of grantees and permissions. For more information, see
+        `Canned ACL <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL>`__ .
+
+        * Specify access permissions explicitly — To explicitly grant access permissions to specific AWS
+        accounts or groups, use the following headers. Each header maps to specific permissions that Amazon
+        S3 supports in an ACL. For more information, see `Access Control List (ACL) Overview
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html>`__ . In the header, you specify
+        a list of grantees who get the specific permission. To grant permissions explicitly use:
+
+          * x-amz-grant-read
+
+          * x-amz-grant-write
+
+          * x-amz-grant-read-acp
+
+          * x-amz-grant-write-acp
+
+          * x-amz-grant-full-control
+
+        You specify each grantee as a type=value pair, where the type is one of the following:
+
+          * emailAddress – if the value specified is the email address of an AWS account
+
+          * id – if the value specified is the canonical user ID of an AWS account
+
+          * uri – if you are granting permissions to a predefined group
+
+        For example, the following x-amz-grant-read header grants the AWS accounts identified by email
+        addresses permissions to read object data and its metadata:
+
+         ``x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com"``
+
+        The following operation are related to ``CopyObject``
+
+        *  PutObject
+
+        *  GetObject
+
+        For more information, see `Copying Objects
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/CopyingObjectsExamples.html>`__ .
+
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CopyObject>`_
 
@@ -478,6 +808,8 @@ class Client(BaseClient):
 
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the destination bucket.
 
         :type CacheControl: string
         :param CacheControl:
@@ -561,6 +893,8 @@ class Client(BaseClient):
 
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          The key of the destination object.
 
         :type Metadata: dict
         :param Metadata:
@@ -674,12 +1008,12 @@ class Client(BaseClient):
         :type ObjectLockMode: string
         :param ObjectLockMode:
 
-          The object lock mode that you want to apply to the copied object.
+          The Object Lock mode that you want to apply to the copied object.
 
         :type ObjectLockRetainUntilDate: datetime
         :param ObjectLockRetainUntilDate:
 
-          The date and time when you want the copied object's object lock to expire.
+          The date and time when you want the copied object's Object Lock to expire.
 
         :type ObjectLockLegalHoldStatus: string
         :param ObjectLockLegalHoldStatus:
@@ -714,15 +1048,25 @@ class Client(BaseClient):
 
             - **CopyObjectResult** *(dict) --*
 
+              Container for all response elements.
+
               - **ETag** *(string) --*
 
+                Returns the ETag of the new object. The ETag reflects only changes to the contents of an
+                object, not its metadata. The source and destination ETag is identical for a successfully
+                copied object.
+
               - **LastModified** *(datetime) --*
+
+                Returns the date that the object was last modified.
 
             - **Expiration** *(string) --*
 
               If the object expiration is configured, the response includes this header.
 
             - **CopySourceVersionId** *(string) --*
+
+              Version of the copied object in the destination bucket.
 
             - **VersionId** *(string) --*
 
@@ -746,8 +1090,8 @@ class Client(BaseClient):
 
             - **SSEKMSKeyId** *(string) --*
 
-              If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-              that was used for the object.
+              If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+              (CMK) that was used for the object.
 
             - **SSEKMSEncryptionContext** *(string) --*
 
@@ -775,7 +1119,67 @@ class Client(BaseClient):
         ObjectLockEnabledForBucket: bool = None,
     ) -> ClientCreateBucketResponseTypeDef:
         """
-        Creates a new bucket.
+        Creates a new bucket. To create a bucket, you must register with Amazon S3 and have a valid AWS
+        Access Key ID to authenticate requests. Anonymous requests are never allowed to create buckets. By
+        creating the bucket, you become the bucket owner.
+
+        Not every string is an acceptable bucket name. For information on bucket naming restrictions, see
+        `Working with Amazon S3 Buckets
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html>`__ .
+
+        By default, the bucket is created in the US East (N. Virginia) region. You can optionally specify a
+        region in the request body. You might choose a region to optimize latency, minimize costs, or
+        address regulatory requirements. For example, if you reside in Europe, you will probably find it
+        advantageous to create buckets in the EU (Ireland) region. For more information, see `How to Select
+        a Region for Your Buckets
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro>`__ .
+
+        .. note::
+
+          If you send your create bucket request to the s3.amazonaws.com endpoint, the request go to the
+          us-east-1 region. Accordingly, the signature calculations in Signature Version 4 must use
+          us-east-1 as region, even if the location constraint in the request specifies another region
+          where the bucket is to be created. If you create a bucket in a region other than US East (N.
+          Virginia) region, your application must be able to handle 307 redirect. For more information, see
+          `Virtual Hosting of Buckets
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html>`__ .
+
+        When creating a bucket using this operation, you can optionally specify the accounts or groups that
+        should be granted specific permissions on the bucket. There are two ways to grant the appropriate
+        permissions using the request headers.
+
+        * Specify a canned ACL using the ``x-amz-acl`` request header. Amazon S3 supports a set of
+        predefined ACLs, known as canned ACLs. Each canned ACL has a predefined set of grantees and
+        permissions. For more information, see `Canned ACL
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL>`__ .
+
+        * Specify access permissions explicitly using the ``x-amz-grant-read`` , ``x-amz-grant-write`` ,
+        ``x-amz-grant-read-acp`` , ``x-amz-grant-write-acp`` , ``x-amz-grant-full-control`` headers. These
+        headers map to the set of permissions Amazon S3 supports in an ACL. For more information, see
+        `Access Control List (ACL) Overview
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html>`__ . You specify each grantee
+        as a type=value pair, where the type is one of the following:
+
+          * emailAddress – if the value specified is the email address of an AWS account
+
+          * id – if the value specified is the canonical user ID of an AWS account
+
+          * uri – if you are granting permissions to a predefined group
+
+        For example, the following x-amz-grant-read header grants the AWS accounts identified by email
+        addresses permissions to read object data and its metadata:
+
+         ``x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com"``
+
+        .. note::
+
+          You can use either a canned ACL or specify access permissions explicitly. You cannot do both.
+
+        The following operations are related to ``CreateBucket`` :
+
+        *  PutObject
+
+        *  DeleteBucket
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateBucket>`_
@@ -806,8 +1210,12 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The name of the bucket to create.
+
         :type CreateBucketConfiguration: dict
         :param CreateBucketConfiguration:
+
+          The configuration information for the bucket.
 
           - **LocationConstraint** *(string) --*
 
@@ -842,7 +1250,7 @@ class Client(BaseClient):
         :type ObjectLockEnabledForBucket: boolean
         :param ObjectLockEnabledForBucket:
 
-          Specifies whether you want Amazon S3 object lock to be enabled for the new bucket.
+          Specifies whether you want S3 Object Lock to be enabled for the new bucket.
 
         :rtype: dict
         :returns:
@@ -859,6 +1267,9 @@ class Client(BaseClient):
           - *(dict) --*
 
             - **Location** *(string) --*
+
+              Specifies the region where the bucket will be created. If you are creating a bucket on the US
+              East (N. Virginia) region (us-east-1), you do not need to specify the location.
 
         """
 
@@ -894,12 +1305,173 @@ class Client(BaseClient):
         ObjectLockLegalHoldStatus: str = None,
     ) -> ClientCreateMultipartUploadResponseTypeDef:
         """
-        Initiates a multipart upload and returns an upload ID.
+        This operation initiates a multipart upload and returns an upload ID. This upload ID is used to
+        associate all of the parts in the specific multipart upload. You specify this upload ID in each of
+        your subsequent upload part requests (see  UploadPart ). You also include this upload ID in the
+        final request to either complete or abort the multipart upload request.
 
-         **Note:** After you initiate multipart upload and upload one or more parts, you must either
-         complete or abort multipart upload in order to stop getting charged for storage of the uploaded
-         parts. Only after you either complete or abort multipart upload, Amazon S3 frees up the parts
-         storage and stops charging you for the parts storage.
+        For more information about multipart uploads, see `Multipart Upload Overview
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html>`__ .
+
+        If you have configured a lifecycle rule to abort incomplete multipart uploads, the upload must
+        complete within the number of days specified in the bucket lifecycle configuration. Otherwise, the
+        incomplete multipart upload becomes eligible for an abort operation and Amazon S3 aborts the
+        multipart upload. For more information, see `Aborting Incomplete Multipart Uploads Using a Bucket
+        Lifecycle Policy
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+        .
+
+        For information about the permissions required to use the multipart upload API, see `Multipart
+        Upload API and Permissions
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html>`__ .
+
+        For request signing, multipart upload is just a series of regular requests. You initiate a
+        multipart upload, send one or more requests to upload parts, and then complete the multipart upload
+        process. You sign each request individually. There is nothing special about signing multipart
+        upload requests. For more information about signing, see `Authenticating Requests (AWS Signature
+        Version 4) <https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html>`__
+        .
+
+        .. note::
+
+          After you initiate a multipart upload and upload one or more parts, to stop being charged for
+          storing the uploaded parts, you must either complete or abort the multipart upload. Amazon S3
+          frees up the space used to store the parts and stop charging you for storing them only after you
+          either complete or abort a multipart upload.
+
+        You can optionally request server-side encryption. For server-side encryption, Amazon S3 encrypts
+        your data as it writes it to disks in its data centers and decrypts it when you access it. You can
+        provide your own encryption key, or use AWS Key Management Service (AWS KMS) customer master keys
+        (CMKs) or Amazon S3-managed encryption keys. If you choose to provide your own encryption key, the
+        request headers you provide in  UploadPart ) and  UploadPartCopy ) requests must match the headers
+        you used in the request to initiate the upload by using ``CreateMultipartUpload`` .
+
+        To perform a multipart upload with encryption using an AWS KMS CMK, the requester must have
+        permission to the ``kms:Encrypt`` , ``kms:Decrypt`` , ``kms:ReEncrypt*`` , ``kms:GenerateDataKey*``
+        , and ``kms:DescribeKey`` actions on the key. These permissions are required because Amazon S3 must
+        decrypt and read data from the encrypted file parts before it completes the multipart upload.
+
+        If your AWS Identity and Access Management (IAM) user or role is in the same AWS account as the AWS
+        KMS CMK, then you must have these permissions on the key policy. If your IAM user or role belongs
+        to a different account than the key, then you must have the permissions on both the key policy and
+        your IAM user or role.
+
+        For more information, see `Protecting Data Using Server-Side Encryption
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html>`__ .
+
+          Access Permissions
+
+        When copying an object, you can optionally specify the accounts or groups that should be granted
+        specific permissions on the new object. There are two ways to grant the permissions using the
+        request headers:
+
+        * Specify a canned ACL with the ``x-amz-acl`` request header. For more information, see `Canned ACL
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL>`__ .
+
+        * Specify access permissions explicitly with the ``x-amz-grant-read`` , ``x-amz-grant-read-acp`` ,
+        ``x-amz-grant-write-acp`` , and ``x-amz-grant-full-control`` headers. These parameters map to the
+        set of permissions that Amazon S3 supports in an ACL. For more information, see `Access Control
+        List (ACL) Overview <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html>`__ .
+
+        You can use either a canned ACL or specify access permissions explicitly. You cannot do both.
+
+          Server-Side- Encryption-Specific Request Headers
+
+        You can optionally tell Amazon S3 to encrypt data at rest using server-side encryption. Server-side
+        encryption is for data encryption at rest. Amazon S3 encrypts your data as it writes it to disks in
+        its data centers and decrypts it when you access it. The option you use depends on whether you want
+        to use AWS-managed encryption keys or provide your own encryption key.
+
+        * Use encryption keys managed by Amazon S3 or customer master keys (CMKs) stored in Amazon Key
+        Management Service (KMS) – If you want AWS to manage the keys used to encrypt data, specify the
+        following headers in the request.
+
+          * x-amz-server-side​-encryption
+
+          * x-amz-server-side-encryption-aws-kms-key-id
+
+          * x-amz-server-side-encryption-context
+
+        .. note::
+
+          If you specify x-amz-server-side-encryption:aws:kms, but don't provide x-amz-server-side-
+          encryption-aws-kms-key-id, Amazon S3 uses the AWS managed CMK in AWS KMS to protect the data.
+
+        .. warning::
+
+          All GET and PUT requests for an object protected by AWS KMS fail if you don't make them with SSL
+          or by using SigV4.
+
+        For more information on Server-Side Encryption with CMKs Stored in Amazon KMS (SSE-KMS), see
+        `Protecting Data Using Server-Side Encryption with CMKs stored in AWS KMS
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html>`__ .
+
+        * Use customer-provided encryption keys – If you want to manage your own encryption keys, provide
+        all the following headers in the request.
+
+          * x-amz-server-side​-encryption​-customer-algorithm
+
+          * x-amz-server-side​-encryption​-customer-key
+
+          * x-amz-server-side​-encryption​-customer-key-MD5
+
+        For more information on Server-Side Encryption with CMKs stored in AWS KMS (SSE-KMS), see
+        `Protecting Data Using Server-Side Encryption with CMKs stored in AWS KMS
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html>`__ .
+
+          Access-Control-List (ACL)-Specific Request Headers
+
+        You also can use the following access control–related headers with this operation. By default, all
+        objects are private. Only the owner has full access control. When adding a new object, you can
+        grant permissions to individual AWS accounts or to predefined groups defined by Amazon S3. These
+        permissions are then added to the Access Control List (ACL) on the object. For more information,
+        see `Using ACLs <https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html>`__ . With
+        this operation, you can grant access permissions using one of the following two methods:
+
+        * Specify a canned ACL (x-amz-acl) — Amazon S3 supports a set of predefined ACLs, known as canned
+        ACLs. Each canned ACL has a predefined set of grantees and permissions. For more information, see
+        `Canned ACL <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL>`__ .
+
+        * Specify access permissions explicitly — To explicitly grant access permissions to specific AWS
+        accounts or groups, use the following headers. Each header maps to specific permissions that Amazon
+        S3 supports in an ACL. For more information, see `Access Control List (ACL) Overview
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html>`__ . In the header, you specify
+        a list of grantees who get the specific permission. To grant permissions explicitly use:
+
+          * x-amz-grant-read
+
+          * x-amz-grant-write
+
+          * x-amz-grant-read-acp
+
+          * x-amz-grant-write-acp
+
+          * x-amz-grant-full-control
+
+        You specify each grantee as a type=value pair, where the type is one of the following:
+
+          * emailAddress – if the value specified is the email address of an AWS account
+
+          * id – if the value specified is the canonical user ID of an AWS account
+
+          * uri – if you are granting permissions to a predefined group
+
+        For example, the following x-amz-grant-read header grants the AWS accounts identified by email
+        addresses permissions to read object data and its metadata:
+
+         ``x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com"``
+
+        The following operations are related to ``CreateMultipartUpload`` :
+
+        *  UploadPart
+
+        *  CompleteMultipartUpload
+
+        *  AbortMultipartUpload
+
+        *  ListParts
+
+        *  ListMultipartUploads
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/CreateMultipartUpload>`_
@@ -948,6 +1520,8 @@ class Client(BaseClient):
 
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the bucket to which to initiate the upload
 
         :type CacheControl: string
         :param CacheControl:
@@ -1002,6 +1576,8 @@ class Client(BaseClient):
 
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          Object key for which the multipart upload is to be initiated.
 
         :type Metadata: dict
         :param Metadata:
@@ -1081,12 +1657,12 @@ class Client(BaseClient):
         :type ObjectLockMode: string
         :param ObjectLockMode:
 
-          Specifies the object lock mode that you want to apply to the uploaded object.
+          Specifies the Object Lock mode that you want to apply to the uploaded object.
 
         :type ObjectLockRetainUntilDate: datetime
         :param ObjectLockRetainUntilDate:
 
-          Specifies the date and time when you want the object lock to expire.
+          Specifies the date and time when you want the Object Lock to expire.
 
         :type ObjectLockLegalHoldStatus: string
         :param ObjectLockLegalHoldStatus:
@@ -1119,11 +1695,21 @@ class Client(BaseClient):
 
             - **AbortDate** *(datetime) --*
 
-              Date when multipart upload will become eligible for abort operation by lifecycle.
+              If the bucket has a lifecycle rule configured with an action to abort incomplete multipart
+              uploads and the prefix in the lifecycle rule matches the object name in the request, the
+              response includes this header. The header indicates when the initiated multipart upload
+              becomes eligible for an abort operation. For more information, see `Aborting Incomplete
+              Multipart Uploads Using a Bucket Lifecycle Policy
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+              .
+
+              The response also includes the x-amz-abort-rule-id header that provides the ID of the
+              lifecycle configuration rule that defines this action.
 
             - **AbortRuleId** *(string) --*
 
-              Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
+              This header is returned along with the x-amz-abort-date header. It identifies the applicable
+              lifecycle configuration rule that defines the action to abort incomplete multipart uploads.
 
             - **Bucket** *(string) --*
 
@@ -1155,8 +1741,8 @@ class Client(BaseClient):
 
             - **SSEKMSKeyId** *(string) --*
 
-              If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-              that was used for the object.
+              If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+              (CMK) that was used for the object.
 
             - **SSEKMSEncryptionContext** *(string) --*
 
@@ -1176,6 +1762,12 @@ class Client(BaseClient):
         Deletes the bucket. All objects (including all object versions and Delete Markers) in the bucket
         must be deleted before the bucket itself can be deleted.
 
+         **Related Resources**
+
+        *
+
+        *
+
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucket>`_
 
@@ -1188,6 +1780,8 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          Specifies the bucket being deleted.
+
         :returns: None
         """
 
@@ -1198,7 +1792,22 @@ class Client(BaseClient):
 
         To use this operation, you must have permissions to perform the s3:PutAnalyticsConfiguration
         action. The bucket owner has this permission by default. The bucket owner can grant this permission
-        to others.
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev//using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        For information about Amazon S3 analytics feature, see `Amazon S3 Analytics – Storage Class
+        Analysis <https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html>`__ .
+
+        The following operations are related to ``DeleteBucketAnalyticsConfiguration`` :
+
+        *
+
+        *
+
+        *
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketAnalyticsConfiguration>`_
@@ -1226,7 +1835,20 @@ class Client(BaseClient):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_cors(self, Bucket: str) -> None:
         """
-        Deletes the CORS configuration information set for the bucket.
+        Deletes the ``cors`` configuration information set for the bucket.
+
+        To use this operation, you must have permission to perform the ``s3:PutBucketCORS`` action. The
+        bucket owner has this permission by default and can grant this permission to others.
+
+        For information more about ``cors`` , go to `Enabling Cross-Origin Resource Sharing
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html>`__ in the *Amazon Simple Storage
+        Service Developer Guide* .
+
+         **Related Resources:**
+
+        *
+
+        *  RESTOPTIONSobject
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketCors>`_
@@ -1240,13 +1862,33 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          Specifies the bucket whose ``cors`` configuration is being deleted.
+
         :returns: None
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_encryption(self, Bucket: str) -> None:
         """
-        Deletes the server-side encryption configuration from the bucket.
+        This implementation of the DELETE operation removes default encryption from the bucket. For
+        information about the Amazon S3 default encryption feature, see `Amazon S3 Default Bucket
+        Encryption <https://docs.aws.amazon.com/AmazonS3/latest/dev//bucket-encryption.html>`__ in the
+        *Amazon Simple Storage Service Developer Guide* .
+
+        To use this operation, you must have permissions to perform the ``s3:PutEncryptionConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev//using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev//s3-access-control.html>`__ in the *Amazon Simple
+        Storage Service Developer Guide* .
+
+         **Related Resources**
+
+        *  PutBucketEncryption
+
+        *  GetBucketEncryption
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketEncryption>`_
@@ -1269,6 +1911,25 @@ class Client(BaseClient):
     def delete_bucket_inventory_configuration(self, Bucket: str, Id: str) -> None:
         """
         Deletes an inventory configuration (identified by the inventory ID) from the bucket.
+
+        To use this operation, you must have permissions to perform the ``s3:PutInventoryConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        For information about the Amazon S3 inventory feature, see `Amazon S3 Inventory
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html>`__ .
+
+        Operation related to ``DeleteBucketInventoryConfiguration`` include:
+
+        *  GetBucketInventoryConfiguration
+
+        *  PutBucketInventoryConfiguration
+
+        *  ListBucketInventoryConfigurations
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketInventoryConfiguration>`_
@@ -1296,7 +1957,27 @@ class Client(BaseClient):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_lifecycle(self, Bucket: str) -> None:
         """
-        Deletes the lifecycle configuration from the bucket.
+        Deletes the lifecycle configuration from the specified bucket. Amazon S3 removes all the lifecycle
+        configuration rules in the lifecycle subresource associated with the bucket. Your objects never
+        expire, and Amazon S3 no longer automatically deletes any objects on the basis of rules contained
+        in the deleted lifecycle configuration.
+
+        To use this operation, you must have permission to perform the ``s3:PutLifecycleConfiguration``
+        action. By default, the bucket owner has this permission and the bucket owner can grant this
+        permission to others.
+
+        There is usually some time lag before lifecycle configuration deletion is fully propagated to all
+        the Amazon S3 systems.
+
+        For more information about the object expiration, see `Elements to Describe Lifecycle Actions
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#intro-lifecycle-rules-actions>`__
+        .
+
+        Related actions include:
+
+        *  PutBucketLifecycleConfiguration
+
+        *  GetBucketLifecycleConfiguration
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketLifecycle>`_
@@ -1310,13 +1991,38 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name of the lifecycle to delete.
+
         :returns: None
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_metrics_configuration(self, Bucket: str, Id: str) -> None:
         """
-        Deletes a metrics configuration (specified by the metrics configuration ID) from the bucket.
+        Deletes a metrics configuration for the Amazon CloudWatch request metrics (specified by the metrics
+        configuration ID) from the bucket. Note that this doesn't include the daily storage metrics.
+
+        To use this operation, you must have permissions to perform the ``s3:PutMetricsConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        For information about CloudWatch request metrics for Amazon S3, see `Monitoring Metrics with Amazon
+        CloudWatch <https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html>`__ .
+
+        The following operations are related to ``DeleteBucketMetricsConfiguration``
+
+        *  GetBucketMetricsConfiguration
+
+        *  PutBucketMetricsConfiguration
+
+        *  ListBucketMetricsConfigurations
+
+        * `Monitoring Metrics with Amazon CloudWatch
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html>`__
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketMetricsConfiguration>`_
@@ -1344,7 +2050,28 @@ class Client(BaseClient):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_policy(self, Bucket: str) -> None:
         """
-        Deletes the policy from the bucket.
+        This implementation of the DELETE operation uses the policysubresource to delete the policy of a
+        specified bucket. If you are using an identity other than the root user of the AWS account that
+        owns the bucket, the calling identity must have the ``DeleteBucketPolicy`` permissions on the
+        specified bucket and belong to the bucket owner's account in order to use this operation.
+
+        If you don't have ``DeleteBucketPolicy`` permissions, Amazon S3 returns a ``403 Access Denied``
+        error. If you have the correct permissions, but you're notusing an identity that belongs to the
+        bucket owner's account, Amazon S3 returns a ``405 Method Not Allowed`` error.
+
+        .. warning::
+
+          As a security precaution, the root user of the AWS account that owns a bucket can always use this
+          operation, even if the policy explicitly denies the root user the ability to perform this action.
+
+        For more information about bucket policies, see `Using Bucket Policies and UserPolicies <
+        https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html>`__ .
+
+        The following operations are related to ``DeleteBucketPolicy``
+
+        *  CreateBucket
+
+        *  DeleteObject
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketPolicy>`_
@@ -1358,15 +2085,36 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name.
+
         :returns: None
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_replication(self, Bucket: str) -> None:
         """
-        Deletes the replication configuration from the bucket. For information about replication
-        configuration, see `Cross-Region Replication (CRR)
-        <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html>`__ in the *Amazon S3 Developer Guide* .
+        Deletes the replication configuration from the bucket.
+
+        To use this operation, you must have permissions to perform the ``s3:PutReplicationConfiguration``
+        action. The bucket owner has these permissions by default and can grant it to others. For more
+        information about permissions, see `Permissions Related to Bucket Subresource Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        .. note::
+
+          It can take a while for the deletion of a replication configuration to fully propagate.
+
+        For information about replication configuration, see `Replication <
+        https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html>`__ in the *Amazon S3 Developer
+        Guide* .
+
+        The following operations are related to ``DeleteBucketReplication``
+
+        *  PutBucketReplication
+
+        *  GetBucketReplication
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketReplication>`_
@@ -1382,11 +2130,6 @@ class Client(BaseClient):
 
           The bucket name.
 
-          .. note::
-
-            It can take a while to propagate the deletion of a replication configuration to all Amazon S3
-            systems.
-
         :returns: None
         """
 
@@ -1394,6 +2137,15 @@ class Client(BaseClient):
     def delete_bucket_tagging(self, Bucket: str) -> None:
         """
         Deletes the tags from the bucket.
+
+        To use this operation, you must have permission to perform the ``s3:PutBucketTagging`` action. By
+        default, the bucket owner has this permission and can grant this permission to others.
+
+        The following operations are related to ``DeleteBucketTagging``
+
+        *  GetBucketTagging
+
+        *  PutBucketTagging
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketTagging>`_
@@ -1407,13 +2159,32 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket that has the tag set to be removed.
+
         :returns: None
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_website(self, Bucket: str) -> None:
         """
-        This operation removes the website configuration from the bucket.
+        This operation removes the website configuration for a bucket. Amazon S3 returns a ``200 OK``
+        response upon successfully deleting a website configuration on the specified bucket. You will get a
+        ``200 OK`` response if the website configuration you are trying to delete does not exist on the
+        bucket. Amazon S3 returns a ``404`` response if the bucket specified in the request does not exist.
+
+        This DELETE operation requires the ``S3:DeleteBucketWebsite`` permission. By default, only the
+        bucket owner can delete the website configuration attached to a bucket. However, bucket owners can
+        grant other users permission to delete the website configuration by writing a bucket policy
+        granting them the ``S3:DeleteBucketWebsite`` permission.
+
+        For more information about hosting websites, see `Hosting Websites on Amazon S3
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html>`__ .
+
+        The following operations are related to ``DeleteBucketWebsite``
+
+        *  GetBucketWebsite
+
+        *  PutBucketWebsite
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteBucketWebsite>`_
@@ -1426,6 +2197,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The bucket name for which you want to remove the website configuration.
 
         :returns: None
         """
@@ -1445,6 +2218,29 @@ class Client(BaseClient):
         the latest version of the object. If there isn't a null version, Amazon S3 does not remove any
         objects.
 
+        To remove a specific version, you must be the bucket owner and you must use the version Id
+        subresource. Using this subresource permanently deletes the version. If the object deleted is a
+        delete marker, Amazon S3 sets the response header, x-amz-delete-marker, to true.
+
+        If the object you want to delete is in a bucket where the bucket versioning configurationis MFA
+        Delete enabled, you must include the x-amz-mfa request header in the DELETE versionId request.
+        Requests that include x-amz-mfa must use HTTPS.
+
+        For more information about MFA Delete, see `Using MFA Delete
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMFADelete.html>`__ . To see sample requests
+        that use versioning, see `Sample Request
+        <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html#ExampleVersionObjectDelete>`__
+        .
+
+        You can delete objects by explicitly calling the DELETE Object API or configure its lifecycle (
+        PutBucketLifecycle ) to enable Amazon S3 to remove them for you. If you want to block users or
+        accounts from removing or deleting objects from your bucket you must deny them the s3:DeleteObject,
+        s3:DeleteObjectVersion and s3:PutLifeCycleConfiguration actions.
+
+        The following operation is related to ``DeleteObject``
+
+        *  PutObject
+
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObject>`_
 
@@ -1462,14 +2258,19 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name of the bucket containing the object.
+
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          Key name of the object to delete.
 
         :type MFA: string
         :param MFA:
 
           The concatenation of the authentication device's serial number, a space, and the value that is
-          displayed on your authentication device.
+          displayed on your authentication device. Required to permanently delete a versionedobject if
+          versioning is configured with MFA Deleteenabled.
 
         :type VersionId: string
         :param VersionId:
@@ -1487,8 +2288,8 @@ class Client(BaseClient):
         :type BypassGovernanceRetention: boolean
         :param BypassGovernanceRetention:
 
-          Indicates whether Amazon S3 object lock should bypass governance-mode restrictions to process
-          this operation.
+          Indicates whether S3 Object Lock should bypass Governance-mode restrictions to process this
+          operation.
 
         :rtype: dict
         :returns:
@@ -1526,7 +2327,21 @@ class Client(BaseClient):
         self, Bucket: str, Key: str, VersionId: str = None
     ) -> ClientDeleteObjectTaggingResponseTypeDef:
         """
-        Removes the tag-set from an existing object.
+        Removes the entire tag set from the specified object. For more information about managing object
+        tags, see `Object Tagging
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html#MultiFactorAuthenticationDelete>`__
+        .
+
+        To use this operation, you must have permission to perform the s3:DeleteObjectTagging action.
+
+        To delete tags of a specific object version, add the versionId query parameter in the request. You
+        will need permission for the s3:DeleteObjectVersionTagging action.
+
+        The following operations are related to ``DeleteBucketMetricsConfiguration``
+
+        *  PutObjectTagging
+
+        *  GetObjectTagging
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObjectTagging>`_
@@ -1542,8 +2357,12 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket containing the objects from which to remove the tags.
+
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          Name of the tag.
 
         :type VersionId: string
         :param VersionId:
@@ -1580,8 +2399,44 @@ class Client(BaseClient):
         BypassGovernanceRetention: bool = None,
     ) -> ClientDeleteObjectsResponseTypeDef:
         """
-        This operation enables you to delete multiple objects from a bucket using a single HTTP request.
-        You may specify up to 1000 keys.
+        This operation enables you to delete multiple objects from a bucket using a single HTTP request. If
+        you know the object keys that you want to delete, then this operation provides a suitable
+        alternative to sending individual delete requests, reducing per-request overhead.
+
+        The request contains a list of up to 1000 keys that you want to delete. In the XML, you provide the
+        object key names, and optionally, version IDs if you want to delete a specific version of the
+        object from a versioning-enabled bucket. For each key, Amazon S3 performs a delete operation and
+        returns the result of that delete, success, or failure, in the response. Note that, if the object
+        specified in the request is not found, Amazon S3 returns the result as deleted.
+
+        The operation supports two modes for the response; verbose and quiet. By default, the operation
+        uses verbose mode in which the response includes the result of deletion of each key in your
+        request. In quiet mode the response includes only keys where the delete operation encountered an
+        error. For a successful deletion, the operation does not return any information about the delete in
+        the response body.
+
+        When performing this operation on an MFA Delete enabled bucket, that attempts to delete any
+        versioned objects, you must include an MFA token. If you do not provide one, the entire request
+        will fail, even if there are non versioned objects you are attempting to delete. If you provide an
+        invalid token, whether there are versioned keys in the request or not, the entire Multi-Object
+        Delete request will fail. For information about MFA Delete, see `MFA Delete
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html#MultiFactorAuthenticationDelete>`__
+        .
+
+        Finally, the Content-MD5 header is required for all Multi-Object Delete requests. Amazon S3 uses
+        the header value to ensure that your request body has not be altered in transit.
+
+        The following operations are related to ``DeleteObjects``
+
+        *  CreateMultipartUpload
+
+        *  UploadPart
+
+        *  CompleteMultipartUpload
+
+        *  ListParts
+
+        *  AbortMultipartUpload
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeleteObjects>`_
@@ -1607,12 +2462,20 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name containing the objects to delete.
+
         :type Delete: dict
         :param Delete: **[REQUIRED]**
 
+          Container for the request.
+
           - **Objects** *(list) --* **[REQUIRED]**
 
+            The objects to delete.
+
             - *(dict) --*
+
+              Object Identifier is unique value to identify objects.
 
               - **Key** *(string) --* **[REQUIRED]**
 
@@ -1631,7 +2494,8 @@ class Client(BaseClient):
         :param MFA:
 
           The concatenation of the authentication device's serial number, a space, and the value that is
-          displayed on your authentication device.
+          displayed on your authentication device. Required to permanently delete a versioned object if
+          versioning is configured with MFA Delete enabled.
 
         :type RequestPayer: string
         :param RequestPayer:
@@ -1644,7 +2508,7 @@ class Client(BaseClient):
         :type BypassGovernanceRetention: boolean
         :param BypassGovernanceRetention:
 
-          Specifies whether you want to delete this object even if it has a Governance-type object lock in
+          Specifies whether you want to delete this object even if it has a Governance-type Object Lock in
           place. You must have sufficient permissions to perform this operation.
 
         :rtype: dict
@@ -1679,15 +2543,32 @@ class Client(BaseClient):
 
             - **Deleted** *(list) --*
 
+              Container element for a successful delete. It identifies the object that was successfully
+              deleted.
+
               - *(dict) --*
+
+                Information about the deleted object.
 
                 - **Key** *(string) --*
 
+                  The name of the deleted object.
+
                 - **VersionId** *(string) --*
+
+                  The version ID of the deleted object.
 
                 - **DeleteMarker** *(boolean) --*
 
+                  Specifies whether the versioned object that was permanently deleted was (true) or was not
+                  (false) a delete marker. In a simple DELETE, this header indicates whether (true) or not
+                  (false) a delete marker was created.
+
                 - **DeleteMarkerVersionId** *(string) --*
+
+                  The version ID of the delete marker created as a result of the DELETE operation. If you
+                  delete a specific object version, the value returned by this header is the version ID of
+                  the object version deleted.
 
             - **RequestCharged** *(string) --*
 
@@ -1695,22 +2576,983 @@ class Client(BaseClient):
 
             - **Errors** *(list) --*
 
+              Container for a failed delete operation that describes the object that Amazon S3 attempted to
+              delete and the error it encountered.
+
               - *(dict) --*
+
+                Container for all error elements.
 
                 - **Key** *(string) --*
 
+                  The error key.
+
                 - **VersionId** *(string) --*
+
+                  The version ID of the error.
 
                 - **Code** *(string) --*
 
+                  The error code is a string that uniquely identifies an error condition. It is meant to be
+                  read and understood by programs that detect and handle errors by type.
+
+                   **Amazon S3 error codes**
+
+                  *
+
+                    * *Code:* AccessDenied
+
+                    * *Description:* Access Denied
+
+                    * *HTTP Status Code:* 403 Forbidden
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* AccountProblem
+
+                    * *Description:* There is a problem with your AWS account that prevents the operation
+                    from completing successfully. Contact AWS Support for further assistance.
+
+                    * *HTTP Status Code:* 403 Forbidden
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* AllAccessDisabled
+
+                    * *Description:* All access to this Amazon S3 resource has been disabled. Contact AWS
+                    Support for further assistance.
+
+                    * *HTTP Status Code:* 403 Forbidden
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* AmbiguousGrantByEmailAddress
+
+                    * *Description:* The email address you provided is associated with more than one
+                    account.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* AuthorizationHeaderMalformed
+
+                    * *Description:* The authorization header you provided is invalid.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *HTTP Status Code:* N/A
+
+                  *
+
+                    * *Code:* BadDigest
+
+                    * *Description:* The Content-MD5 you specified did not match what we received.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* BucketAlreadyExists
+
+                    * *Description:* The requested bucket name is not available. The bucket namespace is
+                    shared by all users of the system. Please select a different name and try again.
+
+                    * *HTTP Status Code:* 409 Conflict
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* BucketAlreadyOwnedByYou
+
+                    * *Description:* The bucket you tried to create already exists, and you own it. Amazon
+                    S3 returns this error in all AWS Regions except in the North Virginia region. For
+                    legacy compatibility, if you re-create an existing bucket that you already own in the
+                    North Virginia region, Amazon S3 returns 200 OK and resets the bucket access control
+                    lists (ACLs).
+
+                    * *Code:* 409 Conflict (in all regions except the North Virginia region)
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* BucketNotEmpty
+
+                    * *Description:* The bucket you tried to delete is not empty.
+
+                    * *HTTP Status Code:* 409 Conflict
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* CredentialsNotSupported
+
+                    * *Description:* This request does not support credentials.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* CrossLocationLoggingProhibited
+
+                    * *Description:* Cross-location logging not allowed. Buckets in one geographic location
+                    cannot log information to a bucket in another location.
+
+                    * *HTTP Status Code:* 403 Forbidden
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* EntityTooSmall
+
+                    * *Description:* Your proposed upload is smaller than the minimum allowed object size.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* EntityTooLarge
+
+                    * *Description:* Your proposed upload exceeds the maximum allowed object size.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* ExpiredToken
+
+                    * *Description:* The provided token has expired.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* IllegalVersioningConfigurationException
+
+                    * *Description:* Indicates that the versioning configuration specified in the request
+                    is invalid.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* IncompleteBody
+
+                    * *Description:* You did not provide the number of bytes specified by the
+                    Content-Length HTTP header
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* IncorrectNumberOfFilesInPostRequest
+
+                    * *Description:* POST requires exactly one file upload per request.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InlineDataTooLarge
+
+                    * *Description:* Inline data exceeds the maximum allowed size.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InternalError
+
+                    * *Description:* We encountered an internal error. Please try again.
+
+                    * *HTTP Status Code:* 500 Internal Server Error
+
+                    * *SOAP Fault Code Prefix:* Server
+
+                  *
+
+                    * *Code:* InvalidAccessKeyId
+
+                    * *Description:* The AWS access key ID you provided does not exist in our records.
+
+                    * *HTTP Status Code:* 403 Forbidden
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidAddressingHeader
+
+                    * *Description:* You must specify the Anonymous role.
+
+                    * *HTTP Status Code:* N/A
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidArgument
+
+                    * *Description:* Invalid Argument
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidBucketName
+
+                    * *Description:* The specified bucket is not valid.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidBucketState
+
+                    * *Description:* The request is not valid with the current state of the bucket.
+
+                    * *HTTP Status Code:* 409 Conflict
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidDigest
+
+                    * *Description:* The Content-MD5 you specified is not valid.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidEncryptionAlgorithmError
+
+                    * *Description:* The encryption request you specified is not valid. The valid value is
+                    AES256.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidLocationConstraint
+
+                    * *Description:* The specified location constraint is not valid. For more information
+                    about Regions, see `How to Select a Region for Your Buckets
+                    <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro>`__
+                    .
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidObjectState
+
+                    * *Description:* The operation is not valid for the current state of the object.
+
+                    * *HTTP Status Code:* 403 Forbidden
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidPart
+
+                    * *Description:* One or more of the specified parts could not be found. The part might
+                    not have been uploaded, or the specified entity tag might not have matched the part's
+                    entity tag.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidPartOrder
+
+                    * *Description:* The list of parts was not in ascending order. Parts list must be
+                    specified in order by part number.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidPayer
+
+                    * *Description:* All access to this object has been disabled. Please contact AWS
+                    Support for further assistance.
+
+                    * *HTTP Status Code:* 403 Forbidden
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidPolicyDocument
+
+                    * *Description:* The content of the form does not meet the conditions specified in the
+                    policy document.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidRange
+
+                    * *Description:* The requested range cannot be satisfied.
+
+                    * *HTTP Status Code:* 416 Requested Range Not Satisfiable
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidRequest
+
+                    * *Description:* Please use AWS4-HMAC-SHA256.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *Code:* N/A
+
+                  *
+
+                    * *Code:* InvalidRequest
+
+                    * *Description:* SOAP requests must be made over an HTTPS connection.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidRequest
+
+                    * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+                    non-DNS compliant names.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *Code:* N/A
+
+                  *
+
+                    * *Code:* InvalidRequest
+
+                    * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+                    periods (.) in their names.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *Code:* N/A
+
+                  *
+
+                    * *Code:* InvalidRequest
+
+                    * *Description:* Amazon S3 Transfer Accelerate endpoint only supports virtual style
+                    requests.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *Code:* N/A
+
+                  *
+
+                    * *Code:* InvalidRequest
+
+                    * *Description:* Amazon S3 Transfer Accelerate is not configured on this bucket.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *Code:* N/A
+
+                  *
+
+                    * *Code:* InvalidRequest
+
+                    * *Description:* Amazon S3 Transfer Accelerate is disabled on this bucket.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *Code:* N/A
+
+                  *
+
+                    * *Code:* InvalidRequest
+
+                    * *Description:* Amazon S3 Transfer Acceleration is not supported on this bucket.
+                    Contact AWS Support for more information.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *Code:* N/A
+
+                  *
+
+                    * *Code:* InvalidRequest
+
+                    * *Description:* Amazon S3 Transfer Acceleration cannot be enabled on this bucket.
+                    Contact AWS Support for more information.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *Code:* N/A
+
+                  *
+
+                    * *Code:* InvalidSecurity
+
+                    * *Description:* The provided security credentials are not valid.
+
+                    * *HTTP Status Code:* 403 Forbidden
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidSOAPRequest
+
+                    * *Description:* The SOAP request body is invalid.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidStorageClass
+
+                    * *Description:* The storage class you specified is not valid.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidTargetBucketForLogging
+
+                    * *Description:* The target bucket for logging does not exist, is not owned by you, or
+                    does not have the appropriate grants for the log-delivery group.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidToken
+
+                    * *Description:* The provided token is malformed or otherwise invalid.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* InvalidURI
+
+                    * *Description:* Couldn't parse the specified URI.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* KeyTooLongError
+
+                    * *Description:* Your key is too long.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* MalformedACLError
+
+                    * *Description:* The XML you provided was not well-formed or did not validate against
+                    our published schema.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* MalformedPOSTRequest
+
+                    * *Description:* The body of your POST request is not well-formed multipart/form-data.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* MalformedXML
+
+                    * *Description:* This happens when the user sends malformed XML (XML that doesn't
+                    conform to the published XSD) for the configuration. The error message is, "The XML you
+                    provided was not well-formed or did not validate against our published schema."
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* MaxMessageLengthExceeded
+
+                    * *Description:* Your request was too big.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* MaxPostPreDataLengthExceededError
+
+                    * *Description:* Your POST request fields preceding the upload file were too large.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* MetadataTooLarge
+
+                    * *Description:* Your metadata headers exceed the maximum allowed metadata size.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* MethodNotAllowed
+
+                    * *Description:* The specified method is not allowed against this resource.
+
+                    * *HTTP Status Code:* 405 Method Not Allowed
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* MissingAttachment
+
+                    * *Description:* A SOAP attachment was expected, but none were found.
+
+                    * *HTTP Status Code:* N/A
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* MissingContentLength
+
+                    * *Description:* You must provide the Content-Length HTTP header.
+
+                    * *HTTP Status Code:* 411 Length Required
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* MissingRequestBodyError
+
+                    * *Description:* This happens when the user sends an empty XML document as a request.
+                    The error message is, "Request body is empty."
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* MissingSecurityElement
+
+                    * *Description:* The SOAP 1.1 request is missing a security element.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* MissingSecurityHeader
+
+                    * *Description:* Your request is missing a required header.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* NoLoggingStatusForKey
+
+                    * *Description:* There is no such thing as a logging status subresource for a key.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* NoSuchBucket
+
+                    * *Description:* The specified bucket does not exist.
+
+                    * *HTTP Status Code:* 404 Not Found
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* NoSuchBucketPolicy
+
+                    * *Description:* The specified bucket does not have a bucket policy.
+
+                    * *HTTP Status Code:* 404 Not Found
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* NoSuchKey
+
+                    * *Description:* The specified key does not exist.
+
+                    * *HTTP Status Code:* 404 Not Found
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* NoSuchLifecycleConfiguration
+
+                    * *Description:* The lifecycle configuration does not exist.
+
+                    * *HTTP Status Code:* 404 Not Found
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* NoSuchUpload
+
+                    * *Description:* The specified multipart upload does not exist. The upload ID might be
+                    invalid, or the multipart upload might have been aborted or completed.
+
+                    * *HTTP Status Code:* 404 Not Found
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* NoSuchVersion
+
+                    * *Description:* Indicates that the version ID specified in the request does not match
+                    an existing version.
+
+                    * *HTTP Status Code:* 404 Not Found
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* NotImplemented
+
+                    * *Description:* A header you provided implies functionality that is not implemented.
+
+                    * *HTTP Status Code:* 501 Not Implemented
+
+                    * *SOAP Fault Code Prefix:* Server
+
+                  *
+
+                    * *Code:* NotSignedUp
+
+                    * *Description:* Your account is not signed up for the Amazon S3 service. You must sign
+                    up before you can use Amazon S3. You can sign up at the following URL:
+                    https://aws.amazon.com/s3
+
+                    * *HTTP Status Code:* 403 Forbidden
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* OperationAborted
+
+                    * *Description:* A conflicting conditional operation is currently in progress against
+                    this resource. Try again.
+
+                    * *HTTP Status Code:* 409 Conflict
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* PermanentRedirect
+
+                    * *Description:* The bucket you are attempting to access must be addressed using the
+                    specified endpoint. Send all future requests to this endpoint.
+
+                    * *HTTP Status Code:* 301 Moved Permanently
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* PreconditionFailed
+
+                    * *Description:* At least one of the preconditions you specified did not hold.
+
+                    * *HTTP Status Code:* 412 Precondition Failed
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* Redirect
+
+                    * *Description:* Temporary redirect.
+
+                    * *HTTP Status Code:* 307 Moved Temporarily
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* RestoreAlreadyInProgress
+
+                    * *Description:* Object restore is already in progress.
+
+                    * *HTTP Status Code:* 409 Conflict
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* RequestIsNotMultiPartContent
+
+                    * *Description:* Bucket POST must be of the enclosure-type multipart/form-data.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* RequestTimeout
+
+                    * *Description:* Your socket connection to the server was not read from or written to
+                    within the timeout period.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* RequestTimeTooSkewed
+
+                    * *Description:* The difference between the request time and the server's time is too
+                    large.
+
+                    * *HTTP Status Code:* 403 Forbidden
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* RequestTorrentOfBucketError
+
+                    * *Description:* Requesting the torrent file of a bucket is not permitted.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* SignatureDoesNotMatch
+
+                    * *Description:* The request signature we calculated does not match the signature you
+                    provided. Check your AWS secret access key and signing method. For more information,
+                    see `REST Authentication
+                    <https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html>`__ and `SOAP
+                    Authentication
+                    <https://docs.aws.amazon.com/AmazonS3/latest/dev/SOAPAuthentication.html>`__ for
+                    details.
+
+                    * *HTTP Status Code:* 403 Forbidden
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* ServiceUnavailable
+
+                    * *Description:* Reduce your request rate.
+
+                    * *HTTP Status Code:* 503 Service Unavailable
+
+                    * *SOAP Fault Code Prefix:* Server
+
+                  *
+
+                    * *Code:* SlowDown
+
+                    * *Description:* Reduce your request rate.
+
+                    * *HTTP Status Code:* 503 Slow Down
+
+                    * *SOAP Fault Code Prefix:* Server
+
+                  *
+
+                    * *Code:* TemporaryRedirect
+
+                    * *Description:* You are being redirected to the bucket while DNS updates.
+
+                    * *HTTP Status Code:* 307 Moved Temporarily
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* TokenRefreshRequired
+
+                    * *Description:* The provided token must be refreshed.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* TooManyBuckets
+
+                    * *Description:* You have attempted to create more buckets than allowed.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* UnexpectedContent
+
+                    * *Description:* This request does not support content.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* UnresolvableGrantByEmailAddress
+
+                    * *Description:* The email address you provided does not match any account on record.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
+                  *
+
+                    * *Code:* UserKeyMustBeSpecified
+
+                    * *Description:* The bucket POST must contain the specified field name. If it is
+                    specified, check the order of the fields.
+
+                    * *HTTP Status Code:* 400 Bad Request
+
+                    * *SOAP Fault Code Prefix:* Client
+
                 - **Message** *(string) --*
+
+                  The error message contains a generic description of the error condition in English. It is
+                  intended for a human audience. Simple programs display the message directly to the end
+                  user if they encounter an error condition they don't know how or don't care to handle.
+                  Sophisticated programs with more exhaustive error handling and proper
+                  internationalization are more likely to ignore the error message.
 
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_public_access_block(self, Bucket: str) -> None:
         """
-        Removes the ``PublicAccessBlock`` configuration from an Amazon S3 bucket.
+        Removes the PublicAccessBlock configuration for an Amazon S3 bucket. In order to use this
+        operation, you must have the s3:PutBucketPublicAccessBlock permission. For more information about
+        permissions, see `Permissions Related to Bucket Subresource Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        The following operations are related to ``DeleteBucketMetricsConfiguration`` :
+
+        * `Using Amazon S3 Block Public Access
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html>`__
+
+        *  GetPublicAccessBlock
+
+        *  PutPublicAccessBlock
+
+        *  GetBucketPolicyStatus
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/DeletePublicAccessBlock>`_
@@ -1930,7 +3772,34 @@ class Client(BaseClient):
         self, Bucket: str
     ) -> ClientGetBucketAccelerateConfigurationResponseTypeDef:
         """
-        Returns the accelerate configuration of a bucket.
+        This implementation of the GET operation uses the ``accelerate`` subresource to return the Transfer
+        Acceleration state of a bucket, which is either ``Enabled`` or ``Suspended`` . Amazon S3 Transfer
+        Acceleration is a bucket-level feature that enables you to perform faster data transfers to and
+        from Amazon S3.
+
+        To use this operation, you must have permission to perform the ``s3:GetAccelerateConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev//using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev//s3-access-control.html>`__ in the Amazon Simple
+        Storage Service Developer Guide.
+
+        You set the Transfer Acceleration state of an existing bucket to ``Enabled`` or ``Suspended`` by
+        using the  PutBucketAccelerateConfiguration operation.
+
+        A GET ``accelerate`` request does not return a state value for a bucket that has no transfer
+        acceleration state. A bucket has no Transfer Acceleration state, if a state has never been set on
+        the bucket.
+
+        For more information on transfer acceleration, see `Transfer Acceleration
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev//transfer-acceleration.html>`__ in the Amazon
+        Simple Storage Service Developer Guide.
+
+         **Related Resources**
+
+        *  PutBucketAccelerateConfiguration
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketAccelerateConfiguration>`_
@@ -1969,7 +3838,14 @@ class Client(BaseClient):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_acl(self, Bucket: str) -> ClientGetBucketAclResponseTypeDef:
         """
-        Gets the access control policy for the bucket.
+        This implementation of the ``GET`` operation uses the ``acl`` subresource to return the access
+        control list (ACL) of a bucket. To use ``GET`` to return the ACL of the bucket, you must have
+        ``READ_ACP`` access to the bucket. If ``READ_ACP`` permission is granted to the anonymous user, you
+        can return the ACL of the bucket without using an authorization header.
+
+         **Related Resources**
+
+        *
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketAcl>`_
@@ -1982,6 +3858,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          Specifies the S3 bucket whose ACL is being requested.
 
         :rtype: dict
         :returns:
@@ -2014,9 +3892,15 @@ class Client(BaseClient):
 
             - **Owner** *(dict) --*
 
+              Container for the bucket owner's display name and ID.
+
               - **DisplayName** *(string) --*
 
+                Container for the display name of the owner
+
               - **ID** *(string) --*
+
+                Container for the ID of the owner
 
             - **Grants** *(list) --*
 
@@ -2024,7 +3908,11 @@ class Client(BaseClient):
 
               - *(dict) --*
 
+                Container for grant information.
+
                 - **Grantee** *(dict) --*
+
+                  The person being granted permissions.
 
                   - **DisplayName** *(string) --*
 
@@ -2057,7 +3945,29 @@ class Client(BaseClient):
         self, Bucket: str, Id: str
     ) -> ClientGetBucketAnalyticsConfigurationResponseTypeDef:
         """
-        Gets an analytics configuration for the bucket (specified by the analytics configuration ID).
+        This implementation of the GET operation returns an analytics configuration (identified by the
+        analytics configuration ID) from the bucket.
+
+        To use this operation, you must have permissions to perform the ``s3:GetAnalyticsConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the *Amazon Simple
+        Storage Service Developer Guide* .
+
+        For information about Amazon S3 analytics feature, see `Amazon S3 Analytics – Storage Class
+        Analysis <https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html>`__ in the
+        *Amazon Simple Storage Service Developer Guide* .
+
+         **Related Resources**
+
+        *
+
+        *
+
+        *
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketAnalyticsConfiguration>`_
@@ -2170,6 +4080,8 @@ class Client(BaseClient):
 
                     - *(dict) --*
 
+                      A container of a key value name pair.
+
                       - **Key** *(string) --*
 
                         Name of the tag.
@@ -2222,7 +4134,20 @@ class Client(BaseClient):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_cors(self, Bucket: str) -> ClientGetBucketCorsResponseTypeDef:
         """
-        Returns the CORS configuration for the bucket.
+        Returns the cors configuration information set for the bucket.
+
+        To use this operation, you must have permission to perform the s3:GetBucketCORS action. By default,
+        the bucket owner has this permission and can grant it to others.
+
+        To learn more cors, see `Enabling Cross-Origin Resource Sharing
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html>`__ Enabling Cross-Origin Resource
+        Sharing.
+
+        The following operations are related to ``GetBucketCors`` :
+
+        *  PutBucketCors
+
+        *  DeleteBucketCors
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketCors>`_
@@ -2235,6 +4160,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The bucket name for which to get the cors configuration.
 
         :rtype: dict
         :returns:
@@ -2267,6 +4194,9 @@ class Client(BaseClient):
           - *(dict) --*
 
             - **CORSRules** *(list) --*
+
+              A set of origins and methods (cross-origin access that you want to allow). You can add up to
+              100 rules to the configuration.
 
               - *(dict) --*
 
@@ -2312,7 +4242,23 @@ class Client(BaseClient):
         self, Bucket: str
     ) -> ClientGetBucketEncryptionResponseTypeDef:
         """
-        Returns the server-side encryption configuration of a bucket.
+        Returns the default encryption configuration for an Amazon S3 bucket. For information about the
+        Amazon S3 default encryption feature, see `Amazon S3 Default Bucket Encryption
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html>`__ .
+
+        To use this operation, you must have permission to perform the ``s3:GetEncryptionConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        The following operations are related to ``GetBucketEncryption`` :
+
+        *  PutBucketEncryption
+
+        *  DeleteBucketEncryption
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketEncryption>`_
@@ -2353,6 +4299,8 @@ class Client(BaseClient):
 
             - **ServerSideEncryptionConfiguration** *(dict) --*
 
+              Specifies the default server-side-encryption configuration.
+
               - **Rules** *(list) --*
 
                 Container for information about a particular server-side encryption configuration rule.
@@ -2383,7 +4331,25 @@ class Client(BaseClient):
         self, Bucket: str, Id: str
     ) -> ClientGetBucketInventoryConfigurationResponseTypeDef:
         """
-        Returns an inventory configuration (identified by the inventory ID) from the bucket.
+        Returns an inventory configuration (identified by the inventory configuration ID) from the bucket.
+
+        To use this operation, you must have permissions to perform the ``s3:GetInventoryConfiguration``
+        action. The bucket owner has this permission by default and can grant this permission to others.
+        For more information about permissions, see `Permissions Related to Bucket Subresource Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        For information about the Amazon S3 inventory feature, see `Amazon S3 Inventory
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html>`__ .
+
+        The following operations are related to ``GetBucketInventoryConfiguration`` :
+
+        *  DeleteBucketInventoryConfiguration
+
+        *  ListBucketInventoryConfigurations
+
+        *  PutBucketInventoryConfiguration
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketInventoryConfiguration>`_
@@ -2491,8 +4457,8 @@ class Client(BaseClient):
 
                       - **KeyId** *(string) --*
 
-                        Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-                        use for encrypting Inventory reports.
+                        Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK)
+                        to use for encrypting Inventory reports.
 
               - **IsEnabled** *(boolean) --*
 
@@ -2540,7 +4506,41 @@ class Client(BaseClient):
         self, Bucket: str
     ) -> ClientGetBucketLifecycleResponseTypeDef:
         """
-        No longer used, see the GetBucketLifecycleConfiguration operation.
+        .. warning::
+
+          For an updated version of this API, see  GetBucketLifecycleConfiguration . If you configured a
+          bucket lifecycle using the ``filter`` element, you should the updated version of this topic. This
+          topic is provided for backward compatibility.
+
+        Returns the lifecycle configuration information set on the bucket. For information about lifecycle
+        configuration, see `Object Lifecycle Management
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html>`__ .
+
+        To use this operation, you must have permission to perform the ``s3:GetLifecycleConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+         ``GetBucketLifecycle`` has the following special error:
+
+        * Error code: ``NoSuchLifecycleConfiguration``
+
+          * Description: The lifecycle configuration does not exist.
+
+          * HTTP Status Code: 404 Not Found
+
+          * SOAP Fault Code Prefix: Client
+
+        The following operations are related to ``GetBucketLifecycle`` :
+
+        *  GetBucketLifecycleConfiguration
+
+        *  PutBucketLifecycle
+
+        *  DeleteBucketLifecycle
 
         .. danger::
 
@@ -2558,6 +4558,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the bucket for which to the the lifecycle information.
 
         :rtype: dict
         :returns:
@@ -2603,6 +4605,8 @@ class Client(BaseClient):
 
             - **Rules** *(list) --*
 
+              Container for a lifecycle rule.
+
               - *(dict) --*
 
                 Specifies lifecycle rules for an Amazon S3 bucket. For more information, see `PUT Bucket
@@ -2610,6 +4614,8 @@ class Client(BaseClient):
                 in the *Amazon Simple Storage Service API Reference* .
 
                 - **Expiration** *(dict) --*
+
+                  Specifies the expiration for the lifecycle of the object.
 
                   - **Date** *(datetime) --*
 
@@ -2642,6 +4648,8 @@ class Client(BaseClient):
 
                 - **Transition** *(dict) --*
 
+                  Specifies when an object transitions to a specified storage class.
+
                   - **Date** *(datetime) --*
 
                     Indicates when objects are transitioned to the specified storage class. The date value
@@ -2658,6 +4666,14 @@ class Client(BaseClient):
 
                 - **NoncurrentVersionTransition** *(dict) --*
 
+                  Container for the transition rule that describes when noncurrent objects transition to
+                  the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+                  ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+                  suspended), you can set this action to request that Amazon S3 transition noncurrent
+                  object versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` ,
+                  ``GLACIER`` , or ``DEEP_ARCHIVE`` storage class at a specific period in the object's
+                  lifetime.
+
                   - **NoncurrentDays** *(integer) --*
 
                     Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -2672,6 +4688,11 @@ class Client(BaseClient):
 
                 - **NoncurrentVersionExpiration** *(dict) --*
 
+                  Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+                  deletes the noncurrent object versions. You set this lifecycle configuration action on a
+                  bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+                  noncurrent object versions at a specific period in the object's lifetime.
+
                   - **NoncurrentDays** *(integer) --*
 
                     Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -2681,6 +4702,12 @@ class Client(BaseClient):
                     in the Amazon Simple Storage Service Developer Guide.
 
                 - **AbortIncompleteMultipartUpload** *(dict) --*
+
+                  Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+                  will wait before permanently removing all parts of the upload. For more information, see
+                  `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+                  in the *Amazon Simple Storage Service Developer Guide* .
 
                   - **DaysAfterInitiation** *(integer) --*
 
@@ -2694,7 +4721,44 @@ class Client(BaseClient):
         self, Bucket: str
     ) -> ClientGetBucketLifecycleConfigurationResponseTypeDef:
         """
-        Returns the lifecycle configuration information set on the bucket.
+        .. note::
+
+          Bucket lifecycle configuration now supports specifying a lifecycle rule using an object key name
+          prefix, one or more object tags, or a combination of both. Accordingly, this section describes
+          the latest API. The response describes the new filter element that you can use to specify a
+          filter to select a subset of objects to which the rule applies. If you are still using previous
+          version of the lifecycle configuration, it works. For the earlier API description, see
+          GetBucketLifecycle .
+
+        Returns the lifecycle configuration information set on the bucket. For information about lifecycle
+        configuration, see `Object Lifecycle Management
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html>`__ .
+
+        To use this operation, you must have permission to perform the ``s3:GetLifecycleConfiguration``
+        action. The bucket owner has this permission, by default. The bucket owner can grant this
+        permission to others. For more information about permissions, see `Permissions Related to Bucket
+        Subresource Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+         ``GetBucketLifecycleConfiguration`` has the following special error:
+
+        * Error code: ``NoSuchLifecycleConfiguration``
+
+          * Description: The lifecycle configuration does not exist.
+
+          * HTTP Status Code: 404 Not Found
+
+          * SOAP Fault Code Prefix: Client
+
+        The following operations are related to ``DeleteBucketMetricsConfiguration`` :
+
+        *  GetBucketLifecycle
+
+        *  PutBucketLifecycle
+
+        *  DeleteBucketLifecycle
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLifecycleConfiguration>`_
@@ -2707,6 +4771,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the bucket for which to the the lifecycle information.
 
         :rtype: dict
         :returns:
@@ -2772,9 +4838,16 @@ class Client(BaseClient):
 
             - **Rules** *(list) --*
 
+              Container for a lifecycle rule.
+
               - *(dict) --*
 
+                A lifecycle rule for individual objects in an Amazon S3 bucket.
+
                 - **Expiration** *(dict) --*
+
+                  Specifies the expiration for the lifecycle of the object in the form of date, days and,
+                  whether the object has a delete marker.
 
                   - **Date** *(datetime) --*
 
@@ -2803,6 +4876,9 @@ class Client(BaseClient):
 
                 - **Filter** *(dict) --*
 
+                  The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must
+                  have exactly one of Prefix, Tag, or And specified.
+
                   - **Prefix** *(string) --*
 
                     Prefix identifying one or more objects to which the rule applies.
@@ -2821,13 +4897,21 @@ class Client(BaseClient):
 
                   - **And** *(dict) --*
 
+                    This is used in a Lifecycle Rule Filter to apply a logical AND to two or more
+                    predicates. The Lifecycle Rule will apply to any object matching all of the predicates
+                    configured inside the And operator.
+
                     - **Prefix** *(string) --*
+
+                      Prefix identifying one or more objects to which the rule applies.
 
                     - **Tags** *(list) --*
 
                       All of these tags must exist in the object's tag set in order for the rule to apply.
 
                       - *(dict) --*
+
+                        A container of a key value name pair.
 
                         - **Key** *(string) --*
 
@@ -2843,6 +4927,8 @@ class Client(BaseClient):
                   currently being applied.
 
                 - **Transitions** *(list) --*
+
+                  Specifies when an Amazon S3 object transitions to a specified storage class.
 
                   - *(dict) --*
 
@@ -2863,6 +4949,12 @@ class Client(BaseClient):
                       The storage class to which you want the object to transition.
 
                 - **NoncurrentVersionTransitions** *(list) --*
+
+                  Specifies the transition rule for the lifecycle rule that describes when noncurrent
+                  objects transition to the a specific storage class. If your bucket is versioning-enabled
+                  (or versioning is suspended), you can set this action to request that Amazon S3
+                  transition noncurrent object versions to the a specifc storage class at a set period in
+                  the object's lifetime.
 
                   - *(dict) --*
 
@@ -2888,6 +4980,11 @@ class Client(BaseClient):
 
                 - **NoncurrentVersionExpiration** *(dict) --*
 
+                  Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+                  deletes the noncurrent object versions. You set this lifecycle configuration action on a
+                  bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+                  noncurrent object versions at a specific period in the object's lifetime.
+
                   - **NoncurrentDays** *(integer) --*
 
                     Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -2897,6 +4994,12 @@ class Client(BaseClient):
                     in the Amazon Simple Storage Service Developer Guide.
 
                 - **AbortIncompleteMultipartUpload** *(dict) --*
+
+                  Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+                  will wait before permanently removing all parts of the upload. For more information, see
+                  `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+                  in the *Amazon Simple Storage Service Developer Guide* .
 
                   - **DaysAfterInitiation** *(integer) --*
 
@@ -2910,7 +5013,17 @@ class Client(BaseClient):
         self, Bucket: str
     ) -> ClientGetBucketLocationResponseTypeDef:
         """
-        Returns the region the bucket resides in.
+        Returns the region the bucket resides in. You set the bucket's region using the
+        ``LocationConstraint`` request parameter in a ``CreateBucket`` request. For more information, see
+        CreateBucket .
+
+        To use this implementation of the operation, you must be the bucket owner.
+
+        The following operations are related to ``GetBucketLocation`` :
+
+        *  GetObject
+
+        *  CreateBucket
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLocation>`_
@@ -2923,6 +5036,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the bucket for which to get the location.
 
         :rtype: dict
         :returns:
@@ -2942,6 +5057,10 @@ class Client(BaseClient):
 
             - **LocationConstraint** *(string) --*
 
+              Specifies the region where the bucket resides. For a list of all the Amazon S3 supported
+              location constraints by region, see `Regions and Endpoints
+              <https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region>`__ .
+
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -2949,6 +5068,12 @@ class Client(BaseClient):
         """
         Returns the logging status of a bucket and the permissions users have to view and modify that
         status. To use GET, you must be the bucket owner.
+
+        The following operations are related to ``GetBucketLogging`` :
+
+        *  CreateBucket
+
+        *  PutBucketLogging
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketLogging>`_
@@ -2961,6 +5086,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The bucket name for which to get the logging information.
 
         :rtype: dict
         :returns:
@@ -2993,6 +5120,11 @@ class Client(BaseClient):
 
             - **LoggingEnabled** *(dict) --*
 
+              Describes where logs are stored and the prefix that Amazon S3 assigns to all log object keys
+              for a bucket. For more information, see `PUT Bucket logging
+              <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlogging.html>`__ in the *Amazon
+              Simple Storage Service API Reference* .
+
               - **TargetBucket** *(string) --*
 
                 Specifies the bucket where you want Amazon S3 to store server access logs. You can have
@@ -3003,9 +5135,15 @@ class Client(BaseClient):
 
               - **TargetGrants** *(list) --*
 
+                Container for granting information.
+
                 - *(dict) --*
 
+                  Container for granting information.
+
                   - **Grantee** *(dict) --*
+
+                    Container for the person being granted permissions.
 
                     - **DisplayName** *(string) --*
 
@@ -3043,7 +5181,30 @@ class Client(BaseClient):
         self, Bucket: str, Id: str
     ) -> ClientGetBucketMetricsConfigurationResponseTypeDef:
         """
-        Gets a metrics configuration (specified by the metrics configuration ID) from the bucket.
+        Gets a metrics configuration (specified by the metrics configuration ID) from the bucket. Note that
+        this doesn't include the daily storage metrics.
+
+        To use this operation, you must have permissions to perform the ``s3:GetMetricsConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        For information about CloudWatch request metrics for Amazon S3, see `Monitoring Metrics with Amazon
+        CloudWatch <https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html>`__ .
+
+        The following operations are related to ``GetBucketMetricsConfiguration`` :
+
+        *  PutBucketMetricsConfiguration
+
+        *  DeleteBucketMetricsConfiguration
+
+        *  ListBucketMetricsConfigurations
+
+        * `Monitoring Metrics with Amazon CloudWatch
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html>`__
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketMetricsConfiguration>`_
@@ -3143,6 +5304,8 @@ class Client(BaseClient):
 
                     - *(dict) --*
 
+                      A container of a key value name pair.
+
                       - **Key** *(string) --*
 
                         Name of the tag.
@@ -3158,7 +5321,7 @@ class Client(BaseClient):
         self, Bucket: str
     ) -> ClientGetBucketNotificationResponseTypeDef:
         """
-        No longer used, see the GetBucketNotificationConfiguration operation.
+        No longer used, see  GetBucketNotificationConfiguration .
 
         .. danger::
 
@@ -3177,7 +5340,7 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
-          Name of the bucket to get the notification configuration for.
+          Name of the bucket for which to get the notification configuration
 
         :rtype: dict
         :returns:
@@ -3246,12 +5409,18 @@ class Client(BaseClient):
 
             - **TopicConfiguration** *(dict) --*
 
+              This data type is deperecated. A container for specifying the configuration for publication
+              of messages to an Amazon Simple Notification Service (Amazon SNS) topic when Amazon S3
+              detects specified events.
+
               - **Id** *(string) --*
 
                 An optional unique identifier for configurations in a notification configuration. If you
                 don't provide one, Amazon S3 will assign an ID.
 
               - **Events** *(list) --*
+
+                A collection of events related to objects
 
                 - *(string) --*
 
@@ -3268,6 +5437,10 @@ class Client(BaseClient):
 
             - **QueueConfiguration** *(dict) --*
 
+              This data type is deprecated. This data type specifies the configuration for publishing
+              messages to an Amazon Simple Queue Service (Amazon SQS) queue when Amazon S3 detects
+              specified events.
+
               - **Id** *(string) --*
 
                 An optional unique identifier for configurations in a notification configuration. If you
@@ -3278,6 +5451,8 @@ class Client(BaseClient):
                 The bucket event for which to send notifications.
 
               - **Events** *(list) --*
+
+                A collection of bucket events for which to send notiications
 
                 - *(string) --*
 
@@ -3285,7 +5460,12 @@ class Client(BaseClient):
 
               - **Queue** *(string) --*
 
+                The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon S3 publishes a
+                message when it detects events of the specified type.
+
             - **CloudFunctionConfiguration** *(dict) --*
+
+              Container for specifying the AWS Lambda notification configuration.
 
               - **Id** *(string) --*
 
@@ -3298,13 +5478,20 @@ class Client(BaseClient):
 
               - **Events** *(list) --*
 
+                Bucket events for which to send notifications.
+
                 - *(string) --*
 
                   The bucket event for which to send notifications.
 
               - **CloudFunction** *(string) --*
 
+                Lambda cloud function ARN that Amazon S3 can invoke when it detects events of the specified
+                type.
+
               - **InvocationRole** *(string) --*
+
+                The role supporting the invocation of the lambda function
 
         """
 
@@ -3314,6 +5501,23 @@ class Client(BaseClient):
     ) -> ClientGetBucketNotificationConfigurationResponseTypeDef:
         """
         Returns the notification configuration of a bucket.
+
+        If notifications are not enabled on the bucket, the operation returns an empty
+        ``NotificationConfiguration`` element.
+
+        By default, you must be the bucket owner to read the notification configuration of a bucket.
+        However, the bucket owner can use a bucket policy to grant permission to other users to read this
+        configuration with the ``s3:GetBucketNotification`` permission.
+
+        For more information about setting and reading the notification configuration on a bucket, see
+        `Setting Up Notification of Bucket Events
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ . For more information
+        about bucket policies, see `Using Bucket Policies
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html>`__ .
+
+        The following operation is related to ``GetBucketNotification`` :
+
+        *  PutBucketNotification
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketNotificationConfiguration>`_
@@ -3327,7 +5531,7 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
-          Name of the bucket to get the notification configuration for.
+          Name of the bucket for which to get the notification configuration
 
         :rtype: dict
         :returns:
@@ -3447,9 +5651,19 @@ class Client(BaseClient):
 
                 - **Filter** *(dict) --*
 
+                  Specifies object key name filtering rules. For information about key name filtering, see
+                  `Configuring Event Notifications
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+                  *Amazon Simple Storage Service Developer Guide* .
+
                   - **Key** *(dict) --*
 
+                    A container for object key name prefix and suffix filtering rules.
+
                     - **FilterRules** *(list) --*
+
+                      A list of containers for the key value pair that defines the criteria for the filter
+                      rule.
 
                       - *(dict) --*
 
@@ -3491,15 +5705,27 @@ class Client(BaseClient):
 
                 - **Events** *(list) --*
 
+                  A collection of bucket events for which to send notiications
+
                   - *(string) --*
 
                     The bucket event for which to send notifications.
 
                 - **Filter** *(dict) --*
 
+                  Specifies object key name filtering rules. For information about key name filtering, see
+                  `Configuring Event Notifications
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+                  *Amazon Simple Storage Service Developer Guide* .
+
                   - **Key** *(dict) --*
 
+                    A container for object key name prefix and suffix filtering rules.
+
                     - **FilterRules** *(list) --*
+
+                      A list of containers for the key value pair that defines the criteria for the filter
+                      rule.
 
                       - *(dict) --*
 
@@ -3550,9 +5776,19 @@ class Client(BaseClient):
 
                 - **Filter** *(dict) --*
 
+                  Specifies object key name filtering rules. For information about key name filtering, see
+                  `Configuring Event Notifications
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+                  *Amazon Simple Storage Service Developer Guide* .
+
                   - **Key** *(dict) --*
 
+                    A container for object key name prefix and suffix filtering rules.
+
                     - **FilterRules** *(list) --*
+
+                      A list of containers for the key value pair that defines the criteria for the filter
+                      rule.
 
                       - *(dict) --*
 
@@ -3577,7 +5813,26 @@ class Client(BaseClient):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_policy(self, Bucket: str) -> ClientGetBucketPolicyResponseTypeDef:
         """
-        Returns the policy of a specified bucket.
+        Returns the policy of a specified bucket. If you are using an identity other than the root user of
+        the AWS account that owns the bucket, the calling identity must have the ``GetBucketPolicy``
+        permissions on the specified bucket and belong to the bucket owner's account in order to use this
+        operation.
+
+        If you don't have ``GetBucketPolicy`` permissions, Amazon S3 returns a ``403 Access Denied`` error.
+        If you have the correct permissions, but you're not using an identity that belongs to the bucket
+        owner's account, Amazon S3 returns a ``405 Method Not Allowed`` error.
+
+        .. warning::
+
+          As a security precaution, the root user of the AWS account that owns a bucket can always use this
+          operation, even if the policy explicitly denies the root user the ability to perform this action.
+
+        For more information about bucket policies, see `Using Bucket Policies and User Policies
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html>`__ .
+
+        The following operation is related to ``GetBucketPolicy`` :
+
+        *  GetObject
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketPolicy>`_
@@ -3590,6 +5845,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The bucket name for which to get the bucket policy.
 
         :rtype: dict
         :returns:
@@ -3616,7 +5873,25 @@ class Client(BaseClient):
         self, Bucket: str
     ) -> ClientGetBucketPolicyStatusResponseTypeDef:
         """
-        Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public.
+        Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public. In
+        order to use this operation, you must have the ``s3:GetBucketPolicyStatus`` permission. For more
+        information about Amazon S3 permissions, see `Specifying Permissions in a Policy
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html>`__ .
+
+        For more information about when Amazon S3 considers a bucket public, see `The Meaning of "Public"
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status>`__
+        .
+
+        The following operations are related to ``GetBucketPolicyStatus`` :
+
+        * `Using Amazon S3 Block Public Access
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html>`__
+
+        *  GetPublicAccessBlock
+
+        *  PutPublicAccessBlock
+
+        *  DeletePublicAccessBlock
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketPolicyStatus>`_
@@ -3671,6 +5946,32 @@ class Client(BaseClient):
           It can take a while to propagate the put or delete a replication configuration to all Amazon S3
           systems. Therefore, a get request soon after put or delete can return a wrong result.
 
+        For information about replication configuration, see `Replication
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html>`__ .
+
+        This operation requires permissions for the ``s3:GetReplicationConfiguration`` action. For more
+        information about permissions, see `Using Bucket Policies and User Policies
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html>`__ .
+
+        If you include the ``Filter`` element in a replication configuration, you must also include the
+        ``DeleteMarkerReplication`` and ``Priority`` elements. The response also returns those elements.
+
+         ``GetBucketReplication`` has the following special error:
+
+        * Error code: ``NoSuchReplicationConfiguration``
+
+          * Description: There is no replication configuration with that name.
+
+          * HTTP Status Code: 404 Not Found
+
+          * SOAP Fault Code Prefix: Client
+
+        The following operations are related to ``GetBucketReplication`` :
+
+        *  PutBucketReplication
+
+        *  DeleteBucketReplication
+
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketReplication>`_
 
@@ -3682,6 +5983,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The bucket name for which to get the replication information.
 
         :rtype: dict
         :returns:
@@ -3720,6 +6023,9 @@ class Client(BaseClient):
                                     'Status': 'Enabled'|'Disabled'
                                 }
                             },
+                            'ExistingObjectReplication': {
+                                'Status': 'Enabled'|'Disabled'
+                            },
                             'Destination': {
                                 'Bucket': 'string',
                                 'Account': 'string',
@@ -3746,13 +6052,15 @@ class Client(BaseClient):
 
             - **ReplicationConfiguration** *(dict) --*
 
+              A container for replication rules. You can add up to 1,000 rules. The maximum size of a
+              replication configuration is 2 MB.
+
               - **Role** *(string) --*
 
                 The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that
                 Amazon S3 assumes when replicating objects. For more information, see `How to Set Up
-                Cross-Region Replication
-                <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-how-setup.html>`__ in the *Amazon
-                Simple Storage Service Developer Guide* .
+                Replication <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html>`__
+                in the *Amazon Simple Storage Service Developer Guide* .
 
               - **Rules** *(list) --*
 
@@ -3779,8 +6087,8 @@ class Client(BaseClient):
 
                     * Same object qualify tag based filter criteria specified in multiple rules
 
-                    For more information, see `Cross-Region Replication (CRR)
-                    <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html>`__ in the *Amazon S3
+                    For more information, see `Replication <
+                    https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html>`__ in the *Amazon S3
                     Developer Guide* .
 
                   - **Prefix** *(string) --*
@@ -3790,6 +6098,9 @@ class Client(BaseClient):
                     bucket, specify an empty string.
 
                   - **Filter** *(dict) --*
+
+                    A filter that identifies the subset of objects to which the replication rule applies. A
+                    ``Filter`` must specify exactly one ``Prefix`` , ``Tag`` , or an ``And`` child element.
 
                     - **Prefix** *(string) --*
 
@@ -3824,9 +6135,16 @@ class Client(BaseClient):
 
                       - **Prefix** *(string) --*
 
+                        An object keyname prefix that identifies the subset of objects to which the rule
+                        applies.
+
                       - **Tags** *(list) --*
 
+                        An array of tags containing key and value pairs.
+
                         - *(dict) --*
+
+                          A container of a key value name pair.
 
                           - **Key** *(string) --*
 
@@ -3845,7 +6163,8 @@ class Client(BaseClient):
                     A container that describes additional filters for identifying the source objects that
                     you want to replicate. You can choose to enable or disable the replication of these
                     objects. Currently, Amazon S3 supports only the filter that you can specify for objects
-                    created with server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
+                    created with server-side encryption using a customer master key (CMK) stored in AWS Key
+                    Management Service (SSE-KMS).
 
                     - **SseKmsEncryptedObjects** *(dict) --*
 
@@ -3856,7 +6175,16 @@ class Client(BaseClient):
                       - **Status** *(string) --*
 
                         Specifies whether Amazon S3 replicates objects created with server-side encryption
-                        using an AWS KMS-managed key.
+                        using a customer master key (CMK) stored in AWS Key Management Service.
+
+                  - **ExistingObjectReplication** *(dict) --*
+
+                    A container that specifies information about existing object replication. You can
+                    choose whether to enable or disable the replication of existing objects.
+
+                    - **Status** *(string) --*
+
+                      Specifies whether existing object replication is enabled.
 
                   - **Destination** *(dict) --*
 
@@ -3864,22 +6192,18 @@ class Client(BaseClient):
 
                     - **Bucket** *(string) --*
 
-                      The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store
-                      replicas of the object identified by the rule.
-
-                      A replication configuration can replicate objects to only one destination bucket. If
-                      there are multiple rules in your replication configuration, all rules must specify
-                      the same destination bucket.
+                      The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the
+                      results.
 
                     - **Account** *(string) --*
 
                       Destination bucket owner account ID. In a cross-account scenario, if you direct
                       Amazon S3 to change replica ownership to the AWS account that owns the destination
                       bucket by specifying the ``AccessControlTranslation`` property, this is the account
-                      ID of the destination bucket owner. For more information, see `Cross-Region
-                      Replication Additional Configuration\\: Change Replica Owner
-                      <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the
-                      *Amazon Simple Storage Service Developer Guide* .
+                      ID of the destination bucket owner. For more information, see `Replication Additional
+                      Configuration\\: Change Replica Owner
+                      <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html>`__ in
+                      the *Amazon Simple Storage Service Developer Guide* .
 
                     - **StorageClass** *(string) --*
 
@@ -3917,9 +6241,26 @@ class Client(BaseClient):
 
                   - **DeleteMarkerReplication** *(dict) --*
 
+                    Specifies whether Amazon S3 replicates the delete markers. If you specify a ``Filter``
+                    , you must specify this element. However, in the latest version of replication
+                    configuration (when ``Filter`` is specified), Amazon S3 doesn't replicate delete
+                    markers. Therefore, the ``DeleteMarkerReplication`` element can contain only
+                    <Status>Disabled</Status>. For an example configuration, see `Basic Rule Configuration
+                    <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config>`__
+                    .
+
+                    .. note::
+
+                      If you don't specify the Filter element, Amazon S3 assumes the replication
+                      configuration is the earlier version, V1. In the earlier version, Amazon S3 handled
+                      replication of delete markers differently. For more information, see `Backward
+                      Compatibility
+                      <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations>`__
+                      .
+
                     - **Status** *(string) --*
 
-                      The status of the delete marker replication.
+                      Indicates whether to replicate delete markers.
 
                       .. note::
 
@@ -3933,7 +6274,13 @@ class Client(BaseClient):
         self, Bucket: str
     ) -> ClientGetBucketRequestPaymentResponseTypeDef:
         """
-        Returns the request payment configuration of a bucket.
+        Returns the request payment configuration of a bucket. To use this version of the operation, you
+        must be the bucket owner. For more information, see `Requester Pays Buckets
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html>`__ .
+
+        The following operations are related to ``GetBucketRequestPayment`` :
+
+        *  ListObjects
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketRequestPayment>`_
@@ -3946,6 +6293,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the bucket for which to get the payment request configuration
 
         :rtype: dict
         :returns:
@@ -3972,6 +6321,21 @@ class Client(BaseClient):
         """
         Returns the tag set associated with the bucket.
 
+        To use this operation, you must have permission to perform the ``s3:GetBucketTagging`` action. By
+        default, the bucket owner has this permission and can grant this permission to others.
+
+         ``GetBucketTagging`` has the following special error:
+
+        * Error code: ``NoSuchTagSetError``
+
+          * Description: There is no tag set associated with the bucket.
+
+        The following operations are related to ``GetBucketTagging`` :
+
+        *  PutBucketTagging
+
+        *  DeleteBucketTagging
+
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketTagging>`_
 
@@ -3983,6 +6347,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the bucket for which to get the tagging information.
 
         :rtype: dict
         :returns:
@@ -4005,7 +6371,11 @@ class Client(BaseClient):
 
             - **TagSet** *(list) --*
 
+              Contains the tag set.
+
               - *(dict) --*
+
+                A container of a key value name pair.
 
                 - **Key** *(string) --*
 
@@ -4024,6 +6394,20 @@ class Client(BaseClient):
         """
         Returns the versioning state of a bucket.
 
+        To retrieve the versioning state of a bucket, you must be the bucket owner.
+
+        This implementation also returns the MFA Delete status of the versioning state, i.e., if the MFA
+        Delete status is ``enabled`` , the bucket owner must use an authentication device to change the
+        versioning state of the bucket.
+
+        The following operations are related to ``GetBucketVersioning`` :
+
+        *  GetObject
+
+        *  PutObject
+
+        *  DeleteObject
+
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketVersioning>`_
 
@@ -4035,6 +6419,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the bucket for which to get the versioning information.
 
         :rtype: dict
         :returns:
@@ -4066,7 +6452,21 @@ class Client(BaseClient):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_website(self, Bucket: str) -> ClientGetBucketWebsiteResponseTypeDef:
         """
-        Returns the website configuration for a bucket.
+        Returns the website configuration for a bucket. To host website on Amazon S3, you can configure a
+        bucket as website by adding a website configuration. For more information about hosting websites,
+        see `Hosting Websites on Amazon S3
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html>`__ .
+
+        This GET operation requires the ``S3:GetBucketWebsite`` permission. By default, only the bucket
+        owner can read the bucket website configuration. However, bucket owners can allow other users to
+        read the website configuration by writing a bucket policy granting them the ``S3:GetBucketWebsite``
+        permission.
+
+        The following operations are related to ``DeleteBucketWebsite``
+
+        *  DeleteBucketWebsite
+
+        *  PutBucketWebsite
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetBucketWebsite>`_
@@ -4079,6 +6479,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The bucket name for which to get the website configuration.
 
         :rtype: dict
         :returns:
@@ -4120,6 +6522,8 @@ class Client(BaseClient):
 
             - **RedirectAllRequestsTo** *(dict) --*
 
+              Specifies the redirect behavior of all requests to a website endpoint of an Amazon S3 bucket.
+
               - **HostName** *(string) --*
 
                 Name of the host where requests are redirected.
@@ -4131,6 +6535,8 @@ class Client(BaseClient):
 
             - **IndexDocument** *(dict) --*
 
+              The name of the index document for the website.
+
               - **Suffix** *(string) --*
 
                 A suffix that is appended to a request that is for a directory on the website endpoint
@@ -4140,11 +6546,15 @@ class Client(BaseClient):
 
             - **ErrorDocument** *(dict) --*
 
+              The name of the error document for the website.
+
               - **Key** *(string) --*
 
                 The object key name to use when a 4XX class error occurs.
 
             - **RoutingRules** *(list) --*
+
+              Rules that define when a redirect is applied and the redirect behavior.
 
               - *(dict) --*
 
@@ -4234,7 +6644,133 @@ class Client(BaseClient):
         PartNumber: int = None,
     ) -> ClientGetObjectResponseTypeDef:
         """
-        Retrieves objects from Amazon S3.
+        Retrieves objects from Amazon S3. To use ``GET`` , you must have ``READ`` access to the object. If
+        you grant ``READ`` access to the anonymous user, you can return the object without using an
+        authorization header.
+
+        An Amazon S3 bucket has no directory hierarchy such as you would find in a typical computer file
+        system. You can, however, create a logical hierarchy by using object key names that imply a folder
+        structure. For example, instead of naming an object ``sample.jpg`` , you can name it
+        ``photos/2006/February/sample.jpg`` .
+
+        To get an object from such a logical hierarchy, specify the full key name for the object in the
+        ``GET`` operation. For a virtual hosted-style request example, if you have the object
+        ``photos/2006/February/sample.jpg`` , specify the resource as ``/photos/2006/February/sample.jpg``
+        . For a path-style request example, if you have the object ``photos/2006/February/sample.jpg`` in
+        the bucket named examplebucket, specify the resource as
+        ``/examplebucket/photos/2006/February/sample.jpg`` . For more information about request types, see
+        `HTTP Host Header Bucket Specification
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html#VirtualHostingSpecifyBucket>`__
+        .
+
+        To distribute large files to many people, you can save bandwidth costs by using BitTorrent. For
+        more information, see `Amazon S3 Torrent
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/S3Torrent.html>`__ . For more information about
+        returning the ACL of an object, see  GetObjectAcl .
+
+        If the object you are retrieving is stored in the GLACIER or DEEP_ARCHIVE storage classes, before
+        you can retrieve the object you must first restore a copy using . Otherwise, this operation returns
+        an ``InvalidObjectStateError`` error. For information about restoring archived objects, see
+        `Restoring Archived Objects
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html>`__ .
+
+        Encryption request headers, like ``x-amz-server-side-encryption`` , should not be sent for GET
+        requests if your object uses server-side encryption with CMKs stored in AWS KMS (SSE-KMS) or
+        server-side encryption with Amazon S3–managed encryption keys (SSE-S3). If your object does use
+        these types of keys, you’ll get an HTTP 400 BadRequest error.
+
+        If you encrypt an object by using server-side encryption with customer-provided encryption keys
+        (SSE-C) when you store the object in Amazon S3, then when you GET the object, you must use the
+        following headers:
+
+        * x-amz-server-side​-encryption​-customer-algorithm
+
+        * x-amz-server-side​-encryption​-customer-key
+
+        * x-amz-server-side​-encryption​-customer-key-MD5
+
+        For more information about SSE-C, see `Server-Side Encryption (Using Customer-Provided Encryption
+        Keys) <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html>`__ .
+
+        Assuming you have permission to read object tags (permission for the ``s3:GetObjectVersionTagging``
+        action), the response also returns the ``x-amz-tagging-count`` header that provides the count of
+        number of tags associated with the object. You can use  GetObjectTagging to retrieve the tag set
+        associated with an object.
+
+         **Permissions**
+
+        You need the ``s3:GetObject`` permission for this operation. For more information, see `Specifying
+        Permissions in a Policy
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html>`__ . If the object you
+        request does not exist, the error Amazon S3 returns depends on whether you also have the
+        ``s3:ListBucket`` permission.
+
+        * If you have the ``s3:ListBucket`` permission on the bucket, Amazon S3 will return an HTTP status
+        code 404 ("no such key") error.
+
+        * If you don’t have the ``s3:ListBucket`` permission, Amazon S3 will return an HTTP status code 403
+        ("access denied") error.
+
+         **Versioning**
+
+        By default, the GET operation returns the current version of an object. To return a different
+        version, use the ``versionId`` subresource.
+
+        .. note::
+
+          If the current version of the object is a delete marker, Amazon S3 behaves as if the object was
+          deleted and includes ``x-amz-delete-marker: true`` in the response.
+
+        For more information about versioning, see  PutBucketVersioning .
+
+         **Overriding Response Header Values**
+
+        There are times when you want to override certain response header values in a GET response. For
+        example, you might override the Content-Disposition response header value in your GET request.
+
+        You can override values for a set of response headers using the following query parameters. These
+        response header values are sent only on a successful request, that is, when status code 200 OK is
+        returned. The set of headers you can override using these parameters is a subset of the headers
+        that Amazon S3 accepts when you create an object. The response headers that you can override for
+        the GET response are ``Content-Type`` , ``Content-Language`` , ``Expires`` , ``Cache-Control`` ,
+        ``Content-Disposition`` , and ``Content-Encoding`` . To override these header values in the GET
+        response, you use the following request parameters.
+
+        .. note::
+
+          You must sign the request, either using an Authorization header or a presigned URL, when using
+          these parameters. They cannot be used with an unsigned (anonymous) request.
+
+        * ``response-content-type``
+
+        * ``response-content-language``
+
+        * ``response-expires``
+
+        * ``response-cache-control``
+
+        * ``response-content-disposition``
+
+        * ``response-content-encoding``
+
+         **Additional Considerations about Request Headers**
+
+        If both of the ``If-Match`` and ``If-Unmodified-Since`` headers are present in the request as
+        follows: ``If-Match`` condition evaluates to ``true`` , and; ``If-Unmodified-Since`` condition
+        evaluates to ``false`` ; then, S3 returns 200 OK and the data requested.
+
+        If both of the ``If-None-Match`` and ``If-Modified-Since`` headers are present in the request as
+        follows:``If-None-Match`` condition evaluates to ``false`` , and; ``If-Modified-Since`` condition
+        evaluates to ``true`` ; then, S3 returns 304 Not Modified response code.
+
+        For more information about conditional requests, see `RFC 7232
+        <https://tools.ietf.org/html/rfc7232>`__ .
+
+        The following operations are related to ``GetObject`` :
+
+        *  ListBuckets
+
+        *  GetObjectAcl
 
         See also: `AWS API Documentation <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObject>`_
 
@@ -4264,6 +6800,8 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name containing the object.
+
         :type IfMatch: string
         :param IfMatch:
 
@@ -4290,6 +6828,8 @@ class Client(BaseClient):
 
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          Key of the object to get.
 
         :type Range: string
         :param Range:
@@ -4428,6 +6968,8 @@ class Client(BaseClient):
 
             - **AcceptRanges** *(string) --*
 
+              Indicates that a range of bytes was specifed.
+
             - **Expiration** *(string) --*
 
               If the object expiration is configured (see PUT Bucket lifecycle), the response includes this
@@ -4525,16 +7067,22 @@ class Client(BaseClient):
 
             - **SSEKMSKeyId** *(string) --*
 
-              If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-              that was used for the object.
+              If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+              (CMK) that was used for the object.
 
             - **StorageClass** *(string) --*
+
+              Provides storage class information of the object. Amazon S3 returns this header for all
+              objects except for Standard storage class objects.
 
             - **RequestCharged** *(string) --*
 
               If present, indicates that the requester was successfully charged for the request.
 
             - **ReplicationStatus** *(string) --*
+
+              Amazon S3 can return this if your request involves a bucket that is either a source or
+              destination in a replication rule.
 
             - **PartsCount** *(integer) --*
 
@@ -4546,11 +7094,11 @@ class Client(BaseClient):
 
             - **ObjectLockMode** *(string) --*
 
-              The object lock mode currently in place for this object.
+              The Object Lock mode currently in place for this object.
 
             - **ObjectLockRetainUntilDate** *(datetime) --*
 
-              The date and time when this object's object lock will expire.
+              The date and time when this object's Object Lock will expire.
 
             - **ObjectLockLegalHoldStatus** *(string) --*
 
@@ -4564,7 +7112,21 @@ class Client(BaseClient):
         self, Bucket: str, Key: str, VersionId: str = None, RequestPayer: str = None
     ) -> ClientGetObjectAclResponseTypeDef:
         """
-        Returns the access control list (ACL) of an object.
+        Returns the access control list (ACL) of an object. To use this operation, you must have READ_ACP
+        access to the object.
+
+         **Versioning**
+
+        By default, GET returns ACL information about the current version of an object. To return ACL
+        information about a different version, use the versionId subresource.
+
+        The following operations are related to ``GetObjectAcl`` :
+
+        *  GetObject
+
+        *  DeleteObject
+
+        *  PutObject
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectAcl>`_
@@ -4581,8 +7143,12 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name of the object for which to get the ACL information.
+
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          The key of the object for which to get the ACL information.
 
         :type VersionId: string
         :param VersionId:
@@ -4629,9 +7195,15 @@ class Client(BaseClient):
 
             - **Owner** *(dict) --*
 
+              Container for the bucket owner's display name and ID.
+
               - **DisplayName** *(string) --*
 
+                Container for the display name of the owner
+
               - **ID** *(string) --*
+
+                Container for the ID of the owner
 
             - **Grants** *(list) --*
 
@@ -4639,7 +7211,11 @@ class Client(BaseClient):
 
               - *(dict) --*
 
+                Container for grant information.
+
                 - **Grantee** *(dict) --*
+
+                  The person being granted permissions.
 
                   - **DisplayName** *(string) --*
 
@@ -4676,7 +7252,8 @@ class Client(BaseClient):
         self, Bucket: str, Key: str, VersionId: str = None, RequestPayer: str = None
     ) -> ClientGetObjectLegalHoldResponseTypeDef:
         """
-        Gets an object's current Legal Hold status.
+        Gets an object's current Legal Hold status. For more information, see `Locking Objects
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__ .
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectLegalHold>`_
@@ -4744,8 +7321,10 @@ class Client(BaseClient):
         self, Bucket: str
     ) -> ClientGetObjectLockConfigurationResponseTypeDef:
         """
-        Gets the object lock configuration for a bucket. The rule specified in the object lock
-        configuration will be applied by default to every new object placed in the specified bucket.
+        Gets the Object Lock configuration for a bucket. The rule specified in the Object Lock
+        configuration will be applied by default to every new object placed in the specified bucket. For
+        more information, see `Locking Objects
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__ .
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectLockConfiguration>`_
@@ -4759,7 +7338,7 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
-          The bucket whose object lock configuration you want to retrieve.
+          The bucket whose Object Lock configuration you want to retrieve.
 
         :rtype: dict
         :returns:
@@ -4786,15 +7365,15 @@ class Client(BaseClient):
 
             - **ObjectLockConfiguration** *(dict) --*
 
-              The specified bucket's object lock configuration.
+              The specified bucket's Object Lock configuration.
 
               - **ObjectLockEnabled** *(string) --*
 
-                Indicates whether this bucket has an object lock configuration enabled.
+                Indicates whether this bucket has an Object Lock configuration enabled.
 
               - **Rule** *(dict) --*
 
-                The object lock rule in place for the specified object.
+                The Object Lock rule in place for the specified object.
 
                 - **DefaultRetention** *(dict) --*
 
@@ -4803,7 +7382,7 @@ class Client(BaseClient):
 
                   - **Mode** *(string) --*
 
-                    The default object lock retention mode you want to apply to new objects placed in the
+                    The default Object Lock retention mode you want to apply to new objects placed in the
                     specified bucket.
 
                   - **Days** *(integer) --*
@@ -4821,7 +7400,8 @@ class Client(BaseClient):
         self, Bucket: str, Key: str, VersionId: str = None, RequestPayer: str = None
     ) -> ClientGetObjectRetentionResponseTypeDef:
         """
-        Retrieves an object's retention settings.
+        Retrieves an object's retention settings. For more information, see `Locking Objects
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__ .
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectRetention>`_
@@ -4885,7 +7465,7 @@ class Client(BaseClient):
 
               - **RetainUntilDate** *(datetime) --*
 
-                The date on which this object lock retention expires.
+                The date on which this Object Lock Retention will expire.
 
         """
 
@@ -4894,7 +7474,23 @@ class Client(BaseClient):
         self, Bucket: str, Key: str, VersionId: str = None
     ) -> ClientGetObjectTaggingResponseTypeDef:
         """
-        Returns the tag-set of an object.
+        Returns the tag-set of an object. You send the GET request against the tagging subresource
+        associated with the object.
+
+        To use this operation, you must have permission to perform the ``s3:GetObjectTagging`` action. By
+        default, the GET operation returns information about current version of an object. For a versioned
+        bucket, you can have multiple versions of an object in your bucket. To retrieve tags of any other
+        version, use the versionId query parameter. You also need permission for the
+        ``s3:GetObjectVersionTagging`` action.
+
+        By default, the bucket owner has this permission and can grant this permission to others.
+
+        For information about the Amazon S3 object tagging feature, see `Object Tagging
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html>`__ .
+
+        The following operation is related to ``GetObjectTagging`` :
+
+        *  PutObjectTagging
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectTagging>`_
@@ -4910,11 +7506,17 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name containing the object for which to get the tagging information.
+
         :type Key: string
         :param Key: **[REQUIRED]**
 
+          Object key for which to get the tagging information.
+
         :type VersionId: string
         :param VersionId:
+
+          The versionId of the object for which to get the tagging information.
 
         :rtype: dict
         :returns:
@@ -4938,9 +7540,15 @@ class Client(BaseClient):
 
             - **VersionId** *(string) --*
 
+              The versionId of the object for which you got the tagging information.
+
             - **TagSet** *(list) --*
 
+              Contains the tag set.
+
               - *(dict) --*
+
+                A container of a key value name pair.
 
                 - **Key** *(string) --*
 
@@ -4957,7 +7565,20 @@ class Client(BaseClient):
         self, Bucket: str, Key: str, RequestPayer: str = None
     ) -> ClientGetObjectTorrentResponseTypeDef:
         """
-        Return torrent files from a bucket.
+        Return torrent files from a bucket. BitTorrent can save you bandwidth when you're distributing
+        large files. For more information about BitTorrent, see `Amazon S3 Torrent
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/S3Torrent.html>`__ .
+
+        .. note::
+
+          You can get torrent only for objects that are less than 5 GB in size and that are not encrypted
+          using server-side encryption with customer-provided encryption key.
+
+        To use GET, you must have READ access to the object.
+
+        The following operation is related to ``GetObjectTorrent`` :
+
+        *  GetObject
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetObjectTorrent>`_
@@ -4973,8 +7594,12 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The name of the bucket containing the object for which to get the torrent files.
+
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          The object key for which to get the information.
 
         :type RequestPayer: string
         :param RequestPayer:
@@ -5001,6 +7626,8 @@ class Client(BaseClient):
 
             - **Body** (:class:`.StreamingBody`) --
 
+              A Bencoded dictionary as defined by the BitTorrent specification
+
             - **RequestCharged** *(string) --*
 
               If present, indicates that the requester was successfully charged for the request.
@@ -5012,7 +7639,34 @@ class Client(BaseClient):
         self, Bucket: str
     ) -> ClientGetPublicAccessBlockResponseTypeDef:
         """
-        Retrieves the ``PublicAccessBlock`` configuration for an Amazon S3 bucket.
+        Retrieves the ``PublicAccessBlock`` configuration for an Amazon S3 bucket. In order to use this
+        operation, you must have the ``s3:GetBucketPublicAccessBlock`` permission. For more information
+        about Amazon S3 permissions, see `Specifying Permissions in a Policy
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html>`__ .
+
+        .. warning::
+
+          When Amazon S3 evaluates the ``PublicAccessBlock`` configuration for a bucket or an object, it
+          checks the ``PublicAccessBlock`` configuration for both the bucket (or the bucket that contains
+          the object) and the bucket owner's account. If the ``PublicAccessBlock`` settings are different
+          between the bucket and the account, Amazon S3 uses the most restrictive combination of the
+          bucket-level and account-level settings.
+
+        For more information about when Amazon S3 considers a bucket or an object public, see `The Meaning
+        of "Public"
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status>`__
+        .
+
+        The following operations are related to ``GetPublicAccessBlock`` :
+
+        * `Using Amazon S3 Block Public Access
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html>`__
+
+        *  PutPublicAccessBlock
+
+        *  GetPublicAccessBlock
+
+        *  DeletePublicAccessBlock
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/GetPublicAccessBlock>`_
@@ -5060,6 +7714,8 @@ class Client(BaseClient):
 
                 * PUT Object calls fail if the request includes a public ACL.
 
+                * PUT Bucket calls fail if the request includes a public ACL.
+
                 Enabling this setting doesn't affect existing policies or ACLs.
 
               - **IgnorePublicAcls** *(boolean) --*
@@ -5094,7 +7750,16 @@ class Client(BaseClient):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def head_bucket(self, Bucket: str) -> None:
         """
-        This operation is useful to determine if a bucket exists and you have permission to access it.
+        This operation is useful to determine if a bucket exists and you have permission to access it. The
+        operation returns a ``200 OK`` if the bucket exists and you have permission to access it.
+        Otherwise, the operation might return responses such as ``404 Not Found`` and ``403 Forbidden`` .
+
+        To use this operation, you must have permissions to perform the ``s3:ListBucket`` action. The
+        bucket owner has this permission by default and can grant this permission to others. For more
+        information about permissions, see `Permissions Related to Bucket Subresource Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/HeadBucket>`_
@@ -5107,6 +7772,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The bucket name.
 
         :returns: None
         """
@@ -5133,6 +7800,73 @@ class Client(BaseClient):
         operation is useful if you're only interested in an object's metadata. To use HEAD, you must have
         READ access to the object.
 
+        A ``HEAD`` request has the same options as a ``GET`` operation on an object. The response is
+        identical to the ``GET`` response except that there is no response body.
+
+        If you encrypt an object by using server-side encryption with customer-provided encryption keys
+        (SSE-C) when you store the object in Amazon S3, then when you retrieve the metadata from the
+        object, you must use the following headers:
+
+        * x-amz-server-side​-encryption​-customer-algorithm
+
+        * x-amz-server-side​-encryption​-customer-key
+
+        * x-amz-server-side​-encryption​-customer-key-MD5
+
+        For more information about SSE-C, see `Server-Side Encryption (Using Customer-Provided Encryption
+        Keys) <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html>`__ .
+
+        .. note::
+
+          Encryption request headers, like ``x-amz-server-side-encryption`` , should not be sent for GET
+          requests if your object uses server-side encryption with CMKs stored in AWS KMS (SSE-KMS) or
+          server-side encryption with Amazon S3–managed encryption keys (SSE-S3). If your object does use
+          these types of keys, you’ll get an HTTP 400 BadRequest error.
+
+        Request headers are limited to 8 KB in size. For more information, see `Common Request Headers
+        <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html>`__ .
+
+        Consider the following when using request headers:
+
+        * Consideration 1 – If both of the ``If-Match`` and ``If-Unmodified-Since`` headers are present in
+        the request as follows:
+
+          * ``If-Match`` condition evaluates to ``true`` , and;
+
+          * ``If-Unmodified-Since`` condition evaluates to ``false`` ;
+
+        Then Amazon S3 returns ``200 OK`` and the data requested.
+
+        * Consideration 2 – If both of the ``If-None-Match`` and ``If-Modified-Since`` headers are present
+        in the request as follows:
+
+          * ``If-None-Match`` condition evaluates to ``false`` , and;
+
+          * ``If-Modified-Since`` condition evaluates to ``true`` ;
+
+        Then Amazon S3 returns the ``304 Not Modified`` response code.
+
+        For more information about conditional requests, see `RFC 7232
+        <https://tools.ietf.org/html/rfc7232>`__ .
+
+         **Permissions**
+
+        You need the ``s3:GetObject`` permission for this operation. For more information, see `Specifying
+        Permissions in a Policy
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html>`__ . If the object you
+        request does not exist, the error Amazon S3 returns depends on whether you also have the
+        s3:ListBucket permission.
+
+        * If you have the ``s3:ListBucket`` permission on the bucket, Amazon S3 will return a HTTP status
+        code 404 ("no such key") error.
+
+        * If you don’t have the ``s3:ListBucket`` permission, Amazon S3 will return a HTTP status code 403
+        ("access denied") error.
+
+        The following operation is related to ``HeadObject`` :
+
+        *  GetObject
+
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/HeadObject>`_
 
@@ -5155,6 +7889,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the bucket containing the object.
 
         :type IfMatch: string
         :param IfMatch:
@@ -5182,6 +7918,8 @@ class Client(BaseClient):
 
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          The object key.
 
         :type Range: string
         :param Range:
@@ -5283,6 +8021,8 @@ class Client(BaseClient):
 
             - **AcceptRanges** *(string) --*
 
+              Indicates that a range of bytes was specifed.
+
             - **Expiration** *(string) --*
 
               If the object expiration is configured (see PUT Bucket lifecycle), the response includes this
@@ -5291,8 +8031,22 @@ class Client(BaseClient):
 
             - **Restore** *(string) --*
 
-              Provides information about object restoration operation and expiration time of the restored
-              object copy.
+              If the object is an archived object (an object whose storage class is GLACIER), the response
+              includes this header if either the archive restoration is in progress (see  RestoreObject or
+              an archive copy is already restored.
+
+              If an archive copy is already restored, the header value indicates when Amazon S3 is
+              scheduled to delete the object copy. For example:
+
+               ``x-amz-restore: ongoing-request="false", expiry-date="Fri, 23 Dec 2012 00:00:00 GMT"``
+
+              If the object restoration is in progress, the header returns the value
+              ``ongoing-request="true"`` .
+
+              For more information about archiving objects, see `Transitioning Objects\\: General
+              Considerations
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html#lifecycle-transition-general-considerations>`__
+              .
 
             - **LastModified** *(datetime) --*
 
@@ -5352,8 +8106,10 @@ class Client(BaseClient):
 
             - **ServerSideEncryption** *(string) --*
 
-              The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256,
-              aws:kms).
+              If the object is stored using server-side encryption either with an AWS KMS customer master
+              key (CMK) or an Amazon S3-managed encryption key, the response includes this header with the
+              value of the Server-side encryption algorithm used when storing this object in S3 (e.g.,
+              AES256, aws:kms).
 
             - **Metadata** *(dict) --*
 
@@ -5376,10 +8132,16 @@ class Client(BaseClient):
 
             - **SSEKMSKeyId** *(string) --*
 
-              If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-              that was used for the object.
+              If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+              (CMK) that was used for the object.
 
             - **StorageClass** *(string) --*
+
+              Provides storage class information of the object. Amazon S3 returns this header for all
+              objects except for Standard storage class objects.
+
+              For more information, see `Storage Classes
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html>`__ .
 
             - **RequestCharged** *(string) --*
 
@@ -5387,21 +8149,53 @@ class Client(BaseClient):
 
             - **ReplicationStatus** *(string) --*
 
+              Amazon S3 can return this header if your request involves a bucket that is either a source or
+              destination in a replication rule.
+
+              In replication you have a source bucket on which you configure replication and destination
+              bucket where Amazon S3 stores object replicas. When you request an object (GetObject) or
+              object metadata (HeadObject) from these buckets, Amazon S3 will return the
+              x-amz-replication-status header in the response as follows:
+
+              * If requesting object from the source bucket — Amazon S3 will return the
+              x-amz-replication-status header if object in your request is eligible for replication. For
+              example, suppose in your replication configuration you specify object prefix "TaxDocs"
+              requesting Amazon S3 to replicate objects with key prefix "TaxDocs". Then any objects you
+              upload with this key name prefix, for example "TaxDocs/document1.pdf", is eligible for
+              replication. For any object request with this key name prefix Amazon S3 will return the
+              x-amz-replication-status header with value PENDING, COMPLETED or FAILED indicating object
+              replication status.
+
+              * If requesting object from the destination bucket — Amazon S3 will return the
+              x-amz-replication-status header with value REPLICA if object in your request is a replica
+              that Amazon S3 created.
+
+              For more information, see `Replication
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ .
+
             - **PartsCount** *(integer) --*
 
               The count of parts this object has.
 
             - **ObjectLockMode** *(string) --*
 
-              The object lock mode currently in place for this object.
+              The Object Lock mode, if any, that's in effect for this object. This header is only returned
+              if the requester has the ``s3:GetObjectRetention`` permission. For more information about S3
+              Object Lock, see `Object Lock
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__ .
 
             - **ObjectLockRetainUntilDate** *(datetime) --*
 
-              The date and time when this object's object lock expires.
+              The date and time when the Object Lock retention period expires. This header is only returned
+              if the requester has the ``s3:GetObjectRetention`` permission.
 
             - **ObjectLockLegalHoldStatus** *(string) --*
 
-              The Legal Hold status for the specified object.
+              Specifies whether a legal hold is in effect for this object. This header is only returned if
+              the requester has the ``s3:GetObjectLegalHold`` permission. This header is not returned if
+              the specified version of this object has never had a legal hold applied. For more information
+              about S3 Object Lock, see `Object Lock
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__ .
 
         """
 
@@ -5410,7 +8204,34 @@ class Client(BaseClient):
         self, Bucket: str, ContinuationToken: str = None
     ) -> ClientListBucketAnalyticsConfigurationsResponseTypeDef:
         """
-        Lists the analytics configurations for the bucket.
+        Lists the analytics configurations for the bucket. You can have up to 1,000 analytics
+        configurations per bucket.
+
+        This operation supports list pagination and does not return more than 100 configurations at a time.
+        You should always check the ``IsTruncated`` element in the response. If there are no more
+        configurations to list, ``IsTruncated`` is set to false. If there are more configurations to list,
+        ``IsTruncated`` is set to true, and there will be a value in ``NextContinuationToken`` . You use
+        the ``NextContinuationToken`` value to continue the pagination of the list by passing the value in
+        continuation-token in the request to ``GET`` the next page.
+
+        To use this operation, you must have permissions to perform the ``s3:GetAnalyticsConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        For information about Amazon S3 analytics feature, see `Amazon S3 Analytics – Storage Class
+        Analysis <https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html>`__ .
+
+        The following operations are related to ``ListBucketAnalyticsConfigurations`` :
+
+        *  GetBucketAnalyticsConfiguration
+
+        *  DeleteBucketAnalyticsConfiguration
+
+        *  PutBucketAnalyticsConfiguration
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBucketAnalyticsConfigurations>`_
@@ -5490,7 +8311,8 @@ class Client(BaseClient):
 
             - **ContinuationToken** *(string) --*
 
-              The ContinuationToken that represents where this request began.
+              The marker that is used as a starting point for this analytics configuration list response.
+              This value is present if it was sent in the request.
 
             - **NextContinuationToken** *(string) --*
 
@@ -5506,10 +8328,6 @@ class Client(BaseClient):
 
                 Specifies the configuration and any analyses for the analytics filter of an Amazon S3
                 bucket.
-
-                For more information, see `GET Bucket analytics
-                <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETAnalyticsConfig.html>`__ in
-                the *Amazon Simple Storage Service API Reference* .
 
                 - **Id** *(string) --*
 
@@ -5552,6 +8370,8 @@ class Client(BaseClient):
                       The list of tags to use when evaluating an AND predicate.
 
                       - *(dict) --*
+
+                        A container of a key value name pair.
 
                         - **Key** *(string) --*
 
@@ -5607,7 +8427,34 @@ class Client(BaseClient):
         self, Bucket: str, ContinuationToken: str = None
     ) -> ClientListBucketInventoryConfigurationsResponseTypeDef:
         """
-        Returns a list of inventory configurations for the bucket.
+        Returns a list of inventory configurations for the bucket. You can have up to 1,000 analytics
+        configurations per bucket.
+
+        This operation supports list pagination and does not return more than 100 configurations at a time.
+        Always check the ``IsTruncated`` element in the response. If there are no more configurations to
+        list, ``IsTruncated`` is set to false. If there are more configurations to list, ``IsTruncated`` is
+        set to true, and there is a value in ``NextContinuationToken`` . You use the
+        ``NextContinuationToken`` value to continue the pagination of the list by passing the value in
+        continuation-token in the request to ``GET`` the next page.
+
+        To use this operation, you must have permissions to perform the ``s3:GetInventoryConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        For information about the Amazon S3 inventory feature, see `Amazon S3 Inventory
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html>`__
+
+        The following operations are related to ``ListBucketInventoryConfigurations`` :
+
+        *  GetBucketInventoryConfiguration
+
+        *  DeleteBucketInventoryConfiguration
+
+        *  PutBucketInventoryConfiguration
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBucketInventoryConfigurations>`_
@@ -5735,8 +8582,8 @@ class Client(BaseClient):
 
                         - **KeyId** *(string) --*
 
-                          Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-                          use for encrypting Inventory reports.
+                          Specifies the ID of the AWS Key Management Service (KMS) customer master key
+                          (CMK) to use for encrypting Inventory reports.
 
                 - **IsEnabled** *(boolean) --*
 
@@ -5779,8 +8626,9 @@ class Client(BaseClient):
 
             - **IsTruncated** *(boolean) --*
 
-              Indicates whether the returned list of inventory configurations is truncated in this
-              response. A value of true indicates that the list is truncated.
+              Tells whether the returned list of inventory configurations is complete. A value of true
+              indicates that the list is not complete and the NextContinuationToken is provided for a
+              subsequent request.
 
             - **NextContinuationToken** *(string) --*
 
@@ -5795,7 +8643,36 @@ class Client(BaseClient):
         self, Bucket: str, ContinuationToken: str = None
     ) -> ClientListBucketMetricsConfigurationsResponseTypeDef:
         """
-        Lists the metrics configurations for the bucket.
+        Lists the metrics configurations for the bucket. The metrics configurations are only for the
+        request metrics of the bucket and do not provide information on daily storage metrics. You can have
+        up to 1,000 configurations per bucket.
+
+        This operation supports list pagination and does not return more than 100 configurations at a time.
+        Always check the ``IsTruncated`` element in the response. If there are no more configurations to
+        list, ``IsTruncated`` is set to false. If there are more configurations to list, ``IsTruncated`` is
+        set to true, and there is a value in ``NextContinuationToken`` . You use the
+        ``NextContinuationToken`` value to continue the pagination of the list by passing the value in
+        ``continuation-token`` in the request to ``GET`` the next page.
+
+        To use this operation, you must have permissions to perform the ``s3:GetMetricsConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        For more information about metrics configurations and CloudWatch request metrics, see `Monitoring
+        Metrics with Amazon CloudWatch
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html>`__ .
+
+        The following operations are related to ``ListBucketMetricsConfigurations`` :
+
+        *  PutBucketMetricsConfiguration
+
+        *  GetBucketMetricsConfiguration
+
+        *  DeleteBucketMetricsConfiguration
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListBucketMetricsConfigurations>`_
@@ -5929,6 +8806,8 @@ class Client(BaseClient):
 
                       - *(dict) --*
 
+                        A container of a key value name pair.
+
                         - **Key** *(string) --*
 
                           Name of the tag.
@@ -5979,7 +8858,12 @@ class Client(BaseClient):
 
             - **Buckets** *(list) --*
 
+              The list of buckets owned by the requestor.
+
               - *(dict) --*
+
+                In terms of implementation, a Bucket is a resource. An Amazon S3 bucket name is globally
+                unique, and the namespace is shared by all AWS accounts.
 
                 - **Name** *(string) --*
 
@@ -5991,9 +8875,15 @@ class Client(BaseClient):
 
             - **Owner** *(dict) --*
 
+              The owner of the buckets listed.
+
               - **DisplayName** *(string) --*
 
+                Container for the display name of the owner
+
               - **ID** *(string) --*
+
+                Container for the ID of the owner
 
         """
 
@@ -6009,7 +8899,38 @@ class Client(BaseClient):
         UploadIdMarker: str = None,
     ) -> ClientListMultipartUploadsResponseTypeDef:
         """
-        This operation lists in-progress multipart uploads.
+        This operation lists in-progress multipart uploads. An in-progress multipart upload is a multipart
+        upload that has been initiated using the Initiate Multipart Upload request, but has not yet been
+        completed or aborted.
+
+        This operation returns at most 1,000 multipart uploads in the response. 1,000 multipart uploads is
+        the maximum number of uploads a response can include, which is also the default value. You can
+        further limit the number of uploads in a response by specifying the ``max-uploads`` parameter in
+        the response. If additional multipart uploads satisfy the list criteria, the response will contain
+        an ``IsTruncated`` element with the value true. To list the additional multipart uploads, use the
+        ``key-marker`` and ``upload-id-marker`` request parameters.
+
+        In the response, the uploads are sorted by key. If your application has initiated more than one
+        multipart upload using the same object key, then uploads in the response are first sorted by key.
+        Additionally, uploads are sorted in ascending order within each key by the upload initiation time.
+
+        For more information on multipart uploads, see `Uploading Objects Using Multipart Upload
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html>`__ .
+
+        For information on permissions required to use the multipart upload API, see `Multipart Upload API
+        and Permissions <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html>`__ .
+
+        The following operations are related to ``ListMultipartUploads`` :
+
+        *  CreateMultipartUpload
+
+        *  UploadPart
+
+        *  CompleteMultipartUpload
+
+        *  ListParts
+
+        *  AbortMultipartUpload
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListMultipartUploads>`_
@@ -6029,10 +8950,18 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          Name of the bucket to which the multipart upload was initiated.
+
         :type Delimiter: string
         :param Delimiter:
 
           Character you use to group keys.
+
+          All keys that contain the same string between the prefix, if specified, and the first occurrence
+          of the delimiter after the prefix are grouped under a single result element, ``CommonPrefixes`` .
+          If you don't specify the prefix parameter, then the substring starts at the beginning of the key.
+          The keys that are grouped under ``CommonPrefixes`` result element are not returned elsewhere in
+          the response.
 
         :type EncodingType: string
         :param EncodingType:
@@ -6049,6 +8978,13 @@ class Client(BaseClient):
           Together with upload-id-marker, this parameter specifies the multipart upload after which listing
           should begin.
 
+          If ``upload-id-marker`` is not specified, only the keys lexicographically greater than the
+          specified ``key-marker`` will be included in the list.
+
+          If ``upload-id-marker`` is specified, any multipart uploads for a key equal to the ``key-marker``
+          might also be included, provided those multipart uploads have upload IDs lexicographically
+          greater than the specified ``upload-id-marker`` .
+
         :type MaxUploads: integer
         :param MaxUploads:
 
@@ -6058,13 +8994,17 @@ class Client(BaseClient):
         :type Prefix: string
         :param Prefix:
 
-          Lists in-progress uploads only for those keys that begin with the specified prefix.
+          Lists in-progress uploads only for those keys that begin with the specified prefix. You can use
+          prefixes to separate a bucket into different grouping of keys. (You can think of using prefix to
+          make groups in the same way you'd use a folder in a file system.)
 
         :type UploadIdMarker: string
         :param UploadIdMarker:
 
           Together with key-marker, specifies the multipart upload after which listing should begin. If
-          key-marker is not specified, the upload-id-marker parameter is ignored.
+          key-marker is not specified, the upload-id-marker parameter is ignored. Otherwise, any multipart
+          uploads for a key equal to the key-marker might be included in the list only if they have an
+          upload ID lexicographically greater than the specified upload-id-marker.
 
         :rtype: dict
         :returns:
@@ -6136,6 +9076,9 @@ class Client(BaseClient):
 
             - **Delimiter** *(string) --*
 
+              Contains the delimiter you specified in the request. If you don't specify a delimiter in your
+              request, this element is absent from the response.
+
             - **NextUploadIdMarker** *(string) --*
 
               When a list is truncated, this element specifies the value that should be used for the
@@ -6153,7 +9096,12 @@ class Client(BaseClient):
 
             - **Uploads** *(list) --*
 
+              Container for elements related to a particular multipart upload. A response can contain zero
+              or more Upload elements.
+
               - *(dict) --*
+
+                Container for the MultipartUpload for the Amazon S3 object.
 
                 - **UploadId** *(string) --*
 
@@ -6173,9 +9121,15 @@ class Client(BaseClient):
 
                 - **Owner** *(dict) --*
 
+                  Specifies the owner of the object that is part of the multipart upload.
+
                   - **DisplayName** *(string) --*
 
+                    Container for the display name of the owner
+
                   - **ID** *(string) --*
+
+                    Container for the ID of the owner
 
                 - **Initiator** *(dict) --*
 
@@ -6192,13 +9146,29 @@ class Client(BaseClient):
 
             - **CommonPrefixes** *(list) --*
 
+              If you specify a delimiter in the request, then the result returns each distinct key prefix
+              containing the delimiter in a CommonPrefixes element. The distinct key prefixes are returned
+              in the Prefix child element.
+
               - *(dict) --*
 
+                Container for all (if there are any) keys between Prefix and the next occurrence of the
+                string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+                the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+                is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
                 - **Prefix** *(string) --*
+
+                  Container for the specified common prefix.
 
             - **EncodingType** *(string) --*
 
               Encoding type used by Amazon S3 to encode object keys in the response.
+
+              If you specify ``encoding-type`` request parameter, Amazon S3 includes this element in the
+              response, and returns encoded key name values in the following response elements:
+
+               ``Delimiter`` , ``KeyMarker`` , ``Prefix`` , ``NextKeyMarker`` , ``Key`` .
 
         """
 
@@ -6214,7 +9184,25 @@ class Client(BaseClient):
         VersionIdMarker: str = None,
     ) -> ClientListObjectVersionsResponseTypeDef:
         """
-        Returns metadata about all of the versions of objects in a bucket.
+        Returns metadata about all of the versions of objects in a bucket. You can also use request
+        parameters as selection criteria to return metadata about a subset of all the object versions.
+
+        .. note::
+
+          A 200 OK response can contain valid or invalid XML. Make sure to design your application to parse
+          the contents of the response and handle it appropriately.
+
+        To use this operation, you must have READ access to the bucket.
+
+        The following operations are related to ``ListObjectVersions`` :
+
+        *  ListObjectsV2
+
+        *  GetObject
+
+        *  PutObject
+
+        *  DeleteObject
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjectVersions>`_
@@ -6234,10 +9222,15 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The name of the bucket that contains the objects.
+
         :type Delimiter: string
         :param Delimiter:
 
-          A delimiter is a character you use to group keys.
+          A delimiter is a character that you specify to group keys. All keys that contain the same string
+          between the ``prefix`` and the first occurrence of the delimiter are grouped under a single
+          result element in CommonPrefixes. These groups are counted as one result against the max-keys
+          limitation. These keys are not returned elsewhere in the response.
 
         :type EncodingType: string
         :param EncodingType:
@@ -6257,12 +9250,17 @@ class Client(BaseClient):
         :param MaxKeys:
 
           Sets the maximum number of keys returned in the response. The response might contain fewer keys
-          but will never contain more.
+          but will never contain more. If additional keys satisfy the search criteria, but were not
+          returned because max-keys was exceeded, the response contains <isTruncated>true</isTruncated>. To
+          return the additional keys, see key-marker and version-id-marker.
 
         :type Prefix: string
         :param Prefix:
 
-          Limits the response to keys that begin with the specified prefix.
+          Use this parameter to select only those keys that begin with the specified prefix. You can use
+          prefixes to separate a bucket into different groupings of keys. (You can think of using prefix to
+          make groups in the same way you'd use a folder in a file system.) You can use prefix with
+          delimiter to roll up numerous objects into a single result under CommonPrefixes.
 
         :type VersionIdMarker: string
         :param VersionIdMarker:
@@ -6337,19 +9335,31 @@ class Client(BaseClient):
 
             - **VersionIdMarker** *(string) --*
 
+              Marks the last version of the Key returned in a truncated response.
+
             - **NextKeyMarker** *(string) --*
 
-              Use this value for the key marker request parameter in a subsequent request.
+              When the number of responses exceeds the value of MaxKeys, NextKeyMarker specifies the first
+              key not returned that satisfies the search criteria. Use this value for the key-marker
+              request parameter in a subsequent request.
 
             - **NextVersionIdMarker** *(string) --*
 
-              Use this value for the next version id marker parameter in a subsequent request.
+              When the number of responses exceeds the value of MaxKeys, NextVersionIdMarker specifies the
+              first object version not returned that satisfies the search criteria. Use this value for the
+              version-id-marker request parameter in a subsequent request.
 
             - **Versions** *(list) --*
 
+              Container for version information.
+
               - *(dict) --*
 
+                The version of an object.
+
                 - **ETag** *(string) --*
+
+                  The entity tag is an MD5 hash of that version of the object
 
                 - **Size** *(integer) --*
 
@@ -6377,19 +9387,35 @@ class Client(BaseClient):
 
                 - **Owner** *(dict) --*
 
+                  Specifies the Owner of the object.
+
                   - **DisplayName** *(string) --*
 
+                    Container for the display name of the owner
+
                   - **ID** *(string) --*
+
+                    Container for the ID of the owner
 
             - **DeleteMarkers** *(list) --*
 
+              Container for an object that is a delete marker.
+
               - *(dict) --*
+
+                Information about the delete marker.
 
                 - **Owner** *(dict) --*
 
+                  The account that created the delete marker.>
+
                   - **DisplayName** *(string) --*
 
+                    Container for the display name of the owner
+
                   - **ID** *(string) --*
+
+                    Container for the ID of the owner
 
                 - **Key** *(string) --*
 
@@ -6409,21 +9435,48 @@ class Client(BaseClient):
 
             - **Name** *(string) --*
 
+              Bucket owner's name.
+
             - **Prefix** *(string) --*
+
+              Selects objects that start with the value supplied by this parameter.
 
             - **Delimiter** *(string) --*
 
+              The delimeter grouping the included keys. A delimiter is a character that you specify to
+              group keys. All keys that contain the same string between the prefix and the first occurrence
+              of the delimiter are grouped under a single result element in CommonPrefixes. These groups
+              are counted as one result against the max-keys limitation. These keys are not returned
+              elsewhere in the response.
+
             - **MaxKeys** *(integer) --*
+
+              Specifies the maximum number of objects to return.
 
             - **CommonPrefixes** *(list) --*
 
+              All of the keys rolled up into a common prefix count as a single return when calculating the
+              number of returns.
+
               - *(dict) --*
+
+                Container for all (if there are any) keys between Prefix and the next occurrence of the
+                string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+                the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+                is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
 
                 - **Prefix** *(string) --*
 
+                  Container for the specified common prefix.
+
             - **EncodingType** *(string) --*
 
-              Encoding type used by Amazon S3 to encode object keys in the response.
+              Encoding type used by Amazon S3 to encode object key names in the XML response.
+
+              If you specify encoding-type request parameter, Amazon S3 includes this element in the
+              response, and returns encoded key name values in the following response elements:
+
+               ``KeyMarker, NextKeyMarker, Prefix, Key`` , and ``Delimiter`` .
 
         """
 
@@ -6440,7 +9493,27 @@ class Client(BaseClient):
     ) -> ClientListObjectsResponseTypeDef:
         """
         Returns some or all (up to 1000) of the objects in a bucket. You can use the request parameters as
-        selection criteria to return a subset of the objects in a bucket.
+        selection criteria to return a subset of the objects in a bucket. A 200 OK response can contain
+        valid or invalid XML. Be sure to design your application to parse the contents of the response and
+        handle it appropriately.
+
+        .. warning::
+
+          This API has been revised. We recommend that you use the newer version,  ListObjectsV2 , when
+          developing applications. For backward compatibility, Amazon S3 continues to support
+          ``ListObjects`` .
+
+        The following operations are related to ``ListObjects`` :
+
+        *  ListObjectsV2
+
+        *  GetObject
+
+        *  PutObject
+
+        *  CreateBucket
+
+        *  ListBuckets
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjects>`_
@@ -6459,6 +9532,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the bucket containing the objects.
 
         :type Delimiter: string
         :param Delimiter:
@@ -6544,6 +9619,9 @@ class Client(BaseClient):
 
             - **Marker** *(string) --*
 
+              Indicates where in the bucket listing begins. Marker is included in the response if it was
+              sent with the request.
+
             - **NextMarker** *(string) --*
 
               When response is truncated (the IsTruncated element value in the response is true), you can
@@ -6555,15 +9633,28 @@ class Client(BaseClient):
 
             - **Contents** *(list) --*
 
+              Metadata about each object returned.
+
               - *(dict) --*
+
+                An object consists of data and its descriptive metadata.
 
                 - **Key** *(string) --*
 
+                  The name that you assign to an object. You use the object key to retrieve the object.
+
                 - **LastModified** *(datetime) --*
+
+                  The date the Object was Last Modified
 
                 - **ETag** *(string) --*
 
+                  The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents
+                  of an object, not its metadata.
+
                 - **Size** *(integer) --*
+
+                  Size in bytes of the object
 
                 - **StorageClass** *(string) --*
 
@@ -6571,23 +9662,61 @@ class Client(BaseClient):
 
                 - **Owner** *(dict) --*
 
+                  The owner of the object
+
                   - **DisplayName** *(string) --*
+
+                    Container for the display name of the owner
 
                   - **ID** *(string) --*
 
+                    Container for the ID of the owner
+
             - **Name** *(string) --*
+
+              Name of the bucket.
 
             - **Prefix** *(string) --*
 
+              Keys that begin with the indicated prefix.
+
             - **Delimiter** *(string) --*
+
+              Causes keys that contain the same string between the prefix and the first occurrence of the
+              delimiter to be rolled up into a single result element in the CommonPrefixes collection.
+              These rolled-up keys are not returned elsewhere in the response. Each rolled-up result counts
+              as only one return against the MaxKeys value.
 
             - **MaxKeys** *(integer) --*
 
+              The maximum number of keys returned in the response body.
+
             - **CommonPrefixes** *(list) --*
+
+              All of the keys rolled up in a common prefix count as a single return when calculating the
+              number of returns.
+
+              A response can contain CommonPrefixes only if you specify a delimiter.
+
+              CommonPrefixes contains all (if there are any) keys between Prefix and the next occurrence of
+              the string specified by the delimiter.
+
+              CommonPrefixes lists keys that act like subdirectories in the directory specified by Prefix.
+
+              For example, if the prefix is notes/ and the delimiter is a slash (/) as in
+              notes/summer/july, the common prefix is notes/summer/. All of the keys that roll up into a
+              common prefix count as a single return when calculating the number of returns.
 
               - *(dict) --*
 
+                Container for all (if there are any) keys between Prefix and the next occurrence of the
+                string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+                the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+                is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
                 - **Prefix** *(string) --*
+
+                  Container for the specified common prefix.
 
             - **EncodingType** *(string) --*
 
@@ -6609,9 +9738,36 @@ class Client(BaseClient):
         RequestPayer: str = None,
     ) -> ClientListObjectsV2ResponseTypeDef:
         """
-        Returns some or all (up to 1000) of the objects in a bucket. You can use the request parameters as
-        selection criteria to return a subset of the objects in a bucket. Note: ListObjectsV2 is the
-        revised List Objects API and we recommend you use this revised API for new application development.
+        Returns some or all (up to 1,000) of the objects in a bucket. You can use the request parameters as
+        selection criteria to return a subset of the objects in a bucket. A ``200 OK`` response can contain
+        valid or invalid XML. Make sure to design your application to parse the contents of the response
+        and handle it appropriately.
+
+        To use thisoperation, you must have READ access to the bucket.
+
+        To use this operation in an AWS Identity and Access Management (IAM) policy, you must have
+        permissions to perform the ``s3:ListBucket`` action. The bucket owner has this permission by
+        default and can grant this permission to others. For more information about permissions, see
+        `Permissions Related to Bucket Subresource Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        .. warning::
+
+          This section describes the latest revision of the API. We recommend that you use this revised API
+          for application development. For backward compatibility, Amazon S3 continues to support the prior
+          version of this API,  ListObjects .
+
+        To get a list of your buckets, see  ListBuckets .
+
+        The following operations are related to ``ListObjectsV2`` :
+
+        *  GetObject
+
+        *  PutObject
+
+        *  CreateBucket
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListObjectsV2>`_
@@ -6660,7 +9816,7 @@ class Client(BaseClient):
         :param ContinuationToken:
 
           ContinuationToken indicates Amazon S3 that the list is being continued on this bucket with a
-          token. ContinuationToken is obfuscated and is not a real key
+          token. ContinuationToken is obfuscated and is not a real key.
 
         :type FetchOwner: boolean
         :param FetchOwner:
@@ -6672,7 +9828,7 @@ class Client(BaseClient):
         :param StartAfter:
 
           StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this
-          specified key. StartAfter can be any key in the bucket
+          specified key. StartAfter can be any key in the bucket.
 
         :type RequestPayer: string
         :param RequestPayer:
@@ -6725,8 +9881,9 @@ class Client(BaseClient):
 
             - **IsTruncated** *(boolean) --*
 
-              A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the
-              search criteria.
+              Set to false if all of the results were returned. Set to true if more keys are available to
+              return. If the number of results exceeds that specified by MaxKeys, all of the results might
+              not be returned.
 
             - **Contents** *(list) --*
 
@@ -6734,13 +9891,24 @@ class Client(BaseClient):
 
               - *(dict) --*
 
+                An object consists of data and its descriptive metadata.
+
                 - **Key** *(string) --*
+
+                  The name that you assign to an object. You use the object key to retrieve the object.
 
                 - **LastModified** *(datetime) --*
 
+                  The date the Object was Last Modified
+
                 - **ETag** *(string) --*
 
+                  The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents
+                  of an object, not its metadata.
+
                 - **Size** *(integer) --*
+
+                  Size in bytes of the object
 
                 - **StorageClass** *(string) --*
 
@@ -6748,21 +9916,30 @@ class Client(BaseClient):
 
                 - **Owner** *(dict) --*
 
+                  The owner of the object
+
                   - **DisplayName** *(string) --*
+
+                    Container for the display name of the owner
 
                   - **ID** *(string) --*
 
+                    Container for the ID of the owner
+
             - **Name** *(string) --*
 
-              Name of the bucket to list.
+              Name of the bucket.
 
             - **Prefix** *(string) --*
 
-              Limits the response to keys that begin with the specified prefix.
+              Keys that begin with the indicated prefix.
 
             - **Delimiter** *(string) --*
 
-              A delimiter is a character you use to group keys.
+              Causes keys that contain the same string between the prefix and the first occurrence of the
+              delimiter to be rolled up into a single result element in the CommonPrefixes collection.
+              These rolled-up keys are not returned elsewhere in the response. Each rolled-up result counts
+              as only one return against the MaxKeys value.
 
             - **MaxKeys** *(integer) --*
 
@@ -6771,16 +9948,40 @@ class Client(BaseClient):
 
             - **CommonPrefixes** *(list) --*
 
-              CommonPrefixes contains all (if there are any) keys between Prefix and the next occurrence of
-              the string specified by delimiter
+              All of the keys rolled up into a common prefix count as a single return when calculating the
+              number of returns.
+
+              A response can contain ``CommonPrefixes`` only if you specify a delimiter.
+
+               ``CommonPrefixes`` contains all (if there are any) keys between ``Prefix`` and the next
+               occurrence of the string specified by a delimiter.
+
+               ``CommonPrefixes`` lists keys that act like subdirectories in the directory specified by
+               ``Prefix`` .
+
+              For example, if the prefix is ``notes/`` and the delimiter is a slash (``/`` ) as in
+              ``notes/summer/july`` , the common prefix is ``notes/summer/`` . All of the keys that roll up
+              into a common prefix count as a single return when calculating the number of returns.
 
               - *(dict) --*
 
+                Container for all (if there are any) keys between Prefix and the next occurrence of the
+                string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+                the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+                is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
                 - **Prefix** *(string) --*
+
+                  Container for the specified common prefix.
 
             - **EncodingType** *(string) --*
 
-              Encoding type used by Amazon S3 to encode object keys in the response.
+              Encoding type used by Amazon S3 to encode object key names in the XML response.
+
+              If you specify the encoding-type request parameter, Amazon S3 includes this element in the
+              response, and returns encoded key name values in the following response elements:
+
+               ``Delimiter, Prefix, Key,`` and ``StartAfter`` .
 
             - **KeyCount** *(integer) --*
 
@@ -6790,8 +9991,7 @@ class Client(BaseClient):
 
             - **ContinuationToken** *(string) --*
 
-              ContinuationToken indicates Amazon S3 that the list is being continued on this bucket with a
-              token. ContinuationToken is obfuscated and is not a real key
+              If ContinuationToken was sent with the request, it is included in the response.
 
             - **NextContinuationToken** *(string) --*
 
@@ -6801,8 +10001,7 @@ class Client(BaseClient):
 
             - **StartAfter** *(string) --*
 
-              StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after
-              this specified key. StartAfter can be any key in the bucket
+              If StartAfter was sent with the request, it is included in the response.
 
         """
 
@@ -6817,7 +10016,32 @@ class Client(BaseClient):
         RequestPayer: str = None,
     ) -> ClientListPartsResponseTypeDef:
         """
-        Lists the parts that have been uploaded for a specific multipart upload.
+        Lists the parts that have been uploaded for a specific multipart upload. This operation must
+        include the upload ID, which you obtain by sending the initiate multipart upload request (see
+        CreateMultipartUpload ). This request returns a maximum of 1,000 uploaded parts. The default number
+        of parts returned is 1,000 parts. You can restrict the number of parts returned by specifying the
+        ``max-parts`` request parameter. If your multipart upload consists of more than 1,000 parts, the
+        response returns an ``IsTruncated`` field with the value of true, and a ``NextPartNumberMarker``
+        element. In subsequent ``ListParts`` requests you can include the part-number-marker query string
+        parameter and set its value to the ``NextPartNumberMarker`` field value from the previous response.
+
+        For more information on multipart uploads, see `Uploading Objects Using Multipart Upload
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html>`__ .
+
+        For information on permissions required to use the multipart upload API, see `Multipart Upload API
+        and Permissions <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html>`__ .
+
+        The following operations are related to ``ListParts`` :
+
+        *  CreateMultipartUpload
+
+        *  UploadPart
+
+        *  CompleteMultipartUpload
+
+        *  AbortMultipartUpload
+
+        *  ListMultipartUploads
 
         See also: `AWS API Documentation <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/ListParts>`_
 
@@ -6835,8 +10059,12 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          Name of the bucket to which the parts are being uploaded.->
+
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          Object key for which the multipart upload was initiated.
 
         :type MaxParts: integer
         :param MaxParts:
@@ -6906,11 +10134,21 @@ class Client(BaseClient):
 
             - **AbortDate** *(datetime) --*
 
-              Date when multipart upload will become eligible for abort operation by lifecycle.
+              If the bucket has a lifecycle rule configured with an action to abort incomplete multipart
+              uploads and the prefix in the lifecycle rule matches the object name in the request, then the
+              response includes this header indicating when the initiated multipart upload will become
+              eligible for abort operation. For more information, see `Aborting Incomplete Multipart
+              Uploads Using a Bucket Lifecycle Policy
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+              .
+
+              The response will also include the x-amz-abort-rule-id header that will provide the ID of the
+              lifecycle configuration rule that defines this action.
 
             - **AbortRuleId** *(string) --*
 
-              Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
+              This header is returned along with the x-amz-abort-date header. It identifies applicable
+              lifecycle configuration rule that defines the action to abort incomplete multipart uploads.
 
             - **Bucket** *(string) --*
 
@@ -6926,7 +10164,8 @@ class Client(BaseClient):
 
             - **PartNumberMarker** *(integer) --*
 
-              Part number after which listing begins.
+              When a list is truncated, this element specifies the last part in the list, as well as the
+              value to use for the part-number-marker request parameter in a subsequent request.
 
             - **NextPartNumberMarker** *(integer) --*
 
@@ -6939,11 +10178,18 @@ class Client(BaseClient):
 
             - **IsTruncated** *(boolean) --*
 
-              Indicates whether the returned list of parts is truncated.
+              Indicates whether the returned list of parts is truncated. A true value indicates that the
+              list was truncated. A list can be truncated if the number of parts exceeds the limit returned
+              in the MaxParts element.
 
             - **Parts** *(list) --*
 
+              Container for elements related to a particular part. A response can contain zero or more Part
+              elements.
+
               - *(dict) --*
+
+                Container for elements related to a part.
 
                 - **PartNumber** *(integer) --*
 
@@ -6963,7 +10209,9 @@ class Client(BaseClient):
 
             - **Initiator** *(dict) --*
 
-              Identifies who initiated the multipart upload.
+              Container element that identifies who initiated the multipart upload. If the initiator is an
+              AWS account, this element provides the same information as the Owner element. If the
+              initiator is an IAM User, then this element provides the user ARN and display name.
 
               - **ID** *(string) --*
 
@@ -6976,13 +10224,21 @@ class Client(BaseClient):
 
             - **Owner** *(dict) --*
 
+              Container element that identifies the object owner, after the object is created. If multipart
+              upload is initiated by an IAM user, this element provides the parent account ID and display
+              name.
+
               - **DisplayName** *(string) --*
+
+                Container for the display name of the owner
 
               - **ID** *(string) --*
 
+                Container for the ID of the owner
+
             - **StorageClass** *(string) --*
 
-              The class of storage used to store the object.
+              Class of storage (STANDARD or REDUCED_REDUNDANCY) used to store the uploaded object.
 
             - **RequestCharged** *(string) --*
 
@@ -6997,7 +10253,39 @@ class Client(BaseClient):
         AccelerateConfiguration: ClientPutBucketAccelerateConfigurationAccelerateConfigurationTypeDef,
     ) -> None:
         """
-        Sets the accelerate configuration of an existing bucket.
+        Sets the accelerate configuration of an existing bucket. Amazon S3 Transfer Acceleration is a
+        bucket-level feature that enables you to perform faster data transfers to Amazon S3.
+
+        To use this operation, you must have permission to perform the s3:PutAccelerateConfiguration
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        The Transfer Acceleration state of a bucket can be set to one of the following two values:
+
+        * Enabled – Enables accelerated data transfers to the bucket.
+
+        * Suspended – Disables accelerated data transfers to the bucket.
+
+        The  GetBucketAccelerateConfiguration operation returns the transfer acceleration state of a bucket.
+
+        After setting the Transfer Acceleration state of a bucket to Enabled, it might take up to thirty
+        minutes before the data transfer rates to the bucket increase.
+
+        The name of the bucket used for Transfer Acceleration must be DNS-compliant and must not contain
+        periods (".").
+
+        For more information about transfer acceleration, see `Transfer Acceleration
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html>`__ .
+
+        The following operations are related to ``PutBucketAccelerateConfiguration`` :
+
+        *  GetBucketAccelerateConfiguration
+
+        *  CreateBucket
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketAccelerateConfiguration>`_
@@ -7019,7 +10307,7 @@ class Client(BaseClient):
         :type AccelerateConfiguration: dict
         :param AccelerateConfiguration: **[REQUIRED]**
 
-          Specifies the Accelerate Configuration you want to set for the bucket.
+          Container for setting the transfer acceleration state.
 
           - **Status** *(string) --*
 
@@ -7041,7 +10329,83 @@ class Client(BaseClient):
         GrantWriteACP: str = None,
     ) -> None:
         """
-        Sets the permissions on a bucket using access control lists (ACL).
+        Sets the permissions on an existing bucket using access control lists (ACL). For more information,
+        see `Using ACLs <https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html>`__ . To
+        set the ACL of a bucket, you must have WRITE_ACP permission.
+
+        You can use one of the following two ways to set a bucket's permissions:
+
+        * Specify the ACL in the request body
+
+        * Specify permissions using request headers
+
+        .. note::
+
+          You cannot specify access permission using both the body and the request headers.
+
+        Depending on your application needs, you may choose to set the ACL on a bucket using either the
+        request body or the headers. For example, if you have an existing application that updates a bucket
+        ACL using the request body, then you can continue to use that approach.
+
+         **Access Permissions**
+
+        You can set access permissions using one of the following methods:
+
+        * Specify a canned ACL with the ``x-amz-acl`` request header. Amazon S3 supports a set of
+        predefined ACLs, known as canned ACLs. Each canned ACL has a predefined set of grantees and
+        permissions. Specify the canned ACL name as the value of x-amz-acl. If you use this header, you
+        cannot use other access control specific headers in your request. For more information, see `Canned
+        ACL <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL>`__ .
+
+        * Specify access permissions explicitly with the ``x-amz-grant-read`` , ``x-amz-grant-read-acp`` ,
+        ``x-amz-grant-write-acp`` , and ``x-amz-grant-full-control`` headers. When using these headers you
+        specify explicit access permissions and grantees (AWS accounts or a Amazon S3 groups) who will
+        receive the permission. If you use these ACL specific headers, you cannot use x-amz-acl header to
+        set a canned ACL. These parameters map to the set of permissions that Amazon S3 supports in an ACL.
+        For more information, see `Access Control List (ACL) Overview
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html>`__ . You specify each grantee
+        as a type=value pair, where the type is one of the following:
+
+          * emailAddress – if the value specified is the email address of an AWS account
+
+          * id – if the value specified is the canonical user ID of an AWS account
+
+          * uri – if you are granting permissions to a predefined group
+
+        For example, the following x-amz-grant-write header grants create, overwrite, and delete objects
+        permission to LogDelivery group predefined by Amazon S3 and two AWS accounts identified by their
+        email addresses.
+
+         ``x-amz-grant-write: uri="http://acs.amazonaws.com/groups/s3/LogDelivery",
+         emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com"``
+
+        You can use either a canned ACL or specify access permissions explicitly. You cannot do both.
+
+         **Grantee Values**
+
+        You can specify the person (grantee) to whom you're assigning access rights (using request
+        elements) in the following ways:
+
+        * By Email address:  ``<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@email.com<></EmailAddress>lt;/Grantee>``
+         The grantee is resolved to the CanonicalUser and, in a response to a GET Object acl request,
+         appears as the CanonicalUser.
+
+        * By the person's ID:  ``<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName> </Grantee>``
+        DisplayName is optional and ignored in the request
+
+        * By URI:  ``<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:type=
+            "Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>``
+
+         **Related Resources**
+
+        *  CreateBucket
+
+        *  DeleteBucket
+
+        *  GetObjectAcl
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketAcl>`_
@@ -7092,7 +10456,11 @@ class Client(BaseClient):
 
             - *(dict) --*
 
+              Container for grant information.
+
               - **Grantee** *(dict) --*
+
+                The person being granted permissions.
 
                 - **DisplayName** *(string) --*
 
@@ -7124,10 +10492,16 @@ class Client(BaseClient):
 
             - **DisplayName** *(string) --*
 
+              Container for the display name of the owner
+
             - **ID** *(string) --*
+
+              Container for the ID of the owner
 
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The bucket to which to apply the ACL.
 
         :type GrantFullControl: string
         :param GrantFullControl:
@@ -7165,7 +10539,69 @@ class Client(BaseClient):
         AnalyticsConfiguration: ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationTypeDef,
     ) -> None:
         """
-        Sets an analytics configuration for the bucket (specified by the analytics configuration ID).
+        Sets an analytics configuration for the bucket (specified by the analytics configuration ID). You
+        can have up to 1,000 analytics configurations per bucket.
+
+        You can choose to have storage class analysis export analysis reports to a comma-separated values
+        (CSV) flat file, see the DataExport request element. Reports are updated daily and are based on the
+        object filters you configure. When selecting data export you specify a destination bucket and
+        optional destination prefix where the file is written. You can export the data to a destination
+        bucket in a different account. However, the destination bucket must be in the same region as the
+        bucket that you are making the PUT analytics configuration to. For more information, see `Amazon S3
+        Analytics – Storage Class Analysis
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html>`__ .
+
+        .. warning::
+
+          You must create a bucket policy on the destination bucket where the exported file is written to
+          grant permissions to Amazon S3 to write objects to the bucket. For an example policy, see
+          `Granting Permissions for Amazon S3 Inventory and Storage Class Analysis
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-9>`__
+          .
+
+        To use this operation, you must have permissions to perform the ``s3:PutAnalyticsConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+         **Special Errors**
+
+        *
+
+          * *HTTP Error: HTTP 400 Bad Request*
+
+          * *Code: InvalidArgument*
+
+          * *Cause: Invalid argument.*
+
+        *
+
+          * *HTTP Error: HTTP 400 Bad Request*
+
+          * *Code: TooManyConfigurations*
+
+          * *Cause: You are attempting to create a new configuration but have already reached the
+          1,000-configuration limit.*
+
+        *
+
+          * *HTTP Error: HTTP 403 Forbidden*
+
+          * *Code: AccessDenied*
+
+          * *Cause: You are not the owner of the specified bucket, or you do not have the
+          s3:PutAnalyticsConfiguration bucket permission to set the configuration on the bucket.*
+
+         **Related Resources**
+
+        *
+
+        *
+
+        *
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketAnalyticsConfiguration>`_
@@ -7266,6 +10702,8 @@ class Client(BaseClient):
 
                 - *(dict) --*
 
+                  A container of a key value name pair.
+
                   - **Key** *(string) --* **[REQUIRED]**
 
                     Name of the tag.
@@ -7323,7 +10761,46 @@ class Client(BaseClient):
         CORSConfiguration: ClientPutBucketCorsCORSConfigurationTypeDef,
     ) -> None:
         """
-        Sets the CORS configuration for a bucket.
+        Sets the ``cors`` configuration for your bucket. If the configuration exists, Amazon S3 replaces it.
+
+        To use this operation, you must be allowed to perform the ``s3:PutBucketCORS`` action. By default,
+        the bucket owner has this permission and can grant it to others.
+
+        You set this configuration on a bucket so that the bucket can service cross-origin requests. For
+        example, you might want to enable a request whose origin is ``http://www.example.com`` to access
+        your Amazon S3 bucket at ``my.example.bucket.com`` by using the browser's ``XMLHttpRequest``
+        capability.
+
+        To enable cross-origin resource sharing (CORS) on a bucket, you add the ``cors`` subresource to the
+        bucket. The ``cors`` subresource is an XML document in which you configure rules that identify
+        origins and the HTTP methods that can be executed on your bucket. The document is limited to 64 KB
+        in size.
+
+        When Amazon S3 receives a cross-origin request (or a pre-flight OPTIONS request) against a bucket,
+        it evaluates the ``cors`` configuration on the bucket and uses the first ``CORSRule`` rule that
+        matches the incoming browser request to enable a cross-origin request. For a rule to match, the
+        following conditions must be met:
+
+        * The request's ``Origin`` header must match ``AllowedOrigin`` elements.
+
+        * The request method (for example, GET, PUT, HEAD and so on) or the
+        ``Access-Control-Request-Method`` header in case of a pre-flight ``OPTIONS`` request must be one of
+        the ``AllowedMethod`` elements.
+
+        * Every header specified in the ``Access-Control-Request-Headers`` request header of a pre-flight
+        request must match an ``AllowedHeader`` element.
+
+        For more information about CORS, go to `Enabling Cross-Origin Resource Sharing
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html>`__ in the *Amazon Simple Storage
+        Service Developer Guide* .
+
+         **Related Resources**
+
+        *  GetBucketCors
+
+        *  DeleteBucketCors
+
+        *  RESTOPTIONSobject
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketCors>`_
@@ -7357,12 +10834,20 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          Specifies the bucket impacted by the ``cors`` configuration.
+
         :type CORSConfiguration: dict
         :param CORSConfiguration: **[REQUIRED]**
 
+          Describes the cross-origin access configuration for objects in an Amazon S3 bucket. For more
+          information, see `Enabling Cross-Origin Resource Sharing
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev//cors.html>`__ in the Amazon Simple Storage
+          Service Developer Guide.
+
           - **CORSRules** *(list) --* **[REQUIRED]**
 
-            A set of allowed origins and methods.
+            A set of origins and methods (cross-origin access that you want to allow). You can add up to
+            100 rules to the configuration.
 
             - *(dict) --*
 
@@ -7412,7 +10897,35 @@ class Client(BaseClient):
         ContentMD5: str = None,
     ) -> None:
         """
-        Creates a new server-side encryption configuration (or replaces an existing one, if present).
+        This implementation of the ``PUT`` operation uses the ``encryption`` subresource to set the default
+        encryption state of an existing bucket.
+
+        This implementation of the ``PUT`` operation sets default encryption for a buckets using
+        server-side encryption with Amazon S3-managed keys SSE-S3 or AWS KMS customer master keys (CMKs)
+        (SSE-KMS) bucket. For information about the Amazon S3 default encryption feature, see As a security
+        precaution, the root user of the AWS account that owns a bucket can always use this operation, even
+        if the policy explicitly denies the root user the ability to perform this action. in the *Amazon
+        Simple Storage Service Developer Guide* .
+
+        .. warning::
+
+          This operation requires AWS Signature Version 4. For more information, see `Authenticating
+          Requests (AWS Signature Version 4) <sig-v4-authenticating-requests.html>`__ .
+
+        To use this operation, you must have permissions to perform the ``s3:PutEncryptionConfiguration``
+        action. The bucket owner has this permission by default. The bucket owner can grant this permission
+        to others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the Amazon Simple
+        Storage Service Developer Guide.
+
+         **Related Resources**
+
+        *  GetBucketEncryption
+
+        *  DeleteBucketEncryption
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketEncryption>`_
@@ -7438,8 +10951,8 @@ class Client(BaseClient):
         :param Bucket: **[REQUIRED]**
 
           Specifies default encryption for a bucket using server-side encryption with Amazon S3-managed
-          keys (SSE-S3) or AWS KMS-managed keys (SSE-KMS). For information about the Amazon S3 default
-          encryption feature, see `Amazon S3 Default Bucket Encryption
+          keys (SSE-S3) or customer master keys stored in AWS KMS (SSE-KMS). For information about the
+          Amazon S3 default encryption feature, see `Amazon S3 Default Bucket Encryption
           <https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html>`__ in the *Amazon Simple
           Storage Service Developer Guide* .
 
@@ -7451,6 +10964,8 @@ class Client(BaseClient):
 
         :type ServerSideEncryptionConfiguration: dict
         :param ServerSideEncryptionConfiguration: **[REQUIRED]**
+
+          Specifies the default server-side-encryption configuration.
 
           - **Rules** *(list) --* **[REQUIRED]**
 
@@ -7486,7 +11001,66 @@ class Client(BaseClient):
         InventoryConfiguration: ClientPutBucketInventoryConfigurationInventoryConfigurationTypeDef,
     ) -> None:
         """
-        Adds an inventory configuration (identified by the inventory ID) from the bucket.
+        This implementation of the ``PUT`` operation adds an inventory configuration (identified by the
+        inventory ID) to the bucket. You can have up to 1,000 inventory configurations per bucket.
+
+        Amazon S3 inventory generates inventories of the objects in the bucket on a daily or weekly basis,
+        and the results are published to a flat file. The bucket that is inventoried is called the *source*
+        bucket, and the bucket where the inventory flat file is stored is called the *destination* bucket.
+        The *destination* bucket must be in the same AWS Region as the *source* bucket.
+
+        When you configure an inventory for a *source* bucket, you specify the *destination* bucket where
+        you want the inventory to be stored, and whether to generate the inventory daily or weekly. You can
+        also configure what object metadata to include and whether to inventory all object versions or only
+        current versions. For more information, see `Amazon S3 Inventory
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev//storage-inventory.html>`__ in the Amazon Simple
+        Storage Service Developer Guide.
+
+        .. warning::
+
+          You must create a bucket policy on the *destination* bucket to grant permissions to Amazon S3 to
+          write objects to the bucket in the defined location. For an example policy, see `Granting
+          Permissions for Amazon S3 Inventory and Storage Class Analysis.
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-9>`__
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-9>`__
+
+        To use this operation, you must have permissions to perform the ``s3:PutInventoryConfiguration``
+        action. The bucket owner has this permission by default and can grant this permission to others.
+        For more information about permissions, see `Permissions Related to Bucket Subresource Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev//using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev//s3-access-control.html>`__ in the Amazon Simple
+        Storage Service Developer Guide.
+
+         **Special Errors**
+
+        * **HTTP 400 Bad Request Error**
+
+          * *Code:* InvalidArgument
+
+          * *Cause:* Invalid Argument
+
+        * **HTTP 400 Bad Request Error**
+
+          * *Code:* TooManyConfigurations
+
+          * *Cause:* You are attempting to create a new configuration but have already reached the
+          1,000-configuration limit.
+
+        * **HTTP 403 Forbidden Error**
+
+          * *Code:* AccessDenied
+
+          * *Cause:* You are not the owner of the specified bucket, or you do not have the
+          ``s3:PutInventoryConfiguration`` bucket permission to set the configuration on the bucket
+
+         **Related Resources**
+
+        *  GetBucketInventoryConfiguration
+
+        *  DeleteBucketInventoryConfiguration
+
+        *  ListBucketInventoryConfigurations
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketInventoryConfiguration>`_
@@ -7583,8 +11157,8 @@ class Client(BaseClient):
 
                   - **KeyId** *(string) --* **[REQUIRED]**
 
-                    Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use
-                    for encrypting Inventory reports.
+                    Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK) to
+                    use for encrypting Inventory reports.
 
           - **IsEnabled** *(boolean) --* **[REQUIRED]**
 
@@ -7635,7 +11209,60 @@ class Client(BaseClient):
         LifecycleConfiguration: ClientPutBucketLifecycleLifecycleConfigurationTypeDef = None,
     ) -> None:
         """
-        No longer used, see the PutBucketLifecycleConfiguration operation.
+        .. warning::
+
+          For an updated version of this API, see  PutBucketLifecycleConfiguration . This version has been
+          deprecated. Existing lifecycle configurations will work. For new lifecycle configurations, use
+          the updated API.
+
+        Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle
+        configuration. For information about lifecycle configuration, see `Object Lifecycle Management
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev//object-lifecycle-mgmt.html>`__ in the *Amazon
+        Simple Storage Service Developer Guide* .
+
+        By default, all Amazon S3 resources, including buckets, objects, and related subresources (for
+        example, lifecycle configuration and website configuration) are private. Only the resource owner,
+        the AWS account that created the resource, can access it. The resource owner can optionally grant
+        access permissions to others by writing an access policy. For this operation, users must get the
+        ``s3:PutLifecycleConfiguration`` permission.
+
+        You can also explicitly deny permissions. Explicit denial also supersedes any other permissions. If
+        you want to prevent users or accounts from removing or deleting objects from your bucket, you must
+        deny them permissions for the following actions:
+
+        * ``s3:DeleteObject``
+
+        * ``s3:DeleteObjectVersion``
+
+        * ``s3:PutLifecycleConfiguration``
+
+        For more information about permissions, see `Managing Access Permissions to your Amazon S3
+        Resources <https://docs.aws.amazon.com/AmazonS3/latest/dev//s3-access-control.html>`__ in the
+        *Amazon Simple Storage Service Developer Guide* .
+
+        For more examples of transitioning objects to storage classes such as STANDARD_IA or ONEZONE_IA,
+        see `Examples of Lifecycle Configuration
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev//intro-lifecycle-rules.html#lifecycle-configuration-examples>`__
+        .
+
+         **Related Resources**
+
+        *  GetBucketLifecycle (Deprecated)
+
+        *  GetBucketLifecycleConfiguration
+
+        *
+
+        * By default, a resource owner—in this case, a bucket owner, which is the AWS account that created
+        the bucket—can perform any of the operations. A resource owner can also grant others permission to
+        perform the operation. For more information, see the following topics in the Amazon Simple Storage
+        Service Developer Guide:
+
+          * `Specifying Permissions in a Policy
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev//using-with-s3-actions.html>`__
+
+          * `Managing Access Permissions to your Amazon S3 Resources
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev//s3-access-control.html>`__
 
         .. danger::
 
@@ -7690,6 +11317,8 @@ class Client(BaseClient):
 
           - **Rules** *(list) --* **[REQUIRED]**
 
+            Specifies lifecycle configuration rules for an Amazon S3 bucket.
+
             - *(dict) --*
 
               Specifies lifecycle rules for an Amazon S3 bucket. For more information, see `PUT Bucket
@@ -7697,6 +11326,8 @@ class Client(BaseClient):
               the *Amazon Simple Storage Service API Reference* .
 
               - **Expiration** *(dict) --*
+
+                Specifies the expiration for the lifecycle of the object.
 
                 - **Date** *(datetime) --*
 
@@ -7729,6 +11360,8 @@ class Client(BaseClient):
 
               - **Transition** *(dict) --*
 
+                Specifies when an object transitions to a specified storage class.
+
                 - **Date** *(datetime) --*
 
                   Indicates when objects are transitioned to the specified storage class. The date value
@@ -7745,6 +11378,13 @@ class Client(BaseClient):
 
               - **NoncurrentVersionTransition** *(dict) --*
 
+                Container for the transition rule that describes when noncurrent objects transition to the
+                ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+                ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+                suspended), you can set this action to request that Amazon S3 transition noncurrent object
+                versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` ,
+                or ``DEEP_ARCHIVE`` storage class at a specific period in the object's lifetime.
+
                 - **NoncurrentDays** *(integer) --*
 
                   Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -7759,6 +11399,11 @@ class Client(BaseClient):
 
               - **NoncurrentVersionExpiration** *(dict) --*
 
+                Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+                deletes the noncurrent object versions. You set this lifecycle configuration action on a
+                bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+                noncurrent object versions at a specific period in the object's lifetime.
+
                 - **NoncurrentDays** *(integer) --*
 
                   Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -7768,6 +11413,12 @@ class Client(BaseClient):
                   in the Amazon Simple Storage Service Developer Guide.
 
               - **AbortIncompleteMultipartUpload** *(dict) --*
+
+                Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+                will wait before permanently removing all parts of the upload. For more information, see
+                `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+                <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+                in the *Amazon Simple Storage Service Developer Guide* .
 
                 - **DaysAfterInitiation** *(integer) --*
 
@@ -7783,7 +11434,69 @@ class Client(BaseClient):
         LifecycleConfiguration: ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef = None,
     ) -> None:
         """
-        Sets lifecycle configuration for your bucket. If a lifecycle configuration exists, it replaces it.
+        Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle
+        configuration. For information about lifecycle configuration, see `Managing Access Permissions to
+        Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        .. note::
+
+          Bucket lifecycle configuration now supports specifying a lifecycle rule using an object key name
+          prefix, one or more object tags, or a combination of both. Accordingly, this section describes
+          the latest API. The previous version of the API supported filtering based only on an object key
+          name prefix, which is supported for backward compatibility. For the related API description, see
+          PutBucketLifecycle .
+
+         **Rules**
+
+        You specify the lifecycle configuration in your request body. The lifecycle configuration is
+        specified as XML consisting of one or more rules. Each rule consists of the following:
+
+        * Filter identifying a subset of objects to which the rule applies. The filter can be based on a
+        key name prefix, object tags, or a combination of both.
+
+        * Status whether the rule is in effect.
+
+        * One or more lifecycle transition and expiration actions that you want Amazon S3 to perform on the
+        objects identified by the filter. If the state of your bucket is versioning-enabled or
+        versioning-suspended, you can have many versions of the same object (one current version and zero
+        or more noncurrent versions). Amazon S3 provides predefined actions that you can specify for
+        current and noncurrent object versions.
+
+        For more information, see `Object Lifecycle Management
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html>`__ and `Lifecycle
+        Configuration Elements
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html>`__ .
+
+         **Permissions**
+
+        By default, all Amazon S3 resources are private, including buckets, objects, and related
+        subresources (for example, lifecycle configuration and website configuration). Only the resource
+        owner (that is, the AWS account that created it) can access the resource. The resource owner can
+        optionally grant access permissions to others by writing an access policy. For this operation, a
+        user must get the s3:PutLifecycleConfiguration permission.
+
+        You can also explicitly deny permissions. Explicit deny also supersedes any other permissions. If
+        you want to block users or accounts from removing or deleting objects from your bucket, you must
+        deny them permissions for the following actions:
+
+        * s3:DeleteObject
+
+        * s3:DeleteObjectVersion
+
+        * s3:PutLifecycleConfiguration
+
+        For more information about permissions, see `Managing Access Permissions to Your Amazon S3
+        Resources <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        The following are related to ``PutBucketLifecycleConfiguration`` :
+
+        * `Examples of Lifecycle Configuration
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-configuration-examples.html>`__
+
+        *  GetBucketLifecycleConfiguration
+
+        *  DeleteBucketLifecycle
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketLifecycleConfiguration>`_
@@ -7848,8 +11561,12 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The name of the bucket for which to set the configuration.
+
         :type LifecycleConfiguration: dict
         :param LifecycleConfiguration:
+
+          Container for lifecycle rules. You can add as many as 1,000 rules.
 
           - **Rules** *(list) --* **[REQUIRED]**
 
@@ -7857,7 +11574,12 @@ class Client(BaseClient):
 
             - *(dict) --*
 
+              A lifecycle rule for individual objects in an Amazon S3 bucket.
+
               - **Expiration** *(dict) --*
+
+                Specifies the expiration for the lifecycle of the object in the form of date, days and,
+                whether the object has a delete marker.
 
                 - **Date** *(datetime) --*
 
@@ -7886,6 +11608,9 @@ class Client(BaseClient):
 
               - **Filter** *(dict) --*
 
+                The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must have
+                exactly one of Prefix, Tag, or And specified.
+
                 - **Prefix** *(string) --*
 
                   Prefix identifying one or more objects to which the rule applies.
@@ -7904,13 +11629,21 @@ class Client(BaseClient):
 
                 - **And** *(dict) --*
 
+                  This is used in a Lifecycle Rule Filter to apply a logical AND to two or more predicates.
+                  The Lifecycle Rule will apply to any object matching all of the predicates configured
+                  inside the And operator.
+
                   - **Prefix** *(string) --*
+
+                    Prefix identifying one or more objects to which the rule applies.
 
                   - **Tags** *(list) --*
 
                     All of these tags must exist in the object's tag set in order for the rule to apply.
 
                     - *(dict) --*
+
+                      A container of a key value name pair.
 
                       - **Key** *(string) --* **[REQUIRED]**
 
@@ -7926,6 +11659,8 @@ class Client(BaseClient):
                 being applied.
 
               - **Transitions** *(list) --*
+
+                Specifies when an Amazon S3 object transitions to a specified storage class.
 
                 - *(dict) --*
 
@@ -7946,6 +11681,12 @@ class Client(BaseClient):
                     The storage class to which you want the object to transition.
 
               - **NoncurrentVersionTransitions** *(list) --*
+
+                Specifies the transition rule for the lifecycle rule that describes when noncurrent objects
+                transition to the a specific storage class. If your bucket is versioning-enabled (or
+                versioning is suspended), you can set this action to request that Amazon S3 transition
+                noncurrent object versions to the a specifc storage class at a set period in the object's
+                lifetime.
 
                 - *(dict) --*
 
@@ -7971,6 +11712,11 @@ class Client(BaseClient):
 
               - **NoncurrentVersionExpiration** *(dict) --*
 
+                Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+                deletes the noncurrent object versions. You set this lifecycle configuration action on a
+                bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+                noncurrent object versions at a specific period in the object's lifetime.
+
                 - **NoncurrentDays** *(integer) --*
 
                   Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -7980,6 +11726,12 @@ class Client(BaseClient):
                   in the Amazon Simple Storage Service Developer Guide.
 
               - **AbortIncompleteMultipartUpload** *(dict) --*
+
+                Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+                will wait before permanently removing all parts of the upload. For more information, see
+                `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+                <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+                in the *Amazon Simple Storage Service Developer Guide* .
 
                 - **DaysAfterInitiation** *(integer) --*
 
@@ -7996,7 +11748,51 @@ class Client(BaseClient):
     ) -> None:
         """
         Set the logging parameters for a bucket and to specify permissions for who can view and modify the
-        logging parameters. To set the logging status of a bucket, you must be the bucket owner.
+        logging parameters. All logs are saved to buckets in the same AWS Region as the source bucket. To
+        set the logging status of a bucket, you must be the bucket owner.
+
+        The bucket owner is automatically granted FULL_CONTROL to all logs. You use the Grantee request
+        element to grant access to other people. The Permissions request element specifies the kind of
+        access the grantee has to the logs.
+
+         **Grantee Values**
+
+        You can specify the person (grantee) to whom you're assigning access rights (using request
+        elements) in the following ways:
+
+        * By the person's ID:  ``<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName> </Grantee>``
+        DisplayName is optional and ignored in the request.
+
+        * By Email address:  ``<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@email.com<></EmailAddress></Grantee>``
+        The grantee is resolved to the CanonicalUser and, in a response to a GET Object acl request,
+        appears as the CanonicalUser.
+
+        * By URI:  ``<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:type=
+            "Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>``
+
+        To enable logging, you use LoggingEnabled and its children request elements. To disable logging,
+        you use an empty BucketLoggingStatus request element:
+
+         ``<BucketLoggingStatus xmlns="http://doc.s3.amazonaws.com/2006-03-01" />``
+
+        For more information about server access logging, see `Server Access Logging
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html>`__ .
+
+        For more information about creating a bucket, see  CreateBucket . For more information about
+        returning the logging status of a bucket, see  GetBucketLogging .
+
+        The following operations are related to ``PutBucketLogging`` :
+
+        *  PutObject
+
+        *  DeleteBucket
+
+        *  CreateBucket
+
+        *  GetBucketLogging
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketLogging>`_
@@ -8029,10 +11825,19 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The name of the bucket for which to set the logging parameters.
+
         :type BucketLoggingStatus: dict
         :param BucketLoggingStatus: **[REQUIRED]**
 
+          Container for logging status information.
+
           - **LoggingEnabled** *(dict) --*
+
+            Describes where logs are stored and the prefix that Amazon S3 assigns to all log object keys
+            for a bucket. For more information, see `PUT Bucket logging
+            <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlogging.html>`__ in the *Amazon
+            Simple Storage Service API Reference* .
 
             - **TargetBucket** *(string) --* **[REQUIRED]**
 
@@ -8044,9 +11849,15 @@ class Client(BaseClient):
 
             - **TargetGrants** *(list) --*
 
+              Container for granting information.
+
               - *(dict) --*
 
+                Container for granting information.
+
                 - **Grantee** *(dict) --*
+
+                  Container for the person being granted permissions.
 
                   - **DisplayName** *(string) --*
 
@@ -8088,7 +11899,38 @@ class Client(BaseClient):
         MetricsConfiguration: ClientPutBucketMetricsConfigurationMetricsConfigurationTypeDef,
     ) -> None:
         """
-        Sets a metrics configuration (specified by the metrics configuration ID) for the bucket.
+        Sets a metrics configuration (specified by the metrics configuration ID) for the bucket. You can
+        have up to 1,000 metrics configurations per bucket. If you're updating an existing metrics
+        configuration, note that this is a full replacement of the existing metrics configuration. If you
+        don't include the elements you want to keep, they are erased.
+
+        To use this operation, you must have permissions to perform the s3:PutMetricsConfiguration action.
+        The bucket owner has this permission by default. The bucket owner can grant this permission to
+        others. For more information about permissions, see `Permissions Related to Bucket Subresource
+        Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+        For information about CloudWatch request metrics for Amazon S3, see `Monitoring Metrics with Amazon
+        CloudWatch <https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html>`__ .
+
+        The following operations are related to ``PutBucketMetricsConfiguration`` :
+
+        *  DeleteBucketMetricsConfiguration
+
+        *  PutBucketMetricsConfiguration
+
+        *  ListBucketMetricsConfigurations
+
+         ``GetBucketLifecycle`` has the following special error:
+
+        * Error code: ``TooManyConfigurations``
+
+          * Description:You are attempting to create a new configuration but have already reached the
+          1,000-configuration limit.
+
+          * HTTP Status Code: HTTP 400 Bad Request
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketMetricsConfiguration>`_
@@ -8176,6 +12018,8 @@ class Client(BaseClient):
 
                 - *(dict) --*
 
+                  A container of a key value name pair.
+
                   - **Key** *(string) --* **[REQUIRED]**
 
                     Name of the tag.
@@ -8194,7 +12038,7 @@ class Client(BaseClient):
         NotificationConfiguration: ClientPutBucketNotificationNotificationConfigurationTypeDef,
     ) -> None:
         """
-        No longer used, see the PutBucketNotificationConfiguration operation.
+        No longer used, see the  PutBucketNotificationConfiguration operation.
 
         .. danger::
 
@@ -8267,10 +12111,18 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The name of the bucket.
+
         :type NotificationConfiguration: dict
         :param NotificationConfiguration: **[REQUIRED]**
 
+          The container for the configuration.
+
           - **TopicConfiguration** *(dict) --*
+
+            This data type is deperecated. A container for specifying the configuration for publication of
+            messages to an Amazon Simple Notification Service (Amazon SNS) topic when Amazon S3 detects
+            specified events.
 
             - **Id** *(string) --*
 
@@ -8278,6 +12130,8 @@ class Client(BaseClient):
               don't provide one, Amazon S3 will assign an ID.
 
             - **Events** *(list) --*
+
+              A collection of events related to objects
 
               - *(string) --*
 
@@ -8294,6 +12148,10 @@ class Client(BaseClient):
 
           - **QueueConfiguration** *(dict) --*
 
+            This data type is deprecated. This data type specifies the configuration for publishing
+            messages to an Amazon Simple Queue Service (Amazon SQS) queue when Amazon S3 detects specified
+            events.
+
             - **Id** *(string) --*
 
               An optional unique identifier for configurations in a notification configuration. If you
@@ -8304,6 +12162,8 @@ class Client(BaseClient):
               The bucket event for which to send notifications.
 
             - **Events** *(list) --*
+
+              A collection of bucket events for which to send notiications
 
               - *(string) --*
 
@@ -8311,7 +12171,12 @@ class Client(BaseClient):
 
             - **Queue** *(string) --*
 
+              The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon S3 publishes a message
+              when it detects events of the specified type.
+
           - **CloudFunctionConfiguration** *(dict) --*
+
+            Container for specifying the AWS Lambda notification configuration.
 
             - **Id** *(string) --*
 
@@ -8324,13 +12189,20 @@ class Client(BaseClient):
 
             - **Events** *(list) --*
 
+              Bucket events for which to send notifications.
+
               - *(string) --*
 
                 The bucket event for which to send notifications.
 
             - **CloudFunction** *(string) --*
 
+              Lambda cloud function ARN that Amazon S3 can invoke when it detects events of the specified
+              type.
+
             - **InvocationRole** *(string) --*
+
+              The role supporting the invocation of the lambda function
 
         :returns: None
         """
@@ -8342,7 +12214,54 @@ class Client(BaseClient):
         NotificationConfiguration: ClientPutBucketNotificationConfigurationNotificationConfigurationTypeDef,
     ) -> None:
         """
-        Enables notifications of specified events for a bucket.
+        Enables notifications of specified events for a bucket. For more information about event
+        notifications, see `Configuring Event Notifications
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ .
+
+        Using this API, you can replace an existing notification configuration. The configuration is an XML
+        file that defines the event types that you want Amazon S3 to publish and the destination where you
+        want Amazon S3 to publish an event notification when it detects an event of the specified type.
+
+        By default, your bucket has no event notifications configured. That is, the notification
+        configuration will be an empty ``NotificationConfiguration`` .
+
+         ``<NotificationConfiguration>``
+
+         ``</NotificationConfiguration>``
+
+        This operation replaces the existing notification configuration with the configuration you include
+        in the request body.
+
+        After Amazon S3 receives this request, it first verifies that any Amazon Simple Notification
+        Service (Amazon SNS) or Amazon Simple Queue Service (Amazon SQS) destination exists, and that the
+        bucket owner has permission to publish to it by sending a test notification. In the case of AWS
+        Lambda destinations, Amazon S3 verifies that the Lambda function permissions grant Amazon S3
+        permission to invoke the function from the Amazon S3 bucket. For more information, see `Configuring
+        Notifications for Amazon S3 Events
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ .
+
+        You can disable notifications by adding the empty NotificationConfiguration element.
+
+        By default, only the bucket owner can configure notifications on a bucket. However, bucket owners
+        can use a bucket policy to grant permission to other users to set this configuration with
+        ``s3:PutBucketNotification`` permission.
+
+        .. note::
+
+          The PUT notification is an atomic operation. For example, suppose your notification configuration
+          includes SNS topic, SQS queue, and Lambda function configurations. When you send a PUT request
+          with this configuration, Amazon S3 sends test messages to your SNS topic. If the message fails,
+          the entire PUT operation will fail, and Amazon S3 will not add the configuration to your bucket.
+
+         **Responses**
+
+        If the configuration in the request body includes only one ``TopicConfiguration`` specifying only
+        the *s3:ReducedRedundancyLostObject* event type, the response will also include the
+        *x-amz-sns-test-message-id* header containing the message ID of the test notification sent to topic.
+
+        The following operations is related to ``PutBucketNotificationConfiguration`` :
+
+        *  GetBucketNotificationConfiguration
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketNotificationConfiguration>`_
@@ -8427,8 +12346,13 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The name of the bucket.
+
         :type NotificationConfiguration: dict
         :param NotificationConfiguration: **[REQUIRED]**
+
+          A container for specifying the notification configuration of the bucket. If this element is
+          empty, notifications are turned off for the bucket.
 
           - **TopicConfigurations** *(list) --*
 
@@ -8462,9 +12386,19 @@ class Client(BaseClient):
 
               - **Filter** *(dict) --*
 
+                Specifies object key name filtering rules. For information about key name filtering, see
+                `Configuring Event Notifications
+                <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+                Simple Storage Service Developer Guide* .
+
                 - **Key** *(dict) --*
 
+                  A container for object key name prefix and suffix filtering rules.
+
                   - **FilterRules** *(list) --*
+
+                    A list of containers for the key value pair that defines the criteria for the filter
+                    rule.
 
                     - *(dict) --*
 
@@ -8506,15 +12440,27 @@ class Client(BaseClient):
 
               - **Events** *(list) --* **[REQUIRED]**
 
+                A collection of bucket events for which to send notiications
+
                 - *(string) --*
 
                   The bucket event for which to send notifications.
 
               - **Filter** *(dict) --*
 
+                Specifies object key name filtering rules. For information about key name filtering, see
+                `Configuring Event Notifications
+                <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+                Simple Storage Service Developer Guide* .
+
                 - **Key** *(dict) --*
 
+                  A container for object key name prefix and suffix filtering rules.
+
                   - **FilterRules** *(list) --*
+
+                    A list of containers for the key value pair that defines the criteria for the filter
+                    rule.
 
                     - *(dict) --*
 
@@ -8565,9 +12511,19 @@ class Client(BaseClient):
 
               - **Filter** *(dict) --*
 
+                Specifies object key name filtering rules. For information about key name filtering, see
+                `Configuring Event Notifications
+                <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+                Simple Storage Service Developer Guide* .
+
                 - **Key** *(dict) --*
 
+                  A container for object key name prefix and suffix filtering rules.
+
                   - **FilterRules** *(list) --*
+
+                    A list of containers for the key value pair that defines the criteria for the filter
+                    rule.
 
                     - *(dict) --*
 
@@ -8595,7 +12551,28 @@ class Client(BaseClient):
         self, Bucket: str, Policy: str, ConfirmRemoveSelfBucketAccess: bool = None
     ) -> None:
         """
-        Applies an Amazon S3 bucket policy to an Amazon S3 bucket.
+        Applies an Amazon S3 bucket policy to an Amazon S3 bucket. If you are using an identity other than
+        the root user of the AWS account that owns the bucket, the calling identity must have the
+        ``PutBucketPolicy`` permissions on the specified bucket and belong to the bucket owner's account in
+        order to use this operation.
+
+        If you don't have ``PutBucketPolic`` y permissions, Amazon S3 returns a ``403 Access Denied``
+        error. If you have the correct permissions, but you're not using an identity that belongs to the
+        bucket owner's account, Amazon S3 returns a ``405 Method Not Allowed`` error.
+
+        .. warning::
+
+          As a security precaution, the root user of the AWS account that owns a bucket can always use this
+          operation, even if the policy explicitly denies the root user the ability to perform this action.
+
+        For more information about bucket policies, see `Using Bucket Policies and User Policies
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html>`__ .
+
+        The following operations are related to ``PutBucketPolicy`` :
+
+        *  CreateBucket
+
+        *  DeleteBucket
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketPolicy>`_
@@ -8610,6 +12587,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the bucket.
 
         :type ConfirmRemoveSelfBucketAccess: boolean
         :param ConfirmRemoveSelfBucketAccess:
@@ -8634,8 +12613,75 @@ class Client(BaseClient):
     ) -> None:
         """
         Creates a replication configuration or replaces an existing one. For more information, see
-        `Cross-Region Replication (CRR) <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html>`__ in
-        the *Amazon S3 Developer Guide* .
+        `Replication <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html>`__ in the *Amazon
+        S3 Developer Guide* .
+
+        .. note::
+
+          To perform this operation, the user or role performing the operation must have the
+          `iam\\:PassRole <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html>`__
+          permission.
+
+        Specify the replication configuration in the request body. In the replication configuration, you
+        provide the name of the destination bucket where you want Amazon S3 to replicate objects, the IAM
+        role that Amazon S3 can assume to replicate objects on your behalf, and other relevant information.
+
+        A replication configuration must include at least one rule, and can contain a maximum of 1,000.
+        Each rule identifies a subset of objects to replicate by filtering the objects in the source
+        bucket. To choose additional subsets of objects to replicate, add a rule for each subset. All rules
+        must specify the same destination bucket.
+
+        To specify a subset of the objects in the source bucket to apply a replication rule to, add the
+        Filter element as a child of the Rule element. You can filter objects based on an object key
+        prefix, one or more object tags, or both. When you add the Filter element in the configuration, you
+        must also add the following elements: ``DeleteMarkerReplication`` , ``Status`` , and ``Priority`` .
+
+        For information about enabling versioning on a bucket, see `Using Versioning
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html>`__ .
+
+        By default, a resource owner, in this case the AWS account that created the bucket, can perform
+        this operation. The resource owner can also grant others permissions to perform the operation. For
+        more information about permissions, see `Specifying Permissions in a Policy
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html>`__ and `Managing
+        Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+         **Handling Replication of Encrypted Objects**
+
+        By default, Amazon S3 doesn't replicate objects that are stored at rest using server-side
+        encryption with CMKs stored in AWS KMS. To replicate AWS KMS-encrypted objects, add the following:
+        ``SourceSelectionCriteria`` , ``SseKmsEncryptedObjects`` , ``Status`` , ``EncryptionConfiguration``
+        , and ``ReplicaKmsKeyID`` . For information about replication configuration, see `Replicating
+        Objects Created with SSE Using CMKs stored in AWS KMS
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-config-for-kms-objects.html>`__ .
+
+         ``PutBucketReplication`` has the following special errors:
+
+        * Error code: ``InvalidRequest``
+
+          * Description: If the <Owner> in <AccessControlTranslation> has a value, the <Account> element
+          must be specified.
+
+          * HTTP 400
+
+        * Error code: ``InvalidArgument``
+
+          * Description: The <Account> element is empty. It must contain a valid account ID.
+
+          * HTTP 400
+
+        * Error code: ``InvalidArgument``
+
+          * Description: The AWS account specified in the <Account> element must match the destination
+          bucket owner.
+
+          * HTTP 400
+
+        The following operations are related to ``PutBucketReplication`` :
+
+        *  GetBucketReplication
+
+        *  DeleteBucketReplication
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketReplication>`_
@@ -8674,6 +12720,9 @@ class Client(BaseClient):
                                   'Status': 'Enabled'|'Disabled'
                               }
                           },
+                          'ExistingObjectReplication': {
+                              'Status': 'Enabled'|'Disabled'
+                          },
                           'Destination': {
                               'Bucket': 'string',
                               'Account': 'string',
@@ -8698,15 +12747,20 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The name of the bucket
+
         :type ReplicationConfiguration: dict
         :param ReplicationConfiguration: **[REQUIRED]**
+
+          A container for replication rules. You can add up to 1,000 rules. The maximum size of a
+          replication configuration is 2 MB.
 
           - **Role** *(string) --* **[REQUIRED]**
 
             The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that Amazon
-            S3 assumes when replicating objects. For more information, see `How to Set Up Cross-Region
-            Replication <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-how-setup.html>`__ in the
-            *Amazon Simple Storage Service Developer Guide* .
+            S3 assumes when replicating objects. For more information, see `How to Set Up Replication
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html>`__ in the *Amazon
+            Simple Storage Service Developer Guide* .
 
           - **Rules** *(list) --* **[REQUIRED]**
 
@@ -8733,9 +12787,9 @@ class Client(BaseClient):
 
                 * Same object qualify tag based filter criteria specified in multiple rules
 
-                For more information, see `Cross-Region Replication (CRR)
-                <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html>`__ in the *Amazon S3 Developer
-                Guide* .
+                For more information, see `Replication <
+                https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html>`__ in the *Amazon S3
+                Developer Guide* .
 
               - **Prefix** *(string) --*
 
@@ -8744,6 +12798,9 @@ class Client(BaseClient):
                 an empty string.
 
               - **Filter** *(dict) --*
+
+                A filter that identifies the subset of objects to which the replication rule applies. A
+                ``Filter`` must specify exactly one ``Prefix`` , ``Tag`` , or an ``And`` child element.
 
                 - **Prefix** *(string) --*
 
@@ -8777,9 +12834,16 @@ class Client(BaseClient):
 
                   - **Prefix** *(string) --*
 
+                    An object keyname prefix that identifies the subset of objects to which the rule
+                    applies.
+
                   - **Tags** *(list) --*
 
+                    An array of tags containing key and value pairs.
+
                     - *(dict) --*
+
+                      A container of a key value name pair.
 
                       - **Key** *(string) --* **[REQUIRED]**
 
@@ -8798,7 +12862,8 @@ class Client(BaseClient):
                 A container that describes additional filters for identifying the source objects that you
                 want to replicate. You can choose to enable or disable the replication of these objects.
                 Currently, Amazon S3 supports only the filter that you can specify for objects created with
-                server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
+                server-side encryption using a customer master key (CMK) stored in AWS Key Management
+                Service (SSE-KMS).
 
                 - **SseKmsEncryptedObjects** *(dict) --*
 
@@ -8809,7 +12874,16 @@ class Client(BaseClient):
                   - **Status** *(string) --* **[REQUIRED]**
 
                     Specifies whether Amazon S3 replicates objects created with server-side encryption
-                    using an AWS KMS-managed key.
+                    using a customer master key (CMK) stored in AWS Key Management Service.
+
+              - **ExistingObjectReplication** *(dict) --*
+
+                A container that specifies information about existing object replication. You can choose
+                whether to enable or disable the replication of existing objects.
+
+                - **Status** *(string) --* **[REQUIRED]**
+
+                  Specifies whether existing object replication is enabled.
 
               - **Destination** *(dict) --* **[REQUIRED]**
 
@@ -8817,22 +12891,18 @@ class Client(BaseClient):
 
                 - **Bucket** *(string) --* **[REQUIRED]**
 
-                  The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store replicas
-                  of the object identified by the rule.
-
-                  A replication configuration can replicate objects to only one destination bucket. If
-                  there are multiple rules in your replication configuration, all rules must specify the
-                  same destination bucket.
+                  The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the
+                  results.
 
                 - **Account** *(string) --*
 
                   Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3
                   to change replica ownership to the AWS account that owns the destination bucket by
                   specifying the ``AccessControlTranslation`` property, this is the account ID of the
-                  destination bucket owner. For more information, see `Cross-Region Replication Additional
+                  destination bucket owner. For more information, see `Replication Additional
                   Configuration\\: Change Replica Owner
-                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the *Amazon
-                  Simple Storage Service Developer Guide* .
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html>`__ in the
+                  *Amazon Simple Storage Service Developer Guide* .
 
                 - **StorageClass** *(string) --*
 
@@ -8870,9 +12940,25 @@ class Client(BaseClient):
 
               - **DeleteMarkerReplication** *(dict) --*
 
+                Specifies whether Amazon S3 replicates the delete markers. If you specify a ``Filter`` ,
+                you must specify this element. However, in the latest version of replication configuration
+                (when ``Filter`` is specified), Amazon S3 doesn't replicate delete markers. Therefore, the
+                ``DeleteMarkerReplication`` element can contain only <Status>Disabled</Status>. For an
+                example configuration, see `Basic Rule Configuration
+                <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config>`__
+                .
+
+                .. note::
+
+                  If you don't specify the Filter element, Amazon S3 assumes the replication configuration
+                  is the earlier version, V1. In the earlier version, Amazon S3 handled replication of
+                  delete markers differently. For more information, see `Backward Compatibility
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations>`__
+                  .
+
                 - **Status** *(string) --*
 
-                  The status of the delete marker replication.
+                  Indicates whether to replicate delete markers.
 
                   .. note::
 
@@ -8881,8 +12967,6 @@ class Client(BaseClient):
 
         :type Token: string
         :param Token:
-
-          A token that allows Amazon S3 object lock to be enabled for an existing bucket.
 
         :returns: None
         """
@@ -8896,9 +12980,15 @@ class Client(BaseClient):
         """
         Sets the request payment configuration for a bucket. By default, the bucket owner pays for
         downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify
-        that the person requesting the download will be charged for the download. Documentation on
-        requester pays buckets can be found at
-        http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html
+        that the person requesting the download will be charged for the download. For more information, see
+        `Requester Pays Buckets
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html>`__ .
+
+        The following operations are related to ``PutBucketRequestPayment`` :
+
+        *  CreateBucket
+
+        *  GetBucketRequestPayment
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketRequestPayment>`_
@@ -8915,8 +13005,12 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name.
+
         :type RequestPaymentConfiguration: dict
         :param RequestPaymentConfiguration: **[REQUIRED]**
+
+          Container for Payer.
 
           - **Payer** *(string) --* **[REQUIRED]**
 
@@ -8931,6 +13025,56 @@ class Client(BaseClient):
     ) -> None:
         """
         Sets the tags for a bucket.
+
+        Use tags to organize your AWS bill to reflect your own cost structure. To do this, sign up to get
+        your AWS account bill with tag key values included. Then, to see the cost of combined resources,
+        organize your billing information according to resources with the same tag key values. For example,
+        you can tag several resources with a specific application name, and then organize your billing
+        information to see the total cost of that application across several services. For more
+        information, see `Cost Allocation and Tagging
+        <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html>`__ .
+
+        .. note::
+
+          Within a bucket, if you add a tag that has the same key as an existing tag, the new value
+          overwrites the old value. For more information, see `Using Cost Allocation in Amazon S3 Bucket
+          Tags <https://docs.aws.amazon.com/AmazonS3/latest/dev/CostAllocTagging.html>`__ .
+
+        To use this operation, you must have permissions to perform the ``s3:PutBucketTagging`` action. The
+        bucket owner has this permission by default and can grant this permission to others. For more
+        information about permissions, see `Permissions Related to Bucket Subresource Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ .
+
+         ``PutBucketTagging`` has the following special errors:
+
+        * Error code: ``InvalidTagError``
+
+          * Description: The tag provided was not a valid tag. This error can occur if the tag did not pass
+          input validation. For information about tag restrictions, see `User-Defined Tag Restrictions
+          <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2//allocation-tag-restrictions.html>`__
+          and `AWS-Generated Cost Allocation Tag Restrictions
+          <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2//aws-tag-restrictions.html>`__ .
+
+        * Error code: ``MalformedXMLError``
+
+          * Description: The XML provided does not match the schema.
+
+        * Error code: ``OperationAbortedError``
+
+          * Description: A conflicting conditional operation is currently in progress against this
+          resource. Please try again.
+
+        * Error code: ``InternalError``
+
+          * Description: The service was unable to apply the provided tag to the bucket.
+
+        The following operations are related to ``PutBucketTagging`` :
+
+        *  GetBucketTagging
+
+        *  DeleteBucketTagging
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketTagging>`_
@@ -8952,12 +13096,20 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name.
+
         :type Tagging: dict
         :param Tagging: **[REQUIRED]**
 
+          Container for the TagSet and Tag elements.
+
           - **TagSet** *(list) --* **[REQUIRED]**
 
+            A collection for a a set of tags
+
             - *(dict) --*
+
+              A container of a key value name pair.
 
               - **Key** *(string) --* **[REQUIRED]**
 
@@ -8981,6 +13133,40 @@ class Client(BaseClient):
         Sets the versioning state of an existing bucket. To set the versioning state, you must be the
         bucket owner.
 
+        You can set the versioning state with one of the following values:
+
+         **Enabled** —Enables versioning for the objects in the bucket. All objects added to the bucket
+         receive a unique version ID.
+
+         **Suspended** —Disables versioning for the objects in the bucket. All objects added to the bucket
+         receive the version ID null.
+
+        If the versioning state has never been set on a bucket, it has no versioning state; a
+        GetBucketVersioning request does not return a versioning state value.
+
+        If the bucket owner enables MFA Delete in the bucket versioning configuration, the bucket owner
+        must include the ``x-amz-mfa request`` header and the Status and the ``MfaDelete`` request elements
+        in a request to set the versioning state of the bucket.
+
+        .. warning::
+
+          If you have an object expiration lifecycle policy in your non-versioned bucket and you want to
+          maintain the same permanent delete behavior when you enable versioning, you must add a noncurrent
+          expiration policy. The noncurrent expiration lifecycle policy will manage the deletes of the
+          noncurrent object versions in the version-enabled bucket. (A version-enabled bucket maintains one
+          current and zero or more noncurrent object versions.) For more information, see `Lifecycle and
+          Versioning
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html#lifecycle-and-other-bucket-config>`__
+          .
+
+         **Related Resources**
+
+        *  CreateBucket
+
+        *  DeleteBucket
+
+        *  GetBucketVersioning
+
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketVersioning>`_
 
@@ -8998,6 +13184,8 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name.
+
         :type MFA: string
         :param MFA:
 
@@ -9006,6 +13194,8 @@ class Client(BaseClient):
 
         :type VersioningConfiguration: dict
         :param VersioningConfiguration: **[REQUIRED]**
+
+          Container for setting the versioning state.
 
           - **MFADelete** *(string) --*
 
@@ -9027,7 +13217,65 @@ class Client(BaseClient):
         WebsiteConfiguration: ClientPutBucketWebsiteWebsiteConfigurationTypeDef,
     ) -> None:
         """
-        Set the website configuration for a bucket.
+        Sets the configuration of the website that is specified in the ``website`` subresource. To
+        configure a bucket as a website, you can add this subresource on the bucket with website
+        configuration information such as the file name of the index document and any redirect rules. For
+        more information, see `Hosting Websites on Amazon S3
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html>`__ .
+
+        This PUT operation requires the ``S3:PutBucketWebsite`` permission. By default, only the bucket
+        owner can configure the website attached to a bucket; however, bucket owners can allow other users
+        to set the website configuration by writing a bucket policy that grants them the
+        ``S3:PutBucketWebsite`` permission.
+
+        To redirect all website requests sent to the bucket's website endpoint, you add a website
+        configuration with the following elements. Because all requests are sent to another website, you
+        don't need to provide index document name for the bucket.
+
+        * WebsiteConfiguration
+
+        * RedirectAllRequestsTo
+
+        * HostName
+
+        * Protocol
+
+        If you want granular control over redirects, you can use the following elements to add routing
+        rules that describe conditions for redirecting requests and information about the redirect
+        destination. In this case, the website configuration must provide an index document for the bucket,
+        because some requests might not be redirected.
+
+        * WebsiteConfiguration
+
+        * IndexDocument
+
+        * Suffix
+
+        * ErrorDocument
+
+        * Key
+
+        * RoutingRules
+
+        * RoutingRule
+
+        * Condition
+
+        * HttpErrorCodeReturnedEquals
+
+        * KeyPrefixEquals
+
+        * Redirect
+
+        * Protocol
+
+        * HostName
+
+        * ReplaceKeyPrefixWith
+
+        * ReplaceKeyWith
+
+        * HttpRedirectCode
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutBucketWebsite>`_
@@ -9068,8 +13316,12 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name.
+
         :type WebsiteConfiguration: dict
         :param WebsiteConfiguration: **[REQUIRED]**
+
+          Container for the request.
 
           - **ErrorDocument** *(dict) --*
 
@@ -9211,7 +13463,231 @@ class Client(BaseClient):
         ObjectLockLegalHoldStatus: str = None,
     ) -> ClientPutObjectResponseTypeDef:
         """
-        Adds an object to a bucket.
+        Adds an object to a bucket. You must have WRITE permissions on a bucket to add an object to it.
+
+        Amazon S3 never adds partial objects; if you receive a success response, Amazon S3 added the entire
+        object to the bucket.
+
+        Amazon S3 is a distributed system. If it receives multiple write requests for the same object
+        simultaneously, it overwrites all but the last object written. Amazon S3 does not provide object
+        locking; if you need this, make sure to build it into your application layer or use versioning
+        instead.
+
+        To ensure that data is not corrupted traversing the network, use the ``Content-MD5`` header. When
+        you use this header, Amazon S3 checks the object against the provided MD5 value and, if they do not
+        match, returns an error. Additionally, you can calculate the MD5 while putting an object to Amazon
+        S3 and compare the returned ETag to the calculated MD5 value.
+
+        .. note::
+
+          To configure your application to send the request headers before sending the request body, use
+          the ``100-continue`` HTTP status code. For PUT operations, this helps you avoid sending the
+          message body if the message is rejected based on the headers (for example, because authentication
+          fails or a redirect occurs). For more information on the ``100-continue`` HTTP status code, see
+          Section 8.2.3 of `http\\://www.ietf.org/rfc/rfc2616.txt <http://www.ietf.org/rfc/rfc2616.txt>`__ .
+
+        You can optionally request server-side encryption. With server-side encryption, Amazon S3 encrypts
+        your data as it writes it to disks in its data centers and decrypts the data when you access it.
+        You have the option to provide your own encryption key or use AWS-managed encryption keys. For more
+        information, see `Using Server-Side Encryption
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html>`__ .
+
+          Access Permissions
+
+        You can optionally specify the accounts or groups that should be granted specific permissions on
+        the new object. There are two ways to grant the permissions using the request headers:
+
+        * Specify a canned ACL with the ``x-amz-acl`` request header. For more information, see `Canned ACL
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL>`__ .
+
+        * Specify access permissions explicitly with the ``x-amz-grant-read`` , ``x-amz-grant-read-acp`` ,
+        ``x-amz-grant-write-acp`` , and ``x-amz-grant-full-control`` headers. These parameters map to the
+        set of permissions that Amazon S3 supports in an ACL. For more information, see `Access Control
+        List (ACL) Overview <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html>`__ .
+
+        You can use either a canned ACL or specify access permissions explicitly. You cannot do both.
+
+          Server-Side- Encryption-Specific Request Headers
+
+        You can optionally tell Amazon S3 to encrypt data at rest using server-side encryption. Server-side
+        encryption is for data encryption at rest. Amazon S3 encrypts your data as it writes it to disks in
+        its data centers and decrypts it when you access it. The option you use depends on whether you want
+        to use AWS-managed encryption keys or provide your own encryption key.
+
+        * Use encryption keys managed Amazon S3 or customer master keys (CMKs) stored in AWS Key Management
+        Service (KMS) – If you want AWS to manage the keys used to encrypt data, specify the following
+        headers in the request.
+
+          * x-amz-server-side​-encryption
+
+          * x-amz-server-side-encryption-aws-kms-key-id
+
+          * x-amz-server-side-encryption-context
+
+        .. note::
+
+          If you specify x-amz-server-side-encryption:aws:kms, but don't provide x-amz-server-side-
+          encryption-aws-kms-key-id, Amazon S3 uses the AWS managed CMK in AWS KMS to protect the data.
+
+        .. warning::
+
+          All GET and PUT requests for an object protected by AWS KMS fail if you don't make them with SSL
+          or by using SigV4.
+
+        For more information on Server-Side Encryption with CMKs stored in AWS KMS (SSE-KMS), see
+        `Protecting Data Using Server-Side Encryption with CMKs stored in AWS
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html>`__ .
+
+        * Use customer-provided encryption keys – If you want to manage your own encryption keys, provide
+        all the following headers in the request.
+
+          * x-amz-server-side​-encryption​-customer-algorithm
+
+          * x-amz-server-side​-encryption​-customer-key
+
+          * x-amz-server-side​-encryption​-customer-key-MD5
+
+        For more information on Server-Side Encryption with CMKs stored in KMS (SSE-KMS), see `Protecting
+        Data Using Server-Side Encryption with CMKs stored in AWS KMS
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html>`__ .
+
+          Access-Control-List (ACL)-Specific Request Headers
+
+        You also can use the following access control–related headers with this operation. By default, all
+        objects are private. Only the owner has full access control. When adding a new object, you can
+        grant permissions to individual AWS accounts or to predefined groups defined by Amazon S3. These
+        permissions are then added to the Access Control List (ACL) on the object. For more information,
+        see `Using ACLs <https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html>`__ . With
+        this operation, you can grant access permissions using one of the following two methods:
+
+        * Specify a canned ACL (x-amz-acl) — Amazon S3 supports a set of predefined ACLs, known as canned
+        ACLs. Each canned ACL has a predefined set of grantees and permissions. For more information, see
+        `Canned ACL <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL>`__ .
+
+        * Specify access permissions explicitly — To explicitly grant access permissions to specific AWS
+        accounts or groups, use the following headers. Each header maps to specific permissions that Amazon
+        S3 supports in an ACL. For more information, see `Access Control List (ACL) Overview
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html>`__ . In the header, you specify
+        a list of grantees who get the specific permission. To grant permissions explicitly use:
+
+          * x-amz-grant-read
+
+          * x-amz-grant-write
+
+          * x-amz-grant-read-acp
+
+          * x-amz-grant-write-acp
+
+          * x-amz-grant-full-control
+
+        You specify each grantee as a type=value pair, where the type is one of the following:
+
+          * emailAddress – if the value specified is the email address of an AWS account
+
+          .. warning::
+
+             Using email addresses to specify a grantee is only supported in the following AWS Regions:
+
+              * US East (N. Virginia)
+
+              * US West (N. California)
+
+              * US West (Oregon)
+
+              * Asia Pacific (Singapore)
+
+              * Asia Pacific (Sydney)
+
+              * Asia Pacific (Tokyo)
+
+              * EU (Ireland)
+
+              * South America (São Paulo)
+
+            For a list of all the Amazon S3 supported regions and endpoints, see `Regions and Endpoints
+            <https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region>`__ in the AWS General
+            Reference
+
+          * id – if the value specified is the canonical user ID of an AWS account
+
+          * uri – if you are granting permissions to a predefined group
+
+        For example, the following x-amz-grant-read header grants the AWS accounts identified by email
+        addresses permissions to read object data and its metadata:
+
+         ``x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com"``
+
+          Server-Side- Encryption-Specific Request Headers
+
+        You can optionally tell Amazon S3 to encrypt data at rest using server-side encryption. Server-side
+        encryption is for data encryption at rest. Amazon S3 encrypts your data as it writes it to disks in
+        its data centers and decrypts it when you access it. The option you use depends on whether you want
+        to use AWS-managed encryption keys or provide your own encryption key.
+
+        * Use encryption keys managed by Amazon S3 or customer master keys (CMKs) stored in AWS Key
+        Management Service (KMS) – If you want AWS to manage the keys used to encrypt data, specify the
+        following headers in the request.
+
+          * x-amz-server-side​-encryption
+
+          * x-amz-server-side-encryption-aws-kms-key-id
+
+          * x-amz-server-side-encryption-context
+
+        .. note::
+
+          If you specify x-amz-server-side-encryption:aws:kms, but don't provide x-amz-server-side-
+          encryption-aws-kms-key-id, Amazon S3 uses the default AWS KMS CMK to protect the data.
+
+        .. warning::
+
+          All GET and PUT requests for an object protected by AWS KMS fail if you don't make them with SSL
+          or by using SigV4.
+
+        For more information on Server-Side Encryption with CMKs stored in AWS KMS (SSE-KMS), see
+        `Protecting Data Using Server-Side Encryption with CMKs stored in AWS KMS
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html>`__ .
+
+        * Use customer-provided encryption keys – If you want to manage your own encryption keys, provide
+        all the following headers in the request.
+
+        .. note::
+
+           If you use this feature, the ETag value that Amazon S3 returns in the response is not the MD5 of
+           the object.
+
+          * x-amz-server-side​-encryption​-customer-algorithm
+
+          * x-amz-server-side​-encryption​-customer-key
+
+          * x-amz-server-side​-encryption​-customer-key-MD5
+
+        For more information on Server-Side Encryption with CMKs stored in AWS KMS (SSE-KMS), see
+        `Protecting Data Using Server-Side Encryption with CMKs stored in AWS KMS
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html>`__ .
+
+         **Storage Class Options**
+
+        By default, Amazon S3 uses the Standard storage class to store newly created objects. The Standard
+        storage class provides high durability and high availability. You can specify other storage classes
+        depending on the performance needs. For more information, see `Storage Classes
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html>`__ in the Amazon Simple
+        Storage Service Developer Guide.
+
+         **Versioning**
+
+        If you enable versioning for a bucket, Amazon S3 automatically generates a unique version ID for
+        the object being stored. Amazon S3 returns this ID in the response using the ``x-amz-version-id
+        response`` header. If versioning is suspended, Amazon S3 always uses null as the version ID for the
+        object stored. For more information about returning the versioning state of a bucket, see
+        GetBucketVersioning . If you enable versioning for a bucket, when Amazon S3 receives multiple write
+        requests for the same object simultaneously, it stores all of the objects.
+
+         **Related Resources**
+
+        *  CopyObject
+
+        *  DeleteObject
 
         See also: `AWS API Documentation <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObject>`_
 
@@ -9258,7 +13734,8 @@ class Client(BaseClient):
         :type ACL: string
         :param ACL:
 
-          The canned ACL to apply to the object.
+          The canned ACL to apply to the object. For more information, see `Canned ACL
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL>`__ .
 
         :type Body: bytes or seekable file-like object
         :param Body:
@@ -9273,18 +13750,24 @@ class Client(BaseClient):
         :type CacheControl: string
         :param CacheControl:
 
-          Specifies caching behavior along the request/reply chain.
+          Can be used to specify caching behavior along the request/reply chain. For more information, see
+          `http\\://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
+          <http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9>`__ .
 
         :type ContentDisposition: string
         :param ContentDisposition:
 
-          Specifies presentational information for the object.
+          Specifies presentational information for the object. For more information, see
+          `http\\://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1
+          <http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1>`__ .
 
         :type ContentEncoding: string
         :param ContentEncoding:
 
           Specifies what content encodings have been applied to the object and thus what decoding
           mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
+          For more information, see `http\\://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11
+          <http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11>`__ .
 
         :type ContentLanguage: string
         :param ContentLanguage:
@@ -9295,24 +13778,33 @@ class Client(BaseClient):
         :param ContentLength:
 
           Size of the body in bytes. This parameter is useful when the size of the body cannot be
-          determined automatically.
+          determined automatically. For more information, see
+          `http\\://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13
+          <http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13>`__ .
 
         :type ContentMD5: string
         :param ContentMD5:
 
-          The base64-encoded 128-bit MD5 digest of the part data. This parameter is auto-populated when
-          using the command from the CLI. This parameted is required if object lock parameters are
-          specified.
+          The base64-encoded 128-bit MD5 digest of the message (without the headers) according to RFC 1864.
+          This header can be used as a message integrity check to verify that the data is the same data
+          that was originally sent. Although it is optional, we recommend using the Content-MD5 mechanism
+          as an end-to-end integrity check. For more information about REST request authentication, see
+          `REST Authentication <https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html>`__
+          .
 
         :type ContentType: string
         :param ContentType:
 
-          A standard MIME type describing the format of the object data.
+          A standard MIME type describing the format of the contents. For more information, see
+          `http\\://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17
+          <http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17>`__ .
 
         :type Expires: datetime
         :param Expires:
 
-          The date and time at which the object is no longer cacheable.
+          The date and time at which the object is no longer cacheable. For more information, see
+          `http\\://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21
+          <http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21>`__ .
 
         :type GrantFullControl: string
         :param GrantFullControl:
@@ -9356,14 +13848,29 @@ class Client(BaseClient):
         :type StorageClass: string
         :param StorageClass:
 
-          The type of storage to use for the object. Defaults to 'STANDARD'.
+          If you don't specify, Standard is the default storage class. Amazon S3 supports other storage
+          classes.
 
         :type WebsiteRedirectLocation: string
         :param WebsiteRedirectLocation:
 
           If the bucket is configured as a website, redirects requests for this object to another object in
           the same bucket or to an external URL. Amazon S3 stores the value of this header in the object
-          metadata.
+          metadata. For information about object metadata, see .
+
+          In the following example, the request header sets the redirect to an object (anotherPage.html) in
+          the same bucket:
+
+           ``x-amz-website-redirect-location: /anotherPage.html``
+
+          In the following example, the request header sets the object redirect to another website:
+
+           ``x-amz-website-redirect-location: http://www.example.com/``
+
+          For more information about website hosting in Amazon S3, see `Hosting Websites on Amazon S3
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html>`__ and `How to Configure
+          Website Page Redirects
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html>`__ .
 
         :type SSECustomerAlgorithm: string
         :param SSECustomerAlgorithm:
@@ -9390,10 +13897,14 @@ class Client(BaseClient):
         :type SSEKMSKeyId: string
         :param SSEKMSKeyId:
 
-          Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object
-          protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring
-          any of the officially supported AWS SDKs and CLI can be found at
-          http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
+          If the x-amz-server-side-encryption is present and has the value of aws:kms, this header
+          specifies the ID of the AWS Key Management Service (AWS KMS) customer master key (CMK) that was
+          used for the object.
+
+          If the value of x-amz-server-side-encryption is aws:kms, this header specifies the ID of the AWS
+          KMS CMK that will be used for the object. If you specify x-amz-server-side-encryption:aws:kms,
+          but do not provide x-amz-server-side-encryption-aws-kms-key-id, Amazon S3 uses the AWS managed
+          CMK in AWS to protect the data.
 
         :type SSEKMSEncryptionContext: string
         :param SSEKMSEncryptionContext:
@@ -9418,17 +13929,19 @@ class Client(BaseClient):
         :type ObjectLockMode: string
         :param ObjectLockMode:
 
-          The object lock mode that you want to apply to this object.
+          The Object Lock mode that you want to apply to this object.
 
         :type ObjectLockRetainUntilDate: datetime
         :param ObjectLockRetainUntilDate:
 
-          The date and time when you want this object's object lock to expire.
+          The date and time when you want this object's Object Lock to expire.
 
         :type ObjectLockLegalHoldStatus: string
         :param ObjectLockLegalHoldStatus:
 
-          The Legal Hold status that you want to apply to the specified object.
+          Specifies whether a legal hold will be applied to this object. For more information about S3
+          Object Lock, see `Object Lock
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__ .
 
         :rtype: dict
         :returns:
@@ -9454,8 +13967,9 @@ class Client(BaseClient):
 
             - **Expiration** *(string) --*
 
-              If the object expiration is configured, this will contain the expiration date (expiry-date)
-              and rule ID (rule-id). The value of rule-id is URL encoded.
+              If the expiration is configured for the object (see  PutBucketLifecycleConfiguration ), the
+              response includes this header. It includes the expiry-date and rule-id key-value pairs that
+              provide information about object expiration. The value of the rule-id is URL encoded.
 
             - **ETag** *(string) --*
 
@@ -9463,8 +13977,9 @@ class Client(BaseClient):
 
             - **ServerSideEncryption** *(string) --*
 
-              The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256,
-              aws:kms).
+              If you specified server-side encryption either with an AWS KMS customer master key (CMK) or
+              Amazon S3-managed encryption key in your PUT request, the response includes this header. It
+              confirms the encryption algorithm that Amazon S3 used to encrypt the object.
 
             - **VersionId** *(string) --*
 
@@ -9483,8 +13998,9 @@ class Client(BaseClient):
 
             - **SSEKMSKeyId** *(string) --*
 
-              If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-              that was used for the object.
+              If the x-amz-server-side-encryption is present and has the value of aws:kms, this header
+              specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK) that was
+              used for the object.
 
             - **SSEKMSEncryptionContext** *(string) --*
 
@@ -9515,7 +14031,73 @@ class Client(BaseClient):
     ) -> ClientPutObjectAclResponseTypeDef:
         """
         uses the acl subresource to set the access control list (ACL) permissions for an object that
-        already exists in a bucket
+        already exists in a bucket. You must have WRITE_ACP permission to set the ACL of an object.
+
+        Depending on your application needs, you may choose to set the ACL on an object using either the
+        request body or the headers. For example, if you have an existing application that updates a bucket
+        ACL using the request body, then you can continue to use that approach.
+
+         **Access Permissions**
+
+        You can set access permissions using one of the following methods:
+
+        * Specify a canned ACL with the ``x-amz-acl`` request header. Amazon S3 supports a set of
+        predefined ACLs, known as canned ACLs. Each canned ACL has a predefined set of grantees and
+        permissions. Specify the canned ACL name as the value of x-amz-acl. If you use this header, you
+        cannot use other access control specific headers in your request. For more information, see `Canned
+        ACL <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL>`__ .
+
+        * Specify access permissions explicitly with the ``x-amz-grant-read`` , ``x-amz-grant-read-acp`` ,
+        ``x-amz-grant-write-acp`` , and ``x-amz-grant-full-control`` headers. When using these headers you
+        specify explicit access permissions and grantees (AWS accounts or a Amazon S3 groups) who will
+        receive the permission. If you use these ACL specific headers, you cannot use x-amz-acl header to
+        set a canned ACL. These parameters map to the set of permissions that Amazon S3 supports in an ACL.
+        For more information, see `Access Control List (ACL) Overview
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html>`__ . You specify each grantee
+        as a type=value pair, where the type is one of the following:
+
+          * emailAddress – if the value specified is the email address of an AWS account
+
+          * id – if the value specified is the canonical user ID of an AWS account
+
+          * uri – if you are granting permissions to a predefined group
+
+        For example, the following x-amz-grant-read header grants list objects permission to the two AWS
+        accounts identified by their email addresses.
+
+         ``x-amz-grant-read: emailAddress="xyz@amazon.com", emailAddress="abc@amazon.com"``
+
+        You can use either a canned ACL or specify access permissions explicitly. You cannot do both.
+
+         **Grantee Values**
+
+        You can specify the person (grantee) to whom you're assigning access rights (using request
+        elements) in the following ways:
+
+        * By Email address:  ``<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@email.com<></EmailAddress>lt;/Grantee>``
+         The grantee is resolved to the CanonicalUser and, in a response to a GET Object acl request,
+         appears as the CanonicalUser.
+
+        * By the person's ID:  ``<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName> </Grantee>``
+        DisplayName is optional and ignored in the request
+
+        * By URI:  ``<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:type=
+            "Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>``
+
+         **Versioning**
+
+        The ACL of an object is set at the object version level. By default, PUT sets the ACL of the
+        current version of an object. To set the ACL of a different version, use the ``versionId``
+        subresource.
+
+         **Related Resources**
+
+        *  CopyObject
+
+        *  GetObject
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectAcl>`_
@@ -9558,7 +14140,8 @@ class Client(BaseClient):
         :type ACL: string
         :param ACL:
 
-          The canned ACL to apply to the object.
+          The canned ACL to apply to the object. For more information, see `Canned ACL
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#CannedACL>`__
 
         :type AccessControlPolicy: dict
         :param AccessControlPolicy:
@@ -9571,7 +14154,11 @@ class Client(BaseClient):
 
             - *(dict) --*
 
+              Container for grant information.
+
               - **Grantee** *(dict) --*
+
+                The person being granted permissions.
 
                 - **DisplayName** *(string) --*
 
@@ -9603,10 +14190,16 @@ class Client(BaseClient):
 
             - **DisplayName** *(string) --*
 
+              Container for the display name of the owner
+
             - **ID** *(string) --*
+
+              Container for the ID of the owner
 
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the bucket to which the ACL is being added.
 
         :type GrantFullControl: string
         :param GrantFullControl:
@@ -9635,6 +14228,8 @@ class Client(BaseClient):
 
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          Key for which the PUT operation was initiated.
 
         :type RequestPayer: string
         :param RequestPayer:
@@ -9681,6 +14276,10 @@ class Client(BaseClient):
     ) -> ClientPutObjectLegalHoldResponseTypeDef:
         """
         Applies a Legal Hold configuration to the specified object.
+
+         **Related Resources**
+
+        * `Locking Objects <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectLegalHold>`_
@@ -9765,8 +14364,16 @@ class Client(BaseClient):
         ContentMD5: str = None,
     ) -> ClientPutObjectLockConfigurationResponseTypeDef:
         """
-        Places an object lock configuration on the specified bucket. The rule specified in the object lock
+        Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock
         configuration will be applied by default to every new object placed in the specified bucket.
+
+        .. note::
+
+           ``DefaultRetention`` requires either Days or Years. You can't specify both at the same time.
+
+         **Related Resources**
+
+        * `Locking Objects <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectLockConfiguration>`_
@@ -9793,20 +14400,20 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
-          The bucket whose object lock configuration you want to create or replace.
+          The bucket whose Object Lock configuration you want to create or replace.
 
         :type ObjectLockConfiguration: dict
         :param ObjectLockConfiguration:
 
-          The object lock configuration that you want to apply to the specified bucket.
+          The Object Lock configuration that you want to apply to the specified bucket.
 
           - **ObjectLockEnabled** *(string) --*
 
-            Indicates whether this bucket has an object lock configuration enabled.
+            Indicates whether this bucket has an Object Lock configuration enabled.
 
           - **Rule** *(dict) --*
 
-            The object lock rule in place for the specified object.
+            The Object Lock rule in place for the specified object.
 
             - **DefaultRetention** *(dict) --*
 
@@ -9815,7 +14422,7 @@ class Client(BaseClient):
 
               - **Mode** *(string) --*
 
-                The default object lock retention mode you want to apply to new objects placed in the
+                The default Object Lock retention mode you want to apply to new objects placed in the
                 specified bucket.
 
               - **Days** *(integer) --*
@@ -9837,7 +14444,7 @@ class Client(BaseClient):
         :type Token: string
         :param Token:
 
-          A token to allow Amazon S3 object lock to be enabled for an existing bucket.
+          A token to allow Object Lock to be enabled for an existing bucket.
 
         :type ContentMD5: string
         :param ContentMD5:
@@ -9878,6 +14485,10 @@ class Client(BaseClient):
         """
         Places an Object Retention configuration on an object.
 
+         **Related Resources**
+
+        * `Locking Objects <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__
+
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectRetention>`_
 
@@ -9917,7 +14528,7 @@ class Client(BaseClient):
 
           - **RetainUntilDate** *(datetime) --*
 
-            The date on which this object lock retention expires.
+            The date on which this Object Lock Retention will expire.
 
         :type RequestPayer: string
         :param RequestPayer:
@@ -9935,7 +14546,7 @@ class Client(BaseClient):
         :type BypassGovernanceRetention: boolean
         :param BypassGovernanceRetention:
 
-          Indicates whether this operation should bypass Governance-mode restrictions.j
+          Indicates whether this operation should bypass Governance-mode restrictions.
 
         :type ContentMD5: string
         :param ContentMD5:
@@ -9974,6 +14585,56 @@ class Client(BaseClient):
         """
         Sets the supplied tag-set to an object that already exists in a bucket
 
+        A tag is a key-value pair. You can associate tags with an object by sending a PUT request against
+        the tagging subresource that is associated with the object. You can retrieve tags by sending a GET
+        request. For more information, see  GetObjectTagging .
+
+        For tagging-related restrictions related to characters and encodings, see `Tag Restrictions
+        <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html>`__
+        . Note that Amazon S3 limits the maximum number of tags to 10 tags per object.
+
+        To use this operation, you must have permission to perform the ``s3:PutObjectTagging`` action. By
+        default, the bucket owner has this permission and can grant this permission to others.
+
+        To put tags of any other version, use the ``versionId`` query parameter. You also need permission
+        for the ``s3:PutObjectVersionTagging`` action.
+
+        For information about the Amazon S3 object tagging feature, see `Object Tagging
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html>`__ .
+
+         **Special Errors**
+
+        *
+
+          * *Code: InvalidTagError*
+
+          * *Cause: The tag provided was not a valid tag. This error can occur if the tag did not pass
+          input validation. For more information, see `Object Tagging
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html>`__ .*
+
+        *
+
+          * *Code: MalformedXMLError*
+
+          * *Cause: The XML provided does not match the schema.*
+
+        *
+
+          * *Code: OperationAbortedError*
+
+          * *Cause: A conflicting conditional operation is currently in progress against this resource.
+          Please try again.*
+
+        *
+
+          * *Code: InternalError*
+
+          * *Cause: The service was unable to apply the provided tag to the object.*
+
+         **Related Resources**
+
+        *  GetObjectTagging
+
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutObjectTagging>`_
 
@@ -9997,21 +14658,35 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket containing the object.
+
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          Name of the tag.
 
         :type VersionId: string
         :param VersionId:
 
+          The versionId of the object that the tag-set will be added to.
+
         :type ContentMD5: string
         :param ContentMD5:
+
+          The MD5 hash for the request body.
 
         :type Tagging: dict
         :param Tagging: **[REQUIRED]**
 
+          Container for the TagSet and Tag elements
+
           - **TagSet** *(list) --* **[REQUIRED]**
 
+            A collection for a a set of tags
+
             - *(dict) --*
+
+              A container of a key value name pair.
 
               - **Key** *(string) --* **[REQUIRED]**
 
@@ -10037,6 +14712,8 @@ class Client(BaseClient):
 
             - **VersionId** *(string) --*
 
+              The versionId of the object the tag-set was added to.
+
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -10047,7 +14724,34 @@ class Client(BaseClient):
         ContentMD5: str = None,
     ) -> None:
         """
-        Creates or modifies the ``PublicAccessBlock`` configuration for an Amazon S3 bucket.
+        Creates or modifies the ``PublicAccessBlock`` configuration for an Amazon S3 bucket. In order to
+        use this operation, you must have the ``s3:PutBucketPublicAccessBlock`` permission. For more
+        information about Amazon S3 permissions, see `Specifying Permissions in a Policy
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html>`__ .
+
+        .. warning::
+
+          When Amazon S3 evaluates the PublicAccessBlock configuration for a bucket or an object, it checks
+          the PublicAccessBlock configuration for both the bucket (or the bucket that contains the object)
+          and the bucket owner's account. If the PublicAccessBlock configurations are different between the
+          bucket and the account, Amazon S3 uses the most restrictive combination of the bucket-level and
+          account-level settings.
+
+        For more information about when Amazon S3 considers a bucket or an object public, see `The Meaning
+        of "Public"
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status>`__
+        .
+
+         **Related Resources**
+
+        *  GetPublicAccessBlock
+
+        *  DeletePublicAccessBlock
+
+        *  GetBucketPolicyStatus
+
+        * `Using Amazon S3 Block Public Access
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html>`__
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/PutPublicAccessBlock>`_
@@ -10093,6 +14797,8 @@ class Client(BaseClient):
 
             * PUT Object calls fail if the request includes a public ACL.
 
+            * PUT Bucket calls fail if the request includes a public ACL.
+
             Enabling this setting doesn't affect existing policies or ACLs.
 
           - **IgnorePublicAcls** *(boolean) --*
@@ -10136,6 +14842,203 @@ class Client(BaseClient):
     ) -> ClientRestoreObjectResponseTypeDef:
         """
         Restores an archived copy of an object back into Amazon S3
+
+        This operation performs the following types of requests:
+
+        * ``select`` - Perform a select query on an archived object
+
+        * ``restore an archive`` - Restore an archived object
+
+        To use this operation, you must have permissions to perform the ``s3:RestoreObject`` and
+        ``s3:GetObject`` actions. The bucket owner has this permission by default and can grant this
+        permission to others. For more information about permissions, see `Permissions Related to Bucket
+        Subresource Operations
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources>`__
+        and `Managing Access Permissions to Your Amazon S3 Resources
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the *Amazon Simple
+        Storage Service Developer Guide* .
+
+         **Querying Archives with Select Requests**
+
+        You use a select type of request to perform SQL queries on archived objects. The archived objects
+        that are being queried by the select request must be formatted as uncompressed comma-separated
+        values (CSV) files. You can run queries and custom analytics on your archived data without having
+        to restore your data to a hotter Amazon S3 tier. For an overview about select requests, see
+        `Querying Archived Objects
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/querying-glacier-archives.html>`__ in the *Amazon
+        Simple Storage Service Developer Guide* .
+
+        When making a select request, do the following:
+
+        * Define an output location for the select query's output. This must be an Amazon S3 bucket in the
+        same AWS Region as the bucket that contains the archive object that is being queried. The AWS
+        account that initiates the job must have permissions to write to the S3 bucket. You can specify the
+        storage class and encryption for the output objects stored in the bucket. For more information
+        about output, see `Querying Archived Objects
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/querying-glacier-archives.html>`__ in the *Amazon
+        Simple Storage Service Developer Guide* . For more information about the ``S3`` structure in the
+        request body, see the following:
+
+          *  PutObject
+
+          * `Managing Access with ACLs
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html>`__ in the *Amazon Simple
+          Storage Service Developer Guide*
+
+          * `Protecting Data Using Server-Side Encryption
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html>`__ in the *Amazon
+          Simple Storage Service Developer Guide*
+
+        * Define the SQL expression for the ``SELECT`` type of restoration for your query in the request
+        body's ``SelectParameters`` structure. You can use expressions like the following examples.
+
+          * The following expression returns all records from the specified object.  ``SELECT * FROM
+          Object``
+
+          * Assuming that you are not using any headers for data stored in the object, you can specify
+          columns with positional headers.  ``SELECT s._1, s._2 FROM Object s WHERE s._3 > 100``
+
+          * If you have headers and you set the ``fileHeaderInfo`` in the ``CSV`` structure in the request
+          body to ``USE`` , you can specify headers in the query. (If you set the ``fileHeaderInfo`` field
+          to ``IGNORE`` , the first row is skipped for the query.) You cannot mix ordinal positions with
+          header column names.   ``SELECT s.Id, s.FirstName, s.SSN FROM S3Object s``
+
+        For more information about using SQL with Glacier Select restore, see `SQL Reference for Amazon S3
+        Select and Glacier Select
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html>`__ in the
+        *Amazon Simple Storage Service Developer Guide* .
+
+        When making a select request, you can also do the following:
+
+        * To expedite your queries, specify the ``Expedited`` tier. For more information about tiers, see
+        "Restoring Archives," later in this topic.
+
+        * Specify details about the data serialization format of both the input object that is being
+        queried and the serialization of the CSV-encoded query results.
+
+        The following are additional important facts about the select feature:
+
+        * The output results are new Amazon S3 objects. Unlike archive retrievals, they are stored until
+        explicitly deleted-manually or through a lifecycle policy.
+
+        * You can issue more than one select request on the same Amazon S3 object. Amazon S3 doesn't
+        deduplicate requests, so avoid issuing duplicate requests.
+
+        * Amazon S3 accepts a select request even if the object has already been restored. A select request
+        doesn’t return error response ``409`` .
+
+         **Restoring Archives**
+
+        Objects in the GLACIER and DEEP_ARCHIVE storage classes are archived. To access an archived object,
+        you must first initiate a restore request. This restores a temporary copy of the archived object.
+        In a restore request, you specify the number of days that you want the restored copy to exist.
+        After the specified period, Amazon S3 deletes the temporary copy but the object remains archived in
+        the GLACIER or DEEP_ARCHIVE storage class that object was restored from.
+
+        To restore a specific object version, you can provide a version ID. If you don't provide a version
+        ID, Amazon S3 restores the current version.
+
+        The time it takes restore jobs to finish depends on which storage class the object is being
+        restored from and which data access tier you specify.
+
+        When restoring an archived object (or using a select request), you can specify one of the following
+        data access tier options in the ``Tier`` element of the request body:
+
+        * **``Expedited`` ** - Expedited retrievals allow you to quickly access your data stored in the
+        GLACIER storage class when occasional urgent requests for a subset of archives are required. For
+        all but the largest archived objects (250 MB+), data accessed using Expedited retrievals are
+        typically made available within 1–5 minutes. Provisioned capacity ensures that retrieval capacity
+        for Expedited retrievals is available when you need it. Expedited retrievals and provisioned
+        capacity are not available for the DEEP_ARCHIVE storage class.
+
+        * **``Standard`` ** - Standard retrievals allow you to access any of your archived objects within
+        several hours. This is the default option for the GLACIER and DEEP_ARCHIVE retrieval requests that
+        do not specify the retrieval option. Standard retrievals typically complete within 3-5 hours from
+        the GLACIER storage class and typically complete within 12 hours from the DEEP_ARCHIVE storage
+        class.
+
+        * **``Bulk`` ** - Bulk retrievals are Amazon Glacier’s lowest-cost retrieval option, enabling you
+        to retrieve large amounts, even petabytes, of data inexpensively in a day. Bulk retrievals
+        typically complete within 5-12 hours from the GLACIER storage class and typically complete within
+        48 hours from the DEEP_ARCHIVE storage class.
+
+        For more information about archive retrieval options and provisioned capacity for ``Expedited``
+        data access, see `Restoring Archived Objects
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html>`__ in the *Amazon Simple
+        Storage Service Developer Guide* .
+
+        You can use Amazon S3 restore speed upgrade to change the restore speed to a faster speed while it
+        is in progress. You upgrade the speed of an in-progress restoration by issuing another restore
+        request to the same object, setting a new ``Tier`` request element. When issuing a request to
+        upgrade the restore tier, you must choose a tier that is faster than the tier that the in-progress
+        restore is using. You must not change any other parameters, such as the ``Days`` request element.
+        For more information, see `Upgrading the Speed of an In-Progress Restore
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html#restoring-objects-upgrade-tier.title.html>`__
+        in the *Amazon Simple Storage Service Developer Guide* .
+
+        To get the status of object restoration, you can send a ``HEAD`` request. Operations return the
+        ``x-amz-restore`` header, which provides information about the restoration status, in the response.
+        You can use Amazon S3 event notifications to notify you when a restore is initiated or completed.
+        For more information, see `Configuring Amazon S3 Event Notifications
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon Simple
+        Storage Service Developer Guide* .
+
+        After restoring an archived object, you can update the restoration period by reissuing the request
+        with a new period. Amazon S3 updates the restoration period relative to the current time and
+        charges only for the request-there are no data transfer charges. You cannot update the restoration
+        period when Amazon S3 is actively processing your current restore request for the object.
+
+        If your bucket has a lifecycle configuration with a rule that includes an expiration action, the
+        object expiration overrides the life span that you specify in a restore request. For example, if
+        you restore an object copy for 10 days, but the object is scheduled to expire in 3 days, Amazon S3
+        deletes the object in 3 days. For more information about lifecycle configuration, see
+        PutBucketLifecycleConfiguration and `Object Lifecycle Management
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html>`__ in *Amazon Simple
+        Storage Service Developer Guide* .
+
+         **Responses**
+
+        A successful operation returns either the ``200 OK`` or ``202 Accepted`` status code.
+
+        * If the object copy is not previously restored, then Amazon S3 returns ``202 Accepted`` in the
+        response.
+
+        * If the object copy is previously restored, Amazon S3 returns ``200 OK`` in the response.
+
+         **Special Errors**
+
+        *
+
+          * *Code: RestoreAlreadyInProgress*
+
+          * *Cause: Object restore is already in progress. (This error does not apply to SELECT type
+          requests.)*
+
+          * *HTTP Status Code: 409 Conflict*
+
+          * *SOAP Fault Code Prefix: Client*
+
+        *
+
+          * *Code: GlacierExpeditedRetrievalNotAvailable*
+
+          * *Cause: Glacier expedited retrievals are currently not available. Try again later. (Returned if
+          there is insufficient capacity to process the Expedited request. This error applies only to
+          Expedited retrievals and not to Standard or Bulk retrievals.)*
+
+          * *HTTP Status Code: 503*
+
+          * *SOAP Fault Code Prefix: N/A*
+
+         **Related Resources**
+
+        *  PutBucketLifecycleConfiguration
+
+        *  GetBucketNotificationConfiguration
+
+        * `SQL Reference for Amazon S3 Select and Glacier Select
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html>`__ in the
+        *Amazon Simple Storage Service Developer Guide*
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/RestoreObject>`_
@@ -10237,14 +15140,22 @@ class Client(BaseClient):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name.
+
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          Object key for which the operation was initiated.
 
         :type VersionId: string
         :param VersionId:
 
+          VersionId used to reference a specific version of the object.
+
         :type RestoreRequest: dict
         :param RestoreRequest:
+
+          Container for restore job parameters.
 
           - **Days** *(integer) --*
 
@@ -10285,29 +15196,49 @@ class Client(BaseClient):
 
                 - **FileHeaderInfo** *(string) --*
 
-                  Describes the first line of input. Valid values: None, Ignore, Use.
+                  Describes the first line of input. Valid values are:
+
+                  * ``NONE`` : First line is not a header.
+
+                  * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+                  the column in an expression. You can use column position (such as _1, _2, …) to indicate
+                  the column (``SELECT s._1 FROM OBJECT s`` ).
+
+                  * ``Use`` : First line is a header, and you can use the header value to identify a column
+                  in an expression (``SELECT "name" FROM OBJECT`` ).
 
                 - **Comments** *(string) --*
 
-                  The single character used to indicate a row should be ignored when present at the start
-                  of a row.
+                  A single character used to indicate that a row should be ignored when the character is
+                  present at the start of that row. You can specify any character to indicate a comment
+                  line.
 
                 - **QuoteEscapeCharacter** *(string) --*
 
-                  The single character used for escaping the quote character inside an already escaped
-                  value.
+                  A single character used for escaping the quotation mark character inside an already
+                  escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
                 - **RecordDelimiter** *(string) --*
 
-                  The value used to separate individual records.
+                  A single character used to separate individual records in the input. Instead of the
+                  default value, you can specify an arbitrary delimiter.
 
                 - **FieldDelimiter** *(string) --*
 
-                  The value used to separate individual fields in a record.
+                  A single character used to separate individual fields in a record. You can specify an
+                  arbitrary delimiter.
 
                 - **QuoteCharacter** *(string) --*
 
-                  Value used for escaping where the field delimiter is part of the value.
+                  A single character used for escaping when the field delimiter is part of the value. For
+                  example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+                  as follows: ``" a , b "`` .
+
+                  Type: String
+
+                  Default: ``"``
+
+                  Ancestors: ``CSV``
 
                 - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -10349,23 +15280,32 @@ class Client(BaseClient):
 
                 - **QuoteFields** *(string) --*
 
-                  Indicates whether or not all output fields should be quoted.
+                  Indicates whether to use quotation marks around output fields.
+
+                  * ``ALWAYS`` : Always use quotation marks for output fields.
+
+                  * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
                 - **QuoteEscapeCharacter** *(string) --*
 
-                  Th single character used for escaping the quote character inside an already escaped value.
+                  The single character used for escaping the quote character inside an already escaped
+                  value.
 
                 - **RecordDelimiter** *(string) --*
 
-                  The value used to separate individual records.
+                  A single character used to separate individual records in the output. Instead of the
+                  default value, you can specify an arbitrary delimiter.
 
                 - **FieldDelimiter** *(string) --*
 
-                  The value used to separate individual fields in a record.
+                  The value used to separate individual fields in a record. You can specify an arbitrary
+                  delimiter.
 
                 - **QuoteCharacter** *(string) --*
 
-                  The value used for escaping where the field delimiter is part of the value.
+                  A single character used for escaping when the field delimiter is part of the value. For
+                  example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+                  as follows: ``" a , b "`` .
 
               - **JSON** *(dict) --*
 
@@ -10393,6 +15333,8 @@ class Client(BaseClient):
 
               - **Encryption** *(dict) --*
 
+                Contains the type of server-side encryption used.
+
                 - **EncryptionType** *(string) --* **[REQUIRED]**
 
                   The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -10418,7 +15360,11 @@ class Client(BaseClient):
 
                 - *(dict) --*
 
+                  Container for grant information.
+
                   - **Grantee** *(dict) --*
+
+                    The person being granted permissions.
 
                     - **DisplayName** *(string) --*
 
@@ -10450,7 +15396,11 @@ class Client(BaseClient):
 
                 - **TagSet** *(list) --* **[REQUIRED]**
 
+                  A collection for a a set of tags
+
                   - *(dict) --*
+
+                    A container of a key value name pair.
 
                     - **Key** *(string) --* **[REQUIRED]**
 
@@ -10470,7 +15420,11 @@ class Client(BaseClient):
 
                   - **Name** *(string) --*
 
+                    Name of the Object.
+
                   - **Value** *(string) --*
+
+                    Value of the Object.
 
               - **StorageClass** *(string) --*
 
@@ -10526,11 +15480,87 @@ class Client(BaseClient):
         ScanRange: ClientSelectObjectContentScanRangeTypeDef = None,
     ) -> Dict:
         """
-        This operation filters the contents of an Amazon S3 object based on a simple Structured Query
-        Language (SQL) statement. In the request, along with the SQL expression, you must also specify a
-        data serialization format (JSON or CSV) of the object. Amazon S3 uses this to parse object data
-        into records, and returns only records that match the specified SQL expression. You must also
-        specify the data serialization format for the response.
+        This operation filters the contents of an Amazon S3 object based on a simple structured query
+        language (SQL) statement. In the request, along with the SQL expression, you must also specify a
+        data serialization format (JSON, CSV, or Apache Parquet) of the object. Amazon S3 uses this format
+        to parse object data into records, and returns only records that match the specified SQL
+        expression. You must also specify the data serialization format for the response.
+
+        For more information about Amazon S3 Select, see `Selecting Content from Objects
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/selecting-content-from-objects.html>`__ in the
+        *Amazon Simple Storage Service Developer Guide* .
+
+        For more information about using SQL with Amazon S3 Select, see `SQL Reference for Amazon S3 Select
+        and Glacier Select
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html>`__ in the
+        *Amazon Simple Storage Service Developer Guide* .
+
+         **Permissions**
+
+        You must have ``s3:GetObject`` permission for this operation. Amazon S3 Select does not support
+        anonymous access. For more information about permissions, see `Specifying Permissions in a Policy
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html>`__ in the *Amazon
+        Simple Storage Service Developer Guide* .
+
+         *Object Data Formats*
+
+        You can use Amazon S3 Select to query objects that have the following format properties:
+
+        * *CSV, JSON, and Parquet* - Objects must be in CSV, JSON, or Parquet format.
+
+        * *UTF-8* - UTF-8 is the only encoding type Amazon S3 Select supports.
+
+        * *GZIP or BZIP2* - CSV and JSON files can be compressed using GZIP or BZIP2. GZIP and BZIP2 are
+        the only compression formats that Amazon S3 Select supports for CSV and JSON files. Amazon S3
+        Select supports columnar compression for Parquet using GZIP or Snappy. Amazon S3 Select does not
+        support whole-object compression for Parquet objects.
+
+        * *Server-side encryption* - Amazon S3 Select supports querying objects that are protected with
+        server-side encryption. For objects that are encrypted with customer-provided encryption keys
+        (SSE-C), you must use HTTPS, and you must use the headers that are documented in the  GetObject .
+        For more information about SSE-C, see `Server-Side Encryption (Using Customer-Provided Encryption
+        Keys) <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html>`__ in
+        the *Amazon Simple Storage Service Developer Guide* . For objects that are encrypted with Amazon S3
+        managed encryption keys (SSE-S3) and customer master keys (CMKs) stored in AWS Key Management
+        Service (SSE-KMS), server-side encryption is handled transparently, so you don't need to specify
+        anything. For more information about server-side encryption, including SSE-S3 and SSE-KMS, see
+        `Protecting Data Using Server-Side Encryption
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html>`__ in the *Amazon
+        Simple Storage Service Developer Guide* .
+
+         **Working with the Response Body**
+
+        Given the response size is unknown, Amazon S3 Select streams the response as a series of messages
+        and includes a ``Transfer-Encoding`` header with ``chunked`` as its value in the response. For more
+        information, see  RESTSelectObjectAppendix .
+
+         **GetObject Support**
+
+        The ``SelectObjectContent`` operation does not support the following ``GetObject`` functionality.
+        For more information, see  GetObject .
+
+        * ``Range`` : While you can specify a scan range for a Amazon S3 Select request, see
+        SelectObjectContentRequest$ScanRange in the request parameters below, you cannot specify the range
+        of bytes of an object to return.
+
+        * GLACIER, DEEP_ARCHIVE and REDUCED_REDUNDANCY storage classes: You cannot specify the GLACIER,
+        DEEP_ARCHIVE, or ``REDUCED_REDUNDANCY`` storage classes. For more information, about storage
+        classes see `Storage Classes
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#storage-class-intro>`__ in the
+        *Amazon Simple Storage Service Developer Guide* .
+
+         **Special Errors**
+
+        For a list of special errors for this operation and for general information about Amazon S3 errors
+        and a list of error codes, see  ErrorResponses
+
+         **Related Resources**
+
+        *  GetObject
+
+        *  GetBucketLifecycleConfiguration
+
+        *  PutBucketLifecycleConfiguration
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/SelectObjectContent>`_
@@ -10647,28 +15677,48 @@ class Client(BaseClient):
 
             - **FileHeaderInfo** *(string) --*
 
-              Describes the first line of input. Valid values: None, Ignore, Use.
+              Describes the first line of input. Valid values are:
+
+              * ``NONE`` : First line is not a header.
+
+              * ``IGNORE`` : First line is a header, but you can't use the header values to indicate the
+              column in an expression. You can use column position (such as _1, _2, …) to indicate the
+              column (``SELECT s._1 FROM OBJECT s`` ).
+
+              * ``Use`` : First line is a header, and you can use the header value to identify a column in
+              an expression (``SELECT "name" FROM OBJECT`` ).
 
             - **Comments** *(string) --*
 
-              The single character used to indicate a row should be ignored when present at the start of a
-              row.
+              A single character used to indicate that a row should be ignored when the character is
+              present at the start of that row. You can specify any character to indicate a comment line.
 
             - **QuoteEscapeCharacter** *(string) --*
 
-              The single character used for escaping the quote character inside an already escaped value.
+              A single character used for escaping the quotation mark character inside an already escaped
+              value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
             - **RecordDelimiter** *(string) --*
 
-              The value used to separate individual records.
+              A single character used to separate individual records in the input. Instead of the default
+              value, you can specify an arbitrary delimiter.
 
             - **FieldDelimiter** *(string) --*
 
-              The value used to separate individual fields in a record.
+              A single character used to separate individual fields in a record. You can specify an
+              arbitrary delimiter.
 
             - **QuoteCharacter** *(string) --*
 
-              Value used for escaping where the field delimiter is part of the value.
+              A single character used for escaping when the field delimiter is part of the value. For
+              example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks, as
+              follows: ``" a , b "`` .
+
+              Type: String
+
+              Default: ``"``
+
+              Ancestors: ``CSV``
 
             - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -10702,23 +15752,31 @@ class Client(BaseClient):
 
             - **QuoteFields** *(string) --*
 
-              Indicates whether or not all output fields should be quoted.
+              Indicates whether to use quotation marks around output fields.
+
+              * ``ALWAYS`` : Always use quotation marks for output fields.
+
+              * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
             - **QuoteEscapeCharacter** *(string) --*
 
-              Th single character used for escaping the quote character inside an already escaped value.
+              The single character used for escaping the quote character inside an already escaped value.
 
             - **RecordDelimiter** *(string) --*
 
-              The value used to separate individual records.
+              A single character used to separate individual records in the output. Instead of the default
+              value, you can specify an arbitrary delimiter.
 
             - **FieldDelimiter** *(string) --*
 
-              The value used to separate individual fields in a record.
+              The value used to separate individual fields in a record. You can specify an arbitrary
+              delimiter.
 
             - **QuoteCharacter** *(string) --*
 
-              The value used for escaping where the field delimiter is part of the value.
+              A single character used for escaping when the field delimiter is part of the value. For
+              example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks, as
+              follows: ``" a , b "`` .
 
           - **JSON** *(dict) --*
 
@@ -10735,15 +15793,30 @@ class Client(BaseClient):
           first byte is contained by the range. This parameter is optional, but when specified, it must not
           be empty. See RFC 2616, Section 14.35.1 about how to specify the start and end of the range.
 
+           ``ScanRange`` may be used in the following ways:
+
+          * ``<scanrange><start>50</start><end>100</end></scanrange>`` - process only the records starting
+          between the bytes 50 and 100 (inclusive, counting from zero)
+
+          * ``<scanrange><start>50</start></scanrange>`` - process only the records starting after the byte
+          50
+
+          * ``<scanrange><end>50</end></scanrange>`` - process only the records within the last 50 bytes of
+          the file.
+
           - **Start** *(integer) --*
 
             Specifies the start of the byte range. This parameter is optional. Valid values: non-negative
-            integers. The default value is 0.
+            integers. The default value is 0. If only start is supplied, it means scan from that point to
+            the end of the file.For example; ``<scanrange><start>50</start></scanrange>`` means scan from
+            byte 50 until the end of the file.
 
           - **End** *(integer) --*
 
             Specifies the end of the byte range. This parameter is optional. Valid values: non-negative
-            integers. The default value is one less than the size of the object being queried.
+            integers. The default value is one less than the size of the object being queried. If only the
+            End parameter is supplied, it is interpreted to mean scan the last N bytes of the file. For
+            example; ``<scanrange><end>50</end></scanrange>`` means scan the last 50 bytes.
 
         :rtype: dict
         :returns:
@@ -10784,6 +15857,8 @@ class Client(BaseClient):
           - *(dict) --*
 
             - **Payload** (:class:`.EventStream`) --
+
+              The array of results.
 
               - **Records** *(dict) --*
 
@@ -10955,10 +16030,88 @@ class Client(BaseClient):
         """
         Uploads a part in a multipart upload.
 
+        .. note::
+
+          In this operation, you provide part data in your request. However, you have an option to specify
+          your existing Amazon S3 object as a data source for the part you are uploading. To upload a part
+          from an existing object, you use the  UploadPartCopy operation.
+
+        You must initiate a multipart upload (see  CreateMultipartUpload ) before you can upload any part.
+        In response to your initiate request, Amazon S3 returns an upload ID, a unique identifier, that you
+        must include in your upload part request.
+
+        Part numbers can be any number from 1 to 10,000, inclusive. A part number uniquely identifies a
+        part and also defines its position within the object being created. If you upload a new part using
+        the same part number that was used with a previous part, the previously uploaded part is
+        overwritten. Each part must be at least 5 MB in size, except the last part. There is no size limit
+        on the last part of your multipart upload.
+
+        To ensure that data is not corrupted when traversing the network, specify the ``Content-MD5``
+        header in the upload part request. Amazon S3 checks the part data against the provided MD5 value.
+        If they do not match, Amazon S3 returns an error.
+
          **Note:** After you initiate multipart upload and upload one or more parts, you must either
          complete or abort multipart upload in order to stop getting charged for storage of the uploaded
          parts. Only after you either complete or abort multipart upload, Amazon S3 frees up the parts
          storage and stops charging you for the parts storage.
+
+        For more information on multipart uploads, go to `Multipart Upload Overview
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html>`__ in the *Amazon Simple Storage
+        Service Developer Guide* .
+
+        For information on the permissions required to use the multipart upload API, go to `Multipart
+        Upload API and Permissions
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html>`__ in the *Amazon Simple
+        Storage Service Developer Guide* .
+
+        You can optionally request server-side encryption where Amazon S3 encrypts your data as it writes
+        it to disks in its data centers and decrypts it for you when you access it. You have the option of
+        providing your own encryption key, or you can use the AWS-managed encryption keys. If you choose to
+        provide your own encryption key, the request headers you provide in the request must match the
+        headers you used in the request to initiate the upload by using  CreateMultipartUpload . For more
+        information, go to `Using Server-Side Encryption
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html>`__ in the *Amazon
+        Simple Storage Service Developer Guide* .
+
+        Server-side encryption is supported by the S3 Multipart Upload actions. Unless you are using a
+        customer-provided encryption key, you don't need to specify the encryption parameters in each
+        UploadPart request. Instead, you only need to specify the server side encryption parameters in the
+        initial Initiate Multipart request. For more information, see  CreateMultipartUpload .
+
+        If you requested server-side encryption using a customer-provided encryption key in your initiate
+        multipart upload request, you must provide identical encryption information in each part upload
+        using the following headers.
+
+        * x-amz-server-side​-encryption​-customer-algorithm
+
+        * x-amz-server-side​-encryption​-customer-key
+
+        * x-amz-server-side​-encryption​-customer-key-MD5
+
+         **Special Errors**
+
+        *
+
+          * *Code: NoSuchUpload*
+
+          * *Cause: The specified multipart upload does not exist. The upload ID might be invalid, or the
+          multipart upload might have been aborted or completed.*
+
+          * *HTTP Status Code: 404 Not Found*
+
+          * *SOAP Fault Code Prefix: Client*
+
+         **Related Resources**
+
+        *  CreateMultipartUpload
+
+        *  CompleteMultipartUpload
+
+        *  AbortMultipartUpload
+
+        *  ListParts
+
+        *  ListMultipartUploads
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/UploadPart>`_
@@ -11088,8 +16241,8 @@ class Client(BaseClient):
 
             - **SSEKMSKeyId** *(string) --*
 
-              If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-              that was used for the object.
+              If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+              (CMK) was used for the object.
 
             - **RequestCharged** *(string) --*
 
@@ -11119,7 +16272,104 @@ class Client(BaseClient):
         RequestPayer: str = None,
     ) -> ClientUploadPartCopyResponseTypeDef:
         """
-        Uploads a part by copying data from an existing object as data source.
+        Uploads a part by copying data from an existing object as data source. You specify the data source
+        by adding the request header ``x-amz-copy-source`` in your request and a byte range by adding the
+        request header ``x-amz-copy-source-range`` in your request.
+
+        The minimum allowable part size for a multipart upload is 5 MB. For more information about
+        multipart upload limits, go to `Quick Facts
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/qfacts.html>`__ in the *Amazon Simple Storage
+        Service Developer Guide* .
+
+        .. note::
+
+          Instead of using an existing object as part data, you might use the  UploadPart operation and
+          provide data in your request.
+
+        You must initiate a multipart upload before you can upload any part. In response to your initiate
+        request. Amazon S3 returns a unique identifier, the upload ID, that you must include in your upload
+        part request.
+
+         **For more information on using the UploadPartCopy operation, see the following topics:**
+
+        * For conceptual information on multipart uploads, go to `Uploading Objects Using Multipart Upload
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html>`__ in the *Amazon Simple
+        Storage Service Developer Guide* .
+
+        * For information on permissions required to use the multipart upload API, go to `Multipart Upload
+        API and Permissions <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html>`__ in
+        the *Amazon Simple Storage Service Developer Guide* .
+
+        * For information about copying objects using a single atomic operation vs. the multipart upload,
+        go to `Operations on Objects
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectOperations.html>`__ in the *Amazon Simple
+        Storage Service Developer Guide* .
+
+        * For information about using server-side encryption with customer-provided encryption keys with
+        the UploadPartCopy operation, see  CopyObject and  UploadPart .
+
+        Note the following additional considerations about the request headers
+        ``x-amz-copy-source-if-match`` , ``x-amz-copy-source-if-none-match``
+        ``x-amz-copy-source-if-unmodified-since``  ``x-amz-copy-source-if-modified-since``
+
+        * **Consideration 1** - If both of the ``x-amz-copy-source-if-match`` and
+        ``x-amz-copy-source-if-unmodified-since`` headers are present in the request as follows:
+        ``x-amz-copy-source-if-match`` condition evaluates to ``true`` , and;
+        ``x-amz-copy-source-if-unmodified-since`` condition evaluates to ``false`` ; then, S3 returns ``200
+        OK`` and copies the data.
+
+        * **Consideration 2** - If both of the ``x-amz-copy-source-if-none-match`` and
+        ``x-amz-copy-source-if-modified-since`` headers are present in the request as follows:
+        ``x-amz-copy-source-if-none-match`` condition evaluates to ``false`` , and;
+        ``x-amz-copy-source-if-modified-since`` condition evaluates to ``true`` ; then, S3 returns ``412
+        Precondition Failed`` response code.
+
+         **Versioning**
+
+        If your bucket has versioning enabled, you could have multiple versions of the same object. By
+        default, ``x-amz-copy-source`` identifies the current version of the object to copy. If the current
+        version is a delete marker and you don't specify a versionId in the ``x-amz-copy-source`` , Amazon
+        S3 returns a 404 error, because the object does not exist. If you specify versionId in the
+        ``x-amz-copy-source`` and the versionId is a delete marker, Amazon S3 returns an HTTP 400 error,
+        because you are not allowed to specify a delete marker as a version for the ``x-amz-copy-source`` .
+
+        You can optionally specify a specific version of the source object to copy by adding the
+        ``versionId`` subresource as shown in the following example:
+
+         ``x-amz-copy-source: /bucket/object?versionId=version id``
+
+         **Special Errors**
+
+        *
+
+          * *Code: NoSuchUpload*
+
+          * *Cause: The specified multipart upload does not exist. The upload ID might be invalid, or the
+          multipart upload might have been aborted or completed.*
+
+          * *HTTP Status Code: 404 Not Found*
+
+        *
+
+          * *Code: InvalidRequest*
+
+          * *Cause: The specified copy source is not supported as a byte-range copy source.*
+
+          * *HTTP Status Code: 400 Bad Request*
+
+         **Related Resources**
+
+        *  CreateMultipartUpload
+
+        *  UploadPart
+
+        *  CompleteMultipartUpload
+
+        *  AbortMultipartUpload
+
+        *  ListParts
+
+        *  ListMultipartUploads
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/UploadPartCopy>`_
@@ -11146,6 +16396,8 @@ class Client(BaseClient):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The bucket name.
 
         :type CopySource: str or dict
         :param CopySource: **[REQUIRED]** The name of the source bucket, key name of the source object, and
@@ -11186,6 +16438,8 @@ class Client(BaseClient):
 
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          Object key for which the multipart upload was initiated.
 
         :type PartNumber: integer
         :param PartNumber: **[REQUIRED]**
@@ -11279,6 +16533,8 @@ class Client(BaseClient):
 
             - **CopyPartResult** *(dict) --*
 
+              Container for all response elements.
+
               - **ETag** *(string) --*
 
                 Entity tag of the object.
@@ -11305,8 +16561,8 @@ class Client(BaseClient):
 
             - **SSEKMSKeyId** *(string) --*
 
-              If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-              that was used for the object.
+              If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+              (CMK) that was used for the object.
 
             - **RequestCharged** *(string) --*
 

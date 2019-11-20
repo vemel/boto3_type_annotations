@@ -3330,6 +3330,7 @@ class Role(Boto3ServiceResource):
     max_session_duration: int
     permissions_boundary: Dict[str, Any]
     tags: List[Any]
+    role_last_used: Dict[str, Any]
     name: str
     attached_policies: service_resource_scope.RoleAttachedPoliciesCollection
     instance_profiles: service_resource_scope.RoleInstanceProfilesCollection

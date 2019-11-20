@@ -32,10 +32,16 @@ from mypy_boto3_config.type_defs import (
     ClientDescribeConfigurationAggregatorsResponseTypeDef,
     ClientDescribeConfigurationRecorderStatusResponseTypeDef,
     ClientDescribeConfigurationRecordersResponseTypeDef,
+    ClientDescribeConformancePackComplianceFiltersTypeDef,
+    ClientDescribeConformancePackComplianceResponseTypeDef,
+    ClientDescribeConformancePackStatusResponseTypeDef,
+    ClientDescribeConformancePacksResponseTypeDef,
     ClientDescribeDeliveryChannelStatusResponseTypeDef,
     ClientDescribeDeliveryChannelsResponseTypeDef,
     ClientDescribeOrganizationConfigRuleStatusesResponseTypeDef,
     ClientDescribeOrganizationConfigRulesResponseTypeDef,
+    ClientDescribeOrganizationConformancePackStatusesResponseTypeDef,
+    ClientDescribeOrganizationConformancePacksResponseTypeDef,
     ClientDescribePendingAggregationRequestsResponseTypeDef,
     ClientDescribeRemediationConfigurationsResponseTypeDef,
     ClientDescribeRemediationExceptionsResourceKeysTypeDef,
@@ -54,9 +60,14 @@ from mypy_boto3_config.type_defs import (
     ClientGetComplianceDetailsByResourceResponseTypeDef,
     ClientGetComplianceSummaryByConfigRuleResponseTypeDef,
     ClientGetComplianceSummaryByResourceTypeResponseTypeDef,
+    ClientGetConformancePackComplianceDetailsFiltersTypeDef,
+    ClientGetConformancePackComplianceDetailsResponseTypeDef,
+    ClientGetConformancePackComplianceSummaryResponseTypeDef,
     ClientGetDiscoveredResourceCountsResponseTypeDef,
     ClientGetOrganizationConfigRuleDetailedStatusFiltersTypeDef,
     ClientGetOrganizationConfigRuleDetailedStatusResponseTypeDef,
+    ClientGetOrganizationConformancePackDetailedStatusFiltersTypeDef,
+    ClientGetOrganizationConformancePackDetailedStatusResponseTypeDef,
     ClientGetResourceConfigHistoryResponseTypeDef,
     ClientListAggregateDiscoveredResourcesFiltersTypeDef,
     ClientListAggregateDiscoveredResourcesResponseTypeDef,
@@ -71,12 +82,16 @@ from mypy_boto3_config.type_defs import (
     ClientPutConfigurationAggregatorResponseTypeDef,
     ClientPutConfigurationAggregatorTagsTypeDef,
     ClientPutConfigurationRecorderConfigurationRecorderTypeDef,
+    ClientPutConformancePackConformancePackInputParametersTypeDef,
+    ClientPutConformancePackResponseTypeDef,
     ClientPutDeliveryChannelDeliveryChannelTypeDef,
     ClientPutEvaluationsEvaluationsTypeDef,
     ClientPutEvaluationsResponseTypeDef,
     ClientPutOrganizationConfigRuleOrganizationCustomRuleMetadataTypeDef,
     ClientPutOrganizationConfigRuleOrganizationManagedRuleMetadataTypeDef,
     ClientPutOrganizationConfigRuleResponseTypeDef,
+    ClientPutOrganizationConformancePackConformancePackInputParametersTypeDef,
+    ClientPutOrganizationConformancePackResponseTypeDef,
     ClientPutRemediationConfigurationsRemediationConfigurationsTypeDef,
     ClientPutRemediationConfigurationsResponseTypeDef,
     ClientPutRemediationExceptionsResourceKeysTypeDef,
@@ -843,6 +858,32 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_conformance_pack(self, ConformancePackName: str) -> None:
+        """
+        Deletes the specified conformance pack and all the AWS Config rules and all evaluation results
+        within that conformance pack.
+
+        AWS Config sets the conformance pack to ``DELETE_IN_PROGRESS`` until the deletion is complete. You
+        cannot update a conformance pack while it is in this state.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteConformancePack>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.delete_conformance_pack(
+              ConformancePackName='string'
+          )
+        :type ConformancePackName: string
+        :param ConformancePackName: **[REQUIRED]**
+
+          Name of the conformance pack you want to delete.
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_delivery_channel(self, DeliveryChannelName: str) -> None:
         """
         Deletes the delivery channel.
@@ -926,6 +967,35 @@ class Client(BaseClient):
         :param OrganizationConfigRuleName: **[REQUIRED]**
 
           The name of organization config rule that you want to delete.
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_organization_conformance_pack(
+        self, OrganizationConformancePackName: str
+    ) -> None:
+        """
+        Deletes the specified organization conformance pack and all of the config rules and remediation
+        actions from all member accounts in that organization. Only a master account can delete an
+        organization conformance pack.
+
+        AWS Config sets the state of a conformance pack to DELETE_IN_PROGRESS until the deletion is
+        complete. You cannot update a conformance pack while it is in this state.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteOrganizationConformancePack>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.delete_organization_conformance_pack(
+              OrganizationConformancePackName='string'
+          )
+        :type OrganizationConformancePackName: string
+        :param OrganizationConformancePackName: **[REQUIRED]**
+
+          The name of organization conformance pack that you want to delete.
 
         :returns: None
         """
@@ -2756,6 +2826,385 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def describe_conformance_pack_compliance(
+        self,
+        ConformancePackName: str,
+        Filters: ClientDescribeConformancePackComplianceFiltersTypeDef = None,
+        Limit: int = None,
+        NextToken: str = None,
+    ) -> ClientDescribeConformancePackComplianceResponseTypeDef:
+        """
+        Returns compliance information for each rule in that conformance pack.
+
+        .. note::
+
+          You must provide exact rule names otherwise AWS Config cannot return evaluation results due to
+          insufficient data.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeConformancePackCompliance>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.describe_conformance_pack_compliance(
+              ConformancePackName='string',
+              Filters={
+                  'ConfigRuleNames': [
+                      'string',
+                  ],
+                  'ComplianceType': 'COMPLIANT'|'NON_COMPLIANT'
+              },
+              Limit=123,
+              NextToken='string'
+          )
+        :type ConformancePackName: string
+        :param ConformancePackName: **[REQUIRED]**
+
+          Name of the conformance pack.
+
+        :type Filters: dict
+        :param Filters:
+
+          A ``ConformancePackComplianceFilters`` object.
+
+          - **ConfigRuleNames** *(list) --*
+
+            Filters the results by AWS Config rule names.
+
+            - *(string) --*
+
+          - **ComplianceType** *(string) --*
+
+            Filters the results by compliance.
+
+            The allowed values are ``COMPLIANT`` and ``NON_COMPLIANT`` .
+
+        :type Limit: integer
+        :param Limit:
+
+          The maximum number of AWS Config rules within a conformance pack are returned on each page.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The ``nextToken`` string returned in a previous request that you use to request the next page of
+          results in a paginated response.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'ConformancePackName': 'string',
+                'ConformancePackRuleComplianceList': [
+                    {
+                        'ConfigRuleName': 'string',
+                        'ComplianceType': 'COMPLIANT'|'NON_COMPLIANT'
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **ConformancePackName** *(string) --*
+
+              Name of the conformance pack.
+
+            - **ConformancePackRuleComplianceList** *(list) --*
+
+              Returns a list of ``ConformancePackRuleCompliance`` objects.
+
+              - *(dict) --*
+
+                Compliance information of one or more AWS Config rules within a conformance pack. You can
+                filter using AWS Config rule names and compliance types.
+
+                - **ConfigRuleName** *(string) --*
+
+                  Filters the results by AWS Config rule name.
+
+                - **ComplianceType** *(string) --*
+
+                  Filters the results by compliance.
+
+                  The allowed values are ``COMPLIANT`` and ``NON_COMPLIANT`` .
+
+            - **NextToken** *(string) --*
+
+              The ``nextToken`` string returned in a previous request that you use to request the next page
+              of results in a paginated response.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def describe_conformance_pack_status(
+        self,
+        ConformancePackNames: List[str] = None,
+        Limit: int = None,
+        NextToken: str = None,
+    ) -> ClientDescribeConformancePackStatusResponseTypeDef:
+        """
+        Provides one or more conformance packs deployment status.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeConformancePackStatus>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.describe_conformance_pack_status(
+              ConformancePackNames=[
+                  'string',
+              ],
+              Limit=123,
+              NextToken='string'
+          )
+        :type ConformancePackNames: list
+        :param ConformancePackNames:
+
+          Comma-separated list of conformance pack names.
+
+          - *(string) --*
+
+        :type Limit: integer
+        :param Limit:
+
+          The maximum number of conformance packs returned on each page.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The ``nextToken`` string returned in a previous request that you use to request the next page of
+          results in a paginated response.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'ConformancePackStatusDetails': [
+                    {
+                        'ConformancePackName': 'string',
+                        'ConformancePackId': 'string',
+                        'ConformancePackArn': 'string',
+                        'ConformancePackState':
+                        'CREATE_IN_PROGRESS'|'CREATE_COMPLETE'|'CREATE_FAILED'|'DELETE_IN_PROGRESS'
+                        |'DELETE_FAILED',
+                        'StackArn': 'string',
+                        'ConformancePackStatusReason': 'string',
+                        'LastUpdateRequestedTime': datetime(2015, 1, 1),
+                        'LastUpdateCompletedTime': datetime(2015, 1, 1)
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **ConformancePackStatusDetails** *(list) --*
+
+              A list of ``ConformancePackStatusDetail`` objects.
+
+              - *(dict) --*
+
+                Status details of a conformance pack.
+
+                - **ConformancePackName** *(string) --*
+
+                  Name of the conformance pack.
+
+                - **ConformancePackId** *(string) --*
+
+                  ID of the conformance pack.
+
+                - **ConformancePackArn** *(string) --*
+
+                  Amazon Resource Name (ARN) of comformance pack.
+
+                - **ConformancePackState** *(string) --*
+
+                  Indicates deployment status of conformance pack.
+
+                  AWS Config sets the state of the conformance pack to:
+
+                  * CREATE_IN_PROGRESS when a conformance pack creation is in progress for an account.
+
+                  * CREATE_COMPLETE when a conformance pack has been successfully created in your account.
+
+                  * CREATE_FAILED when a conformance pack creation failed in your account.
+
+                  * DELETE_IN_PROGRESS when a conformance pack deletion is in progress.
+
+                  * DELETE_FAILED when a conformance pack deletion failed from your account.
+
+                - **StackArn** *(string) --*
+
+                  Amazon Resource Name (ARN) of AWS CloudFormation stack.
+
+                - **ConformancePackStatusReason** *(string) --*
+
+                  The reason of conformance pack creation failure.
+
+                - **LastUpdateRequestedTime** *(datetime) --*
+
+                  Last time when conformation pack creation and update was requested.
+
+                - **LastUpdateCompletedTime** *(datetime) --*
+
+                  Last time when conformation pack creation and update was successful.
+
+            - **NextToken** *(string) --*
+
+              The ``nextToken`` string returned in a previous request that you use to request the next page
+              of results in a paginated response.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def describe_conformance_packs(
+        self,
+        ConformancePackNames: List[str] = None,
+        Limit: int = None,
+        NextToken: str = None,
+    ) -> ClientDescribeConformancePacksResponseTypeDef:
+        """
+        Returns a list of one or more conformance packs.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeConformancePacks>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.describe_conformance_packs(
+              ConformancePackNames=[
+                  'string',
+              ],
+              Limit=123,
+              NextToken='string'
+          )
+        :type ConformancePackNames: list
+        :param ConformancePackNames:
+
+          Comma-separated list of conformance pack names for which you want details. If you do not specify
+          any names, AWS Config returns details for all your conformance packs.
+
+          - *(string) --*
+
+        :type Limit: integer
+        :param Limit:
+
+          The maximum number of conformance packs returned on each page.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The ``nextToken`` string returned in a previous request that you use to request the next page of
+          results in a paginated response.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'ConformancePackDetails': [
+                    {
+                        'ConformancePackName': 'string',
+                        'ConformancePackArn': 'string',
+                        'ConformancePackId': 'string',
+                        'DeliveryS3Bucket': 'string',
+                        'DeliveryS3KeyPrefix': 'string',
+                        'ConformancePackInputParameters': [
+                            {
+                                'ParameterName': 'string',
+                                'ParameterValue': 'string'
+                            },
+                        ],
+                        'LastUpdateRequestedTime': datetime(2015, 1, 1),
+                        'CreatedBy': 'string'
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **ConformancePackDetails** *(list) --*
+
+              Returns a list of ``ConformancePackDetail`` objects.
+
+              - *(dict) --*
+
+                Returns details of a conformance pack. A conformance pack is a collection of AWS Config
+                rules that can be easily deployed in an account and a region.
+
+                - **ConformancePackName** *(string) --*
+
+                  Name of the conformance pack.
+
+                - **ConformancePackArn** *(string) --*
+
+                  Amazon Resource Name (ARN) of the conformance pack.
+
+                - **ConformancePackId** *(string) --*
+
+                  ID of the conformance pack.
+
+                - **DeliveryS3Bucket** *(string) --*
+
+                  Location of an Amazon S3 bucket where AWS Config can deliver evaluation results and
+                  conformance pack template that is used to create a pack.
+
+                - **DeliveryS3KeyPrefix** *(string) --*
+
+                  Any folder structure you want to add to an Amazon S3 bucket.
+
+                - **ConformancePackInputParameters** *(list) --*
+
+                  A list of ``ConformancePackInputParameter`` objects.
+
+                  - *(dict) --*
+
+                    Input parameters in the form of key-value pairs for the conformance pack, both of which
+                    you define. Keys can have a maximum character length of 128 characters, and values can
+                    have a maximum length of 256 characters.
+
+                    - **ParameterName** *(string) --*
+
+                      One part of a key-value pair.
+
+                    - **ParameterValue** *(string) --*
+
+                      Another part of the key-value pair.
+
+                - **LastUpdateRequestedTime** *(datetime) --*
+
+                  Last time when conformation pack update was requested.
+
+                - **CreatedBy** *(string) --*
+
+            - **NextToken** *(string) --*
+
+              The ``nextToken`` string returned in a previous request that you use to request the next page
+              of results in a paginated response.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_delivery_channel_status(
         self, DeliveryChannelNames: List[str] = None
     ) -> ClientDescribeDeliveryChannelStatusResponseTypeDef:
@@ -3104,9 +3553,9 @@ class Client(BaseClient):
                     {
                         'OrganizationConfigRuleName': 'string',
                         'OrganizationRuleStatus':
-                        'CREATE_SUCCESSFUL'|'CREATE_IN_PROGRESS'|'CREATE_FAILED'|'UPDATE_SUCCESSFUL'
-                        |'UPDATE_FAILED'|'UPDATE_IN_PROGRESS'|'DELETE_SUCCESSFUL'|'DELETE_FAILED'
-                        |'DELETE_IN_PROGRESS',
+                        'CREATE_SUCCESSFUL'|'CREATE_IN_PROGRESS'|'CREATE_FAILED'|'DELETE_SUCCESSFUL'
+                        |'DELETE_FAILED'|'DELETE_IN_PROGRESS'|'UPDATE_SUCCESSFUL'|'UPDATE_IN_PROGRESS'
+                        |'UPDATE_FAILED',
                         'ErrorCode': 'string',
                         'ErrorMessage': 'string',
                         'LastUpdateTime': datetime(2015, 1, 1)
@@ -3295,7 +3744,7 @@ class Client(BaseClient):
 
             - **OrganizationConfigRules** *(list) --*
 
-              Retuns a list ``OrganizationConfigRule`` objects.
+              Returns a list of ``OrganizationConfigRule`` objects.
 
               - *(dict) --*
 
@@ -3308,7 +3757,7 @@ class Client(BaseClient):
 
                 - **OrganizationConfigRuleArn** *(string) --*
 
-                  The Amazon Resource Name (ARN) of organization config rule.
+                  Amazon Resource Name (ARN) of organization config rule.
 
                 - **OrganizationManagedRuleMetadata** *(dict) --*
 
@@ -3439,6 +3888,299 @@ class Client(BaseClient):
 
               The ``nextToken`` string returned on a previous page that you use to get the next page of
               results in a paginated response.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def describe_organization_conformance_pack_statuses(
+        self,
+        OrganizationConformancePackNames: List[str] = None,
+        Limit: int = None,
+        NextToken: str = None,
+    ) -> ClientDescribeOrganizationConformancePackStatusesResponseTypeDef:
+        """
+        Provides organization conformance pack deployment status for an organization.
+
+        .. note::
+
+          The status is not considered successful until organization conformance pack is successfully
+          deployed in all the member accounts with an exception of excluded accounts.
+
+          When you specify the limit and the next token, you receive a paginated response. Limit and next
+          token are not applicable if you specify organization conformance pack names. They are only
+          applicable, when you request all the organization conformance packs.
+
+          Only a master account can call this API.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeOrganizationConformancePackStatuses>`_
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeOrganizationConformancePackStatuses>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.describe_organization_conformance_pack_statuses(
+              OrganizationConformancePackNames=[
+                  'string',
+              ],
+              Limit=123,
+              NextToken='string'
+          )
+        :type OrganizationConformancePackNames: list
+        :param OrganizationConformancePackNames:
+
+          The names of organization conformance packs for which you want status details. If you do not
+          specify any names, AWS Config returns details for all your organization conformance packs.
+
+          - *(string) --*
+
+        :type Limit: integer
+        :param Limit:
+
+          The maximum number of OrganizationConformancePackStatuses returned on each page. If you do no
+          specify a number, AWS Config uses the default. The default is 100.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The nextToken string returned on a previous page that you use to get the next page of results in
+          a paginated response.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'OrganizationConformancePackStatuses': [
+                    {
+                        'OrganizationConformancePackName': 'string',
+                        'Status':
+                        'CREATE_SUCCESSFUL'|'CREATE_IN_PROGRESS'|'CREATE_FAILED'|'DELETE_SUCCESSFUL'
+                        |'DELETE_FAILED'|'DELETE_IN_PROGRESS'|'UPDATE_SUCCESSFUL'|'UPDATE_IN_PROGRESS'
+                        |'UPDATE_FAILED',
+                        'ErrorCode': 'string',
+                        'ErrorMessage': 'string',
+                        'LastUpdateTime': datetime(2015, 1, 1)
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **OrganizationConformancePackStatuses** *(list) --*
+
+              A list of ``OrganizationConformancePackStatus`` objects.
+
+              - *(dict) --*
+
+                Returns the status for an organization conformance pack in an organization.
+
+                - **OrganizationConformancePackName** *(string) --*
+
+                  The name that you assign to organization conformance pack.
+
+                - **Status** *(string) --*
+
+                  Indicates deployment status of an organization conformance pack. When master account
+                  calls PutOrganizationConformancePack for the first time, conformance pack status is
+                  created in all the member accounts. When master account calls
+                  PutOrganizationConformancePack for the second time, conformance pack status is updated in
+                  all the member accounts. Additionally, conformance pack status is updated when one or
+                  more member accounts join or leave an organization. Conformance pack status is deleted
+                  when the master account deletes OrganizationConformancePack in all the member accounts
+                  and disables service access for ``config-multiaccountsetup.amazonaws.com`` .
+
+                  AWS Config sets the state of the conformance pack to:
+
+                  * ``CREATE_SUCCESSFUL`` when an organization conformance pack has been successfully
+                  created in all the member accounts.
+
+                  * ``CREATE_IN_PROGRESS`` when an organization conformance pack creation is in progress.
+
+                  * ``CREATE_FAILED`` when an organization conformance pack creation failed in one or more
+                  member accounts within that organization.
+
+                  * ``DELETE_FAILED`` when an organization conformance pack deletion failed in one or more
+                  member accounts within that organization.
+
+                  * ``DELETE_IN_PROGRESS`` when an organization conformance pack deletion is in progress.
+
+                  * ``DELETE_SUCCESSFUL`` when an organization conformance pack has been successfully
+                  deleted from all the member accounts.
+
+                  * ``UPDATE_SUCCESSFUL`` when an organization conformance pack has been successfully
+                  updated in all the member accounts.
+
+                  * ``UPDATE_IN_PROGRESS`` when an organization conformance pack update is in progress.
+
+                  * ``UPDATE_FAILED`` when an organization conformance pack update failed in one or more
+                  member accounts within that organization.
+
+                - **ErrorCode** *(string) --*
+
+                  An error code that is returned when organization conformance pack creation or deletion
+                  has failed in the member account.
+
+                - **ErrorMessage** *(string) --*
+
+                  An error message indicating that organization conformance pack creation or deletion
+                  failed due to an error.
+
+                - **LastUpdateTime** *(datetime) --*
+
+                  The timestamp of the last update.
+
+            - **NextToken** *(string) --*
+
+              The nextToken string returned on a previous page that you use to get the next page of results
+              in a paginated response.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def describe_organization_conformance_packs(
+        self,
+        OrganizationConformancePackNames: List[str] = None,
+        Limit: int = None,
+        NextToken: str = None,
+    ) -> ClientDescribeOrganizationConformancePacksResponseTypeDef:
+        """
+        Returns a list of organization conformance packs.
+
+        .. note::
+
+          When you specify the limit and the next token, you receive a paginated response. Limit and next
+          token are not applicable if you specify organization conformance packs names. They are only
+          applicable, when you request all the organization conformance packs. Only a master account can
+          call this API.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeOrganizationConformancePacks>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.describe_organization_conformance_packs(
+              OrganizationConformancePackNames=[
+                  'string',
+              ],
+              Limit=123,
+              NextToken='string'
+          )
+        :type OrganizationConformancePackNames: list
+        :param OrganizationConformancePackNames:
+
+          The name that you assign to an organization conformance pack.
+
+          - *(string) --*
+
+        :type Limit: integer
+        :param Limit:
+
+          The maximum number of organization config packs returned on each page. If you do no specify a
+          number, AWS Config uses the default. The default is 100.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The nextToken string returned on a previous page that you use to get the next page of results in
+          a paginated response.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'OrganizationConformancePacks': [
+                    {
+                        'OrganizationConformancePackName': 'string',
+                        'OrganizationConformancePackArn': 'string',
+                        'DeliveryS3Bucket': 'string',
+                        'DeliveryS3KeyPrefix': 'string',
+                        'ConformancePackInputParameters': [
+                            {
+                                'ParameterName': 'string',
+                                'ParameterValue': 'string'
+                            },
+                        ],
+                        'ExcludedAccounts': [
+                            'string',
+                        ],
+                        'LastUpdateTime': datetime(2015, 1, 1)
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **OrganizationConformancePacks** *(list) --*
+
+              Returns a list of OrganizationConformancePacks objects.
+
+              - *(dict) --*
+
+                An organization conformance pack that has information about conformance packs that AWS
+                Config creates in member accounts.
+
+                - **OrganizationConformancePackName** *(string) --*
+
+                  The name you assign to an organization conformance pack.
+
+                - **OrganizationConformancePackArn** *(string) --*
+
+                  Amazon Resource Name (ARN) of organization conformance pack.
+
+                - **DeliveryS3Bucket** *(string) --*
+
+                  Location of an Amazon S3 bucket where AWS Config can deliver evaluation results and
+                  conformance pack template that is used to create a pack.
+
+                - **DeliveryS3KeyPrefix** *(string) --*
+
+                  Any folder structure you want to add to an Amazon S3 bucket.
+
+                - **ConformancePackInputParameters** *(list) --*
+
+                  A list of ``ConformancePackInputParameter`` objects.
+
+                  - *(dict) --*
+
+                    Input parameters in the form of key-value pairs for the conformance pack, both of which
+                    you define. Keys can have a maximum character length of 128 characters, and values can
+                    have a maximum length of 256 characters.
+
+                    - **ParameterName** *(string) --*
+
+                      One part of a key-value pair.
+
+                    - **ParameterValue** *(string) --*
+
+                      Another part of the key-value pair.
+
+                - **ExcludedAccounts** *(list) --*
+
+                  A comma-separated list of accounts excluded from organization conformance pack.
+
+                  - *(string) --*
+
+                - **LastUpdateTime** *(datetime) --*
+
+                  Last time when organization conformation pack was updated.
+
+            - **NextToken** *(string) --*
+
+              The nextToken string returned on a previous page that you use to get the next page of results
+              in a paginated response.
 
         """
 
@@ -5546,6 +6288,241 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_conformance_pack_compliance_details(
+        self,
+        ConformancePackName: str,
+        Filters: ClientGetConformancePackComplianceDetailsFiltersTypeDef = None,
+        Limit: int = None,
+        NextToken: str = None,
+    ) -> ClientGetConformancePackComplianceDetailsResponseTypeDef:
+        """
+        Returns compliance details of a conformance pack for all AWS resources that are monitered by
+        conformance pack.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/GetConformancePackComplianceDetails>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.get_conformance_pack_compliance_details(
+              ConformancePackName='string',
+              Filters={
+                  'ConfigRuleNames': [
+                      'string',
+                  ],
+                  'ComplianceType': 'COMPLIANT'|'NON_COMPLIANT',
+                  'ResourceType': 'string',
+                  'ResourceIds': [
+                      'string',
+                  ]
+              },
+              Limit=123,
+              NextToken='string'
+          )
+        :type ConformancePackName: string
+        :param ConformancePackName: **[REQUIRED]**
+
+          Name of the conformance pack.
+
+        :type Filters: dict
+        :param Filters:
+
+          A ``ConformancePackEvaluationFilters`` object.
+
+          - **ConfigRuleNames** *(list) --*
+
+            Filters the results by AWS Config rule names.
+
+            - *(string) --*
+
+          - **ComplianceType** *(string) --*
+
+            Filters the results by compliance.
+
+            The allowed values are ``COMPLIANT`` and ``NON_COMPLIANT`` .
+
+          - **ResourceType** *(string) --*
+
+            Filters the results by the resource type (for example, ``"AWS::EC2::Instance"`` ).
+
+          - **ResourceIds** *(list) --*
+
+            Filters the results by resource IDs.
+
+            - *(string) --*
+
+        :type Limit: integer
+        :param Limit:
+
+          The maximum number of evaluation results returned on each page. If you do no specify a number,
+          AWS Config uses the default. The default is 100.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The ``nextToken`` string returned in a previous request that you use to request the next page of
+          results in a paginated response.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'ConformancePackName': 'string',
+                'ConformancePackRuleEvaluationResults': [
+                    {
+                        'ComplianceType': 'COMPLIANT'|'NON_COMPLIANT',
+                        'EvaluationResultIdentifier': {
+                            'EvaluationResultQualifier': {
+                                'ConfigRuleName': 'string',
+                                'ResourceType': 'string',
+                                'ResourceId': 'string'
+                            },
+                            'OrderingTimestamp': datetime(2015, 1, 1)
+                        },
+                        'ConfigRuleInvokedTime': datetime(2015, 1, 1),
+                        'ResultRecordedTime': datetime(2015, 1, 1),
+                        'Annotation': 'string'
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **ConformancePackName** *(string) --*
+
+              Name of the conformance pack.
+
+            - **ConformancePackRuleEvaluationResults** *(list) --*
+
+              Returns a list of ``ConformancePackEvaluationResult`` objects.
+
+              - *(dict) --*
+
+                The details of a conformance pack evaluation. Provides AWS Config rule and AWS resource
+                type that was evaluated, the compliance of the conformance pack, related time stamps, and
+                supplementary information.
+
+                - **ComplianceType** *(string) --*
+
+                  Filters the results by compliance.
+
+                  The allowed values are ``COMPLIANT`` and ``NON_COMPLIANT`` .
+
+                - **EvaluationResultIdentifier** *(dict) --*
+
+                  Uniquely identifies an evaluation result.
+
+                  - **EvaluationResultQualifier** *(dict) --*
+
+                    Identifies an AWS Config rule used to evaluate an AWS resource, and provides the type
+                    and ID of the evaluated resource.
+
+                    - **ConfigRuleName** *(string) --*
+
+                      The name of the AWS Config rule that was used in the evaluation.
+
+                    - **ResourceType** *(string) --*
+
+                      The type of AWS resource that was evaluated.
+
+                    - **ResourceId** *(string) --*
+
+                      The ID of the evaluated AWS resource.
+
+                  - **OrderingTimestamp** *(datetime) --*
+
+                    The time of the event that triggered the evaluation of your AWS resources. The time can
+                    indicate when AWS Config delivered a configuration item change notification, or it can
+                    indicate when AWS Config delivered the configuration snapshot, depending on which event
+                    triggered the evaluation.
+
+                - **ConfigRuleInvokedTime** *(datetime) --*
+
+                  The time when AWS Config rule evaluated AWS resource.
+
+                - **ResultRecordedTime** *(datetime) --*
+
+                  The time when AWS Config recorded the evaluation result.
+
+                - **Annotation** *(string) --*
+
+                  Supplementary information about how the evaluation determined the compliance.
+
+            - **NextToken** *(string) --*
+
+              The ``nextToken`` string returned in a previous request that you use to request the next page
+              of results in a paginated response.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_conformance_pack_compliance_summary(
+        self, ConformancePackNames: List[str], Limit: int = None, NextToken: str = None
+    ) -> ClientGetConformancePackComplianceSummaryResponseTypeDef:
+        """
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/GetConformancePackComplianceSummary>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.get_conformance_pack_compliance_summary(
+              ConformancePackNames=[
+                  'string',
+              ],
+              Limit=123,
+              NextToken='string'
+          )
+        :type ConformancePackNames: list
+        :param ConformancePackNames: **[REQUIRED]**
+
+          - *(string) --*
+
+        :type Limit: integer
+        :param Limit:
+
+        :type NextToken: string
+        :param NextToken:
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'ConformancePackComplianceSummaryList': [
+                    {
+                        'ConformancePackName': 'string',
+                        'ConformancePackComplianceStatus': 'COMPLIANT'|'NON_COMPLIANT'
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **ConformancePackComplianceSummaryList** *(list) --*
+
+              - *(dict) --*
+
+                - **ConformancePackName** *(string) --*
+
+                - **ConformancePackComplianceStatus** *(string) --*
+
+            - **NextToken** *(string) --*
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_discovered_resource_counts(
         self, resourceTypes: List[str] = None, limit: int = None, nextToken: str = None
     ) -> ClientGetDiscoveredResourceCountsResponseTypeDef:
@@ -5753,9 +6730,9 @@ class Client(BaseClient):
               Filters={
                   'AccountId': 'string',
                   'MemberAccountRuleStatus':
-                  'CREATE_SUCCESSFUL'|'CREATE_IN_PROGRESS'|'CREATE_FAILED'|'UPDATE_SUCCESSFUL'
-                  |'UPDATE_FAILED'|'UPDATE_IN_PROGRESS'|'DELETE_SUCCESSFUL'|'DELETE_FAILED'
-                  |'DELETE_IN_PROGRESS'
+                  'CREATE_SUCCESSFUL'|'CREATE_IN_PROGRESS'|'CREATE_FAILED'|'DELETE_SUCCESSFUL'
+                  |'DELETE_FAILED'|'DELETE_IN_PROGRESS'|'UPDATE_SUCCESSFUL'|'UPDATE_IN_PROGRESS'
+                  |'UPDATE_FAILED'
               },
               Limit=123,
               NextToken='string'
@@ -5828,9 +6805,9 @@ class Client(BaseClient):
                         'AccountId': 'string',
                         'ConfigRuleName': 'string',
                         'MemberAccountRuleStatus':
-                        'CREATE_SUCCESSFUL'|'CREATE_IN_PROGRESS'|'CREATE_FAILED'|'UPDATE_SUCCESSFUL'
-                        |'UPDATE_FAILED'|'UPDATE_IN_PROGRESS'|'DELETE_SUCCESSFUL'|'DELETE_FAILED'
-                        |'DELETE_IN_PROGRESS',
+                        'CREATE_SUCCESSFUL'|'CREATE_IN_PROGRESS'|'CREATE_FAILED'|'DELETE_SUCCESSFUL'
+                        |'DELETE_FAILED'|'DELETE_IN_PROGRESS'|'UPDATE_SUCCESSFUL'|'UPDATE_IN_PROGRESS'
+                        |'UPDATE_FAILED',
                         'ErrorCode': 'string',
                         'ErrorMessage': 'string',
                         'LastUpdateTime': datetime(2015, 1, 1)
@@ -5907,6 +6884,191 @@ class Client(BaseClient):
 
               The ``nextToken`` string returned on a previous page that you use to get the next page of
               results in a paginated response.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_organization_conformance_pack_detailed_status(
+        self,
+        OrganizationConformancePackName: str,
+        Filters: ClientGetOrganizationConformancePackDetailedStatusFiltersTypeDef = None,
+        Limit: int = None,
+        NextToken: str = None,
+    ) -> ClientGetOrganizationConformancePackDetailedStatusResponseTypeDef:
+        """
+        Returns detailed status for each member account within an organization for a given organization
+        conformance pack.
+
+        Only a master account can call this API.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/GetOrganizationConformancePackDetailedStatus>`_
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/GetOrganizationConformancePackDetailedStatus>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.get_organization_conformance_pack_detailed_status(
+              OrganizationConformancePackName='string',
+              Filters={
+                  'AccountId': 'string',
+                  'Status':
+                  'CREATE_SUCCESSFUL'|'CREATE_IN_PROGRESS'|'CREATE_FAILED'|'DELETE_SUCCESSFUL'
+                  |'DELETE_FAILED'|'DELETE_IN_PROGRESS'|'UPDATE_SUCCESSFUL'|'UPDATE_IN_PROGRESS'
+                  |'UPDATE_FAILED'
+              },
+              Limit=123,
+              NextToken='string'
+          )
+        :type OrganizationConformancePackName: string
+        :param OrganizationConformancePackName: **[REQUIRED]**
+
+          The name of organization conformance pack for which you want status details for member accounts.
+
+        :type Filters: dict
+        :param Filters:
+
+          An ``OrganizationResourceDetailedStatusFilters`` object.
+
+          - **AccountId** *(string) --*
+
+            The 12-digit account ID of the member account within an organization.
+
+          - **Status** *(string) --*
+
+            Indicates deployment status for conformance pack in a member account. When master account calls
+            ``PutOrganizationConformancePack`` action for the first time, conformance pack status is
+            created in the member account. When master account calls ``PutOrganizationConformancePack``
+            action for the second time, conformance pack status is updated in the member account.
+            Conformance pack status is deleted when the master account deletes
+            ``OrganizationConformancePack`` and disables service access for
+            ``config-multiaccountsetup.amazonaws.com`` .
+
+            AWS Config sets the state of the conformance pack to:
+
+            * ``CREATE_SUCCESSFUL`` when conformance pack has been created in the member account.
+
+            * ``CREATE_IN_PROGRESS`` when conformance pack is being created in the member account.
+
+            * ``CREATE_FAILED`` when conformance pack creation has failed in the member account.
+
+            * ``DELETE_FAILED`` when conformance pack deletion has failed in the member account.
+
+            * ``DELETE_IN_PROGRESS`` when conformance pack is being deleted in the member account.
+
+            * ``DELETE_SUCCESSFUL`` when conformance pack has been deleted in the member account.
+
+            * ``UPDATE_SUCCESSFUL`` when conformance pack has been updated in the member account.
+
+            * ``UPDATE_IN_PROGRESS`` when conformance pack is being updated in the member account.
+
+            * ``UPDATE_FAILED`` when conformance pack deletion has failed in the member account.
+
+        :type Limit: integer
+        :param Limit:
+
+          The maximum number of ``OrganizationConformancePackDetailedStatuses`` returned on each page. If
+          you do not specify a number, AWS Config uses the default. The default is 100.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The nextToken string returned on a previous page that you use to get the next page of results in
+          a paginated response.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'OrganizationConformancePackDetailedStatuses': [
+                    {
+                        'AccountId': 'string',
+                        'ConformancePackName': 'string',
+                        'Status':
+                        'CREATE_SUCCESSFUL'|'CREATE_IN_PROGRESS'|'CREATE_FAILED'|'DELETE_SUCCESSFUL'
+                        |'DELETE_FAILED'|'DELETE_IN_PROGRESS'|'UPDATE_SUCCESSFUL'|'UPDATE_IN_PROGRESS'
+                        |'UPDATE_FAILED',
+                        'ErrorCode': 'string',
+                        'ErrorMessage': 'string',
+                        'LastUpdateTime': datetime(2015, 1, 1)
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **OrganizationConformancePackDetailedStatuses** *(list) --*
+
+              A list of ``OrganizationConformancePackDetailedStatus`` objects.
+
+              - *(dict) --*
+
+                Organization conformance pack creation or deletion status in each member account. This
+                includes the name of the conformance pack, the status, error code and error message when
+                the conformance pack creation or deletion failed.
+
+                - **AccountId** *(string) --*
+
+                  The 12-digit account ID of a member account.
+
+                - **ConformancePackName** *(string) --*
+
+                  The name of conformance pack deployed in the member account.
+
+                - **Status** *(string) --*
+
+                  Indicates deployment status for conformance pack in a member account. When master account
+                  calls ``PutOrganizationConformancePack`` action for the first time, conformance pack
+                  status is created in the member account. When master account calls
+                  ``PutOrganizationConformancePack`` action for the second time, conformance pack status is
+                  updated in the member account. Conformance pack status is deleted when the master account
+                  deletes ``OrganizationConformancePack`` and disables service access for
+                  ``config-multiaccountsetup.amazonaws.com`` .
+
+                  AWS Config sets the state of the conformance pack to:
+
+                  * ``CREATE_SUCCESSFUL`` when conformance pack has been created in the member account.
+
+                  * ``CREATE_IN_PROGRESS`` when conformance pack is being created in the member account.
+
+                  * ``CREATE_FAILED`` when conformance pack creation has failed in the member account.
+
+                  * ``DELETE_FAILED`` when conformance pack deletion has failed in the member account.
+
+                  * ``DELETE_IN_PROGRESS`` when conformance pack is being deleted in the member account.
+
+                  * ``DELETE_SUCCESSFUL`` when conformance pack has been deleted in the member account.
+
+                  * ``UPDATE_SUCCESSFUL`` when conformance pack has been updated in the member account.
+
+                  * ``UPDATE_IN_PROGRESS`` when conformance pack is being updated in the member account.
+
+                  * ``UPDATE_FAILED`` when conformance pack deletion has failed in the member account.
+
+                - **ErrorCode** *(string) --*
+
+                  An error code that is returned when conformance pack creation or deletion failed in the
+                  member account.
+
+                - **ErrorMessage** *(string) --*
+
+                  An error message indicating that conformance pack account creation or deletion has failed
+                  due to an error in the member account.
+
+                - **LastUpdateTime** *(datetime) --*
+
+                  The timestamp of the last status update.
+
+            - **NextToken** *(string) --*
+
+              The nextToken string returned on a previous page that you use to get the next page of results
+              in a paginated response.
 
         """
 
@@ -7556,6 +8718,127 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put_conformance_pack(
+        self,
+        ConformancePackName: str,
+        DeliveryS3Bucket: str,
+        TemplateS3Uri: str = None,
+        TemplateBody: str = None,
+        DeliveryS3KeyPrefix: str = None,
+        ConformancePackInputParameters: List[
+            ClientPutConformancePackConformancePackInputParametersTypeDef
+        ] = None,
+    ) -> ClientPutConformancePackResponseTypeDef:
+        """
+        Creates or updates a conformance pack. A conformance pack is a collection of AWS Config rules that
+        can be easily deployed in an account and a region.
+
+        This API creates a service linked role ``AWSServiceRoleForConfigConforms`` in your account. The
+        service linked role is created only when the role does not exist in your account. AWS Config
+        verifies the existence of role with ``GetRole`` action.
+
+        .. note::
+
+          You must specify either the ``TemplateS3Uri`` or the ``TemplateBody`` parameter, but not both. If
+          you provide both AWS Config uses the ``TemplateS3Uri`` parameter and ignores the ``TemplateBody``
+          parameter.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutConformancePack>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.put_conformance_pack(
+              ConformancePackName='string',
+              TemplateS3Uri='string',
+              TemplateBody='string',
+              DeliveryS3Bucket='string',
+              DeliveryS3KeyPrefix='string',
+              ConformancePackInputParameters=[
+                  {
+                      'ParameterName': 'string',
+                      'ParameterValue': 'string'
+                  },
+              ]
+          )
+        :type ConformancePackName: string
+        :param ConformancePackName: **[REQUIRED]**
+
+          Name of the conformance pack you want to create.
+
+        :type TemplateS3Uri: string
+        :param TemplateS3Uri:
+
+          Location of file containing the template body. The uri must point to the conformance pack
+          template (max size: 300,000 bytes) that is located in an Amazon S3 bucket in the same region as
+          the conformance pack.
+
+          .. note::
+
+            You must have access to read Amazon S3 bucket.
+
+        :type TemplateBody: string
+        :param TemplateBody:
+
+          A string containing full conformance pack template body. Structure containing the template body
+          with a minimum length of 1 byte and a maximum length of 51,200 bytes.
+
+          .. note::
+
+            You can only use a YAML template with one resource type, that is, config rule.
+
+        :type DeliveryS3Bucket: string
+        :param DeliveryS3Bucket: **[REQUIRED]**
+
+          Location of an Amazon S3 bucket where AWS Config can deliver evaluation results. AWS Config
+          stores intermediate files while processing conformance pack template.
+
+        :type DeliveryS3KeyPrefix: string
+        :param DeliveryS3KeyPrefix:
+
+          The prefix for the Amazon S3 bucket.
+
+        :type ConformancePackInputParameters: list
+        :param ConformancePackInputParameters:
+
+          A list of ``ConformancePackInputParameter`` objects.
+
+          - *(dict) --*
+
+            Input parameters in the form of key-value pairs for the conformance pack, both of which you
+            define. Keys can have a maximum character length of 128 characters, and values can have a
+            maximum length of 256 characters.
+
+            - **ParameterName** *(string) --* **[REQUIRED]**
+
+              One part of a key-value pair.
+
+            - **ParameterValue** *(string) --* **[REQUIRED]**
+
+              Another part of the key-value pair.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'ConformancePackArn': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **ConformancePackArn** *(string) --*
+
+              ARN of the conformance pack.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_delivery_channel(
         self, DeliveryChannel: ClientPutDeliveryChannelDeliveryChannelTypeDef
     ) -> None:
@@ -8017,6 +9300,136 @@ class Client(BaseClient):
             - **OrganizationConfigRuleArn** *(string) --*
 
               The Amazon Resource Name (ARN) of an organization config rule.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put_organization_conformance_pack(
+        self,
+        OrganizationConformancePackName: str,
+        DeliveryS3Bucket: str,
+        TemplateS3Uri: str = None,
+        TemplateBody: str = None,
+        DeliveryS3KeyPrefix: str = None,
+        ConformancePackInputParameters: List[
+            ClientPutOrganizationConformancePackConformancePackInputParametersTypeDef
+        ] = None,
+        ExcludedAccounts: List[str] = None,
+    ) -> ClientPutOrganizationConformancePackResponseTypeDef:
+        """
+        Deploys conformance packs across member accounts in an AWS Organization.
+
+        This API enables organization service access through the ``EnableAWSServiceAccess`` action and
+        creates a service linked role AWSServiceRoleForConfigMultiAccountSetup in the master account of
+        your organization. The service linked role is created only when the role does not exist in the
+        master account. AWS Config verifies the existence of role with GetRole action.
+
+        .. note::
+
+          The SPN is ``config-multiaccountsetup.amazonaws.com`` .
+
+          You must specify either the ``TemplateS3Uri`` or the ``TemplateBody`` parameter, but not both. If
+          you provide both AWS Config uses the ``TemplateS3Uri`` parameter and ignores the ``TemplateBody``
+          parameter.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutOrganizationConformancePack>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.put_organization_conformance_pack(
+              OrganizationConformancePackName='string',
+              TemplateS3Uri='string',
+              TemplateBody='string',
+              DeliveryS3Bucket='string',
+              DeliveryS3KeyPrefix='string',
+              ConformancePackInputParameters=[
+                  {
+                      'ParameterName': 'string',
+                      'ParameterValue': 'string'
+                  },
+              ],
+              ExcludedAccounts=[
+                  'string',
+              ]
+          )
+        :type OrganizationConformancePackName: string
+        :param OrganizationConformancePackName: **[REQUIRED]**
+
+          Name of the organization conformance pack you want to create.
+
+        :type TemplateS3Uri: string
+        :param TemplateS3Uri:
+
+          Location of file containing the template body. The uri must point to the conformance pack
+          template (max size: 300,000 bytes).
+
+          .. note::
+
+            You must have access to read Amazon S3 bucket.
+
+        :type TemplateBody: string
+        :param TemplateBody:
+
+          A string containing full conformance pack template body. Structure containing the template body
+          with a minimum length of 1 byte and a maximum length of 51,200 bytes.
+
+        :type DeliveryS3Bucket: string
+        :param DeliveryS3Bucket: **[REQUIRED]**
+
+          Location of an Amazon S3 bucket where AWS Config can deliver evaluation results. AWS Config
+          stores intermediate files while processing conformance pack template.
+
+        :type DeliveryS3KeyPrefix: string
+        :param DeliveryS3KeyPrefix:
+
+          The prefix for the Amazon S3 bucket.
+
+        :type ConformancePackInputParameters: list
+        :param ConformancePackInputParameters:
+
+          A list of ``ConformancePackInputParameter`` objects.
+
+          - *(dict) --*
+
+            Input parameters in the form of key-value pairs for the conformance pack, both of which you
+            define. Keys can have a maximum character length of 128 characters, and values can have a
+            maximum length of 256 characters.
+
+            - **ParameterName** *(string) --* **[REQUIRED]**
+
+              One part of a key-value pair.
+
+            - **ParameterValue** *(string) --* **[REQUIRED]**
+
+              Another part of the key-value pair.
+
+        :type ExcludedAccounts: list
+        :param ExcludedAccounts:
+
+          A list of AWS accounts to be excluded from an organization conformance pack while deploying a
+          conformance pack.
+
+          - *(string) --*
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'OrganizationConformancePackArn': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **OrganizationConformancePackArn** *(string) --*
+
+              ARN of the organization conformance pack.
 
         """
 
@@ -9209,6 +10622,7 @@ class Client(BaseClient):
 
 class Exceptions:
     ClientError: Boto3ClientError
+    ConformancePackTemplateValidationException: Boto3ClientError
     InsufficientDeliveryPolicyException: Boto3ClientError
     InsufficientPermissionsException: Boto3ClientError
     InvalidConfigurationRecorderNameException: Boto3ClientError
@@ -9227,8 +10641,10 @@ class Exceptions:
     LimitExceededException: Boto3ClientError
     MaxNumberOfConfigRulesExceededException: Boto3ClientError
     MaxNumberOfConfigurationRecordersExceededException: Boto3ClientError
+    MaxNumberOfConformancePacksExceededException: Boto3ClientError
     MaxNumberOfDeliveryChannelsExceededException: Boto3ClientError
     MaxNumberOfOrganizationConfigRulesExceededException: Boto3ClientError
+    MaxNumberOfOrganizationConformancePacksExceededException: Boto3ClientError
     MaxNumberOfRetentionConfigurationsExceededException: Boto3ClientError
     NoAvailableConfigurationRecorderException: Boto3ClientError
     NoAvailableDeliveryChannelException: Boto3ClientError
@@ -9236,15 +10652,19 @@ class Exceptions:
     NoRunningConfigurationRecorderException: Boto3ClientError
     NoSuchBucketException: Boto3ClientError
     NoSuchConfigRuleException: Boto3ClientError
+    NoSuchConfigRuleInConformancePackException: Boto3ClientError
     NoSuchConfigurationAggregatorException: Boto3ClientError
     NoSuchConfigurationRecorderException: Boto3ClientError
+    NoSuchConformancePackException: Boto3ClientError
     NoSuchDeliveryChannelException: Boto3ClientError
     NoSuchOrganizationConfigRuleException: Boto3ClientError
+    NoSuchOrganizationConformancePackException: Boto3ClientError
     NoSuchRemediationConfigurationException: Boto3ClientError
     NoSuchRemediationExceptionException: Boto3ClientError
     NoSuchRetentionConfigurationException: Boto3ClientError
     OrganizationAccessDeniedException: Boto3ClientError
     OrganizationAllFeaturesNotEnabledException: Boto3ClientError
+    OrganizationConformancePackTemplateValidationException: Boto3ClientError
     OversizedConfigurationItemException: Boto3ClientError
     RemediationInProgressException: Boto3ClientError
     ResourceInUseException: Boto3ClientError

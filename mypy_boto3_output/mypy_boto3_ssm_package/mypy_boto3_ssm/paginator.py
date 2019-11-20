@@ -931,11 +931,18 @@ class DescribeAutomationExecutionsPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+                    how to target all resources in the resource group **ProductionResourceGroup** in your
+                    maintenance window.
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``
+                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+                    maintenance window.
+
+                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+                    demonstrates how to target all managed instances in the AWS Region where the
+                    association was created.
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -1343,11 +1350,18 @@ class DescribeAutomationStepExecutionsPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+                    how to target all resources in the resource group **ProductionResourceGroup** in your
+                    maintenance window.
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``
+                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+                    maintenance window.
+
+                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+                    demonstrates how to target all managed instances in the AWS Region where the
+                    association was created.
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -3619,9 +3633,17 @@ class DescribeMaintenanceWindowSchedulePaginator(Boto3Paginator):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+              This example demonstrates how to target all resources in the resource group
+              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+            window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the association was
+            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -3904,11 +3926,18 @@ class DescribeMaintenanceWindowTargetsPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+                    how to target all resources in the resource group **ProductionResourceGroup** in your
+                    maintenance window.
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``
+                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+                    maintenance window.
+
+                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+                    demonstrates how to target all managed instances in the AWS Region where the
+                    association was created.
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -4136,11 +4165,18 @@ class DescribeMaintenanceWindowTasksPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+                    how to target all resources in the resource group **ProductionResourceGroup** in your
+                    maintenance window.
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``
+                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+                    maintenance window.
+
+                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+                    demonstrates how to target all managed instances in the AWS Region where the
+                    association was created.
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -4473,9 +4509,17 @@ class DescribeMaintenanceWindowsForTargetPaginator(Boto3Paginator):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+              This example demonstrates how to target all resources in the resource group
+              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+            window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the association was
+            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -6257,11 +6301,18 @@ class ListAssociationVersionsPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+                    how to target all resources in the resource group **ProductionResourceGroup** in your
+                    maintenance window.
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``
+                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+                    maintenance window.
+
+                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+                    demonstrates how to target all managed instances in the AWS Region where the
+                    association was created.
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -6522,11 +6573,18 @@ class ListAssociationsPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+                    how to target all resources in the resource group **ProductionResourceGroup** in your
+                    maintenance window.
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``
+                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+                    maintenance window.
+
+                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+                    demonstrates how to target all managed instances in the AWS Region where the
+                    association was created.
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -7307,11 +7365,18 @@ class ListCommandsPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+                    how to target all resources in the resource group **ProductionResourceGroup** in your
+                    maintenance window.
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``
+                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+                    maintenance window.
+
+                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+                    demonstrates how to target all managed instances in the AWS Region where the
+                    association was created.
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -8556,6 +8621,7 @@ class ListResourceDataSyncPaginator(Boto3Paginator):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
+        SyncType: str = None,
         PaginationConfig: ListResourceDataSyncPaginatePaginationConfigTypeDef = None,
     ) -> ListResourceDataSyncPaginateResponseTypeDef:
         """
@@ -8569,12 +8635,21 @@ class ListResourceDataSyncPaginator(Boto3Paginator):
         ::
 
           response_iterator = paginator.paginate(
+              SyncType='string',
               PaginationConfig={
                   'MaxItems': 123,
                   'PageSize': 123,
                   'StartingToken': 'string'
               }
           )
+        :type SyncType: string
+        :param SyncType:
+
+          View a list of resource data syncs according to the sync type. Specify ``SyncToDestination`` to
+          view resource data syncs that synchronize data to an Amazon S3 buckets. Specify
+          ``SyncFromSource`` to view resource data syncs from AWS Organizations or from multiple AWS
+          Regions.
+
         :type PaginationConfig: dict
         :param PaginationConfig:
 
@@ -8606,6 +8681,23 @@ class ListResourceDataSyncPaginator(Boto3Paginator):
                 'ResourceDataSyncItems': [
                     {
                         'SyncName': 'string',
+                        'SyncType': 'string',
+                        'SyncSource': {
+                            'SourceType': 'string',
+                            'AwsOrganizationsSource': {
+                                'OrganizationSourceType': 'string',
+                                'OrganizationalUnits': [
+                                    {
+                                        'OrganizationalUnitId': 'string'
+                                    },
+                                ]
+                            },
+                            'SourceRegions': [
+                                'string',
+                            ],
+                            'IncludeFutureRegions': True|False,
+                            'State': 'string'
+                        },
                         'S3Destination': {
                             'BucketName': 'string',
                             'Prefix': 'string',
@@ -8615,6 +8707,7 @@ class ListResourceDataSyncPaginator(Boto3Paginator):
                         },
                         'LastSyncTime': datetime(2015, 1, 1),
                         'LastSuccessfulSyncTime': datetime(2015, 1, 1),
+                        'SyncLastModifiedTime': datetime(2015, 1, 1),
                         'LastStatus': 'Successful'|'Failed'|'InProgress',
                         'SyncCreatedTime': datetime(2015, 1, 1),
                         'LastSyncStatusMessage': 'string'
@@ -8638,6 +8731,73 @@ class ListResourceDataSyncPaginator(Boto3Paginator):
                 - **SyncName** *(string) --*
 
                   The name of the Resource Data Sync.
+
+                - **SyncType** *(string) --*
+
+                  The type of resource data sync. If ``SyncType`` is ``SyncToDestination`` , then the
+                  resource data sync synchronizes data to an Amazon S3 bucket. If the ``SyncType`` is
+                  ``SyncFromSource`` then the resource data sync synchronizes data from AWS Organizations
+                  or from multiple AWS Regions.
+
+                - **SyncSource** *(dict) --*
+
+                  Information about the source where the data was synchronized.
+
+                  - **SourceType** *(string) --*
+
+                    The type of data source for the resource data sync. ``SourceType`` is either
+                    ``AwsOrganizations`` (if an organization is present in AWS Organizations) or
+                    ``singleAccountMultiRegions`` .
+
+                  - **AwsOrganizationsSource** *(dict) --*
+
+                    The field name in ``SyncSource`` for the ``ResourceDataSyncAwsOrganizationsSource``
+                    type.
+
+                    - **OrganizationSourceType** *(string) --*
+
+                      If an AWS Organization is present, this is either ``OrganizationalUnits`` or
+                      ``EntireOrganization`` . For ``OrganizationalUnits`` , the data is aggregated from a
+                      set of organization units. For ``EntireOrganization`` , the data is aggregated from
+                      the entire AWS Organization.
+
+                    - **OrganizationalUnits** *(list) --*
+
+                      The AWS Organizations organization units included in the sync.
+
+                      - *(dict) --*
+
+                        The AWS Organizations organizational unit data source for the sync.
+
+                        - **OrganizationalUnitId** *(string) --*
+
+                          The AWS Organization unit ID data source for the sync.
+
+                  - **SourceRegions** *(list) --*
+
+                    The ``SyncSource`` AWS Regions included in the resource data sync.
+
+                    - *(string) --*
+
+                  - **IncludeFutureRegions** *(boolean) --*
+
+                    Whether to automatically synchronize and aggregate data from new AWS Regions when those
+                    Regions come online.
+
+                  - **State** *(string) --*
+
+                    The data type name for including resource data sync state. There are four sync states:
+
+                     ``OrganizationNotExists`` : Your organization doesn't exist.
+
+                     ``NoPermissions`` : The system can't locate the service-linked role. This role is
+                     automatically created when a user creates a resource data sync in Explorer.
+
+                     ``InvalidOrganizationalUnit`` : You specified or selected an invalid unit in the
+                     resource data sync configuration.
+
+                     ``TrustedAccessDisabled`` : You disabled Systems Manager access in the organization in
+                     AWS Organizations.
 
                 - **S3Destination** *(dict) --*
 
@@ -8671,6 +8831,10 @@ class ListResourceDataSyncPaginator(Boto3Paginator):
                 - **LastSuccessfulSyncTime** *(datetime) --*
 
                   The last time the sync operations returned a status of ``SUCCESSFUL`` (UTC).
+
+                - **SyncLastModifiedTime** *(datetime) --*
+
+                  The date and time the resource data sync was changed.
 
                 - **LastStatus** *(string) --*
 

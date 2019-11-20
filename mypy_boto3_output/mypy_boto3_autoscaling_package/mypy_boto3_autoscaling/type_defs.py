@@ -530,8 +530,8 @@ class ClientCreateAutoScalingGroupMixedInstancesPolicyInstancesDistributionTypeD
 
     The instances distribution to use.
 
-    If you leave this parameter unspecified when creating a mixed instances policy, the default
-    values are used.
+    If you leave this parameter unspecified, the value for each parameter in
+    ``InstancesDistribution`` uses a default value.
 
     - **OnDemandAllocationStrategy** *(string) --*
 
@@ -549,17 +549,32 @@ class ClientCreateAutoScalingGroupMixedInstancesPolicyInstancesDistributionTypeD
       The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand
       Instances. This base portion is provisioned first as your group scales.
 
-      The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand Instances
-      are launched as a percentage of the Auto Scaling group's desired capacity, per the
+      Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched as a
+      percentage of the Auto Scaling group's desired capacity, per the
       ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+      .. note::
+
+        An update to this setting means a gradual replacement of instances to maintain the
+        specified number of On-Demand Instances for your base capacity. When replacing instances,
+        Amazon EC2 Auto Scaling launches new instances before terminating the old ones.
 
     - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
       Controls the percentages of On-Demand Instances and Spot Instances for your additional
-      capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+      capacity beyond ``OnDemandBaseCapacity`` .
 
-      The default value is ``100`` . If you leave this parameter set to ``100`` , the percentages
-      are 100% for On-Demand Instances and 0% for Spot Instances.
+      Default if not set is 100. If you leave it set to 100, the percentages are 100% for On-Demand
+      Instances and 0% for Spot Instances.
+
+      .. note::
+
+        An update to this setting means a gradual replacement of instances to maintain the
+        percentage of On-Demand Instances for your additional capacity above the base capacity.
+        When replacing instances, Amazon EC2 Auto Scaling launches new instances before terminating
+        the old ones.
+
+      Valid Range: Minimum value of 0. Maximum value of 100.
 
     - **SpotAllocationStrategy** *(string) --*
 
@@ -581,9 +596,11 @@ class ClientCreateAutoScalingGroupMixedInstancesPolicyInstancesDistributionTypeD
 
       The number of Spot Instance pools across which to allocate your Spot Instances. The Spot
       pools are determined from the different instance types in the Overrides array of
-      LaunchTemplate . The range is 1–20. The default value is ``2`` .
+      LaunchTemplate . Default if not set is 2.
 
-      Valid only when the Spot allocation strategy is ``lowest-price`` .
+      Used only when the Spot allocation strategy is ``lowest-price`` .
+
+      Valid Range: Minimum value of 1. Maximum value of 20.
 
     - **SpotMaxPrice** *(string) --*
 
@@ -630,7 +647,7 @@ class ClientCreateAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTempla
 
 _ClientCreateAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesTypeDef = TypedDict(
     "_ClientCreateAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesTypeDef",
-    {"InstanceType": str},
+    {"InstanceType": str, "WeightedCapacity": str},
     total=False,
 )
 
@@ -650,6 +667,15 @@ class ClientCreateAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesTyp
       For information about available instance types, see `Available Instance Types
       <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
       in the *Amazon Elastic Compute Cloud User Guide.*
+
+    - **WeightedCapacity** *(string) --*
+
+      The number of capacity units, which gives the instance type a proportional weight to
+      other instance types. For example, larger instance types are generally weighted more than
+      smaller instance types. These are the same units that you chose to set the desired
+      capacity in terms of instances, or a performance attribute such as vCPUs, memory, or I/O.
+
+      Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -697,9 +723,9 @@ class ClientCreateAutoScalingGroupMixedInstancesPolicyLaunchTemplateTypeDef(
 
     - **Overrides** *(list) --*
 
-      Any parameters that you specify override the same parameters in the launch template.
-      Currently, the only supported override is instance type. You must specify between 2 and 20
-      overrides.
+      An optional setting. Any parameters that you specify override the same parameters in the
+      launch template. Currently, the only supported override is instance type. You can specify
+      between 1 and 20 instance types.
 
       - *(dict) --*
 
@@ -712,6 +738,15 @@ class ClientCreateAutoScalingGroupMixedInstancesPolicyLaunchTemplateTypeDef(
           For information about available instance types, see `Available Instance Types
           <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
           in the *Amazon Elastic Compute Cloud User Guide.*
+
+        - **WeightedCapacity** *(string) --*
+
+          The number of capacity units, which gives the instance type a proportional weight to
+          other instance types. For example, larger instance types are generally weighted more than
+          smaller instance types. These are the same units that you chose to set the desired
+          capacity in terms of instances, or a performance attribute such as vCPUs, memory, or I/O.
+
+          Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -777,9 +812,9 @@ class ClientCreateAutoScalingGroupMixedInstancesPolicyTypeDef(
 
       - **Overrides** *(list) --*
 
-        Any parameters that you specify override the same parameters in the launch template.
-        Currently, the only supported override is instance type. You must specify between 2 and 20
-        overrides.
+        An optional setting. Any parameters that you specify override the same parameters in the
+        launch template. Currently, the only supported override is instance type. You can specify
+        between 1 and 20 instance types.
 
         - *(dict) --*
 
@@ -793,12 +828,21 @@ class ClientCreateAutoScalingGroupMixedInstancesPolicyTypeDef(
             <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
             in the *Amazon Elastic Compute Cloud User Guide.*
 
+          - **WeightedCapacity** *(string) --*
+
+            The number of capacity units, which gives the instance type a proportional weight to
+            other instance types. For example, larger instance types are generally weighted more than
+            smaller instance types. These are the same units that you chose to set the desired
+            capacity in terms of instances, or a performance attribute such as vCPUs, memory, or I/O.
+
+            Valid Range: Minimum value of 1. Maximum value of 999.
+
     - **InstancesDistribution** *(dict) --*
 
       The instances distribution to use.
 
-      If you leave this parameter unspecified when creating a mixed instances policy, the default
-      values are used.
+      If you leave this parameter unspecified, the value for each parameter in
+      ``InstancesDistribution`` uses a default value.
 
       - **OnDemandAllocationStrategy** *(string) --*
 
@@ -816,17 +860,32 @@ class ClientCreateAutoScalingGroupMixedInstancesPolicyTypeDef(
         The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand
         Instances. This base portion is provisioned first as your group scales.
 
-        The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand Instances
-        are launched as a percentage of the Auto Scaling group's desired capacity, per the
+        Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched as a
+        percentage of the Auto Scaling group's desired capacity, per the
         ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+        .. note::
+
+          An update to this setting means a gradual replacement of instances to maintain the
+          specified number of On-Demand Instances for your base capacity. When replacing instances,
+          Amazon EC2 Auto Scaling launches new instances before terminating the old ones.
 
       - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
         Controls the percentages of On-Demand Instances and Spot Instances for your additional
-        capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+        capacity beyond ``OnDemandBaseCapacity`` .
 
-        The default value is ``100`` . If you leave this parameter set to ``100`` , the percentages
-        are 100% for On-Demand Instances and 0% for Spot Instances.
+        Default if not set is 100. If you leave it set to 100, the percentages are 100% for On-Demand
+        Instances and 0% for Spot Instances.
+
+        .. note::
+
+          An update to this setting means a gradual replacement of instances to maintain the
+          percentage of On-Demand Instances for your additional capacity above the base capacity.
+          When replacing instances, Amazon EC2 Auto Scaling launches new instances before terminating
+          the old ones.
+
+        Valid Range: Minimum value of 0. Maximum value of 100.
 
       - **SpotAllocationStrategy** *(string) --*
 
@@ -848,9 +907,11 @@ class ClientCreateAutoScalingGroupMixedInstancesPolicyTypeDef(
 
         The number of Spot Instance pools across which to allocate your Spot Instances. The Spot
         pools are determined from the different instance types in the Overrides array of
-        LaunchTemplate . The range is 1–20. The default value is ``2`` .
+        LaunchTemplate . Default if not set is 2.
 
-        Valid only when the Spot allocation strategy is ``lowest-price`` .
+        Used only when the Spot allocation strategy is ``lowest-price`` .
+
+        Valid Range: Minimum value of 1. Maximum value of 20.
 
       - **SpotMaxPrice** *(string) --*
 
@@ -956,7 +1017,7 @@ class ClientCreateLaunchConfigurationBlockDeviceMappingsEbsTypeDef(
       <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html>`__ in the *Amazon
       EC2 User Guide for Linux Instances* .
 
-      Valid values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
+      Valid Values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
 
     - **DeleteOnTermination** *(boolean) --*
 
@@ -1076,7 +1137,7 @@ class ClientCreateLaunchConfigurationBlockDeviceMappingsTypeDef(
         <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html>`__ in the *Amazon
         EC2 User Guide for Linux Instances* .
 
-        Valid values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
+        Valid Values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
 
       - **DeleteOnTermination** *(boolean) --*
 
@@ -1418,12 +1479,14 @@ _ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsInstancesTypeDef = Type
     "_ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsInstancesTypeDef",
     {
         "InstanceId": str,
+        "InstanceType": str,
         "AvailabilityZone": str,
         "LifecycleState": str,
         "HealthStatus": str,
         "LaunchConfigurationName": str,
         "LaunchTemplate": ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsInstancesLaunchTemplateTypeDef,
         "ProtectedFromScaleIn": bool,
+        "WeightedCapacity": str,
     },
     total=False,
 )
@@ -1440,6 +1503,10 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsInstancesTypeDef(
     - **InstanceId** *(string) --*
 
       The ID of the instance.
+
+    - **InstanceType** *(string) --*
+
+      The instance type of the EC2 instance.
 
     - **AvailabilityZone** *(string) --*
 
@@ -1485,6 +1552,12 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsInstancesTypeDef(
 
       Indicates whether the instance is protected from termination by Amazon EC2 Auto
       Scaling when scaling in.
+
+    - **WeightedCapacity** *(string) --*
+
+      The number of capacity units contributed by the instance based on its instance type.
+
+      Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -1544,8 +1617,8 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPoli
 
     The instances distribution to use.
 
-    If you leave this parameter unspecified when creating a mixed instances policy, the
-    default values are used.
+    If you leave this parameter unspecified, the value for each parameter in
+    ``InstancesDistribution`` uses a default value.
 
     - **OnDemandAllocationStrategy** *(string) --*
 
@@ -1563,17 +1636,33 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPoli
       The minimum amount of the Auto Scaling group's capacity that must be fulfilled by
       On-Demand Instances. This base portion is provisioned first as your group scales.
 
-      The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand
-      Instances are launched as a percentage of the Auto Scaling group's desired capacity,
-      per the ``OnDemandPercentageAboveBaseCapacity`` setting.
+      Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched
+      as a percentage of the Auto Scaling group's desired capacity, per the
+      ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+      .. note::
+
+        An update to this setting means a gradual replacement of instances to maintain the
+        specified number of On-Demand Instances for your base capacity. When replacing
+        instances, Amazon EC2 Auto Scaling launches new instances before terminating the
+        old ones.
 
     - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
       Controls the percentages of On-Demand Instances and Spot Instances for your
-      additional capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+      additional capacity beyond ``OnDemandBaseCapacity`` .
 
-      The default value is ``100`` . If you leave this parameter set to ``100`` , the
-      percentages are 100% for On-Demand Instances and 0% for Spot Instances.
+      Default if not set is 100. If you leave it set to 100, the percentages are 100% for
+      On-Demand Instances and 0% for Spot Instances.
+
+      .. note::
+
+        An update to this setting means a gradual replacement of instances to maintain the
+        percentage of On-Demand Instances for your additional capacity above the base
+        capacity. When replacing instances, Amazon EC2 Auto Scaling launches new instances
+        before terminating the old ones.
+
+      Valid Range: Minimum value of 0. Maximum value of 100.
 
     - **SpotAllocationStrategy** *(string) --*
 
@@ -1595,9 +1684,11 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPoli
 
       The number of Spot Instance pools across which to allocate your Spot Instances. The
       Spot pools are determined from the different instance types in the Overrides array of
-       LaunchTemplate . The range is 1–20. The default value is ``2`` .
+       LaunchTemplate . Default if not set is 2.
 
-      Valid only when the Spot allocation strategy is ``lowest-price`` .
+      Used only when the Spot allocation strategy is ``lowest-price`` .
+
+      Valid Range: Minimum value of 1. Maximum value of 20.
 
     - **SpotMaxPrice** *(string) --*
 
@@ -1648,7 +1739,7 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPoli
 
 _ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPolicyLaunchTemplateOverridesTypeDef = TypedDict(
     "_ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPolicyLaunchTemplateOverridesTypeDef",
-    {"InstanceType": str},
+    {"InstanceType": str, "WeightedCapacity": str},
     total=False,
 )
 
@@ -1668,6 +1759,16 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPoli
       For information about available instance types, see `Available Instance Types
       <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
       in the *Amazon Elastic Compute Cloud User Guide.*
+
+    - **WeightedCapacity** *(string) --*
+
+      The number of capacity units, which gives the instance type a proportional weight
+      to other instance types. For example, larger instance types are generally
+      weighted more than smaller instance types. These are the same units that you
+      chose to set the desired capacity in terms of instances, or a performance
+      attribute such as vCPUs, memory, or I/O.
+
+      Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -1718,9 +1819,9 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPoli
 
     - **Overrides** *(list) --*
 
-      Any parameters that you specify override the same parameters in the launch template.
-      Currently, the only supported override is instance type. You must specify between 2
-      and 20 overrides.
+      An optional setting. Any parameters that you specify override the same parameters in
+      the launch template. Currently, the only supported override is instance type. You can
+      specify between 1 and 20 instance types.
 
       - *(dict) --*
 
@@ -1733,6 +1834,16 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPoli
           For information about available instance types, see `Available Instance Types
           <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
           in the *Amazon Elastic Compute Cloud User Guide.*
+
+        - **WeightedCapacity** *(string) --*
+
+          The number of capacity units, which gives the instance type a proportional weight
+          to other instance types. For example, larger instance types are generally
+          weighted more than smaller instance types. These are the same units that you
+          chose to set the desired capacity in terms of instances, or a performance
+          attribute such as vCPUs, memory, or I/O.
+
+          Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -1785,9 +1896,9 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPoli
 
       - **Overrides** *(list) --*
 
-        Any parameters that you specify override the same parameters in the launch template.
-        Currently, the only supported override is instance type. You must specify between 2
-        and 20 overrides.
+        An optional setting. Any parameters that you specify override the same parameters in
+        the launch template. Currently, the only supported override is instance type. You can
+        specify between 1 and 20 instance types.
 
         - *(dict) --*
 
@@ -1801,12 +1912,22 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPoli
             <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
             in the *Amazon Elastic Compute Cloud User Guide.*
 
+          - **WeightedCapacity** *(string) --*
+
+            The number of capacity units, which gives the instance type a proportional weight
+            to other instance types. For example, larger instance types are generally
+            weighted more than smaller instance types. These are the same units that you
+            chose to set the desired capacity in terms of instances, or a performance
+            attribute such as vCPUs, memory, or I/O.
+
+            Valid Range: Minimum value of 1. Maximum value of 999.
+
     - **InstancesDistribution** *(dict) --*
 
       The instances distribution to use.
 
-      If you leave this parameter unspecified when creating a mixed instances policy, the
-      default values are used.
+      If you leave this parameter unspecified, the value for each parameter in
+      ``InstancesDistribution`` uses a default value.
 
       - **OnDemandAllocationStrategy** *(string) --*
 
@@ -1824,17 +1945,33 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPoli
         The minimum amount of the Auto Scaling group's capacity that must be fulfilled by
         On-Demand Instances. This base portion is provisioned first as your group scales.
 
-        The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand
-        Instances are launched as a percentage of the Auto Scaling group's desired capacity,
-        per the ``OnDemandPercentageAboveBaseCapacity`` setting.
+        Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched
+        as a percentage of the Auto Scaling group's desired capacity, per the
+        ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+        .. note::
+
+          An update to this setting means a gradual replacement of instances to maintain the
+          specified number of On-Demand Instances for your base capacity. When replacing
+          instances, Amazon EC2 Auto Scaling launches new instances before terminating the
+          old ones.
 
       - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
         Controls the percentages of On-Demand Instances and Spot Instances for your
-        additional capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+        additional capacity beyond ``OnDemandBaseCapacity`` .
 
-        The default value is ``100`` . If you leave this parameter set to ``100`` , the
-        percentages are 100% for On-Demand Instances and 0% for Spot Instances.
+        Default if not set is 100. If you leave it set to 100, the percentages are 100% for
+        On-Demand Instances and 0% for Spot Instances.
+
+        .. note::
+
+          An update to this setting means a gradual replacement of instances to maintain the
+          percentage of On-Demand Instances for your additional capacity above the base
+          capacity. When replacing instances, Amazon EC2 Auto Scaling launches new instances
+          before terminating the old ones.
+
+        Valid Range: Minimum value of 0. Maximum value of 100.
 
       - **SpotAllocationStrategy** *(string) --*
 
@@ -1856,9 +1993,11 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsMixedInstancesPoli
 
         The number of Spot Instance pools across which to allocate your Spot Instances. The
         Spot pools are determined from the different instance types in the Overrides array of
-         LaunchTemplate . The range is 1–20. The default value is ``2`` .
+         LaunchTemplate . Default if not set is 2.
 
-        Valid only when the Spot allocation strategy is ``lowest-price`` .
+        Used only when the Spot allocation strategy is ``lowest-price`` .
+
+        Valid Range: Minimum value of 1. Maximum value of 20.
 
       - **SpotMaxPrice** *(string) --*
 
@@ -1977,6 +2116,7 @@ _ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsTypeDef = TypedDict(
         "TerminationPolicies": List[str],
         "NewInstancesProtectedFromScaleIn": bool,
         "ServiceLinkedRoleARN": str,
+        "MaxInstanceLifetime": int,
     },
     total=False,
 )
@@ -2058,9 +2198,9 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsTypeDef(
 
         - **Overrides** *(list) --*
 
-          Any parameters that you specify override the same parameters in the launch template.
-          Currently, the only supported override is instance type. You must specify between 2
-          and 20 overrides.
+          An optional setting. Any parameters that you specify override the same parameters in
+          the launch template. Currently, the only supported override is instance type. You can
+          specify between 1 and 20 instance types.
 
           - *(dict) --*
 
@@ -2074,12 +2214,22 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsTypeDef(
               <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
               in the *Amazon Elastic Compute Cloud User Guide.*
 
+            - **WeightedCapacity** *(string) --*
+
+              The number of capacity units, which gives the instance type a proportional weight
+              to other instance types. For example, larger instance types are generally
+              weighted more than smaller instance types. These are the same units that you
+              chose to set the desired capacity in terms of instances, or a performance
+              attribute such as vCPUs, memory, or I/O.
+
+              Valid Range: Minimum value of 1. Maximum value of 999.
+
       - **InstancesDistribution** *(dict) --*
 
         The instances distribution to use.
 
-        If you leave this parameter unspecified when creating a mixed instances policy, the
-        default values are used.
+        If you leave this parameter unspecified, the value for each parameter in
+        ``InstancesDistribution`` uses a default value.
 
         - **OnDemandAllocationStrategy** *(string) --*
 
@@ -2097,17 +2247,33 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsTypeDef(
           The minimum amount of the Auto Scaling group's capacity that must be fulfilled by
           On-Demand Instances. This base portion is provisioned first as your group scales.
 
-          The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand
-          Instances are launched as a percentage of the Auto Scaling group's desired capacity,
-          per the ``OnDemandPercentageAboveBaseCapacity`` setting.
+          Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched
+          as a percentage of the Auto Scaling group's desired capacity, per the
+          ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+          .. note::
+
+            An update to this setting means a gradual replacement of instances to maintain the
+            specified number of On-Demand Instances for your base capacity. When replacing
+            instances, Amazon EC2 Auto Scaling launches new instances before terminating the
+            old ones.
 
         - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
           Controls the percentages of On-Demand Instances and Spot Instances for your
-          additional capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+          additional capacity beyond ``OnDemandBaseCapacity`` .
 
-          The default value is ``100`` . If you leave this parameter set to ``100`` , the
-          percentages are 100% for On-Demand Instances and 0% for Spot Instances.
+          Default if not set is 100. If you leave it set to 100, the percentages are 100% for
+          On-Demand Instances and 0% for Spot Instances.
+
+          .. note::
+
+            An update to this setting means a gradual replacement of instances to maintain the
+            percentage of On-Demand Instances for your additional capacity above the base
+            capacity. When replacing instances, Amazon EC2 Auto Scaling launches new instances
+            before terminating the old ones.
+
+          Valid Range: Minimum value of 0. Maximum value of 100.
 
         - **SpotAllocationStrategy** *(string) --*
 
@@ -2129,9 +2295,11 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsTypeDef(
 
           The number of Spot Instance pools across which to allocate your Spot Instances. The
           Spot pools are determined from the different instance types in the Overrides array of
-           LaunchTemplate . The range is 1–20. The default value is ``2`` .
+           LaunchTemplate . Default if not set is 2.
 
-          Valid only when the Spot allocation strategy is ``lowest-price`` .
+          Used only when the Spot allocation strategy is ``lowest-price`` .
+
+          Valid Range: Minimum value of 1. Maximum value of 20.
 
         - **SpotMaxPrice** *(string) --*
 
@@ -2200,6 +2368,10 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsTypeDef(
 
           The ID of the instance.
 
+        - **InstanceType** *(string) --*
+
+          The instance type of the EC2 instance.
+
         - **AvailabilityZone** *(string) --*
 
           The Availability Zone in which the instance is running.
@@ -2244,6 +2416,12 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsTypeDef(
 
           Indicates whether the instance is protected from termination by Amazon EC2 Auto
           Scaling when scaling in.
+
+        - **WeightedCapacity** *(string) --*
+
+          The number of capacity units contributed by the instance based on its instance type.
+
+          Valid Range: Minimum value of 1. Maximum value of 999.
 
     - **CreatedTime** *(datetime) --*
 
@@ -2354,6 +2532,12 @@ class ClientDescribeAutoScalingGroupsResponseAutoScalingGroupsTypeDef(
 
       The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group
       uses to call other AWS services on your behalf.
+
+    - **MaxInstanceLifetime** *(integer) --*
+
+      The maximum amount of time, in seconds, that an instance can be in service.
+
+      Valid Range: Minimum value of 604800.
     """
 
 
@@ -2451,9 +2635,9 @@ class ClientDescribeAutoScalingGroupsResponseTypeDef(
 
             - **Overrides** *(list) --*
 
-              Any parameters that you specify override the same parameters in the launch template.
-              Currently, the only supported override is instance type. You must specify between 2
-              and 20 overrides.
+              An optional setting. Any parameters that you specify override the same parameters in
+              the launch template. Currently, the only supported override is instance type. You can
+              specify between 1 and 20 instance types.
 
               - *(dict) --*
 
@@ -2467,12 +2651,22 @@ class ClientDescribeAutoScalingGroupsResponseTypeDef(
                   <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
                   in the *Amazon Elastic Compute Cloud User Guide.*
 
+                - **WeightedCapacity** *(string) --*
+
+                  The number of capacity units, which gives the instance type a proportional weight
+                  to other instance types. For example, larger instance types are generally
+                  weighted more than smaller instance types. These are the same units that you
+                  chose to set the desired capacity in terms of instances, or a performance
+                  attribute such as vCPUs, memory, or I/O.
+
+                  Valid Range: Minimum value of 1. Maximum value of 999.
+
           - **InstancesDistribution** *(dict) --*
 
             The instances distribution to use.
 
-            If you leave this parameter unspecified when creating a mixed instances policy, the
-            default values are used.
+            If you leave this parameter unspecified, the value for each parameter in
+            ``InstancesDistribution`` uses a default value.
 
             - **OnDemandAllocationStrategy** *(string) --*
 
@@ -2490,17 +2684,33 @@ class ClientDescribeAutoScalingGroupsResponseTypeDef(
               The minimum amount of the Auto Scaling group's capacity that must be fulfilled by
               On-Demand Instances. This base portion is provisioned first as your group scales.
 
-              The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand
-              Instances are launched as a percentage of the Auto Scaling group's desired capacity,
-              per the ``OnDemandPercentageAboveBaseCapacity`` setting.
+              Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched
+              as a percentage of the Auto Scaling group's desired capacity, per the
+              ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+              .. note::
+
+                An update to this setting means a gradual replacement of instances to maintain the
+                specified number of On-Demand Instances for your base capacity. When replacing
+                instances, Amazon EC2 Auto Scaling launches new instances before terminating the
+                old ones.
 
             - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
               Controls the percentages of On-Demand Instances and Spot Instances for your
-              additional capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+              additional capacity beyond ``OnDemandBaseCapacity`` .
 
-              The default value is ``100`` . If you leave this parameter set to ``100`` , the
-              percentages are 100% for On-Demand Instances and 0% for Spot Instances.
+              Default if not set is 100. If you leave it set to 100, the percentages are 100% for
+              On-Demand Instances and 0% for Spot Instances.
+
+              .. note::
+
+                An update to this setting means a gradual replacement of instances to maintain the
+                percentage of On-Demand Instances for your additional capacity above the base
+                capacity. When replacing instances, Amazon EC2 Auto Scaling launches new instances
+                before terminating the old ones.
+
+              Valid Range: Minimum value of 0. Maximum value of 100.
 
             - **SpotAllocationStrategy** *(string) --*
 
@@ -2522,9 +2732,11 @@ class ClientDescribeAutoScalingGroupsResponseTypeDef(
 
               The number of Spot Instance pools across which to allocate your Spot Instances. The
               Spot pools are determined from the different instance types in the Overrides array of
-               LaunchTemplate . The range is 1–20. The default value is ``2`` .
+               LaunchTemplate . Default if not set is 2.
 
-              Valid only when the Spot allocation strategy is ``lowest-price`` .
+              Used only when the Spot allocation strategy is ``lowest-price`` .
+
+              Valid Range: Minimum value of 1. Maximum value of 20.
 
             - **SpotMaxPrice** *(string) --*
 
@@ -2593,6 +2805,10 @@ class ClientDescribeAutoScalingGroupsResponseTypeDef(
 
               The ID of the instance.
 
+            - **InstanceType** *(string) --*
+
+              The instance type of the EC2 instance.
+
             - **AvailabilityZone** *(string) --*
 
               The Availability Zone in which the instance is running.
@@ -2637,6 +2853,12 @@ class ClientDescribeAutoScalingGroupsResponseTypeDef(
 
               Indicates whether the instance is protected from termination by Amazon EC2 Auto
               Scaling when scaling in.
+
+            - **WeightedCapacity** *(string) --*
+
+              The number of capacity units contributed by the instance based on its instance type.
+
+              Valid Range: Minimum value of 1. Maximum value of 999.
 
         - **CreatedTime** *(datetime) --*
 
@@ -2748,6 +2970,12 @@ class ClientDescribeAutoScalingGroupsResponseTypeDef(
           The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group
           uses to call other AWS services on your behalf.
 
+        - **MaxInstanceLifetime** *(integer) --*
+
+          The maximum amount of time, in seconds, that an instance can be in service.
+
+          Valid Range: Minimum value of 604800.
+
     - **NextToken** *(string) --*
 
       A string that indicates that the response contains more items than can be returned in a
@@ -2795,6 +3023,7 @@ _ClientDescribeAutoScalingInstancesResponseAutoScalingInstancesTypeDef = TypedDi
     "_ClientDescribeAutoScalingInstancesResponseAutoScalingInstancesTypeDef",
     {
         "InstanceId": str,
+        "InstanceType": str,
         "AutoScalingGroupName": str,
         "AvailabilityZone": str,
         "LifecycleState": str,
@@ -2802,6 +3031,7 @@ _ClientDescribeAutoScalingInstancesResponseAutoScalingInstancesTypeDef = TypedDi
         "LaunchConfigurationName": str,
         "LaunchTemplate": ClientDescribeAutoScalingInstancesResponseAutoScalingInstancesLaunchTemplateTypeDef,
         "ProtectedFromScaleIn": bool,
+        "WeightedCapacity": str,
     },
     total=False,
 )
@@ -2818,6 +3048,10 @@ class ClientDescribeAutoScalingInstancesResponseAutoScalingInstancesTypeDef(
     - **InstanceId** *(string) --*
 
       The ID of the instance.
+
+    - **InstanceType** *(string) --*
+
+      The instance type of the EC2 instance.
 
     - **AutoScalingGroupName** *(string) --*
 
@@ -2867,6 +3101,12 @@ class ClientDescribeAutoScalingInstancesResponseAutoScalingInstancesTypeDef(
 
       Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling
       when scaling in.
+
+    - **WeightedCapacity** *(string) --*
+
+      The number of capacity units contributed by the instance based on its instance type.
+
+      Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -2899,6 +3139,10 @@ class ClientDescribeAutoScalingInstancesResponseTypeDef(
         - **InstanceId** *(string) --*
 
           The ID of the instance.
+
+        - **InstanceType** *(string) --*
+
+          The instance type of the EC2 instance.
 
         - **AutoScalingGroupName** *(string) --*
 
@@ -2948,6 +3192,12 @@ class ClientDescribeAutoScalingInstancesResponseTypeDef(
 
           Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling
           when scaling in.
+
+        - **WeightedCapacity** *(string) --*
+
+          The number of capacity units contributed by the instance based on its instance type.
+
+          Valid Range: Minimum value of 1. Maximum value of 999.
 
     - **NextToken** *(string) --*
 
@@ -3032,7 +3282,7 @@ class ClientDescribeLaunchConfigurationsResponseLaunchConfigurationsBlockDeviceM
       <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html>`__ in the
       *Amazon EC2 User Guide for Linux Instances* .
 
-      Valid values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
+      Valid Values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
 
     - **DeleteOnTermination** *(boolean) --*
 
@@ -3150,7 +3400,7 @@ class ClientDescribeLaunchConfigurationsResponseLaunchConfigurationsBlockDeviceM
         <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html>`__ in the
         *Amazon EC2 User Guide for Linux Instances* .
 
-        Valid values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
+        Valid Values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
 
       - **DeleteOnTermination** *(boolean) --*
 
@@ -3411,7 +3661,7 @@ class ClientDescribeLaunchConfigurationsResponseLaunchConfigurationsTypeDef(
             <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html>`__ in the
             *Amazon EC2 User Guide for Linux Instances* .
 
-            Valid values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
+            Valid Values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
 
           - **DeleteOnTermination** *(boolean) --*
 
@@ -3485,7 +3735,7 @@ class ClientDescribeLaunchConfigurationsResponseLaunchConfigurationsTypeDef(
 
       The maximum hourly price to be paid for any Spot Instance launched to fulfill the
       request. Spot Instances are launched when the price you specify exceeds the current Spot
-      market price.
+      price.
 
       For more information, see `Launching Spot Instances in Your Auto Scaling Group
       <https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html>`__
@@ -3699,7 +3949,7 @@ class ClientDescribeLaunchConfigurationsResponseTypeDef(
                 <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html>`__ in the
                 *Amazon EC2 User Guide for Linux Instances* .
 
-                Valid values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
+                Valid Values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
 
               - **DeleteOnTermination** *(boolean) --*
 
@@ -3773,7 +4023,7 @@ class ClientDescribeLaunchConfigurationsResponseTypeDef(
 
           The maximum hourly price to be paid for any Spot Instance launched to fulfill the
           request. Spot Instances are launched when the price you specify exceeds the current Spot
-          market price.
+          price.
 
           For more information, see `Launching Spot Instances in Your Auto Scaling Group
           <https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html>`__
@@ -4633,12 +4883,7 @@ class ClientDescribePoliciesResponseScalingPoliciesTargetTrackingConfigurationPr
 
     - **PredefinedMetricType** *(string) --*
 
-      The metric type.
-
-    - **ResourceLabel** *(string) --*
-
-      Identifies the resource associated with the metric type. The following predefined
-      metrics are available:
+      The metric type. The following predefined metrics are available:
 
       * ``ASGAverageCPUUtilization`` - Average CPU utilization of the Auto Scaling group.
 
@@ -4651,15 +4896,20 @@ class ClientDescribePoliciesResponseScalingPoliciesTargetTrackingConfigurationPr
       * ``ALBRequestCountPerTarget`` - Number of requests completed per target in an
       Application Load Balancer target group.
 
-      For predefined metric types ``ASGAverageCPUUtilization`` , ``ASGAverageNetworkIn`` ,
-      and ``ASGAverageNetworkOut`` , the parameter must not be specified as the resource
-      associated with the metric type is the Auto Scaling group. For predefined metric type
-      ``ALBRequestCountPerTarget`` , the parameter must be specified in the format:
-      ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
-      /*target-group-id* `` , where ``app/*load-balancer-name* /*load-balancer-id* `` is
-      the final portion of the load balancer ARN, and ``targetgroup/*target-group-name*
-      /*target-group-id* `` is the final portion of the target group ARN. The target group
-      must be attached to the Auto Scaling group.
+    - **ResourceLabel** *(string) --*
+
+      Identifies the resource associated with the metric type. You can't specify a resource
+      label unless the metric type is ``ALBRequestCountPerTarget`` and there is a target
+      group attached to the Auto Scaling group.
+
+      The format is ``app/*load-balancer-name* /*load-balancer-id*
+      /targetgroup/*target-group-name* /*target-group-id* `` , where
+
+      * ``app/*load-balancer-name* /*load-balancer-id* `` is the final portion of the load
+      balancer ARN, and
+
+      * ``targetgroup/*target-group-name* /*target-group-id* `` is the final portion of the
+      target group ARN.
     """
 
 
@@ -4689,12 +4939,7 @@ class ClientDescribePoliciesResponseScalingPoliciesTargetTrackingConfigurationTy
 
       - **PredefinedMetricType** *(string) --*
 
-        The metric type.
-
-      - **ResourceLabel** *(string) --*
-
-        Identifies the resource associated with the metric type. The following predefined
-        metrics are available:
+        The metric type. The following predefined metrics are available:
 
         * ``ASGAverageCPUUtilization`` - Average CPU utilization of the Auto Scaling group.
 
@@ -4707,15 +4952,20 @@ class ClientDescribePoliciesResponseScalingPoliciesTargetTrackingConfigurationTy
         * ``ALBRequestCountPerTarget`` - Number of requests completed per target in an
         Application Load Balancer target group.
 
-        For predefined metric types ``ASGAverageCPUUtilization`` , ``ASGAverageNetworkIn`` ,
-        and ``ASGAverageNetworkOut`` , the parameter must not be specified as the resource
-        associated with the metric type is the Auto Scaling group. For predefined metric type
-        ``ALBRequestCountPerTarget`` , the parameter must be specified in the format:
-        ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
-        /*target-group-id* `` , where ``app/*load-balancer-name* /*load-balancer-id* `` is
-        the final portion of the load balancer ARN, and ``targetgroup/*target-group-name*
-        /*target-group-id* `` is the final portion of the target group ARN. The target group
-        must be attached to the Auto Scaling group.
+      - **ResourceLabel** *(string) --*
+
+        Identifies the resource associated with the metric type. You can't specify a resource
+        label unless the metric type is ``ALBRequestCountPerTarget`` and there is a target
+        group attached to the Auto Scaling group.
+
+        The format is ``app/*load-balancer-name* /*load-balancer-id*
+        /targetgroup/*target-group-name* /*target-group-id* `` , where
+
+        * ``app/*load-balancer-name* /*load-balancer-id* `` is the final portion of the load
+        balancer ARN, and
+
+        * ``targetgroup/*target-group-name* /*target-group-id* `` is the final portion of the
+        target group ARN.
 
     - **CustomizedMetricSpecification** *(dict) --*
 
@@ -4935,12 +5185,7 @@ class ClientDescribePoliciesResponseScalingPoliciesTypeDef(
 
         - **PredefinedMetricType** *(string) --*
 
-          The metric type.
-
-        - **ResourceLabel** *(string) --*
-
-          Identifies the resource associated with the metric type. The following predefined
-          metrics are available:
+          The metric type. The following predefined metrics are available:
 
           * ``ASGAverageCPUUtilization`` - Average CPU utilization of the Auto Scaling group.
 
@@ -4953,15 +5198,20 @@ class ClientDescribePoliciesResponseScalingPoliciesTypeDef(
           * ``ALBRequestCountPerTarget`` - Number of requests completed per target in an
           Application Load Balancer target group.
 
-          For predefined metric types ``ASGAverageCPUUtilization`` , ``ASGAverageNetworkIn`` ,
-          and ``ASGAverageNetworkOut`` , the parameter must not be specified as the resource
-          associated with the metric type is the Auto Scaling group. For predefined metric type
-          ``ALBRequestCountPerTarget`` , the parameter must be specified in the format:
-          ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
-          /*target-group-id* `` , where ``app/*load-balancer-name* /*load-balancer-id* `` is
-          the final portion of the load balancer ARN, and ``targetgroup/*target-group-name*
-          /*target-group-id* `` is the final portion of the target group ARN. The target group
-          must be attached to the Auto Scaling group.
+        - **ResourceLabel** *(string) --*
+
+          Identifies the resource associated with the metric type. You can't specify a resource
+          label unless the metric type is ``ALBRequestCountPerTarget`` and there is a target
+          group attached to the Auto Scaling group.
+
+          The format is ``app/*load-balancer-name* /*load-balancer-id*
+          /targetgroup/*target-group-name* /*target-group-id* `` , where
+
+          * ``app/*load-balancer-name* /*load-balancer-id* `` is the final portion of the load
+          balancer ARN, and
+
+          * ``targetgroup/*target-group-name* /*target-group-id* `` is the final portion of the
+          target group ARN.
 
       - **CustomizedMetricSpecification** *(dict) --*
 
@@ -5171,12 +5421,7 @@ class ClientDescribePoliciesResponseTypeDef(_ClientDescribePoliciesResponseTypeD
 
             - **PredefinedMetricType** *(string) --*
 
-              The metric type.
-
-            - **ResourceLabel** *(string) --*
-
-              Identifies the resource associated with the metric type. The following predefined
-              metrics are available:
+              The metric type. The following predefined metrics are available:
 
               * ``ASGAverageCPUUtilization`` - Average CPU utilization of the Auto Scaling group.
 
@@ -5189,15 +5434,20 @@ class ClientDescribePoliciesResponseTypeDef(_ClientDescribePoliciesResponseTypeD
               * ``ALBRequestCountPerTarget`` - Number of requests completed per target in an
               Application Load Balancer target group.
 
-              For predefined metric types ``ASGAverageCPUUtilization`` , ``ASGAverageNetworkIn`` ,
-              and ``ASGAverageNetworkOut`` , the parameter must not be specified as the resource
-              associated with the metric type is the Auto Scaling group. For predefined metric type
-              ``ALBRequestCountPerTarget`` , the parameter must be specified in the format:
-              ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
-              /*target-group-id* `` , where ``app/*load-balancer-name* /*load-balancer-id* `` is
-              the final portion of the load balancer ARN, and ``targetgroup/*target-group-name*
-              /*target-group-id* `` is the final portion of the target group ARN. The target group
-              must be attached to the Auto Scaling group.
+            - **ResourceLabel** *(string) --*
+
+              Identifies the resource associated with the metric type. You can't specify a resource
+              label unless the metric type is ``ALBRequestCountPerTarget`` and there is a target
+              group attached to the Auto Scaling group.
+
+              The format is ``app/*load-balancer-name* /*load-balancer-id*
+              /targetgroup/*target-group-name* /*target-group-id* `` , where
+
+              * ``app/*load-balancer-name* /*load-balancer-id* `` is the final portion of the load
+              balancer ARN, and
+
+              * ``targetgroup/*target-group-name* /*target-group-id* `` is the final portion of the
+              target group ARN.
 
           - **CustomizedMetricSpecification** *(dict) --*
 
@@ -6406,12 +6656,7 @@ class ClientPutScalingPolicyTargetTrackingConfigurationPredefinedMetricSpecifica
 
     - **PredefinedMetricType** *(string) --* **[REQUIRED]**
 
-      The metric type.
-
-    - **ResourceLabel** *(string) --*
-
-      Identifies the resource associated with the metric type. The following predefined metrics are
-      available:
+      The metric type. The following predefined metrics are available:
 
       * ``ASGAverageCPUUtilization`` - Average CPU utilization of the Auto Scaling group.
 
@@ -6424,15 +6669,20 @@ class ClientPutScalingPolicyTargetTrackingConfigurationPredefinedMetricSpecifica
       * ``ALBRequestCountPerTarget`` - Number of requests completed per target in an Application
       Load Balancer target group.
 
-      For predefined metric types ``ASGAverageCPUUtilization`` , ``ASGAverageNetworkIn`` , and
-      ``ASGAverageNetworkOut`` , the parameter must not be specified as the resource associated
-      with the metric type is the Auto Scaling group. For predefined metric type
-      ``ALBRequestCountPerTarget`` , the parameter must be specified in the format:
-      ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
-      /*target-group-id* `` , where ``app/*load-balancer-name* /*load-balancer-id* `` is the final
-      portion of the load balancer ARN, and ``targetgroup/*target-group-name* /*target-group-id* ``
-      is the final portion of the target group ARN. The target group must be attached to the Auto
-      Scaling group.
+    - **ResourceLabel** *(string) --*
+
+      Identifies the resource associated with the metric type. You can't specify a resource label
+      unless the metric type is ``ALBRequestCountPerTarget`` and there is a target group attached
+      to the Auto Scaling group.
+
+      The format is ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
+      /*target-group-id* `` , where
+
+      * ``app/*load-balancer-name* /*load-balancer-id* `` is the final portion of the load balancer
+      ARN, and
+
+      * ``targetgroup/*target-group-name* /*target-group-id* `` is the final portion of the target
+      group ARN.
     """
 
 
@@ -6473,12 +6723,7 @@ class ClientPutScalingPolicyTargetTrackingConfigurationTypeDef(
 
       - **PredefinedMetricType** *(string) --* **[REQUIRED]**
 
-        The metric type.
-
-      - **ResourceLabel** *(string) --*
-
-        Identifies the resource associated with the metric type. The following predefined metrics are
-        available:
+        The metric type. The following predefined metrics are available:
 
         * ``ASGAverageCPUUtilization`` - Average CPU utilization of the Auto Scaling group.
 
@@ -6491,15 +6736,20 @@ class ClientPutScalingPolicyTargetTrackingConfigurationTypeDef(
         * ``ALBRequestCountPerTarget`` - Number of requests completed per target in an Application
         Load Balancer target group.
 
-        For predefined metric types ``ASGAverageCPUUtilization`` , ``ASGAverageNetworkIn`` , and
-        ``ASGAverageNetworkOut`` , the parameter must not be specified as the resource associated
-        with the metric type is the Auto Scaling group. For predefined metric type
-        ``ALBRequestCountPerTarget`` , the parameter must be specified in the format:
-        ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
-        /*target-group-id* `` , where ``app/*load-balancer-name* /*load-balancer-id* `` is the final
-        portion of the load balancer ARN, and ``targetgroup/*target-group-name* /*target-group-id* ``
-        is the final portion of the target group ARN. The target group must be attached to the Auto
-        Scaling group.
+      - **ResourceLabel** *(string) --*
+
+        Identifies the resource associated with the metric type. You can't specify a resource label
+        unless the metric type is ``ALBRequestCountPerTarget`` and there is a target group attached
+        to the Auto Scaling group.
+
+        The format is ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
+        /*target-group-id* `` , where
+
+        * ``app/*load-balancer-name* /*load-balancer-id* `` is the final portion of the load balancer
+        ARN, and
+
+        * ``targetgroup/*target-group-name* /*target-group-id* `` is the final portion of the target
+        group ARN.
 
     - **CustomizedMetricSpecification** *(dict) --*
 
@@ -6740,8 +6990,8 @@ class ClientUpdateAutoScalingGroupMixedInstancesPolicyInstancesDistributionTypeD
 
     The instances distribution to use.
 
-    If you leave this parameter unspecified when creating a mixed instances policy, the default
-    values are used.
+    If you leave this parameter unspecified, the value for each parameter in
+    ``InstancesDistribution`` uses a default value.
 
     - **OnDemandAllocationStrategy** *(string) --*
 
@@ -6759,17 +7009,32 @@ class ClientUpdateAutoScalingGroupMixedInstancesPolicyInstancesDistributionTypeD
       The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand
       Instances. This base portion is provisioned first as your group scales.
 
-      The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand Instances
-      are launched as a percentage of the Auto Scaling group's desired capacity, per the
+      Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched as a
+      percentage of the Auto Scaling group's desired capacity, per the
       ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+      .. note::
+
+        An update to this setting means a gradual replacement of instances to maintain the
+        specified number of On-Demand Instances for your base capacity. When replacing instances,
+        Amazon EC2 Auto Scaling launches new instances before terminating the old ones.
 
     - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
       Controls the percentages of On-Demand Instances and Spot Instances for your additional
-      capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+      capacity beyond ``OnDemandBaseCapacity`` .
 
-      The default value is ``100`` . If you leave this parameter set to ``100`` , the percentages
-      are 100% for On-Demand Instances and 0% for Spot Instances.
+      Default if not set is 100. If you leave it set to 100, the percentages are 100% for On-Demand
+      Instances and 0% for Spot Instances.
+
+      .. note::
+
+        An update to this setting means a gradual replacement of instances to maintain the
+        percentage of On-Demand Instances for your additional capacity above the base capacity.
+        When replacing instances, Amazon EC2 Auto Scaling launches new instances before terminating
+        the old ones.
+
+      Valid Range: Minimum value of 0. Maximum value of 100.
 
     - **SpotAllocationStrategy** *(string) --*
 
@@ -6791,9 +7056,11 @@ class ClientUpdateAutoScalingGroupMixedInstancesPolicyInstancesDistributionTypeD
 
       The number of Spot Instance pools across which to allocate your Spot Instances. The Spot
       pools are determined from the different instance types in the Overrides array of
-      LaunchTemplate . The range is 1–20. The default value is ``2`` .
+      LaunchTemplate . Default if not set is 2.
 
-      Valid only when the Spot allocation strategy is ``lowest-price`` .
+      Used only when the Spot allocation strategy is ``lowest-price`` .
+
+      Valid Range: Minimum value of 1. Maximum value of 20.
 
     - **SpotMaxPrice** *(string) --*
 
@@ -6840,7 +7107,7 @@ class ClientUpdateAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTempla
 
 _ClientUpdateAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesTypeDef = TypedDict(
     "_ClientUpdateAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesTypeDef",
-    {"InstanceType": str},
+    {"InstanceType": str, "WeightedCapacity": str},
     total=False,
 )
 
@@ -6860,6 +7127,15 @@ class ClientUpdateAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesTyp
       For information about available instance types, see `Available Instance Types
       <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
       in the *Amazon Elastic Compute Cloud User Guide.*
+
+    - **WeightedCapacity** *(string) --*
+
+      The number of capacity units, which gives the instance type a proportional weight to
+      other instance types. For example, larger instance types are generally weighted more than
+      smaller instance types. These are the same units that you chose to set the desired
+      capacity in terms of instances, or a performance attribute such as vCPUs, memory, or I/O.
+
+      Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -6907,9 +7183,9 @@ class ClientUpdateAutoScalingGroupMixedInstancesPolicyLaunchTemplateTypeDef(
 
     - **Overrides** *(list) --*
 
-      Any parameters that you specify override the same parameters in the launch template.
-      Currently, the only supported override is instance type. You must specify between 2 and 20
-      overrides.
+      An optional setting. Any parameters that you specify override the same parameters in the
+      launch template. Currently, the only supported override is instance type. You can specify
+      between 1 and 20 instance types.
 
       - *(dict) --*
 
@@ -6922,6 +7198,15 @@ class ClientUpdateAutoScalingGroupMixedInstancesPolicyLaunchTemplateTypeDef(
           For information about available instance types, see `Available Instance Types
           <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
           in the *Amazon Elastic Compute Cloud User Guide.*
+
+        - **WeightedCapacity** *(string) --*
+
+          The number of capacity units, which gives the instance type a proportional weight to
+          other instance types. For example, larger instance types are generally weighted more than
+          smaller instance types. These are the same units that you chose to set the desired
+          capacity in terms of instances, or a performance attribute such as vCPUs, memory, or I/O.
+
+          Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -6981,9 +7266,9 @@ class ClientUpdateAutoScalingGroupMixedInstancesPolicyTypeDef(
 
       - **Overrides** *(list) --*
 
-        Any parameters that you specify override the same parameters in the launch template.
-        Currently, the only supported override is instance type. You must specify between 2 and 20
-        overrides.
+        An optional setting. Any parameters that you specify override the same parameters in the
+        launch template. Currently, the only supported override is instance type. You can specify
+        between 1 and 20 instance types.
 
         - *(dict) --*
 
@@ -6997,12 +7282,21 @@ class ClientUpdateAutoScalingGroupMixedInstancesPolicyTypeDef(
             <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
             in the *Amazon Elastic Compute Cloud User Guide.*
 
+          - **WeightedCapacity** *(string) --*
+
+            The number of capacity units, which gives the instance type a proportional weight to
+            other instance types. For example, larger instance types are generally weighted more than
+            smaller instance types. These are the same units that you chose to set the desired
+            capacity in terms of instances, or a performance attribute such as vCPUs, memory, or I/O.
+
+            Valid Range: Minimum value of 1. Maximum value of 999.
+
     - **InstancesDistribution** *(dict) --*
 
       The instances distribution to use.
 
-      If you leave this parameter unspecified when creating a mixed instances policy, the default
-      values are used.
+      If you leave this parameter unspecified, the value for each parameter in
+      ``InstancesDistribution`` uses a default value.
 
       - **OnDemandAllocationStrategy** *(string) --*
 
@@ -7020,17 +7314,32 @@ class ClientUpdateAutoScalingGroupMixedInstancesPolicyTypeDef(
         The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand
         Instances. This base portion is provisioned first as your group scales.
 
-        The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand Instances
-        are launched as a percentage of the Auto Scaling group's desired capacity, per the
+        Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched as a
+        percentage of the Auto Scaling group's desired capacity, per the
         ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+        .. note::
+
+          An update to this setting means a gradual replacement of instances to maintain the
+          specified number of On-Demand Instances for your base capacity. When replacing instances,
+          Amazon EC2 Auto Scaling launches new instances before terminating the old ones.
 
       - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
         Controls the percentages of On-Demand Instances and Spot Instances for your additional
-        capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+        capacity beyond ``OnDemandBaseCapacity`` .
 
-        The default value is ``100`` . If you leave this parameter set to ``100`` , the percentages
-        are 100% for On-Demand Instances and 0% for Spot Instances.
+        Default if not set is 100. If you leave it set to 100, the percentages are 100% for On-Demand
+        Instances and 0% for Spot Instances.
+
+        .. note::
+
+          An update to this setting means a gradual replacement of instances to maintain the
+          percentage of On-Demand Instances for your additional capacity above the base capacity.
+          When replacing instances, Amazon EC2 Auto Scaling launches new instances before terminating
+          the old ones.
+
+        Valid Range: Minimum value of 0. Maximum value of 100.
 
       - **SpotAllocationStrategy** *(string) --*
 
@@ -7052,9 +7361,11 @@ class ClientUpdateAutoScalingGroupMixedInstancesPolicyTypeDef(
 
         The number of Spot Instance pools across which to allocate your Spot Instances. The Spot
         pools are determined from the different instance types in the Overrides array of
-        LaunchTemplate . The range is 1–20. The default value is ``2`` .
+        LaunchTemplate . Default if not set is 2.
 
-        Valid only when the Spot allocation strategy is ``lowest-price`` .
+        Used only when the Spot allocation strategy is ``lowest-price`` .
+
+        Valid Range: Minimum value of 1. Maximum value of 20.
 
       - **SpotMaxPrice** *(string) --*
 
@@ -7178,12 +7489,14 @@ _DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsInstancesTypeDef = Ty
     "_DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsInstancesTypeDef",
     {
         "InstanceId": str,
+        "InstanceType": str,
         "AvailabilityZone": str,
         "LifecycleState": str,
         "HealthStatus": str,
         "LaunchConfigurationName": str,
         "LaunchTemplate": DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsInstancesLaunchTemplateTypeDef,
         "ProtectedFromScaleIn": bool,
+        "WeightedCapacity": str,
     },
     total=False,
 )
@@ -7200,6 +7513,10 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsInstancesTypeDef
     - **InstanceId** *(string) --*
 
       The ID of the instance.
+
+    - **InstanceType** *(string) --*
+
+      The instance type of the EC2 instance.
 
     - **AvailabilityZone** *(string) --*
 
@@ -7245,6 +7562,12 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsInstancesTypeDef
 
       Indicates whether the instance is protected from termination by Amazon EC2 Auto
       Scaling when scaling in.
+
+    - **WeightedCapacity** *(string) --*
+
+      The number of capacity units contributed by the instance based on its instance type.
+
+      Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -7304,8 +7627,8 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPo
 
     The instances distribution to use.
 
-    If you leave this parameter unspecified when creating a mixed instances policy, the
-    default values are used.
+    If you leave this parameter unspecified, the value for each parameter in
+    ``InstancesDistribution`` uses a default value.
 
     - **OnDemandAllocationStrategy** *(string) --*
 
@@ -7323,17 +7646,33 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPo
       The minimum amount of the Auto Scaling group's capacity that must be fulfilled by
       On-Demand Instances. This base portion is provisioned first as your group scales.
 
-      The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand
-      Instances are launched as a percentage of the Auto Scaling group's desired capacity,
-      per the ``OnDemandPercentageAboveBaseCapacity`` setting.
+      Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched
+      as a percentage of the Auto Scaling group's desired capacity, per the
+      ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+      .. note::
+
+        An update to this setting means a gradual replacement of instances to maintain the
+        specified number of On-Demand Instances for your base capacity. When replacing
+        instances, Amazon EC2 Auto Scaling launches new instances before terminating the
+        old ones.
 
     - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
       Controls the percentages of On-Demand Instances and Spot Instances for your
-      additional capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+      additional capacity beyond ``OnDemandBaseCapacity`` .
 
-      The default value is ``100`` . If you leave this parameter set to ``100`` , the
-      percentages are 100% for On-Demand Instances and 0% for Spot Instances.
+      Default if not set is 100. If you leave it set to 100, the percentages are 100% for
+      On-Demand Instances and 0% for Spot Instances.
+
+      .. note::
+
+        An update to this setting means a gradual replacement of instances to maintain the
+        percentage of On-Demand Instances for your additional capacity above the base
+        capacity. When replacing instances, Amazon EC2 Auto Scaling launches new instances
+        before terminating the old ones.
+
+      Valid Range: Minimum value of 0. Maximum value of 100.
 
     - **SpotAllocationStrategy** *(string) --*
 
@@ -7355,9 +7694,11 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPo
 
       The number of Spot Instance pools across which to allocate your Spot Instances. The
       Spot pools are determined from the different instance types in the Overrides array of
-       LaunchTemplate . The range is 1–20. The default value is ``2`` .
+       LaunchTemplate . Default if not set is 2.
 
-      Valid only when the Spot allocation strategy is ``lowest-price`` .
+      Used only when the Spot allocation strategy is ``lowest-price`` .
+
+      Valid Range: Minimum value of 1. Maximum value of 20.
 
     - **SpotMaxPrice** *(string) --*
 
@@ -7408,7 +7749,7 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPo
 
 _DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPolicyLaunchTemplateOverridesTypeDef = TypedDict(
     "_DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPolicyLaunchTemplateOverridesTypeDef",
-    {"InstanceType": str},
+    {"InstanceType": str, "WeightedCapacity": str},
     total=False,
 )
 
@@ -7428,6 +7769,16 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPo
       For information about available instance types, see `Available Instance Types
       <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
       in the *Amazon Elastic Compute Cloud User Guide.*
+
+    - **WeightedCapacity** *(string) --*
+
+      The number of capacity units, which gives the instance type a proportional weight
+      to other instance types. For example, larger instance types are generally
+      weighted more than smaller instance types. These are the same units that you
+      chose to set the desired capacity in terms of instances, or a performance
+      attribute such as vCPUs, memory, or I/O.
+
+      Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -7478,9 +7829,9 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPo
 
     - **Overrides** *(list) --*
 
-      Any parameters that you specify override the same parameters in the launch template.
-      Currently, the only supported override is instance type. You must specify between 2
-      and 20 overrides.
+      An optional setting. Any parameters that you specify override the same parameters in
+      the launch template. Currently, the only supported override is instance type. You can
+      specify between 1 and 20 instance types.
 
       - *(dict) --*
 
@@ -7493,6 +7844,16 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPo
           For information about available instance types, see `Available Instance Types
           <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
           in the *Amazon Elastic Compute Cloud User Guide.*
+
+        - **WeightedCapacity** *(string) --*
+
+          The number of capacity units, which gives the instance type a proportional weight
+          to other instance types. For example, larger instance types are generally
+          weighted more than smaller instance types. These are the same units that you
+          chose to set the desired capacity in terms of instances, or a performance
+          attribute such as vCPUs, memory, or I/O.
+
+          Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -7545,9 +7906,9 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPo
 
       - **Overrides** *(list) --*
 
-        Any parameters that you specify override the same parameters in the launch template.
-        Currently, the only supported override is instance type. You must specify between 2
-        and 20 overrides.
+        An optional setting. Any parameters that you specify override the same parameters in
+        the launch template. Currently, the only supported override is instance type. You can
+        specify between 1 and 20 instance types.
 
         - *(dict) --*
 
@@ -7561,12 +7922,22 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPo
             <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
             in the *Amazon Elastic Compute Cloud User Guide.*
 
+          - **WeightedCapacity** *(string) --*
+
+            The number of capacity units, which gives the instance type a proportional weight
+            to other instance types. For example, larger instance types are generally
+            weighted more than smaller instance types. These are the same units that you
+            chose to set the desired capacity in terms of instances, or a performance
+            attribute such as vCPUs, memory, or I/O.
+
+            Valid Range: Minimum value of 1. Maximum value of 999.
+
     - **InstancesDistribution** *(dict) --*
 
       The instances distribution to use.
 
-      If you leave this parameter unspecified when creating a mixed instances policy, the
-      default values are used.
+      If you leave this parameter unspecified, the value for each parameter in
+      ``InstancesDistribution`` uses a default value.
 
       - **OnDemandAllocationStrategy** *(string) --*
 
@@ -7584,17 +7955,33 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPo
         The minimum amount of the Auto Scaling group's capacity that must be fulfilled by
         On-Demand Instances. This base portion is provisioned first as your group scales.
 
-        The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand
-        Instances are launched as a percentage of the Auto Scaling group's desired capacity,
-        per the ``OnDemandPercentageAboveBaseCapacity`` setting.
+        Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched
+        as a percentage of the Auto Scaling group's desired capacity, per the
+        ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+        .. note::
+
+          An update to this setting means a gradual replacement of instances to maintain the
+          specified number of On-Demand Instances for your base capacity. When replacing
+          instances, Amazon EC2 Auto Scaling launches new instances before terminating the
+          old ones.
 
       - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
         Controls the percentages of On-Demand Instances and Spot Instances for your
-        additional capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+        additional capacity beyond ``OnDemandBaseCapacity`` .
 
-        The default value is ``100`` . If you leave this parameter set to ``100`` , the
-        percentages are 100% for On-Demand Instances and 0% for Spot Instances.
+        Default if not set is 100. If you leave it set to 100, the percentages are 100% for
+        On-Demand Instances and 0% for Spot Instances.
+
+        .. note::
+
+          An update to this setting means a gradual replacement of instances to maintain the
+          percentage of On-Demand Instances for your additional capacity above the base
+          capacity. When replacing instances, Amazon EC2 Auto Scaling launches new instances
+          before terminating the old ones.
+
+        Valid Range: Minimum value of 0. Maximum value of 100.
 
       - **SpotAllocationStrategy** *(string) --*
 
@@ -7616,9 +8003,11 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsMixedInstancesPo
 
         The number of Spot Instance pools across which to allocate your Spot Instances. The
         Spot pools are determined from the different instance types in the Overrides array of
-         LaunchTemplate . The range is 1–20. The default value is ``2`` .
+         LaunchTemplate . Default if not set is 2.
 
-        Valid only when the Spot allocation strategy is ``lowest-price`` .
+        Used only when the Spot allocation strategy is ``lowest-price`` .
+
+        Valid Range: Minimum value of 1. Maximum value of 20.
 
       - **SpotMaxPrice** *(string) --*
 
@@ -7737,6 +8126,7 @@ _DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsTypeDef = TypedDict(
         "TerminationPolicies": List[str],
         "NewInstancesProtectedFromScaleIn": bool,
         "ServiceLinkedRoleARN": str,
+        "MaxInstanceLifetime": int,
     },
     total=False,
 )
@@ -7818,9 +8208,9 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsTypeDef(
 
         - **Overrides** *(list) --*
 
-          Any parameters that you specify override the same parameters in the launch template.
-          Currently, the only supported override is instance type. You must specify between 2
-          and 20 overrides.
+          An optional setting. Any parameters that you specify override the same parameters in
+          the launch template. Currently, the only supported override is instance type. You can
+          specify between 1 and 20 instance types.
 
           - *(dict) --*
 
@@ -7834,12 +8224,22 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsTypeDef(
               <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
               in the *Amazon Elastic Compute Cloud User Guide.*
 
+            - **WeightedCapacity** *(string) --*
+
+              The number of capacity units, which gives the instance type a proportional weight
+              to other instance types. For example, larger instance types are generally
+              weighted more than smaller instance types. These are the same units that you
+              chose to set the desired capacity in terms of instances, or a performance
+              attribute such as vCPUs, memory, or I/O.
+
+              Valid Range: Minimum value of 1. Maximum value of 999.
+
       - **InstancesDistribution** *(dict) --*
 
         The instances distribution to use.
 
-        If you leave this parameter unspecified when creating a mixed instances policy, the
-        default values are used.
+        If you leave this parameter unspecified, the value for each parameter in
+        ``InstancesDistribution`` uses a default value.
 
         - **OnDemandAllocationStrategy** *(string) --*
 
@@ -7857,17 +8257,33 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsTypeDef(
           The minimum amount of the Auto Scaling group's capacity that must be fulfilled by
           On-Demand Instances. This base portion is provisioned first as your group scales.
 
-          The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand
-          Instances are launched as a percentage of the Auto Scaling group's desired capacity,
-          per the ``OnDemandPercentageAboveBaseCapacity`` setting.
+          Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched
+          as a percentage of the Auto Scaling group's desired capacity, per the
+          ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+          .. note::
+
+            An update to this setting means a gradual replacement of instances to maintain the
+            specified number of On-Demand Instances for your base capacity. When replacing
+            instances, Amazon EC2 Auto Scaling launches new instances before terminating the
+            old ones.
 
         - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
           Controls the percentages of On-Demand Instances and Spot Instances for your
-          additional capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+          additional capacity beyond ``OnDemandBaseCapacity`` .
 
-          The default value is ``100`` . If you leave this parameter set to ``100`` , the
-          percentages are 100% for On-Demand Instances and 0% for Spot Instances.
+          Default if not set is 100. If you leave it set to 100, the percentages are 100% for
+          On-Demand Instances and 0% for Spot Instances.
+
+          .. note::
+
+            An update to this setting means a gradual replacement of instances to maintain the
+            percentage of On-Demand Instances for your additional capacity above the base
+            capacity. When replacing instances, Amazon EC2 Auto Scaling launches new instances
+            before terminating the old ones.
+
+          Valid Range: Minimum value of 0. Maximum value of 100.
 
         - **SpotAllocationStrategy** *(string) --*
 
@@ -7889,9 +8305,11 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsTypeDef(
 
           The number of Spot Instance pools across which to allocate your Spot Instances. The
           Spot pools are determined from the different instance types in the Overrides array of
-           LaunchTemplate . The range is 1–20. The default value is ``2`` .
+           LaunchTemplate . Default if not set is 2.
 
-          Valid only when the Spot allocation strategy is ``lowest-price`` .
+          Used only when the Spot allocation strategy is ``lowest-price`` .
+
+          Valid Range: Minimum value of 1. Maximum value of 20.
 
         - **SpotMaxPrice** *(string) --*
 
@@ -7960,6 +8378,10 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsTypeDef(
 
           The ID of the instance.
 
+        - **InstanceType** *(string) --*
+
+          The instance type of the EC2 instance.
+
         - **AvailabilityZone** *(string) --*
 
           The Availability Zone in which the instance is running.
@@ -8004,6 +8426,12 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsTypeDef(
 
           Indicates whether the instance is protected from termination by Amazon EC2 Auto
           Scaling when scaling in.
+
+        - **WeightedCapacity** *(string) --*
+
+          The number of capacity units contributed by the instance based on its instance type.
+
+          Valid Range: Minimum value of 1. Maximum value of 999.
 
     - **CreatedTime** *(datetime) --*
 
@@ -8114,6 +8542,12 @@ class DescribeAutoScalingGroupsPaginateResponseAutoScalingGroupsTypeDef(
 
       The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group
       uses to call other AWS services on your behalf.
+
+    - **MaxInstanceLifetime** *(integer) --*
+
+      The maximum amount of time, in seconds, that an instance can be in service.
+
+      Valid Range: Minimum value of 604800.
     """
 
 
@@ -8210,9 +8644,9 @@ class DescribeAutoScalingGroupsPaginateResponseTypeDef(
 
             - **Overrides** *(list) --*
 
-              Any parameters that you specify override the same parameters in the launch template.
-              Currently, the only supported override is instance type. You must specify between 2
-              and 20 overrides.
+              An optional setting. Any parameters that you specify override the same parameters in
+              the launch template. Currently, the only supported override is instance type. You can
+              specify between 1 and 20 instance types.
 
               - *(dict) --*
 
@@ -8226,12 +8660,22 @@ class DescribeAutoScalingGroupsPaginateResponseTypeDef(
                   <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
                   in the *Amazon Elastic Compute Cloud User Guide.*
 
+                - **WeightedCapacity** *(string) --*
+
+                  The number of capacity units, which gives the instance type a proportional weight
+                  to other instance types. For example, larger instance types are generally
+                  weighted more than smaller instance types. These are the same units that you
+                  chose to set the desired capacity in terms of instances, or a performance
+                  attribute such as vCPUs, memory, or I/O.
+
+                  Valid Range: Minimum value of 1. Maximum value of 999.
+
           - **InstancesDistribution** *(dict) --*
 
             The instances distribution to use.
 
-            If you leave this parameter unspecified when creating a mixed instances policy, the
-            default values are used.
+            If you leave this parameter unspecified, the value for each parameter in
+            ``InstancesDistribution`` uses a default value.
 
             - **OnDemandAllocationStrategy** *(string) --*
 
@@ -8249,17 +8693,33 @@ class DescribeAutoScalingGroupsPaginateResponseTypeDef(
               The minimum amount of the Auto Scaling group's capacity that must be fulfilled by
               On-Demand Instances. This base portion is provisioned first as your group scales.
 
-              The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand
-              Instances are launched as a percentage of the Auto Scaling group's desired capacity,
-              per the ``OnDemandPercentageAboveBaseCapacity`` setting.
+              Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched
+              as a percentage of the Auto Scaling group's desired capacity, per the
+              ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+              .. note::
+
+                An update to this setting means a gradual replacement of instances to maintain the
+                specified number of On-Demand Instances for your base capacity. When replacing
+                instances, Amazon EC2 Auto Scaling launches new instances before terminating the
+                old ones.
 
             - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
               Controls the percentages of On-Demand Instances and Spot Instances for your
-              additional capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+              additional capacity beyond ``OnDemandBaseCapacity`` .
 
-              The default value is ``100`` . If you leave this parameter set to ``100`` , the
-              percentages are 100% for On-Demand Instances and 0% for Spot Instances.
+              Default if not set is 100. If you leave it set to 100, the percentages are 100% for
+              On-Demand Instances and 0% for Spot Instances.
+
+              .. note::
+
+                An update to this setting means a gradual replacement of instances to maintain the
+                percentage of On-Demand Instances for your additional capacity above the base
+                capacity. When replacing instances, Amazon EC2 Auto Scaling launches new instances
+                before terminating the old ones.
+
+              Valid Range: Minimum value of 0. Maximum value of 100.
 
             - **SpotAllocationStrategy** *(string) --*
 
@@ -8281,9 +8741,11 @@ class DescribeAutoScalingGroupsPaginateResponseTypeDef(
 
               The number of Spot Instance pools across which to allocate your Spot Instances. The
               Spot pools are determined from the different instance types in the Overrides array of
-               LaunchTemplate . The range is 1–20. The default value is ``2`` .
+               LaunchTemplate . Default if not set is 2.
 
-              Valid only when the Spot allocation strategy is ``lowest-price`` .
+              Used only when the Spot allocation strategy is ``lowest-price`` .
+
+              Valid Range: Minimum value of 1. Maximum value of 20.
 
             - **SpotMaxPrice** *(string) --*
 
@@ -8352,6 +8814,10 @@ class DescribeAutoScalingGroupsPaginateResponseTypeDef(
 
               The ID of the instance.
 
+            - **InstanceType** *(string) --*
+
+              The instance type of the EC2 instance.
+
             - **AvailabilityZone** *(string) --*
 
               The Availability Zone in which the instance is running.
@@ -8396,6 +8862,12 @@ class DescribeAutoScalingGroupsPaginateResponseTypeDef(
 
               Indicates whether the instance is protected from termination by Amazon EC2 Auto
               Scaling when scaling in.
+
+            - **WeightedCapacity** *(string) --*
+
+              The number of capacity units contributed by the instance based on its instance type.
+
+              Valid Range: Minimum value of 1. Maximum value of 999.
 
         - **CreatedTime** *(datetime) --*
 
@@ -8506,6 +8978,12 @@ class DescribeAutoScalingGroupsPaginateResponseTypeDef(
 
           The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group
           uses to call other AWS services on your behalf.
+
+        - **MaxInstanceLifetime** *(integer) --*
+
+          The maximum amount of time, in seconds, that an instance can be in service.
+
+          Valid Range: Minimum value of 604800.
     """
 
 
@@ -8579,6 +9057,7 @@ _DescribeAutoScalingInstancesPaginateResponseAutoScalingInstancesTypeDef = Typed
     "_DescribeAutoScalingInstancesPaginateResponseAutoScalingInstancesTypeDef",
     {
         "InstanceId": str,
+        "InstanceType": str,
         "AutoScalingGroupName": str,
         "AvailabilityZone": str,
         "LifecycleState": str,
@@ -8586,6 +9065,7 @@ _DescribeAutoScalingInstancesPaginateResponseAutoScalingInstancesTypeDef = Typed
         "LaunchConfigurationName": str,
         "LaunchTemplate": DescribeAutoScalingInstancesPaginateResponseAutoScalingInstancesLaunchTemplateTypeDef,
         "ProtectedFromScaleIn": bool,
+        "WeightedCapacity": str,
     },
     total=False,
 )
@@ -8602,6 +9082,10 @@ class DescribeAutoScalingInstancesPaginateResponseAutoScalingInstancesTypeDef(
     - **InstanceId** *(string) --*
 
       The ID of the instance.
+
+    - **InstanceType** *(string) --*
+
+      The instance type of the EC2 instance.
 
     - **AutoScalingGroupName** *(string) --*
 
@@ -8651,6 +9135,12 @@ class DescribeAutoScalingInstancesPaginateResponseAutoScalingInstancesTypeDef(
 
       Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling
       when scaling in.
+
+    - **WeightedCapacity** *(string) --*
+
+      The number of capacity units contributed by the instance based on its instance type.
+
+      Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -8682,6 +9172,10 @@ class DescribeAutoScalingInstancesPaginateResponseTypeDef(
         - **InstanceId** *(string) --*
 
           The ID of the instance.
+
+        - **InstanceType** *(string) --*
+
+          The instance type of the EC2 instance.
 
         - **AutoScalingGroupName** *(string) --*
 
@@ -8731,6 +9225,12 @@ class DescribeAutoScalingInstancesPaginateResponseTypeDef(
 
           Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling
           when scaling in.
+
+        - **WeightedCapacity** *(string) --*
+
+          The number of capacity units contributed by the instance based on its instance type.
+
+          Valid Range: Minimum value of 1. Maximum value of 999.
     """
 
 
@@ -8819,7 +9319,7 @@ class DescribeLaunchConfigurationsPaginateResponseLaunchConfigurationsBlockDevic
       <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html>`__ in the
       *Amazon EC2 User Guide for Linux Instances* .
 
-      Valid values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
+      Valid Values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
 
     - **DeleteOnTermination** *(boolean) --*
 
@@ -8937,7 +9437,7 @@ class DescribeLaunchConfigurationsPaginateResponseLaunchConfigurationsBlockDevic
         <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html>`__ in the
         *Amazon EC2 User Guide for Linux Instances* .
 
-        Valid values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
+        Valid Values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
 
       - **DeleteOnTermination** *(boolean) --*
 
@@ -9198,7 +9698,7 @@ class DescribeLaunchConfigurationsPaginateResponseLaunchConfigurationsTypeDef(
             <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html>`__ in the
             *Amazon EC2 User Guide for Linux Instances* .
 
-            Valid values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
+            Valid Values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
 
           - **DeleteOnTermination** *(boolean) --*
 
@@ -9272,7 +9772,7 @@ class DescribeLaunchConfigurationsPaginateResponseLaunchConfigurationsTypeDef(
 
       The maximum hourly price to be paid for any Spot Instance launched to fulfill the
       request. Spot Instances are launched when the price you specify exceeds the current Spot
-      market price.
+      price.
 
       For more information, see `Launching Spot Instances in Your Auto Scaling Group
       <https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html>`__
@@ -9485,7 +9985,7 @@ class DescribeLaunchConfigurationsPaginateResponseTypeDef(
                 <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html>`__ in the
                 *Amazon EC2 User Guide for Linux Instances* .
 
-                Valid values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
+                Valid Values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
 
               - **DeleteOnTermination** *(boolean) --*
 
@@ -9559,7 +10059,7 @@ class DescribeLaunchConfigurationsPaginateResponseTypeDef(
 
           The maximum hourly price to be paid for any Spot Instance launched to fulfill the
           request. Spot Instances are launched when the price you specify exceeds the current Spot
-          market price.
+          price.
 
           For more information, see `Launching Spot Instances in Your Auto Scaling Group
           <https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html>`__
@@ -10219,12 +10719,7 @@ class DescribePoliciesPaginateResponseScalingPoliciesTargetTrackingConfiguration
 
     - **PredefinedMetricType** *(string) --*
 
-      The metric type.
-
-    - **ResourceLabel** *(string) --*
-
-      Identifies the resource associated with the metric type. The following predefined
-      metrics are available:
+      The metric type. The following predefined metrics are available:
 
       * ``ASGAverageCPUUtilization`` - Average CPU utilization of the Auto Scaling group.
 
@@ -10237,15 +10732,20 @@ class DescribePoliciesPaginateResponseScalingPoliciesTargetTrackingConfiguration
       * ``ALBRequestCountPerTarget`` - Number of requests completed per target in an
       Application Load Balancer target group.
 
-      For predefined metric types ``ASGAverageCPUUtilization`` , ``ASGAverageNetworkIn`` ,
-      and ``ASGAverageNetworkOut`` , the parameter must not be specified as the resource
-      associated with the metric type is the Auto Scaling group. For predefined metric type
-      ``ALBRequestCountPerTarget`` , the parameter must be specified in the format:
-      ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
-      /*target-group-id* `` , where ``app/*load-balancer-name* /*load-balancer-id* `` is
-      the final portion of the load balancer ARN, and ``targetgroup/*target-group-name*
-      /*target-group-id* `` is the final portion of the target group ARN. The target group
-      must be attached to the Auto Scaling group.
+    - **ResourceLabel** *(string) --*
+
+      Identifies the resource associated with the metric type. You can't specify a resource
+      label unless the metric type is ``ALBRequestCountPerTarget`` and there is a target
+      group attached to the Auto Scaling group.
+
+      The format is ``app/*load-balancer-name* /*load-balancer-id*
+      /targetgroup/*target-group-name* /*target-group-id* `` , where
+
+      * ``app/*load-balancer-name* /*load-balancer-id* `` is the final portion of the load
+      balancer ARN, and
+
+      * ``targetgroup/*target-group-name* /*target-group-id* `` is the final portion of the
+      target group ARN.
     """
 
 
@@ -10275,12 +10775,7 @@ class DescribePoliciesPaginateResponseScalingPoliciesTargetTrackingConfiguration
 
       - **PredefinedMetricType** *(string) --*
 
-        The metric type.
-
-      - **ResourceLabel** *(string) --*
-
-        Identifies the resource associated with the metric type. The following predefined
-        metrics are available:
+        The metric type. The following predefined metrics are available:
 
         * ``ASGAverageCPUUtilization`` - Average CPU utilization of the Auto Scaling group.
 
@@ -10293,15 +10788,20 @@ class DescribePoliciesPaginateResponseScalingPoliciesTargetTrackingConfiguration
         * ``ALBRequestCountPerTarget`` - Number of requests completed per target in an
         Application Load Balancer target group.
 
-        For predefined metric types ``ASGAverageCPUUtilization`` , ``ASGAverageNetworkIn`` ,
-        and ``ASGAverageNetworkOut`` , the parameter must not be specified as the resource
-        associated with the metric type is the Auto Scaling group. For predefined metric type
-        ``ALBRequestCountPerTarget`` , the parameter must be specified in the format:
-        ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
-        /*target-group-id* `` , where ``app/*load-balancer-name* /*load-balancer-id* `` is
-        the final portion of the load balancer ARN, and ``targetgroup/*target-group-name*
-        /*target-group-id* `` is the final portion of the target group ARN. The target group
-        must be attached to the Auto Scaling group.
+      - **ResourceLabel** *(string) --*
+
+        Identifies the resource associated with the metric type. You can't specify a resource
+        label unless the metric type is ``ALBRequestCountPerTarget`` and there is a target
+        group attached to the Auto Scaling group.
+
+        The format is ``app/*load-balancer-name* /*load-balancer-id*
+        /targetgroup/*target-group-name* /*target-group-id* `` , where
+
+        * ``app/*load-balancer-name* /*load-balancer-id* `` is the final portion of the load
+        balancer ARN, and
+
+        * ``targetgroup/*target-group-name* /*target-group-id* `` is the final portion of the
+        target group ARN.
 
     - **CustomizedMetricSpecification** *(dict) --*
 
@@ -10521,12 +11021,7 @@ class DescribePoliciesPaginateResponseScalingPoliciesTypeDef(
 
         - **PredefinedMetricType** *(string) --*
 
-          The metric type.
-
-        - **ResourceLabel** *(string) --*
-
-          Identifies the resource associated with the metric type. The following predefined
-          metrics are available:
+          The metric type. The following predefined metrics are available:
 
           * ``ASGAverageCPUUtilization`` - Average CPU utilization of the Auto Scaling group.
 
@@ -10539,15 +11034,20 @@ class DescribePoliciesPaginateResponseScalingPoliciesTypeDef(
           * ``ALBRequestCountPerTarget`` - Number of requests completed per target in an
           Application Load Balancer target group.
 
-          For predefined metric types ``ASGAverageCPUUtilization`` , ``ASGAverageNetworkIn`` ,
-          and ``ASGAverageNetworkOut`` , the parameter must not be specified as the resource
-          associated with the metric type is the Auto Scaling group. For predefined metric type
-          ``ALBRequestCountPerTarget`` , the parameter must be specified in the format:
-          ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
-          /*target-group-id* `` , where ``app/*load-balancer-name* /*load-balancer-id* `` is
-          the final portion of the load balancer ARN, and ``targetgroup/*target-group-name*
-          /*target-group-id* `` is the final portion of the target group ARN. The target group
-          must be attached to the Auto Scaling group.
+        - **ResourceLabel** *(string) --*
+
+          Identifies the resource associated with the metric type. You can't specify a resource
+          label unless the metric type is ``ALBRequestCountPerTarget`` and there is a target
+          group attached to the Auto Scaling group.
+
+          The format is ``app/*load-balancer-name* /*load-balancer-id*
+          /targetgroup/*target-group-name* /*target-group-id* `` , where
+
+          * ``app/*load-balancer-name* /*load-balancer-id* `` is the final portion of the load
+          balancer ARN, and
+
+          * ``targetgroup/*target-group-name* /*target-group-id* `` is the final portion of the
+          target group ARN.
 
       - **CustomizedMetricSpecification** *(dict) --*
 
@@ -10754,12 +11254,7 @@ class DescribePoliciesPaginateResponseTypeDef(_DescribePoliciesPaginateResponseT
 
             - **PredefinedMetricType** *(string) --*
 
-              The metric type.
-
-            - **ResourceLabel** *(string) --*
-
-              Identifies the resource associated with the metric type. The following predefined
-              metrics are available:
+              The metric type. The following predefined metrics are available:
 
               * ``ASGAverageCPUUtilization`` - Average CPU utilization of the Auto Scaling group.
 
@@ -10772,15 +11267,20 @@ class DescribePoliciesPaginateResponseTypeDef(_DescribePoliciesPaginateResponseT
               * ``ALBRequestCountPerTarget`` - Number of requests completed per target in an
               Application Load Balancer target group.
 
-              For predefined metric types ``ASGAverageCPUUtilization`` , ``ASGAverageNetworkIn`` ,
-              and ``ASGAverageNetworkOut`` , the parameter must not be specified as the resource
-              associated with the metric type is the Auto Scaling group. For predefined metric type
-              ``ALBRequestCountPerTarget`` , the parameter must be specified in the format:
-              ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
-              /*target-group-id* `` , where ``app/*load-balancer-name* /*load-balancer-id* `` is
-              the final portion of the load balancer ARN, and ``targetgroup/*target-group-name*
-              /*target-group-id* `` is the final portion of the target group ARN. The target group
-              must be attached to the Auto Scaling group.
+            - **ResourceLabel** *(string) --*
+
+              Identifies the resource associated with the metric type. You can't specify a resource
+              label unless the metric type is ``ALBRequestCountPerTarget`` and there is a target
+              group attached to the Auto Scaling group.
+
+              The format is ``app/*load-balancer-name* /*load-balancer-id*
+              /targetgroup/*target-group-name* /*target-group-id* `` , where
+
+              * ``app/*load-balancer-name* /*load-balancer-id* `` is the final portion of the load
+              balancer ARN, and
+
+              * ``targetgroup/*target-group-name* /*target-group-id* `` is the final portion of the
+              target group ARN.
 
           - **CustomizedMetricSpecification** *(dict) --*
 

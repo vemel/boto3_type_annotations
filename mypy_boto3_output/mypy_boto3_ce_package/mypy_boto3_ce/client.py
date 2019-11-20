@@ -200,8 +200,6 @@ class Client(BaseClient):
           isn't set, the response object doesn't include the ``Granularity`` , either ``MONTHLY`` or
           ``DAILY`` , or ``HOURLY`` .
 
-          The ``GetCostAndUsageRequest`` operation supports only ``DAILY`` and ``MONTHLY`` granularities.
-
         :type Filter: dict
         :param Filter:
 
@@ -359,8 +357,8 @@ class Client(BaseClient):
           When you group by tag key, you get all tag values, including empty strings.
 
           Valid values are ``AZ`` , ``INSTANCE_TYPE`` , ``LEGAL_ENTITY_NAME`` , ``LINKED_ACCOUNT`` ,
-          ``OPERATION`` , ``PLATFORM`` , ``PURCHASE_TYPE`` , ``SERVICE`` , ``TAGS`` , ``TENANCY`` , and
-          ``USAGE_TYPE`` .
+          ``OPERATION`` , ``PLATFORM`` , ``PURCHASE_TYPE`` , ``SERVICE`` , ``TAGS`` , ``TENANCY`` ,
+          ``RECORD_TYPE`` , and ``USAGE_TYPE`` .
 
           - *(dict) --*
 
@@ -4410,6 +4408,7 @@ class Client(BaseClient):
                             'CurrencyCode': 'string',
                             'EstimatedSPCost': 'string',
                             'EstimatedOnDemandCost': 'string',
+                            'EstimatedOnDemandCostWithCurrentCommitment': 'string',
                             'EstimatedSavingsAmount': 'string',
                             'EstimatedSavingsPercentage': 'string',
                             'HourlyCommitmentToPurchase': 'string',
@@ -4430,7 +4429,8 @@ class Client(BaseClient):
                         'DailyCommitmentToPurchase': 'string',
                         'HourlyCommitmentToPurchase': 'string',
                         'EstimatedSavingsPercentage': 'string',
-                        'EstimatedMonthlySavingsAmount': 'string'
+                        'EstimatedMonthlySavingsAmount': 'string',
+                        'EstimatedOnDemandCostWithCurrentCommitment': 'string'
                     }
                 },
                 'NextPageToken': 'string'
@@ -4524,6 +4524,11 @@ class Client(BaseClient):
                     The remaining On-Demand cost estimated to not be covered by the recommended Savings
                     Plans, over the length of the lookback period.
 
+                  - **EstimatedOnDemandCostWithCurrentCommitment** *(string) --*
+
+                    The estimated On-Demand costs you would expect with no additional commitment, based on
+                    your usage of the selected time period and the Savings Plans you own.
+
                   - **EstimatedSavingsAmount** *(string) --*
 
                     The estimated savings amount based on the recommended Savings Plans over the length of
@@ -4611,6 +4616,11 @@ class Client(BaseClient):
                 - **EstimatedMonthlySavingsAmount** *(string) --*
 
                   The estimated monthly savings amount, based on the recommended Savings Plans purchase.
+
+                - **EstimatedOnDemandCostWithCurrentCommitment** *(string) --*
+
+                  The estimated On-Demand costs you would expect with no additional commitment, based on
+                  your usage of the selected time period and the Savings Plans you own.
 
             - **NextPageToken** *(string) --*
 

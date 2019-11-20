@@ -78,6 +78,11 @@ __all__ = (
     "ClientCreateThingTypetagsTypeDef",
     "ClientCreateThingTypethingTypePropertiesTypeDef",
     "ClientCreateThingattributePayloadTypeDef",
+    "ClientCreateTopicRuleDestinationResponsetopicRuleDestinationhttpUrlPropertiesTypeDef",
+    "ClientCreateTopicRuleDestinationResponsetopicRuleDestinationTypeDef",
+    "ClientCreateTopicRuleDestinationResponseTypeDef",
+    "ClientCreateTopicRuleDestinationdestinationConfigurationhttpUrlConfigurationTypeDef",
+    "ClientCreateTopicRuleDestinationdestinationConfigurationTypeDef",
     "ClientCreateTopicRuletopicRulePayloadactionscloudwatchAlarmTypeDef",
     "ClientCreateTopicRuletopicRulePayloadactionscloudwatchMetricTypeDef",
     "ClientCreateTopicRuletopicRulePayloadactionsdynamoDBTypeDef",
@@ -85,6 +90,10 @@ __all__ = (
     "ClientCreateTopicRuletopicRulePayloadactionsdynamoDBv2TypeDef",
     "ClientCreateTopicRuletopicRulePayloadactionselasticsearchTypeDef",
     "ClientCreateTopicRuletopicRulePayloadactionsfirehoseTypeDef",
+    "ClientCreateTopicRuletopicRulePayloadactionshttpauthsigv4TypeDef",
+    "ClientCreateTopicRuletopicRulePayloadactionshttpauthTypeDef",
+    "ClientCreateTopicRuletopicRulePayloadactionshttpheadersTypeDef",
+    "ClientCreateTopicRuletopicRulePayloadactionshttpTypeDef",
     "ClientCreateTopicRuletopicRulePayloadactionsiotAnalyticsTypeDef",
     "ClientCreateTopicRuletopicRulePayloadactionsiotEventsTypeDef",
     "ClientCreateTopicRuletopicRulePayloadactionskinesisTypeDef",
@@ -103,6 +112,10 @@ __all__ = (
     "ClientCreateTopicRuletopicRulePayloaderrorActiondynamoDBv2TypeDef",
     "ClientCreateTopicRuletopicRulePayloaderrorActionelasticsearchTypeDef",
     "ClientCreateTopicRuletopicRulePayloaderrorActionfirehoseTypeDef",
+    "ClientCreateTopicRuletopicRulePayloaderrorActionhttpauthsigv4TypeDef",
+    "ClientCreateTopicRuletopicRulePayloaderrorActionhttpauthTypeDef",
+    "ClientCreateTopicRuletopicRulePayloaderrorActionhttpheadersTypeDef",
+    "ClientCreateTopicRuletopicRulePayloaderrorActionhttpTypeDef",
     "ClientCreateTopicRuletopicRulePayloaderrorActioniotAnalyticsTypeDef",
     "ClientCreateTopicRuletopicRulePayloaderrorActioniotEventsTypeDef",
     "ClientCreateTopicRuletopicRulePayloaderrorActionkinesisTypeDef",
@@ -238,6 +251,9 @@ __all__ = (
     "ClientGetRegistrationCodeResponseTypeDef",
     "ClientGetStatisticsResponsestatisticsTypeDef",
     "ClientGetStatisticsResponseTypeDef",
+    "ClientGetTopicRuleDestinationResponsetopicRuleDestinationhttpUrlPropertiesTypeDef",
+    "ClientGetTopicRuleDestinationResponsetopicRuleDestinationTypeDef",
+    "ClientGetTopicRuleDestinationResponseTypeDef",
     "ClientGetTopicRuleResponseruleactionscloudwatchAlarmTypeDef",
     "ClientGetTopicRuleResponseruleactionscloudwatchMetricTypeDef",
     "ClientGetTopicRuleResponseruleactionsdynamoDBTypeDef",
@@ -245,6 +261,10 @@ __all__ = (
     "ClientGetTopicRuleResponseruleactionsdynamoDBv2TypeDef",
     "ClientGetTopicRuleResponseruleactionselasticsearchTypeDef",
     "ClientGetTopicRuleResponseruleactionsfirehoseTypeDef",
+    "ClientGetTopicRuleResponseruleactionshttpauthsigv4TypeDef",
+    "ClientGetTopicRuleResponseruleactionshttpauthTypeDef",
+    "ClientGetTopicRuleResponseruleactionshttpheadersTypeDef",
+    "ClientGetTopicRuleResponseruleactionshttpTypeDef",
     "ClientGetTopicRuleResponseruleactionsiotAnalyticsTypeDef",
     "ClientGetTopicRuleResponseruleactionsiotEventsTypeDef",
     "ClientGetTopicRuleResponseruleactionskinesisTypeDef",
@@ -263,6 +283,10 @@ __all__ = (
     "ClientGetTopicRuleResponseruleerrorActiondynamoDBv2TypeDef",
     "ClientGetTopicRuleResponseruleerrorActionelasticsearchTypeDef",
     "ClientGetTopicRuleResponseruleerrorActionfirehoseTypeDef",
+    "ClientGetTopicRuleResponseruleerrorActionhttpauthsigv4TypeDef",
+    "ClientGetTopicRuleResponseruleerrorActionhttpauthTypeDef",
+    "ClientGetTopicRuleResponseruleerrorActionhttpheadersTypeDef",
+    "ClientGetTopicRuleResponseruleerrorActionhttpTypeDef",
     "ClientGetTopicRuleResponseruleerrorActioniotAnalyticsTypeDef",
     "ClientGetTopicRuleResponseruleerrorActioniotEventsTypeDef",
     "ClientGetTopicRuleResponseruleerrorActionkinesisTypeDef",
@@ -366,6 +390,9 @@ __all__ = (
     "ClientListThingsInThingGroupResponseTypeDef",
     "ClientListThingsResponsethingsTypeDef",
     "ClientListThingsResponseTypeDef",
+    "ClientListTopicRuleDestinationsResponsedestinationSummarieshttpUrlSummaryTypeDef",
+    "ClientListTopicRuleDestinationsResponsedestinationSummariesTypeDef",
+    "ClientListTopicRuleDestinationsResponseTypeDef",
     "ClientListTopicRulesResponserulesTypeDef",
     "ClientListTopicRulesResponseTypeDef",
     "ClientListV2LoggingLevelsResponselogTargetConfigurationslogTargetTypeDef",
@@ -389,6 +416,10 @@ __all__ = (
     "ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBv2TypeDef",
     "ClientReplaceTopicRuletopicRulePayloadactionselasticsearchTypeDef",
     "ClientReplaceTopicRuletopicRulePayloadactionsfirehoseTypeDef",
+    "ClientReplaceTopicRuletopicRulePayloadactionshttpauthsigv4TypeDef",
+    "ClientReplaceTopicRuletopicRulePayloadactionshttpauthTypeDef",
+    "ClientReplaceTopicRuletopicRulePayloadactionshttpheadersTypeDef",
+    "ClientReplaceTopicRuletopicRulePayloadactionshttpTypeDef",
     "ClientReplaceTopicRuletopicRulePayloadactionsiotAnalyticsTypeDef",
     "ClientReplaceTopicRuletopicRulePayloadactionsiotEventsTypeDef",
     "ClientReplaceTopicRuletopicRulePayloadactionskinesisTypeDef",
@@ -407,6 +438,10 @@ __all__ = (
     "ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBv2TypeDef",
     "ClientReplaceTopicRuletopicRulePayloaderrorActionelasticsearchTypeDef",
     "ClientReplaceTopicRuletopicRulePayloaderrorActionfirehoseTypeDef",
+    "ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauthsigv4TypeDef",
+    "ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauthTypeDef",
+    "ClientReplaceTopicRuletopicRulePayloaderrorActionhttpheadersTypeDef",
+    "ClientReplaceTopicRuletopicRulePayloaderrorActionhttpTypeDef",
     "ClientReplaceTopicRuletopicRulePayloaderrorActioniotAnalyticsTypeDef",
     "ClientReplaceTopicRuletopicRulePayloaderrorActioniotEventsTypeDef",
     "ClientReplaceTopicRuletopicRulePayloaderrorActionkinesisTypeDef",
@@ -3134,6 +3169,207 @@ class ClientCreateThingattributePayloadTypeDef(
     """
 
 
+_ClientCreateTopicRuleDestinationResponsetopicRuleDestinationhttpUrlPropertiesTypeDef = TypedDict(
+    "_ClientCreateTopicRuleDestinationResponsetopicRuleDestinationhttpUrlPropertiesTypeDef",
+    {"confirmationUrl": str},
+    total=False,
+)
+
+
+class ClientCreateTopicRuleDestinationResponsetopicRuleDestinationhttpUrlPropertiesTypeDef(
+    _ClientCreateTopicRuleDestinationResponsetopicRuleDestinationhttpUrlPropertiesTypeDef
+):
+    """
+    Type definition for `ClientCreateTopicRuleDestinationResponsetopicRuleDestination` `httpUrlProperties`
+
+    Properties of the HTTP URL.
+
+    - **confirmationUrl** *(string) --*
+
+      The URL used to confirm the HTTP topic rule destination URL.
+    """
+
+
+_ClientCreateTopicRuleDestinationResponsetopicRuleDestinationTypeDef = TypedDict(
+    "_ClientCreateTopicRuleDestinationResponsetopicRuleDestinationTypeDef",
+    {
+        "arn": str,
+        "status": str,
+        "statusReason": str,
+        "httpUrlProperties": ClientCreateTopicRuleDestinationResponsetopicRuleDestinationhttpUrlPropertiesTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientCreateTopicRuleDestinationResponsetopicRuleDestinationTypeDef(
+    _ClientCreateTopicRuleDestinationResponsetopicRuleDestinationTypeDef
+):
+    """
+    Type definition for `ClientCreateTopicRuleDestinationResponse` `topicRuleDestination`
+
+    The topic rule destination.
+
+    - **arn** *(string) --*
+
+      The topic rule destination URL.
+
+    - **status** *(string) --*
+
+      The status of the topic rule destination. Valid values are:
+
+        IN_PROGRESS
+
+      A topic rule destination was created but has not been confirmed. You can set ``status`` to
+      ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+      ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+      confirmation endpoint.
+
+        ENABLED
+
+      Confirmation was completed, and traffic to this destination is allowed. You can set
+      ``status`` to ``DISABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+        DISABLED
+
+      Confirmation was completed, and traffic to this destination is not allowed. You can set
+      ``status`` to ``ENABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+        ERROR
+
+      Confirmation could not be completed, for example if the confirmation timed out. You can
+      call ``GetTopicRuleDestination`` for details about the error. You can set ``status`` to
+      ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+      ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+      confirmation endpoint.
+
+    - **statusReason** *(string) --*
+
+      Additional details or reason why the topic rule destination is in the current status.
+
+    - **httpUrlProperties** *(dict) --*
+
+      Properties of the HTTP URL.
+
+      - **confirmationUrl** *(string) --*
+
+        The URL used to confirm the HTTP topic rule destination URL.
+    """
+
+
+_ClientCreateTopicRuleDestinationResponseTypeDef = TypedDict(
+    "_ClientCreateTopicRuleDestinationResponseTypeDef",
+    {
+        "topicRuleDestination": ClientCreateTopicRuleDestinationResponsetopicRuleDestinationTypeDef
+    },
+    total=False,
+)
+
+
+class ClientCreateTopicRuleDestinationResponseTypeDef(
+    _ClientCreateTopicRuleDestinationResponseTypeDef
+):
+    """
+    Type definition for `ClientCreateTopicRuleDestination` `Response`
+
+    - **topicRuleDestination** *(dict) --*
+
+      The topic rule destination.
+
+      - **arn** *(string) --*
+
+        The topic rule destination URL.
+
+      - **status** *(string) --*
+
+        The status of the topic rule destination. Valid values are:
+
+          IN_PROGRESS
+
+        A topic rule destination was created but has not been confirmed. You can set ``status`` to
+        ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+        ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+        confirmation endpoint.
+
+          ENABLED
+
+        Confirmation was completed, and traffic to this destination is allowed. You can set
+        ``status`` to ``DISABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+          DISABLED
+
+        Confirmation was completed, and traffic to this destination is not allowed. You can set
+        ``status`` to ``ENABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+          ERROR
+
+        Confirmation could not be completed, for example if the confirmation timed out. You can
+        call ``GetTopicRuleDestination`` for details about the error. You can set ``status`` to
+        ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+        ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+        confirmation endpoint.
+
+      - **statusReason** *(string) --*
+
+        Additional details or reason why the topic rule destination is in the current status.
+
+      - **httpUrlProperties** *(dict) --*
+
+        Properties of the HTTP URL.
+
+        - **confirmationUrl** *(string) --*
+
+          The URL used to confirm the HTTP topic rule destination URL.
+    """
+
+
+_ClientCreateTopicRuleDestinationdestinationConfigurationhttpUrlConfigurationTypeDef = TypedDict(
+    "_ClientCreateTopicRuleDestinationdestinationConfigurationhttpUrlConfigurationTypeDef",
+    {"confirmationUrl": str},
+)
+
+
+class ClientCreateTopicRuleDestinationdestinationConfigurationhttpUrlConfigurationTypeDef(
+    _ClientCreateTopicRuleDestinationdestinationConfigurationhttpUrlConfigurationTypeDef
+):
+    """
+    Type definition for `ClientCreateTopicRuleDestinationdestinationConfiguration` `httpUrlConfiguration`
+
+    Configuration of the HTTP URL.
+
+    - **confirmationUrl** *(string) --* **[REQUIRED]**
+
+      The URL AWS IoT uses to confirm ownership of or access to the topic rule destination URL.
+    """
+
+
+_ClientCreateTopicRuleDestinationdestinationConfigurationTypeDef = TypedDict(
+    "_ClientCreateTopicRuleDestinationdestinationConfigurationTypeDef",
+    {
+        "httpUrlConfiguration": ClientCreateTopicRuleDestinationdestinationConfigurationhttpUrlConfigurationTypeDef
+    },
+    total=False,
+)
+
+
+class ClientCreateTopicRuleDestinationdestinationConfigurationTypeDef(
+    _ClientCreateTopicRuleDestinationdestinationConfigurationTypeDef
+):
+    """
+    Type definition for `ClientCreateTopicRuleDestination` `destinationConfiguration`
+
+    The topic rule destination configuration.
+
+    - **httpUrlConfiguration** *(dict) --*
+
+      Configuration of the HTTP URL.
+
+      - **confirmationUrl** *(string) --* **[REQUIRED]**
+
+        The URL AWS IoT uses to confirm ownership of or access to the topic rule destination URL.
+    """
+
+
 _ClientCreateTopicRuletopicRulePayloadactionscloudwatchAlarmTypeDef = TypedDict(
     "_ClientCreateTopicRuletopicRulePayloadactionscloudwatchAlarmTypeDef",
     {"roleArn": str, "alarmName": str, "stateReason": str, "stateValue": str},
@@ -3426,6 +3662,169 @@ class ClientCreateTopicRuletopicRulePayloadactionsfirehoseTypeDef(
       A character separator that will be used to separate records written to the Firehose
       stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
       (comma).
+    """
+
+
+_ClientCreateTopicRuletopicRulePayloadactionshttpauthsigv4TypeDef = TypedDict(
+    "_ClientCreateTopicRuletopicRulePayloadactionshttpauthsigv4TypeDef",
+    {"signingRegion": str, "serviceName": str, "roleArn": str},
+)
+
+
+class ClientCreateTopicRuletopicRulePayloadactionshttpauthsigv4TypeDef(
+    _ClientCreateTopicRuletopicRulePayloadactionshttpauthsigv4TypeDef
+):
+    """
+    Type definition for `ClientCreateTopicRuletopicRulePayloadactionshttpauth` `sigv4`
+
+    Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+    Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+    - **signingRegion** *(string) --* **[REQUIRED]**
+
+      The signing region.
+
+    - **serviceName** *(string) --* **[REQUIRED]**
+
+      The service name to use while signing with Sig V4.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the signing role.
+    """
+
+
+_ClientCreateTopicRuletopicRulePayloadactionshttpauthTypeDef = TypedDict(
+    "_ClientCreateTopicRuletopicRulePayloadactionshttpauthTypeDef",
+    {"sigv4": ClientCreateTopicRuletopicRulePayloadactionshttpauthsigv4TypeDef},
+    total=False,
+)
+
+
+class ClientCreateTopicRuletopicRulePayloadactionshttpauthTypeDef(
+    _ClientCreateTopicRuletopicRulePayloadactionshttpauthTypeDef
+):
+    """
+    Type definition for `ClientCreateTopicRuletopicRulePayloadactionshttp` `auth`
+
+    The authentication method to use when sending data to an HTTPS endpoint.
+
+    - **sigv4** *(dict) --*
+
+      Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+      Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+      - **signingRegion** *(string) --* **[REQUIRED]**
+
+        The signing region.
+
+      - **serviceName** *(string) --* **[REQUIRED]**
+
+        The service name to use while signing with Sig V4.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the signing role.
+    """
+
+
+_ClientCreateTopicRuletopicRulePayloadactionshttpheadersTypeDef = TypedDict(
+    "_ClientCreateTopicRuletopicRulePayloadactionshttpheadersTypeDef",
+    {"key": str, "value": str},
+)
+
+
+class ClientCreateTopicRuletopicRulePayloadactionshttpheadersTypeDef(
+    _ClientCreateTopicRuletopicRulePayloadactionshttpheadersTypeDef
+):
+    """
+    Type definition for `ClientCreateTopicRuletopicRulePayloadactionshttp` `headers`
+
+    The HTTP action header.
+
+    - **key** *(string) --* **[REQUIRED]**
+
+      The HTTP header key.
+
+    - **value** *(string) --* **[REQUIRED]**
+
+      The HTTP header value. Substitution templates are supported.
+    """
+
+
+_RequiredClientCreateTopicRuletopicRulePayloadactionshttpTypeDef = TypedDict(
+    "_RequiredClientCreateTopicRuletopicRulePayloadactionshttpTypeDef", {"url": str}
+)
+_OptionalClientCreateTopicRuletopicRulePayloadactionshttpTypeDef = TypedDict(
+    "_OptionalClientCreateTopicRuletopicRulePayloadactionshttpTypeDef",
+    {
+        "confirmationUrl": str,
+        "headers": List[ClientCreateTopicRuletopicRulePayloadactionshttpheadersTypeDef],
+        "auth": ClientCreateTopicRuletopicRulePayloadactionshttpauthTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientCreateTopicRuletopicRulePayloadactionshttpTypeDef(
+    _RequiredClientCreateTopicRuletopicRulePayloadactionshttpTypeDef,
+    _OptionalClientCreateTopicRuletopicRulePayloadactionshttpTypeDef,
+):
+    """
+    Type definition for `ClientCreateTopicRuletopicRulePayloadactions` `http`
+
+    Send data to an HTTPS endpoint.
+
+    - **url** *(string) --* **[REQUIRED]**
+
+      The endpoint URL. If substitution templates are used in the URL, you must also specify a
+      ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+      created if possible.
+
+    - **confirmationUrl** *(string) --*
+
+      The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+      must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT
+      uses the endpoint URL as the confirmation URL. If you use substitution templates in the
+      confirmationUrl, you must create and enable topic rule destinations that match each
+      possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+    - **headers** *(list) --*
+
+      The HTTP headers to send with the message data.
+
+      - *(dict) --*
+
+        The HTTP action header.
+
+        - **key** *(string) --* **[REQUIRED]**
+
+          The HTTP header key.
+
+        - **value** *(string) --* **[REQUIRED]**
+
+          The HTTP header value. Substitution templates are supported.
+
+    - **auth** *(dict) --*
+
+      The authentication method to use when sending data to an HTTPS endpoint.
+
+      - **sigv4** *(dict) --*
+
+        Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+        Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+        - **signingRegion** *(string) --* **[REQUIRED]**
+
+          The signing region.
+
+        - **serviceName** *(string) --* **[REQUIRED]**
+
+          The service name to use while signing with Sig V4.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the signing role.
     """
 
 
@@ -3779,6 +4178,7 @@ _ClientCreateTopicRuletopicRulePayloadactionsTypeDef = TypedDict(
         "iotAnalytics": ClientCreateTopicRuletopicRulePayloadactionsiotAnalyticsTypeDef,
         "iotEvents": ClientCreateTopicRuletopicRulePayloadactionsiotEventsTypeDef,
         "stepFunctions": ClientCreateTopicRuletopicRulePayloadactionsstepFunctionsTypeDef,
+        "http": ClientCreateTopicRuletopicRulePayloadactionshttpTypeDef,
     },
     total=False,
 )
@@ -4123,6 +4523,61 @@ class ClientCreateTopicRuletopicRulePayloadactionsTypeDef(
 
         The ARN of the role that grants IoT permission to start execution of a state machine
         ("Action":"states:StartExecution").
+
+    - **http** *(dict) --*
+
+      Send data to an HTTPS endpoint.
+
+      - **url** *(string) --* **[REQUIRED]**
+
+        The endpoint URL. If substitution templates are used in the URL, you must also specify a
+        ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+        created if possible.
+
+      - **confirmationUrl** *(string) --*
+
+        The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+        must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT
+        uses the endpoint URL as the confirmation URL. If you use substitution templates in the
+        confirmationUrl, you must create and enable topic rule destinations that match each
+        possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+      - **headers** *(list) --*
+
+        The HTTP headers to send with the message data.
+
+        - *(dict) --*
+
+          The HTTP action header.
+
+          - **key** *(string) --* **[REQUIRED]**
+
+            The HTTP header key.
+
+          - **value** *(string) --* **[REQUIRED]**
+
+            The HTTP header value. Substitution templates are supported.
+
+      - **auth** *(dict) --*
+
+        The authentication method to use when sending data to an HTTPS endpoint.
+
+        - **sigv4** *(dict) --*
+
+          Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+          Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+          - **signingRegion** *(string) --* **[REQUIRED]**
+
+            The signing region.
+
+          - **serviceName** *(string) --* **[REQUIRED]**
+
+            The service name to use while signing with Sig V4.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the signing role.
     """
 
 
@@ -4417,6 +4872,171 @@ class ClientCreateTopicRuletopicRulePayloaderrorActionfirehoseTypeDef(
 
       A character separator that will be used to separate records written to the Firehose stream.
       Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
+    """
+
+
+_ClientCreateTopicRuletopicRulePayloaderrorActionhttpauthsigv4TypeDef = TypedDict(
+    "_ClientCreateTopicRuletopicRulePayloaderrorActionhttpauthsigv4TypeDef",
+    {"signingRegion": str, "serviceName": str, "roleArn": str},
+)
+
+
+class ClientCreateTopicRuletopicRulePayloaderrorActionhttpauthsigv4TypeDef(
+    _ClientCreateTopicRuletopicRulePayloaderrorActionhttpauthsigv4TypeDef
+):
+    """
+    Type definition for `ClientCreateTopicRuletopicRulePayloaderrorActionhttpauth` `sigv4`
+
+    Use Sig V4 authorization. For more information, see `Signature Version 4 Signing Process
+    <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+    - **signingRegion** *(string) --* **[REQUIRED]**
+
+      The signing region.
+
+    - **serviceName** *(string) --* **[REQUIRED]**
+
+      The service name to use while signing with Sig V4.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the signing role.
+    """
+
+
+_ClientCreateTopicRuletopicRulePayloaderrorActionhttpauthTypeDef = TypedDict(
+    "_ClientCreateTopicRuletopicRulePayloaderrorActionhttpauthTypeDef",
+    {"sigv4": ClientCreateTopicRuletopicRulePayloaderrorActionhttpauthsigv4TypeDef},
+    total=False,
+)
+
+
+class ClientCreateTopicRuletopicRulePayloaderrorActionhttpauthTypeDef(
+    _ClientCreateTopicRuletopicRulePayloaderrorActionhttpauthTypeDef
+):
+    """
+    Type definition for `ClientCreateTopicRuletopicRulePayloaderrorActionhttp` `auth`
+
+    The authentication method to use when sending data to an HTTPS endpoint.
+
+    - **sigv4** *(dict) --*
+
+      Use Sig V4 authorization. For more information, see `Signature Version 4 Signing Process
+      <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+      - **signingRegion** *(string) --* **[REQUIRED]**
+
+        The signing region.
+
+      - **serviceName** *(string) --* **[REQUIRED]**
+
+        The service name to use while signing with Sig V4.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the signing role.
+    """
+
+
+_ClientCreateTopicRuletopicRulePayloaderrorActionhttpheadersTypeDef = TypedDict(
+    "_ClientCreateTopicRuletopicRulePayloaderrorActionhttpheadersTypeDef",
+    {"key": str, "value": str},
+)
+
+
+class ClientCreateTopicRuletopicRulePayloaderrorActionhttpheadersTypeDef(
+    _ClientCreateTopicRuletopicRulePayloaderrorActionhttpheadersTypeDef
+):
+    """
+    Type definition for `ClientCreateTopicRuletopicRulePayloaderrorActionhttp` `headers`
+
+    The HTTP action header.
+
+    - **key** *(string) --* **[REQUIRED]**
+
+      The HTTP header key.
+
+    - **value** *(string) --* **[REQUIRED]**
+
+      The HTTP header value. Substitution templates are supported.
+    """
+
+
+_RequiredClientCreateTopicRuletopicRulePayloaderrorActionhttpTypeDef = TypedDict(
+    "_RequiredClientCreateTopicRuletopicRulePayloaderrorActionhttpTypeDef", {"url": str}
+)
+_OptionalClientCreateTopicRuletopicRulePayloaderrorActionhttpTypeDef = TypedDict(
+    "_OptionalClientCreateTopicRuletopicRulePayloaderrorActionhttpTypeDef",
+    {
+        "confirmationUrl": str,
+        "headers": List[
+            ClientCreateTopicRuletopicRulePayloaderrorActionhttpheadersTypeDef
+        ],
+        "auth": ClientCreateTopicRuletopicRulePayloaderrorActionhttpauthTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientCreateTopicRuletopicRulePayloaderrorActionhttpTypeDef(
+    _RequiredClientCreateTopicRuletopicRulePayloaderrorActionhttpTypeDef,
+    _OptionalClientCreateTopicRuletopicRulePayloaderrorActionhttpTypeDef,
+):
+    """
+    Type definition for `ClientCreateTopicRuletopicRulePayloaderrorAction` `http`
+
+    Send data to an HTTPS endpoint.
+
+    - **url** *(string) --* **[REQUIRED]**
+
+      The endpoint URL. If substitution templates are used in the URL, you must also specify a
+      ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+      created if possible.
+
+    - **confirmationUrl** *(string) --*
+
+      The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+      must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT uses
+      the endpoint URL as the confirmation URL. If you use substitution templates in the
+      confirmationUrl, you must create and enable topic rule destinations that match each
+      possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+    - **headers** *(list) --*
+
+      The HTTP headers to send with the message data.
+
+      - *(dict) --*
+
+        The HTTP action header.
+
+        - **key** *(string) --* **[REQUIRED]**
+
+          The HTTP header key.
+
+        - **value** *(string) --* **[REQUIRED]**
+
+          The HTTP header value. Substitution templates are supported.
+
+    - **auth** *(dict) --*
+
+      The authentication method to use when sending data to an HTTPS endpoint.
+
+      - **sigv4** *(dict) --*
+
+        Use Sig V4 authorization. For more information, see `Signature Version 4 Signing Process
+        <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+        - **signingRegion** *(string) --* **[REQUIRED]**
+
+          The signing region.
+
+        - **serviceName** *(string) --* **[REQUIRED]**
+
+          The service name to use while signing with Sig V4.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the signing role.
     """
 
 
@@ -4771,6 +5391,7 @@ _ClientCreateTopicRuletopicRulePayloaderrorActionTypeDef = TypedDict(
         "iotAnalytics": ClientCreateTopicRuletopicRulePayloaderrorActioniotAnalyticsTypeDef,
         "iotEvents": ClientCreateTopicRuletopicRulePayloaderrorActioniotEventsTypeDef,
         "stepFunctions": ClientCreateTopicRuletopicRulePayloaderrorActionstepFunctionsTypeDef,
+        "http": ClientCreateTopicRuletopicRulePayloaderrorActionhttpTypeDef,
     },
     total=False,
 )
@@ -5114,6 +5735,61 @@ class ClientCreateTopicRuletopicRulePayloaderrorActionTypeDef(
 
         The ARN of the role that grants IoT permission to start execution of a state machine
         ("Action":"states:StartExecution").
+
+    - **http** *(dict) --*
+
+      Send data to an HTTPS endpoint.
+
+      - **url** *(string) --* **[REQUIRED]**
+
+        The endpoint URL. If substitution templates are used in the URL, you must also specify a
+        ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+        created if possible.
+
+      - **confirmationUrl** *(string) --*
+
+        The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+        must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT uses
+        the endpoint URL as the confirmation URL. If you use substitution templates in the
+        confirmationUrl, you must create and enable topic rule destinations that match each
+        possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+      - **headers** *(list) --*
+
+        The HTTP headers to send with the message data.
+
+        - *(dict) --*
+
+          The HTTP action header.
+
+          - **key** *(string) --* **[REQUIRED]**
+
+            The HTTP header key.
+
+          - **value** *(string) --* **[REQUIRED]**
+
+            The HTTP header value. Substitution templates are supported.
+
+      - **auth** *(dict) --*
+
+        The authentication method to use when sending data to an HTTPS endpoint.
+
+        - **sigv4** *(dict) --*
+
+          Use Sig V4 authorization. For more information, see `Signature Version 4 Signing Process
+          <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+          - **signingRegion** *(string) --* **[REQUIRED]**
+
+            The signing region.
+
+          - **serviceName** *(string) --* **[REQUIRED]**
+
+            The service name to use while signing with Sig V4.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the signing role.
     """
 
 
@@ -5492,6 +6168,61 @@ class ClientCreateTopicRuletopicRulePayloadTypeDef(
             The ARN of the role that grants IoT permission to start execution of a state machine
             ("Action":"states:StartExecution").
 
+        - **http** *(dict) --*
+
+          Send data to an HTTPS endpoint.
+
+          - **url** *(string) --* **[REQUIRED]**
+
+            The endpoint URL. If substitution templates are used in the URL, you must also specify a
+            ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+            created if possible.
+
+          - **confirmationUrl** *(string) --*
+
+            The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+            must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT
+            uses the endpoint URL as the confirmation URL. If you use substitution templates in the
+            confirmationUrl, you must create and enable topic rule destinations that match each
+            possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+          - **headers** *(list) --*
+
+            The HTTP headers to send with the message data.
+
+            - *(dict) --*
+
+              The HTTP action header.
+
+              - **key** *(string) --* **[REQUIRED]**
+
+                The HTTP header key.
+
+              - **value** *(string) --* **[REQUIRED]**
+
+                The HTTP header value. Substitution templates are supported.
+
+          - **auth** *(dict) --*
+
+            The authentication method to use when sending data to an HTTPS endpoint.
+
+            - **sigv4** *(dict) --*
+
+              Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+              Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+              - **signingRegion** *(string) --* **[REQUIRED]**
+
+                The signing region.
+
+              - **serviceName** *(string) --* **[REQUIRED]**
+
+                The service name to use while signing with Sig V4.
+
+              - **roleArn** *(string) --* **[REQUIRED]**
+
+                The ARN of the signing role.
+
     - **ruleDisabled** *(boolean) --*
 
       Specifies whether the rule is disabled.
@@ -5834,6 +6565,61 @@ class ClientCreateTopicRuletopicRulePayloadTypeDef(
 
           The ARN of the role that grants IoT permission to start execution of a state machine
           ("Action":"states:StartExecution").
+
+      - **http** *(dict) --*
+
+        Send data to an HTTPS endpoint.
+
+        - **url** *(string) --* **[REQUIRED]**
+
+          The endpoint URL. If substitution templates are used in the URL, you must also specify a
+          ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+          created if possible.
+
+        - **confirmationUrl** *(string) --*
+
+          The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+          must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT uses
+          the endpoint URL as the confirmation URL. If you use substitution templates in the
+          confirmationUrl, you must create and enable topic rule destinations that match each
+          possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+        - **headers** *(list) --*
+
+          The HTTP headers to send with the message data.
+
+          - *(dict) --*
+
+            The HTTP action header.
+
+            - **key** *(string) --* **[REQUIRED]**
+
+              The HTTP header key.
+
+            - **value** *(string) --* **[REQUIRED]**
+
+              The HTTP header value. Substitution templates are supported.
+
+        - **auth** *(dict) --*
+
+          The authentication method to use when sending data to an HTTPS endpoint.
+
+          - **sigv4** *(dict) --*
+
+            Use Sig V4 authorization. For more information, see `Signature Version 4 Signing Process
+            <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+            - **signingRegion** *(string) --* **[REQUIRED]**
+
+              The signing region.
+
+            - **serviceName** *(string) --* **[REQUIRED]**
+
+              The service name to use while signing with Sig V4.
+
+            - **roleArn** *(string) --* **[REQUIRED]**
+
+              The ARN of the signing role.
     """
 
 
@@ -11163,7 +11949,7 @@ class ClientGetCardinalityResponseTypeDef(_ClientGetCardinalityResponseTypeDef):
 
     - **cardinality** *(integer) --*
 
-      The number of things that match the query.
+      The approximate count of unique values that match the query.
     """
 
 
@@ -11248,7 +12034,7 @@ class ClientGetIndexingConfigurationResponsethingGroupIndexingConfigurationcusto
     """
     Type definition for `ClientGetIndexingConfigurationResponsethingGroupIndexingConfiguration` `customFields`
 
-    Describes the name and data type at a field.
+    The field to aggregate.
 
     - **name** *(string) --*
 
@@ -11256,7 +12042,7 @@ class ClientGetIndexingConfigurationResponsethingGroupIndexingConfigurationcusto
 
     - **type** *(string) --*
 
-      The datatype of the field.
+      The data type of the field.
     """
 
 
@@ -11273,7 +12059,7 @@ class ClientGetIndexingConfigurationResponsethingGroupIndexingConfigurationmanag
     """
     Type definition for `ClientGetIndexingConfigurationResponsethingGroupIndexingConfiguration` `managedFields`
 
-    Describes the name and data type at a field.
+    The field to aggregate.
 
     - **name** *(string) --*
 
@@ -11281,7 +12067,7 @@ class ClientGetIndexingConfigurationResponsethingGroupIndexingConfigurationmanag
 
     - **type** *(string) --*
 
-      The datatype of the field.
+      The data type of the field.
     """
 
 
@@ -11314,12 +12100,11 @@ class ClientGetIndexingConfigurationResponsethingGroupIndexingConfigurationTypeD
 
     - **managedFields** *(list) --*
 
-      Contains fields that are indexed and whose types are already known by the Fleet Indexing
-      service.
+      A list of automatically indexed thing group fields.
 
       - *(dict) --*
 
-        Describes the name and data type at a field.
+        The field to aggregate.
 
         - **name** *(string) --*
 
@@ -11327,15 +12112,16 @@ class ClientGetIndexingConfigurationResponsethingGroupIndexingConfigurationTypeD
 
         - **type** *(string) --*
 
-          The datatype of the field.
+          The data type of the field.
 
     - **customFields** *(list) --*
 
-      Contains custom field names and their data type.
+      A list of thing group fields to index. This list cannot contain any managed fields. Use the
+      GetIndexingConfiguration API to get a list of managed fields.
 
       - *(dict) --*
 
-        Describes the name and data type at a field.
+        The field to aggregate.
 
         - **name** *(string) --*
 
@@ -11343,7 +12129,7 @@ class ClientGetIndexingConfigurationResponsethingGroupIndexingConfigurationTypeD
 
         - **type** *(string) --*
 
-          The datatype of the field.
+          The data type of the field.
     """
 
 
@@ -11360,7 +12146,7 @@ class ClientGetIndexingConfigurationResponsethingIndexingConfigurationcustomFiel
     """
     Type definition for `ClientGetIndexingConfigurationResponsethingIndexingConfiguration` `customFields`
 
-    Describes the name and data type at a field.
+    The field to aggregate.
 
     - **name** *(string) --*
 
@@ -11368,7 +12154,7 @@ class ClientGetIndexingConfigurationResponsethingIndexingConfigurationcustomFiel
 
     - **type** *(string) --*
 
-      The datatype of the field.
+      The data type of the field.
     """
 
 
@@ -11385,7 +12171,7 @@ class ClientGetIndexingConfigurationResponsethingIndexingConfigurationmanagedFie
     """
     Type definition for `ClientGetIndexingConfigurationResponsethingIndexingConfiguration` `managedFields`
 
-    Describes the name and data type at a field.
+    The field to aggregate.
 
     - **name** *(string) --*
 
@@ -11393,7 +12179,7 @@ class ClientGetIndexingConfigurationResponsethingIndexingConfigurationmanagedFie
 
     - **type** *(string) --*
 
-      The datatype of the field.
+      The data type of the field.
     """
 
 
@@ -11442,12 +12228,11 @@ class ClientGetIndexingConfigurationResponsethingIndexingConfigurationTypeDef(
 
     - **managedFields** *(list) --*
 
-      Contains fields that are indexed and whose types are already known by the Fleet Indexing
-      service.
+      A list of automatically indexed thing fields.
 
       - *(dict) --*
 
-        Describes the name and data type at a field.
+        The field to aggregate.
 
         - **name** *(string) --*
 
@@ -11455,15 +12240,16 @@ class ClientGetIndexingConfigurationResponsethingIndexingConfigurationTypeDef(
 
         - **type** *(string) --*
 
-          The datatype of the field.
+          The data type of the field.
 
     - **customFields** *(list) --*
 
-      Contains custom field names and their data type.
+      A list of thing fields to index. This list cannot contain any managed fields. Use the
+      GetIndexingConfiguration API to get a list of managed fields.
 
       - *(dict) --*
 
-        Describes the name and data type at a field.
+        The field to aggregate.
 
         - **name** *(string) --*
 
@@ -11471,7 +12257,7 @@ class ClientGetIndexingConfigurationResponsethingIndexingConfigurationTypeDef(
 
         - **type** *(string) --*
 
-          The datatype of the field.
+          The data type of the field.
     """
 
 
@@ -11516,12 +12302,11 @@ class ClientGetIndexingConfigurationResponseTypeDef(
 
       - **managedFields** *(list) --*
 
-        Contains fields that are indexed and whose types are already known by the Fleet Indexing
-        service.
+        A list of automatically indexed thing fields.
 
         - *(dict) --*
 
-          Describes the name and data type at a field.
+          The field to aggregate.
 
           - **name** *(string) --*
 
@@ -11529,15 +12314,16 @@ class ClientGetIndexingConfigurationResponseTypeDef(
 
           - **type** *(string) --*
 
-            The datatype of the field.
+            The data type of the field.
 
       - **customFields** *(list) --*
 
-        Contains custom field names and their data type.
+        A list of thing fields to index. This list cannot contain any managed fields. Use the
+        GetIndexingConfiguration API to get a list of managed fields.
 
         - *(dict) --*
 
-          Describes the name and data type at a field.
+          The field to aggregate.
 
           - **name** *(string) --*
 
@@ -11545,7 +12331,7 @@ class ClientGetIndexingConfigurationResponseTypeDef(
 
           - **type** *(string) --*
 
-            The datatype of the field.
+            The data type of the field.
 
     - **thingGroupIndexingConfiguration** *(dict) --*
 
@@ -11557,12 +12343,11 @@ class ClientGetIndexingConfigurationResponseTypeDef(
 
       - **managedFields** *(list) --*
 
-        Contains fields that are indexed and whose types are already known by the Fleet Indexing
-        service.
+        A list of automatically indexed thing group fields.
 
         - *(dict) --*
 
-          Describes the name and data type at a field.
+          The field to aggregate.
 
           - **name** *(string) --*
 
@@ -11570,15 +12355,16 @@ class ClientGetIndexingConfigurationResponseTypeDef(
 
           - **type** *(string) --*
 
-            The datatype of the field.
+            The data type of the field.
 
       - **customFields** *(list) --*
 
-        Contains custom field names and their data type.
+        A list of thing group fields to index. This list cannot contain any managed fields. Use the
+        GetIndexingConfiguration API to get a list of managed fields.
 
         - *(dict) --*
 
-          Describes the name and data type at a field.
+          The field to aggregate.
 
           - **name** *(string) --*
 
@@ -11586,7 +12372,7 @@ class ClientGetIndexingConfigurationResponseTypeDef(
 
           - **type** *(string) --*
 
-            The datatype of the field.
+            The data type of the field.
     """
 
 
@@ -12754,7 +13540,7 @@ class ClientGetPercentilesResponsepercentilesTypeDef(
 
     - **value** *(float) --*
 
-      The value.
+      The value of the percentile.
     """
 
 
@@ -12783,7 +13569,7 @@ class ClientGetPercentilesResponseTypeDef(_ClientGetPercentilesResponseTypeDef):
 
         - **value** *(float) --*
 
-          The value.
+          The value of the percentile.
     """
 
 
@@ -12882,11 +13668,11 @@ class ClientGetPolicyVersionResponseTypeDef(_ClientGetPolicyVersionResponseTypeD
 
     - **creationDate** *(datetime) --*
 
-      The date the policy was created.
+      The date the policy version was created.
 
     - **lastModifiedDate** *(datetime) --*
 
-      The date the policy was last modified.
+      The date the policy version was last modified.
 
     - **generationId** *(string) --*
 
@@ -12944,19 +13730,23 @@ class ClientGetStatisticsResponsestatisticsTypeDef(
 
     - **average** *(float) --*
 
-      The average of the aggregated field values.
+      The average of the aggregated fields. If the field data type is String this value is
+      indeterminate.
 
     - **sum** *(float) --*
 
-      The sum of the aggregated field values.
+      The sum of the aggregated fields. If the field data type is String this value is
+      indeterminate.
 
     - **minimum** *(float) --*
 
-      The minimum aggregated field value.
+      The minimum value of the aggregated fields. If the field data type is String this value is
+      indeterminate.
 
     - **maximum** *(float) --*
 
-      The maximum aggregated field value.
+      The maximum value of the aggregated fields. If the field data type is String this value is
+      indeterminate.
 
     - **sumOfSquares** *(float) --*
 
@@ -12968,7 +13758,7 @@ class ClientGetStatisticsResponsestatisticsTypeDef(
 
     - **stdDeviation** *(float) --*
 
-      The standard deviation of the aggregated field valuesl
+      The standard deviation of the aggregated field values.
     """
 
 
@@ -12994,19 +13784,23 @@ class ClientGetStatisticsResponseTypeDef(_ClientGetStatisticsResponseTypeDef):
 
       - **average** *(float) --*
 
-        The average of the aggregated field values.
+        The average of the aggregated fields. If the field data type is String this value is
+        indeterminate.
 
       - **sum** *(float) --*
 
-        The sum of the aggregated field values.
+        The sum of the aggregated fields. If the field data type is String this value is
+        indeterminate.
 
       - **minimum** *(float) --*
 
-        The minimum aggregated field value.
+        The minimum value of the aggregated fields. If the field data type is String this value is
+        indeterminate.
 
       - **maximum** *(float) --*
 
-        The maximum aggregated field value.
+        The maximum value of the aggregated fields. If the field data type is String this value is
+        indeterminate.
 
       - **sumOfSquares** *(float) --*
 
@@ -13018,7 +13812,161 @@ class ClientGetStatisticsResponseTypeDef(_ClientGetStatisticsResponseTypeDef):
 
       - **stdDeviation** *(float) --*
 
-        The standard deviation of the aggregated field valuesl
+        The standard deviation of the aggregated field values.
+    """
+
+
+_ClientGetTopicRuleDestinationResponsetopicRuleDestinationhttpUrlPropertiesTypeDef = TypedDict(
+    "_ClientGetTopicRuleDestinationResponsetopicRuleDestinationhttpUrlPropertiesTypeDef",
+    {"confirmationUrl": str},
+    total=False,
+)
+
+
+class ClientGetTopicRuleDestinationResponsetopicRuleDestinationhttpUrlPropertiesTypeDef(
+    _ClientGetTopicRuleDestinationResponsetopicRuleDestinationhttpUrlPropertiesTypeDef
+):
+    """
+    Type definition for `ClientGetTopicRuleDestinationResponsetopicRuleDestination` `httpUrlProperties`
+
+    Properties of the HTTP URL.
+
+    - **confirmationUrl** *(string) --*
+
+      The URL used to confirm the HTTP topic rule destination URL.
+    """
+
+
+_ClientGetTopicRuleDestinationResponsetopicRuleDestinationTypeDef = TypedDict(
+    "_ClientGetTopicRuleDestinationResponsetopicRuleDestinationTypeDef",
+    {
+        "arn": str,
+        "status": str,
+        "statusReason": str,
+        "httpUrlProperties": ClientGetTopicRuleDestinationResponsetopicRuleDestinationhttpUrlPropertiesTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientGetTopicRuleDestinationResponsetopicRuleDestinationTypeDef(
+    _ClientGetTopicRuleDestinationResponsetopicRuleDestinationTypeDef
+):
+    """
+    Type definition for `ClientGetTopicRuleDestinationResponse` `topicRuleDestination`
+
+    The topic rule destination.
+
+    - **arn** *(string) --*
+
+      The topic rule destination URL.
+
+    - **status** *(string) --*
+
+      The status of the topic rule destination. Valid values are:
+
+        IN_PROGRESS
+
+      A topic rule destination was created but has not been confirmed. You can set ``status`` to
+      ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+      ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+      confirmation endpoint.
+
+        ENABLED
+
+      Confirmation was completed, and traffic to this destination is allowed. You can set
+      ``status`` to ``DISABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+        DISABLED
+
+      Confirmation was completed, and traffic to this destination is not allowed. You can set
+      ``status`` to ``ENABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+        ERROR
+
+      Confirmation could not be completed, for example if the confirmation timed out. You can
+      call ``GetTopicRuleDestination`` for details about the error. You can set ``status`` to
+      ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+      ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+      confirmation endpoint.
+
+    - **statusReason** *(string) --*
+
+      Additional details or reason why the topic rule destination is in the current status.
+
+    - **httpUrlProperties** *(dict) --*
+
+      Properties of the HTTP URL.
+
+      - **confirmationUrl** *(string) --*
+
+        The URL used to confirm the HTTP topic rule destination URL.
+    """
+
+
+_ClientGetTopicRuleDestinationResponseTypeDef = TypedDict(
+    "_ClientGetTopicRuleDestinationResponseTypeDef",
+    {
+        "topicRuleDestination": ClientGetTopicRuleDestinationResponsetopicRuleDestinationTypeDef
+    },
+    total=False,
+)
+
+
+class ClientGetTopicRuleDestinationResponseTypeDef(
+    _ClientGetTopicRuleDestinationResponseTypeDef
+):
+    """
+    Type definition for `ClientGetTopicRuleDestination` `Response`
+
+    - **topicRuleDestination** *(dict) --*
+
+      The topic rule destination.
+
+      - **arn** *(string) --*
+
+        The topic rule destination URL.
+
+      - **status** *(string) --*
+
+        The status of the topic rule destination. Valid values are:
+
+          IN_PROGRESS
+
+        A topic rule destination was created but has not been confirmed. You can set ``status`` to
+        ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+        ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+        confirmation endpoint.
+
+          ENABLED
+
+        Confirmation was completed, and traffic to this destination is allowed. You can set
+        ``status`` to ``DISABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+          DISABLED
+
+        Confirmation was completed, and traffic to this destination is not allowed. You can set
+        ``status`` to ``ENABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+          ERROR
+
+        Confirmation could not be completed, for example if the confirmation timed out. You can
+        call ``GetTopicRuleDestination`` for details about the error. You can set ``status`` to
+        ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+        ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+        confirmation endpoint.
+
+      - **statusReason** *(string) --*
+
+        Additional details or reason why the topic rule destination is in the current status.
+
+      - **httpUrlProperties** *(dict) --*
+
+        Properties of the HTTP URL.
+
+        - **confirmationUrl** *(string) --*
+
+          The URL used to confirm the HTTP topic rule destination URL.
     """
 
 
@@ -13308,6 +14256,172 @@ class ClientGetTopicRuleResponseruleactionsfirehoseTypeDef(
       A character separator that will be used to separate records written to the Firehose
       stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline),
       ',' (comma).
+    """
+
+
+_ClientGetTopicRuleResponseruleactionshttpauthsigv4TypeDef = TypedDict(
+    "_ClientGetTopicRuleResponseruleactionshttpauthsigv4TypeDef",
+    {"signingRegion": str, "serviceName": str, "roleArn": str},
+    total=False,
+)
+
+
+class ClientGetTopicRuleResponseruleactionshttpauthsigv4TypeDef(
+    _ClientGetTopicRuleResponseruleactionshttpauthsigv4TypeDef
+):
+    """
+    Type definition for `ClientGetTopicRuleResponseruleactionshttpauth` `sigv4`
+
+    Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+    Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__
+    .
+
+    - **signingRegion** *(string) --*
+
+      The signing region.
+
+    - **serviceName** *(string) --*
+
+      The service name to use while signing with Sig V4.
+
+    - **roleArn** *(string) --*
+
+      The ARN of the signing role.
+    """
+
+
+_ClientGetTopicRuleResponseruleactionshttpauthTypeDef = TypedDict(
+    "_ClientGetTopicRuleResponseruleactionshttpauthTypeDef",
+    {"sigv4": ClientGetTopicRuleResponseruleactionshttpauthsigv4TypeDef},
+    total=False,
+)
+
+
+class ClientGetTopicRuleResponseruleactionshttpauthTypeDef(
+    _ClientGetTopicRuleResponseruleactionshttpauthTypeDef
+):
+    """
+    Type definition for `ClientGetTopicRuleResponseruleactionshttp` `auth`
+
+    The authentication method to use when sending data to an HTTPS endpoint.
+
+    - **sigv4** *(dict) --*
+
+      Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+      Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__
+      .
+
+      - **signingRegion** *(string) --*
+
+        The signing region.
+
+      - **serviceName** *(string) --*
+
+        The service name to use while signing with Sig V4.
+
+      - **roleArn** *(string) --*
+
+        The ARN of the signing role.
+    """
+
+
+_ClientGetTopicRuleResponseruleactionshttpheadersTypeDef = TypedDict(
+    "_ClientGetTopicRuleResponseruleactionshttpheadersTypeDef",
+    {"key": str, "value": str},
+    total=False,
+)
+
+
+class ClientGetTopicRuleResponseruleactionshttpheadersTypeDef(
+    _ClientGetTopicRuleResponseruleactionshttpheadersTypeDef
+):
+    """
+    Type definition for `ClientGetTopicRuleResponseruleactionshttp` `headers`
+
+    The HTTP action header.
+
+    - **key** *(string) --*
+
+      The HTTP header key.
+
+    - **value** *(string) --*
+
+      The HTTP header value. Substitution templates are supported.
+    """
+
+
+_ClientGetTopicRuleResponseruleactionshttpTypeDef = TypedDict(
+    "_ClientGetTopicRuleResponseruleactionshttpTypeDef",
+    {
+        "url": str,
+        "confirmationUrl": str,
+        "headers": List[ClientGetTopicRuleResponseruleactionshttpheadersTypeDef],
+        "auth": ClientGetTopicRuleResponseruleactionshttpauthTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientGetTopicRuleResponseruleactionshttpTypeDef(
+    _ClientGetTopicRuleResponseruleactionshttpTypeDef
+):
+    """
+    Type definition for `ClientGetTopicRuleResponseruleactions` `http`
+
+    Send data to an HTTPS endpoint.
+
+    - **url** *(string) --*
+
+      The endpoint URL. If substitution templates are used in the URL, you must also
+      specify a ``confirmationUrl`` . If this is a new destination, a new
+      ``TopicRuleDestination`` is created if possible.
+
+    - **confirmationUrl** *(string) --*
+
+      The URL to which AWS IoT sends a confirmation message. The value of the confirmation
+      URL must be a prefix of the endpoint URL. If you do not specify a confirmation URL
+      AWS IoT uses the endpoint URL as the confirmation URL. If you use substitution
+      templates in the confirmationUrl, you must create and enable topic rule destinations
+      that match each possible value of the substituion template before traffic is allowed
+      to your endpoint URL.
+
+    - **headers** *(list) --*
+
+      The HTTP headers to send with the message data.
+
+      - *(dict) --*
+
+        The HTTP action header.
+
+        - **key** *(string) --*
+
+          The HTTP header key.
+
+        - **value** *(string) --*
+
+          The HTTP header value. Substitution templates are supported.
+
+    - **auth** *(dict) --*
+
+      The authentication method to use when sending data to an HTTPS endpoint.
+
+      - **sigv4** *(dict) --*
+
+        Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+        Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__
+        .
+
+        - **signingRegion** *(string) --*
+
+          The signing region.
+
+        - **serviceName** *(string) --*
+
+          The service name to use while signing with Sig V4.
+
+        - **roleArn** *(string) --*
+
+          The ARN of the signing role.
     """
 
 
@@ -13630,6 +14744,7 @@ _ClientGetTopicRuleResponseruleactionsTypeDef = TypedDict(
         "iotAnalytics": ClientGetTopicRuleResponseruleactionsiotAnalyticsTypeDef,
         "iotEvents": ClientGetTopicRuleResponseruleactionsiotEventsTypeDef,
         "stepFunctions": ClientGetTopicRuleResponseruleactionsstepFunctionsTypeDef,
+        "http": ClientGetTopicRuleResponseruleactionshttpTypeDef,
     },
     total=False,
 )
@@ -13975,6 +15090,63 @@ class ClientGetTopicRuleResponseruleactionsTypeDef(
 
         The ARN of the role that grants IoT permission to start execution of a state machine
         ("Action":"states:StartExecution").
+
+    - **http** *(dict) --*
+
+      Send data to an HTTPS endpoint.
+
+      - **url** *(string) --*
+
+        The endpoint URL. If substitution templates are used in the URL, you must also
+        specify a ``confirmationUrl`` . If this is a new destination, a new
+        ``TopicRuleDestination`` is created if possible.
+
+      - **confirmationUrl** *(string) --*
+
+        The URL to which AWS IoT sends a confirmation message. The value of the confirmation
+        URL must be a prefix of the endpoint URL. If you do not specify a confirmation URL
+        AWS IoT uses the endpoint URL as the confirmation URL. If you use substitution
+        templates in the confirmationUrl, you must create and enable topic rule destinations
+        that match each possible value of the substituion template before traffic is allowed
+        to your endpoint URL.
+
+      - **headers** *(list) --*
+
+        The HTTP headers to send with the message data.
+
+        - *(dict) --*
+
+          The HTTP action header.
+
+          - **key** *(string) --*
+
+            The HTTP header key.
+
+          - **value** *(string) --*
+
+            The HTTP header value. Substitution templates are supported.
+
+      - **auth** *(dict) --*
+
+        The authentication method to use when sending data to an HTTPS endpoint.
+
+        - **sigv4** *(dict) --*
+
+          Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+          Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__
+          .
+
+          - **signingRegion** *(string) --*
+
+            The signing region.
+
+          - **serviceName** *(string) --*
+
+            The service name to use while signing with Sig V4.
+
+          - **roleArn** *(string) --*
+
+            The ARN of the signing role.
     """
 
 
@@ -14264,6 +15436,169 @@ class ClientGetTopicRuleResponseruleerrorActionfirehoseTypeDef(
       A character separator that will be used to separate records written to the Firehose
       stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
       (comma).
+    """
+
+
+_ClientGetTopicRuleResponseruleerrorActionhttpauthsigv4TypeDef = TypedDict(
+    "_ClientGetTopicRuleResponseruleerrorActionhttpauthsigv4TypeDef",
+    {"signingRegion": str, "serviceName": str, "roleArn": str},
+    total=False,
+)
+
+
+class ClientGetTopicRuleResponseruleerrorActionhttpauthsigv4TypeDef(
+    _ClientGetTopicRuleResponseruleerrorActionhttpauthsigv4TypeDef
+):
+    """
+    Type definition for `ClientGetTopicRuleResponseruleerrorActionhttpauth` `sigv4`
+
+    Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+    Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+    - **signingRegion** *(string) --*
+
+      The signing region.
+
+    - **serviceName** *(string) --*
+
+      The service name to use while signing with Sig V4.
+
+    - **roleArn** *(string) --*
+
+      The ARN of the signing role.
+    """
+
+
+_ClientGetTopicRuleResponseruleerrorActionhttpauthTypeDef = TypedDict(
+    "_ClientGetTopicRuleResponseruleerrorActionhttpauthTypeDef",
+    {"sigv4": ClientGetTopicRuleResponseruleerrorActionhttpauthsigv4TypeDef},
+    total=False,
+)
+
+
+class ClientGetTopicRuleResponseruleerrorActionhttpauthTypeDef(
+    _ClientGetTopicRuleResponseruleerrorActionhttpauthTypeDef
+):
+    """
+    Type definition for `ClientGetTopicRuleResponseruleerrorActionhttp` `auth`
+
+    The authentication method to use when sending data to an HTTPS endpoint.
+
+    - **sigv4** *(dict) --*
+
+      Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+      Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+      - **signingRegion** *(string) --*
+
+        The signing region.
+
+      - **serviceName** *(string) --*
+
+        The service name to use while signing with Sig V4.
+
+      - **roleArn** *(string) --*
+
+        The ARN of the signing role.
+    """
+
+
+_ClientGetTopicRuleResponseruleerrorActionhttpheadersTypeDef = TypedDict(
+    "_ClientGetTopicRuleResponseruleerrorActionhttpheadersTypeDef",
+    {"key": str, "value": str},
+    total=False,
+)
+
+
+class ClientGetTopicRuleResponseruleerrorActionhttpheadersTypeDef(
+    _ClientGetTopicRuleResponseruleerrorActionhttpheadersTypeDef
+):
+    """
+    Type definition for `ClientGetTopicRuleResponseruleerrorActionhttp` `headers`
+
+    The HTTP action header.
+
+    - **key** *(string) --*
+
+      The HTTP header key.
+
+    - **value** *(string) --*
+
+      The HTTP header value. Substitution templates are supported.
+    """
+
+
+_ClientGetTopicRuleResponseruleerrorActionhttpTypeDef = TypedDict(
+    "_ClientGetTopicRuleResponseruleerrorActionhttpTypeDef",
+    {
+        "url": str,
+        "confirmationUrl": str,
+        "headers": List[ClientGetTopicRuleResponseruleerrorActionhttpheadersTypeDef],
+        "auth": ClientGetTopicRuleResponseruleerrorActionhttpauthTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientGetTopicRuleResponseruleerrorActionhttpTypeDef(
+    _ClientGetTopicRuleResponseruleerrorActionhttpTypeDef
+):
+    """
+    Type definition for `ClientGetTopicRuleResponseruleerrorAction` `http`
+
+    Send data to an HTTPS endpoint.
+
+    - **url** *(string) --*
+
+      The endpoint URL. If substitution templates are used in the URL, you must also specify
+      a ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+      created if possible.
+
+    - **confirmationUrl** *(string) --*
+
+      The URL to which AWS IoT sends a confirmation message. The value of the confirmation
+      URL must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS
+      IoT uses the endpoint URL as the confirmation URL. If you use substitution templates in
+      the confirmationUrl, you must create and enable topic rule destinations that match each
+      possible value of the substituion template before traffic is allowed to your endpoint
+      URL.
+
+    - **headers** *(list) --*
+
+      The HTTP headers to send with the message data.
+
+      - *(dict) --*
+
+        The HTTP action header.
+
+        - **key** *(string) --*
+
+          The HTTP header key.
+
+        - **value** *(string) --*
+
+          The HTTP header value. Substitution templates are supported.
+
+    - **auth** *(dict) --*
+
+      The authentication method to use when sending data to an HTTPS endpoint.
+
+      - **sigv4** *(dict) --*
+
+        Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+        Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+        - **signingRegion** *(string) --*
+
+          The signing region.
+
+        - **serviceName** *(string) --*
+
+          The service name to use while signing with Sig V4.
+
+        - **roleArn** *(string) --*
+
+          The ARN of the signing role.
     """
 
 
@@ -14586,6 +15921,7 @@ _ClientGetTopicRuleResponseruleerrorActionTypeDef = TypedDict(
         "iotAnalytics": ClientGetTopicRuleResponseruleerrorActioniotAnalyticsTypeDef,
         "iotEvents": ClientGetTopicRuleResponseruleerrorActioniotEventsTypeDef,
         "stepFunctions": ClientGetTopicRuleResponseruleerrorActionstepFunctionsTypeDef,
+        "http": ClientGetTopicRuleResponseruleerrorActionhttpTypeDef,
     },
     total=False,
 )
@@ -14931,6 +16267,62 @@ class ClientGetTopicRuleResponseruleerrorActionTypeDef(
 
         The ARN of the role that grants IoT permission to start execution of a state machine
         ("Action":"states:StartExecution").
+
+    - **http** *(dict) --*
+
+      Send data to an HTTPS endpoint.
+
+      - **url** *(string) --*
+
+        The endpoint URL. If substitution templates are used in the URL, you must also specify
+        a ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+        created if possible.
+
+      - **confirmationUrl** *(string) --*
+
+        The URL to which AWS IoT sends a confirmation message. The value of the confirmation
+        URL must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS
+        IoT uses the endpoint URL as the confirmation URL. If you use substitution templates in
+        the confirmationUrl, you must create and enable topic rule destinations that match each
+        possible value of the substituion template before traffic is allowed to your endpoint
+        URL.
+
+      - **headers** *(list) --*
+
+        The HTTP headers to send with the message data.
+
+        - *(dict) --*
+
+          The HTTP action header.
+
+          - **key** *(string) --*
+
+            The HTTP header key.
+
+          - **value** *(string) --*
+
+            The HTTP header value. Substitution templates are supported.
+
+      - **auth** *(dict) --*
+
+        The authentication method to use when sending data to an HTTPS endpoint.
+
+        - **sigv4** *(dict) --*
+
+          Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+          Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+          - **signingRegion** *(string) --*
+
+            The signing region.
+
+          - **serviceName** *(string) --*
+
+            The service name to use while signing with Sig V4.
+
+          - **roleArn** *(string) --*
+
+            The ARN of the signing role.
     """
 
 
@@ -15314,6 +16706,63 @@ class ClientGetTopicRuleResponseruleTypeDef(_ClientGetTopicRuleResponseruleTypeD
             The ARN of the role that grants IoT permission to start execution of a state machine
             ("Action":"states:StartExecution").
 
+        - **http** *(dict) --*
+
+          Send data to an HTTPS endpoint.
+
+          - **url** *(string) --*
+
+            The endpoint URL. If substitution templates are used in the URL, you must also
+            specify a ``confirmationUrl`` . If this is a new destination, a new
+            ``TopicRuleDestination`` is created if possible.
+
+          - **confirmationUrl** *(string) --*
+
+            The URL to which AWS IoT sends a confirmation message. The value of the confirmation
+            URL must be a prefix of the endpoint URL. If you do not specify a confirmation URL
+            AWS IoT uses the endpoint URL as the confirmation URL. If you use substitution
+            templates in the confirmationUrl, you must create and enable topic rule destinations
+            that match each possible value of the substituion template before traffic is allowed
+            to your endpoint URL.
+
+          - **headers** *(list) --*
+
+            The HTTP headers to send with the message data.
+
+            - *(dict) --*
+
+              The HTTP action header.
+
+              - **key** *(string) --*
+
+                The HTTP header key.
+
+              - **value** *(string) --*
+
+                The HTTP header value. Substitution templates are supported.
+
+          - **auth** *(dict) --*
+
+            The authentication method to use when sending data to an HTTPS endpoint.
+
+            - **sigv4** *(dict) --*
+
+              Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+              Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__
+              .
+
+              - **signingRegion** *(string) --*
+
+                The signing region.
+
+              - **serviceName** *(string) --*
+
+                The service name to use while signing with Sig V4.
+
+              - **roleArn** *(string) --*
+
+                The ARN of the signing role.
+
     - **ruleDisabled** *(boolean) --*
 
       Specifies whether the rule is disabled.
@@ -15658,6 +17107,62 @@ class ClientGetTopicRuleResponseruleTypeDef(_ClientGetTopicRuleResponseruleTypeD
 
           The ARN of the role that grants IoT permission to start execution of a state machine
           ("Action":"states:StartExecution").
+
+      - **http** *(dict) --*
+
+        Send data to an HTTPS endpoint.
+
+        - **url** *(string) --*
+
+          The endpoint URL. If substitution templates are used in the URL, you must also specify
+          a ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+          created if possible.
+
+        - **confirmationUrl** *(string) --*
+
+          The URL to which AWS IoT sends a confirmation message. The value of the confirmation
+          URL must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS
+          IoT uses the endpoint URL as the confirmation URL. If you use substitution templates in
+          the confirmationUrl, you must create and enable topic rule destinations that match each
+          possible value of the substituion template before traffic is allowed to your endpoint
+          URL.
+
+        - **headers** *(list) --*
+
+          The HTTP headers to send with the message data.
+
+          - *(dict) --*
+
+            The HTTP action header.
+
+            - **key** *(string) --*
+
+              The HTTP header key.
+
+            - **value** *(string) --*
+
+              The HTTP header value. Substitution templates are supported.
+
+        - **auth** *(dict) --*
+
+          The authentication method to use when sending data to an HTTPS endpoint.
+
+          - **sigv4** *(dict) --*
+
+            Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+            Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+            - **signingRegion** *(string) --*
+
+              The signing region.
+
+            - **serviceName** *(string) --*
+
+              The service name to use while signing with Sig V4.
+
+            - **roleArn** *(string) --*
+
+              The ARN of the signing role.
     """
 
 
@@ -16040,6 +17545,63 @@ class ClientGetTopicRuleResponseTypeDef(_ClientGetTopicRuleResponseTypeDef):
               The ARN of the role that grants IoT permission to start execution of a state machine
               ("Action":"states:StartExecution").
 
+          - **http** *(dict) --*
+
+            Send data to an HTTPS endpoint.
+
+            - **url** *(string) --*
+
+              The endpoint URL. If substitution templates are used in the URL, you must also
+              specify a ``confirmationUrl`` . If this is a new destination, a new
+              ``TopicRuleDestination`` is created if possible.
+
+            - **confirmationUrl** *(string) --*
+
+              The URL to which AWS IoT sends a confirmation message. The value of the confirmation
+              URL must be a prefix of the endpoint URL. If you do not specify a confirmation URL
+              AWS IoT uses the endpoint URL as the confirmation URL. If you use substitution
+              templates in the confirmationUrl, you must create and enable topic rule destinations
+              that match each possible value of the substituion template before traffic is allowed
+              to your endpoint URL.
+
+            - **headers** *(list) --*
+
+              The HTTP headers to send with the message data.
+
+              - *(dict) --*
+
+                The HTTP action header.
+
+                - **key** *(string) --*
+
+                  The HTTP header key.
+
+                - **value** *(string) --*
+
+                  The HTTP header value. Substitution templates are supported.
+
+            - **auth** *(dict) --*
+
+              The authentication method to use when sending data to an HTTPS endpoint.
+
+              - **sigv4** *(dict) --*
+
+                Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+                Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__
+                .
+
+                - **signingRegion** *(string) --*
+
+                  The signing region.
+
+                - **serviceName** *(string) --*
+
+                  The service name to use while signing with Sig V4.
+
+                - **roleArn** *(string) --*
+
+                  The ARN of the signing role.
+
       - **ruleDisabled** *(boolean) --*
 
         Specifies whether the rule is disabled.
@@ -16384,6 +17946,62 @@ class ClientGetTopicRuleResponseTypeDef(_ClientGetTopicRuleResponseTypeDef):
 
             The ARN of the role that grants IoT permission to start execution of a state machine
             ("Action":"states:StartExecution").
+
+        - **http** *(dict) --*
+
+          Send data to an HTTPS endpoint.
+
+          - **url** *(string) --*
+
+            The endpoint URL. If substitution templates are used in the URL, you must also specify
+            a ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+            created if possible.
+
+          - **confirmationUrl** *(string) --*
+
+            The URL to which AWS IoT sends a confirmation message. The value of the confirmation
+            URL must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS
+            IoT uses the endpoint URL as the confirmation URL. If you use substitution templates in
+            the confirmationUrl, you must create and enable topic rule destinations that match each
+            possible value of the substituion template before traffic is allowed to your endpoint
+            URL.
+
+          - **headers** *(list) --*
+
+            The HTTP headers to send with the message data.
+
+            - *(dict) --*
+
+              The HTTP action header.
+
+              - **key** *(string) --*
+
+                The HTTP header key.
+
+              - **value** *(string) --*
+
+                The HTTP header value. Substitution templates are supported.
+
+          - **auth** *(dict) --*
+
+            The authentication method to use when sending data to an HTTPS endpoint.
+
+            - **sigv4** *(dict) --*
+
+              Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+              Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+              - **signingRegion** *(string) --*
+
+                The signing region.
+
+              - **serviceName** *(string) --*
+
+                The service name to use while signing with Sig V4.
+
+              - **roleArn** *(string) --*
+
+                The ARN of the signing role.
     """
 
 
@@ -20499,6 +22117,171 @@ class ClientListThingsResponseTypeDef(_ClientListThingsResponseTypeDef):
     """
 
 
+_ClientListTopicRuleDestinationsResponsedestinationSummarieshttpUrlSummaryTypeDef = TypedDict(
+    "_ClientListTopicRuleDestinationsResponsedestinationSummarieshttpUrlSummaryTypeDef",
+    {"confirmationUrl": str},
+    total=False,
+)
+
+
+class ClientListTopicRuleDestinationsResponsedestinationSummarieshttpUrlSummaryTypeDef(
+    _ClientListTopicRuleDestinationsResponsedestinationSummarieshttpUrlSummaryTypeDef
+):
+    """
+    Type definition for `ClientListTopicRuleDestinationsResponsedestinationSummaries` `httpUrlSummary`
+
+    Information about the HTTP URL.
+
+    - **confirmationUrl** *(string) --*
+
+      The URL used to confirm ownership of or access to the HTTP topic rule destination URL.
+    """
+
+
+_ClientListTopicRuleDestinationsResponsedestinationSummariesTypeDef = TypedDict(
+    "_ClientListTopicRuleDestinationsResponsedestinationSummariesTypeDef",
+    {
+        "arn": str,
+        "status": str,
+        "statusReason": str,
+        "httpUrlSummary": ClientListTopicRuleDestinationsResponsedestinationSummarieshttpUrlSummaryTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientListTopicRuleDestinationsResponsedestinationSummariesTypeDef(
+    _ClientListTopicRuleDestinationsResponsedestinationSummariesTypeDef
+):
+    """
+    Type definition for `ClientListTopicRuleDestinationsResponse` `destinationSummaries`
+
+    Information about the topic rule destination.
+
+    - **arn** *(string) --*
+
+      The topic rule destination ARN.
+
+    - **status** *(string) --*
+
+      The status of the topic rule destination. Valid values are:
+
+        IN_PROGRESS
+
+      A topic rule destination was created but has not been confirmed. You can set ``status``
+      to ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+      ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+      confirmation endpoint.
+
+        ENABLED
+
+      Confirmation was completed, and traffic to this destination is allowed. You can set
+      ``status`` to ``DISABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+        DISABLED
+
+      Confirmation was completed, and traffic to this destination is not allowed. You can set
+      ``status`` to ``ENABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+        ERROR
+
+      Confirmation could not be completed, for example if the confirmation timed out. You can
+      call ``GetTopicRuleDestination`` for details about the error. You can set ``status`` to
+      ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+      ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+      confirmation endpoint.
+
+    - **statusReason** *(string) --*
+
+      The reason the topic rule destination is in the current status.
+
+    - **httpUrlSummary** *(dict) --*
+
+      Information about the HTTP URL.
+
+      - **confirmationUrl** *(string) --*
+
+        The URL used to confirm ownership of or access to the HTTP topic rule destination URL.
+    """
+
+
+_ClientListTopicRuleDestinationsResponseTypeDef = TypedDict(
+    "_ClientListTopicRuleDestinationsResponseTypeDef",
+    {
+        "destinationSummaries": List[
+            ClientListTopicRuleDestinationsResponsedestinationSummariesTypeDef
+        ],
+        "nextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientListTopicRuleDestinationsResponseTypeDef(
+    _ClientListTopicRuleDestinationsResponseTypeDef
+):
+    """
+    Type definition for `ClientListTopicRuleDestinations` `Response`
+
+    - **destinationSummaries** *(list) --*
+
+      Information about a topic rule destination.
+
+      - *(dict) --*
+
+        Information about the topic rule destination.
+
+        - **arn** *(string) --*
+
+          The topic rule destination ARN.
+
+        - **status** *(string) --*
+
+          The status of the topic rule destination. Valid values are:
+
+            IN_PROGRESS
+
+          A topic rule destination was created but has not been confirmed. You can set ``status``
+          to ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+          ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+          confirmation endpoint.
+
+            ENABLED
+
+          Confirmation was completed, and traffic to this destination is allowed. You can set
+          ``status`` to ``DISABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+            DISABLED
+
+          Confirmation was completed, and traffic to this destination is not allowed. You can set
+          ``status`` to ``ENABLED`` by calling ``UpdateTopicRuleDestination`` .
+
+            ERROR
+
+          Confirmation could not be completed, for example if the confirmation timed out. You can
+          call ``GetTopicRuleDestination`` for details about the error. You can set ``status`` to
+          ``IN_PROGRESS`` by calling ``UpdateTopicRuleDestination`` . Calling
+          ``UpdateTopicRuleDestination`` causes a new confirmation challenge to be sent to your
+          confirmation endpoint.
+
+        - **statusReason** *(string) --*
+
+          The reason the topic rule destination is in the current status.
+
+        - **httpUrlSummary** *(dict) --*
+
+          Information about the HTTP URL.
+
+          - **confirmationUrl** *(string) --*
+
+            The URL used to confirm ownership of or access to the HTTP topic rule destination URL.
+
+    - **nextToken** *(string) --*
+
+      The token to retrieve the next set of results.
+    """
+
+
 _ClientListTopicRulesResponserulesTypeDef = TypedDict(
     "_ClientListTopicRulesResponserulesTypeDef",
     {
@@ -21688,6 +23471,171 @@ class ClientReplaceTopicRuletopicRulePayloadactionsfirehoseTypeDef(
     """
 
 
+_ClientReplaceTopicRuletopicRulePayloadactionshttpauthsigv4TypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloadactionshttpauthsigv4TypeDef",
+    {"signingRegion": str, "serviceName": str, "roleArn": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionshttpauthsigv4TypeDef(
+    _ClientReplaceTopicRuletopicRulePayloadactionshttpauthsigv4TypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactionshttpauth` `sigv4`
+
+    Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+    Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+    - **signingRegion** *(string) --* **[REQUIRED]**
+
+      The signing region.
+
+    - **serviceName** *(string) --* **[REQUIRED]**
+
+      The service name to use while signing with Sig V4.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the signing role.
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloadactionshttpauthTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloadactionshttpauthTypeDef",
+    {"sigv4": ClientReplaceTopicRuletopicRulePayloadactionshttpauthsigv4TypeDef},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionshttpauthTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloadactionshttpauthTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactionshttp` `auth`
+
+    The authentication method to use when sending data to an HTTPS endpoint.
+
+    - **sigv4** *(dict) --*
+
+      Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+      Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+      - **signingRegion** *(string) --* **[REQUIRED]**
+
+        The signing region.
+
+      - **serviceName** *(string) --* **[REQUIRED]**
+
+        The service name to use while signing with Sig V4.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the signing role.
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloadactionshttpheadersTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloadactionshttpheadersTypeDef",
+    {"key": str, "value": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionshttpheadersTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloadactionshttpheadersTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactionshttp` `headers`
+
+    The HTTP action header.
+
+    - **key** *(string) --* **[REQUIRED]**
+
+      The HTTP header key.
+
+    - **value** *(string) --* **[REQUIRED]**
+
+      The HTTP header value. Substitution templates are supported.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloadactionshttpTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloadactionshttpTypeDef", {"url": str}
+)
+_OptionalClientReplaceTopicRuletopicRulePayloadactionshttpTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloadactionshttpTypeDef",
+    {
+        "confirmationUrl": str,
+        "headers": List[
+            ClientReplaceTopicRuletopicRulePayloadactionshttpheadersTypeDef
+        ],
+        "auth": ClientReplaceTopicRuletopicRulePayloadactionshttpauthTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionshttpTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloadactionshttpTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloadactionshttpTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `http`
+
+    Send data to an HTTPS endpoint.
+
+    - **url** *(string) --* **[REQUIRED]**
+
+      The endpoint URL. If substitution templates are used in the URL, you must also specify a
+      ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+      created if possible.
+
+    - **confirmationUrl** *(string) --*
+
+      The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+      must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT
+      uses the endpoint URL as the confirmation URL. If you use substitution templates in the
+      confirmationUrl, you must create and enable topic rule destinations that match each
+      possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+    - **headers** *(list) --*
+
+      The HTTP headers to send with the message data.
+
+      - *(dict) --*
+
+        The HTTP action header.
+
+        - **key** *(string) --* **[REQUIRED]**
+
+          The HTTP header key.
+
+        - **value** *(string) --* **[REQUIRED]**
+
+          The HTTP header value. Substitution templates are supported.
+
+    - **auth** *(dict) --*
+
+      The authentication method to use when sending data to an HTTPS endpoint.
+
+      - **sigv4** *(dict) --*
+
+        Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+        Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+        - **signingRegion** *(string) --* **[REQUIRED]**
+
+          The signing region.
+
+        - **serviceName** *(string) --* **[REQUIRED]**
+
+          The service name to use while signing with Sig V4.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the signing role.
+    """
+
+
 _ClientReplaceTopicRuletopicRulePayloadactionsiotAnalyticsTypeDef = TypedDict(
     "_ClientReplaceTopicRuletopicRulePayloadactionsiotAnalyticsTypeDef",
     {"channelArn": str, "channelName": str, "roleArn": str},
@@ -22038,6 +23986,7 @@ _ClientReplaceTopicRuletopicRulePayloadactionsTypeDef = TypedDict(
         "iotAnalytics": ClientReplaceTopicRuletopicRulePayloadactionsiotAnalyticsTypeDef,
         "iotEvents": ClientReplaceTopicRuletopicRulePayloadactionsiotEventsTypeDef,
         "stepFunctions": ClientReplaceTopicRuletopicRulePayloadactionsstepFunctionsTypeDef,
+        "http": ClientReplaceTopicRuletopicRulePayloadactionshttpTypeDef,
     },
     total=False,
 )
@@ -22382,6 +24331,61 @@ class ClientReplaceTopicRuletopicRulePayloadactionsTypeDef(
 
         The ARN of the role that grants IoT permission to start execution of a state machine
         ("Action":"states:StartExecution").
+
+    - **http** *(dict) --*
+
+      Send data to an HTTPS endpoint.
+
+      - **url** *(string) --* **[REQUIRED]**
+
+        The endpoint URL. If substitution templates are used in the URL, you must also specify a
+        ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+        created if possible.
+
+      - **confirmationUrl** *(string) --*
+
+        The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+        must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT
+        uses the endpoint URL as the confirmation URL. If you use substitution templates in the
+        confirmationUrl, you must create and enable topic rule destinations that match each
+        possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+      - **headers** *(list) --*
+
+        The HTTP headers to send with the message data.
+
+        - *(dict) --*
+
+          The HTTP action header.
+
+          - **key** *(string) --* **[REQUIRED]**
+
+            The HTTP header key.
+
+          - **value** *(string) --* **[REQUIRED]**
+
+            The HTTP header value. Substitution templates are supported.
+
+      - **auth** *(dict) --*
+
+        The authentication method to use when sending data to an HTTPS endpoint.
+
+        - **sigv4** *(dict) --*
+
+          Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+          Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+          - **signingRegion** *(string) --* **[REQUIRED]**
+
+            The signing region.
+
+          - **serviceName** *(string) --* **[REQUIRED]**
+
+            The service name to use while signing with Sig V4.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the signing role.
     """
 
 
@@ -22676,6 +24680,172 @@ class ClientReplaceTopicRuletopicRulePayloaderrorActionfirehoseTypeDef(
 
       A character separator that will be used to separate records written to the Firehose stream.
       Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauthsigv4TypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauthsigv4TypeDef",
+    {"signingRegion": str, "serviceName": str, "roleArn": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauthsigv4TypeDef(
+    _ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauthsigv4TypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauth` `sigv4`
+
+    Use Sig V4 authorization. For more information, see `Signature Version 4 Signing Process
+    <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+    - **signingRegion** *(string) --* **[REQUIRED]**
+
+      The signing region.
+
+    - **serviceName** *(string) --* **[REQUIRED]**
+
+      The service name to use while signing with Sig V4.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the signing role.
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauthTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauthTypeDef",
+    {"sigv4": ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauthsigv4TypeDef},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauthTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauthTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorActionhttp` `auth`
+
+    The authentication method to use when sending data to an HTTPS endpoint.
+
+    - **sigv4** *(dict) --*
+
+      Use Sig V4 authorization. For more information, see `Signature Version 4 Signing Process
+      <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+      - **signingRegion** *(string) --* **[REQUIRED]**
+
+        The signing region.
+
+      - **serviceName** *(string) --* **[REQUIRED]**
+
+        The service name to use while signing with Sig V4.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the signing role.
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloaderrorActionhttpheadersTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloaderrorActionhttpheadersTypeDef",
+    {"key": str, "value": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionhttpheadersTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloaderrorActionhttpheadersTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorActionhttp` `headers`
+
+    The HTTP action header.
+
+    - **key** *(string) --* **[REQUIRED]**
+
+      The HTTP header key.
+
+    - **value** *(string) --* **[REQUIRED]**
+
+      The HTTP header value. Substitution templates are supported.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionhttpTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionhttpTypeDef",
+    {"url": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionhttpTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionhttpTypeDef",
+    {
+        "confirmationUrl": str,
+        "headers": List[
+            ClientReplaceTopicRuletopicRulePayloaderrorActionhttpheadersTypeDef
+        ],
+        "auth": ClientReplaceTopicRuletopicRulePayloaderrorActionhttpauthTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionhttpTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloaderrorActionhttpTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloaderrorActionhttpTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `http`
+
+    Send data to an HTTPS endpoint.
+
+    - **url** *(string) --* **[REQUIRED]**
+
+      The endpoint URL. If substitution templates are used in the URL, you must also specify a
+      ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+      created if possible.
+
+    - **confirmationUrl** *(string) --*
+
+      The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+      must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT uses
+      the endpoint URL as the confirmation URL. If you use substitution templates in the
+      confirmationUrl, you must create and enable topic rule destinations that match each
+      possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+    - **headers** *(list) --*
+
+      The HTTP headers to send with the message data.
+
+      - *(dict) --*
+
+        The HTTP action header.
+
+        - **key** *(string) --* **[REQUIRED]**
+
+          The HTTP header key.
+
+        - **value** *(string) --* **[REQUIRED]**
+
+          The HTTP header value. Substitution templates are supported.
+
+    - **auth** *(dict) --*
+
+      The authentication method to use when sending data to an HTTPS endpoint.
+
+      - **sigv4** *(dict) --*
+
+        Use Sig V4 authorization. For more information, see `Signature Version 4 Signing Process
+        <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+        - **signingRegion** *(string) --* **[REQUIRED]**
+
+          The signing region.
+
+        - **serviceName** *(string) --* **[REQUIRED]**
+
+          The service name to use while signing with Sig V4.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the signing role.
     """
 
 
@@ -23030,6 +25200,7 @@ _ClientReplaceTopicRuletopicRulePayloaderrorActionTypeDef = TypedDict(
         "iotAnalytics": ClientReplaceTopicRuletopicRulePayloaderrorActioniotAnalyticsTypeDef,
         "iotEvents": ClientReplaceTopicRuletopicRulePayloaderrorActioniotEventsTypeDef,
         "stepFunctions": ClientReplaceTopicRuletopicRulePayloaderrorActionstepFunctionsTypeDef,
+        "http": ClientReplaceTopicRuletopicRulePayloaderrorActionhttpTypeDef,
     },
     total=False,
 )
@@ -23373,6 +25544,61 @@ class ClientReplaceTopicRuletopicRulePayloaderrorActionTypeDef(
 
         The ARN of the role that grants IoT permission to start execution of a state machine
         ("Action":"states:StartExecution").
+
+    - **http** *(dict) --*
+
+      Send data to an HTTPS endpoint.
+
+      - **url** *(string) --* **[REQUIRED]**
+
+        The endpoint URL. If substitution templates are used in the URL, you must also specify a
+        ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+        created if possible.
+
+      - **confirmationUrl** *(string) --*
+
+        The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+        must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT uses
+        the endpoint URL as the confirmation URL. If you use substitution templates in the
+        confirmationUrl, you must create and enable topic rule destinations that match each
+        possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+      - **headers** *(list) --*
+
+        The HTTP headers to send with the message data.
+
+        - *(dict) --*
+
+          The HTTP action header.
+
+          - **key** *(string) --* **[REQUIRED]**
+
+            The HTTP header key.
+
+          - **value** *(string) --* **[REQUIRED]**
+
+            The HTTP header value. Substitution templates are supported.
+
+      - **auth** *(dict) --*
+
+        The authentication method to use when sending data to an HTTPS endpoint.
+
+        - **sigv4** *(dict) --*
+
+          Use Sig V4 authorization. For more information, see `Signature Version 4 Signing Process
+          <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+          - **signingRegion** *(string) --* **[REQUIRED]**
+
+            The signing region.
+
+          - **serviceName** *(string) --* **[REQUIRED]**
+
+            The service name to use while signing with Sig V4.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the signing role.
     """
 
 
@@ -23751,6 +25977,61 @@ class ClientReplaceTopicRuletopicRulePayloadTypeDef(
             The ARN of the role that grants IoT permission to start execution of a state machine
             ("Action":"states:StartExecution").
 
+        - **http** *(dict) --*
+
+          Send data to an HTTPS endpoint.
+
+          - **url** *(string) --* **[REQUIRED]**
+
+            The endpoint URL. If substitution templates are used in the URL, you must also specify a
+            ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+            created if possible.
+
+          - **confirmationUrl** *(string) --*
+
+            The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+            must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT
+            uses the endpoint URL as the confirmation URL. If you use substitution templates in the
+            confirmationUrl, you must create and enable topic rule destinations that match each
+            possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+          - **headers** *(list) --*
+
+            The HTTP headers to send with the message data.
+
+            - *(dict) --*
+
+              The HTTP action header.
+
+              - **key** *(string) --* **[REQUIRED]**
+
+                The HTTP header key.
+
+              - **value** *(string) --* **[REQUIRED]**
+
+                The HTTP header value. Substitution templates are supported.
+
+          - **auth** *(dict) --*
+
+            The authentication method to use when sending data to an HTTPS endpoint.
+
+            - **sigv4** *(dict) --*
+
+              Use Sig V4 authorization. For more information, see `Signature Version 4 Signing
+              Process <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+              - **signingRegion** *(string) --* **[REQUIRED]**
+
+                The signing region.
+
+              - **serviceName** *(string) --* **[REQUIRED]**
+
+                The service name to use while signing with Sig V4.
+
+              - **roleArn** *(string) --* **[REQUIRED]**
+
+                The ARN of the signing role.
+
     - **ruleDisabled** *(boolean) --*
 
       Specifies whether the rule is disabled.
@@ -24093,6 +26374,61 @@ class ClientReplaceTopicRuletopicRulePayloadTypeDef(
 
           The ARN of the role that grants IoT permission to start execution of a state machine
           ("Action":"states:StartExecution").
+
+      - **http** *(dict) --*
+
+        Send data to an HTTPS endpoint.
+
+        - **url** *(string) --* **[REQUIRED]**
+
+          The endpoint URL. If substitution templates are used in the URL, you must also specify a
+          ``confirmationUrl`` . If this is a new destination, a new ``TopicRuleDestination`` is
+          created if possible.
+
+        - **confirmationUrl** *(string) --*
+
+          The URL to which AWS IoT sends a confirmation message. The value of the confirmation URL
+          must be a prefix of the endpoint URL. If you do not specify a confirmation URL AWS IoT uses
+          the endpoint URL as the confirmation URL. If you use substitution templates in the
+          confirmationUrl, you must create and enable topic rule destinations that match each
+          possible value of the substituion template before traffic is allowed to your endpoint URL.
+
+        - **headers** *(list) --*
+
+          The HTTP headers to send with the message data.
+
+          - *(dict) --*
+
+            The HTTP action header.
+
+            - **key** *(string) --* **[REQUIRED]**
+
+              The HTTP header key.
+
+            - **value** *(string) --* **[REQUIRED]**
+
+              The HTTP header value. Substitution templates are supported.
+
+        - **auth** *(dict) --*
+
+          The authentication method to use when sending data to an HTTPS endpoint.
+
+          - **sigv4** *(dict) --*
+
+            Use Sig V4 authorization. For more information, see `Signature Version 4 Signing Process
+            <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
+
+            - **signingRegion** *(string) --* **[REQUIRED]**
+
+              The signing region.
+
+            - **serviceName** *(string) --* **[REQUIRED]**
+
+              The service name to use while signing with Sig V4.
+
+            - **roleArn** *(string) --* **[REQUIRED]**
+
+              The ARN of the signing role.
     """
 
 
@@ -25413,7 +27749,7 @@ class ClientUpdateIndexingConfigurationthingGroupIndexingConfigurationcustomFiel
     """
     Type definition for `ClientUpdateIndexingConfigurationthingGroupIndexingConfiguration` `customFields`
 
-    Describes the name and data type at a field.
+    The field to aggregate.
 
     - **name** *(string) --*
 
@@ -25421,7 +27757,7 @@ class ClientUpdateIndexingConfigurationthingGroupIndexingConfigurationcustomFiel
 
     - **type** *(string) --*
 
-      The datatype of the field.
+      The data type of the field.
     """
 
 
@@ -25438,7 +27774,7 @@ class ClientUpdateIndexingConfigurationthingGroupIndexingConfigurationmanagedFie
     """
     Type definition for `ClientUpdateIndexingConfigurationthingGroupIndexingConfiguration` `managedFields`
 
-    Describes the name and data type at a field.
+    The field to aggregate.
 
     - **name** *(string) --*
 
@@ -25446,7 +27782,7 @@ class ClientUpdateIndexingConfigurationthingGroupIndexingConfigurationmanagedFie
 
     - **type** *(string) --*
 
-      The datatype of the field.
+      The data type of the field.
     """
 
 
@@ -25483,12 +27819,11 @@ class ClientUpdateIndexingConfigurationthingGroupIndexingConfigurationTypeDef(
 
     - **managedFields** *(list) --*
 
-      Contains fields that are indexed and whose types are already known by the Fleet Indexing
-      service.
+      A list of automatically indexed thing group fields.
 
       - *(dict) --*
 
-        Describes the name and data type at a field.
+        The field to aggregate.
 
         - **name** *(string) --*
 
@@ -25496,15 +27831,16 @@ class ClientUpdateIndexingConfigurationthingGroupIndexingConfigurationTypeDef(
 
         - **type** *(string) --*
 
-          The datatype of the field.
+          The data type of the field.
 
     - **customFields** *(list) --*
 
-      Contains custom field names and their data type.
+      A list of thing group fields to index. This list cannot contain any managed fields. Use the
+      GetIndexingConfiguration API to get a list of managed fields.
 
       - *(dict) --*
 
-        Describes the name and data type at a field.
+        The field to aggregate.
 
         - **name** *(string) --*
 
@@ -25512,7 +27848,7 @@ class ClientUpdateIndexingConfigurationthingGroupIndexingConfigurationTypeDef(
 
         - **type** *(string) --*
 
-          The datatype of the field.
+          The data type of the field.
     """
 
 
@@ -25529,7 +27865,7 @@ class ClientUpdateIndexingConfigurationthingIndexingConfigurationcustomFieldsTyp
     """
     Type definition for `ClientUpdateIndexingConfigurationthingIndexingConfiguration` `customFields`
 
-    Describes the name and data type at a field.
+    The field to aggregate.
 
     - **name** *(string) --*
 
@@ -25537,7 +27873,7 @@ class ClientUpdateIndexingConfigurationthingIndexingConfigurationcustomFieldsTyp
 
     - **type** *(string) --*
 
-      The datatype of the field.
+      The data type of the field.
     """
 
 
@@ -25554,7 +27890,7 @@ class ClientUpdateIndexingConfigurationthingIndexingConfigurationmanagedFieldsTy
     """
     Type definition for `ClientUpdateIndexingConfigurationthingIndexingConfiguration` `managedFields`
 
-    Describes the name and data type at a field.
+    The field to aggregate.
 
     - **name** *(string) --*
 
@@ -25562,7 +27898,7 @@ class ClientUpdateIndexingConfigurationthingIndexingConfigurationmanagedFieldsTy
 
     - **type** *(string) --*
 
-      The datatype of the field.
+      The data type of the field.
     """
 
 
@@ -25615,12 +27951,11 @@ class ClientUpdateIndexingConfigurationthingIndexingConfigurationTypeDef(
 
     - **managedFields** *(list) --*
 
-      Contains fields that are indexed and whose types are already known by the Fleet Indexing
-      service.
+      A list of automatically indexed thing fields.
 
       - *(dict) --*
 
-        Describes the name and data type at a field.
+        The field to aggregate.
 
         - **name** *(string) --*
 
@@ -25628,15 +27963,16 @@ class ClientUpdateIndexingConfigurationthingIndexingConfigurationTypeDef(
 
         - **type** *(string) --*
 
-          The datatype of the field.
+          The data type of the field.
 
     - **customFields** *(list) --*
 
-      Contains custom field names and their data type.
+      A list of thing fields to index. This list cannot contain any managed fields. Use the
+      GetIndexingConfiguration API to get a list of managed fields.
 
       - *(dict) --*
 
-        Describes the name and data type at a field.
+        The field to aggregate.
 
         - **name** *(string) --*
 
@@ -25644,7 +27980,7 @@ class ClientUpdateIndexingConfigurationthingIndexingConfigurationTypeDef(
 
         - **type** *(string) --*
 
-          The datatype of the field.
+          The data type of the field.
     """
 
 

@@ -41,8 +41,12 @@ from mypy_boto3_cloudformation.type_defs import (
     ClientDescribeStackResourcesResponseTypeDef,
     ClientDescribeStackSetOperationResponseTypeDef,
     ClientDescribeStacksResponseTypeDef,
+    ClientDescribeTypeRegistrationResponseTypeDef,
+    ClientDescribeTypeResponseTypeDef,
     ClientDetectStackDriftResponseTypeDef,
     ClientDetectStackResourceDriftResponseTypeDef,
+    ClientDetectStackSetDriftOperationPreferencesTypeDef,
+    ClientDetectStackSetDriftResponseTypeDef,
     ClientEstimateTemplateCostParametersTypeDef,
     ClientEstimateTemplateCostResponseTypeDef,
     ClientGetStackPolicyResponseTypeDef,
@@ -57,6 +61,11 @@ from mypy_boto3_cloudformation.type_defs import (
     ClientListStackSetOperationsResponseTypeDef,
     ClientListStackSetsResponseTypeDef,
     ClientListStacksResponseTypeDef,
+    ClientListTypeRegistrationsResponseTypeDef,
+    ClientListTypeVersionsResponseTypeDef,
+    ClientListTypesResponseTypeDef,
+    ClientRegisterTypeLoggingConfigTypeDef,
+    ClientRegisterTypeResponseTypeDef,
     ClientUpdateStackInstancesOperationPreferencesTypeDef,
     ClientUpdateStackInstancesParameterOverridesTypeDef,
     ClientUpdateStackInstancesResponseTypeDef,
@@ -1970,6 +1979,77 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def deregister_type(
+        self,
+        Arn: str = None,
+        Type: str = None,
+        TypeName: str = None,
+        VersionId: str = None,
+    ) -> Dict[str, Any]:
+        """
+        Removes a type or type version from active use in the CloudFormation registry. If a type or type
+        version is deregistered, it cannot be used in CloudFormation operations.
+
+        To deregister a type, you must individually deregister all registered versions of that type. If a
+        type has only a single registered version, deregistering that version results in the type itself
+        being deregistered.
+
+        You cannot deregister the default version of a type, unless it is the only registered version of
+        that type, in which case the type itself is deregistered as well.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeregisterType>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.deregister_type(
+              Arn='string',
+              Type='RESOURCE',
+              TypeName='string',
+              VersionId='string'
+          )
+        :type Arn: string
+        :param Arn:
+
+          The Amazon Resource Name (ARN) of the type.
+
+          Conditional: You must specify ``TypeName`` or ``Arn`` .
+
+        :type Type: string
+        :param Type:
+
+          The kind of type.
+
+          Currently the only valid value is ``RESOURCE`` .
+
+        :type TypeName: string
+        :param TypeName:
+
+          The name of the type.
+
+          Conditional: You must specify ``TypeName`` or ``Arn`` .
+
+        :type VersionId: string
+        :param VersionId:
+
+          The ID of a specific version of the type. The version ID is the value at the end of the Amazon
+          Resource Name (ARN) assigned to the type version when it is registered.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_limits(
         self, NextToken: str = None
     ) -> ClientDescribeAccountLimitsResponseTypeDef:
@@ -2833,7 +2913,9 @@ class Client(BaseClient):
                         },
                     ],
                     'Status': 'CURRENT'|'OUTDATED'|'INOPERABLE',
-                    'StatusReason': 'string'
+                    'StatusReason': 'string',
+                    'DriftStatus': 'DRIFTED'|'IN_SYNC'|'UNKNOWN'|'NOT_CHECKED',
+                    'LastDriftCheckTimestamp': datetime(2015, 1, 1)
                 }
             }
           **Response Structure**
@@ -2914,6 +2996,29 @@ class Client(BaseClient):
               - **StatusReason** *(string) --*
 
                 The explanation for the specific status code that is assigned to this stack instance.
+
+              - **DriftStatus** *(string) --*
+
+                Status of the stack instance's actual configuration compared to the expected template and
+                parameter configuration of the stack set to which it belongs.
+
+                * ``DRIFTED`` : The stack differs from the expected template and parameter configuration of
+                the stack set to which it belongs. A stack instance is considered to have drifted if one or
+                more of the resources in the associated stack have drifted.
+
+                * ``NOT_CHECKED`` : AWS CloudFormation has not checked if the stack instance differs from
+                its expected stack set configuration.
+
+                * ``IN_SYNC`` : The stack instance's actual configuration matches its expected stack set
+                configuration.
+
+                * ``UNKNOWN`` : This value is reserved for future use.
+
+              - **LastDriftCheckTimestamp** *(datetime) --*
+
+                Most recent time when CloudFormation performed a drift detection operation on the stack
+                instance. This value will be ``NULL`` for any stack instance on which drift detection has
+                not yet been performed.
 
         """
 
@@ -3591,7 +3696,18 @@ class Client(BaseClient):
                     ],
                     'StackSetARN': 'string',
                     'AdministrationRoleARN': 'string',
-                    'ExecutionRoleName': 'string'
+                    'ExecutionRoleName': 'string',
+                    'StackSetDriftDetectionDetails': {
+                        'DriftStatus': 'DRIFTED'|'IN_SYNC'|'NOT_CHECKED',
+                        'DriftDetectionStatus':
+                        'COMPLETED'|'FAILED'|'PARTIAL_SUCCESS'|'IN_PROGRESS'|'STOPPED',
+                        'LastDriftCheckTimestamp': datetime(2015, 1, 1),
+                        'TotalStackInstancesCount': 123,
+                        'DriftedStackInstancesCount': 123,
+                        'InSyncStackInstancesCount': 123,
+                        'InProgressStackInstancesCount': 123,
+                        'FailedStackInstancesCount': 123
+                    }
                 }
             }
           **Response Structure**
@@ -3706,6 +3822,84 @@ class Client(BaseClient):
                 Use customized execution roles to control which stack resources users and groups can
                 include in their stack sets.
 
+              - **StackSetDriftDetectionDetails** *(dict) --*
+
+                Detailed information about the drift status of the stack set.
+
+                For stack sets, contains information about the last *completed* drift operation performed
+                on the stack set. Information about drift operations currently in progress is not included.
+
+                - **DriftStatus** *(string) --*
+
+                  Status of the stack set's actual configuration compared to its expected template and
+                  parameter configuration. A stack set is considered to have drifted if one or more of its
+                  stack instances have drifted from their expected template and parameter configuration.
+
+                  * ``DRIFTED`` : One or more of the stack instances belonging to the stack set stack
+                  differs from the expected template and parameter configuration. A stack instance is
+                  considered to have drifted if one or more of the resources in the associated stack have
+                  drifted.
+
+                  * ``NOT_CHECKED`` : AWS CloudFormation has not checked the stack set for drift.
+
+                  * ``IN_SYNC`` : All of the stack instances belonging to the stack set stack match from
+                  the expected template and parameter configuration.
+
+                - **DriftDetectionStatus** *(string) --*
+
+                  The status of the stack set drift detection operation.
+
+                  * ``COMPLETED`` : The drift detection operation completed without failing on any stack
+                  instances.
+
+                  * ``FAILED`` : The drift detection operation exceeded the specified failure tolerance.
+
+                  * ``PARTIAL_SUCCESS`` : The drift detection operation completed without exceeding the
+                  failure tolerance for the operation.
+
+                  * ``IN_PROGRESS`` : The drift detection operation is currently being performed.
+
+                  * ``STOPPED`` : The user has cancelled the drift detection operation.
+
+                - **LastDriftCheckTimestamp** *(datetime) --*
+
+                  Most recent time when CloudFormation performed a drift detection operation on the stack
+                  set. This value will be ``NULL`` for any stack set on which drift detection has not yet
+                  been performed.
+
+                - **TotalStackInstancesCount** *(integer) --*
+
+                  The total number of stack instances belonging to this stack set.
+
+                  The total number of stack instances is equal to the total of:
+
+                  * Stack instances that match the stack set configuration.
+
+                  * Stack instances that have drifted from the stack set configuration.
+
+                  * Stack instances where the drift detection operation has failed.
+
+                  * Stack instances currently being checked for drift.
+
+                - **DriftedStackInstancesCount** *(integer) --*
+
+                  The number of stack instances that have drifted from the expected template and parameter
+                  configuration of the stack set. A stack instance is considered to have drifted if one or
+                  more of the resources in the associated stack do not match their expected configuration.
+
+                - **InSyncStackInstancesCount** *(integer) --*
+
+                  The number of stack instances which match the expected template and parameter
+                  configuration of the stack set.
+
+                - **InProgressStackInstancesCount** *(integer) --*
+
+                  The number of stack instances that are currently being checked for drift.
+
+                - **FailedStackInstancesCount** *(integer) --*
+
+                  The number of stack instances for which the drift detection operation failed.
+
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -3746,7 +3940,7 @@ class Client(BaseClient):
                 'StackSetOperation': {
                     'OperationId': 'string',
                     'StackSetId': 'string',
-                    'Action': 'CREATE'|'UPDATE'|'DELETE',
+                    'Action': 'CREATE'|'UPDATE'|'DELETE'|'DETECT_DRIFT',
                     'Status': 'RUNNING'|'SUCCEEDED'|'FAILED'|'STOPPING'|'STOPPED',
                     'OperationPreferences': {
                         'RegionOrder': [
@@ -3761,7 +3955,18 @@ class Client(BaseClient):
                     'AdministrationRoleARN': 'string',
                     'ExecutionRoleName': 'string',
                     'CreationTimestamp': datetime(2015, 1, 1),
-                    'EndTimestamp': datetime(2015, 1, 1)
+                    'EndTimestamp': datetime(2015, 1, 1),
+                    'StackSetDriftDetectionDetails': {
+                        'DriftStatus': 'DRIFTED'|'IN_SYNC'|'NOT_CHECKED',
+                        'DriftDetectionStatus':
+                        'COMPLETED'|'FAILED'|'PARTIAL_SUCCESS'|'IN_PROGRESS'|'STOPPED',
+                        'LastDriftCheckTimestamp': datetime(2015, 1, 1),
+                        'TotalStackInstancesCount': 123,
+                        'DriftedStackInstancesCount': 123,
+                        'InSyncStackInstancesCount': 123,
+                        'InProgressStackInstancesCount': 123,
+                        'FailedStackInstancesCount': 123
+                    }
                 }
             }
           **Response Structure**
@@ -3902,6 +4107,89 @@ class Client(BaseClient):
                 The time at which the stack set operation ended, across all accounts and regions specified.
                 Note that this doesn't necessarily mean that the stack set operation was successful, or
                 even attempted, in each account or region.
+
+              - **StackSetDriftDetectionDetails** *(dict) --*
+
+                Detailed information about the drift status of the stack set. This includes information
+                about drift operations currently being performed on the stack set.
+
+                this information will only be present for stack set operations whose ``Action`` type is
+                ``DETECT_DRIFT`` .
+
+                For more information, see `Detecting Unmanaged Changes in Stack Sets
+                <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html>`__ in
+                the AWS CloudFormation User Guide.
+
+                - **DriftStatus** *(string) --*
+
+                  Status of the stack set's actual configuration compared to its expected template and
+                  parameter configuration. A stack set is considered to have drifted if one or more of its
+                  stack instances have drifted from their expected template and parameter configuration.
+
+                  * ``DRIFTED`` : One or more of the stack instances belonging to the stack set stack
+                  differs from the expected template and parameter configuration. A stack instance is
+                  considered to have drifted if one or more of the resources in the associated stack have
+                  drifted.
+
+                  * ``NOT_CHECKED`` : AWS CloudFormation has not checked the stack set for drift.
+
+                  * ``IN_SYNC`` : All of the stack instances belonging to the stack set stack match from
+                  the expected template and parameter configuration.
+
+                - **DriftDetectionStatus** *(string) --*
+
+                  The status of the stack set drift detection operation.
+
+                  * ``COMPLETED`` : The drift detection operation completed without failing on any stack
+                  instances.
+
+                  * ``FAILED`` : The drift detection operation exceeded the specified failure tolerance.
+
+                  * ``PARTIAL_SUCCESS`` : The drift detection operation completed without exceeding the
+                  failure tolerance for the operation.
+
+                  * ``IN_PROGRESS`` : The drift detection operation is currently being performed.
+
+                  * ``STOPPED`` : The user has cancelled the drift detection operation.
+
+                - **LastDriftCheckTimestamp** *(datetime) --*
+
+                  Most recent time when CloudFormation performed a drift detection operation on the stack
+                  set. This value will be ``NULL`` for any stack set on which drift detection has not yet
+                  been performed.
+
+                - **TotalStackInstancesCount** *(integer) --*
+
+                  The total number of stack instances belonging to this stack set.
+
+                  The total number of stack instances is equal to the total of:
+
+                  * Stack instances that match the stack set configuration.
+
+                  * Stack instances that have drifted from the stack set configuration.
+
+                  * Stack instances where the drift detection operation has failed.
+
+                  * Stack instances currently being checked for drift.
+
+                - **DriftedStackInstancesCount** *(integer) --*
+
+                  The number of stack instances that have drifted from the expected template and parameter
+                  configuration of the stack set. A stack instance is considered to have drifted if one or
+                  more of the resources in the associated stack do not match their expected configuration.
+
+                - **InSyncStackInstancesCount** *(integer) --*
+
+                  The number of stack instances which match the expected template and parameter
+                  configuration of the stack set.
+
+                - **InProgressStackInstancesCount** *(integer) --*
+
+                  The number of stack instances that are currently being checked for drift.
+
+                - **FailedStackInstancesCount** *(integer) --*
+
+                  The number of stack instances for which the drift detection operation failed.
 
         """
 
@@ -4312,6 +4600,284 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def describe_type(
+        self,
+        Type: str = None,
+        TypeName: str = None,
+        Arn: str = None,
+        VersionId: str = None,
+    ) -> ClientDescribeTypeResponseTypeDef:
+        """
+        Returns detailed information about a type that has been registered.
+
+        If you specify a ``VersionId`` , ``DescribeType`` returns information about that specific type
+        version. Otherwise, it returns information about the default type version.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeType>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.describe_type(
+              Type='RESOURCE',
+              TypeName='string',
+              Arn='string',
+              VersionId='string'
+          )
+        :type Type: string
+        :param Type:
+
+          The kind of type.
+
+          Currently the only valid value is ``RESOURCE`` .
+
+        :type TypeName: string
+        :param TypeName:
+
+          The name of the type.
+
+          Conditional: You must specify ``TypeName`` or ``Arn`` .
+
+        :type Arn: string
+        :param Arn:
+
+          The Amazon Resource Name (ARN) of the type.
+
+          Conditional: You must specify ``TypeName`` or ``Arn`` .
+
+        :type VersionId: string
+        :param VersionId:
+
+          The ID of a specific version of the type. The version ID is the value at the end of the Amazon
+          Resource Name (ARN) assigned to the type version when it is registered.
+
+          If you specify a ``VersionId`` , ``DescribeType`` returns information about that specific type
+          version. Otherwise, it returns information about the default type version.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'Arn': 'string',
+                'Type': 'RESOURCE',
+                'TypeName': 'string',
+                'DefaultVersionId': 'string',
+                'Description': 'string',
+                'Schema': 'string',
+                'ProvisioningType': 'NON_PROVISIONABLE'|'IMMUTABLE'|'FULLY_MUTABLE',
+                'DeprecatedStatus': 'LIVE'|'DEPRECATED',
+                'LoggingConfig': {
+                    'LogRoleArn': 'string',
+                    'LogGroupName': 'string'
+                },
+                'ExecutionRoleArn': 'string',
+                'Visibility': 'PUBLIC'|'PRIVATE',
+                'SourceUrl': 'string',
+                'DocumentationUrl': 'string',
+                'LastUpdated': datetime(2015, 1, 1),
+                'TimeCreated': datetime(2015, 1, 1)
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **Arn** *(string) --*
+
+              The Amazon Resource Name (ARN) of the type.
+
+            - **Type** *(string) --*
+
+              The kind of type.
+
+              Currently the only valid value is ``RESOURCE`` .
+
+            - **TypeName** *(string) --*
+
+              The name of the registered type.
+
+            - **DefaultVersionId** *(string) --*
+
+              The ID of the default version of the type. The default version is used when the type version
+              is not specified.
+
+              To set the default version of a type, use ``  SetTypeDefaultVersion `` .
+
+            - **Description** *(string) --*
+
+              The description of the registered type.
+
+            - **Schema** *(string) --*
+
+              The schema that defines the type.
+
+              For more information on type schemas, see `Resource Provider Schema
+              <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-schema.html>`__
+              in the *CloudFormation CLI User Guide* .
+
+            - **ProvisioningType** *(string) --*
+
+              The provisioning behavior of the type. AWS CloudFormation determines the provisioning type
+              during registration, based on the types of handlers in the schema handler package submitted.
+
+              Valid values include:
+
+              * ``FULLY_MUTABLE`` : The type includes an update handler to process updates to the type
+              during stack update operations.
+
+              * ``IMMUTABLE`` : The type does not include an update handler, so the type cannot be updated
+              and must instead be replaced during stack update operations.
+
+              * ``NON_PROVISIONABLE`` : The type does not include all of the following handlers, and
+              therefore cannot actually be provisioned.
+
+                * create
+
+                * read
+
+                * delete
+
+            - **DeprecatedStatus** *(string) --*
+
+              The deprecation status of the type.
+
+              Valid values include:
+
+              * ``LIVE`` : The type is registered and can be used in CloudFormation operations, dependent
+              on its provisioning behavior and visibility scope.
+
+              * ``DEPRECATED`` : The type has been deregistered and can no longer be used in CloudFormation
+              operations.
+
+            - **LoggingConfig** *(dict) --*
+
+              Contains logging configuration information for a type.
+
+              - **LogRoleArn** *(string) --*
+
+                The ARN of the role that CloudFormation should assume when sending log entries to
+                CloudWatch logs.
+
+              - **LogGroupName** *(string) --*
+
+                The Amazon CloudWatch log group to which CloudFormation sends error logging information
+                when invoking the type's handlers.
+
+            - **ExecutionRoleArn** *(string) --*
+
+              The Amazon Resource Name (ARN) of the IAM execution role used to register the type. If your
+              resource type calls AWS APIs in any of its handlers, you must create an * `IAM execution role
+              <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html>`__ * that includes the
+              necessary permissions to call those AWS APIs, and provision that execution role in your
+              account. CloudFormation then assumes that execution role to provide your resource type with
+              the appropriate credentials.
+
+            - **Visibility** *(string) --*
+
+              The scope at which the type is visible and usable in CloudFormation operations.
+
+              Valid values include:
+
+              * ``PRIVATE`` : The type is only visible and usable within the account in which it is
+              registered. Currently, AWS CloudFormation marks any types you register as ``PRIVATE`` .
+
+              * ``PUBLIC`` : The type is publically visible and usable within any Amazon account.
+
+            - **SourceUrl** *(string) --*
+
+              The URL of the source code for the type.
+
+            - **DocumentationUrl** *(string) --*
+
+              The URL of a page providing detailed documentation for this type.
+
+            - **LastUpdated** *(datetime) --*
+
+              When the specified type version was registered.
+
+            - **TimeCreated** *(datetime) --*
+
+              When the specified type version was registered.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def describe_type_registration(
+        self, RegistrationToken: str
+    ) -> ClientDescribeTypeRegistrationResponseTypeDef:
+        """
+        Returns information about a type's registration, including its current status and type and version
+        identifiers.
+
+        When you initiate a registration request using ``  RegisterType `` , you can then use ``
+        DescribeTypeRegistration `` to monitor the progress of that registration request.
+
+        Once the registration request has completed, use ``  DescribeType `` to return detailed informaiton
+        about a type.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeTypeRegistration>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.describe_type_registration(
+              RegistrationToken='string'
+          )
+        :type RegistrationToken: string
+        :param RegistrationToken: **[REQUIRED]**
+
+          The identifier for this registration request.
+
+          This registration token is generated by CloudFormation when you initiate a registration request
+          using ``  RegisterType `` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'ProgressStatus': 'COMPLETE'|'IN_PROGRESS'|'FAILED',
+                'Description': 'string',
+                'TypeArn': 'string',
+                'TypeVersionArn': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **ProgressStatus** *(string) --*
+
+              The current status of the type registration request.
+
+            - **Description** *(string) --*
+
+              The description of the type registration request.
+
+            - **TypeArn** *(string) --*
+
+              The Amazon Resource Name (ARN) of the type being registered.
+
+              For registration requests with a ``ProgressStatus`` of other than ``COMPLETE`` , this will be
+              ``null`` .
+
+            - **TypeVersionArn** *(string) --*
+
+              The Amazon Resource Name (ARN) of this specific version of the type being registered.
+
+              For registration requests with a ``ProgressStatus`` of other than ``COMPLETE`` , this will be
+              ``null`` .
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_stack_drift(
         self, StackName: str, LogicalResourceIds: List[str] = None
     ) -> ClientDetectStackDriftResponseTypeDef:
@@ -4586,6 +5152,164 @@ class Client(BaseClient):
               - **Timestamp** *(datetime) --*
 
                 Time at which AWS CloudFormation performed drift detection on the stack resource.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def detect_stack_set_drift(
+        self,
+        StackSetName: str,
+        OperationPreferences: ClientDetectStackSetDriftOperationPreferencesTypeDef = None,
+        OperationId: str = None,
+    ) -> ClientDetectStackSetDriftResponseTypeDef:
+        """
+        Detect drift on a stack set. When CloudFormation performs drift detection on a stack set, it
+        performs drift detection on the stack associated with each stack instance in the stack set. For
+        more information, see `How CloudFormation Performs Drift Detection on a Stack Set
+        <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html>`__ .
+
+         ``DetectStackSetDrift`` returns the ``OperationId`` of the stack set drift detection operation.
+         Use this operation id with ``  DescribeStackSetOperation `` to monitor the progress of the drift
+         detection operation. The drift detection operation may take some time, depending on the number of
+         stack instances included in the stack set, as well as the number of resources included in each
+         stack.
+
+        Once the operation has completed, use the following actions to return drift information:
+
+        * Use ``  DescribeStackSet `` to return detailed informaiton about the stack set, including
+        detailed information about the last *completed* drift operation performed on the stack set.
+        (Information about drift operations that are in progress is not included.)
+
+        * Use ``  ListStackInstances `` to return a list of stack instances belonging to the stack set,
+        including the drift status and last drift time checked of each instance.
+
+        * Use ``  DescribeStackInstance `` to return detailed information about a specific stack instance,
+        including its drift status and last drift time checked.
+
+        For more information on performing a drift detection operation on a stack set, see `Detecting
+        Unmanaged Changes in Stack Sets
+        <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html>`__ .
+
+        You can only run a single drift detection operation on a given stack set at one time.
+
+        To stop a drift detection stack set operation, use ``  StopStackSetOperation `` .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DetectStackSetDrift>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.detect_stack_set_drift(
+              StackSetName='string',
+              OperationPreferences={
+                  'RegionOrder': [
+                      'string',
+                  ],
+                  'FailureToleranceCount': 123,
+                  'FailureTolerancePercentage': 123,
+                  'MaxConcurrentCount': 123,
+                  'MaxConcurrentPercentage': 123
+              },
+              OperationId='string'
+          )
+        :type StackSetName: string
+        :param StackSetName: **[REQUIRED]**
+
+          The name of the stack set on which to perform the drift detection operation.
+
+        :type OperationPreferences: dict
+        :param OperationPreferences:
+
+          The user-specified preferences for how AWS CloudFormation performs a stack set operation.
+
+          For more information on maximum concurrent accounts and failure tolerance, see `Stack set
+          operation options
+          <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options>`__
+          .
+
+          - **RegionOrder** *(list) --*
+
+            The order of the regions in where you want to perform the stack operation.
+
+            - *(string) --*
+
+          - **FailureToleranceCount** *(integer) --*
+
+            The number of accounts, per region, for which this operation can fail before AWS CloudFormation
+            stops the operation in that region. If the operation is stopped in a region, AWS CloudFormation
+            doesn't attempt the operation in any subsequent regions.
+
+            Conditional: You must specify either ``FailureToleranceCount`` or
+            ``FailureTolerancePercentage`` (but not both).
+
+          - **FailureTolerancePercentage** *(integer) --*
+
+            The percentage of accounts, per region, for which this stack operation can fail before AWS
+            CloudFormation stops the operation in that region. If the operation is stopped in a region, AWS
+            CloudFormation doesn't attempt the operation in any subsequent regions.
+
+            When calculating the number of accounts based on the specified percentage, AWS CloudFormation
+            rounds *down* to the next whole number.
+
+            Conditional: You must specify either ``FailureToleranceCount`` or
+            ``FailureTolerancePercentage`` , but not both.
+
+          - **MaxConcurrentCount** *(integer) --*
+
+            The maximum number of accounts in which to perform this operation at one time. This is
+            dependent on the value of ``FailureToleranceCount`` —``MaxConcurrentCount`` is at most one more
+            than the ``FailureToleranceCount`` .
+
+            Note that this setting lets you specify the *maximum* for operations. For large deployments,
+            under certain circumstances the actual number of accounts acted upon concurrently may be lower
+            due to service throttling.
+
+            Conditional: You must specify either ``MaxConcurrentCount`` or ``MaxConcurrentPercentage`` ,
+            but not both.
+
+          - **MaxConcurrentPercentage** *(integer) --*
+
+            The maximum percentage of accounts in which to perform this operation at one time.
+
+            When calculating the number of accounts based on the specified percentage, AWS CloudFormation
+            rounds down to the next whole number. This is true except in cases where rounding down would
+            result is zero. In this case, CloudFormation sets the number as one instead.
+
+            Note that this setting lets you specify the *maximum* for operations. For large deployments,
+            under certain circumstances the actual number of accounts acted upon concurrently may be lower
+            due to service throttling.
+
+            Conditional: You must specify either ``MaxConcurrentCount`` or ``MaxConcurrentPercentage`` ,
+            but not both.
+
+        :type OperationId: string
+        :param OperationId:
+
+           *The ID of the stack set operation.*
+
+          This field is autopopulated if not provided.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'OperationId': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **OperationId** *(string) --*
+
+              The ID of the drift detection stack set operation.
+
+              you can use this operation id with ``  DescribeStackSetOperation `` to monitor the progress
+              of the drift detection operation.
 
         """
 
@@ -5507,7 +6231,9 @@ class Client(BaseClient):
                         'Account': 'string',
                         'StackId': 'string',
                         'Status': 'CURRENT'|'OUTDATED'|'INOPERABLE',
-                        'StatusReason': 'string'
+                        'StatusReason': 'string',
+                        'DriftStatus': 'DRIFTED'|'IN_SYNC'|'UNKNOWN'|'NOT_CHECKED',
+                        'LastDriftCheckTimestamp': datetime(2015, 1, 1)
                     },
                 ],
                 'NextToken': 'string'
@@ -5565,6 +6291,29 @@ class Client(BaseClient):
                 - **StatusReason** *(string) --*
 
                   The explanation for the specific status code assigned to this stack instance.
+
+                - **DriftStatus** *(string) --*
+
+                  Status of the stack instance's actual configuration compared to the expected template and
+                  parameter configuration of the stack set to which it belongs.
+
+                  * ``DRIFTED`` : The stack differs from the expected template and parameter configuration
+                  of the stack set to which it belongs. A stack instance is considered to have drifted if
+                  one or more of the resources in the associated stack have drifted.
+
+                  * ``NOT_CHECKED`` : AWS CloudFormation has not checked if the stack instance differs from
+                  its expected stack set configuration.
+
+                  * ``IN_SYNC`` : The stack instance's actual configuration matches its expected stack set
+                  configuration.
+
+                  * ``UNKNOWN`` : This value is reserved for future use.
+
+                - **LastDriftCheckTimestamp** *(datetime) --*
+
+                  Most recent time when CloudFormation performed a drift detection operation on the stack
+                  instance. This value will be ``NULL`` for any stack instance on which drift detection has
+                  not yet been performed.
 
             - **NextToken** *(string) --*
 
@@ -5937,7 +6686,7 @@ class Client(BaseClient):
                 'Summaries': [
                     {
                         'OperationId': 'string',
-                        'Action': 'CREATE'|'UPDATE'|'DELETE',
+                        'Action': 'CREATE'|'UPDATE'|'DELETE'|'DETECT_DRIFT',
                         'Status': 'RUNNING'|'SUCCEEDED'|'FAILED'|'STOPPING'|'STOPPED',
                         'CreationTimestamp': datetime(2015, 1, 1),
                         'EndTimestamp': datetime(2015, 1, 1)
@@ -6064,7 +6813,9 @@ class Client(BaseClient):
                         'StackSetName': 'string',
                         'StackSetId': 'string',
                         'Description': 'string',
-                        'Status': 'ACTIVE'|'DELETED'
+                        'Status': 'ACTIVE'|'DELETED',
+                        'DriftStatus': 'DRIFTED'|'IN_SYNC'|'UNKNOWN'|'NOT_CHECKED',
+                        'LastDriftCheckTimestamp': datetime(2015, 1, 1)
                     },
                 ],
                 'NextToken': 'string'
@@ -6096,6 +6847,30 @@ class Client(BaseClient):
                 - **Status** *(string) --*
 
                   The status of the stack set.
+
+                - **DriftStatus** *(string) --*
+
+                  Status of the stack set's actual configuration compared to its expected template and
+                  parameter configuration. A stack set is considered to have drifted if one or more of its
+                  stack instances have drifted from their expected template and parameter configuration.
+
+                  * ``DRIFTED`` : One or more of the stack instances belonging to the stack set stack
+                  differs from the expected template and parameter configuration. A stack instance is
+                  considered to have drifted if one or more of the resources in the associated stack have
+                  drifted.
+
+                  * ``NOT_CHECKED`` : AWS CloudFormation has not checked the stack set for drift.
+
+                  * ``IN_SYNC`` : All of the stack instances belonging to the stack set stack match from
+                  the expected template and parameter configuration.
+
+                  * ``UNKNOWN`` : This value is reserved for future use.
+
+                - **LastDriftCheckTimestamp** *(datetime) --*
+
+                  Most recent time when CloudFormation performed a drift detection operation on the stack
+                  set. This value will be ``NULL`` for any stack set on which drift detection has not yet
+                  been performed.
 
             - **NextToken** *(string) --*
 
@@ -6287,6 +7062,644 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def list_type_registrations(
+        self,
+        Type: str = None,
+        TypeName: str = None,
+        TypeArn: str = None,
+        RegistrationStatusFilter: str = None,
+        MaxResults: int = None,
+        NextToken: str = None,
+    ) -> ClientListTypeRegistrationsResponseTypeDef:
+        """
+        Returns a list of registration tokens for the specified type.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListTypeRegistrations>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.list_type_registrations(
+              Type='RESOURCE',
+              TypeName='string',
+              TypeArn='string',
+              RegistrationStatusFilter='COMPLETE'|'IN_PROGRESS'|'FAILED',
+              MaxResults=123,
+              NextToken='string'
+          )
+        :type Type: string
+        :param Type:
+
+          The kind of type.
+
+          Currently the only valid value is ``RESOURCE`` .
+
+        :type TypeName: string
+        :param TypeName:
+
+          The name of the type.
+
+          Conditional: You must specify ``TypeName`` or ``Arn`` .
+
+        :type TypeArn: string
+        :param TypeArn:
+
+          The Amazon Resource Name (ARN) of the type.
+
+          Conditional: You must specify ``TypeName`` or ``Arn`` .
+
+        :type RegistrationStatusFilter: string
+        :param RegistrationStatusFilter:
+
+          The current status of the type registration request.
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to be returned with a single call. If the number of available
+          results exceeds this maximum, the response includes a ``NextToken`` value that you can assign to
+          the ``NextToken`` request parameter to get the next set of results.
+
+        :type NextToken: string
+        :param NextToken:
+
+          If the previous paginated request didn't return all of the remaining results, the response
+          object's ``NextToken`` parameter value is set to a token. To retrieve the next set of results,
+          call this action again and assign that token to the request object's ``NextToken`` parameter. If
+          there are no remaining results, the previous response object's ``NextToken`` parameter is set to
+          ``null`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'RegistrationTokenList': [
+                    'string',
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **RegistrationTokenList** *(list) --*
+
+              A list of type registration tokens.
+
+              Use ``  DescribeTypeRegistration `` to return detailed information about a type registration
+              request.
+
+              - *(string) --*
+
+            - **NextToken** *(string) --*
+
+              If the request doesn't return all of the remaining results, ``NextToken`` is set to a token.
+              To retrieve the next set of results, call this action again and assign that token to the
+              request object's ``NextToken`` parameter. If the request returns all results, ``NextToken``
+              is set to ``null`` .
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def list_type_versions(
+        self,
+        Type: str = None,
+        TypeName: str = None,
+        Arn: str = None,
+        MaxResults: int = None,
+        NextToken: str = None,
+        DeprecatedStatus: str = None,
+    ) -> ClientListTypeVersionsResponseTypeDef:
+        """
+        Returns summary information about the versions of a type.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListTypeVersions>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.list_type_versions(
+              Type='RESOURCE',
+              TypeName='string',
+              Arn='string',
+              MaxResults=123,
+              NextToken='string',
+              DeprecatedStatus='LIVE'|'DEPRECATED'
+          )
+        :type Type: string
+        :param Type:
+
+          The kind of the type.
+
+          Currently the only valid value is ``RESOURCE`` .
+
+        :type TypeName: string
+        :param TypeName:
+
+          The name of the type for which you want version summary information.
+
+          Conditional: You must specify ``TypeName`` or ``Arn`` .
+
+        :type Arn: string
+        :param Arn:
+
+          The Amazon Resource Name (ARN) of the type for which you want version summary information.
+
+          Conditional: You must specify ``TypeName`` or ``Arn`` .
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to be returned with a single call. If the number of available
+          results exceeds this maximum, the response includes a ``NextToken`` value that you can assign to
+          the ``NextToken`` request parameter to get the next set of results.
+
+        :type NextToken: string
+        :param NextToken:
+
+          If the previous paginated request didn't return all of the remaining results, the response
+          object's ``NextToken`` parameter value is set to a token. To retrieve the next set of results,
+          call this action again and assign that token to the request object's ``NextToken`` parameter. If
+          there are no remaining results, the previous response object's ``NextToken`` parameter is set to
+          ``null`` .
+
+        :type DeprecatedStatus: string
+        :param DeprecatedStatus:
+
+          The deprecation status of the type versions that you want to get summary information about.
+
+          Valid values include:
+
+          * ``LIVE`` : The type version is registered and can be used in CloudFormation operations,
+          dependent on its provisioning behavior and visibility scope.
+
+          * ``DEPRECATED`` : The type version has been deregistered and can no longer be used in
+          CloudFormation operations.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'TypeVersionSummaries': [
+                    {
+                        'Type': 'RESOURCE',
+                        'TypeName': 'string',
+                        'VersionId': 'string',
+                        'Arn': 'string',
+                        'TimeCreated': datetime(2015, 1, 1),
+                        'Description': 'string'
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **TypeVersionSummaries** *(list) --*
+
+              A list of ``TypeVersionSummary`` structures that contain information about the specified
+              type's versions.
+
+              - *(dict) --*
+
+                Contains summary information about a specific version of a CloudFormation type.
+
+                - **Type** *(string) --*
+
+                  The kind of type.
+
+                - **TypeName** *(string) --*
+
+                  The name of the type.
+
+                - **VersionId** *(string) --*
+
+                  The ID of a specific version of the type. The version ID is the value at the end of the
+                  Amazon Resource Name (ARN) assigned to the type version when it is registered.
+
+                - **Arn** *(string) --*
+
+                  The Amazon Resource Name (ARN) of the type version.
+
+                - **TimeCreated** *(datetime) --*
+
+                  When the version was registered.
+
+                - **Description** *(string) --*
+
+                  The description of the type version.
+
+            - **NextToken** *(string) --*
+
+              If the request doesn't return all of the remaining results, ``NextToken`` is set to a token.
+              To retrieve the next set of results, call this action again and assign that token to the
+              request object's ``NextToken`` parameter. If the request returns all results, ``NextToken``
+              is set to ``null`` .
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def list_types(
+        self,
+        Visibility: str = None,
+        ProvisioningType: str = None,
+        DeprecatedStatus: str = None,
+        MaxResults: int = None,
+        NextToken: str = None,
+    ) -> ClientListTypesResponseTypeDef:
+        """
+        Returns summary information about types that have been registered with CloudFormation.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListTypes>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.list_types(
+              Visibility='PUBLIC'|'PRIVATE',
+              ProvisioningType='NON_PROVISIONABLE'|'IMMUTABLE'|'FULLY_MUTABLE',
+              DeprecatedStatus='LIVE'|'DEPRECATED',
+              MaxResults=123,
+              NextToken='string'
+          )
+        :type Visibility: string
+        :param Visibility:
+
+          The scope at which the type is visible and usable in CloudFormation operations.
+
+          Valid values include:
+
+          * ``PRIVATE`` : The type is only visible and usable within the account in which it is registered.
+          Currently, AWS CloudFormation marks any types you create as ``PRIVATE`` .
+
+          * ``PUBLIC`` : The type is publically visible and usable within any Amazon account.
+
+        :type ProvisioningType: string
+        :param ProvisioningType:
+
+          The provisioning behavior of the type. AWS CloudFormation determines the provisioning type during
+          registration, based on the types of handlers in the schema handler package submitted.
+
+          Valid values include:
+
+          * ``FULLY_MUTABLE`` : The type includes an update handler to process updates to the type during
+          stack update operations.
+
+          * ``IMMUTABLE`` : The type does not include an update handler, so the type cannot be updated and
+          must instead be replaced during stack update operations.
+
+          * ``NON_PROVISIONABLE`` : The type does not include create, read, and delete handlers, and
+          therefore cannot actually be provisioned.
+
+        :type DeprecatedStatus: string
+        :param DeprecatedStatus:
+
+          The deprecation status of the types that you want to get summary information about.
+
+          Valid values include:
+
+          * ``LIVE`` : The type is registered for use in CloudFormation operations.
+
+          * ``DEPRECATED`` : The type has been deregistered and can no longer be used in CloudFormation
+          operations.
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to be returned with a single call. If the number of available
+          results exceeds this maximum, the response includes a ``NextToken`` value that you can assign to
+          the ``NextToken`` request parameter to get the next set of results.
+
+        :type NextToken: string
+        :param NextToken:
+
+          If the previous paginated request didn't return all of the remaining results, the response
+          object's ``NextToken`` parameter value is set to a token. To retrieve the next set of results,
+          call this action again and assign that token to the request object's ``NextToken`` parameter. If
+          there are no remaining results, the previous response object's ``NextToken`` parameter is set to
+          ``null`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'TypeSummaries': [
+                    {
+                        'Type': 'RESOURCE',
+                        'TypeName': 'string',
+                        'DefaultVersionId': 'string',
+                        'TypeArn': 'string',
+                        'LastUpdated': datetime(2015, 1, 1),
+                        'Description': 'string'
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **TypeSummaries** *(list) --*
+
+              A list of ``TypeSummary`` structures that contain information about the specified types.
+
+              - *(dict) --*
+
+                Contains summary information about the specified CloudFormation type.
+
+                - **Type** *(string) --*
+
+                  The kind of type.
+
+                - **TypeName** *(string) --*
+
+                  The name of the type.
+
+                - **DefaultVersionId** *(string) --*
+
+                  The ID of the default version of the type. The default version is used when the type
+                  version is not specified.
+
+                  To set the default version of a type, use ``  SetTypeDefaultVersion `` .
+
+                - **TypeArn** *(string) --*
+
+                  The Amazon Resource Name (ARN) of the type.
+
+                - **LastUpdated** *(datetime) --*
+
+                  When the current default version of the type was registered.
+
+                - **Description** *(string) --*
+
+                  The description of the type.
+
+            - **NextToken** *(string) --*
+
+              If the request doesn't return all of the remaining results, ``NextToken`` is set to a token.
+              To retrieve the next set of results, call this action again and assign that token to the
+              request object's ``NextToken`` parameter. If the request returns all results, ``NextToken``
+              is set to ``null`` .
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def record_handler_progress(
+        self,
+        BearerToken: str,
+        OperationStatus: str,
+        CurrentOperationStatus: str = None,
+        StatusMessage: str = None,
+        ErrorCode: str = None,
+        ResourceModel: str = None,
+        ClientRequestToken: str = None,
+    ) -> Dict[str, Any]:
+        """
+        Reports progress of a resource handler to CloudFormation.
+
+        Reserved for use by the `CloudFormation CLI
+        <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html>`__
+        . Do not use this API in your code.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/RecordHandlerProgress>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.record_handler_progress(
+              BearerToken='string',
+              OperationStatus='PENDING'|'IN_PROGRESS'|'SUCCESS'|'FAILED',
+              CurrentOperationStatus='PENDING'|'IN_PROGRESS'|'SUCCESS'|'FAILED',
+              StatusMessage='string',
+              ErrorCode=
+                  'NotUpdatable'|'InvalidRequest'|'AccessDenied'|'InvalidCredentials'|'AlreadyExists'
+                  |'NotFound'|'ResourceConflict'|'Throttling'|'ServiceLimitExceeded'|'NotStabilized'
+                  |'GeneralServiceException'|'ServiceInternalError'|'NetworkFailure'|'InternalFailure',
+              ResourceModel='string',
+              ClientRequestToken='string'
+          )
+        :type BearerToken: string
+        :param BearerToken: **[REQUIRED]**
+
+          Reserved for use by the `CloudFormation CLI
+          <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html>`__
+          .
+
+        :type OperationStatus: string
+        :param OperationStatus: **[REQUIRED]**
+
+          Reserved for use by the `CloudFormation CLI
+          <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html>`__
+          .
+
+        :type CurrentOperationStatus: string
+        :param CurrentOperationStatus:
+
+          Reserved for use by the `CloudFormation CLI
+          <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html>`__
+          .
+
+        :type StatusMessage: string
+        :param StatusMessage:
+
+          Reserved for use by the `CloudFormation CLI
+          <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html>`__
+          .
+
+        :type ErrorCode: string
+        :param ErrorCode:
+
+          Reserved for use by the `CloudFormation CLI
+          <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html>`__
+          .
+
+        :type ResourceModel: string
+        :param ResourceModel:
+
+          Reserved for use by the `CloudFormation CLI
+          <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html>`__
+          .
+
+        :type ClientRequestToken: string
+        :param ClientRequestToken:
+
+          Reserved for use by the `CloudFormation CLI
+          <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html>`__
+          .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def register_type(
+        self,
+        TypeName: str,
+        SchemaHandlerPackage: str,
+        Type: str = None,
+        LoggingConfig: ClientRegisterTypeLoggingConfigTypeDef = None,
+        ExecutionRoleArn: str = None,
+        ClientRequestToken: str = None,
+    ) -> ClientRegisterTypeResponseTypeDef:
+        """
+        Registers a type with the CloudFormation service. Registering a type makes it available for use in
+        CloudFormation templates in your AWS account, and includes:
+
+        * Validating the resource schema
+
+        * Determining which handlers have been specified for the resource
+
+        * Making the resource type available for use in your account
+
+        For more information on how to develop types and ready them for registeration, see `Creating
+        Resource Providers <cloudformation-cli/latest/userguide/resource-types.html>`__ in the
+        *CloudFormation CLI User Guide* .
+
+        Once you have initiated a registration request using ``  RegisterType `` , you can use ``
+        DescribeTypeRegistration `` to monitor the progress of the registration request.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/RegisterType>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.register_type(
+              Type='RESOURCE',
+              TypeName='string',
+              SchemaHandlerPackage='string',
+              LoggingConfig={
+                  'LogRoleArn': 'string',
+                  'LogGroupName': 'string'
+              },
+              ExecutionRoleArn='string',
+              ClientRequestToken='string'
+          )
+        :type Type: string
+        :param Type:
+
+          The kind of type.
+
+          Currently, the only valid value is ``RESOURCE`` .
+
+        :type TypeName: string
+        :param TypeName: **[REQUIRED]**
+
+          The name of the type being registered.
+
+          We recommend that type names adhere to the following pattern: *company_or_organization*
+          ::*service* ::*type* .
+
+          .. note::
+
+            The following organization namespaces are reserved and cannot be used in your resource type
+            names:
+
+            * ``Alexa``
+
+            * ``AMZN``
+
+            * ``Amazon``
+
+            * ``AWS``
+
+            * ``Custom``
+
+            * ``Dev``
+
+        :type SchemaHandlerPackage: string
+        :param SchemaHandlerPackage: **[REQUIRED]**
+
+          A url to the S3 bucket containing the schema handler package that contains the schema, event
+          handlers, and associated files for the type you want to register.
+
+          For information on generating a schema handler package for the type you want to register, see
+          `submit
+          <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html>`__
+          in the *CloudFormation CLI User Guide* .
+
+        :type LoggingConfig: dict
+        :param LoggingConfig:
+
+          Specifies logging configuration information for a type.
+
+          - **LogRoleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the role that CloudFormation should assume when sending log entries to CloudWatch
+            logs.
+
+          - **LogGroupName** *(string) --* **[REQUIRED]**
+
+            The Amazon CloudWatch log group to which CloudFormation sends error logging information when
+            invoking the type's handlers.
+
+        :type ExecutionRoleArn: string
+        :param ExecutionRoleArn:
+
+          The Amazon Resource Name (ARN) of the IAM execution role to use to register the type. If your
+          resource type calls AWS APIs in any of its handlers, you must create an * `IAM execution role
+          <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html>`__ * that includes the necessary
+          permissions to call those AWS APIs, and provision that execution role in your account.
+          CloudFormation then assumes that execution role to provide your resource type with the
+          appropriate credentials.
+
+        :type ClientRequestToken: string
+        :param ClientRequestToken:
+
+          A unique identifier that acts as an idempotency key for this registration request. Specifying a
+          client request token prevents CloudFormation from generating more than one version of a type from
+          the same registeration request, even if the request is submitted multiple times.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'RegistrationToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **RegistrationToken** *(string) --*
+
+              The identifier for this registration request.
+
+              Use this registration token when calling ``  DescribeTypeRegistration `` , which returns
+              information about the status and IDs of the type registration.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_stack_policy(
         self, StackName: str, StackPolicyBody: str = None, StackPolicyURL: str = None
     ) -> None:
@@ -6326,6 +7739,68 @@ class Client(BaseClient):
           ``StackPolicyBody`` or the ``StackPolicyURL`` parameter, but not both.
 
         :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def set_type_default_version(
+        self,
+        Arn: str = None,
+        Type: str = None,
+        TypeName: str = None,
+        VersionId: str = None,
+    ) -> Dict[str, Any]:
+        """
+        Specify the default version of a type. The default version of a type will be used in CloudFormation
+        operations.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/SetTypeDefaultVersion>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.set_type_default_version(
+              Arn='string',
+              Type='RESOURCE',
+              TypeName='string',
+              VersionId='string'
+          )
+        :type Arn: string
+        :param Arn:
+
+          The Amazon Resource Name (ARN) of the type for which you want version summary information.
+
+          Conditional: You must specify ``TypeName`` or ``Arn`` .
+
+        :type Type: string
+        :param Type:
+
+          The kind of type.
+
+        :type TypeName: string
+        :param TypeName:
+
+          The name of the type.
+
+          Conditional: You must specify ``TypeName`` or ``Arn`` .
+
+        :type VersionId: string
+        :param VersionId:
+
+          The ID of a specific version of the type. The version ID is the value at the end of the Amazon
+          Resource Name (ARN) assigned to the type version when it is registered.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -7889,6 +9364,15 @@ class Client(BaseClient):
         Get Waiter `stack_update_complete`.
         """
 
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["type_registration_complete"]
+    ) -> waiter_scope.TypeRegistrationCompleteWaiter:
+        """
+        Get Waiter `type_registration_complete`.
+        """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Boto3Waiter:
         """
@@ -7905,19 +9389,23 @@ class Client(BaseClient):
 
 class Exceptions:
     AlreadyExistsException: Boto3ClientError
+    CFNRegistryException: Boto3ClientError
     ChangeSetNotFoundException: Boto3ClientError
     ClientError: Boto3ClientError
     CreatedButModifiedException: Boto3ClientError
     InsufficientCapabilitiesException: Boto3ClientError
     InvalidChangeSetStatusException: Boto3ClientError
     InvalidOperationException: Boto3ClientError
+    InvalidStateTransitionException: Boto3ClientError
     LimitExceededException: Boto3ClientError
     NameAlreadyExistsException: Boto3ClientError
     OperationIdAlreadyExistsException: Boto3ClientError
     OperationInProgressException: Boto3ClientError
     OperationNotFoundException: Boto3ClientError
+    OperationStatusCheckFailedException: Boto3ClientError
     StackInstanceNotFoundException: Boto3ClientError
     StackSetNotEmptyException: Boto3ClientError
     StackSetNotFoundException: Boto3ClientError
     StaleRequestException: Boto3ClientError
     TokenAlreadyExistsException: Boto3ClientError
+    TypeNotFoundException: Boto3ClientError

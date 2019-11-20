@@ -63,10 +63,18 @@ class ListMultipartUploadsPaginator(Boto3Paginator):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          Name of the bucket to which the multipart upload was initiated.
+
         :type Delimiter: string
         :param Delimiter:
 
           Character you use to group keys.
+
+          All keys that contain the same string between the prefix, if specified, and the first occurrence
+          of the delimiter after the prefix are grouped under a single result element, ``CommonPrefixes`` .
+          If you don't specify the prefix parameter, then the substring starts at the beginning of the key.
+          The keys that are grouped under ``CommonPrefixes`` result element are not returned elsewhere in
+          the response.
 
         :type EncodingType: string
         :param EncodingType:
@@ -80,7 +88,9 @@ class ListMultipartUploadsPaginator(Boto3Paginator):
         :type Prefix: string
         :param Prefix:
 
-          Lists in-progress uploads only for those keys that begin with the specified prefix.
+          Lists in-progress uploads only for those keys that begin with the specified prefix. You can use
+          prefixes to separate a bucket into different grouping of keys. (You can think of using prefix to
+          make groups in the same way you'd use a folder in a file system.)
 
         :type PaginationConfig: dict
         :param PaginationConfig:
@@ -166,6 +176,9 @@ class ListMultipartUploadsPaginator(Boto3Paginator):
 
             - **Delimiter** *(string) --*
 
+              Contains the delimiter you specified in the request. If you don't specify a delimiter in your
+              request, this element is absent from the response.
+
             - **MaxUploads** *(integer) --*
 
               Maximum number of multipart uploads that could have been included in the response.
@@ -178,7 +191,12 @@ class ListMultipartUploadsPaginator(Boto3Paginator):
 
             - **Uploads** *(list) --*
 
+              Container for elements related to a particular multipart upload. A response can contain zero
+              or more Upload elements.
+
               - *(dict) --*
+
+                Container for the MultipartUpload for the Amazon S3 object.
 
                 - **UploadId** *(string) --*
 
@@ -198,9 +216,15 @@ class ListMultipartUploadsPaginator(Boto3Paginator):
 
                 - **Owner** *(dict) --*
 
+                  Specifies the owner of the object that is part of the multipart upload.
+
                   - **DisplayName** *(string) --*
 
+                    Container for the display name of the owner
+
                   - **ID** *(string) --*
+
+                    Container for the ID of the owner
 
                 - **Initiator** *(dict) --*
 
@@ -217,13 +241,29 @@ class ListMultipartUploadsPaginator(Boto3Paginator):
 
             - **CommonPrefixes** *(list) --*
 
+              If you specify a delimiter in the request, then the result returns each distinct key prefix
+              containing the delimiter in a CommonPrefixes element. The distinct key prefixes are returned
+              in the Prefix child element.
+
               - *(dict) --*
 
+                Container for all (if there are any) keys between Prefix and the next occurrence of the
+                string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+                the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+                is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
                 - **Prefix** *(string) --*
+
+                  Container for the specified common prefix.
 
             - **EncodingType** *(string) --*
 
               Encoding type used by Amazon S3 to encode object keys in the response.
+
+              If you specify ``encoding-type`` request parameter, Amazon S3 includes this element in the
+              response, and returns encoded key name values in the following response elements:
+
+               ``Delimiter`` , ``KeyMarker`` , ``Prefix`` , ``NextKeyMarker`` , ``Key`` .
 
             - **NextToken** *(string) --*
 
@@ -270,10 +310,15 @@ class ListObjectVersionsPaginator(Boto3Paginator):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The name of the bucket that contains the objects.
+
         :type Delimiter: string
         :param Delimiter:
 
-          A delimiter is a character you use to group keys.
+          A delimiter is a character that you specify to group keys. All keys that contain the same string
+          between the ``prefix`` and the first occurrence of the delimiter are grouped under a single
+          result element in CommonPrefixes. These groups are counted as one result against the max-keys
+          limitation. These keys are not returned elsewhere in the response.
 
         :type EncodingType: string
         :param EncodingType:
@@ -287,7 +332,10 @@ class ListObjectVersionsPaginator(Boto3Paginator):
         :type Prefix: string
         :param Prefix:
 
-          Limits the response to keys that begin with the specified prefix.
+          Use this parameter to select only those keys that begin with the specified prefix. You can use
+          prefixes to separate a bucket into different groupings of keys. (You can think of using prefix to
+          make groups in the same way you'd use a folder in a file system.) You can use prefix with
+          delimiter to roll up numerous objects into a single result under CommonPrefixes.
 
         :type PaginationConfig: dict
         :param PaginationConfig:
@@ -376,11 +424,19 @@ class ListObjectVersionsPaginator(Boto3Paginator):
 
             - **VersionIdMarker** *(string) --*
 
+              Marks the last version of the Key returned in a truncated response.
+
             - **Versions** *(list) --*
+
+              Container for version information.
 
               - *(dict) --*
 
+                The version of an object.
+
                 - **ETag** *(string) --*
+
+                  The entity tag is an MD5 hash of that version of the object
 
                 - **Size** *(integer) --*
 
@@ -408,19 +464,35 @@ class ListObjectVersionsPaginator(Boto3Paginator):
 
                 - **Owner** *(dict) --*
 
+                  Specifies the Owner of the object.
+
                   - **DisplayName** *(string) --*
 
+                    Container for the display name of the owner
+
                   - **ID** *(string) --*
+
+                    Container for the ID of the owner
 
             - **DeleteMarkers** *(list) --*
 
+              Container for an object that is a delete marker.
+
               - *(dict) --*
+
+                Information about the delete marker.
 
                 - **Owner** *(dict) --*
 
+                  The account that created the delete marker.>
+
                   - **DisplayName** *(string) --*
 
+                    Container for the display name of the owner
+
                   - **ID** *(string) --*
+
+                    Container for the ID of the owner
 
                 - **Key** *(string) --*
 
@@ -440,21 +512,48 @@ class ListObjectVersionsPaginator(Boto3Paginator):
 
             - **Name** *(string) --*
 
+              Bucket owner's name.
+
             - **Prefix** *(string) --*
+
+              Selects objects that start with the value supplied by this parameter.
 
             - **Delimiter** *(string) --*
 
+              The delimeter grouping the included keys. A delimiter is a character that you specify to
+              group keys. All keys that contain the same string between the prefix and the first occurrence
+              of the delimiter are grouped under a single result element in CommonPrefixes. These groups
+              are counted as one result against the max-keys limitation. These keys are not returned
+              elsewhere in the response.
+
             - **MaxKeys** *(integer) --*
+
+              Specifies the maximum number of objects to return.
 
             - **CommonPrefixes** *(list) --*
 
+              All of the keys rolled up into a common prefix count as a single return when calculating the
+              number of returns.
+
               - *(dict) --*
+
+                Container for all (if there are any) keys between Prefix and the next occurrence of the
+                string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+                the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+                is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
 
                 - **Prefix** *(string) --*
 
+                  Container for the specified common prefix.
+
             - **EncodingType** *(string) --*
 
-              Encoding type used by Amazon S3 to encode object keys in the response.
+              Encoding type used by Amazon S3 to encode object key names in the XML response.
+
+              If you specify encoding-type request parameter, Amazon S3 includes this element in the
+              response, and returns encoded key name values in the following response elements:
+
+               ``KeyMarker, NextKeyMarker, Prefix, Key`` , and ``Delimiter`` .
 
             - **NextToken** *(string) --*
 
@@ -501,6 +600,8 @@ class ListObjectsPaginator(Boto3Paginator):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The name of the bucket containing the objects.
 
         :type Delimiter: string
         :param Delimiter:
@@ -596,6 +697,9 @@ class ListObjectsPaginator(Boto3Paginator):
 
             - **Marker** *(string) --*
 
+              Indicates where in the bucket listing begins. Marker is included in the response if it was
+              sent with the request.
+
             - **NextMarker** *(string) --*
 
               When response is truncated (the IsTruncated element value in the response is true), you can
@@ -607,15 +711,28 @@ class ListObjectsPaginator(Boto3Paginator):
 
             - **Contents** *(list) --*
 
+              Metadata about each object returned.
+
               - *(dict) --*
+
+                An object consists of data and its descriptive metadata.
 
                 - **Key** *(string) --*
 
+                  The name that you assign to an object. You use the object key to retrieve the object.
+
                 - **LastModified** *(datetime) --*
+
+                  The date the Object was Last Modified
 
                 - **ETag** *(string) --*
 
+                  The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents
+                  of an object, not its metadata.
+
                 - **Size** *(integer) --*
+
+                  Size in bytes of the object
 
                 - **StorageClass** *(string) --*
 
@@ -623,23 +740,61 @@ class ListObjectsPaginator(Boto3Paginator):
 
                 - **Owner** *(dict) --*
 
+                  The owner of the object
+
                   - **DisplayName** *(string) --*
+
+                    Container for the display name of the owner
 
                   - **ID** *(string) --*
 
+                    Container for the ID of the owner
+
             - **Name** *(string) --*
+
+              Name of the bucket.
 
             - **Prefix** *(string) --*
 
+              Keys that begin with the indicated prefix.
+
             - **Delimiter** *(string) --*
+
+              Causes keys that contain the same string between the prefix and the first occurrence of the
+              delimiter to be rolled up into a single result element in the CommonPrefixes collection.
+              These rolled-up keys are not returned elsewhere in the response. Each rolled-up result counts
+              as only one return against the MaxKeys value.
 
             - **MaxKeys** *(integer) --*
 
+              The maximum number of keys returned in the response body.
+
             - **CommonPrefixes** *(list) --*
+
+              All of the keys rolled up in a common prefix count as a single return when calculating the
+              number of returns.
+
+              A response can contain CommonPrefixes only if you specify a delimiter.
+
+              CommonPrefixes contains all (if there are any) keys between Prefix and the next occurrence of
+              the string specified by the delimiter.
+
+              CommonPrefixes lists keys that act like subdirectories in the directory specified by Prefix.
+
+              For example, if the prefix is notes/ and the delimiter is a slash (/) as in
+              notes/summer/july, the common prefix is notes/summer/. All of the keys that roll up into a
+              common prefix count as a single return when calculating the number of returns.
 
               - *(dict) --*
 
+                Container for all (if there are any) keys between Prefix and the next occurrence of the
+                string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+                the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+                is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
                 - **Prefix** *(string) --*
+
+                  Container for the specified common prefix.
 
             - **EncodingType** *(string) --*
 
@@ -722,7 +877,7 @@ class ListObjectsV2Paginator(Boto3Paginator):
         :param StartAfter:
 
           StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this
-          specified key. StartAfter can be any key in the bucket
+          specified key. StartAfter can be any key in the bucket.
 
         :type RequestPayer: string
         :param RequestPayer:
@@ -795,8 +950,9 @@ class ListObjectsV2Paginator(Boto3Paginator):
 
             - **IsTruncated** *(boolean) --*
 
-              A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the
-              search criteria.
+              Set to false if all of the results were returned. Set to true if more keys are available to
+              return. If the number of results exceeds that specified by MaxKeys, all of the results might
+              not be returned.
 
             - **Contents** *(list) --*
 
@@ -804,13 +960,24 @@ class ListObjectsV2Paginator(Boto3Paginator):
 
               - *(dict) --*
 
+                An object consists of data and its descriptive metadata.
+
                 - **Key** *(string) --*
+
+                  The name that you assign to an object. You use the object key to retrieve the object.
 
                 - **LastModified** *(datetime) --*
 
+                  The date the Object was Last Modified
+
                 - **ETag** *(string) --*
 
+                  The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents
+                  of an object, not its metadata.
+
                 - **Size** *(integer) --*
+
+                  Size in bytes of the object
 
                 - **StorageClass** *(string) --*
 
@@ -818,21 +985,30 @@ class ListObjectsV2Paginator(Boto3Paginator):
 
                 - **Owner** *(dict) --*
 
+                  The owner of the object
+
                   - **DisplayName** *(string) --*
+
+                    Container for the display name of the owner
 
                   - **ID** *(string) --*
 
+                    Container for the ID of the owner
+
             - **Name** *(string) --*
 
-              Name of the bucket to list.
+              Name of the bucket.
 
             - **Prefix** *(string) --*
 
-              Limits the response to keys that begin with the specified prefix.
+              Keys that begin with the indicated prefix.
 
             - **Delimiter** *(string) --*
 
-              A delimiter is a character you use to group keys.
+              Causes keys that contain the same string between the prefix and the first occurrence of the
+              delimiter to be rolled up into a single result element in the CommonPrefixes collection.
+              These rolled-up keys are not returned elsewhere in the response. Each rolled-up result counts
+              as only one return against the MaxKeys value.
 
             - **MaxKeys** *(integer) --*
 
@@ -841,16 +1017,40 @@ class ListObjectsV2Paginator(Boto3Paginator):
 
             - **CommonPrefixes** *(list) --*
 
-              CommonPrefixes contains all (if there are any) keys between Prefix and the next occurrence of
-              the string specified by delimiter
+              All of the keys rolled up into a common prefix count as a single return when calculating the
+              number of returns.
+
+              A response can contain ``CommonPrefixes`` only if you specify a delimiter.
+
+               ``CommonPrefixes`` contains all (if there are any) keys between ``Prefix`` and the next
+               occurrence of the string specified by a delimiter.
+
+               ``CommonPrefixes`` lists keys that act like subdirectories in the directory specified by
+               ``Prefix`` .
+
+              For example, if the prefix is ``notes/`` and the delimiter is a slash (``/`` ) as in
+              ``notes/summer/july`` , the common prefix is ``notes/summer/`` . All of the keys that roll up
+              into a common prefix count as a single return when calculating the number of returns.
 
               - *(dict) --*
 
+                Container for all (if there are any) keys between Prefix and the next occurrence of the
+                string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+                the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+                is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
                 - **Prefix** *(string) --*
+
+                  Container for the specified common prefix.
 
             - **EncodingType** *(string) --*
 
-              Encoding type used by Amazon S3 to encode object keys in the response.
+              Encoding type used by Amazon S3 to encode object key names in the XML response.
+
+              If you specify the encoding-type request parameter, Amazon S3 includes this element in the
+              response, and returns encoded key name values in the following response elements:
+
+               ``Delimiter, Prefix, Key,`` and ``StartAfter`` .
 
             - **KeyCount** *(integer) --*
 
@@ -860,13 +1060,11 @@ class ListObjectsV2Paginator(Boto3Paginator):
 
             - **ContinuationToken** *(string) --*
 
-              ContinuationToken indicates Amazon S3 that the list is being continued on this bucket with a
-              token. ContinuationToken is obfuscated and is not a real key
+              If ContinuationToken was sent with the request, it is included in the response.
 
             - **StartAfter** *(string) --*
 
-              StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after
-              this specified key. StartAfter can be any key in the bucket
+              If StartAfter was sent with the request, it is included in the response.
 
             - **NextToken** *(string) --*
 
@@ -911,8 +1109,12 @@ class ListPartsPaginator(Boto3Paginator):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          Name of the bucket to which the parts are being uploaded.->
+
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          Object key for which the multipart upload was initiated.
 
         :type UploadId: string
         :param UploadId: **[REQUIRED]**
@@ -991,11 +1193,21 @@ class ListPartsPaginator(Boto3Paginator):
 
             - **AbortDate** *(datetime) --*
 
-              Date when multipart upload will become eligible for abort operation by lifecycle.
+              If the bucket has a lifecycle rule configured with an action to abort incomplete multipart
+              uploads and the prefix in the lifecycle rule matches the object name in the request, then the
+              response includes this header indicating when the initiated multipart upload will become
+              eligible for abort operation. For more information, see `Aborting Incomplete Multipart
+              Uploads Using a Bucket Lifecycle Policy
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+              .
+
+              The response will also include the x-amz-abort-rule-id header that will provide the ID of the
+              lifecycle configuration rule that defines this action.
 
             - **AbortRuleId** *(string) --*
 
-              Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
+              This header is returned along with the x-amz-abort-date header. It identifies applicable
+              lifecycle configuration rule that defines the action to abort incomplete multipart uploads.
 
             - **Bucket** *(string) --*
 
@@ -1011,7 +1223,8 @@ class ListPartsPaginator(Boto3Paginator):
 
             - **PartNumberMarker** *(integer) --*
 
-              Part number after which listing begins.
+              When a list is truncated, this element specifies the last part in the list, as well as the
+              value to use for the part-number-marker request parameter in a subsequent request.
 
             - **MaxParts** *(integer) --*
 
@@ -1019,11 +1232,18 @@ class ListPartsPaginator(Boto3Paginator):
 
             - **IsTruncated** *(boolean) --*
 
-              Indicates whether the returned list of parts is truncated.
+              Indicates whether the returned list of parts is truncated. A true value indicates that the
+              list was truncated. A list can be truncated if the number of parts exceeds the limit returned
+              in the MaxParts element.
 
             - **Parts** *(list) --*
 
+              Container for elements related to a particular part. A response can contain zero or more Part
+              elements.
+
               - *(dict) --*
+
+                Container for elements related to a part.
 
                 - **PartNumber** *(integer) --*
 
@@ -1043,7 +1263,9 @@ class ListPartsPaginator(Boto3Paginator):
 
             - **Initiator** *(dict) --*
 
-              Identifies who initiated the multipart upload.
+              Container element that identifies who initiated the multipart upload. If the initiator is an
+              AWS account, this element provides the same information as the Owner element. If the
+              initiator is an IAM User, then this element provides the user ARN and display name.
 
               - **ID** *(string) --*
 
@@ -1056,13 +1278,21 @@ class ListPartsPaginator(Boto3Paginator):
 
             - **Owner** *(dict) --*
 
+              Container element that identifies the object owner, after the object is created. If multipart
+              upload is initiated by an IAM user, this element provides the parent account ID and display
+              name.
+
               - **DisplayName** *(string) --*
+
+                Container for the display name of the owner
 
               - **ID** *(string) --*
 
+                Container for the ID of the owner
+
             - **StorageClass** *(string) --*
 
-              The class of storage used to store the object.
+              Class of storage (STANDARD or REDUCED_REDUNDANCY) used to store the uploaded object.
 
             - **RequestCharged** *(string) --*
 

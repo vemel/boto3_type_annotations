@@ -132,7 +132,8 @@ class DescribeAutoScalingGroupsPaginator(Boto3Paginator):
                                 },
                                 'Overrides': [
                                     {
-                                        'InstanceType': 'string'
+                                        'InstanceType': 'string',
+                                        'WeightedCapacity': 'string'
                                     },
                                 ]
                             },
@@ -163,6 +164,7 @@ class DescribeAutoScalingGroupsPaginator(Boto3Paginator):
                         'Instances': [
                             {
                                 'InstanceId': 'string',
+                                'InstanceType': 'string',
                                 'AvailabilityZone': 'string',
                                 'LifecycleState':
                                 'Pending'|'Pending:Wait'|'Pending:Proceed'|'Quarantined'|'InService'
@@ -175,7 +177,8 @@ class DescribeAutoScalingGroupsPaginator(Boto3Paginator):
                                     'LaunchTemplateName': 'string',
                                     'Version': 'string'
                                 },
-                                'ProtectedFromScaleIn': True|False
+                                'ProtectedFromScaleIn': True|False,
+                                'WeightedCapacity': 'string'
                             },
                         ],
                         'CreatedTime': datetime(2015, 1, 1),
@@ -207,7 +210,8 @@ class DescribeAutoScalingGroupsPaginator(Boto3Paginator):
                             'string',
                         ],
                         'NewInstancesProtectedFromScaleIn': True|False,
-                        'ServiceLinkedRoleARN': 'string'
+                        'ServiceLinkedRoleARN': 'string',
+                        'MaxInstanceLifetime': 123
                     },
                 ],
 
@@ -292,9 +296,9 @@ class DescribeAutoScalingGroupsPaginator(Boto3Paginator):
 
                     - **Overrides** *(list) --*
 
-                      Any parameters that you specify override the same parameters in the launch template.
-                      Currently, the only supported override is instance type. You must specify between 2
-                      and 20 overrides.
+                      An optional setting. Any parameters that you specify override the same parameters in
+                      the launch template. Currently, the only supported override is instance type. You can
+                      specify between 1 and 20 instance types.
 
                       - *(dict) --*
 
@@ -308,12 +312,22 @@ class DescribeAutoScalingGroupsPaginator(Boto3Paginator):
                           <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes>`__
                           in the *Amazon Elastic Compute Cloud User Guide.*
 
+                        - **WeightedCapacity** *(string) --*
+
+                          The number of capacity units, which gives the instance type a proportional weight
+                          to other instance types. For example, larger instance types are generally
+                          weighted more than smaller instance types. These are the same units that you
+                          chose to set the desired capacity in terms of instances, or a performance
+                          attribute such as vCPUs, memory, or I/O.
+
+                          Valid Range: Minimum value of 1. Maximum value of 999.
+
                   - **InstancesDistribution** *(dict) --*
 
                     The instances distribution to use.
 
-                    If you leave this parameter unspecified when creating a mixed instances policy, the
-                    default values are used.
+                    If you leave this parameter unspecified, the value for each parameter in
+                    ``InstancesDistribution`` uses a default value.
 
                     - **OnDemandAllocationStrategy** *(string) --*
 
@@ -331,17 +345,33 @@ class DescribeAutoScalingGroupsPaginator(Boto3Paginator):
                       The minimum amount of the Auto Scaling group's capacity that must be fulfilled by
                       On-Demand Instances. This base portion is provisioned first as your group scales.
 
-                      The default value is ``0`` . If you leave this parameter set to ``0`` , On-Demand
-                      Instances are launched as a percentage of the Auto Scaling group's desired capacity,
-                      per the ``OnDemandPercentageAboveBaseCapacity`` setting.
+                      Default if not set is 0. If you leave it set to 0, On-Demand Instances are launched
+                      as a percentage of the Auto Scaling group's desired capacity, per the
+                      ``OnDemandPercentageAboveBaseCapacity`` setting.
+
+                      .. note::
+
+                        An update to this setting means a gradual replacement of instances to maintain the
+                        specified number of On-Demand Instances for your base capacity. When replacing
+                        instances, Amazon EC2 Auto Scaling launches new instances before terminating the
+                        old ones.
 
                     - **OnDemandPercentageAboveBaseCapacity** *(integer) --*
 
                       Controls the percentages of On-Demand Instances and Spot Instances for your
-                      additional capacity beyond ``OnDemandBaseCapacity`` . The range is 0–100.
+                      additional capacity beyond ``OnDemandBaseCapacity`` .
 
-                      The default value is ``100`` . If you leave this parameter set to ``100`` , the
-                      percentages are 100% for On-Demand Instances and 0% for Spot Instances.
+                      Default if not set is 100. If you leave it set to 100, the percentages are 100% for
+                      On-Demand Instances and 0% for Spot Instances.
+
+                      .. note::
+
+                        An update to this setting means a gradual replacement of instances to maintain the
+                        percentage of On-Demand Instances for your additional capacity above the base
+                        capacity. When replacing instances, Amazon EC2 Auto Scaling launches new instances
+                        before terminating the old ones.
+
+                      Valid Range: Minimum value of 0. Maximum value of 100.
 
                     - **SpotAllocationStrategy** *(string) --*
 
@@ -363,9 +393,11 @@ class DescribeAutoScalingGroupsPaginator(Boto3Paginator):
 
                       The number of Spot Instance pools across which to allocate your Spot Instances. The
                       Spot pools are determined from the different instance types in the Overrides array of
-                       LaunchTemplate . The range is 1–20. The default value is ``2`` .
+                       LaunchTemplate . Default if not set is 2.
 
-                      Valid only when the Spot allocation strategy is ``lowest-price`` .
+                      Used only when the Spot allocation strategy is ``lowest-price`` .
+
+                      Valid Range: Minimum value of 1. Maximum value of 20.
 
                     - **SpotMaxPrice** *(string) --*
 
@@ -434,6 +466,10 @@ class DescribeAutoScalingGroupsPaginator(Boto3Paginator):
 
                       The ID of the instance.
 
+                    - **InstanceType** *(string) --*
+
+                      The instance type of the EC2 instance.
+
                     - **AvailabilityZone** *(string) --*
 
                       The Availability Zone in which the instance is running.
@@ -478,6 +514,12 @@ class DescribeAutoScalingGroupsPaginator(Boto3Paginator):
 
                       Indicates whether the instance is protected from termination by Amazon EC2 Auto
                       Scaling when scaling in.
+
+                    - **WeightedCapacity** *(string) --*
+
+                      The number of capacity units contributed by the instance based on its instance type.
+
+                      Valid Range: Minimum value of 1. Maximum value of 999.
 
                 - **CreatedTime** *(datetime) --*
 
@@ -589,6 +631,12 @@ class DescribeAutoScalingGroupsPaginator(Boto3Paginator):
                   The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group
                   uses to call other AWS services on your behalf.
 
+                - **MaxInstanceLifetime** *(integer) --*
+
+                  The maximum amount of time, in seconds, that an instance can be in service.
+
+                  Valid Range: Minimum value of 604800.
+
         """
 
 
@@ -663,6 +711,7 @@ class DescribeAutoScalingInstancesPaginator(Boto3Paginator):
                 'AutoScalingInstances': [
                     {
                         'InstanceId': 'string',
+                        'InstanceType': 'string',
                         'AutoScalingGroupName': 'string',
                         'AvailabilityZone': 'string',
                         'LifecycleState': 'string',
@@ -673,7 +722,8 @@ class DescribeAutoScalingInstancesPaginator(Boto3Paginator):
                             'LaunchTemplateName': 'string',
                             'Version': 'string'
                         },
-                        'ProtectedFromScaleIn': True|False
+                        'ProtectedFromScaleIn': True|False,
+                        'WeightedCapacity': 'string'
                     },
                 ],
 
@@ -693,6 +743,10 @@ class DescribeAutoScalingInstancesPaginator(Boto3Paginator):
                 - **InstanceId** *(string) --*
 
                   The ID of the instance.
+
+                - **InstanceType** *(string) --*
+
+                  The instance type of the EC2 instance.
 
                 - **AutoScalingGroupName** *(string) --*
 
@@ -742,6 +796,12 @@ class DescribeAutoScalingInstancesPaginator(Boto3Paginator):
 
                   Indicates whether the instance is protected from termination by Amazon EC2 Auto Scaling
                   when scaling in.
+
+                - **WeightedCapacity** *(string) --*
+
+                  The number of capacity units contributed by the instance based on its instance type.
+
+                  Valid Range: Minimum value of 1. Maximum value of 999.
 
         """
 
@@ -1009,7 +1069,7 @@ class DescribeLaunchConfigurationsPaginator(Boto3Paginator):
                         <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html>`__ in the
                         *Amazon EC2 User Guide for Linux Instances* .
 
-                        Valid values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
+                        Valid Values: ``standard`` | ``io1`` | ``gp2`` | ``st1`` | ``sc1``
 
                       - **DeleteOnTermination** *(boolean) --*
 
@@ -1083,7 +1143,7 @@ class DescribeLaunchConfigurationsPaginator(Boto3Paginator):
 
                   The maximum hourly price to be paid for any Spot Instance launched to fulfill the
                   request. Spot Instances are launched when the price you specify exceeds the current Spot
-                  market price.
+                  price.
 
                   For more information, see `Launching Spot Instances in Your Auto Scaling Group
                   <https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html>`__
@@ -1759,12 +1819,7 @@ class DescribePoliciesPaginator(Boto3Paginator):
 
                     - **PredefinedMetricType** *(string) --*
 
-                      The metric type.
-
-                    - **ResourceLabel** *(string) --*
-
-                      Identifies the resource associated with the metric type. The following predefined
-                      metrics are available:
+                      The metric type. The following predefined metrics are available:
 
                       * ``ASGAverageCPUUtilization`` - Average CPU utilization of the Auto Scaling group.
 
@@ -1777,15 +1832,20 @@ class DescribePoliciesPaginator(Boto3Paginator):
                       * ``ALBRequestCountPerTarget`` - Number of requests completed per target in an
                       Application Load Balancer target group.
 
-                      For predefined metric types ``ASGAverageCPUUtilization`` , ``ASGAverageNetworkIn`` ,
-                      and ``ASGAverageNetworkOut`` , the parameter must not be specified as the resource
-                      associated with the metric type is the Auto Scaling group. For predefined metric type
-                      ``ALBRequestCountPerTarget`` , the parameter must be specified in the format:
-                      ``app/*load-balancer-name* /*load-balancer-id* /targetgroup/*target-group-name*
-                      /*target-group-id* `` , where ``app/*load-balancer-name* /*load-balancer-id* `` is
-                      the final portion of the load balancer ARN, and ``targetgroup/*target-group-name*
-                      /*target-group-id* `` is the final portion of the target group ARN. The target group
-                      must be attached to the Auto Scaling group.
+                    - **ResourceLabel** *(string) --*
+
+                      Identifies the resource associated with the metric type. You can't specify a resource
+                      label unless the metric type is ``ALBRequestCountPerTarget`` and there is a target
+                      group attached to the Auto Scaling group.
+
+                      The format is ``app/*load-balancer-name* /*load-balancer-id*
+                      /targetgroup/*target-group-name* /*target-group-id* `` , where
+
+                      * ``app/*load-balancer-name* /*load-balancer-id* `` is the final portion of the load
+                      balancer ARN, and
+
+                      * ``targetgroup/*target-group-name* /*target-group-id* `` is the final portion of the
+                      target group ARN.
 
                   - **CustomizedMetricSpecification** *(dict) --*
 

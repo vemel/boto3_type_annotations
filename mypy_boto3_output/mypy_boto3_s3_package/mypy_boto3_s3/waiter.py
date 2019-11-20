@@ -48,6 +48,8 @@ class BucketExistsWaiter(Boto3Waiter):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The bucket name.
+
         :type WaiterConfig: dict
         :param WaiterConfig:
 
@@ -93,6 +95,8 @@ class BucketNotExistsWaiter(Boto3Waiter):
           )
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
+
+          The bucket name.
 
         :type WaiterConfig: dict
         :param WaiterConfig:
@@ -165,6 +169,8 @@ class ObjectExistsWaiter(Boto3Waiter):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The name of the bucket containing the object.
+
         :type IfMatch: string
         :param IfMatch:
 
@@ -191,6 +197,8 @@ class ObjectExistsWaiter(Boto3Waiter):
 
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          The object key.
 
         :type Range: string
         :param Range:
@@ -311,6 +319,8 @@ class ObjectNotExistsWaiter(Boto3Waiter):
         :type Bucket: string
         :param Bucket: **[REQUIRED]**
 
+          The name of the bucket containing the object.
+
         :type IfMatch: string
         :param IfMatch:
 
@@ -337,6 +347,8 @@ class ObjectNotExistsWaiter(Boto3Waiter):
 
         :type Key: string
         :param Key: **[REQUIRED]**
+
+          The object key.
 
         :type Range: string
         :param Range:

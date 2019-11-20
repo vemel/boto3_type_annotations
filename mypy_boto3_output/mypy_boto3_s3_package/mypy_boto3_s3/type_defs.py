@@ -166,6 +166,7 @@ __all__ = (
     "ClientGetBucketReplicationResponseReplicationConfigurationRulesDestinationAccessControlTranslationTypeDef",
     "ClientGetBucketReplicationResponseReplicationConfigurationRulesDestinationEncryptionConfigurationTypeDef",
     "ClientGetBucketReplicationResponseReplicationConfigurationRulesDestinationTypeDef",
+    "ClientGetBucketReplicationResponseReplicationConfigurationRulesExistingObjectReplicationTypeDef",
     "ClientGetBucketReplicationResponseReplicationConfigurationRulesFilterAndTagsTypeDef",
     "ClientGetBucketReplicationResponseReplicationConfigurationRulesFilterAndTypeDef",
     "ClientGetBucketReplicationResponseReplicationConfigurationRulesFilterTagTypeDef",
@@ -329,6 +330,7 @@ __all__ = (
     "ClientPutBucketReplicationReplicationConfigurationRulesDestinationAccessControlTranslationTypeDef",
     "ClientPutBucketReplicationReplicationConfigurationRulesDestinationEncryptionConfigurationTypeDef",
     "ClientPutBucketReplicationReplicationConfigurationRulesDestinationTypeDef",
+    "ClientPutBucketReplicationReplicationConfigurationRulesExistingObjectReplicationTypeDef",
     "ClientPutBucketReplicationReplicationConfigurationRulesFilterAndTagsTypeDef",
     "ClientPutBucketReplicationReplicationConfigurationRulesFilterAndTypeDef",
     "ClientPutBucketReplicationReplicationConfigurationRulesFilterTagTypeDef",
@@ -512,6 +514,8 @@ class BucketAclPutAccessControlPolicyGrantsGranteeTypeDef(
     """
     Type definition for `BucketAclPutAccessControlPolicyGrants` `Grantee`
 
+    The person being granted permissions.
+
     - **DisplayName** *(string) --*
 
       Screen name of the grantee.
@@ -547,7 +551,11 @@ class BucketAclPutAccessControlPolicyGrantsTypeDef(
     """
     Type definition for `BucketAclPutAccessControlPolicy` `Grants`
 
+    Container for grant information.
+
     - **Grantee** *(dict) --*
+
+      The person being granted permissions.
 
       - **DisplayName** *(string) --*
 
@@ -592,7 +600,11 @@ class BucketAclPutAccessControlPolicyOwnerTypeDef(
 
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -618,7 +630,11 @@ class BucketAclPutAccessControlPolicyTypeDef(_BucketAclPutAccessControlPolicyTyp
 
       - *(dict) --*
 
+        Container for grant information.
+
         - **Grantee** *(dict) --*
+
+          The person being granted permissions.
 
           - **DisplayName** *(string) --*
 
@@ -650,7 +666,11 @@ class BucketAclPutAccessControlPolicyTypeDef(_BucketAclPutAccessControlPolicyTyp
 
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
     """
 
 
@@ -719,9 +739,15 @@ class BucketCorsPutCORSConfigurationTypeDef(_BucketCorsPutCORSConfigurationTypeD
     """
     Type definition for `BucketCorsPut` `CORSConfiguration`
 
+    Describes the cross-origin access configuration for objects in an Amazon S3 bucket. For more
+    information, see `Enabling Cross-Origin Resource Sharing
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev//cors.html>`__ in the Amazon Simple Storage
+    Service Developer Guide.
+
     - **CORSRules** *(list) --* **[REQUIRED]**
 
-      A set of allowed origins and methods.
+      A set of origins and methods (cross-origin access that you want to allow). You can add up to
+      100 rules to the configuration.
 
       - *(dict) --*
 
@@ -775,6 +801,8 @@ class BucketCreateCreateBucketConfigurationTypeDef(
     """
     Type definition for `BucketCreate` `CreateBucketConfiguration`
 
+    The configuration information for the bucket.
+
     - **LocationConstraint** *(string) --*
 
       Specifies the region where the bucket will be created. If you don't specify a region, the
@@ -792,6 +820,9 @@ class BucketCreateResponseTypeDef(_BucketCreateResponseTypeDef):
     Type definition for `BucketCreate` `Response`
 
     - **Location** *(string) --*
+
+      Specifies the region where the bucket will be created. If you are creating a bucket on the US
+      East (N. Virginia) region (us-east-1), you do not need to specify the location.
     """
 
 
@@ -809,6 +840,8 @@ class BucketDeleteObjectsDeleteObjectsTypeDef(
 ):
     """
     Type definition for `BucketDeleteObjectsDelete` `Objects`
+
+    Object Identifier is unique value to identify objects.
 
     - **Key** *(string) --* **[REQUIRED]**
 
@@ -835,9 +868,15 @@ class BucketDeleteObjectsDeleteTypeDef(
     """
     Type definition for `BucketDeleteObjects` `Delete`
 
+    Container for the request.
+
     - **Objects** *(list) --* **[REQUIRED]**
 
+      The objects to delete.
+
       - *(dict) --*
+
+        Object Identifier is unique value to identify objects.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -867,13 +906,27 @@ class BucketDeleteObjectsResponseDeletedTypeDef(
     """
     Type definition for `BucketDeleteObjectsResponse` `Deleted`
 
+    Information about the deleted object.
+
     - **Key** *(string) --*
+
+      The name of the deleted object.
 
     - **VersionId** *(string) --*
 
+      The version ID of the deleted object.
+
     - **DeleteMarker** *(boolean) --*
 
+      Specifies whether the versioned object that was permanently deleted was (true) or was not
+      (false) a delete marker. In a simple DELETE, this header indicates whether (true) or not
+      (false) a delete marker was created.
+
     - **DeleteMarkerVersionId** *(string) --*
+
+      The version ID of the delete marker created as a result of the DELETE operation. If you
+      delete a specific object version, the value returned by this header is the version ID of
+      the object version deleted.
     """
 
 
@@ -890,13 +943,955 @@ class BucketDeleteObjectsResponseErrorsTypeDef(
     """
     Type definition for `BucketDeleteObjectsResponse` `Errors`
 
+    Container for all error elements.
+
     - **Key** *(string) --*
+
+      The error key.
 
     - **VersionId** *(string) --*
 
+      The version ID of the error.
+
     - **Code** *(string) --*
 
+      The error code is a string that uniquely identifies an error condition. It is meant to be
+      read and understood by programs that detect and handle errors by type.
+
+       **Amazon S3 error codes**
+
+      *
+
+        * *Code:* AccessDenied
+
+        * *Description:* Access Denied
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AccountProblem
+
+        * *Description:* There is a problem with your AWS account that prevents the operation
+        from completing successfully. Contact AWS Support for further assistance.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AllAccessDisabled
+
+        * *Description:* All access to this Amazon S3 resource has been disabled. Contact AWS
+        Support for further assistance.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AmbiguousGrantByEmailAddress
+
+        * *Description:* The email address you provided is associated with more than one
+        account.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AuthorizationHeaderMalformed
+
+        * *Description:* The authorization header you provided is invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *HTTP Status Code:* N/A
+
+      *
+
+        * *Code:* BadDigest
+
+        * *Description:* The Content-MD5 you specified did not match what we received.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* BucketAlreadyExists
+
+        * *Description:* The requested bucket name is not available. The bucket namespace is
+        shared by all users of the system. Please select a different name and try again.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* BucketAlreadyOwnedByYou
+
+        * *Description:* The bucket you tried to create already exists, and you own it. Amazon
+        S3 returns this error in all AWS Regions except in the North Virginia region. For
+        legacy compatibility, if you re-create an existing bucket that you already own in the
+        North Virginia region, Amazon S3 returns 200 OK and resets the bucket access control
+        lists (ACLs).
+
+        * *Code:* 409 Conflict (in all regions except the North Virginia region)
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* BucketNotEmpty
+
+        * *Description:* The bucket you tried to delete is not empty.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* CredentialsNotSupported
+
+        * *Description:* This request does not support credentials.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* CrossLocationLoggingProhibited
+
+        * *Description:* Cross-location logging not allowed. Buckets in one geographic location
+        cannot log information to a bucket in another location.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* EntityTooSmall
+
+        * *Description:* Your proposed upload is smaller than the minimum allowed object size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* EntityTooLarge
+
+        * *Description:* Your proposed upload exceeds the maximum allowed object size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* ExpiredToken
+
+        * *Description:* The provided token has expired.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* IllegalVersioningConfigurationException
+
+        * *Description:* Indicates that the versioning configuration specified in the request
+        is invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* IncompleteBody
+
+        * *Description:* You did not provide the number of bytes specified by the
+        Content-Length HTTP header
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* IncorrectNumberOfFilesInPostRequest
+
+        * *Description:* POST requires exactly one file upload per request.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InlineDataTooLarge
+
+        * *Description:* Inline data exceeds the maximum allowed size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InternalError
+
+        * *Description:* We encountered an internal error. Please try again.
+
+        * *HTTP Status Code:* 500 Internal Server Error
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* InvalidAccessKeyId
+
+        * *Description:* The AWS access key ID you provided does not exist in our records.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidAddressingHeader
+
+        * *Description:* You must specify the Anonymous role.
+
+        * *HTTP Status Code:* N/A
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidArgument
+
+        * *Description:* Invalid Argument
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidBucketName
+
+        * *Description:* The specified bucket is not valid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidBucketState
+
+        * *Description:* The request is not valid with the current state of the bucket.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidDigest
+
+        * *Description:* The Content-MD5 you specified is not valid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidEncryptionAlgorithmError
+
+        * *Description:* The encryption request you specified is not valid. The valid value is
+        AES256.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidLocationConstraint
+
+        * *Description:* The specified location constraint is not valid. For more information
+        about Regions, see `How to Select a Region for Your Buckets
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro>`__
+        .
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidObjectState
+
+        * *Description:* The operation is not valid for the current state of the object.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPart
+
+        * *Description:* One or more of the specified parts could not be found. The part might
+        not have been uploaded, or the specified entity tag might not have matched the part's
+        entity tag.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPartOrder
+
+        * *Description:* The list of parts was not in ascending order. Parts list must be
+        specified in order by part number.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPayer
+
+        * *Description:* All access to this object has been disabled. Please contact AWS
+        Support for further assistance.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPolicyDocument
+
+        * *Description:* The content of the form does not meet the conditions specified in the
+        policy document.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidRange
+
+        * *Description:* The requested range cannot be satisfied.
+
+        * *HTTP Status Code:* 416 Requested Range Not Satisfiable
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Please use AWS4-HMAC-SHA256.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* SOAP requests must be made over an HTTPS connection.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+        non-DNS compliant names.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+        periods (.) in their names.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Accelerate endpoint only supports virtual style
+        requests.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Accelerate is not configured on this bucket.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Accelerate is disabled on this bucket.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration is not supported on this bucket.
+        Contact AWS Support for more information.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration cannot be enabled on this bucket.
+        Contact AWS Support for more information.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidSecurity
+
+        * *Description:* The provided security credentials are not valid.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidSOAPRequest
+
+        * *Description:* The SOAP request body is invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidStorageClass
+
+        * *Description:* The storage class you specified is not valid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidTargetBucketForLogging
+
+        * *Description:* The target bucket for logging does not exist, is not owned by you, or
+        does not have the appropriate grants for the log-delivery group.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidToken
+
+        * *Description:* The provided token is malformed or otherwise invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidURI
+
+        * *Description:* Couldn't parse the specified URI.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* KeyTooLongError
+
+        * *Description:* Your key is too long.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MalformedACLError
+
+        * *Description:* The XML you provided was not well-formed or did not validate against
+        our published schema.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MalformedPOSTRequest
+
+        * *Description:* The body of your POST request is not well-formed multipart/form-data.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MalformedXML
+
+        * *Description:* This happens when the user sends malformed XML (XML that doesn't
+        conform to the published XSD) for the configuration. The error message is, "The XML you
+        provided was not well-formed or did not validate against our published schema."
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MaxMessageLengthExceeded
+
+        * *Description:* Your request was too big.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MaxPostPreDataLengthExceededError
+
+        * *Description:* Your POST request fields preceding the upload file were too large.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MetadataTooLarge
+
+        * *Description:* Your metadata headers exceed the maximum allowed metadata size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MethodNotAllowed
+
+        * *Description:* The specified method is not allowed against this resource.
+
+        * *HTTP Status Code:* 405 Method Not Allowed
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingAttachment
+
+        * *Description:* A SOAP attachment was expected, but none were found.
+
+        * *HTTP Status Code:* N/A
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingContentLength
+
+        * *Description:* You must provide the Content-Length HTTP header.
+
+        * *HTTP Status Code:* 411 Length Required
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingRequestBodyError
+
+        * *Description:* This happens when the user sends an empty XML document as a request.
+        The error message is, "Request body is empty."
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingSecurityElement
+
+        * *Description:* The SOAP 1.1 request is missing a security element.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingSecurityHeader
+
+        * *Description:* Your request is missing a required header.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoLoggingStatusForKey
+
+        * *Description:* There is no such thing as a logging status subresource for a key.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchBucket
+
+        * *Description:* The specified bucket does not exist.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchBucketPolicy
+
+        * *Description:* The specified bucket does not have a bucket policy.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchKey
+
+        * *Description:* The specified key does not exist.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchLifecycleConfiguration
+
+        * *Description:* The lifecycle configuration does not exist.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchUpload
+
+        * *Description:* The specified multipart upload does not exist. The upload ID might be
+        invalid, or the multipart upload might have been aborted or completed.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchVersion
+
+        * *Description:* Indicates that the version ID specified in the request does not match
+        an existing version.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NotImplemented
+
+        * *Description:* A header you provided implies functionality that is not implemented.
+
+        * *HTTP Status Code:* 501 Not Implemented
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* NotSignedUp
+
+        * *Description:* Your account is not signed up for the Amazon S3 service. You must sign
+        up before you can use Amazon S3. You can sign up at the following URL:
+        https://aws.amazon.com/s3
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* OperationAborted
+
+        * *Description:* A conflicting conditional operation is currently in progress against
+        this resource. Try again.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* PermanentRedirect
+
+        * *Description:* The bucket you are attempting to access must be addressed using the
+        specified endpoint. Send all future requests to this endpoint.
+
+        * *HTTP Status Code:* 301 Moved Permanently
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* PreconditionFailed
+
+        * *Description:* At least one of the preconditions you specified did not hold.
+
+        * *HTTP Status Code:* 412 Precondition Failed
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* Redirect
+
+        * *Description:* Temporary redirect.
+
+        * *HTTP Status Code:* 307 Moved Temporarily
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RestoreAlreadyInProgress
+
+        * *Description:* Object restore is already in progress.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestIsNotMultiPartContent
+
+        * *Description:* Bucket POST must be of the enclosure-type multipart/form-data.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestTimeout
+
+        * *Description:* Your socket connection to the server was not read from or written to
+        within the timeout period.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestTimeTooSkewed
+
+        * *Description:* The difference between the request time and the server's time is too
+        large.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestTorrentOfBucketError
+
+        * *Description:* Requesting the torrent file of a bucket is not permitted.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* SignatureDoesNotMatch
+
+        * *Description:* The request signature we calculated does not match the signature you
+        provided. Check your AWS secret access key and signing method. For more information,
+        see `REST Authentication
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html>`__ and `SOAP
+        Authentication
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/SOAPAuthentication.html>`__ for
+        details.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* ServiceUnavailable
+
+        * *Description:* Reduce your request rate.
+
+        * *HTTP Status Code:* 503 Service Unavailable
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* SlowDown
+
+        * *Description:* Reduce your request rate.
+
+        * *HTTP Status Code:* 503 Slow Down
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* TemporaryRedirect
+
+        * *Description:* You are being redirected to the bucket while DNS updates.
+
+        * *HTTP Status Code:* 307 Moved Temporarily
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* TokenRefreshRequired
+
+        * *Description:* The provided token must be refreshed.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* TooManyBuckets
+
+        * *Description:* You have attempted to create more buckets than allowed.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* UnexpectedContent
+
+        * *Description:* This request does not support content.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* UnresolvableGrantByEmailAddress
+
+        * *Description:* The email address you provided does not match any account on record.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* UserKeyMustBeSpecified
+
+        * *Description:* The bucket POST must contain the specified field name. If it is
+        specified, check the order of the fields.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
     - **Message** *(string) --*
+
+      The error message contains a generic description of the error condition in English. It is
+      intended for a human audience. Simple programs display the message directly to the end
+      user if they encounter an error condition they don't know how or don't care to handle.
+      Sophisticated programs with more exhaustive error handling and proper
+      internationalization are more likely to ignore the error message.
     """
 
 
@@ -917,15 +1912,32 @@ class BucketDeleteObjectsResponseTypeDef(_BucketDeleteObjectsResponseTypeDef):
 
     - **Deleted** *(list) --*
 
+      Container element for a successful delete. It identifies the object that was successfully
+      deleted.
+
       - *(dict) --*
+
+        Information about the deleted object.
 
         - **Key** *(string) --*
 
+          The name of the deleted object.
+
         - **VersionId** *(string) --*
+
+          The version ID of the deleted object.
 
         - **DeleteMarker** *(boolean) --*
 
+          Specifies whether the versioned object that was permanently deleted was (true) or was not
+          (false) a delete marker. In a simple DELETE, this header indicates whether (true) or not
+          (false) a delete marker was created.
+
         - **DeleteMarkerVersionId** *(string) --*
+
+          The version ID of the delete marker created as a result of the DELETE operation. If you
+          delete a specific object version, the value returned by this header is the version ID of
+          the object version deleted.
 
     - **RequestCharged** *(string) --*
 
@@ -933,15 +1945,960 @@ class BucketDeleteObjectsResponseTypeDef(_BucketDeleteObjectsResponseTypeDef):
 
     - **Errors** *(list) --*
 
+      Container for a failed delete operation that describes the object that Amazon S3 attempted to
+      delete and the error it encountered.
+
       - *(dict) --*
+
+        Container for all error elements.
 
         - **Key** *(string) --*
 
+          The error key.
+
         - **VersionId** *(string) --*
+
+          The version ID of the error.
 
         - **Code** *(string) --*
 
+          The error code is a string that uniquely identifies an error condition. It is meant to be
+          read and understood by programs that detect and handle errors by type.
+
+           **Amazon S3 error codes**
+
+          *
+
+            * *Code:* AccessDenied
+
+            * *Description:* Access Denied
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AccountProblem
+
+            * *Description:* There is a problem with your AWS account that prevents the operation
+            from completing successfully. Contact AWS Support for further assistance.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AllAccessDisabled
+
+            * *Description:* All access to this Amazon S3 resource has been disabled. Contact AWS
+            Support for further assistance.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AmbiguousGrantByEmailAddress
+
+            * *Description:* The email address you provided is associated with more than one
+            account.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AuthorizationHeaderMalformed
+
+            * *Description:* The authorization header you provided is invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *HTTP Status Code:* N/A
+
+          *
+
+            * *Code:* BadDigest
+
+            * *Description:* The Content-MD5 you specified did not match what we received.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* BucketAlreadyExists
+
+            * *Description:* The requested bucket name is not available. The bucket namespace is
+            shared by all users of the system. Please select a different name and try again.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* BucketAlreadyOwnedByYou
+
+            * *Description:* The bucket you tried to create already exists, and you own it. Amazon
+            S3 returns this error in all AWS Regions except in the North Virginia region. For
+            legacy compatibility, if you re-create an existing bucket that you already own in the
+            North Virginia region, Amazon S3 returns 200 OK and resets the bucket access control
+            lists (ACLs).
+
+            * *Code:* 409 Conflict (in all regions except the North Virginia region)
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* BucketNotEmpty
+
+            * *Description:* The bucket you tried to delete is not empty.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* CredentialsNotSupported
+
+            * *Description:* This request does not support credentials.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* CrossLocationLoggingProhibited
+
+            * *Description:* Cross-location logging not allowed. Buckets in one geographic location
+            cannot log information to a bucket in another location.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* EntityTooSmall
+
+            * *Description:* Your proposed upload is smaller than the minimum allowed object size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* EntityTooLarge
+
+            * *Description:* Your proposed upload exceeds the maximum allowed object size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* ExpiredToken
+
+            * *Description:* The provided token has expired.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* IllegalVersioningConfigurationException
+
+            * *Description:* Indicates that the versioning configuration specified in the request
+            is invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* IncompleteBody
+
+            * *Description:* You did not provide the number of bytes specified by the
+            Content-Length HTTP header
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* IncorrectNumberOfFilesInPostRequest
+
+            * *Description:* POST requires exactly one file upload per request.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InlineDataTooLarge
+
+            * *Description:* Inline data exceeds the maximum allowed size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InternalError
+
+            * *Description:* We encountered an internal error. Please try again.
+
+            * *HTTP Status Code:* 500 Internal Server Error
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* InvalidAccessKeyId
+
+            * *Description:* The AWS access key ID you provided does not exist in our records.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidAddressingHeader
+
+            * *Description:* You must specify the Anonymous role.
+
+            * *HTTP Status Code:* N/A
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidArgument
+
+            * *Description:* Invalid Argument
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidBucketName
+
+            * *Description:* The specified bucket is not valid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidBucketState
+
+            * *Description:* The request is not valid with the current state of the bucket.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidDigest
+
+            * *Description:* The Content-MD5 you specified is not valid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidEncryptionAlgorithmError
+
+            * *Description:* The encryption request you specified is not valid. The valid value is
+            AES256.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidLocationConstraint
+
+            * *Description:* The specified location constraint is not valid. For more information
+            about Regions, see `How to Select a Region for Your Buckets
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro>`__
+            .
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidObjectState
+
+            * *Description:* The operation is not valid for the current state of the object.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPart
+
+            * *Description:* One or more of the specified parts could not be found. The part might
+            not have been uploaded, or the specified entity tag might not have matched the part's
+            entity tag.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPartOrder
+
+            * *Description:* The list of parts was not in ascending order. Parts list must be
+            specified in order by part number.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPayer
+
+            * *Description:* All access to this object has been disabled. Please contact AWS
+            Support for further assistance.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPolicyDocument
+
+            * *Description:* The content of the form does not meet the conditions specified in the
+            policy document.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidRange
+
+            * *Description:* The requested range cannot be satisfied.
+
+            * *HTTP Status Code:* 416 Requested Range Not Satisfiable
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Please use AWS4-HMAC-SHA256.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* SOAP requests must be made over an HTTPS connection.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+            non-DNS compliant names.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+            periods (.) in their names.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Accelerate endpoint only supports virtual style
+            requests.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Accelerate is not configured on this bucket.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Accelerate is disabled on this bucket.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration is not supported on this bucket.
+            Contact AWS Support for more information.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration cannot be enabled on this bucket.
+            Contact AWS Support for more information.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidSecurity
+
+            * *Description:* The provided security credentials are not valid.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidSOAPRequest
+
+            * *Description:* The SOAP request body is invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidStorageClass
+
+            * *Description:* The storage class you specified is not valid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidTargetBucketForLogging
+
+            * *Description:* The target bucket for logging does not exist, is not owned by you, or
+            does not have the appropriate grants for the log-delivery group.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidToken
+
+            * *Description:* The provided token is malformed or otherwise invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidURI
+
+            * *Description:* Couldn't parse the specified URI.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* KeyTooLongError
+
+            * *Description:* Your key is too long.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MalformedACLError
+
+            * *Description:* The XML you provided was not well-formed or did not validate against
+            our published schema.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MalformedPOSTRequest
+
+            * *Description:* The body of your POST request is not well-formed multipart/form-data.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MalformedXML
+
+            * *Description:* This happens when the user sends malformed XML (XML that doesn't
+            conform to the published XSD) for the configuration. The error message is, "The XML you
+            provided was not well-formed or did not validate against our published schema."
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MaxMessageLengthExceeded
+
+            * *Description:* Your request was too big.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MaxPostPreDataLengthExceededError
+
+            * *Description:* Your POST request fields preceding the upload file were too large.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MetadataTooLarge
+
+            * *Description:* Your metadata headers exceed the maximum allowed metadata size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MethodNotAllowed
+
+            * *Description:* The specified method is not allowed against this resource.
+
+            * *HTTP Status Code:* 405 Method Not Allowed
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingAttachment
+
+            * *Description:* A SOAP attachment was expected, but none were found.
+
+            * *HTTP Status Code:* N/A
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingContentLength
+
+            * *Description:* You must provide the Content-Length HTTP header.
+
+            * *HTTP Status Code:* 411 Length Required
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingRequestBodyError
+
+            * *Description:* This happens when the user sends an empty XML document as a request.
+            The error message is, "Request body is empty."
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingSecurityElement
+
+            * *Description:* The SOAP 1.1 request is missing a security element.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingSecurityHeader
+
+            * *Description:* Your request is missing a required header.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoLoggingStatusForKey
+
+            * *Description:* There is no such thing as a logging status subresource for a key.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchBucket
+
+            * *Description:* The specified bucket does not exist.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchBucketPolicy
+
+            * *Description:* The specified bucket does not have a bucket policy.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchKey
+
+            * *Description:* The specified key does not exist.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchLifecycleConfiguration
+
+            * *Description:* The lifecycle configuration does not exist.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchUpload
+
+            * *Description:* The specified multipart upload does not exist. The upload ID might be
+            invalid, or the multipart upload might have been aborted or completed.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchVersion
+
+            * *Description:* Indicates that the version ID specified in the request does not match
+            an existing version.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NotImplemented
+
+            * *Description:* A header you provided implies functionality that is not implemented.
+
+            * *HTTP Status Code:* 501 Not Implemented
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* NotSignedUp
+
+            * *Description:* Your account is not signed up for the Amazon S3 service. You must sign
+            up before you can use Amazon S3. You can sign up at the following URL:
+            https://aws.amazon.com/s3
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* OperationAborted
+
+            * *Description:* A conflicting conditional operation is currently in progress against
+            this resource. Try again.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* PermanentRedirect
+
+            * *Description:* The bucket you are attempting to access must be addressed using the
+            specified endpoint. Send all future requests to this endpoint.
+
+            * *HTTP Status Code:* 301 Moved Permanently
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* PreconditionFailed
+
+            * *Description:* At least one of the preconditions you specified did not hold.
+
+            * *HTTP Status Code:* 412 Precondition Failed
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* Redirect
+
+            * *Description:* Temporary redirect.
+
+            * *HTTP Status Code:* 307 Moved Temporarily
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RestoreAlreadyInProgress
+
+            * *Description:* Object restore is already in progress.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestIsNotMultiPartContent
+
+            * *Description:* Bucket POST must be of the enclosure-type multipart/form-data.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestTimeout
+
+            * *Description:* Your socket connection to the server was not read from or written to
+            within the timeout period.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestTimeTooSkewed
+
+            * *Description:* The difference between the request time and the server's time is too
+            large.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestTorrentOfBucketError
+
+            * *Description:* Requesting the torrent file of a bucket is not permitted.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* SignatureDoesNotMatch
+
+            * *Description:* The request signature we calculated does not match the signature you
+            provided. Check your AWS secret access key and signing method. For more information,
+            see `REST Authentication
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html>`__ and `SOAP
+            Authentication
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/SOAPAuthentication.html>`__ for
+            details.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* ServiceUnavailable
+
+            * *Description:* Reduce your request rate.
+
+            * *HTTP Status Code:* 503 Service Unavailable
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* SlowDown
+
+            * *Description:* Reduce your request rate.
+
+            * *HTTP Status Code:* 503 Slow Down
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* TemporaryRedirect
+
+            * *Description:* You are being redirected to the bucket while DNS updates.
+
+            * *HTTP Status Code:* 307 Moved Temporarily
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* TokenRefreshRequired
+
+            * *Description:* The provided token must be refreshed.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* TooManyBuckets
+
+            * *Description:* You have attempted to create more buckets than allowed.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* UnexpectedContent
+
+            * *Description:* This request does not support content.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* UnresolvableGrantByEmailAddress
+
+            * *Description:* The email address you provided does not match any account on record.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* UserKeyMustBeSpecified
+
+            * *Description:* The bucket POST must contain the specified field name. If it is
+            specified, check the order of the fields.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
         - **Message** *(string) --*
+
+          The error message contains a generic description of the error condition in English. It is
+          intended for a human audience. Simple programs display the message directly to the end
+          user if they encounter an error condition they don't know how or don't care to handle.
+          Sophisticated programs with more exhaustive error handling and proper
+          internationalization are more likely to ignore the error message.
     """
 
 
@@ -981,6 +2938,12 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesAbortIncompleteM
     """
     Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRules` `AbortIncompleteMultipartUpload`
 
+    Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+    will wait before permanently removing all parts of the upload. For more information, see
+    `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+    in the *Amazon Simple Storage Service Developer Guide* .
+
     - **DaysAfterInitiation** *(integer) --*
 
       Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
@@ -999,6 +2962,9 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesExpirationTypeDe
 ):
     """
     Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRules` `Expiration`
+
+    Specifies the expiration for the lifecycle of the object in the form of date, days and,
+    whether the object has a delete marker.
 
     - **Date** *(datetime) --*
 
@@ -1030,6 +2996,8 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAndTagsTyp
     """
     Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAnd` `Tags`
 
+    A container of a key value name pair.
+
     - **Key** *(string) --* **[REQUIRED]**
 
       Name of the tag.
@@ -1058,13 +3026,21 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAndTypeDef
     """
     Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilter` `And`
 
+    This is used in a Lifecycle Rule Filter to apply a logical AND to two or more predicates.
+    The Lifecycle Rule will apply to any object matching all of the predicates configured
+    inside the And operator.
+
     - **Prefix** *(string) --*
+
+      Prefix identifying one or more objects to which the rule applies.
 
     - **Tags** *(list) --*
 
       All of these tags must exist in the object's tag set in order for the rule to apply.
 
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -1117,6 +3093,9 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterTypeDef(
     """
     Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRules` `Filter`
 
+    The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must have
+    exactly one of Prefix, Tag, or And specified.
+
     - **Prefix** *(string) --*
 
       Prefix identifying one or more objects to which the rule applies.
@@ -1135,13 +3114,21 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterTypeDef(
 
     - **And** *(dict) --*
 
+      This is used in a Lifecycle Rule Filter to apply a logical AND to two or more predicates.
+      The Lifecycle Rule will apply to any object matching all of the predicates configured
+      inside the And operator.
+
       - **Prefix** *(string) --*
+
+        Prefix identifying one or more objects to which the rule applies.
 
       - **Tags** *(list) --*
 
         All of these tags must exist in the object's tag set in order for the rule to apply.
 
         - *(dict) --*
+
+          A container of a key value name pair.
 
           - **Key** *(string) --* **[REQUIRED]**
 
@@ -1165,6 +3152,11 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesNoncurrentVersio
 ):
     """
     Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRules` `NoncurrentVersionExpiration`
+
+    Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+    deletes the noncurrent object versions. You set this lifecycle configuration action on a
+    bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+    noncurrent object versions at a specific period in the object's lifetime.
 
     - **NoncurrentDays** *(integer) --*
 
@@ -1273,7 +3265,12 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef(
     """
     Type definition for `BucketLifecycleConfigurationPutLifecycleConfiguration` `Rules`
 
+    A lifecycle rule for individual objects in an Amazon S3 bucket.
+
     - **Expiration** *(dict) --*
+
+      Specifies the expiration for the lifecycle of the object in the form of date, days and,
+      whether the object has a delete marker.
 
       - **Date** *(datetime) --*
 
@@ -1302,6 +3299,9 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef(
 
     - **Filter** *(dict) --*
 
+      The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must have
+      exactly one of Prefix, Tag, or And specified.
+
       - **Prefix** *(string) --*
 
         Prefix identifying one or more objects to which the rule applies.
@@ -1320,13 +3320,21 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef(
 
       - **And** *(dict) --*
 
+        This is used in a Lifecycle Rule Filter to apply a logical AND to two or more predicates.
+        The Lifecycle Rule will apply to any object matching all of the predicates configured
+        inside the And operator.
+
         - **Prefix** *(string) --*
+
+          Prefix identifying one or more objects to which the rule applies.
 
         - **Tags** *(list) --*
 
           All of these tags must exist in the object's tag set in order for the rule to apply.
 
           - *(dict) --*
+
+            A container of a key value name pair.
 
             - **Key** *(string) --* **[REQUIRED]**
 
@@ -1342,6 +3350,8 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef(
       being applied.
 
     - **Transitions** *(list) --*
+
+      Specifies when an Amazon S3 object transitions to a specified storage class.
 
       - *(dict) --*
 
@@ -1362,6 +3372,12 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef(
           The storage class to which you want the object to transition.
 
     - **NoncurrentVersionTransitions** *(list) --*
+
+      Specifies the transition rule for the lifecycle rule that describes when noncurrent objects
+      transition to the a specific storage class. If your bucket is versioning-enabled (or
+      versioning is suspended), you can set this action to request that Amazon S3 transition
+      noncurrent object versions to the a specifc storage class at a set period in the object's
+      lifetime.
 
       - *(dict) --*
 
@@ -1387,6 +3403,11 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef(
 
     - **NoncurrentVersionExpiration** *(dict) --*
 
+      Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+      deletes the noncurrent object versions. You set this lifecycle configuration action on a
+      bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+      noncurrent object versions at a specific period in the object's lifetime.
+
       - **NoncurrentDays** *(integer) --*
 
         Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -1396,6 +3417,12 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef(
         in the Amazon Simple Storage Service Developer Guide.
 
     - **AbortIncompleteMultipartUpload** *(dict) --*
+
+      Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+      will wait before permanently removing all parts of the upload. For more information, see
+      `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+      in the *Amazon Simple Storage Service Developer Guide* .
 
       - **DaysAfterInitiation** *(integer) --*
 
@@ -1415,13 +3442,20 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef(
     """
     Type definition for `BucketLifecycleConfigurationPut` `LifecycleConfiguration`
 
+    Container for lifecycle rules. You can add as many as 1,000 rules.
+
     - **Rules** *(list) --* **[REQUIRED]**
 
       A lifecycle rule for individual objects in an Amazon S3 bucket.
 
       - *(dict) --*
 
+        A lifecycle rule for individual objects in an Amazon S3 bucket.
+
         - **Expiration** *(dict) --*
+
+          Specifies the expiration for the lifecycle of the object in the form of date, days and,
+          whether the object has a delete marker.
 
           - **Date** *(datetime) --*
 
@@ -1450,6 +3484,9 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef(
 
         - **Filter** *(dict) --*
 
+          The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must have
+          exactly one of Prefix, Tag, or And specified.
+
           - **Prefix** *(string) --*
 
             Prefix identifying one or more objects to which the rule applies.
@@ -1468,13 +3505,21 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef(
 
           - **And** *(dict) --*
 
+            This is used in a Lifecycle Rule Filter to apply a logical AND to two or more predicates.
+            The Lifecycle Rule will apply to any object matching all of the predicates configured
+            inside the And operator.
+
             - **Prefix** *(string) --*
+
+              Prefix identifying one or more objects to which the rule applies.
 
             - **Tags** *(list) --*
 
               All of these tags must exist in the object's tag set in order for the rule to apply.
 
               - *(dict) --*
+
+                A container of a key value name pair.
 
                 - **Key** *(string) --* **[REQUIRED]**
 
@@ -1490,6 +3535,8 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef(
           being applied.
 
         - **Transitions** *(list) --*
+
+          Specifies when an Amazon S3 object transitions to a specified storage class.
 
           - *(dict) --*
 
@@ -1510,6 +3557,12 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef(
               The storage class to which you want the object to transition.
 
         - **NoncurrentVersionTransitions** *(list) --*
+
+          Specifies the transition rule for the lifecycle rule that describes when noncurrent objects
+          transition to the a specific storage class. If your bucket is versioning-enabled (or
+          versioning is suspended), you can set this action to request that Amazon S3 transition
+          noncurrent object versions to the a specifc storage class at a set period in the object's
+          lifetime.
 
           - *(dict) --*
 
@@ -1535,6 +3588,11 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef(
 
         - **NoncurrentVersionExpiration** *(dict) --*
 
+          Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+          deletes the noncurrent object versions. You set this lifecycle configuration action on a
+          bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+          noncurrent object versions at a specific period in the object's lifetime.
+
           - **NoncurrentDays** *(integer) --*
 
             Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -1544,6 +3602,12 @@ class BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef(
             in the Amazon Simple Storage Service Developer Guide.
 
         - **AbortIncompleteMultipartUpload** *(dict) --*
+
+          Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+          will wait before permanently removing all parts of the upload. For more information, see
+          `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+          in the *Amazon Simple Storage Service Developer Guide* .
 
           - **DaysAfterInitiation** *(integer) --*
 
@@ -1564,6 +3628,12 @@ class BucketLifecyclePutLifecycleConfigurationRulesAbortIncompleteMultipartUploa
     """
     Type definition for `BucketLifecyclePutLifecycleConfigurationRules` `AbortIncompleteMultipartUpload`
 
+    Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+    will wait before permanently removing all parts of the upload. For more information, see
+    `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+    in the *Amazon Simple Storage Service Developer Guide* .
+
     - **DaysAfterInitiation** *(integer) --*
 
       Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
@@ -1582,6 +3652,8 @@ class BucketLifecyclePutLifecycleConfigurationRulesExpirationTypeDef(
 ):
     """
     Type definition for `BucketLifecyclePutLifecycleConfigurationRules` `Expiration`
+
+    Specifies the expiration for the lifecycle of the object.
 
     - **Date** *(datetime) --*
 
@@ -1614,6 +3686,11 @@ class BucketLifecyclePutLifecycleConfigurationRulesNoncurrentVersionExpirationTy
     """
     Type definition for `BucketLifecyclePutLifecycleConfigurationRules` `NoncurrentVersionExpiration`
 
+    Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+    deletes the noncurrent object versions. You set this lifecycle configuration action on a
+    bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+    noncurrent object versions at a specific period in the object's lifetime.
+
     - **NoncurrentDays** *(integer) --*
 
       Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -1636,6 +3713,13 @@ class BucketLifecyclePutLifecycleConfigurationRulesNoncurrentVersionTransitionTy
 ):
     """
     Type definition for `BucketLifecyclePutLifecycleConfigurationRules` `NoncurrentVersionTransition`
+
+    Container for the transition rule that describes when noncurrent objects transition to the
+    ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+    ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+    suspended), you can set this action to request that Amazon S3 transition noncurrent object
+    versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` ,
+    or ``DEEP_ARCHIVE`` storage class at a specific period in the object's lifetime.
 
     - **NoncurrentDays** *(integer) --*
 
@@ -1663,6 +3747,8 @@ class BucketLifecyclePutLifecycleConfigurationRulesTransitionTypeDef(
 ):
     """
     Type definition for `BucketLifecyclePutLifecycleConfigurationRules` `Transition`
+
+    Specifies when an object transitions to a specified storage class.
 
     - **Date** *(datetime) --*
 
@@ -1711,6 +3797,8 @@ class BucketLifecyclePutLifecycleConfigurationRulesTypeDef(
 
     - **Expiration** *(dict) --*
 
+      Specifies the expiration for the lifecycle of the object.
+
       - **Date** *(datetime) --*
 
         Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
@@ -1742,6 +3830,8 @@ class BucketLifecyclePutLifecycleConfigurationRulesTypeDef(
 
     - **Transition** *(dict) --*
 
+      Specifies when an object transitions to a specified storage class.
+
       - **Date** *(datetime) --*
 
         Indicates when objects are transitioned to the specified storage class. The date value
@@ -1758,6 +3848,13 @@ class BucketLifecyclePutLifecycleConfigurationRulesTypeDef(
 
     - **NoncurrentVersionTransition** *(dict) --*
 
+      Container for the transition rule that describes when noncurrent objects transition to the
+      ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+      ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+      suspended), you can set this action to request that Amazon S3 transition noncurrent object
+      versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` ,
+      or ``DEEP_ARCHIVE`` storage class at a specific period in the object's lifetime.
+
       - **NoncurrentDays** *(integer) --*
 
         Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -1772,6 +3869,11 @@ class BucketLifecyclePutLifecycleConfigurationRulesTypeDef(
 
     - **NoncurrentVersionExpiration** *(dict) --*
 
+      Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+      deletes the noncurrent object versions. You set this lifecycle configuration action on a
+      bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+      noncurrent object versions at a specific period in the object's lifetime.
+
       - **NoncurrentDays** *(integer) --*
 
         Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -1781,6 +3883,12 @@ class BucketLifecyclePutLifecycleConfigurationRulesTypeDef(
         in the Amazon Simple Storage Service Developer Guide.
 
     - **AbortIncompleteMultipartUpload** *(dict) --*
+
+      Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+      will wait before permanently removing all parts of the upload. For more information, see
+      `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+      in the *Amazon Simple Storage Service Developer Guide* .
 
       - **DaysAfterInitiation** *(integer) --*
 
@@ -1802,6 +3910,8 @@ class BucketLifecyclePutLifecycleConfigurationTypeDef(
 
     - **Rules** *(list) --* **[REQUIRED]**
 
+      Specifies lifecycle configuration rules for an Amazon S3 bucket.
+
       - *(dict) --*
 
         Specifies lifecycle rules for an Amazon S3 bucket. For more information, see `PUT Bucket
@@ -1809,6 +3919,8 @@ class BucketLifecyclePutLifecycleConfigurationTypeDef(
         the *Amazon Simple Storage Service API Reference* .
 
         - **Expiration** *(dict) --*
+
+          Specifies the expiration for the lifecycle of the object.
 
           - **Date** *(datetime) --*
 
@@ -1841,6 +3953,8 @@ class BucketLifecyclePutLifecycleConfigurationTypeDef(
 
         - **Transition** *(dict) --*
 
+          Specifies when an object transitions to a specified storage class.
+
           - **Date** *(datetime) --*
 
             Indicates when objects are transitioned to the specified storage class. The date value
@@ -1857,6 +3971,13 @@ class BucketLifecyclePutLifecycleConfigurationTypeDef(
 
         - **NoncurrentVersionTransition** *(dict) --*
 
+          Container for the transition rule that describes when noncurrent objects transition to the
+          ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+          ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+          suspended), you can set this action to request that Amazon S3 transition noncurrent object
+          versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` ,
+          or ``DEEP_ARCHIVE`` storage class at a specific period in the object's lifetime.
+
           - **NoncurrentDays** *(integer) --*
 
             Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -1871,6 +3992,11 @@ class BucketLifecyclePutLifecycleConfigurationTypeDef(
 
         - **NoncurrentVersionExpiration** *(dict) --*
 
+          Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+          deletes the noncurrent object versions. You set this lifecycle configuration action on a
+          bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+          noncurrent object versions at a specific period in the object's lifetime.
+
           - **NoncurrentDays** *(integer) --*
 
             Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -1880,6 +4006,12 @@ class BucketLifecyclePutLifecycleConfigurationTypeDef(
             in the Amazon Simple Storage Service Developer Guide.
 
         - **AbortIncompleteMultipartUpload** *(dict) --*
+
+          Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+          will wait before permanently removing all parts of the upload. For more information, see
+          `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+          in the *Amazon Simple Storage Service Developer Guide* .
 
           - **DaysAfterInitiation** *(integer) --*
 
@@ -1904,6 +4036,8 @@ class BucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDe
 ):
     """
     Type definition for `BucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrants` `Grantee`
+
+    Container for the person being granted permissions.
 
     - **DisplayName** *(string) --*
 
@@ -1943,7 +4077,11 @@ class BucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsTypeDef(
     """
     Type definition for `BucketLoggingPutBucketLoggingStatusLoggingEnabled` `TargetGrants`
 
+    Container for granting information.
+
     - **Grantee** *(dict) --*
+
+      Container for the person being granted permissions.
 
       - **DisplayName** *(string) --*
 
@@ -1993,6 +4131,11 @@ class BucketLoggingPutBucketLoggingStatusLoggingEnabledTypeDef(
     """
     Type definition for `BucketLoggingPutBucketLoggingStatus` `LoggingEnabled`
 
+    Describes where logs are stored and the prefix that Amazon S3 assigns to all log object keys
+    for a bucket. For more information, see `PUT Bucket logging
+    <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlogging.html>`__ in the *Amazon
+    Simple Storage Service API Reference* .
+
     - **TargetBucket** *(string) --* **[REQUIRED]**
 
       Specifies the bucket where you want Amazon S3 to store server access logs. You can have your
@@ -2003,9 +4146,15 @@ class BucketLoggingPutBucketLoggingStatusLoggingEnabledTypeDef(
 
     - **TargetGrants** *(list) --*
 
+      Container for granting information.
+
       - *(dict) --*
 
+        Container for granting information.
+
         - **Grantee** *(dict) --*
+
+          Container for the person being granted permissions.
 
           - **DisplayName** *(string) --*
 
@@ -2051,7 +4200,14 @@ class BucketLoggingPutBucketLoggingStatusTypeDef(
     """
     Type definition for `BucketLoggingPut` `BucketLoggingStatus`
 
+    Container for logging status information.
+
     - **LoggingEnabled** *(dict) --*
+
+      Describes where logs are stored and the prefix that Amazon S3 assigns to all log object keys
+      for a bucket. For more information, see `PUT Bucket logging
+      <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlogging.html>`__ in the *Amazon
+      Simple Storage Service API Reference* .
 
       - **TargetBucket** *(string) --* **[REQUIRED]**
 
@@ -2063,9 +4219,15 @@ class BucketLoggingPutBucketLoggingStatusTypeDef(
 
       - **TargetGrants** *(list) --*
 
+        Container for granting information.
+
         - *(dict) --*
 
+          Container for granting information.
+
           - **Grantee** *(dict) --*
+
+            Container for the person being granted permissions.
 
             - **DisplayName** *(string) --*
 
@@ -2169,7 +4331,12 @@ class BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurations
     """
     Type definition for `BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilter` `Key`
 
+    A container for object key name prefix and suffix filtering rules.
+
     - **FilterRules** *(list) --*
+
+      A list of containers for the key value pair that defines the criteria for the filter
+      rule.
 
       - *(dict) --*
 
@@ -2206,9 +4373,19 @@ class BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurations
     """
     Type definition for `BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurations` `Filter`
 
+    Specifies object key name filtering rules. For information about key name filtering, see
+    `Configuring Event Notifications
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+    Simple Storage Service Developer Guide* .
+
     - **Key** *(dict) --*
 
+      A container for object key name prefix and suffix filtering rules.
+
       - **FilterRules** *(list) --*
+
+        A list of containers for the key value pair that defines the criteria for the filter
+        rule.
 
         - *(dict) --*
 
@@ -2276,9 +4453,19 @@ class BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurations
 
     - **Filter** *(dict) --*
 
+      Specifies object key name filtering rules. For information about key name filtering, see
+      `Configuring Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+      Simple Storage Service Developer Guide* .
+
       - **Key** *(dict) --*
 
+        A container for object key name prefix and suffix filtering rules.
+
         - **FilterRules** *(list) --*
+
+          A list of containers for the key value pair that defines the criteria for the filter
+          rule.
 
           - *(dict) --*
 
@@ -2348,7 +4535,12 @@ class BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterKey
     """
     Type definition for `BucketNotificationPutNotificationConfigurationQueueConfigurationsFilter` `Key`
 
+    A container for object key name prefix and suffix filtering rules.
+
     - **FilterRules** *(list) --*
+
+      A list of containers for the key value pair that defines the criteria for the filter
+      rule.
 
       - *(dict) --*
 
@@ -2385,9 +4577,19 @@ class BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterTyp
     """
     Type definition for `BucketNotificationPutNotificationConfigurationQueueConfigurations` `Filter`
 
+    Specifies object key name filtering rules. For information about key name filtering, see
+    `Configuring Event Notifications
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+    Simple Storage Service Developer Guide* .
+
     - **Key** *(dict) --*
 
+      A container for object key name prefix and suffix filtering rules.
+
       - **FilterRules** *(list) --*
+
+        A list of containers for the key value pair that defines the criteria for the filter
+        rule.
 
         - *(dict) --*
 
@@ -2445,15 +4647,27 @@ class BucketNotificationPutNotificationConfigurationQueueConfigurationsTypeDef(
 
     - **Events** *(list) --* **[REQUIRED]**
 
+      A collection of bucket events for which to send notiications
+
       - *(string) --*
 
         The bucket event for which to send notifications.
 
     - **Filter** *(dict) --*
 
+      Specifies object key name filtering rules. For information about key name filtering, see
+      `Configuring Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+      Simple Storage Service Developer Guide* .
+
       - **Key** *(dict) --*
 
+        A container for object key name prefix and suffix filtering rules.
+
         - **FilterRules** *(list) --*
+
+          A list of containers for the key value pair that defines the criteria for the filter
+          rule.
 
           - *(dict) --*
 
@@ -2523,7 +4737,12 @@ class BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterKey
     """
     Type definition for `BucketNotificationPutNotificationConfigurationTopicConfigurationsFilter` `Key`
 
+    A container for object key name prefix and suffix filtering rules.
+
     - **FilterRules** *(list) --*
+
+      A list of containers for the key value pair that defines the criteria for the filter
+      rule.
 
       - *(dict) --*
 
@@ -2560,9 +4779,19 @@ class BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterTyp
     """
     Type definition for `BucketNotificationPutNotificationConfigurationTopicConfigurations` `Filter`
 
+    Specifies object key name filtering rules. For information about key name filtering, see
+    `Configuring Event Notifications
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+    Simple Storage Service Developer Guide* .
+
     - **Key** *(dict) --*
 
+      A container for object key name prefix and suffix filtering rules.
+
       - **FilterRules** *(list) --*
+
+        A list of containers for the key value pair that defines the criteria for the filter
+        rule.
 
         - *(dict) --*
 
@@ -2631,9 +4860,19 @@ class BucketNotificationPutNotificationConfigurationTopicConfigurationsTypeDef(
 
     - **Filter** *(dict) --*
 
+      Specifies object key name filtering rules. For information about key name filtering, see
+      `Configuring Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+      Simple Storage Service Developer Guide* .
+
       - **Key** *(dict) --*
 
+        A container for object key name prefix and suffix filtering rules.
+
         - **FilterRules** *(list) --*
+
+          A list of containers for the key value pair that defines the criteria for the filter
+          rule.
 
           - *(dict) --*
 
@@ -2678,6 +4917,9 @@ class BucketNotificationPutNotificationConfigurationTypeDef(
     """
     Type definition for `BucketNotificationPut` `NotificationConfiguration`
 
+    A container for specifying the notification configuration of the bucket. If this element is
+    empty, notifications are turned off for the bucket.
+
     - **TopicConfigurations** *(list) --*
 
       The topic to which notifications are sent and the events for which notifications are generated.
@@ -2710,9 +4952,19 @@ class BucketNotificationPutNotificationConfigurationTypeDef(
 
         - **Filter** *(dict) --*
 
+          Specifies object key name filtering rules. For information about key name filtering, see
+          `Configuring Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+          Simple Storage Service Developer Guide* .
+
           - **Key** *(dict) --*
 
+            A container for object key name prefix and suffix filtering rules.
+
             - **FilterRules** *(list) --*
+
+              A list of containers for the key value pair that defines the criteria for the filter
+              rule.
 
               - *(dict) --*
 
@@ -2754,15 +5006,27 @@ class BucketNotificationPutNotificationConfigurationTypeDef(
 
         - **Events** *(list) --* **[REQUIRED]**
 
+          A collection of bucket events for which to send notiications
+
           - *(string) --*
 
             The bucket event for which to send notifications.
 
         - **Filter** *(dict) --*
 
+          Specifies object key name filtering rules. For information about key name filtering, see
+          `Configuring Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+          Simple Storage Service Developer Guide* .
+
           - **Key** *(dict) --*
 
+            A container for object key name prefix and suffix filtering rules.
+
             - **FilterRules** *(list) --*
+
+              A list of containers for the key value pair that defines the criteria for the filter
+              rule.
 
               - *(dict) --*
 
@@ -2813,9 +5077,19 @@ class BucketNotificationPutNotificationConfigurationTypeDef(
 
         - **Filter** *(dict) --*
 
+          Specifies object key name filtering rules. For information about key name filtering, see
+          `Configuring Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+          Simple Storage Service Developer Guide* .
+
           - **Key** *(dict) --*
 
+            A container for object key name prefix and suffix filtering rules.
+
             - **FilterRules** *(list) --*
+
+              A list of containers for the key value pair that defines the criteria for the filter
+              rule.
 
               - *(dict) --*
 
@@ -2848,6 +5122,8 @@ class BucketRequestPaymentPutRequestPaymentConfigurationTypeDef(
     """
     Type definition for `BucketRequestPaymentPut` `RequestPaymentConfiguration`
 
+    Container for Payer.
+
     - **Payer** *(string) --* **[REQUIRED]**
 
       Specifies who pays for the download and request fees.
@@ -2862,6 +5138,8 @@ _BucketTaggingPutTaggingTagSetTypeDef = TypedDict(
 class BucketTaggingPutTaggingTagSetTypeDef(_BucketTaggingPutTaggingTagSetTypeDef):
     """
     Type definition for `BucketTaggingPutTagging` `TagSet`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --* **[REQUIRED]**
 
@@ -2883,9 +5161,15 @@ class BucketTaggingPutTaggingTypeDef(_BucketTaggingPutTaggingTypeDef):
     """
     Type definition for `BucketTaggingPut` `Tagging`
 
+    Container for the TagSet and Tag elements.
+
     - **TagSet** *(list) --* **[REQUIRED]**
 
+      A collection for a a set of tags
+
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -2909,6 +5193,8 @@ class BucketVersioningPutVersioningConfigurationTypeDef(
 ):
     """
     Type definition for `BucketVersioningPut` `VersioningConfiguration`
+
+    Container for setting the versioning state.
 
     - **MFADelete** *(string) --*
 
@@ -3186,6 +5472,8 @@ class BucketWebsitePutWebsiteConfigurationTypeDef(
     """
     Type definition for `BucketWebsitePut` `WebsiteConfiguration`
 
+    Container for the request.
+
     - **ErrorDocument** *(dict) --*
 
       The name of the error document for the website.
@@ -3320,6 +5608,8 @@ class ClientCompleteMultipartUploadMultipartUploadPartsTypeDef(
     """
     Type definition for `ClientCompleteMultipartUploadMultipartUpload` `Parts`
 
+    Details of the parts that were uploaded.
+
     - **ETag** *(string) --*
 
       Entity tag returned when the part was uploaded.
@@ -3343,9 +5633,15 @@ class ClientCompleteMultipartUploadMultipartUploadTypeDef(
     """
     Type definition for `ClientCompleteMultipartUpload` `MultipartUpload`
 
+    The container for the multipart upload request information.
+
     - **Parts** *(list) --*
 
+      Array of CompletedPart data types.
+
       - *(dict) --*
+
+        Details of the parts that were uploaded.
 
         - **ETag** *(string) --*
 
@@ -3382,9 +5678,15 @@ class ClientCompleteMultipartUploadResponseTypeDef(
 
     - **Location** *(string) --*
 
+      The URI that identifies the newly created object.
+
     - **Bucket** *(string) --*
 
+      The name of the bucket that contains the newly created object.
+
     - **Key** *(string) --*
+
+      The object key of the newly created object.
 
     - **Expiration** *(string) --*
 
@@ -3393,21 +5695,27 @@ class ClientCompleteMultipartUploadResponseTypeDef(
 
     - **ETag** *(string) --*
 
-      Entity tag of the object.
+      Entity tag that identifies the newly created object's data. Objects with different object
+      data will have different entity tags. The entity tag is an opaque string. The entity tag may
+      or may not be an MD5 digest of the object data. If the entity tag is not an MD5 digest of the
+      object data, it will contain one or more nonhexadecimal characters and/or will consist of
+      less than 32 or more than 32 hexadecimal digits.
 
     - **ServerSideEncryption** *(string) --*
 
-      The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256,
-      aws:kms).
+      If you specified server-side encryption either with an Amazon S3-managed encryption key or an
+      AWS KMS customer master key (CMK) in your initiate multipart upload request, the response
+      includes this header. It confirms the encryption algorithm that Amazon S3 used to encrypt the
+      object.
 
     - **VersionId** *(string) --*
 
-      Version of the object.
+      Version ID of the newly created object, in case the bucket has versioning turned on.
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **RequestCharged** *(string) --*
 
@@ -3428,9 +5736,17 @@ class ClientCopyObjectResponseCopyObjectResultTypeDef(
     """
     Type definition for `ClientCopyObjectResponse` `CopyObjectResult`
 
+    Container for all response elements.
+
     - **ETag** *(string) --*
 
+      Returns the ETag of the new object. The ETag reflects only changes to the contents of an
+      object, not its metadata. The source and destination ETag is identical for a successfully
+      copied object.
+
     - **LastModified** *(datetime) --*
+
+      Returns the date that the object was last modified.
     """
 
 
@@ -3458,15 +5774,25 @@ class ClientCopyObjectResponseTypeDef(_ClientCopyObjectResponseTypeDef):
 
     - **CopyObjectResult** *(dict) --*
 
+      Container for all response elements.
+
       - **ETag** *(string) --*
 
+        Returns the ETag of the new object. The ETag reflects only changes to the contents of an
+        object, not its metadata. The source and destination ETag is identical for a successfully
+        copied object.
+
       - **LastModified** *(datetime) --*
+
+        Returns the date that the object was last modified.
 
     - **Expiration** *(string) --*
 
       If the object expiration is configured, the response includes this header.
 
     - **CopySourceVersionId** *(string) --*
+
+      Version of the copied object in the destination bucket.
 
     - **VersionId** *(string) --*
 
@@ -3490,8 +5816,8 @@ class ClientCopyObjectResponseTypeDef(_ClientCopyObjectResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **SSEKMSEncryptionContext** *(string) --*
 
@@ -3518,6 +5844,8 @@ class ClientCreateBucketCreateBucketConfigurationTypeDef(
     """
     Type definition for `ClientCreateBucket` `CreateBucketConfiguration`
 
+    The configuration information for the bucket.
+
     - **LocationConstraint** *(string) --*
 
       Specifies the region where the bucket will be created. If you don't specify a region, the
@@ -3535,6 +5863,9 @@ class ClientCreateBucketResponseTypeDef(_ClientCreateBucketResponseTypeDef):
     Type definition for `ClientCreateBucket` `Response`
 
     - **Location** *(string) --*
+
+      Specifies the region where the bucket will be created. If you are creating a bucket on the US
+      East (N. Virginia) region (us-east-1), you do not need to specify the location.
     """
 
 
@@ -3565,11 +5896,21 @@ class ClientCreateMultipartUploadResponseTypeDef(
 
     - **AbortDate** *(datetime) --*
 
-      Date when multipart upload will become eligible for abort operation by lifecycle.
+      If the bucket has a lifecycle rule configured with an action to abort incomplete multipart
+      uploads and the prefix in the lifecycle rule matches the object name in the request, the
+      response includes this header. The header indicates when the initiated multipart upload
+      becomes eligible for an abort operation. For more information, see `Aborting Incomplete
+      Multipart Uploads Using a Bucket Lifecycle Policy
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+      .
+
+      The response also includes the x-amz-abort-rule-id header that provides the ID of the
+      lifecycle configuration rule that defines this action.
 
     - **AbortRuleId** *(string) --*
 
-      Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
+      This header is returned along with the x-amz-abort-date header. It identifies the applicable
+      lifecycle configuration rule that defines the action to abort incomplete multipart uploads.
 
     - **Bucket** *(string) --*
 
@@ -3601,8 +5942,8 @@ class ClientCreateMultipartUploadResponseTypeDef(
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **SSEKMSEncryptionContext** *(string) --*
 
@@ -3674,6 +6015,8 @@ class ClientDeleteObjectsDeleteObjectsTypeDef(
     """
     Type definition for `ClientDeleteObjectsDelete` `Objects`
 
+    Object Identifier is unique value to identify objects.
+
     - **Key** *(string) --* **[REQUIRED]**
 
       Key name of the object to delete.
@@ -3699,9 +6042,15 @@ class ClientDeleteObjectsDeleteTypeDef(
     """
     Type definition for `ClientDeleteObjects` `Delete`
 
+    Container for the request.
+
     - **Objects** *(list) --* **[REQUIRED]**
 
+      The objects to delete.
+
       - *(dict) --*
+
+        Object Identifier is unique value to identify objects.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -3731,13 +6080,27 @@ class ClientDeleteObjectsResponseDeletedTypeDef(
     """
     Type definition for `ClientDeleteObjectsResponse` `Deleted`
 
+    Information about the deleted object.
+
     - **Key** *(string) --*
+
+      The name of the deleted object.
 
     - **VersionId** *(string) --*
 
+      The version ID of the deleted object.
+
     - **DeleteMarker** *(boolean) --*
 
+      Specifies whether the versioned object that was permanently deleted was (true) or was not
+      (false) a delete marker. In a simple DELETE, this header indicates whether (true) or not
+      (false) a delete marker was created.
+
     - **DeleteMarkerVersionId** *(string) --*
+
+      The version ID of the delete marker created as a result of the DELETE operation. If you
+      delete a specific object version, the value returned by this header is the version ID of
+      the object version deleted.
     """
 
 
@@ -3754,13 +6117,955 @@ class ClientDeleteObjectsResponseErrorsTypeDef(
     """
     Type definition for `ClientDeleteObjectsResponse` `Errors`
 
+    Container for all error elements.
+
     - **Key** *(string) --*
+
+      The error key.
 
     - **VersionId** *(string) --*
 
+      The version ID of the error.
+
     - **Code** *(string) --*
 
+      The error code is a string that uniquely identifies an error condition. It is meant to be
+      read and understood by programs that detect and handle errors by type.
+
+       **Amazon S3 error codes**
+
+      *
+
+        * *Code:* AccessDenied
+
+        * *Description:* Access Denied
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AccountProblem
+
+        * *Description:* There is a problem with your AWS account that prevents the operation
+        from completing successfully. Contact AWS Support for further assistance.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AllAccessDisabled
+
+        * *Description:* All access to this Amazon S3 resource has been disabled. Contact AWS
+        Support for further assistance.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AmbiguousGrantByEmailAddress
+
+        * *Description:* The email address you provided is associated with more than one
+        account.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AuthorizationHeaderMalformed
+
+        * *Description:* The authorization header you provided is invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *HTTP Status Code:* N/A
+
+      *
+
+        * *Code:* BadDigest
+
+        * *Description:* The Content-MD5 you specified did not match what we received.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* BucketAlreadyExists
+
+        * *Description:* The requested bucket name is not available. The bucket namespace is
+        shared by all users of the system. Please select a different name and try again.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* BucketAlreadyOwnedByYou
+
+        * *Description:* The bucket you tried to create already exists, and you own it. Amazon
+        S3 returns this error in all AWS Regions except in the North Virginia region. For
+        legacy compatibility, if you re-create an existing bucket that you already own in the
+        North Virginia region, Amazon S3 returns 200 OK and resets the bucket access control
+        lists (ACLs).
+
+        * *Code:* 409 Conflict (in all regions except the North Virginia region)
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* BucketNotEmpty
+
+        * *Description:* The bucket you tried to delete is not empty.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* CredentialsNotSupported
+
+        * *Description:* This request does not support credentials.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* CrossLocationLoggingProhibited
+
+        * *Description:* Cross-location logging not allowed. Buckets in one geographic location
+        cannot log information to a bucket in another location.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* EntityTooSmall
+
+        * *Description:* Your proposed upload is smaller than the minimum allowed object size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* EntityTooLarge
+
+        * *Description:* Your proposed upload exceeds the maximum allowed object size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* ExpiredToken
+
+        * *Description:* The provided token has expired.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* IllegalVersioningConfigurationException
+
+        * *Description:* Indicates that the versioning configuration specified in the request
+        is invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* IncompleteBody
+
+        * *Description:* You did not provide the number of bytes specified by the
+        Content-Length HTTP header
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* IncorrectNumberOfFilesInPostRequest
+
+        * *Description:* POST requires exactly one file upload per request.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InlineDataTooLarge
+
+        * *Description:* Inline data exceeds the maximum allowed size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InternalError
+
+        * *Description:* We encountered an internal error. Please try again.
+
+        * *HTTP Status Code:* 500 Internal Server Error
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* InvalidAccessKeyId
+
+        * *Description:* The AWS access key ID you provided does not exist in our records.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidAddressingHeader
+
+        * *Description:* You must specify the Anonymous role.
+
+        * *HTTP Status Code:* N/A
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidArgument
+
+        * *Description:* Invalid Argument
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidBucketName
+
+        * *Description:* The specified bucket is not valid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidBucketState
+
+        * *Description:* The request is not valid with the current state of the bucket.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidDigest
+
+        * *Description:* The Content-MD5 you specified is not valid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidEncryptionAlgorithmError
+
+        * *Description:* The encryption request you specified is not valid. The valid value is
+        AES256.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidLocationConstraint
+
+        * *Description:* The specified location constraint is not valid. For more information
+        about Regions, see `How to Select a Region for Your Buckets
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro>`__
+        .
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidObjectState
+
+        * *Description:* The operation is not valid for the current state of the object.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPart
+
+        * *Description:* One or more of the specified parts could not be found. The part might
+        not have been uploaded, or the specified entity tag might not have matched the part's
+        entity tag.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPartOrder
+
+        * *Description:* The list of parts was not in ascending order. Parts list must be
+        specified in order by part number.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPayer
+
+        * *Description:* All access to this object has been disabled. Please contact AWS
+        Support for further assistance.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPolicyDocument
+
+        * *Description:* The content of the form does not meet the conditions specified in the
+        policy document.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidRange
+
+        * *Description:* The requested range cannot be satisfied.
+
+        * *HTTP Status Code:* 416 Requested Range Not Satisfiable
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Please use AWS4-HMAC-SHA256.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* SOAP requests must be made over an HTTPS connection.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+        non-DNS compliant names.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+        periods (.) in their names.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Accelerate endpoint only supports virtual style
+        requests.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Accelerate is not configured on this bucket.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Accelerate is disabled on this bucket.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration is not supported on this bucket.
+        Contact AWS Support for more information.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration cannot be enabled on this bucket.
+        Contact AWS Support for more information.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidSecurity
+
+        * *Description:* The provided security credentials are not valid.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidSOAPRequest
+
+        * *Description:* The SOAP request body is invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidStorageClass
+
+        * *Description:* The storage class you specified is not valid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidTargetBucketForLogging
+
+        * *Description:* The target bucket for logging does not exist, is not owned by you, or
+        does not have the appropriate grants for the log-delivery group.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidToken
+
+        * *Description:* The provided token is malformed or otherwise invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidURI
+
+        * *Description:* Couldn't parse the specified URI.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* KeyTooLongError
+
+        * *Description:* Your key is too long.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MalformedACLError
+
+        * *Description:* The XML you provided was not well-formed or did not validate against
+        our published schema.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MalformedPOSTRequest
+
+        * *Description:* The body of your POST request is not well-formed multipart/form-data.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MalformedXML
+
+        * *Description:* This happens when the user sends malformed XML (XML that doesn't
+        conform to the published XSD) for the configuration. The error message is, "The XML you
+        provided was not well-formed or did not validate against our published schema."
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MaxMessageLengthExceeded
+
+        * *Description:* Your request was too big.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MaxPostPreDataLengthExceededError
+
+        * *Description:* Your POST request fields preceding the upload file were too large.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MetadataTooLarge
+
+        * *Description:* Your metadata headers exceed the maximum allowed metadata size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MethodNotAllowed
+
+        * *Description:* The specified method is not allowed against this resource.
+
+        * *HTTP Status Code:* 405 Method Not Allowed
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingAttachment
+
+        * *Description:* A SOAP attachment was expected, but none were found.
+
+        * *HTTP Status Code:* N/A
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingContentLength
+
+        * *Description:* You must provide the Content-Length HTTP header.
+
+        * *HTTP Status Code:* 411 Length Required
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingRequestBodyError
+
+        * *Description:* This happens when the user sends an empty XML document as a request.
+        The error message is, "Request body is empty."
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingSecurityElement
+
+        * *Description:* The SOAP 1.1 request is missing a security element.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingSecurityHeader
+
+        * *Description:* Your request is missing a required header.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoLoggingStatusForKey
+
+        * *Description:* There is no such thing as a logging status subresource for a key.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchBucket
+
+        * *Description:* The specified bucket does not exist.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchBucketPolicy
+
+        * *Description:* The specified bucket does not have a bucket policy.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchKey
+
+        * *Description:* The specified key does not exist.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchLifecycleConfiguration
+
+        * *Description:* The lifecycle configuration does not exist.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchUpload
+
+        * *Description:* The specified multipart upload does not exist. The upload ID might be
+        invalid, or the multipart upload might have been aborted or completed.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchVersion
+
+        * *Description:* Indicates that the version ID specified in the request does not match
+        an existing version.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NotImplemented
+
+        * *Description:* A header you provided implies functionality that is not implemented.
+
+        * *HTTP Status Code:* 501 Not Implemented
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* NotSignedUp
+
+        * *Description:* Your account is not signed up for the Amazon S3 service. You must sign
+        up before you can use Amazon S3. You can sign up at the following URL:
+        https://aws.amazon.com/s3
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* OperationAborted
+
+        * *Description:* A conflicting conditional operation is currently in progress against
+        this resource. Try again.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* PermanentRedirect
+
+        * *Description:* The bucket you are attempting to access must be addressed using the
+        specified endpoint. Send all future requests to this endpoint.
+
+        * *HTTP Status Code:* 301 Moved Permanently
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* PreconditionFailed
+
+        * *Description:* At least one of the preconditions you specified did not hold.
+
+        * *HTTP Status Code:* 412 Precondition Failed
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* Redirect
+
+        * *Description:* Temporary redirect.
+
+        * *HTTP Status Code:* 307 Moved Temporarily
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RestoreAlreadyInProgress
+
+        * *Description:* Object restore is already in progress.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestIsNotMultiPartContent
+
+        * *Description:* Bucket POST must be of the enclosure-type multipart/form-data.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestTimeout
+
+        * *Description:* Your socket connection to the server was not read from or written to
+        within the timeout period.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestTimeTooSkewed
+
+        * *Description:* The difference between the request time and the server's time is too
+        large.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestTorrentOfBucketError
+
+        * *Description:* Requesting the torrent file of a bucket is not permitted.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* SignatureDoesNotMatch
+
+        * *Description:* The request signature we calculated does not match the signature you
+        provided. Check your AWS secret access key and signing method. For more information,
+        see `REST Authentication
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html>`__ and `SOAP
+        Authentication
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/SOAPAuthentication.html>`__ for
+        details.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* ServiceUnavailable
+
+        * *Description:* Reduce your request rate.
+
+        * *HTTP Status Code:* 503 Service Unavailable
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* SlowDown
+
+        * *Description:* Reduce your request rate.
+
+        * *HTTP Status Code:* 503 Slow Down
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* TemporaryRedirect
+
+        * *Description:* You are being redirected to the bucket while DNS updates.
+
+        * *HTTP Status Code:* 307 Moved Temporarily
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* TokenRefreshRequired
+
+        * *Description:* The provided token must be refreshed.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* TooManyBuckets
+
+        * *Description:* You have attempted to create more buckets than allowed.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* UnexpectedContent
+
+        * *Description:* This request does not support content.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* UnresolvableGrantByEmailAddress
+
+        * *Description:* The email address you provided does not match any account on record.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* UserKeyMustBeSpecified
+
+        * *Description:* The bucket POST must contain the specified field name. If it is
+        specified, check the order of the fields.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
     - **Message** *(string) --*
+
+      The error message contains a generic description of the error condition in English. It is
+      intended for a human audience. Simple programs display the message directly to the end
+      user if they encounter an error condition they don't know how or don't care to handle.
+      Sophisticated programs with more exhaustive error handling and proper
+      internationalization are more likely to ignore the error message.
     """
 
 
@@ -3781,15 +7086,32 @@ class ClientDeleteObjectsResponseTypeDef(_ClientDeleteObjectsResponseTypeDef):
 
     - **Deleted** *(list) --*
 
+      Container element for a successful delete. It identifies the object that was successfully
+      deleted.
+
       - *(dict) --*
+
+        Information about the deleted object.
 
         - **Key** *(string) --*
 
+          The name of the deleted object.
+
         - **VersionId** *(string) --*
+
+          The version ID of the deleted object.
 
         - **DeleteMarker** *(boolean) --*
 
+          Specifies whether the versioned object that was permanently deleted was (true) or was not
+          (false) a delete marker. In a simple DELETE, this header indicates whether (true) or not
+          (false) a delete marker was created.
+
         - **DeleteMarkerVersionId** *(string) --*
+
+          The version ID of the delete marker created as a result of the DELETE operation. If you
+          delete a specific object version, the value returned by this header is the version ID of
+          the object version deleted.
 
     - **RequestCharged** *(string) --*
 
@@ -3797,15 +7119,960 @@ class ClientDeleteObjectsResponseTypeDef(_ClientDeleteObjectsResponseTypeDef):
 
     - **Errors** *(list) --*
 
+      Container for a failed delete operation that describes the object that Amazon S3 attempted to
+      delete and the error it encountered.
+
       - *(dict) --*
+
+        Container for all error elements.
 
         - **Key** *(string) --*
 
+          The error key.
+
         - **VersionId** *(string) --*
+
+          The version ID of the error.
 
         - **Code** *(string) --*
 
+          The error code is a string that uniquely identifies an error condition. It is meant to be
+          read and understood by programs that detect and handle errors by type.
+
+           **Amazon S3 error codes**
+
+          *
+
+            * *Code:* AccessDenied
+
+            * *Description:* Access Denied
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AccountProblem
+
+            * *Description:* There is a problem with your AWS account that prevents the operation
+            from completing successfully. Contact AWS Support for further assistance.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AllAccessDisabled
+
+            * *Description:* All access to this Amazon S3 resource has been disabled. Contact AWS
+            Support for further assistance.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AmbiguousGrantByEmailAddress
+
+            * *Description:* The email address you provided is associated with more than one
+            account.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AuthorizationHeaderMalformed
+
+            * *Description:* The authorization header you provided is invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *HTTP Status Code:* N/A
+
+          *
+
+            * *Code:* BadDigest
+
+            * *Description:* The Content-MD5 you specified did not match what we received.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* BucketAlreadyExists
+
+            * *Description:* The requested bucket name is not available. The bucket namespace is
+            shared by all users of the system. Please select a different name and try again.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* BucketAlreadyOwnedByYou
+
+            * *Description:* The bucket you tried to create already exists, and you own it. Amazon
+            S3 returns this error in all AWS Regions except in the North Virginia region. For
+            legacy compatibility, if you re-create an existing bucket that you already own in the
+            North Virginia region, Amazon S3 returns 200 OK and resets the bucket access control
+            lists (ACLs).
+
+            * *Code:* 409 Conflict (in all regions except the North Virginia region)
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* BucketNotEmpty
+
+            * *Description:* The bucket you tried to delete is not empty.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* CredentialsNotSupported
+
+            * *Description:* This request does not support credentials.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* CrossLocationLoggingProhibited
+
+            * *Description:* Cross-location logging not allowed. Buckets in one geographic location
+            cannot log information to a bucket in another location.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* EntityTooSmall
+
+            * *Description:* Your proposed upload is smaller than the minimum allowed object size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* EntityTooLarge
+
+            * *Description:* Your proposed upload exceeds the maximum allowed object size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* ExpiredToken
+
+            * *Description:* The provided token has expired.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* IllegalVersioningConfigurationException
+
+            * *Description:* Indicates that the versioning configuration specified in the request
+            is invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* IncompleteBody
+
+            * *Description:* You did not provide the number of bytes specified by the
+            Content-Length HTTP header
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* IncorrectNumberOfFilesInPostRequest
+
+            * *Description:* POST requires exactly one file upload per request.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InlineDataTooLarge
+
+            * *Description:* Inline data exceeds the maximum allowed size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InternalError
+
+            * *Description:* We encountered an internal error. Please try again.
+
+            * *HTTP Status Code:* 500 Internal Server Error
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* InvalidAccessKeyId
+
+            * *Description:* The AWS access key ID you provided does not exist in our records.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidAddressingHeader
+
+            * *Description:* You must specify the Anonymous role.
+
+            * *HTTP Status Code:* N/A
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidArgument
+
+            * *Description:* Invalid Argument
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidBucketName
+
+            * *Description:* The specified bucket is not valid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidBucketState
+
+            * *Description:* The request is not valid with the current state of the bucket.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidDigest
+
+            * *Description:* The Content-MD5 you specified is not valid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidEncryptionAlgorithmError
+
+            * *Description:* The encryption request you specified is not valid. The valid value is
+            AES256.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidLocationConstraint
+
+            * *Description:* The specified location constraint is not valid. For more information
+            about Regions, see `How to Select a Region for Your Buckets
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro>`__
+            .
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidObjectState
+
+            * *Description:* The operation is not valid for the current state of the object.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPart
+
+            * *Description:* One or more of the specified parts could not be found. The part might
+            not have been uploaded, or the specified entity tag might not have matched the part's
+            entity tag.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPartOrder
+
+            * *Description:* The list of parts was not in ascending order. Parts list must be
+            specified in order by part number.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPayer
+
+            * *Description:* All access to this object has been disabled. Please contact AWS
+            Support for further assistance.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPolicyDocument
+
+            * *Description:* The content of the form does not meet the conditions specified in the
+            policy document.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidRange
+
+            * *Description:* The requested range cannot be satisfied.
+
+            * *HTTP Status Code:* 416 Requested Range Not Satisfiable
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Please use AWS4-HMAC-SHA256.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* SOAP requests must be made over an HTTPS connection.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+            non-DNS compliant names.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+            periods (.) in their names.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Accelerate endpoint only supports virtual style
+            requests.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Accelerate is not configured on this bucket.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Accelerate is disabled on this bucket.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration is not supported on this bucket.
+            Contact AWS Support for more information.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration cannot be enabled on this bucket.
+            Contact AWS Support for more information.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidSecurity
+
+            * *Description:* The provided security credentials are not valid.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidSOAPRequest
+
+            * *Description:* The SOAP request body is invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidStorageClass
+
+            * *Description:* The storage class you specified is not valid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidTargetBucketForLogging
+
+            * *Description:* The target bucket for logging does not exist, is not owned by you, or
+            does not have the appropriate grants for the log-delivery group.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidToken
+
+            * *Description:* The provided token is malformed or otherwise invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidURI
+
+            * *Description:* Couldn't parse the specified URI.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* KeyTooLongError
+
+            * *Description:* Your key is too long.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MalformedACLError
+
+            * *Description:* The XML you provided was not well-formed or did not validate against
+            our published schema.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MalformedPOSTRequest
+
+            * *Description:* The body of your POST request is not well-formed multipart/form-data.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MalformedXML
+
+            * *Description:* This happens when the user sends malformed XML (XML that doesn't
+            conform to the published XSD) for the configuration. The error message is, "The XML you
+            provided was not well-formed or did not validate against our published schema."
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MaxMessageLengthExceeded
+
+            * *Description:* Your request was too big.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MaxPostPreDataLengthExceededError
+
+            * *Description:* Your POST request fields preceding the upload file were too large.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MetadataTooLarge
+
+            * *Description:* Your metadata headers exceed the maximum allowed metadata size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MethodNotAllowed
+
+            * *Description:* The specified method is not allowed against this resource.
+
+            * *HTTP Status Code:* 405 Method Not Allowed
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingAttachment
+
+            * *Description:* A SOAP attachment was expected, but none were found.
+
+            * *HTTP Status Code:* N/A
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingContentLength
+
+            * *Description:* You must provide the Content-Length HTTP header.
+
+            * *HTTP Status Code:* 411 Length Required
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingRequestBodyError
+
+            * *Description:* This happens when the user sends an empty XML document as a request.
+            The error message is, "Request body is empty."
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingSecurityElement
+
+            * *Description:* The SOAP 1.1 request is missing a security element.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingSecurityHeader
+
+            * *Description:* Your request is missing a required header.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoLoggingStatusForKey
+
+            * *Description:* There is no such thing as a logging status subresource for a key.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchBucket
+
+            * *Description:* The specified bucket does not exist.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchBucketPolicy
+
+            * *Description:* The specified bucket does not have a bucket policy.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchKey
+
+            * *Description:* The specified key does not exist.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchLifecycleConfiguration
+
+            * *Description:* The lifecycle configuration does not exist.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchUpload
+
+            * *Description:* The specified multipart upload does not exist. The upload ID might be
+            invalid, or the multipart upload might have been aborted or completed.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchVersion
+
+            * *Description:* Indicates that the version ID specified in the request does not match
+            an existing version.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NotImplemented
+
+            * *Description:* A header you provided implies functionality that is not implemented.
+
+            * *HTTP Status Code:* 501 Not Implemented
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* NotSignedUp
+
+            * *Description:* Your account is not signed up for the Amazon S3 service. You must sign
+            up before you can use Amazon S3. You can sign up at the following URL:
+            https://aws.amazon.com/s3
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* OperationAborted
+
+            * *Description:* A conflicting conditional operation is currently in progress against
+            this resource. Try again.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* PermanentRedirect
+
+            * *Description:* The bucket you are attempting to access must be addressed using the
+            specified endpoint. Send all future requests to this endpoint.
+
+            * *HTTP Status Code:* 301 Moved Permanently
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* PreconditionFailed
+
+            * *Description:* At least one of the preconditions you specified did not hold.
+
+            * *HTTP Status Code:* 412 Precondition Failed
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* Redirect
+
+            * *Description:* Temporary redirect.
+
+            * *HTTP Status Code:* 307 Moved Temporarily
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RestoreAlreadyInProgress
+
+            * *Description:* Object restore is already in progress.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestIsNotMultiPartContent
+
+            * *Description:* Bucket POST must be of the enclosure-type multipart/form-data.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestTimeout
+
+            * *Description:* Your socket connection to the server was not read from or written to
+            within the timeout period.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestTimeTooSkewed
+
+            * *Description:* The difference between the request time and the server's time is too
+            large.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestTorrentOfBucketError
+
+            * *Description:* Requesting the torrent file of a bucket is not permitted.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* SignatureDoesNotMatch
+
+            * *Description:* The request signature we calculated does not match the signature you
+            provided. Check your AWS secret access key and signing method. For more information,
+            see `REST Authentication
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html>`__ and `SOAP
+            Authentication
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/SOAPAuthentication.html>`__ for
+            details.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* ServiceUnavailable
+
+            * *Description:* Reduce your request rate.
+
+            * *HTTP Status Code:* 503 Service Unavailable
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* SlowDown
+
+            * *Description:* Reduce your request rate.
+
+            * *HTTP Status Code:* 503 Slow Down
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* TemporaryRedirect
+
+            * *Description:* You are being redirected to the bucket while DNS updates.
+
+            * *HTTP Status Code:* 307 Moved Temporarily
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* TokenRefreshRequired
+
+            * *Description:* The provided token must be refreshed.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* TooManyBuckets
+
+            * *Description:* You have attempted to create more buckets than allowed.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* UnexpectedContent
+
+            * *Description:* This request does not support content.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* UnresolvableGrantByEmailAddress
+
+            * *Description:* The email address you provided does not match any account on record.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* UserKeyMustBeSpecified
+
+            * *Description:* The bucket POST must contain the specified field name. If it is
+            specified, check the order of the fields.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
         - **Message** *(string) --*
+
+          The error message contains a generic description of the error condition in English. It is
+          intended for a human audience. Simple programs display the message directly to the end
+          user if they encounter an error condition they don't know how or don't care to handle.
+          Sophisticated programs with more exhaustive error handling and proper
+          internationalization are more likely to ignore the error message.
     """
 
 
@@ -3841,6 +8108,8 @@ class ClientGetBucketAclResponseGrantsGranteeTypeDef(
     """
     Type definition for `ClientGetBucketAclResponseGrants` `Grantee`
 
+    The person being granted permissions.
+
     - **DisplayName** *(string) --*
 
       Screen name of the grantee.
@@ -3874,7 +8143,11 @@ class ClientGetBucketAclResponseGrantsTypeDef(_ClientGetBucketAclResponseGrantsT
     """
     Type definition for `ClientGetBucketAclResponse` `Grants`
 
+    Container for grant information.
+
     - **Grantee** *(dict) --*
+
+      The person being granted permissions.
 
       - **DisplayName** *(string) --*
 
@@ -3913,9 +8186,15 @@ class ClientGetBucketAclResponseOwnerTypeDef(_ClientGetBucketAclResponseOwnerTyp
     """
     Type definition for `ClientGetBucketAclResponse` `Owner`
 
+    Container for the bucket owner's display name and ID.
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -3935,9 +8214,15 @@ class ClientGetBucketAclResponseTypeDef(_ClientGetBucketAclResponseTypeDef):
 
     - **Owner** *(dict) --*
 
+      Container for the bucket owner's display name and ID.
+
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
 
     - **Grants** *(list) --*
 
@@ -3945,7 +8230,11 @@ class ClientGetBucketAclResponseTypeDef(_ClientGetBucketAclResponseTypeDef):
 
       - *(dict) --*
 
+        Container for grant information.
+
         - **Grantee** *(dict) --*
+
+          The person being granted permissions.
 
           - **DisplayName** *(string) --*
 
@@ -3985,6 +8274,8 @@ class ClientGetBucketAnalyticsConfigurationResponseAnalyticsConfigurationFilterA
 ):
     """
     Type definition for `ClientGetBucketAnalyticsConfigurationResponseAnalyticsConfigurationFilterAnd` `Tags`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --*
 
@@ -4027,6 +8318,8 @@ class ClientGetBucketAnalyticsConfigurationResponseAnalyticsConfigurationFilterA
       The list of tags to use when evaluating an AND predicate.
 
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --*
 
@@ -4115,6 +8408,8 @@ class ClientGetBucketAnalyticsConfigurationResponseAnalyticsConfigurationFilterT
         The list of tags to use when evaluating an AND predicate.
 
         - *(dict) --*
+
+          A container of a key value name pair.
 
           - **Key** *(string) --*
 
@@ -4365,6 +8660,8 @@ class ClientGetBucketAnalyticsConfigurationResponseAnalyticsConfigurationTypeDef
 
           - *(dict) --*
 
+            A container of a key value name pair.
+
             - **Key** *(string) --*
 
               Name of the tag.
@@ -4474,6 +8771,8 @@ class ClientGetBucketAnalyticsConfigurationResponseTypeDef(
             The list of tags to use when evaluating an AND predicate.
 
             - *(dict) --*
+
+              A container of a key value name pair.
 
               - **Key** *(string) --*
 
@@ -4593,6 +8892,9 @@ class ClientGetBucketCorsResponseTypeDef(_ClientGetBucketCorsResponseTypeDef):
 
     - **CORSRules** *(list) --*
 
+      A set of origins and methods (cross-origin access that you want to allow). You can add up to
+      100 rules to the configuration.
+
       - *(dict) --*
 
         Specifies a cross-origin access rule for an Amazon S3 bucket.
@@ -4711,6 +9013,8 @@ class ClientGetBucketEncryptionResponseServerSideEncryptionConfigurationTypeDef(
     """
     Type definition for `ClientGetBucketEncryptionResponse` `ServerSideEncryptionConfiguration`
 
+    Specifies the default server-side-encryption configuration.
+
     - **Rules** *(list) --*
 
       Container for information about a particular server-side encryption configuration rule.
@@ -4752,6 +9056,8 @@ class ClientGetBucketEncryptionResponseTypeDef(
     Type definition for `ClientGetBucketEncryption` `Response`
 
     - **ServerSideEncryptionConfiguration** *(dict) --*
+
+      Specifies the default server-side-encryption configuration.
 
       - **Rules** *(list) --*
 
@@ -4795,8 +9101,8 @@ class ClientGetBucketInventoryConfigurationResponseInventoryConfigurationDestina
 
     - **KeyId** *(string) --*
 
-      Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-      use for encrypting Inventory reports.
+      Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK)
+      to use for encrypting Inventory reports.
     """
 
 
@@ -4828,8 +9134,8 @@ class ClientGetBucketInventoryConfigurationResponseInventoryConfigurationDestina
 
       - **KeyId** *(string) --*
 
-        Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-        use for encrypting Inventory reports.
+        Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK)
+        to use for encrypting Inventory reports.
     """
 
 
@@ -4885,8 +9191,8 @@ class ClientGetBucketInventoryConfigurationResponseInventoryConfigurationDestina
 
         - **KeyId** *(string) --*
 
-          Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-          use for encrypting Inventory reports.
+          Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK)
+          to use for encrypting Inventory reports.
     """
 
 
@@ -4942,8 +9248,8 @@ class ClientGetBucketInventoryConfigurationResponseInventoryConfigurationDestina
 
           - **KeyId** *(string) --*
 
-            Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-            use for encrypting Inventory reports.
+            Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK)
+            to use for encrypting Inventory reports.
     """
 
 
@@ -5052,8 +9358,8 @@ class ClientGetBucketInventoryConfigurationResponseInventoryConfigurationTypeDef
 
             - **KeyId** *(string) --*
 
-              Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-              use for encrypting Inventory reports.
+              Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK)
+              to use for encrypting Inventory reports.
 
     - **IsEnabled** *(boolean) --*
 
@@ -5154,8 +9460,8 @@ class ClientGetBucketInventoryConfigurationResponseTypeDef(
 
               - **KeyId** *(string) --*
 
-                Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-                use for encrypting Inventory reports.
+                Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK)
+                to use for encrypting Inventory reports.
 
       - **IsEnabled** *(boolean) --*
 
@@ -5211,6 +9517,12 @@ class ClientGetBucketLifecycleConfigurationResponseRulesAbortIncompleteMultipart
     """
     Type definition for `ClientGetBucketLifecycleConfigurationResponseRules` `AbortIncompleteMultipartUpload`
 
+    Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+    will wait before permanently removing all parts of the upload. For more information, see
+    `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+    in the *Amazon Simple Storage Service Developer Guide* .
+
     - **DaysAfterInitiation** *(integer) --*
 
       Specifies the number of days after which Amazon S3 aborts an incomplete multipart
@@ -5230,6 +9542,9 @@ class ClientGetBucketLifecycleConfigurationResponseRulesExpirationTypeDef(
 ):
     """
     Type definition for `ClientGetBucketLifecycleConfigurationResponseRules` `Expiration`
+
+    Specifies the expiration for the lifecycle of the object in the form of date, days and,
+    whether the object has a delete marker.
 
     - **Date** *(datetime) --*
 
@@ -5262,6 +9577,8 @@ class ClientGetBucketLifecycleConfigurationResponseRulesFilterAndTagsTypeDef(
     """
     Type definition for `ClientGetBucketLifecycleConfigurationResponseRulesFilterAnd` `Tags`
 
+    A container of a key value name pair.
+
     - **Key** *(string) --*
 
       Name of the tag.
@@ -5290,13 +9607,21 @@ class ClientGetBucketLifecycleConfigurationResponseRulesFilterAndTypeDef(
     """
     Type definition for `ClientGetBucketLifecycleConfigurationResponseRulesFilter` `And`
 
+    This is used in a Lifecycle Rule Filter to apply a logical AND to two or more
+    predicates. The Lifecycle Rule will apply to any object matching all of the predicates
+    configured inside the And operator.
+
     - **Prefix** *(string) --*
+
+      Prefix identifying one or more objects to which the rule applies.
 
     - **Tags** *(list) --*
 
       All of these tags must exist in the object's tag set in order for the rule to apply.
 
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --*
 
@@ -5350,6 +9675,9 @@ class ClientGetBucketLifecycleConfigurationResponseRulesFilterTypeDef(
     """
     Type definition for `ClientGetBucketLifecycleConfigurationResponseRules` `Filter`
 
+    The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must
+    have exactly one of Prefix, Tag, or And specified.
+
     - **Prefix** *(string) --*
 
       Prefix identifying one or more objects to which the rule applies.
@@ -5368,13 +9696,21 @@ class ClientGetBucketLifecycleConfigurationResponseRulesFilterTypeDef(
 
     - **And** *(dict) --*
 
+      This is used in a Lifecycle Rule Filter to apply a logical AND to two or more
+      predicates. The Lifecycle Rule will apply to any object matching all of the predicates
+      configured inside the And operator.
+
       - **Prefix** *(string) --*
+
+        Prefix identifying one or more objects to which the rule applies.
 
       - **Tags** *(list) --*
 
         All of these tags must exist in the object's tag set in order for the rule to apply.
 
         - *(dict) --*
+
+          A container of a key value name pair.
 
           - **Key** *(string) --*
 
@@ -5398,6 +9734,11 @@ class ClientGetBucketLifecycleConfigurationResponseRulesNoncurrentVersionExpirat
 ):
     """
     Type definition for `ClientGetBucketLifecycleConfigurationResponseRules` `NoncurrentVersionExpiration`
+
+    Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+    deletes the noncurrent object versions. You set this lifecycle configuration action on a
+    bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+    noncurrent object versions at a specific period in the object's lifetime.
 
     - **NoncurrentDays** *(integer) --*
 
@@ -5502,7 +9843,12 @@ class ClientGetBucketLifecycleConfigurationResponseRulesTypeDef(
     """
     Type definition for `ClientGetBucketLifecycleConfigurationResponse` `Rules`
 
+    A lifecycle rule for individual objects in an Amazon S3 bucket.
+
     - **Expiration** *(dict) --*
+
+      Specifies the expiration for the lifecycle of the object in the form of date, days and,
+      whether the object has a delete marker.
 
       - **Date** *(datetime) --*
 
@@ -5531,6 +9877,9 @@ class ClientGetBucketLifecycleConfigurationResponseRulesTypeDef(
 
     - **Filter** *(dict) --*
 
+      The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must
+      have exactly one of Prefix, Tag, or And specified.
+
       - **Prefix** *(string) --*
 
         Prefix identifying one or more objects to which the rule applies.
@@ -5549,13 +9898,21 @@ class ClientGetBucketLifecycleConfigurationResponseRulesTypeDef(
 
       - **And** *(dict) --*
 
+        This is used in a Lifecycle Rule Filter to apply a logical AND to two or more
+        predicates. The Lifecycle Rule will apply to any object matching all of the predicates
+        configured inside the And operator.
+
         - **Prefix** *(string) --*
+
+          Prefix identifying one or more objects to which the rule applies.
 
         - **Tags** *(list) --*
 
           All of these tags must exist in the object's tag set in order for the rule to apply.
 
           - *(dict) --*
+
+            A container of a key value name pair.
 
             - **Key** *(string) --*
 
@@ -5571,6 +9928,8 @@ class ClientGetBucketLifecycleConfigurationResponseRulesTypeDef(
       currently being applied.
 
     - **Transitions** *(list) --*
+
+      Specifies when an Amazon S3 object transitions to a specified storage class.
 
       - *(dict) --*
 
@@ -5591,6 +9950,12 @@ class ClientGetBucketLifecycleConfigurationResponseRulesTypeDef(
           The storage class to which you want the object to transition.
 
     - **NoncurrentVersionTransitions** *(list) --*
+
+      Specifies the transition rule for the lifecycle rule that describes when noncurrent
+      objects transition to the a specific storage class. If your bucket is versioning-enabled
+      (or versioning is suspended), you can set this action to request that Amazon S3
+      transition noncurrent object versions to the a specifc storage class at a set period in
+      the object's lifetime.
 
       - *(dict) --*
 
@@ -5616,6 +9981,11 @@ class ClientGetBucketLifecycleConfigurationResponseRulesTypeDef(
 
     - **NoncurrentVersionExpiration** *(dict) --*
 
+      Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+      deletes the noncurrent object versions. You set this lifecycle configuration action on a
+      bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+      noncurrent object versions at a specific period in the object's lifetime.
+
       - **NoncurrentDays** *(integer) --*
 
         Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -5625,6 +9995,12 @@ class ClientGetBucketLifecycleConfigurationResponseRulesTypeDef(
         in the Amazon Simple Storage Service Developer Guide.
 
     - **AbortIncompleteMultipartUpload** *(dict) --*
+
+      Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+      will wait before permanently removing all parts of the upload. For more information, see
+      `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+      in the *Amazon Simple Storage Service Developer Guide* .
 
       - **DaysAfterInitiation** *(integer) --*
 
@@ -5648,9 +10024,16 @@ class ClientGetBucketLifecycleConfigurationResponseTypeDef(
 
     - **Rules** *(list) --*
 
+      Container for a lifecycle rule.
+
       - *(dict) --*
 
+        A lifecycle rule for individual objects in an Amazon S3 bucket.
+
         - **Expiration** *(dict) --*
+
+          Specifies the expiration for the lifecycle of the object in the form of date, days and,
+          whether the object has a delete marker.
 
           - **Date** *(datetime) --*
 
@@ -5679,6 +10062,9 @@ class ClientGetBucketLifecycleConfigurationResponseTypeDef(
 
         - **Filter** *(dict) --*
 
+          The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must
+          have exactly one of Prefix, Tag, or And specified.
+
           - **Prefix** *(string) --*
 
             Prefix identifying one or more objects to which the rule applies.
@@ -5697,13 +10083,21 @@ class ClientGetBucketLifecycleConfigurationResponseTypeDef(
 
           - **And** *(dict) --*
 
+            This is used in a Lifecycle Rule Filter to apply a logical AND to two or more
+            predicates. The Lifecycle Rule will apply to any object matching all of the predicates
+            configured inside the And operator.
+
             - **Prefix** *(string) --*
+
+              Prefix identifying one or more objects to which the rule applies.
 
             - **Tags** *(list) --*
 
               All of these tags must exist in the object's tag set in order for the rule to apply.
 
               - *(dict) --*
+
+                A container of a key value name pair.
 
                 - **Key** *(string) --*
 
@@ -5719,6 +10113,8 @@ class ClientGetBucketLifecycleConfigurationResponseTypeDef(
           currently being applied.
 
         - **Transitions** *(list) --*
+
+          Specifies when an Amazon S3 object transitions to a specified storage class.
 
           - *(dict) --*
 
@@ -5739,6 +10135,12 @@ class ClientGetBucketLifecycleConfigurationResponseTypeDef(
               The storage class to which you want the object to transition.
 
         - **NoncurrentVersionTransitions** *(list) --*
+
+          Specifies the transition rule for the lifecycle rule that describes when noncurrent
+          objects transition to the a specific storage class. If your bucket is versioning-enabled
+          (or versioning is suspended), you can set this action to request that Amazon S3
+          transition noncurrent object versions to the a specifc storage class at a set period in
+          the object's lifetime.
 
           - *(dict) --*
 
@@ -5764,6 +10166,11 @@ class ClientGetBucketLifecycleConfigurationResponseTypeDef(
 
         - **NoncurrentVersionExpiration** *(dict) --*
 
+          Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+          deletes the noncurrent object versions. You set this lifecycle configuration action on a
+          bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+          noncurrent object versions at a specific period in the object's lifetime.
+
           - **NoncurrentDays** *(integer) --*
 
             Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -5773,6 +10180,12 @@ class ClientGetBucketLifecycleConfigurationResponseTypeDef(
             in the Amazon Simple Storage Service Developer Guide.
 
         - **AbortIncompleteMultipartUpload** *(dict) --*
+
+          Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+          will wait before permanently removing all parts of the upload. For more information, see
+          `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+          in the *Amazon Simple Storage Service Developer Guide* .
 
           - **DaysAfterInitiation** *(integer) --*
 
@@ -5794,6 +10207,12 @@ class ClientGetBucketLifecycleResponseRulesAbortIncompleteMultipartUploadTypeDef
     """
     Type definition for `ClientGetBucketLifecycleResponseRules` `AbortIncompleteMultipartUpload`
 
+    Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+    will wait before permanently removing all parts of the upload. For more information, see
+    `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+    in the *Amazon Simple Storage Service Developer Guide* .
+
     - **DaysAfterInitiation** *(integer) --*
 
       Specifies the number of days after which Amazon S3 aborts an incomplete multipart
@@ -5813,6 +10232,8 @@ class ClientGetBucketLifecycleResponseRulesExpirationTypeDef(
 ):
     """
     Type definition for `ClientGetBucketLifecycleResponseRules` `Expiration`
+
+    Specifies the expiration for the lifecycle of the object.
 
     - **Date** *(datetime) --*
 
@@ -5845,6 +10266,11 @@ class ClientGetBucketLifecycleResponseRulesNoncurrentVersionExpirationTypeDef(
     """
     Type definition for `ClientGetBucketLifecycleResponseRules` `NoncurrentVersionExpiration`
 
+    Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+    deletes the noncurrent object versions. You set this lifecycle configuration action on a
+    bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+    noncurrent object versions at a specific period in the object's lifetime.
+
     - **NoncurrentDays** *(integer) --*
 
       Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -5867,6 +10293,14 @@ class ClientGetBucketLifecycleResponseRulesNoncurrentVersionTransitionTypeDef(
 ):
     """
     Type definition for `ClientGetBucketLifecycleResponseRules` `NoncurrentVersionTransition`
+
+    Container for the transition rule that describes when noncurrent objects transition to
+    the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+    ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+    suspended), you can set this action to request that Amazon S3 transition noncurrent
+    object versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` ,
+    ``GLACIER`` , or ``DEEP_ARCHIVE`` storage class at a specific period in the object's
+    lifetime.
 
     - **NoncurrentDays** *(integer) --*
 
@@ -5894,6 +10328,8 @@ class ClientGetBucketLifecycleResponseRulesTransitionTypeDef(
 ):
     """
     Type definition for `ClientGetBucketLifecycleResponseRules` `Transition`
+
+    Specifies when an object transitions to a specified storage class.
 
     - **Date** *(datetime) --*
 
@@ -5939,6 +10375,8 @@ class ClientGetBucketLifecycleResponseRulesTypeDef(
 
     - **Expiration** *(dict) --*
 
+      Specifies the expiration for the lifecycle of the object.
+
       - **Date** *(datetime) --*
 
         Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
@@ -5970,6 +10408,8 @@ class ClientGetBucketLifecycleResponseRulesTypeDef(
 
     - **Transition** *(dict) --*
 
+      Specifies when an object transitions to a specified storage class.
+
       - **Date** *(datetime) --*
 
         Indicates when objects are transitioned to the specified storage class. The date value
@@ -5986,6 +10426,14 @@ class ClientGetBucketLifecycleResponseRulesTypeDef(
 
     - **NoncurrentVersionTransition** *(dict) --*
 
+      Container for the transition rule that describes when noncurrent objects transition to
+      the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+      ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+      suspended), you can set this action to request that Amazon S3 transition noncurrent
+      object versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` ,
+      ``GLACIER`` , or ``DEEP_ARCHIVE`` storage class at a specific period in the object's
+      lifetime.
+
       - **NoncurrentDays** *(integer) --*
 
         Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -6000,6 +10448,11 @@ class ClientGetBucketLifecycleResponseRulesTypeDef(
 
     - **NoncurrentVersionExpiration** *(dict) --*
 
+      Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+      deletes the noncurrent object versions. You set this lifecycle configuration action on a
+      bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+      noncurrent object versions at a specific period in the object's lifetime.
+
       - **NoncurrentDays** *(integer) --*
 
         Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -6009,6 +10462,12 @@ class ClientGetBucketLifecycleResponseRulesTypeDef(
         in the Amazon Simple Storage Service Developer Guide.
 
     - **AbortIncompleteMultipartUpload** *(dict) --*
+
+      Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+      will wait before permanently removing all parts of the upload. For more information, see
+      `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+      in the *Amazon Simple Storage Service Developer Guide* .
 
       - **DaysAfterInitiation** *(integer) --*
 
@@ -6030,6 +10489,8 @@ class ClientGetBucketLifecycleResponseTypeDef(_ClientGetBucketLifecycleResponseT
 
     - **Rules** *(list) --*
 
+      Container for a lifecycle rule.
+
       - *(dict) --*
 
         Specifies lifecycle rules for an Amazon S3 bucket. For more information, see `PUT Bucket
@@ -6037,6 +10498,8 @@ class ClientGetBucketLifecycleResponseTypeDef(_ClientGetBucketLifecycleResponseT
         in the *Amazon Simple Storage Service API Reference* .
 
         - **Expiration** *(dict) --*
+
+          Specifies the expiration for the lifecycle of the object.
 
           - **Date** *(datetime) --*
 
@@ -6069,6 +10532,8 @@ class ClientGetBucketLifecycleResponseTypeDef(_ClientGetBucketLifecycleResponseT
 
         - **Transition** *(dict) --*
 
+          Specifies when an object transitions to a specified storage class.
+
           - **Date** *(datetime) --*
 
             Indicates when objects are transitioned to the specified storage class. The date value
@@ -6085,6 +10550,14 @@ class ClientGetBucketLifecycleResponseTypeDef(_ClientGetBucketLifecycleResponseT
 
         - **NoncurrentVersionTransition** *(dict) --*
 
+          Container for the transition rule that describes when noncurrent objects transition to
+          the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+          ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+          suspended), you can set this action to request that Amazon S3 transition noncurrent
+          object versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` ,
+          ``GLACIER`` , or ``DEEP_ARCHIVE`` storage class at a specific period in the object's
+          lifetime.
+
           - **NoncurrentDays** *(integer) --*
 
             Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -6099,6 +10572,11 @@ class ClientGetBucketLifecycleResponseTypeDef(_ClientGetBucketLifecycleResponseT
 
         - **NoncurrentVersionExpiration** *(dict) --*
 
+          Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+          deletes the noncurrent object versions. You set this lifecycle configuration action on a
+          bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+          noncurrent object versions at a specific period in the object's lifetime.
+
           - **NoncurrentDays** *(integer) --*
 
             Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -6108,6 +10586,12 @@ class ClientGetBucketLifecycleResponseTypeDef(_ClientGetBucketLifecycleResponseT
             in the Amazon Simple Storage Service Developer Guide.
 
         - **AbortIncompleteMultipartUpload** *(dict) --*
+
+          Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+          will wait before permanently removing all parts of the upload. For more information, see
+          `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+          in the *Amazon Simple Storage Service Developer Guide* .
 
           - **DaysAfterInitiation** *(integer) --*
 
@@ -6126,6 +10610,10 @@ class ClientGetBucketLocationResponseTypeDef(_ClientGetBucketLocationResponseTyp
     Type definition for `ClientGetBucketLocation` `Response`
 
     - **LocationConstraint** *(string) --*
+
+      Specifies the region where the bucket resides. For a list of all the Amazon S3 supported
+      location constraints by region, see `Regions and Endpoints
+      <https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region>`__ .
     """
 
 
@@ -6141,6 +10629,8 @@ class ClientGetBucketLoggingResponseLoggingEnabledTargetGrantsGranteeTypeDef(
 ):
     """
     Type definition for `ClientGetBucketLoggingResponseLoggingEnabledTargetGrants` `Grantee`
+
+    Container for the person being granted permissions.
 
     - **DisplayName** *(string) --*
 
@@ -6180,7 +10670,11 @@ class ClientGetBucketLoggingResponseLoggingEnabledTargetGrantsTypeDef(
     """
     Type definition for `ClientGetBucketLoggingResponseLoggingEnabled` `TargetGrants`
 
+    Container for granting information.
+
     - **Grantee** *(dict) --*
+
+      Container for the person being granted permissions.
 
       - **DisplayName** *(string) --*
 
@@ -6227,6 +10721,11 @@ class ClientGetBucketLoggingResponseLoggingEnabledTypeDef(
     """
     Type definition for `ClientGetBucketLoggingResponse` `LoggingEnabled`
 
+    Describes where logs are stored and the prefix that Amazon S3 assigns to all log object keys
+    for a bucket. For more information, see `PUT Bucket logging
+    <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlogging.html>`__ in the *Amazon
+    Simple Storage Service API Reference* .
+
     - **TargetBucket** *(string) --*
 
       Specifies the bucket where you want Amazon S3 to store server access logs. You can have
@@ -6237,9 +10736,15 @@ class ClientGetBucketLoggingResponseLoggingEnabledTypeDef(
 
     - **TargetGrants** *(list) --*
 
+      Container for granting information.
+
       - *(dict) --*
 
+        Container for granting information.
+
         - **Grantee** *(dict) --*
+
+          Container for the person being granted permissions.
 
           - **DisplayName** *(string) --*
 
@@ -6285,6 +10790,11 @@ class ClientGetBucketLoggingResponseTypeDef(_ClientGetBucketLoggingResponseTypeD
 
     - **LoggingEnabled** *(dict) --*
 
+      Describes where logs are stored and the prefix that Amazon S3 assigns to all log object keys
+      for a bucket. For more information, see `PUT Bucket logging
+      <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlogging.html>`__ in the *Amazon
+      Simple Storage Service API Reference* .
+
       - **TargetBucket** *(string) --*
 
         Specifies the bucket where you want Amazon S3 to store server access logs. You can have
@@ -6295,9 +10805,15 @@ class ClientGetBucketLoggingResponseTypeDef(_ClientGetBucketLoggingResponseTypeD
 
       - **TargetGrants** *(list) --*
 
+        Container for granting information.
+
         - *(dict) --*
 
+          Container for granting information.
+
           - **Grantee** *(dict) --*
+
+            Container for the person being granted permissions.
 
             - **DisplayName** *(string) --*
 
@@ -6343,6 +10859,8 @@ class ClientGetBucketMetricsConfigurationResponseMetricsConfigurationFilterAndTa
     """
     Type definition for `ClientGetBucketMetricsConfigurationResponseMetricsConfigurationFilterAnd` `Tags`
 
+    A container of a key value name pair.
+
     - **Key** *(string) --*
 
       Name of the tag.
@@ -6384,6 +10902,8 @@ class ClientGetBucketMetricsConfigurationResponseMetricsConfigurationFilterAndTy
       The list of tags used when evaluating an AND predicate.
 
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --*
 
@@ -6473,6 +10993,8 @@ class ClientGetBucketMetricsConfigurationResponseMetricsConfigurationFilterTypeD
 
         - *(dict) --*
 
+          A container of a key value name pair.
+
           - **Key** *(string) --*
 
             Name of the tag.
@@ -6542,6 +11064,8 @@ class ClientGetBucketMetricsConfigurationResponseMetricsConfigurationTypeDef(
           The list of tags used when evaluating an AND predicate.
 
           - *(dict) --*
+
+            A container of a key value name pair.
 
             - **Key** *(string) --*
 
@@ -6614,6 +11138,8 @@ class ClientGetBucketMetricsConfigurationResponseTypeDef(
 
             - *(dict) --*
 
+              A container of a key value name pair.
+
               - **Key** *(string) --*
 
                 Name of the tag.
@@ -6672,7 +11198,12 @@ class ClientGetBucketNotificationConfigurationResponseLambdaFunctionConfiguratio
     """
     Type definition for `ClientGetBucketNotificationConfigurationResponseLambdaFunctionConfigurationsFilter` `Key`
 
+    A container for object key name prefix and suffix filtering rules.
+
     - **FilterRules** *(list) --*
+
+      A list of containers for the key value pair that defines the criteria for the filter
+      rule.
 
       - *(dict) --*
 
@@ -6709,9 +11240,19 @@ class ClientGetBucketNotificationConfigurationResponseLambdaFunctionConfiguratio
     """
     Type definition for `ClientGetBucketNotificationConfigurationResponseLambdaFunctionConfigurations` `Filter`
 
+    Specifies object key name filtering rules. For information about key name filtering, see
+    `Configuring Event Notifications
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+    *Amazon Simple Storage Service Developer Guide* .
+
     - **Key** *(dict) --*
 
+      A container for object key name prefix and suffix filtering rules.
+
       - **FilterRules** *(list) --*
+
+        A list of containers for the key value pair that defines the criteria for the filter
+        rule.
 
         - *(dict) --*
 
@@ -6776,9 +11317,19 @@ class ClientGetBucketNotificationConfigurationResponseLambdaFunctionConfiguratio
 
     - **Filter** *(dict) --*
 
+      Specifies object key name filtering rules. For information about key name filtering, see
+      `Configuring Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
       - **Key** *(dict) --*
 
+        A container for object key name prefix and suffix filtering rules.
+
         - **FilterRules** *(list) --*
+
+          A list of containers for the key value pair that defines the criteria for the filter
+          rule.
 
           - *(dict) --*
 
@@ -6848,7 +11399,12 @@ class ClientGetBucketNotificationConfigurationResponseQueueConfigurationsFilterK
     """
     Type definition for `ClientGetBucketNotificationConfigurationResponseQueueConfigurationsFilter` `Key`
 
+    A container for object key name prefix and suffix filtering rules.
+
     - **FilterRules** *(list) --*
+
+      A list of containers for the key value pair that defines the criteria for the filter
+      rule.
 
       - *(dict) --*
 
@@ -6885,9 +11441,19 @@ class ClientGetBucketNotificationConfigurationResponseQueueConfigurationsFilterT
     """
     Type definition for `ClientGetBucketNotificationConfigurationResponseQueueConfigurations` `Filter`
 
+    Specifies object key name filtering rules. For information about key name filtering, see
+    `Configuring Event Notifications
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+    *Amazon Simple Storage Service Developer Guide* .
+
     - **Key** *(dict) --*
 
+      A container for object key name prefix and suffix filtering rules.
+
       - **FilterRules** *(list) --*
+
+        A list of containers for the key value pair that defines the criteria for the filter
+        rule.
 
         - *(dict) --*
 
@@ -6942,15 +11508,27 @@ class ClientGetBucketNotificationConfigurationResponseQueueConfigurationsTypeDef
 
     - **Events** *(list) --*
 
+      A collection of bucket events for which to send notiications
+
       - *(string) --*
 
         The bucket event for which to send notifications.
 
     - **Filter** *(dict) --*
 
+      Specifies object key name filtering rules. For information about key name filtering, see
+      `Configuring Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
       - **Key** *(dict) --*
 
+        A container for object key name prefix and suffix filtering rules.
+
         - **FilterRules** *(list) --*
+
+          A list of containers for the key value pair that defines the criteria for the filter
+          rule.
 
           - *(dict) --*
 
@@ -7020,7 +11598,12 @@ class ClientGetBucketNotificationConfigurationResponseTopicConfigurationsFilterK
     """
     Type definition for `ClientGetBucketNotificationConfigurationResponseTopicConfigurationsFilter` `Key`
 
+    A container for object key name prefix and suffix filtering rules.
+
     - **FilterRules** *(list) --*
+
+      A list of containers for the key value pair that defines the criteria for the filter
+      rule.
 
       - *(dict) --*
 
@@ -7057,9 +11640,19 @@ class ClientGetBucketNotificationConfigurationResponseTopicConfigurationsFilterT
     """
     Type definition for `ClientGetBucketNotificationConfigurationResponseTopicConfigurations` `Filter`
 
+    Specifies object key name filtering rules. For information about key name filtering, see
+    `Configuring Event Notifications
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+    *Amazon Simple Storage Service Developer Guide* .
+
     - **Key** *(dict) --*
 
+      A container for object key name prefix and suffix filtering rules.
+
       - **FilterRules** *(list) --*
+
+        A list of containers for the key value pair that defines the criteria for the filter
+        rule.
 
         - *(dict) --*
 
@@ -7125,9 +11718,19 @@ class ClientGetBucketNotificationConfigurationResponseTopicConfigurationsTypeDef
 
     - **Filter** *(dict) --*
 
+      Specifies object key name filtering rules. For information about key name filtering, see
+      `Configuring Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
       - **Key** *(dict) --*
 
+        A container for object key name prefix and suffix filtering rules.
+
         - **FilterRules** *(list) --*
+
+          A list of containers for the key value pair that defines the criteria for the filter
+          rule.
 
           - *(dict) --*
 
@@ -7208,9 +11811,19 @@ class ClientGetBucketNotificationConfigurationResponseTypeDef(
 
         - **Filter** *(dict) --*
 
+          Specifies object key name filtering rules. For information about key name filtering, see
+          `Configuring Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+          *Amazon Simple Storage Service Developer Guide* .
+
           - **Key** *(dict) --*
 
+            A container for object key name prefix and suffix filtering rules.
+
             - **FilterRules** *(list) --*
+
+              A list of containers for the key value pair that defines the criteria for the filter
+              rule.
 
               - *(dict) --*
 
@@ -7252,15 +11865,27 @@ class ClientGetBucketNotificationConfigurationResponseTypeDef(
 
         - **Events** *(list) --*
 
+          A collection of bucket events for which to send notiications
+
           - *(string) --*
 
             The bucket event for which to send notifications.
 
         - **Filter** *(dict) --*
 
+          Specifies object key name filtering rules. For information about key name filtering, see
+          `Configuring Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+          *Amazon Simple Storage Service Developer Guide* .
+
           - **Key** *(dict) --*
 
+            A container for object key name prefix and suffix filtering rules.
+
             - **FilterRules** *(list) --*
+
+              A list of containers for the key value pair that defines the criteria for the filter
+              rule.
 
               - *(dict) --*
 
@@ -7311,9 +11936,19 @@ class ClientGetBucketNotificationConfigurationResponseTypeDef(
 
         - **Filter** *(dict) --*
 
+          Specifies object key name filtering rules. For information about key name filtering, see
+          `Configuring Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+          *Amazon Simple Storage Service Developer Guide* .
+
           - **Key** *(dict) --*
 
+            A container for object key name prefix and suffix filtering rules.
+
             - **FilterRules** *(list) --*
+
+              A list of containers for the key value pair that defines the criteria for the filter
+              rule.
 
               - *(dict) --*
 
@@ -7354,6 +11989,8 @@ class ClientGetBucketNotificationResponseCloudFunctionConfigurationTypeDef(
     """
     Type definition for `ClientGetBucketNotificationResponse` `CloudFunctionConfiguration`
 
+    Container for specifying the AWS Lambda notification configuration.
+
     - **Id** *(string) --*
 
       An optional unique identifier for configurations in a notification configuration. If you
@@ -7365,13 +12002,20 @@ class ClientGetBucketNotificationResponseCloudFunctionConfigurationTypeDef(
 
     - **Events** *(list) --*
 
+      Bucket events for which to send notifications.
+
       - *(string) --*
 
         The bucket event for which to send notifications.
 
     - **CloudFunction** *(string) --*
 
+      Lambda cloud function ARN that Amazon S3 can invoke when it detects events of the specified
+      type.
+
     - **InvocationRole** *(string) --*
+
+      The role supporting the invocation of the lambda function
     """
 
 
@@ -7388,6 +12032,10 @@ class ClientGetBucketNotificationResponseQueueConfigurationTypeDef(
     """
     Type definition for `ClientGetBucketNotificationResponse` `QueueConfiguration`
 
+    This data type is deprecated. This data type specifies the configuration for publishing
+    messages to an Amazon Simple Queue Service (Amazon SQS) queue when Amazon S3 detects
+    specified events.
+
     - **Id** *(string) --*
 
       An optional unique identifier for configurations in a notification configuration. If you
@@ -7399,11 +12047,16 @@ class ClientGetBucketNotificationResponseQueueConfigurationTypeDef(
 
     - **Events** *(list) --*
 
+      A collection of bucket events for which to send notiications
+
       - *(string) --*
 
         The bucket event for which to send notifications.
 
     - **Queue** *(string) --*
+
+      The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon S3 publishes a
+      message when it detects events of the specified type.
     """
 
 
@@ -7420,12 +12073,18 @@ class ClientGetBucketNotificationResponseTopicConfigurationTypeDef(
     """
     Type definition for `ClientGetBucketNotificationResponse` `TopicConfiguration`
 
+    This data type is deperecated. A container for specifying the configuration for publication
+    of messages to an Amazon Simple Notification Service (Amazon SNS) topic when Amazon S3
+    detects specified events.
+
     - **Id** *(string) --*
 
       An optional unique identifier for configurations in a notification configuration. If you
       don't provide one, Amazon S3 will assign an ID.
 
     - **Events** *(list) --*
+
+      A collection of events related to objects
 
       - *(string) --*
 
@@ -7461,12 +12120,18 @@ class ClientGetBucketNotificationResponseTypeDef(
 
     - **TopicConfiguration** *(dict) --*
 
+      This data type is deperecated. A container for specifying the configuration for publication
+      of messages to an Amazon Simple Notification Service (Amazon SNS) topic when Amazon S3
+      detects specified events.
+
       - **Id** *(string) --*
 
         An optional unique identifier for configurations in a notification configuration. If you
         don't provide one, Amazon S3 will assign an ID.
 
       - **Events** *(list) --*
+
+        A collection of events related to objects
 
         - *(string) --*
 
@@ -7483,6 +12148,10 @@ class ClientGetBucketNotificationResponseTypeDef(
 
     - **QueueConfiguration** *(dict) --*
 
+      This data type is deprecated. This data type specifies the configuration for publishing
+      messages to an Amazon Simple Queue Service (Amazon SQS) queue when Amazon S3 detects
+      specified events.
+
       - **Id** *(string) --*
 
         An optional unique identifier for configurations in a notification configuration. If you
@@ -7493,6 +12162,8 @@ class ClientGetBucketNotificationResponseTypeDef(
         The bucket event for which to send notifications.
 
       - **Events** *(list) --*
+
+        A collection of bucket events for which to send notiications
 
         - *(string) --*
 
@@ -7500,7 +12171,12 @@ class ClientGetBucketNotificationResponseTypeDef(
 
       - **Queue** *(string) --*
 
+        The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon S3 publishes a
+        message when it detects events of the specified type.
+
     - **CloudFunctionConfiguration** *(dict) --*
+
+      Container for specifying the AWS Lambda notification configuration.
 
       - **Id** *(string) --*
 
@@ -7513,13 +12189,20 @@ class ClientGetBucketNotificationResponseTypeDef(
 
       - **Events** *(list) --*
 
+        Bucket events for which to send notifications.
+
         - *(string) --*
 
           The bucket event for which to send notifications.
 
       - **CloudFunction** *(string) --*
 
+        Lambda cloud function ARN that Amazon S3 can invoke when it detects events of the specified
+        type.
+
       - **InvocationRole** *(string) --*
+
+        The role supporting the invocation of the lambda function
     """
 
 
@@ -7597,9 +12280,26 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesDeleteMarke
     """
     Type definition for `ClientGetBucketReplicationResponseReplicationConfigurationRules` `DeleteMarkerReplication`
 
+    Specifies whether Amazon S3 replicates the delete markers. If you specify a ``Filter``
+    , you must specify this element. However, in the latest version of replication
+    configuration (when ``Filter`` is specified), Amazon S3 doesn't replicate delete
+    markers. Therefore, the ``DeleteMarkerReplication`` element can contain only
+    <Status>Disabled</Status>. For an example configuration, see `Basic Rule Configuration
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config>`__
+    .
+
+    .. note::
+
+      If you don't specify the Filter element, Amazon S3 assumes the replication
+      configuration is the earlier version, V1. In the earlier version, Amazon S3 handled
+      replication of delete markers differently. For more information, see `Backward
+      Compatibility
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations>`__
+      .
+
     - **Status** *(string) --*
 
-      The status of the delete marker replication.
+      Indicates whether to replicate delete markers.
 
       .. note::
 
@@ -7681,22 +12381,18 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesDestination
 
     - **Bucket** *(string) --*
 
-      The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store
-      replicas of the object identified by the rule.
-
-      A replication configuration can replicate objects to only one destination bucket. If
-      there are multiple rules in your replication configuration, all rules must specify
-      the same destination bucket.
+      The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the
+      results.
 
     - **Account** *(string) --*
 
       Destination bucket owner account ID. In a cross-account scenario, if you direct
       Amazon S3 to change replica ownership to the AWS account that owns the destination
       bucket by specifying the ``AccessControlTranslation`` property, this is the account
-      ID of the destination bucket owner. For more information, see `Cross-Region
-      Replication Additional Configuration\\: Change Replica Owner
-      <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the
-      *Amazon Simple Storage Service Developer Guide* .
+      ID of the destination bucket owner. For more information, see `Replication Additional
+      Configuration\\: Change Replica Owner
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html>`__ in
+      the *Amazon Simple Storage Service Developer Guide* .
 
     - **StorageClass** *(string) --*
 
@@ -7734,6 +12430,28 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesDestination
     """
 
 
+_ClientGetBucketReplicationResponseReplicationConfigurationRulesExistingObjectReplicationTypeDef = TypedDict(
+    "_ClientGetBucketReplicationResponseReplicationConfigurationRulesExistingObjectReplicationTypeDef",
+    {"Status": str},
+    total=False,
+)
+
+
+class ClientGetBucketReplicationResponseReplicationConfigurationRulesExistingObjectReplicationTypeDef(
+    _ClientGetBucketReplicationResponseReplicationConfigurationRulesExistingObjectReplicationTypeDef
+):
+    """
+    Type definition for `ClientGetBucketReplicationResponseReplicationConfigurationRules` `ExistingObjectReplication`
+
+    A container that specifies information about existing object replication. You can
+    choose whether to enable or disable the replication of existing objects.
+
+    - **Status** *(string) --*
+
+      Specifies whether existing object replication is enabled.
+    """
+
+
 _ClientGetBucketReplicationResponseReplicationConfigurationRulesFilterAndTagsTypeDef = TypedDict(
     "_ClientGetBucketReplicationResponseReplicationConfigurationRulesFilterAndTagsTypeDef",
     {"Key": str, "Value": str},
@@ -7746,6 +12464,8 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesFilterAndTa
 ):
     """
     Type definition for `ClientGetBucketReplicationResponseReplicationConfigurationRulesFilterAnd` `Tags`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --*
 
@@ -7787,9 +12507,16 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesFilterAndTy
 
     - **Prefix** *(string) --*
 
+      An object keyname prefix that identifies the subset of objects to which the rule
+      applies.
+
     - **Tags** *(list) --*
 
+      An array of tags containing key and value pairs.
+
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --*
 
@@ -7845,6 +12572,9 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesFilterTypeD
     """
     Type definition for `ClientGetBucketReplicationResponseReplicationConfigurationRules` `Filter`
 
+    A filter that identifies the subset of objects to which the replication rule applies. A
+    ``Filter`` must specify exactly one ``Prefix`` , ``Tag`` , or an ``And`` child element.
+
     - **Prefix** *(string) --*
 
       An object keyname prefix that identifies the subset of objects to which the rule
@@ -7878,9 +12608,16 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesFilterTypeD
 
       - **Prefix** *(string) --*
 
+        An object keyname prefix that identifies the subset of objects to which the rule
+        applies.
+
       - **Tags** *(list) --*
 
+        An array of tags containing key and value pairs.
+
         - *(dict) --*
+
+          A container of a key value name pair.
 
           - **Key** *(string) --*
 
@@ -7912,7 +12649,7 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesSourceSelec
     - **Status** *(string) --*
 
       Specifies whether Amazon S3 replicates objects created with server-side encryption
-      using an AWS KMS-managed key.
+      using a customer master key (CMK) stored in AWS Key Management Service.
     """
 
 
@@ -7934,7 +12671,8 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesSourceSelec
     A container that describes additional filters for identifying the source objects that
     you want to replicate. You can choose to enable or disable the replication of these
     objects. Currently, Amazon S3 supports only the filter that you can specify for objects
-    created with server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
+    created with server-side encryption using a customer master key (CMK) stored in AWS Key
+    Management Service (SSE-KMS).
 
     - **SseKmsEncryptedObjects** *(dict) --*
 
@@ -7945,7 +12683,7 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesSourceSelec
       - **Status** *(string) --*
 
         Specifies whether Amazon S3 replicates objects created with server-side encryption
-        using an AWS KMS-managed key.
+        using a customer master key (CMK) stored in AWS Key Management Service.
     """
 
 
@@ -7958,6 +12696,7 @@ _ClientGetBucketReplicationResponseReplicationConfigurationRulesTypeDef = TypedD
         "Filter": ClientGetBucketReplicationResponseReplicationConfigurationRulesFilterTypeDef,
         "Status": str,
         "SourceSelectionCriteria": ClientGetBucketReplicationResponseReplicationConfigurationRulesSourceSelectionCriteriaTypeDef,
+        "ExistingObjectReplication": ClientGetBucketReplicationResponseReplicationConfigurationRulesExistingObjectReplicationTypeDef,
         "Destination": ClientGetBucketReplicationResponseReplicationConfigurationRulesDestinationTypeDef,
         "DeleteMarkerReplication": ClientGetBucketReplicationResponseReplicationConfigurationRulesDeleteMarkerReplicationTypeDef,
     },
@@ -7989,8 +12728,8 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesTypeDef(
 
       * Same object qualify tag based filter criteria specified in multiple rules
 
-      For more information, see `Cross-Region Replication (CRR)
-      <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html>`__ in the *Amazon S3
+      For more information, see `Replication <
+      https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html>`__ in the *Amazon S3
       Developer Guide* .
 
     - **Prefix** *(string) --*
@@ -8000,6 +12739,9 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesTypeDef(
       bucket, specify an empty string.
 
     - **Filter** *(dict) --*
+
+      A filter that identifies the subset of objects to which the replication rule applies. A
+      ``Filter`` must specify exactly one ``Prefix`` , ``Tag`` , or an ``And`` child element.
 
       - **Prefix** *(string) --*
 
@@ -8034,9 +12776,16 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesTypeDef(
 
         - **Prefix** *(string) --*
 
+          An object keyname prefix that identifies the subset of objects to which the rule
+          applies.
+
         - **Tags** *(list) --*
 
+          An array of tags containing key and value pairs.
+
           - *(dict) --*
+
+            A container of a key value name pair.
 
             - **Key** *(string) --*
 
@@ -8055,7 +12804,8 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesTypeDef(
       A container that describes additional filters for identifying the source objects that
       you want to replicate. You can choose to enable or disable the replication of these
       objects. Currently, Amazon S3 supports only the filter that you can specify for objects
-      created with server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
+      created with server-side encryption using a customer master key (CMK) stored in AWS Key
+      Management Service (SSE-KMS).
 
       - **SseKmsEncryptedObjects** *(dict) --*
 
@@ -8066,7 +12816,16 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesTypeDef(
         - **Status** *(string) --*
 
           Specifies whether Amazon S3 replicates objects created with server-side encryption
-          using an AWS KMS-managed key.
+          using a customer master key (CMK) stored in AWS Key Management Service.
+
+    - **ExistingObjectReplication** *(dict) --*
+
+      A container that specifies information about existing object replication. You can
+      choose whether to enable or disable the replication of existing objects.
+
+      - **Status** *(string) --*
+
+        Specifies whether existing object replication is enabled.
 
     - **Destination** *(dict) --*
 
@@ -8074,22 +12833,18 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesTypeDef(
 
       - **Bucket** *(string) --*
 
-        The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store
-        replicas of the object identified by the rule.
-
-        A replication configuration can replicate objects to only one destination bucket. If
-        there are multiple rules in your replication configuration, all rules must specify
-        the same destination bucket.
+        The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the
+        results.
 
       - **Account** *(string) --*
 
         Destination bucket owner account ID. In a cross-account scenario, if you direct
         Amazon S3 to change replica ownership to the AWS account that owns the destination
         bucket by specifying the ``AccessControlTranslation`` property, this is the account
-        ID of the destination bucket owner. For more information, see `Cross-Region
-        Replication Additional Configuration\\: Change Replica Owner
-        <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the
-        *Amazon Simple Storage Service Developer Guide* .
+        ID of the destination bucket owner. For more information, see `Replication Additional
+        Configuration\\: Change Replica Owner
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html>`__ in
+        the *Amazon Simple Storage Service Developer Guide* .
 
       - **StorageClass** *(string) --*
 
@@ -8127,9 +12882,26 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesTypeDef(
 
     - **DeleteMarkerReplication** *(dict) --*
 
+      Specifies whether Amazon S3 replicates the delete markers. If you specify a ``Filter``
+      , you must specify this element. However, in the latest version of replication
+      configuration (when ``Filter`` is specified), Amazon S3 doesn't replicate delete
+      markers. Therefore, the ``DeleteMarkerReplication`` element can contain only
+      <Status>Disabled</Status>. For an example configuration, see `Basic Rule Configuration
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config>`__
+      .
+
+      .. note::
+
+        If you don't specify the Filter element, Amazon S3 assumes the replication
+        configuration is the earlier version, V1. In the earlier version, Amazon S3 handled
+        replication of delete markers differently. For more information, see `Backward
+        Compatibility
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations>`__
+        .
+
       - **Status** *(string) --*
 
-        The status of the delete marker replication.
+        Indicates whether to replicate delete markers.
 
         .. note::
 
@@ -8156,13 +12928,15 @@ class ClientGetBucketReplicationResponseReplicationConfigurationTypeDef(
     """
     Type definition for `ClientGetBucketReplicationResponse` `ReplicationConfiguration`
 
+    A container for replication rules. You can add up to 1,000 rules. The maximum size of a
+    replication configuration is 2 MB.
+
     - **Role** *(string) --*
 
       The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that
       Amazon S3 assumes when replicating objects. For more information, see `How to Set Up
-      Cross-Region Replication
-      <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-how-setup.html>`__ in the *Amazon
-      Simple Storage Service Developer Guide* .
+      Replication <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html>`__
+      in the *Amazon Simple Storage Service Developer Guide* .
 
     - **Rules** *(list) --*
 
@@ -8189,8 +12963,8 @@ class ClientGetBucketReplicationResponseReplicationConfigurationTypeDef(
 
           * Same object qualify tag based filter criteria specified in multiple rules
 
-          For more information, see `Cross-Region Replication (CRR)
-          <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html>`__ in the *Amazon S3
+          For more information, see `Replication <
+          https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html>`__ in the *Amazon S3
           Developer Guide* .
 
         - **Prefix** *(string) --*
@@ -8200,6 +12974,9 @@ class ClientGetBucketReplicationResponseReplicationConfigurationTypeDef(
           bucket, specify an empty string.
 
         - **Filter** *(dict) --*
+
+          A filter that identifies the subset of objects to which the replication rule applies. A
+          ``Filter`` must specify exactly one ``Prefix`` , ``Tag`` , or an ``And`` child element.
 
           - **Prefix** *(string) --*
 
@@ -8234,9 +13011,16 @@ class ClientGetBucketReplicationResponseReplicationConfigurationTypeDef(
 
             - **Prefix** *(string) --*
 
+              An object keyname prefix that identifies the subset of objects to which the rule
+              applies.
+
             - **Tags** *(list) --*
 
+              An array of tags containing key and value pairs.
+
               - *(dict) --*
+
+                A container of a key value name pair.
 
                 - **Key** *(string) --*
 
@@ -8255,7 +13039,8 @@ class ClientGetBucketReplicationResponseReplicationConfigurationTypeDef(
           A container that describes additional filters for identifying the source objects that
           you want to replicate. You can choose to enable or disable the replication of these
           objects. Currently, Amazon S3 supports only the filter that you can specify for objects
-          created with server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
+          created with server-side encryption using a customer master key (CMK) stored in AWS Key
+          Management Service (SSE-KMS).
 
           - **SseKmsEncryptedObjects** *(dict) --*
 
@@ -8266,7 +13051,16 @@ class ClientGetBucketReplicationResponseReplicationConfigurationTypeDef(
             - **Status** *(string) --*
 
               Specifies whether Amazon S3 replicates objects created with server-side encryption
-              using an AWS KMS-managed key.
+              using a customer master key (CMK) stored in AWS Key Management Service.
+
+        - **ExistingObjectReplication** *(dict) --*
+
+          A container that specifies information about existing object replication. You can
+          choose whether to enable or disable the replication of existing objects.
+
+          - **Status** *(string) --*
+
+            Specifies whether existing object replication is enabled.
 
         - **Destination** *(dict) --*
 
@@ -8274,22 +13068,18 @@ class ClientGetBucketReplicationResponseReplicationConfigurationTypeDef(
 
           - **Bucket** *(string) --*
 
-            The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store
-            replicas of the object identified by the rule.
-
-            A replication configuration can replicate objects to only one destination bucket. If
-            there are multiple rules in your replication configuration, all rules must specify
-            the same destination bucket.
+            The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the
+            results.
 
           - **Account** *(string) --*
 
             Destination bucket owner account ID. In a cross-account scenario, if you direct
             Amazon S3 to change replica ownership to the AWS account that owns the destination
             bucket by specifying the ``AccessControlTranslation`` property, this is the account
-            ID of the destination bucket owner. For more information, see `Cross-Region
-            Replication Additional Configuration\\: Change Replica Owner
-            <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the
-            *Amazon Simple Storage Service Developer Guide* .
+            ID of the destination bucket owner. For more information, see `Replication Additional
+            Configuration\\: Change Replica Owner
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html>`__ in
+            the *Amazon Simple Storage Service Developer Guide* .
 
           - **StorageClass** *(string) --*
 
@@ -8327,9 +13117,26 @@ class ClientGetBucketReplicationResponseReplicationConfigurationTypeDef(
 
         - **DeleteMarkerReplication** *(dict) --*
 
+          Specifies whether Amazon S3 replicates the delete markers. If you specify a ``Filter``
+          , you must specify this element. However, in the latest version of replication
+          configuration (when ``Filter`` is specified), Amazon S3 doesn't replicate delete
+          markers. Therefore, the ``DeleteMarkerReplication`` element can contain only
+          <Status>Disabled</Status>. For an example configuration, see `Basic Rule Configuration
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config>`__
+          .
+
+          .. note::
+
+            If you don't specify the Filter element, Amazon S3 assumes the replication
+            configuration is the earlier version, V1. In the earlier version, Amazon S3 handled
+            replication of delete markers differently. For more information, see `Backward
+            Compatibility
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations>`__
+            .
+
           - **Status** *(string) --*
 
-            The status of the delete marker replication.
+            Indicates whether to replicate delete markers.
 
             .. note::
 
@@ -8355,13 +13162,15 @@ class ClientGetBucketReplicationResponseTypeDef(
 
     - **ReplicationConfiguration** *(dict) --*
 
+      A container for replication rules. You can add up to 1,000 rules. The maximum size of a
+      replication configuration is 2 MB.
+
       - **Role** *(string) --*
 
         The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that
         Amazon S3 assumes when replicating objects. For more information, see `How to Set Up
-        Cross-Region Replication
-        <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-how-setup.html>`__ in the *Amazon
-        Simple Storage Service Developer Guide* .
+        Replication <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html>`__
+        in the *Amazon Simple Storage Service Developer Guide* .
 
       - **Rules** *(list) --*
 
@@ -8388,8 +13197,8 @@ class ClientGetBucketReplicationResponseTypeDef(
 
             * Same object qualify tag based filter criteria specified in multiple rules
 
-            For more information, see `Cross-Region Replication (CRR)
-            <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html>`__ in the *Amazon S3
+            For more information, see `Replication <
+            https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html>`__ in the *Amazon S3
             Developer Guide* .
 
           - **Prefix** *(string) --*
@@ -8399,6 +13208,9 @@ class ClientGetBucketReplicationResponseTypeDef(
             bucket, specify an empty string.
 
           - **Filter** *(dict) --*
+
+            A filter that identifies the subset of objects to which the replication rule applies. A
+            ``Filter`` must specify exactly one ``Prefix`` , ``Tag`` , or an ``And`` child element.
 
             - **Prefix** *(string) --*
 
@@ -8433,9 +13245,16 @@ class ClientGetBucketReplicationResponseTypeDef(
 
               - **Prefix** *(string) --*
 
+                An object keyname prefix that identifies the subset of objects to which the rule
+                applies.
+
               - **Tags** *(list) --*
 
+                An array of tags containing key and value pairs.
+
                 - *(dict) --*
+
+                  A container of a key value name pair.
 
                   - **Key** *(string) --*
 
@@ -8454,7 +13273,8 @@ class ClientGetBucketReplicationResponseTypeDef(
             A container that describes additional filters for identifying the source objects that
             you want to replicate. You can choose to enable or disable the replication of these
             objects. Currently, Amazon S3 supports only the filter that you can specify for objects
-            created with server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
+            created with server-side encryption using a customer master key (CMK) stored in AWS Key
+            Management Service (SSE-KMS).
 
             - **SseKmsEncryptedObjects** *(dict) --*
 
@@ -8465,7 +13285,16 @@ class ClientGetBucketReplicationResponseTypeDef(
               - **Status** *(string) --*
 
                 Specifies whether Amazon S3 replicates objects created with server-side encryption
-                using an AWS KMS-managed key.
+                using a customer master key (CMK) stored in AWS Key Management Service.
+
+          - **ExistingObjectReplication** *(dict) --*
+
+            A container that specifies information about existing object replication. You can
+            choose whether to enable or disable the replication of existing objects.
+
+            - **Status** *(string) --*
+
+              Specifies whether existing object replication is enabled.
 
           - **Destination** *(dict) --*
 
@@ -8473,22 +13302,18 @@ class ClientGetBucketReplicationResponseTypeDef(
 
             - **Bucket** *(string) --*
 
-              The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store
-              replicas of the object identified by the rule.
-
-              A replication configuration can replicate objects to only one destination bucket. If
-              there are multiple rules in your replication configuration, all rules must specify
-              the same destination bucket.
+              The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the
+              results.
 
             - **Account** *(string) --*
 
               Destination bucket owner account ID. In a cross-account scenario, if you direct
               Amazon S3 to change replica ownership to the AWS account that owns the destination
               bucket by specifying the ``AccessControlTranslation`` property, this is the account
-              ID of the destination bucket owner. For more information, see `Cross-Region
-              Replication Additional Configuration\\: Change Replica Owner
-              <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the
-              *Amazon Simple Storage Service Developer Guide* .
+              ID of the destination bucket owner. For more information, see `Replication Additional
+              Configuration\\: Change Replica Owner
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html>`__ in
+              the *Amazon Simple Storage Service Developer Guide* .
 
             - **StorageClass** *(string) --*
 
@@ -8526,9 +13351,26 @@ class ClientGetBucketReplicationResponseTypeDef(
 
           - **DeleteMarkerReplication** *(dict) --*
 
+            Specifies whether Amazon S3 replicates the delete markers. If you specify a ``Filter``
+            , you must specify this element. However, in the latest version of replication
+            configuration (when ``Filter`` is specified), Amazon S3 doesn't replicate delete
+            markers. Therefore, the ``DeleteMarkerReplication`` element can contain only
+            <Status>Disabled</Status>. For an example configuration, see `Basic Rule Configuration
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config>`__
+            .
+
+            .. note::
+
+              If you don't specify the Filter element, Amazon S3 assumes the replication
+              configuration is the earlier version, V1. In the earlier version, Amazon S3 handled
+              replication of delete markers differently. For more information, see `Backward
+              Compatibility
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations>`__
+              .
+
             - **Status** *(string) --*
 
-              The status of the delete marker replication.
+              Indicates whether to replicate delete markers.
 
               .. note::
 
@@ -8567,6 +13409,8 @@ class ClientGetBucketTaggingResponseTagSetTypeDef(
     """
     Type definition for `ClientGetBucketTaggingResponse` `TagSet`
 
+    A container of a key value name pair.
+
     - **Key** *(string) --*
 
       Name of the tag.
@@ -8590,7 +13434,11 @@ class ClientGetBucketTaggingResponseTypeDef(_ClientGetBucketTaggingResponseTypeD
 
     - **TagSet** *(list) --*
 
+      Contains the tag set.
+
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --*
 
@@ -8638,6 +13486,8 @@ class ClientGetBucketWebsiteResponseErrorDocumentTypeDef(
     """
     Type definition for `ClientGetBucketWebsiteResponse` `ErrorDocument`
 
+    The name of the error document for the website.
+
     - **Key** *(string) --*
 
       The object key name to use when a 4XX class error occurs.
@@ -8654,6 +13504,8 @@ class ClientGetBucketWebsiteResponseIndexDocumentTypeDef(
 ):
     """
     Type definition for `ClientGetBucketWebsiteResponse` `IndexDocument`
+
+    The name of the index document for the website.
 
     - **Suffix** *(string) --*
 
@@ -8676,6 +13528,8 @@ class ClientGetBucketWebsiteResponseRedirectAllRequestsToTypeDef(
 ):
     """
     Type definition for `ClientGetBucketWebsiteResponse` `RedirectAllRequestsTo`
+
+    Specifies the redirect behavior of all requests to a website endpoint of an Amazon S3 bucket.
 
     - **HostName** *(string) --*
 
@@ -8874,6 +13728,8 @@ class ClientGetBucketWebsiteResponseTypeDef(_ClientGetBucketWebsiteResponseTypeD
 
     - **RedirectAllRequestsTo** *(dict) --*
 
+      Specifies the redirect behavior of all requests to a website endpoint of an Amazon S3 bucket.
+
       - **HostName** *(string) --*
 
         Name of the host where requests are redirected.
@@ -8885,6 +13741,8 @@ class ClientGetBucketWebsiteResponseTypeDef(_ClientGetBucketWebsiteResponseTypeD
 
     - **IndexDocument** *(dict) --*
 
+      The name of the index document for the website.
+
       - **Suffix** *(string) --*
 
         A suffix that is appended to a request that is for a directory on the website endpoint
@@ -8894,11 +13752,15 @@ class ClientGetBucketWebsiteResponseTypeDef(_ClientGetBucketWebsiteResponseTypeD
 
     - **ErrorDocument** *(dict) --*
 
+      The name of the error document for the website.
+
       - **Key** *(string) --*
 
         The object key name to use when a 4XX class error occurs.
 
     - **RoutingRules** *(list) --*
+
+      Rules that define when a redirect is applied and the redirect behavior.
 
       - *(dict) --*
 
@@ -8977,6 +13839,8 @@ class ClientGetObjectAclResponseGrantsGranteeTypeDef(
     """
     Type definition for `ClientGetObjectAclResponseGrants` `Grantee`
 
+    The person being granted permissions.
+
     - **DisplayName** *(string) --*
 
       Screen name of the grantee.
@@ -9010,7 +13874,11 @@ class ClientGetObjectAclResponseGrantsTypeDef(_ClientGetObjectAclResponseGrantsT
     """
     Type definition for `ClientGetObjectAclResponse` `Grants`
 
+    Container for grant information.
+
     - **Grantee** *(dict) --*
+
+      The person being granted permissions.
 
       - **DisplayName** *(string) --*
 
@@ -9049,9 +13917,15 @@ class ClientGetObjectAclResponseOwnerTypeDef(_ClientGetObjectAclResponseOwnerTyp
     """
     Type definition for `ClientGetObjectAclResponse` `Owner`
 
+    Container for the bucket owner's display name and ID.
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -9072,9 +13946,15 @@ class ClientGetObjectAclResponseTypeDef(_ClientGetObjectAclResponseTypeDef):
 
     - **Owner** *(dict) --*
 
+      Container for the bucket owner's display name and ID.
+
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
 
     - **Grants** *(list) --*
 
@@ -9082,7 +13962,11 @@ class ClientGetObjectAclResponseTypeDef(_ClientGetObjectAclResponseTypeDef):
 
       - *(dict) --*
 
+        Container for grant information.
+
         - **Grantee** *(dict) --*
+
+          The person being granted permissions.
 
           - **DisplayName** *(string) --*
 
@@ -9172,7 +14056,7 @@ class ClientGetObjectLockConfigurationResponseObjectLockConfigurationRuleDefault
 
     - **Mode** *(string) --*
 
-      The default object lock retention mode you want to apply to new objects placed in the
+      The default Object Lock retention mode you want to apply to new objects placed in the
       specified bucket.
 
     - **Days** *(integer) --*
@@ -9200,7 +14084,7 @@ class ClientGetObjectLockConfigurationResponseObjectLockConfigurationRuleTypeDef
     """
     Type definition for `ClientGetObjectLockConfigurationResponseObjectLockConfiguration` `Rule`
 
-    The object lock rule in place for the specified object.
+    The Object Lock rule in place for the specified object.
 
     - **DefaultRetention** *(dict) --*
 
@@ -9209,7 +14093,7 @@ class ClientGetObjectLockConfigurationResponseObjectLockConfigurationRuleTypeDef
 
       - **Mode** *(string) --*
 
-        The default object lock retention mode you want to apply to new objects placed in the
+        The default Object Lock retention mode you want to apply to new objects placed in the
         specified bucket.
 
       - **Days** *(integer) --*
@@ -9238,15 +14122,15 @@ class ClientGetObjectLockConfigurationResponseObjectLockConfigurationTypeDef(
     """
     Type definition for `ClientGetObjectLockConfigurationResponse` `ObjectLockConfiguration`
 
-    The specified bucket's object lock configuration.
+    The specified bucket's Object Lock configuration.
 
     - **ObjectLockEnabled** *(string) --*
 
-      Indicates whether this bucket has an object lock configuration enabled.
+      Indicates whether this bucket has an Object Lock configuration enabled.
 
     - **Rule** *(dict) --*
 
-      The object lock rule in place for the specified object.
+      The Object Lock rule in place for the specified object.
 
       - **DefaultRetention** *(dict) --*
 
@@ -9255,7 +14139,7 @@ class ClientGetObjectLockConfigurationResponseObjectLockConfigurationTypeDef(
 
         - **Mode** *(string) --*
 
-          The default object lock retention mode you want to apply to new objects placed in the
+          The default Object Lock retention mode you want to apply to new objects placed in the
           specified bucket.
 
         - **Days** *(integer) --*
@@ -9285,15 +14169,15 @@ class ClientGetObjectLockConfigurationResponseTypeDef(
 
     - **ObjectLockConfiguration** *(dict) --*
 
-      The specified bucket's object lock configuration.
+      The specified bucket's Object Lock configuration.
 
       - **ObjectLockEnabled** *(string) --*
 
-        Indicates whether this bucket has an object lock configuration enabled.
+        Indicates whether this bucket has an Object Lock configuration enabled.
 
       - **Rule** *(dict) --*
 
-        The object lock rule in place for the specified object.
+        The Object Lock rule in place for the specified object.
 
         - **DefaultRetention** *(dict) --*
 
@@ -9302,7 +14186,7 @@ class ClientGetObjectLockConfigurationResponseTypeDef(
 
           - **Mode** *(string) --*
 
-            The default object lock retention mode you want to apply to new objects placed in the
+            The default Object Lock retention mode you want to apply to new objects placed in the
             specified bucket.
 
           - **Days** *(integer) --*
@@ -9367,6 +14251,8 @@ class ClientGetObjectResponseTypeDef(_ClientGetObjectResponseTypeDef):
       false, this response header does not appear in the response.
 
     - **AcceptRanges** *(string) --*
+
+      Indicates that a range of bytes was specifed.
 
     - **Expiration** *(string) --*
 
@@ -9465,16 +14351,22 @@ class ClientGetObjectResponseTypeDef(_ClientGetObjectResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **StorageClass** *(string) --*
+
+      Provides storage class information of the object. Amazon S3 returns this header for all
+      objects except for Standard storage class objects.
 
     - **RequestCharged** *(string) --*
 
       If present, indicates that the requester was successfully charged for the request.
 
     - **ReplicationStatus** *(string) --*
+
+      Amazon S3 can return this if your request involves a bucket that is either a source or
+      destination in a replication rule.
 
     - **PartsCount** *(integer) --*
 
@@ -9486,11 +14378,11 @@ class ClientGetObjectResponseTypeDef(_ClientGetObjectResponseTypeDef):
 
     - **ObjectLockMode** *(string) --*
 
-      The object lock mode currently in place for this object.
+      The Object Lock mode currently in place for this object.
 
     - **ObjectLockRetainUntilDate** *(datetime) --*
 
-      The date and time when this object's object lock will expire.
+      The date and time when this object's Object Lock will expire.
 
     - **ObjectLockLegalHoldStatus** *(string) --*
 
@@ -9520,7 +14412,7 @@ class ClientGetObjectRetentionResponseRetentionTypeDef(
 
     - **RetainUntilDate** *(datetime) --*
 
-      The date on which this object lock retention expires.
+      The date on which this Object Lock Retention will expire.
     """
 
 
@@ -9545,7 +14437,7 @@ class ClientGetObjectRetentionResponseTypeDef(_ClientGetObjectRetentionResponseT
 
       - **RetainUntilDate** *(datetime) --*
 
-        The date on which this object lock retention expires.
+        The date on which this Object Lock Retention will expire.
     """
 
 
@@ -9561,6 +14453,8 @@ class ClientGetObjectTaggingResponseTagSetTypeDef(
 ):
     """
     Type definition for `ClientGetObjectTaggingResponse` `TagSet`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --*
 
@@ -9585,9 +14479,15 @@ class ClientGetObjectTaggingResponseTypeDef(_ClientGetObjectTaggingResponseTypeD
 
     - **VersionId** *(string) --*
 
+      The versionId of the object for which you got the tagging information.
+
     - **TagSet** *(list) --*
 
+      Contains the tag set.
+
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --*
 
@@ -9609,6 +14509,8 @@ class ClientGetObjectTorrentResponseTypeDef(_ClientGetObjectTorrentResponseTypeD
     Type definition for `ClientGetObjectTorrent` `Response`
 
     - **Body** (:class:`.StreamingBody`) --
+
+      A Bencoded dictionary as defined by the BitTorrent specification
 
     - **RequestCharged** *(string) --*
 
@@ -9644,6 +14546,8 @@ class ClientGetPublicAccessBlockResponsePublicAccessBlockConfigurationTypeDef(
       * PUT Bucket acl and PUT Object acl calls fail if the specified ACL is public.
 
       * PUT Object calls fail if the request includes a public ACL.
+
+      * PUT Bucket calls fail if the request includes a public ACL.
 
       Enabling this setting doesn't affect existing policies or ACLs.
 
@@ -9703,6 +14607,8 @@ class ClientGetPublicAccessBlockResponseTypeDef(
         * PUT Bucket acl and PUT Object acl calls fail if the specified ACL is public.
 
         * PUT Object calls fail if the request includes a public ACL.
+
+        * PUT Bucket calls fail if the request includes a public ACL.
 
         Enabling this setting doesn't affect existing policies or ACLs.
 
@@ -9782,6 +14688,8 @@ class ClientHeadObjectResponseTypeDef(_ClientHeadObjectResponseTypeDef):
 
     - **AcceptRanges** *(string) --*
 
+      Indicates that a range of bytes was specifed.
+
     - **Expiration** *(string) --*
 
       If the object expiration is configured (see PUT Bucket lifecycle), the response includes this
@@ -9790,8 +14698,22 @@ class ClientHeadObjectResponseTypeDef(_ClientHeadObjectResponseTypeDef):
 
     - **Restore** *(string) --*
 
-      Provides information about object restoration operation and expiration time of the restored
-      object copy.
+      If the object is an archived object (an object whose storage class is GLACIER), the response
+      includes this header if either the archive restoration is in progress (see  RestoreObject or
+      an archive copy is already restored.
+
+      If an archive copy is already restored, the header value indicates when Amazon S3 is
+      scheduled to delete the object copy. For example:
+
+       ``x-amz-restore: ongoing-request="false", expiry-date="Fri, 23 Dec 2012 00:00:00 GMT"``
+
+      If the object restoration is in progress, the header returns the value
+      ``ongoing-request="true"`` .
+
+      For more information about archiving objects, see `Transitioning Objects\\: General
+      Considerations
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html#lifecycle-transition-general-considerations>`__
+      .
 
     - **LastModified** *(datetime) --*
 
@@ -9851,8 +14773,10 @@ class ClientHeadObjectResponseTypeDef(_ClientHeadObjectResponseTypeDef):
 
     - **ServerSideEncryption** *(string) --*
 
-      The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256,
-      aws:kms).
+      If the object is stored using server-side encryption either with an AWS KMS customer master
+      key (CMK) or an Amazon S3-managed encryption key, the response includes this header with the
+      value of the Server-side encryption algorithm used when storing this object in S3 (e.g.,
+      AES256, aws:kms).
 
     - **Metadata** *(dict) --*
 
@@ -9875,10 +14799,16 @@ class ClientHeadObjectResponseTypeDef(_ClientHeadObjectResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **StorageClass** *(string) --*
+
+      Provides storage class information of the object. Amazon S3 returns this header for all
+      objects except for Standard storage class objects.
+
+      For more information, see `Storage Classes
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html>`__ .
 
     - **RequestCharged** *(string) --*
 
@@ -9886,21 +14816,53 @@ class ClientHeadObjectResponseTypeDef(_ClientHeadObjectResponseTypeDef):
 
     - **ReplicationStatus** *(string) --*
 
+      Amazon S3 can return this header if your request involves a bucket that is either a source or
+      destination in a replication rule.
+
+      In replication you have a source bucket on which you configure replication and destination
+      bucket where Amazon S3 stores object replicas. When you request an object (GetObject) or
+      object metadata (HeadObject) from these buckets, Amazon S3 will return the
+      x-amz-replication-status header in the response as follows:
+
+      * If requesting object from the source bucket — Amazon S3 will return the
+      x-amz-replication-status header if object in your request is eligible for replication. For
+      example, suppose in your replication configuration you specify object prefix "TaxDocs"
+      requesting Amazon S3 to replicate objects with key prefix "TaxDocs". Then any objects you
+      upload with this key name prefix, for example "TaxDocs/document1.pdf", is eligible for
+      replication. For any object request with this key name prefix Amazon S3 will return the
+      x-amz-replication-status header with value PENDING, COMPLETED or FAILED indicating object
+      replication status.
+
+      * If requesting object from the destination bucket — Amazon S3 will return the
+      x-amz-replication-status header with value REPLICA if object in your request is a replica
+      that Amazon S3 created.
+
+      For more information, see `Replication
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ .
+
     - **PartsCount** *(integer) --*
 
       The count of parts this object has.
 
     - **ObjectLockMode** *(string) --*
 
-      The object lock mode currently in place for this object.
+      The Object Lock mode, if any, that's in effect for this object. This header is only returned
+      if the requester has the ``s3:GetObjectRetention`` permission. For more information about S3
+      Object Lock, see `Object Lock
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__ .
 
     - **ObjectLockRetainUntilDate** *(datetime) --*
 
-      The date and time when this object's object lock expires.
+      The date and time when the Object Lock retention period expires. This header is only returned
+      if the requester has the ``s3:GetObjectRetention`` permission.
 
     - **ObjectLockLegalHoldStatus** *(string) --*
 
-      The Legal Hold status for the specified object.
+      Specifies whether a legal hold is in effect for this object. This header is only returned if
+      the requester has the ``s3:GetObjectLegalHold`` permission. This header is not returned if
+      the specified version of this object has never had a legal hold applied. For more information
+      about S3 Object Lock, see `Object Lock
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__ .
     """
 
 
@@ -9916,6 +14878,8 @@ class ClientListBucketAnalyticsConfigurationsResponseAnalyticsConfigurationListF
 ):
     """
     Type definition for `ClientListBucketAnalyticsConfigurationsResponseAnalyticsConfigurationListFilterAnd` `Tags`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --*
 
@@ -9958,6 +14922,8 @@ class ClientListBucketAnalyticsConfigurationsResponseAnalyticsConfigurationListF
       The list of tags to use when evaluating an AND predicate.
 
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --*
 
@@ -10046,6 +15012,8 @@ class ClientListBucketAnalyticsConfigurationsResponseAnalyticsConfigurationListF
         The list of tags to use when evaluating an AND predicate.
 
         - *(dict) --*
+
+          A container of a key value name pair.
 
           - **Key** *(string) --*
 
@@ -10255,10 +15223,6 @@ class ClientListBucketAnalyticsConfigurationsResponseAnalyticsConfigurationListT
     Specifies the configuration and any analyses for the analytics filter of an Amazon S3
     bucket.
 
-    For more information, see `GET Bucket analytics
-    <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETAnalyticsConfig.html>`__ in
-    the *Amazon Simple Storage Service API Reference* .
-
     - **Id** *(string) --*
 
       The ID that identifies the analytics configuration.
@@ -10300,6 +15264,8 @@ class ClientListBucketAnalyticsConfigurationsResponseAnalyticsConfigurationListT
           The list of tags to use when evaluating an AND predicate.
 
           - *(dict) --*
+
+            A container of a key value name pair.
 
             - **Key** *(string) --*
 
@@ -10378,7 +15344,8 @@ class ClientListBucketAnalyticsConfigurationsResponseTypeDef(
 
     - **ContinuationToken** *(string) --*
 
-      The ContinuationToken that represents where this request began.
+      The marker that is used as a starting point for this analytics configuration list response.
+      This value is present if it was sent in the request.
 
     - **NextContinuationToken** *(string) --*
 
@@ -10394,10 +15361,6 @@ class ClientListBucketAnalyticsConfigurationsResponseTypeDef(
 
         Specifies the configuration and any analyses for the analytics filter of an Amazon S3
         bucket.
-
-        For more information, see `GET Bucket analytics
-        <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETAnalyticsConfig.html>`__ in
-        the *Amazon Simple Storage Service API Reference* .
 
         - **Id** *(string) --*
 
@@ -10440,6 +15403,8 @@ class ClientListBucketAnalyticsConfigurationsResponseTypeDef(
               The list of tags to use when evaluating an AND predicate.
 
               - *(dict) --*
+
+                A container of a key value name pair.
 
                 - **Key** *(string) --*
 
@@ -10507,8 +15472,8 @@ class ClientListBucketInventoryConfigurationsResponseInventoryConfigurationListD
 
     - **KeyId** *(string) --*
 
-      Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-      use for encrypting Inventory reports.
+      Specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) to use for encrypting Inventory reports.
     """
 
 
@@ -10540,8 +15505,8 @@ class ClientListBucketInventoryConfigurationsResponseInventoryConfigurationListD
 
       - **KeyId** *(string) --*
 
-        Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-        use for encrypting Inventory reports.
+        Specifies the ID of the AWS Key Management Service (KMS) customer master key
+        (CMK) to use for encrypting Inventory reports.
     """
 
 
@@ -10598,8 +15563,8 @@ class ClientListBucketInventoryConfigurationsResponseInventoryConfigurationListD
 
         - **KeyId** *(string) --*
 
-          Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-          use for encrypting Inventory reports.
+          Specifies the ID of the AWS Key Management Service (KMS) customer master key
+          (CMK) to use for encrypting Inventory reports.
     """
 
 
@@ -10656,8 +15621,8 @@ class ClientListBucketInventoryConfigurationsResponseInventoryConfigurationListD
 
           - **KeyId** *(string) --*
 
-            Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-            use for encrypting Inventory reports.
+            Specifies the ID of the AWS Key Management Service (KMS) customer master key
+            (CMK) to use for encrypting Inventory reports.
     """
 
 
@@ -10770,8 +15735,8 @@ class ClientListBucketInventoryConfigurationsResponseInventoryConfigurationListT
 
             - **KeyId** *(string) --*
 
-              Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-              use for encrypting Inventory reports.
+              Specifies the ID of the AWS Key Management Service (KMS) customer master key
+              (CMK) to use for encrypting Inventory reports.
 
     - **IsEnabled** *(boolean) --*
 
@@ -10890,8 +15855,8 @@ class ClientListBucketInventoryConfigurationsResponseTypeDef(
 
                 - **KeyId** *(string) --*
 
-                  Specifies the ID of the AWS Key Management Service (KMS) master encryption key to
-                  use for encrypting Inventory reports.
+                  Specifies the ID of the AWS Key Management Service (KMS) customer master key
+                  (CMK) to use for encrypting Inventory reports.
 
         - **IsEnabled** *(boolean) --*
 
@@ -10934,8 +15899,9 @@ class ClientListBucketInventoryConfigurationsResponseTypeDef(
 
     - **IsTruncated** *(boolean) --*
 
-      Indicates whether the returned list of inventory configurations is truncated in this
-      response. A value of true indicates that the list is truncated.
+      Tells whether the returned list of inventory configurations is complete. A value of true
+      indicates that the list is not complete and the NextContinuationToken is provided for a
+      subsequent request.
 
     - **NextContinuationToken** *(string) --*
 
@@ -10957,6 +15923,8 @@ class ClientListBucketMetricsConfigurationsResponseMetricsConfigurationListFilte
 ):
     """
     Type definition for `ClientListBucketMetricsConfigurationsResponseMetricsConfigurationListFilterAnd` `Tags`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --*
 
@@ -10999,6 +15967,8 @@ class ClientListBucketMetricsConfigurationsResponseMetricsConfigurationListFilte
       The list of tags used when evaluating an AND predicate.
 
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --*
 
@@ -11088,6 +16058,8 @@ class ClientListBucketMetricsConfigurationsResponseMetricsConfigurationListFilte
 
         - *(dict) --*
 
+          A container of a key value name pair.
+
           - **Key** *(string) --*
 
             Name of the tag.
@@ -11163,6 +16135,8 @@ class ClientListBucketMetricsConfigurationsResponseMetricsConfigurationListTypeD
           The list of tags used when evaluating an AND predicate.
 
           - *(dict) --*
+
+            A container of a key value name pair.
 
             - **Key** *(string) --*
 
@@ -11267,6 +16241,8 @@ class ClientListBucketMetricsConfigurationsResponseTypeDef(
 
               - *(dict) --*
 
+                A container of a key value name pair.
+
                 - **Key** *(string) --*
 
                   Name of the tag.
@@ -11287,6 +16263,9 @@ _ClientListBucketsResponseBucketsTypeDef = TypedDict(
 class ClientListBucketsResponseBucketsTypeDef(_ClientListBucketsResponseBucketsTypeDef):
     """
     Type definition for `ClientListBucketsResponse` `Buckets`
+
+    In terms of implementation, a Bucket is a resource. An Amazon S3 bucket name is globally
+    unique, and the namespace is shared by all AWS accounts.
 
     - **Name** *(string) --*
 
@@ -11309,9 +16288,15 @@ class ClientListBucketsResponseOwnerTypeDef(_ClientListBucketsResponseOwnerTypeD
     """
     Type definition for `ClientListBucketsResponse` `Owner`
 
+    The owner of the buckets listed.
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -11331,7 +16316,12 @@ class ClientListBucketsResponseTypeDef(_ClientListBucketsResponseTypeDef):
 
     - **Buckets** *(list) --*
 
+      The list of buckets owned by the requestor.
+
       - *(dict) --*
+
+        In terms of implementation, a Bucket is a resource. An Amazon S3 bucket name is globally
+        unique, and the namespace is shared by all AWS accounts.
 
         - **Name** *(string) --*
 
@@ -11343,9 +16333,15 @@ class ClientListBucketsResponseTypeDef(_ClientListBucketsResponseTypeDef):
 
     - **Owner** *(dict) --*
 
+      The owner of the buckets listed.
+
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
     """
 
 
@@ -11362,7 +16358,14 @@ class ClientListMultipartUploadsResponseCommonPrefixesTypeDef(
     """
     Type definition for `ClientListMultipartUploadsResponse` `CommonPrefixes`
 
+    Container for all (if there are any) keys between Prefix and the next occurrence of the
+    string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+    the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+    is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
     - **Prefix** *(string) --*
+
+      Container for the specified common prefix.
     """
 
 
@@ -11405,9 +16408,15 @@ class ClientListMultipartUploadsResponseUploadsOwnerTypeDef(
     """
     Type definition for `ClientListMultipartUploadsResponseUploads` `Owner`
 
+    Specifies the owner of the object that is part of the multipart upload.
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -11431,6 +16440,8 @@ class ClientListMultipartUploadsResponseUploadsTypeDef(
     """
     Type definition for `ClientListMultipartUploadsResponse` `Uploads`
 
+    Container for the MultipartUpload for the Amazon S3 object.
+
     - **UploadId** *(string) --*
 
       Upload ID that identifies the multipart upload.
@@ -11449,9 +16460,15 @@ class ClientListMultipartUploadsResponseUploadsTypeDef(
 
     - **Owner** *(dict) --*
 
+      Specifies the owner of the object that is part of the multipart upload.
+
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
 
     - **Initiator** *(dict) --*
 
@@ -11518,6 +16535,9 @@ class ClientListMultipartUploadsResponseTypeDef(
 
     - **Delimiter** *(string) --*
 
+      Contains the delimiter you specified in the request. If you don't specify a delimiter in your
+      request, this element is absent from the response.
+
     - **NextUploadIdMarker** *(string) --*
 
       When a list is truncated, this element specifies the value that should be used for the
@@ -11535,7 +16555,12 @@ class ClientListMultipartUploadsResponseTypeDef(
 
     - **Uploads** *(list) --*
 
+      Container for elements related to a particular multipart upload. A response can contain zero
+      or more Upload elements.
+
       - *(dict) --*
+
+        Container for the MultipartUpload for the Amazon S3 object.
 
         - **UploadId** *(string) --*
 
@@ -11555,9 +16580,15 @@ class ClientListMultipartUploadsResponseTypeDef(
 
         - **Owner** *(dict) --*
 
+          Specifies the owner of the object that is part of the multipart upload.
+
           - **DisplayName** *(string) --*
 
+            Container for the display name of the owner
+
           - **ID** *(string) --*
+
+            Container for the ID of the owner
 
         - **Initiator** *(dict) --*
 
@@ -11574,13 +16605,29 @@ class ClientListMultipartUploadsResponseTypeDef(
 
     - **CommonPrefixes** *(list) --*
 
+      If you specify a delimiter in the request, then the result returns each distinct key prefix
+      containing the delimiter in a CommonPrefixes element. The distinct key prefixes are returned
+      in the Prefix child element.
+
       - *(dict) --*
 
+        Container for all (if there are any) keys between Prefix and the next occurrence of the
+        string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+        the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+        is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
         - **Prefix** *(string) --*
+
+          Container for the specified common prefix.
 
     - **EncodingType** *(string) --*
 
       Encoding type used by Amazon S3 to encode object keys in the response.
+
+      If you specify ``encoding-type`` request parameter, Amazon S3 includes this element in the
+      response, and returns encoded key name values in the following response elements:
+
+       ``Delimiter`` , ``KeyMarker`` , ``Prefix`` , ``NextKeyMarker`` , ``Key`` .
     """
 
 
@@ -11597,7 +16644,14 @@ class ClientListObjectVersionsResponseCommonPrefixesTypeDef(
     """
     Type definition for `ClientListObjectVersionsResponse` `CommonPrefixes`
 
+    Container for all (if there are any) keys between Prefix and the next occurrence of the
+    string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+    the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+    is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
     - **Prefix** *(string) --*
+
+      Container for the specified common prefix.
     """
 
 
@@ -11614,9 +16668,15 @@ class ClientListObjectVersionsResponseDeleteMarkersOwnerTypeDef(
     """
     Type definition for `ClientListObjectVersionsResponseDeleteMarkers` `Owner`
 
+    The account that created the delete marker.>
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -11639,11 +16699,19 @@ class ClientListObjectVersionsResponseDeleteMarkersTypeDef(
     """
     Type definition for `ClientListObjectVersionsResponse` `DeleteMarkers`
 
+    Information about the delete marker.
+
     - **Owner** *(dict) --*
+
+      The account that created the delete marker.>
 
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
 
     - **Key** *(string) --*
 
@@ -11676,9 +16744,15 @@ class ClientListObjectVersionsResponseVersionsOwnerTypeDef(
     """
     Type definition for `ClientListObjectVersionsResponseVersions` `Owner`
 
+    Specifies the Owner of the object.
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -11704,7 +16778,11 @@ class ClientListObjectVersionsResponseVersionsTypeDef(
     """
     Type definition for `ClientListObjectVersionsResponse` `Versions`
 
+    The version of an object.
+
     - **ETag** *(string) --*
+
+      The entity tag is an MD5 hash of that version of the object
 
     - **Size** *(integer) --*
 
@@ -11732,9 +16810,15 @@ class ClientListObjectVersionsResponseVersionsTypeDef(
 
     - **Owner** *(dict) --*
 
+      Specifies the Owner of the object.
+
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
     """
 
 
@@ -11776,19 +16860,31 @@ class ClientListObjectVersionsResponseTypeDef(_ClientListObjectVersionsResponseT
 
     - **VersionIdMarker** *(string) --*
 
+      Marks the last version of the Key returned in a truncated response.
+
     - **NextKeyMarker** *(string) --*
 
-      Use this value for the key marker request parameter in a subsequent request.
+      When the number of responses exceeds the value of MaxKeys, NextKeyMarker specifies the first
+      key not returned that satisfies the search criteria. Use this value for the key-marker
+      request parameter in a subsequent request.
 
     - **NextVersionIdMarker** *(string) --*
 
-      Use this value for the next version id marker parameter in a subsequent request.
+      When the number of responses exceeds the value of MaxKeys, NextVersionIdMarker specifies the
+      first object version not returned that satisfies the search criteria. Use this value for the
+      version-id-marker request parameter in a subsequent request.
 
     - **Versions** *(list) --*
 
+      Container for version information.
+
       - *(dict) --*
 
+        The version of an object.
+
         - **ETag** *(string) --*
+
+          The entity tag is an MD5 hash of that version of the object
 
         - **Size** *(integer) --*
 
@@ -11816,19 +16912,35 @@ class ClientListObjectVersionsResponseTypeDef(_ClientListObjectVersionsResponseT
 
         - **Owner** *(dict) --*
 
+          Specifies the Owner of the object.
+
           - **DisplayName** *(string) --*
 
+            Container for the display name of the owner
+
           - **ID** *(string) --*
+
+            Container for the ID of the owner
 
     - **DeleteMarkers** *(list) --*
 
+      Container for an object that is a delete marker.
+
       - *(dict) --*
+
+        Information about the delete marker.
 
         - **Owner** *(dict) --*
 
+          The account that created the delete marker.>
+
           - **DisplayName** *(string) --*
 
+            Container for the display name of the owner
+
           - **ID** *(string) --*
+
+            Container for the ID of the owner
 
         - **Key** *(string) --*
 
@@ -11848,21 +16960,48 @@ class ClientListObjectVersionsResponseTypeDef(_ClientListObjectVersionsResponseT
 
     - **Name** *(string) --*
 
+      Bucket owner's name.
+
     - **Prefix** *(string) --*
+
+      Selects objects that start with the value supplied by this parameter.
 
     - **Delimiter** *(string) --*
 
+      The delimeter grouping the included keys. A delimiter is a character that you specify to
+      group keys. All keys that contain the same string between the prefix and the first occurrence
+      of the delimiter are grouped under a single result element in CommonPrefixes. These groups
+      are counted as one result against the max-keys limitation. These keys are not returned
+      elsewhere in the response.
+
     - **MaxKeys** *(integer) --*
+
+      Specifies the maximum number of objects to return.
 
     - **CommonPrefixes** *(list) --*
 
+      All of the keys rolled up into a common prefix count as a single return when calculating the
+      number of returns.
+
       - *(dict) --*
+
+        Container for all (if there are any) keys between Prefix and the next occurrence of the
+        string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+        the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+        is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
 
         - **Prefix** *(string) --*
 
+          Container for the specified common prefix.
+
     - **EncodingType** *(string) --*
 
-      Encoding type used by Amazon S3 to encode object keys in the response.
+      Encoding type used by Amazon S3 to encode object key names in the XML response.
+
+      If you specify encoding-type request parameter, Amazon S3 includes this element in the
+      response, and returns encoded key name values in the following response elements:
+
+       ``KeyMarker, NextKeyMarker, Prefix, Key`` , and ``Delimiter`` .
     """
 
 
@@ -11877,7 +17016,14 @@ class ClientListObjectsResponseCommonPrefixesTypeDef(
     """
     Type definition for `ClientListObjectsResponse` `CommonPrefixes`
 
+    Container for all (if there are any) keys between Prefix and the next occurrence of the
+    string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+    the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+    is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
     - **Prefix** *(string) --*
+
+      Container for the specified common prefix.
     """
 
 
@@ -11894,9 +17040,15 @@ class ClientListObjectsResponseContentsOwnerTypeDef(
     """
     Type definition for `ClientListObjectsResponseContents` `Owner`
 
+    The owner of the object
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -11920,13 +17072,24 @@ class ClientListObjectsResponseContentsTypeDef(
     """
     Type definition for `ClientListObjectsResponse` `Contents`
 
+    An object consists of data and its descriptive metadata.
+
     - **Key** *(string) --*
+
+      The name that you assign to an object. You use the object key to retrieve the object.
 
     - **LastModified** *(datetime) --*
 
+      The date the Object was Last Modified
+
     - **ETag** *(string) --*
 
+      The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents
+      of an object, not its metadata.
+
     - **Size** *(integer) --*
+
+      Size in bytes of the object
 
     - **StorageClass** *(string) --*
 
@@ -11934,9 +17097,15 @@ class ClientListObjectsResponseContentsTypeDef(
 
     - **Owner** *(dict) --*
 
+      The owner of the object
+
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
     """
 
 
@@ -11969,6 +17138,9 @@ class ClientListObjectsResponseTypeDef(_ClientListObjectsResponseTypeDef):
 
     - **Marker** *(string) --*
 
+      Indicates where in the bucket listing begins. Marker is included in the response if it was
+      sent with the request.
+
     - **NextMarker** *(string) --*
 
       When response is truncated (the IsTruncated element value in the response is true), you can
@@ -11980,15 +17152,28 @@ class ClientListObjectsResponseTypeDef(_ClientListObjectsResponseTypeDef):
 
     - **Contents** *(list) --*
 
+      Metadata about each object returned.
+
       - *(dict) --*
+
+        An object consists of data and its descriptive metadata.
 
         - **Key** *(string) --*
 
+          The name that you assign to an object. You use the object key to retrieve the object.
+
         - **LastModified** *(datetime) --*
+
+          The date the Object was Last Modified
 
         - **ETag** *(string) --*
 
+          The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents
+          of an object, not its metadata.
+
         - **Size** *(integer) --*
+
+          Size in bytes of the object
 
         - **StorageClass** *(string) --*
 
@@ -11996,23 +17181,61 @@ class ClientListObjectsResponseTypeDef(_ClientListObjectsResponseTypeDef):
 
         - **Owner** *(dict) --*
 
+          The owner of the object
+
           - **DisplayName** *(string) --*
+
+            Container for the display name of the owner
 
           - **ID** *(string) --*
 
+            Container for the ID of the owner
+
     - **Name** *(string) --*
+
+      Name of the bucket.
 
     - **Prefix** *(string) --*
 
+      Keys that begin with the indicated prefix.
+
     - **Delimiter** *(string) --*
+
+      Causes keys that contain the same string between the prefix and the first occurrence of the
+      delimiter to be rolled up into a single result element in the CommonPrefixes collection.
+      These rolled-up keys are not returned elsewhere in the response. Each rolled-up result counts
+      as only one return against the MaxKeys value.
 
     - **MaxKeys** *(integer) --*
 
+      The maximum number of keys returned in the response body.
+
     - **CommonPrefixes** *(list) --*
+
+      All of the keys rolled up in a common prefix count as a single return when calculating the
+      number of returns.
+
+      A response can contain CommonPrefixes only if you specify a delimiter.
+
+      CommonPrefixes contains all (if there are any) keys between Prefix and the next occurrence of
+      the string specified by the delimiter.
+
+      CommonPrefixes lists keys that act like subdirectories in the directory specified by Prefix.
+
+      For example, if the prefix is notes/ and the delimiter is a slash (/) as in
+      notes/summer/july, the common prefix is notes/summer/. All of the keys that roll up into a
+      common prefix count as a single return when calculating the number of returns.
 
       - *(dict) --*
 
+        Container for all (if there are any) keys between Prefix and the next occurrence of the
+        string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+        the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+        is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
         - **Prefix** *(string) --*
+
+          Container for the specified common prefix.
 
     - **EncodingType** *(string) --*
 
@@ -12031,7 +17254,14 @@ class ClientListObjectsV2ResponseCommonPrefixesTypeDef(
     """
     Type definition for `ClientListObjectsV2Response` `CommonPrefixes`
 
+    Container for all (if there are any) keys between Prefix and the next occurrence of the
+    string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+    the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+    is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
     - **Prefix** *(string) --*
+
+      Container for the specified common prefix.
     """
 
 
@@ -12048,9 +17278,15 @@ class ClientListObjectsV2ResponseContentsOwnerTypeDef(
     """
     Type definition for `ClientListObjectsV2ResponseContents` `Owner`
 
+    The owner of the object
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -12074,13 +17310,24 @@ class ClientListObjectsV2ResponseContentsTypeDef(
     """
     Type definition for `ClientListObjectsV2Response` `Contents`
 
+    An object consists of data and its descriptive metadata.
+
     - **Key** *(string) --*
+
+      The name that you assign to an object. You use the object key to retrieve the object.
 
     - **LastModified** *(datetime) --*
 
+      The date the Object was Last Modified
+
     - **ETag** *(string) --*
 
+      The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents
+      of an object, not its metadata.
+
     - **Size** *(integer) --*
+
+      Size in bytes of the object
 
     - **StorageClass** *(string) --*
 
@@ -12088,9 +17335,15 @@ class ClientListObjectsV2ResponseContentsTypeDef(
 
     - **Owner** *(dict) --*
 
+      The owner of the object
+
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
     """
 
 
@@ -12120,8 +17373,9 @@ class ClientListObjectsV2ResponseTypeDef(_ClientListObjectsV2ResponseTypeDef):
 
     - **IsTruncated** *(boolean) --*
 
-      A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the
-      search criteria.
+      Set to false if all of the results were returned. Set to true if more keys are available to
+      return. If the number of results exceeds that specified by MaxKeys, all of the results might
+      not be returned.
 
     - **Contents** *(list) --*
 
@@ -12129,13 +17383,24 @@ class ClientListObjectsV2ResponseTypeDef(_ClientListObjectsV2ResponseTypeDef):
 
       - *(dict) --*
 
+        An object consists of data and its descriptive metadata.
+
         - **Key** *(string) --*
+
+          The name that you assign to an object. You use the object key to retrieve the object.
 
         - **LastModified** *(datetime) --*
 
+          The date the Object was Last Modified
+
         - **ETag** *(string) --*
 
+          The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents
+          of an object, not its metadata.
+
         - **Size** *(integer) --*
+
+          Size in bytes of the object
 
         - **StorageClass** *(string) --*
 
@@ -12143,21 +17408,30 @@ class ClientListObjectsV2ResponseTypeDef(_ClientListObjectsV2ResponseTypeDef):
 
         - **Owner** *(dict) --*
 
+          The owner of the object
+
           - **DisplayName** *(string) --*
+
+            Container for the display name of the owner
 
           - **ID** *(string) --*
 
+            Container for the ID of the owner
+
     - **Name** *(string) --*
 
-      Name of the bucket to list.
+      Name of the bucket.
 
     - **Prefix** *(string) --*
 
-      Limits the response to keys that begin with the specified prefix.
+      Keys that begin with the indicated prefix.
 
     - **Delimiter** *(string) --*
 
-      A delimiter is a character you use to group keys.
+      Causes keys that contain the same string between the prefix and the first occurrence of the
+      delimiter to be rolled up into a single result element in the CommonPrefixes collection.
+      These rolled-up keys are not returned elsewhere in the response. Each rolled-up result counts
+      as only one return against the MaxKeys value.
 
     - **MaxKeys** *(integer) --*
 
@@ -12166,16 +17440,40 @@ class ClientListObjectsV2ResponseTypeDef(_ClientListObjectsV2ResponseTypeDef):
 
     - **CommonPrefixes** *(list) --*
 
-      CommonPrefixes contains all (if there are any) keys between Prefix and the next occurrence of
-      the string specified by delimiter
+      All of the keys rolled up into a common prefix count as a single return when calculating the
+      number of returns.
+
+      A response can contain ``CommonPrefixes`` only if you specify a delimiter.
+
+       ``CommonPrefixes`` contains all (if there are any) keys between ``Prefix`` and the next
+       occurrence of the string specified by a delimiter.
+
+       ``CommonPrefixes`` lists keys that act like subdirectories in the directory specified by
+       ``Prefix`` .
+
+      For example, if the prefix is ``notes/`` and the delimiter is a slash (``/`` ) as in
+      ``notes/summer/july`` , the common prefix is ``notes/summer/`` . All of the keys that roll up
+      into a common prefix count as a single return when calculating the number of returns.
 
       - *(dict) --*
 
+        Container for all (if there are any) keys between Prefix and the next occurrence of the
+        string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+        the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+        is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
         - **Prefix** *(string) --*
+
+          Container for the specified common prefix.
 
     - **EncodingType** *(string) --*
 
-      Encoding type used by Amazon S3 to encode object keys in the response.
+      Encoding type used by Amazon S3 to encode object key names in the XML response.
+
+      If you specify the encoding-type request parameter, Amazon S3 includes this element in the
+      response, and returns encoded key name values in the following response elements:
+
+       ``Delimiter, Prefix, Key,`` and ``StartAfter`` .
 
     - **KeyCount** *(integer) --*
 
@@ -12185,8 +17483,7 @@ class ClientListObjectsV2ResponseTypeDef(_ClientListObjectsV2ResponseTypeDef):
 
     - **ContinuationToken** *(string) --*
 
-      ContinuationToken indicates Amazon S3 that the list is being continued on this bucket with a
-      token. ContinuationToken is obfuscated and is not a real key
+      If ContinuationToken was sent with the request, it is included in the response.
 
     - **NextContinuationToken** *(string) --*
 
@@ -12196,8 +17493,7 @@ class ClientListObjectsV2ResponseTypeDef(_ClientListObjectsV2ResponseTypeDef):
 
     - **StartAfter** *(string) --*
 
-      StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after
-      this specified key. StartAfter can be any key in the bucket
+      If StartAfter was sent with the request, it is included in the response.
     """
 
 
@@ -12212,7 +17508,9 @@ class ClientListPartsResponseInitiatorTypeDef(_ClientListPartsResponseInitiatorT
     """
     Type definition for `ClientListPartsResponse` `Initiator`
 
-    Identifies who initiated the multipart upload.
+    Container element that identifies who initiated the multipart upload. If the initiator is an
+    AWS account, this element provides the same information as the Owner element. If the
+    initiator is an IAM User, then this element provides the user ARN and display name.
 
     - **ID** *(string) --*
 
@@ -12234,9 +17532,17 @@ class ClientListPartsResponseOwnerTypeDef(_ClientListPartsResponseOwnerTypeDef):
     """
     Type definition for `ClientListPartsResponse` `Owner`
 
+    Container element that identifies the object owner, after the object is created. If multipart
+    upload is initiated by an IAM user, this element provides the parent account ID and display
+    name.
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -12250,6 +17556,8 @@ _ClientListPartsResponsePartsTypeDef = TypedDict(
 class ClientListPartsResponsePartsTypeDef(_ClientListPartsResponsePartsTypeDef):
     """
     Type definition for `ClientListPartsResponse` `Parts`
+
+    Container for elements related to a part.
 
     - **PartNumber** *(integer) --*
 
@@ -12297,11 +17605,21 @@ class ClientListPartsResponseTypeDef(_ClientListPartsResponseTypeDef):
 
     - **AbortDate** *(datetime) --*
 
-      Date when multipart upload will become eligible for abort operation by lifecycle.
+      If the bucket has a lifecycle rule configured with an action to abort incomplete multipart
+      uploads and the prefix in the lifecycle rule matches the object name in the request, then the
+      response includes this header indicating when the initiated multipart upload will become
+      eligible for abort operation. For more information, see `Aborting Incomplete Multipart
+      Uploads Using a Bucket Lifecycle Policy
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+      .
+
+      The response will also include the x-amz-abort-rule-id header that will provide the ID of the
+      lifecycle configuration rule that defines this action.
 
     - **AbortRuleId** *(string) --*
 
-      Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
+      This header is returned along with the x-amz-abort-date header. It identifies applicable
+      lifecycle configuration rule that defines the action to abort incomplete multipart uploads.
 
     - **Bucket** *(string) --*
 
@@ -12317,7 +17635,8 @@ class ClientListPartsResponseTypeDef(_ClientListPartsResponseTypeDef):
 
     - **PartNumberMarker** *(integer) --*
 
-      Part number after which listing begins.
+      When a list is truncated, this element specifies the last part in the list, as well as the
+      value to use for the part-number-marker request parameter in a subsequent request.
 
     - **NextPartNumberMarker** *(integer) --*
 
@@ -12330,11 +17649,18 @@ class ClientListPartsResponseTypeDef(_ClientListPartsResponseTypeDef):
 
     - **IsTruncated** *(boolean) --*
 
-      Indicates whether the returned list of parts is truncated.
+      Indicates whether the returned list of parts is truncated. A true value indicates that the
+      list was truncated. A list can be truncated if the number of parts exceeds the limit returned
+      in the MaxParts element.
 
     - **Parts** *(list) --*
 
+      Container for elements related to a particular part. A response can contain zero or more Part
+      elements.
+
       - *(dict) --*
+
+        Container for elements related to a part.
 
         - **PartNumber** *(integer) --*
 
@@ -12354,7 +17680,9 @@ class ClientListPartsResponseTypeDef(_ClientListPartsResponseTypeDef):
 
     - **Initiator** *(dict) --*
 
-      Identifies who initiated the multipart upload.
+      Container element that identifies who initiated the multipart upload. If the initiator is an
+      AWS account, this element provides the same information as the Owner element. If the
+      initiator is an IAM User, then this element provides the user ARN and display name.
 
       - **ID** *(string) --*
 
@@ -12367,13 +17695,21 @@ class ClientListPartsResponseTypeDef(_ClientListPartsResponseTypeDef):
 
     - **Owner** *(dict) --*
 
+      Container element that identifies the object owner, after the object is created. If multipart
+      upload is initiated by an IAM user, this element provides the parent account ID and display
+      name.
+
       - **DisplayName** *(string) --*
+
+        Container for the display name of the owner
 
       - **ID** *(string) --*
 
+        Container for the ID of the owner
+
     - **StorageClass** *(string) --*
 
-      The class of storage used to store the object.
+      Class of storage (STANDARD or REDUCED_REDUNDANCY) used to store the uploaded object.
 
     - **RequestCharged** *(string) --*
 
@@ -12394,7 +17730,7 @@ class ClientPutBucketAccelerateConfigurationAccelerateConfigurationTypeDef(
     """
     Type definition for `ClientPutBucketAccelerateConfiguration` `AccelerateConfiguration`
 
-    Specifies the Accelerate Configuration you want to set for the bucket.
+    Container for setting the transfer acceleration state.
 
     - **Status** *(string) --*
 
@@ -12418,6 +17754,8 @@ class ClientPutBucketAclAccessControlPolicyGrantsGranteeTypeDef(
 ):
     """
     Type definition for `ClientPutBucketAclAccessControlPolicyGrants` `Grantee`
+
+    The person being granted permissions.
 
     - **DisplayName** *(string) --*
 
@@ -12457,7 +17795,11 @@ class ClientPutBucketAclAccessControlPolicyGrantsTypeDef(
     """
     Type definition for `ClientPutBucketAclAccessControlPolicy` `Grants`
 
+    Container for grant information.
+
     - **Grantee** *(dict) --*
+
+      The person being granted permissions.
 
       - **DisplayName** *(string) --*
 
@@ -12502,7 +17844,11 @@ class ClientPutBucketAclAccessControlPolicyOwnerTypeDef(
 
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -12530,7 +17876,11 @@ class ClientPutBucketAclAccessControlPolicyTypeDef(
 
       - *(dict) --*
 
+        Container for grant information.
+
         - **Grantee** *(dict) --*
+
+          The person being granted permissions.
 
           - **DisplayName** *(string) --*
 
@@ -12562,7 +17912,11 @@ class ClientPutBucketAclAccessControlPolicyTypeDef(
 
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
     """
 
 
@@ -12577,6 +17931,8 @@ class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAndTagsTy
 ):
     """
     Type definition for `ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAnd` `Tags`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --* **[REQUIRED]**
 
@@ -12619,6 +17975,8 @@ class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAndTypeDe
       The list of tags to use when evaluating an AND predicate.
 
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -12706,6 +18064,8 @@ class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterTypeDef(
         The list of tags to use when evaluating an AND predicate.
 
         - *(dict) --*
+
+          A container of a key value name pair.
 
           - **Key** *(string) --* **[REQUIRED]**
 
@@ -12965,6 +18325,8 @@ class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationTypeDef(
 
           - *(dict) --*
 
+            A container of a key value name pair.
+
             - **Key** *(string) --* **[REQUIRED]**
 
               Name of the tag.
@@ -13081,9 +18443,15 @@ class ClientPutBucketCorsCORSConfigurationTypeDef(
     """
     Type definition for `ClientPutBucketCors` `CORSConfiguration`
 
+    Describes the cross-origin access configuration for objects in an Amazon S3 bucket. For more
+    information, see `Enabling Cross-Origin Resource Sharing
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev//cors.html>`__ in the Amazon Simple Storage
+    Service Developer Guide.
+
     - **CORSRules** *(list) --* **[REQUIRED]**
 
-      A set of allowed origins and methods.
+      A set of origins and methods (cross-origin access that you want to allow). You can add up to
+      100 rules to the configuration.
 
       - *(dict) --*
 
@@ -13207,6 +18575,8 @@ class ClientPutBucketEncryptionServerSideEncryptionConfigurationTypeDef(
     """
     Type definition for `ClientPutBucketEncryption` `ServerSideEncryptionConfiguration`
 
+    Specifies the default server-side-encryption configuration.
+
     - **Rules** *(list) --* **[REQUIRED]**
 
       Container for information about a particular server-side encryption configuration rule.
@@ -13248,8 +18618,8 @@ class ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3Bu
 
     - **KeyId** *(string) --* **[REQUIRED]**
 
-      Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use
-      for encrypting Inventory reports.
+      Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK) to
+      use for encrypting Inventory reports.
     """
 
 
@@ -13281,8 +18651,8 @@ class ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3Bu
 
       - **KeyId** *(string) --* **[REQUIRED]**
 
-        Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use
-        for encrypting Inventory reports.
+        Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK) to
+        use for encrypting Inventory reports.
     """
 
 
@@ -13341,8 +18711,8 @@ class ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3Bu
 
         - **KeyId** *(string) --* **[REQUIRED]**
 
-          Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use
-          for encrypting Inventory reports.
+          Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK) to
+          use for encrypting Inventory reports.
     """
 
 
@@ -13397,8 +18767,8 @@ class ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationType
 
           - **KeyId** *(string) --* **[REQUIRED]**
 
-            Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use
-            for encrypting Inventory reports.
+            Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK) to
+            use for encrypting Inventory reports.
     """
 
 
@@ -13511,8 +18881,8 @@ class ClientPutBucketInventoryConfigurationInventoryConfigurationTypeDef(
 
             - **KeyId** *(string) --* **[REQUIRED]**
 
-              Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use
-              for encrypting Inventory reports.
+              Specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK) to
+              use for encrypting Inventory reports.
 
     - **IsEnabled** *(boolean) --* **[REQUIRED]**
 
@@ -13568,6 +18938,12 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesAbortIncom
     """
     Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRules` `AbortIncompleteMultipartUpload`
 
+    Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+    will wait before permanently removing all parts of the upload. For more information, see
+    `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+    in the *Amazon Simple Storage Service Developer Guide* .
+
     - **DaysAfterInitiation** *(integer) --*
 
       Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
@@ -13586,6 +18962,9 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesExpiration
 ):
     """
     Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRules` `Expiration`
+
+    Specifies the expiration for the lifecycle of the object in the form of date, days and,
+    whether the object has a delete marker.
 
     - **Date** *(datetime) --*
 
@@ -13617,6 +18996,8 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAndT
     """
     Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAnd` `Tags`
 
+    A container of a key value name pair.
+
     - **Key** *(string) --* **[REQUIRED]**
 
       Name of the tag.
@@ -13645,13 +19026,21 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAndT
     """
     Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilter` `And`
 
+    This is used in a Lifecycle Rule Filter to apply a logical AND to two or more predicates.
+    The Lifecycle Rule will apply to any object matching all of the predicates configured
+    inside the And operator.
+
     - **Prefix** *(string) --*
+
+      Prefix identifying one or more objects to which the rule applies.
 
     - **Tags** *(list) --*
 
       All of these tags must exist in the object's tag set in order for the rule to apply.
 
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -13704,6 +19093,9 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterType
     """
     Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRules` `Filter`
 
+    The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must have
+    exactly one of Prefix, Tag, or And specified.
+
     - **Prefix** *(string) --*
 
       Prefix identifying one or more objects to which the rule applies.
@@ -13722,13 +19114,21 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterType
 
     - **And** *(dict) --*
 
+      This is used in a Lifecycle Rule Filter to apply a logical AND to two or more predicates.
+      The Lifecycle Rule will apply to any object matching all of the predicates configured
+      inside the And operator.
+
       - **Prefix** *(string) --*
+
+        Prefix identifying one or more objects to which the rule applies.
 
       - **Tags** *(list) --*
 
         All of these tags must exist in the object's tag set in order for the rule to apply.
 
         - *(dict) --*
+
+          A container of a key value name pair.
 
           - **Key** *(string) --* **[REQUIRED]**
 
@@ -13752,6 +19152,11 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesNoncurrent
 ):
     """
     Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRules` `NoncurrentVersionExpiration`
+
+    Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+    deletes the noncurrent object versions. You set this lifecycle configuration action on a
+    bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+    noncurrent object versions at a specific period in the object's lifetime.
 
     - **NoncurrentDays** *(integer) --*
 
@@ -13860,7 +19265,12 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef(
     """
     Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfiguration` `Rules`
 
+    A lifecycle rule for individual objects in an Amazon S3 bucket.
+
     - **Expiration** *(dict) --*
+
+      Specifies the expiration for the lifecycle of the object in the form of date, days and,
+      whether the object has a delete marker.
 
       - **Date** *(datetime) --*
 
@@ -13889,6 +19299,9 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef(
 
     - **Filter** *(dict) --*
 
+      The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must have
+      exactly one of Prefix, Tag, or And specified.
+
       - **Prefix** *(string) --*
 
         Prefix identifying one or more objects to which the rule applies.
@@ -13907,13 +19320,21 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef(
 
       - **And** *(dict) --*
 
+        This is used in a Lifecycle Rule Filter to apply a logical AND to two or more predicates.
+        The Lifecycle Rule will apply to any object matching all of the predicates configured
+        inside the And operator.
+
         - **Prefix** *(string) --*
+
+          Prefix identifying one or more objects to which the rule applies.
 
         - **Tags** *(list) --*
 
           All of these tags must exist in the object's tag set in order for the rule to apply.
 
           - *(dict) --*
+
+            A container of a key value name pair.
 
             - **Key** *(string) --* **[REQUIRED]**
 
@@ -13929,6 +19350,8 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef(
       being applied.
 
     - **Transitions** *(list) --*
+
+      Specifies when an Amazon S3 object transitions to a specified storage class.
 
       - *(dict) --*
 
@@ -13949,6 +19372,12 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef(
           The storage class to which you want the object to transition.
 
     - **NoncurrentVersionTransitions** *(list) --*
+
+      Specifies the transition rule for the lifecycle rule that describes when noncurrent objects
+      transition to the a specific storage class. If your bucket is versioning-enabled (or
+      versioning is suspended), you can set this action to request that Amazon S3 transition
+      noncurrent object versions to the a specifc storage class at a set period in the object's
+      lifetime.
 
       - *(dict) --*
 
@@ -13974,6 +19403,11 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef(
 
     - **NoncurrentVersionExpiration** *(dict) --*
 
+      Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+      deletes the noncurrent object versions. You set this lifecycle configuration action on a
+      bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+      noncurrent object versions at a specific period in the object's lifetime.
+
       - **NoncurrentDays** *(integer) --*
 
         Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -13983,6 +19417,12 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef(
         in the Amazon Simple Storage Service Developer Guide.
 
     - **AbortIncompleteMultipartUpload** *(dict) --*
+
+      Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+      will wait before permanently removing all parts of the upload. For more information, see
+      `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+      in the *Amazon Simple Storage Service Developer Guide* .
 
       - **DaysAfterInitiation** *(integer) --*
 
@@ -14006,13 +19446,20 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef(
     """
     Type definition for `ClientPutBucketLifecycleConfiguration` `LifecycleConfiguration`
 
+    Container for lifecycle rules. You can add as many as 1,000 rules.
+
     - **Rules** *(list) --* **[REQUIRED]**
 
       A lifecycle rule for individual objects in an Amazon S3 bucket.
 
       - *(dict) --*
 
+        A lifecycle rule for individual objects in an Amazon S3 bucket.
+
         - **Expiration** *(dict) --*
+
+          Specifies the expiration for the lifecycle of the object in the form of date, days and,
+          whether the object has a delete marker.
 
           - **Date** *(datetime) --*
 
@@ -14041,6 +19488,9 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef(
 
         - **Filter** *(dict) --*
 
+          The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must have
+          exactly one of Prefix, Tag, or And specified.
+
           - **Prefix** *(string) --*
 
             Prefix identifying one or more objects to which the rule applies.
@@ -14059,13 +19509,21 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef(
 
           - **And** *(dict) --*
 
+            This is used in a Lifecycle Rule Filter to apply a logical AND to two or more predicates.
+            The Lifecycle Rule will apply to any object matching all of the predicates configured
+            inside the And operator.
+
             - **Prefix** *(string) --*
+
+              Prefix identifying one or more objects to which the rule applies.
 
             - **Tags** *(list) --*
 
               All of these tags must exist in the object's tag set in order for the rule to apply.
 
               - *(dict) --*
+
+                A container of a key value name pair.
 
                 - **Key** *(string) --* **[REQUIRED]**
 
@@ -14081,6 +19539,8 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef(
           being applied.
 
         - **Transitions** *(list) --*
+
+          Specifies when an Amazon S3 object transitions to a specified storage class.
 
           - *(dict) --*
 
@@ -14101,6 +19561,12 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef(
               The storage class to which you want the object to transition.
 
         - **NoncurrentVersionTransitions** *(list) --*
+
+          Specifies the transition rule for the lifecycle rule that describes when noncurrent objects
+          transition to the a specific storage class. If your bucket is versioning-enabled (or
+          versioning is suspended), you can set this action to request that Amazon S3 transition
+          noncurrent object versions to the a specifc storage class at a set period in the object's
+          lifetime.
 
           - *(dict) --*
 
@@ -14126,6 +19592,11 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef(
 
         - **NoncurrentVersionExpiration** *(dict) --*
 
+          Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+          deletes the noncurrent object versions. You set this lifecycle configuration action on a
+          bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+          noncurrent object versions at a specific period in the object's lifetime.
+
           - **NoncurrentDays** *(integer) --*
 
             Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -14135,6 +19606,12 @@ class ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef(
             in the Amazon Simple Storage Service Developer Guide.
 
         - **AbortIncompleteMultipartUpload** *(dict) --*
+
+          Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+          will wait before permanently removing all parts of the upload. For more information, see
+          `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+          in the *Amazon Simple Storage Service Developer Guide* .
 
           - **DaysAfterInitiation** *(integer) --*
 
@@ -14155,6 +19632,12 @@ class ClientPutBucketLifecycleLifecycleConfigurationRulesAbortIncompleteMultipar
     """
     Type definition for `ClientPutBucketLifecycleLifecycleConfigurationRules` `AbortIncompleteMultipartUpload`
 
+    Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+    will wait before permanently removing all parts of the upload. For more information, see
+    `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+    in the *Amazon Simple Storage Service Developer Guide* .
+
     - **DaysAfterInitiation** *(integer) --*
 
       Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
@@ -14173,6 +19656,8 @@ class ClientPutBucketLifecycleLifecycleConfigurationRulesExpirationTypeDef(
 ):
     """
     Type definition for `ClientPutBucketLifecycleLifecycleConfigurationRules` `Expiration`
+
+    Specifies the expiration for the lifecycle of the object.
 
     - **Date** *(datetime) --*
 
@@ -14205,6 +19690,11 @@ class ClientPutBucketLifecycleLifecycleConfigurationRulesNoncurrentVersionExpira
     """
     Type definition for `ClientPutBucketLifecycleLifecycleConfigurationRules` `NoncurrentVersionExpiration`
 
+    Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+    deletes the noncurrent object versions. You set this lifecycle configuration action on a
+    bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+    noncurrent object versions at a specific period in the object's lifetime.
+
     - **NoncurrentDays** *(integer) --*
 
       Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -14227,6 +19717,13 @@ class ClientPutBucketLifecycleLifecycleConfigurationRulesNoncurrentVersionTransi
 ):
     """
     Type definition for `ClientPutBucketLifecycleLifecycleConfigurationRules` `NoncurrentVersionTransition`
+
+    Container for the transition rule that describes when noncurrent objects transition to the
+    ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+    ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+    suspended), you can set this action to request that Amazon S3 transition noncurrent object
+    versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` ,
+    or ``DEEP_ARCHIVE`` storage class at a specific period in the object's lifetime.
 
     - **NoncurrentDays** *(integer) --*
 
@@ -14254,6 +19751,8 @@ class ClientPutBucketLifecycleLifecycleConfigurationRulesTransitionTypeDef(
 ):
     """
     Type definition for `ClientPutBucketLifecycleLifecycleConfigurationRules` `Transition`
+
+    Specifies when an object transitions to a specified storage class.
 
     - **Date** *(datetime) --*
 
@@ -14302,6 +19801,8 @@ class ClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef(
 
     - **Expiration** *(dict) --*
 
+      Specifies the expiration for the lifecycle of the object.
+
       - **Date** *(datetime) --*
 
         Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
@@ -14333,6 +19834,8 @@ class ClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef(
 
     - **Transition** *(dict) --*
 
+      Specifies when an object transitions to a specified storage class.
+
       - **Date** *(datetime) --*
 
         Indicates when objects are transitioned to the specified storage class. The date value
@@ -14349,6 +19852,13 @@ class ClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef(
 
     - **NoncurrentVersionTransition** *(dict) --*
 
+      Container for the transition rule that describes when noncurrent objects transition to the
+      ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+      ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+      suspended), you can set this action to request that Amazon S3 transition noncurrent object
+      versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` ,
+      or ``DEEP_ARCHIVE`` storage class at a specific period in the object's lifetime.
+
       - **NoncurrentDays** *(integer) --*
 
         Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -14363,6 +19873,11 @@ class ClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef(
 
     - **NoncurrentVersionExpiration** *(dict) --*
 
+      Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+      deletes the noncurrent object versions. You set this lifecycle configuration action on a
+      bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+      noncurrent object versions at a specific period in the object's lifetime.
+
       - **NoncurrentDays** *(integer) --*
 
         Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -14372,6 +19887,12 @@ class ClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef(
         in the Amazon Simple Storage Service Developer Guide.
 
     - **AbortIncompleteMultipartUpload** *(dict) --*
+
+      Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+      will wait before permanently removing all parts of the upload. For more information, see
+      `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+      in the *Amazon Simple Storage Service Developer Guide* .
 
       - **DaysAfterInitiation** *(integer) --*
 
@@ -14393,6 +19914,8 @@ class ClientPutBucketLifecycleLifecycleConfigurationTypeDef(
 
     - **Rules** *(list) --* **[REQUIRED]**
 
+      Specifies lifecycle configuration rules for an Amazon S3 bucket.
+
       - *(dict) --*
 
         Specifies lifecycle rules for an Amazon S3 bucket. For more information, see `PUT Bucket
@@ -14400,6 +19923,8 @@ class ClientPutBucketLifecycleLifecycleConfigurationTypeDef(
         the *Amazon Simple Storage Service API Reference* .
 
         - **Expiration** *(dict) --*
+
+          Specifies the expiration for the lifecycle of the object.
 
           - **Date** *(datetime) --*
 
@@ -14432,6 +19957,8 @@ class ClientPutBucketLifecycleLifecycleConfigurationTypeDef(
 
         - **Transition** *(dict) --*
 
+          Specifies when an object transitions to a specified storage class.
+
           - **Date** *(datetime) --*
 
             Indicates when objects are transitioned to the specified storage class. The date value
@@ -14448,6 +19975,13 @@ class ClientPutBucketLifecycleLifecycleConfigurationTypeDef(
 
         - **NoncurrentVersionTransition** *(dict) --*
 
+          Container for the transition rule that describes when noncurrent objects transition to the
+          ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+          ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+          suspended), you can set this action to request that Amazon S3 transition noncurrent object
+          versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` ,
+          or ``DEEP_ARCHIVE`` storage class at a specific period in the object's lifetime.
+
           - **NoncurrentDays** *(integer) --*
 
             Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -14462,6 +19996,11 @@ class ClientPutBucketLifecycleLifecycleConfigurationTypeDef(
 
         - **NoncurrentVersionExpiration** *(dict) --*
 
+          Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently
+          deletes the noncurrent object versions. You set this lifecycle configuration action on a
+          bucket that has versioning enabled (or suspended) to request that Amazon S3 delete
+          noncurrent object versions at a specific period in the object's lifetime.
+
           - **NoncurrentDays** *(integer) --*
 
             Specifies the number of days an object is noncurrent before Amazon S3 can perform the
@@ -14471,6 +20010,12 @@ class ClientPutBucketLifecycleLifecycleConfigurationTypeDef(
             in the Amazon Simple Storage Service Developer Guide.
 
         - **AbortIncompleteMultipartUpload** *(dict) --*
+
+          Specifies the days since the initiation of an incomplete multipart upload that Amazon S3
+          will wait before permanently removing all parts of the upload. For more information, see
+          `Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+          in the *Amazon Simple Storage Service Developer Guide* .
 
           - **DaysAfterInitiation** *(integer) --*
 
@@ -14495,6 +20040,8 @@ class ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsGrantee
 ):
     """
     Type definition for `ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrants` `Grantee`
+
+    Container for the person being granted permissions.
 
     - **DisplayName** *(string) --*
 
@@ -14534,7 +20081,11 @@ class ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsTypeDef
     """
     Type definition for `ClientPutBucketLoggingBucketLoggingStatusLoggingEnabled` `TargetGrants`
 
+    Container for granting information.
+
     - **Grantee** *(dict) --*
+
+      Container for the person being granted permissions.
 
       - **DisplayName** *(string) --*
 
@@ -14584,6 +20135,11 @@ class ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTypeDef(
     """
     Type definition for `ClientPutBucketLoggingBucketLoggingStatus` `LoggingEnabled`
 
+    Describes where logs are stored and the prefix that Amazon S3 assigns to all log object keys
+    for a bucket. For more information, see `PUT Bucket logging
+    <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlogging.html>`__ in the *Amazon
+    Simple Storage Service API Reference* .
+
     - **TargetBucket** *(string) --* **[REQUIRED]**
 
       Specifies the bucket where you want Amazon S3 to store server access logs. You can have your
@@ -14594,9 +20150,15 @@ class ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTypeDef(
 
     - **TargetGrants** *(list) --*
 
+      Container for granting information.
+
       - *(dict) --*
 
+        Container for granting information.
+
         - **Grantee** *(dict) --*
+
+          Container for the person being granted permissions.
 
           - **DisplayName** *(string) --*
 
@@ -14642,7 +20204,14 @@ class ClientPutBucketLoggingBucketLoggingStatusTypeDef(
     """
     Type definition for `ClientPutBucketLogging` `BucketLoggingStatus`
 
+    Container for logging status information.
+
     - **LoggingEnabled** *(dict) --*
+
+      Describes where logs are stored and the prefix that Amazon S3 assigns to all log object keys
+      for a bucket. For more information, see `PUT Bucket logging
+      <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlogging.html>`__ in the *Amazon
+      Simple Storage Service API Reference* .
 
       - **TargetBucket** *(string) --* **[REQUIRED]**
 
@@ -14654,9 +20223,15 @@ class ClientPutBucketLoggingBucketLoggingStatusTypeDef(
 
       - **TargetGrants** *(list) --*
 
+        Container for granting information.
+
         - *(dict) --*
 
+          Container for granting information.
+
           - **Grantee** *(dict) --*
+
+            Container for the person being granted permissions.
 
             - **DisplayName** *(string) --*
 
@@ -14701,6 +20276,8 @@ class ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAndTagsTypeDe
     """
     Type definition for `ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAnd` `Tags`
 
+    A container of a key value name pair.
+
     - **Key** *(string) --* **[REQUIRED]**
 
       Name of the tag.
@@ -14742,6 +20319,8 @@ class ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAndTypeDef(
       The list of tags used when evaluating an AND predicate.
 
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -14830,6 +20409,8 @@ class ClientPutBucketMetricsConfigurationMetricsConfigurationFilterTypeDef(
 
         - *(dict) --*
 
+          A container of a key value name pair.
+
           - **Key** *(string) --* **[REQUIRED]**
 
             Name of the tag.
@@ -14902,6 +20483,8 @@ class ClientPutBucketMetricsConfigurationMetricsConfigurationTypeDef(
 
           - *(dict) --*
 
+            A container of a key value name pair.
+
             - **Key** *(string) --* **[REQUIRED]**
 
               Name of the tag.
@@ -14960,7 +20543,12 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFun
     """
     Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilter` `Key`
 
+    A container for object key name prefix and suffix filtering rules.
+
     - **FilterRules** *(list) --*
+
+      A list of containers for the key value pair that defines the criteria for the filter
+      rule.
 
       - *(dict) --*
 
@@ -14997,9 +20585,19 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFun
     """
     Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurations` `Filter`
 
+    Specifies object key name filtering rules. For information about key name filtering, see
+    `Configuring Event Notifications
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+    Simple Storage Service Developer Guide* .
+
     - **Key** *(dict) --*
 
+      A container for object key name prefix and suffix filtering rules.
+
       - **FilterRules** *(list) --*
+
+        A list of containers for the key value pair that defines the criteria for the filter
+        rule.
 
         - *(dict) --*
 
@@ -15067,9 +20665,19 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFun
 
     - **Filter** *(dict) --*
 
+      Specifies object key name filtering rules. For information about key name filtering, see
+      `Configuring Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+      Simple Storage Service Developer Guide* .
+
       - **Key** *(dict) --*
 
+        A container for object key name prefix and suffix filtering rules.
+
         - **FilterRules** *(list) --*
+
+          A list of containers for the key value pair that defines the criteria for the filter
+          rule.
 
           - *(dict) --*
 
@@ -15139,7 +20747,12 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConf
     """
     Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilter` `Key`
 
+    A container for object key name prefix and suffix filtering rules.
+
     - **FilterRules** *(list) --*
+
+      A list of containers for the key value pair that defines the criteria for the filter
+      rule.
 
       - *(dict) --*
 
@@ -15176,9 +20789,19 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConf
     """
     Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurations` `Filter`
 
+    Specifies object key name filtering rules. For information about key name filtering, see
+    `Configuring Event Notifications
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+    Simple Storage Service Developer Guide* .
+
     - **Key** *(dict) --*
 
+      A container for object key name prefix and suffix filtering rules.
+
       - **FilterRules** *(list) --*
+
+        A list of containers for the key value pair that defines the criteria for the filter
+        rule.
 
         - *(dict) --*
 
@@ -15236,15 +20859,27 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConf
 
     - **Events** *(list) --* **[REQUIRED]**
 
+      A collection of bucket events for which to send notiications
+
       - *(string) --*
 
         The bucket event for which to send notifications.
 
     - **Filter** *(dict) --*
 
+      Specifies object key name filtering rules. For information about key name filtering, see
+      `Configuring Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+      Simple Storage Service Developer Guide* .
+
       - **Key** *(dict) --*
 
+        A container for object key name prefix and suffix filtering rules.
+
         - **FilterRules** *(list) --*
+
+          A list of containers for the key value pair that defines the criteria for the filter
+          rule.
 
           - *(dict) --*
 
@@ -15314,7 +20949,12 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConf
     """
     Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilter` `Key`
 
+    A container for object key name prefix and suffix filtering rules.
+
     - **FilterRules** *(list) --*
+
+      A list of containers for the key value pair that defines the criteria for the filter
+      rule.
 
       - *(dict) --*
 
@@ -15351,9 +20991,19 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConf
     """
     Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurations` `Filter`
 
+    Specifies object key name filtering rules. For information about key name filtering, see
+    `Configuring Event Notifications
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+    Simple Storage Service Developer Guide* .
+
     - **Key** *(dict) --*
 
+      A container for object key name prefix and suffix filtering rules.
+
       - **FilterRules** *(list) --*
+
+        A list of containers for the key value pair that defines the criteria for the filter
+        rule.
 
         - *(dict) --*
 
@@ -15422,9 +21072,19 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConf
 
     - **Filter** *(dict) --*
 
+      Specifies object key name filtering rules. For information about key name filtering, see
+      `Configuring Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+      Simple Storage Service Developer Guide* .
+
       - **Key** *(dict) --*
 
+        A container for object key name prefix and suffix filtering rules.
+
         - **FilterRules** *(list) --*
+
+          A list of containers for the key value pair that defines the criteria for the filter
+          rule.
 
           - *(dict) --*
 
@@ -15469,6 +21129,9 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationTypeDef(
     """
     Type definition for `ClientPutBucketNotificationConfiguration` `NotificationConfiguration`
 
+    A container for specifying the notification configuration of the bucket. If this element is
+    empty, notifications are turned off for the bucket.
+
     - **TopicConfigurations** *(list) --*
 
       The topic to which notifications are sent and the events for which notifications are generated.
@@ -15501,9 +21164,19 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationTypeDef(
 
         - **Filter** *(dict) --*
 
+          Specifies object key name filtering rules. For information about key name filtering, see
+          `Configuring Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+          Simple Storage Service Developer Guide* .
+
           - **Key** *(dict) --*
 
+            A container for object key name prefix and suffix filtering rules.
+
             - **FilterRules** *(list) --*
+
+              A list of containers for the key value pair that defines the criteria for the filter
+              rule.
 
               - *(dict) --*
 
@@ -15545,15 +21218,27 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationTypeDef(
 
         - **Events** *(list) --* **[REQUIRED]**
 
+          A collection of bucket events for which to send notiications
+
           - *(string) --*
 
             The bucket event for which to send notifications.
 
         - **Filter** *(dict) --*
 
+          Specifies object key name filtering rules. For information about key name filtering, see
+          `Configuring Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+          Simple Storage Service Developer Guide* .
+
           - **Key** *(dict) --*
 
+            A container for object key name prefix and suffix filtering rules.
+
             - **FilterRules** *(list) --*
+
+              A list of containers for the key value pair that defines the criteria for the filter
+              rule.
 
               - *(dict) --*
 
@@ -15604,9 +21289,19 @@ class ClientPutBucketNotificationConfigurationNotificationConfigurationTypeDef(
 
         - **Filter** *(dict) --*
 
+          Specifies object key name filtering rules. For information about key name filtering, see
+          `Configuring Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+          Simple Storage Service Developer Guide* .
+
           - **Key** *(dict) --*
 
+            A container for object key name prefix and suffix filtering rules.
+
             - **FilterRules** *(list) --*
+
+              A list of containers for the key value pair that defines the criteria for the filter
+              rule.
 
               - *(dict) --*
 
@@ -15647,6 +21342,8 @@ class ClientPutBucketNotificationNotificationConfigurationCloudFunctionConfigura
     """
     Type definition for `ClientPutBucketNotificationNotificationConfiguration` `CloudFunctionConfiguration`
 
+    Container for specifying the AWS Lambda notification configuration.
+
     - **Id** *(string) --*
 
       An optional unique identifier for configurations in a notification configuration. If you
@@ -15658,13 +21355,20 @@ class ClientPutBucketNotificationNotificationConfigurationCloudFunctionConfigura
 
     - **Events** *(list) --*
 
+      Bucket events for which to send notifications.
+
       - *(string) --*
 
         The bucket event for which to send notifications.
 
     - **CloudFunction** *(string) --*
 
+      Lambda cloud function ARN that Amazon S3 can invoke when it detects events of the specified
+      type.
+
     - **InvocationRole** *(string) --*
+
+      The role supporting the invocation of the lambda function
     """
 
 
@@ -15681,6 +21385,10 @@ class ClientPutBucketNotificationNotificationConfigurationQueueConfigurationType
     """
     Type definition for `ClientPutBucketNotificationNotificationConfiguration` `QueueConfiguration`
 
+    This data type is deprecated. This data type specifies the configuration for publishing
+    messages to an Amazon Simple Queue Service (Amazon SQS) queue when Amazon S3 detects specified
+    events.
+
     - **Id** *(string) --*
 
       An optional unique identifier for configurations in a notification configuration. If you
@@ -15692,11 +21400,16 @@ class ClientPutBucketNotificationNotificationConfigurationQueueConfigurationType
 
     - **Events** *(list) --*
 
+      A collection of bucket events for which to send notiications
+
       - *(string) --*
 
         The bucket event for which to send notifications.
 
     - **Queue** *(string) --*
+
+      The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon S3 publishes a message
+      when it detects events of the specified type.
     """
 
 
@@ -15713,12 +21426,18 @@ class ClientPutBucketNotificationNotificationConfigurationTopicConfigurationType
     """
     Type definition for `ClientPutBucketNotificationNotificationConfiguration` `TopicConfiguration`
 
+    This data type is deperecated. A container for specifying the configuration for publication of
+    messages to an Amazon Simple Notification Service (Amazon SNS) topic when Amazon S3 detects
+    specified events.
+
     - **Id** *(string) --*
 
       An optional unique identifier for configurations in a notification configuration. If you
       don't provide one, Amazon S3 will assign an ID.
 
     - **Events** *(list) --*
+
+      A collection of events related to objects
 
       - *(string) --*
 
@@ -15752,7 +21471,13 @@ class ClientPutBucketNotificationNotificationConfigurationTypeDef(
     """
     Type definition for `ClientPutBucketNotification` `NotificationConfiguration`
 
+    The container for the configuration.
+
     - **TopicConfiguration** *(dict) --*
+
+      This data type is deperecated. A container for specifying the configuration for publication of
+      messages to an Amazon Simple Notification Service (Amazon SNS) topic when Amazon S3 detects
+      specified events.
 
       - **Id** *(string) --*
 
@@ -15760,6 +21485,8 @@ class ClientPutBucketNotificationNotificationConfigurationTypeDef(
         don't provide one, Amazon S3 will assign an ID.
 
       - **Events** *(list) --*
+
+        A collection of events related to objects
 
         - *(string) --*
 
@@ -15776,6 +21503,10 @@ class ClientPutBucketNotificationNotificationConfigurationTypeDef(
 
     - **QueueConfiguration** *(dict) --*
 
+      This data type is deprecated. This data type specifies the configuration for publishing
+      messages to an Amazon Simple Queue Service (Amazon SQS) queue when Amazon S3 detects specified
+      events.
+
       - **Id** *(string) --*
 
         An optional unique identifier for configurations in a notification configuration. If you
@@ -15786,6 +21517,8 @@ class ClientPutBucketNotificationNotificationConfigurationTypeDef(
         The bucket event for which to send notifications.
 
       - **Events** *(list) --*
+
+        A collection of bucket events for which to send notiications
 
         - *(string) --*
 
@@ -15793,7 +21526,12 @@ class ClientPutBucketNotificationNotificationConfigurationTypeDef(
 
       - **Queue** *(string) --*
 
+        The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon S3 publishes a message
+        when it detects events of the specified type.
+
     - **CloudFunctionConfiguration** *(dict) --*
+
+      Container for specifying the AWS Lambda notification configuration.
 
       - **Id** *(string) --*
 
@@ -15806,13 +21544,20 @@ class ClientPutBucketNotificationNotificationConfigurationTypeDef(
 
       - **Events** *(list) --*
 
+        Bucket events for which to send notifications.
+
         - *(string) --*
 
           The bucket event for which to send notifications.
 
       - **CloudFunction** *(string) --*
 
+        Lambda cloud function ARN that Amazon S3 can invoke when it detects events of the specified
+        type.
+
       - **InvocationRole** *(string) --*
+
+        The role supporting the invocation of the lambda function
     """
 
 
@@ -15829,9 +21574,25 @@ class ClientPutBucketReplicationReplicationConfigurationRulesDeleteMarkerReplica
     """
     Type definition for `ClientPutBucketReplicationReplicationConfigurationRules` `DeleteMarkerReplication`
 
+    Specifies whether Amazon S3 replicates the delete markers. If you specify a ``Filter`` ,
+    you must specify this element. However, in the latest version of replication configuration
+    (when ``Filter`` is specified), Amazon S3 doesn't replicate delete markers. Therefore, the
+    ``DeleteMarkerReplication`` element can contain only <Status>Disabled</Status>. For an
+    example configuration, see `Basic Rule Configuration
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config>`__
+    .
+
+    .. note::
+
+      If you don't specify the Filter element, Amazon S3 assumes the replication configuration
+      is the earlier version, V1. In the earlier version, Amazon S3 handled replication of
+      delete markers differently. For more information, see `Backward Compatibility
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations>`__
+      .
+
     - **Status** *(string) --*
 
-      The status of the delete marker replication.
+      Indicates whether to replicate delete markers.
 
       .. note::
 
@@ -15916,22 +21677,18 @@ class ClientPutBucketReplicationReplicationConfigurationRulesDestinationTypeDef(
 
     - **Bucket** *(string) --* **[REQUIRED]**
 
-      The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store replicas
-      of the object identified by the rule.
-
-      A replication configuration can replicate objects to only one destination bucket. If
-      there are multiple rules in your replication configuration, all rules must specify the
-      same destination bucket.
+      The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the
+      results.
 
     - **Account** *(string) --*
 
       Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3
       to change replica ownership to the AWS account that owns the destination bucket by
       specifying the ``AccessControlTranslation`` property, this is the account ID of the
-      destination bucket owner. For more information, see `Cross-Region Replication Additional
+      destination bucket owner. For more information, see `Replication Additional
       Configuration\\: Change Replica Owner
-      <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the *Amazon
-      Simple Storage Service Developer Guide* .
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
 
     - **StorageClass** *(string) --*
 
@@ -15969,6 +21726,27 @@ class ClientPutBucketReplicationReplicationConfigurationRulesDestinationTypeDef(
     """
 
 
+_ClientPutBucketReplicationReplicationConfigurationRulesExistingObjectReplicationTypeDef = TypedDict(
+    "_ClientPutBucketReplicationReplicationConfigurationRulesExistingObjectReplicationTypeDef",
+    {"Status": str},
+)
+
+
+class ClientPutBucketReplicationReplicationConfigurationRulesExistingObjectReplicationTypeDef(
+    _ClientPutBucketReplicationReplicationConfigurationRulesExistingObjectReplicationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketReplicationReplicationConfigurationRules` `ExistingObjectReplication`
+
+    A container that specifies information about existing object replication. You can choose
+    whether to enable or disable the replication of existing objects.
+
+    - **Status** *(string) --* **[REQUIRED]**
+
+      Specifies whether existing object replication is enabled.
+    """
+
+
 _ClientPutBucketReplicationReplicationConfigurationRulesFilterAndTagsTypeDef = TypedDict(
     "_ClientPutBucketReplicationReplicationConfigurationRulesFilterAndTagsTypeDef",
     {"Key": str, "Value": str},
@@ -15980,6 +21758,8 @@ class ClientPutBucketReplicationReplicationConfigurationRulesFilterAndTagsTypeDe
 ):
     """
     Type definition for `ClientPutBucketReplicationReplicationConfigurationRulesFilterAnd` `Tags`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --* **[REQUIRED]**
 
@@ -16021,9 +21801,16 @@ class ClientPutBucketReplicationReplicationConfigurationRulesFilterAndTypeDef(
 
     - **Prefix** *(string) --*
 
+      An object keyname prefix that identifies the subset of objects to which the rule
+      applies.
+
     - **Tags** *(list) --*
 
+      An array of tags containing key and value pairs.
+
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -16078,6 +21865,9 @@ class ClientPutBucketReplicationReplicationConfigurationRulesFilterTypeDef(
     """
     Type definition for `ClientPutBucketReplicationReplicationConfigurationRules` `Filter`
 
+    A filter that identifies the subset of objects to which the replication rule applies. A
+    ``Filter`` must specify exactly one ``Prefix`` , ``Tag`` , or an ``And`` child element.
+
     - **Prefix** *(string) --*
 
       An object keyname prefix that identifies the subset of objects to which the rule applies.
@@ -16110,9 +21900,16 @@ class ClientPutBucketReplicationReplicationConfigurationRulesFilterTypeDef(
 
       - **Prefix** *(string) --*
 
+        An object keyname prefix that identifies the subset of objects to which the rule
+        applies.
+
       - **Tags** *(list) --*
 
+        An array of tags containing key and value pairs.
+
         - *(dict) --*
+
+          A container of a key value name pair.
 
           - **Key** *(string) --* **[REQUIRED]**
 
@@ -16143,7 +21940,7 @@ class ClientPutBucketReplicationReplicationConfigurationRulesSourceSelectionCrit
     - **Status** *(string) --* **[REQUIRED]**
 
       Specifies whether Amazon S3 replicates objects created with server-side encryption
-      using an AWS KMS-managed key.
+      using a customer master key (CMK) stored in AWS Key Management Service.
     """
 
 
@@ -16165,7 +21962,8 @@ class ClientPutBucketReplicationReplicationConfigurationRulesSourceSelectionCrit
     A container that describes additional filters for identifying the source objects that you
     want to replicate. You can choose to enable or disable the replication of these objects.
     Currently, Amazon S3 supports only the filter that you can specify for objects created with
-    server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
+    server-side encryption using a customer master key (CMK) stored in AWS Key Management
+    Service (SSE-KMS).
 
     - **SseKmsEncryptedObjects** *(dict) --*
 
@@ -16176,7 +21974,7 @@ class ClientPutBucketReplicationReplicationConfigurationRulesSourceSelectionCrit
       - **Status** *(string) --* **[REQUIRED]**
 
         Specifies whether Amazon S3 replicates objects created with server-side encryption
-        using an AWS KMS-managed key.
+        using a customer master key (CMK) stored in AWS Key Management Service.
     """
 
 
@@ -16195,6 +21993,7 @@ _OptionalClientPutBucketReplicationReplicationConfigurationRulesTypeDef = TypedD
         "Prefix": str,
         "Filter": ClientPutBucketReplicationReplicationConfigurationRulesFilterTypeDef,
         "SourceSelectionCriteria": ClientPutBucketReplicationReplicationConfigurationRulesSourceSelectionCriteriaTypeDef,
+        "ExistingObjectReplication": ClientPutBucketReplicationReplicationConfigurationRulesExistingObjectReplicationTypeDef,
         "DeleteMarkerReplication": ClientPutBucketReplicationReplicationConfigurationRulesDeleteMarkerReplicationTypeDef,
     },
     total=False,
@@ -16226,9 +22025,9 @@ class ClientPutBucketReplicationReplicationConfigurationRulesTypeDef(
 
       * Same object qualify tag based filter criteria specified in multiple rules
 
-      For more information, see `Cross-Region Replication (CRR)
-      <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html>`__ in the *Amazon S3 Developer
-      Guide* .
+      For more information, see `Replication <
+      https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html>`__ in the *Amazon S3
+      Developer Guide* .
 
     - **Prefix** *(string) --*
 
@@ -16237,6 +22036,9 @@ class ClientPutBucketReplicationReplicationConfigurationRulesTypeDef(
       an empty string.
 
     - **Filter** *(dict) --*
+
+      A filter that identifies the subset of objects to which the replication rule applies. A
+      ``Filter`` must specify exactly one ``Prefix`` , ``Tag`` , or an ``And`` child element.
 
       - **Prefix** *(string) --*
 
@@ -16270,9 +22072,16 @@ class ClientPutBucketReplicationReplicationConfigurationRulesTypeDef(
 
         - **Prefix** *(string) --*
 
+          An object keyname prefix that identifies the subset of objects to which the rule
+          applies.
+
         - **Tags** *(list) --*
 
+          An array of tags containing key and value pairs.
+
           - *(dict) --*
+
+            A container of a key value name pair.
 
             - **Key** *(string) --* **[REQUIRED]**
 
@@ -16291,7 +22100,8 @@ class ClientPutBucketReplicationReplicationConfigurationRulesTypeDef(
       A container that describes additional filters for identifying the source objects that you
       want to replicate. You can choose to enable or disable the replication of these objects.
       Currently, Amazon S3 supports only the filter that you can specify for objects created with
-      server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
+      server-side encryption using a customer master key (CMK) stored in AWS Key Management
+      Service (SSE-KMS).
 
       - **SseKmsEncryptedObjects** *(dict) --*
 
@@ -16302,7 +22112,16 @@ class ClientPutBucketReplicationReplicationConfigurationRulesTypeDef(
         - **Status** *(string) --* **[REQUIRED]**
 
           Specifies whether Amazon S3 replicates objects created with server-side encryption
-          using an AWS KMS-managed key.
+          using a customer master key (CMK) stored in AWS Key Management Service.
+
+    - **ExistingObjectReplication** *(dict) --*
+
+      A container that specifies information about existing object replication. You can choose
+      whether to enable or disable the replication of existing objects.
+
+      - **Status** *(string) --* **[REQUIRED]**
+
+        Specifies whether existing object replication is enabled.
 
     - **Destination** *(dict) --* **[REQUIRED]**
 
@@ -16310,22 +22129,18 @@ class ClientPutBucketReplicationReplicationConfigurationRulesTypeDef(
 
       - **Bucket** *(string) --* **[REQUIRED]**
 
-        The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store replicas
-        of the object identified by the rule.
-
-        A replication configuration can replicate objects to only one destination bucket. If
-        there are multiple rules in your replication configuration, all rules must specify the
-        same destination bucket.
+        The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the
+        results.
 
       - **Account** *(string) --*
 
         Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3
         to change replica ownership to the AWS account that owns the destination bucket by
         specifying the ``AccessControlTranslation`` property, this is the account ID of the
-        destination bucket owner. For more information, see `Cross-Region Replication Additional
+        destination bucket owner. For more information, see `Replication Additional
         Configuration\\: Change Replica Owner
-        <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the *Amazon
-        Simple Storage Service Developer Guide* .
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html>`__ in the
+        *Amazon Simple Storage Service Developer Guide* .
 
       - **StorageClass** *(string) --*
 
@@ -16363,9 +22178,25 @@ class ClientPutBucketReplicationReplicationConfigurationRulesTypeDef(
 
     - **DeleteMarkerReplication** *(dict) --*
 
+      Specifies whether Amazon S3 replicates the delete markers. If you specify a ``Filter`` ,
+      you must specify this element. However, in the latest version of replication configuration
+      (when ``Filter`` is specified), Amazon S3 doesn't replicate delete markers. Therefore, the
+      ``DeleteMarkerReplication`` element can contain only <Status>Disabled</Status>. For an
+      example configuration, see `Basic Rule Configuration
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config>`__
+      .
+
+      .. note::
+
+        If you don't specify the Filter element, Amazon S3 assumes the replication configuration
+        is the earlier version, V1. In the earlier version, Amazon S3 handled replication of
+        delete markers differently. For more information, see `Backward Compatibility
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations>`__
+        .
+
       - **Status** *(string) --*
 
-        The status of the delete marker replication.
+        Indicates whether to replicate delete markers.
 
         .. note::
 
@@ -16389,12 +22220,15 @@ class ClientPutBucketReplicationReplicationConfigurationTypeDef(
     """
     Type definition for `ClientPutBucketReplication` `ReplicationConfiguration`
 
+    A container for replication rules. You can add up to 1,000 rules. The maximum size of a
+    replication configuration is 2 MB.
+
     - **Role** *(string) --* **[REQUIRED]**
 
       The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that Amazon
-      S3 assumes when replicating objects. For more information, see `How to Set Up Cross-Region
-      Replication <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-how-setup.html>`__ in the
-      *Amazon Simple Storage Service Developer Guide* .
+      S3 assumes when replicating objects. For more information, see `How to Set Up Replication
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html>`__ in the *Amazon
+      Simple Storage Service Developer Guide* .
 
     - **Rules** *(list) --* **[REQUIRED]**
 
@@ -16421,9 +22255,9 @@ class ClientPutBucketReplicationReplicationConfigurationTypeDef(
 
           * Same object qualify tag based filter criteria specified in multiple rules
 
-          For more information, see `Cross-Region Replication (CRR)
-          <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html>`__ in the *Amazon S3 Developer
-          Guide* .
+          For more information, see `Replication <
+          https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html>`__ in the *Amazon S3
+          Developer Guide* .
 
         - **Prefix** *(string) --*
 
@@ -16432,6 +22266,9 @@ class ClientPutBucketReplicationReplicationConfigurationTypeDef(
           an empty string.
 
         - **Filter** *(dict) --*
+
+          A filter that identifies the subset of objects to which the replication rule applies. A
+          ``Filter`` must specify exactly one ``Prefix`` , ``Tag`` , or an ``And`` child element.
 
           - **Prefix** *(string) --*
 
@@ -16465,9 +22302,16 @@ class ClientPutBucketReplicationReplicationConfigurationTypeDef(
 
             - **Prefix** *(string) --*
 
+              An object keyname prefix that identifies the subset of objects to which the rule
+              applies.
+
             - **Tags** *(list) --*
 
+              An array of tags containing key and value pairs.
+
               - *(dict) --*
+
+                A container of a key value name pair.
 
                 - **Key** *(string) --* **[REQUIRED]**
 
@@ -16486,7 +22330,8 @@ class ClientPutBucketReplicationReplicationConfigurationTypeDef(
           A container that describes additional filters for identifying the source objects that you
           want to replicate. You can choose to enable or disable the replication of these objects.
           Currently, Amazon S3 supports only the filter that you can specify for objects created with
-          server-side encryption using an AWS KMS-Managed Key (SSE-KMS).
+          server-side encryption using a customer master key (CMK) stored in AWS Key Management
+          Service (SSE-KMS).
 
           - **SseKmsEncryptedObjects** *(dict) --*
 
@@ -16497,7 +22342,16 @@ class ClientPutBucketReplicationReplicationConfigurationTypeDef(
             - **Status** *(string) --* **[REQUIRED]**
 
               Specifies whether Amazon S3 replicates objects created with server-side encryption
-              using an AWS KMS-managed key.
+              using a customer master key (CMK) stored in AWS Key Management Service.
+
+        - **ExistingObjectReplication** *(dict) --*
+
+          A container that specifies information about existing object replication. You can choose
+          whether to enable or disable the replication of existing objects.
+
+          - **Status** *(string) --* **[REQUIRED]**
+
+            Specifies whether existing object replication is enabled.
 
         - **Destination** *(dict) --* **[REQUIRED]**
 
@@ -16505,22 +22359,18 @@ class ClientPutBucketReplicationReplicationConfigurationTypeDef(
 
           - **Bucket** *(string) --* **[REQUIRED]**
 
-            The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store replicas
-            of the object identified by the rule.
-
-            A replication configuration can replicate objects to only one destination bucket. If
-            there are multiple rules in your replication configuration, all rules must specify the
-            same destination bucket.
+            The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the
+            results.
 
           - **Account** *(string) --*
 
             Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3
             to change replica ownership to the AWS account that owns the destination bucket by
             specifying the ``AccessControlTranslation`` property, this is the account ID of the
-            destination bucket owner. For more information, see `Cross-Region Replication Additional
+            destination bucket owner. For more information, see `Replication Additional
             Configuration\\: Change Replica Owner
-            <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the *Amazon
-            Simple Storage Service Developer Guide* .
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html>`__ in the
+            *Amazon Simple Storage Service Developer Guide* .
 
           - **StorageClass** *(string) --*
 
@@ -16558,9 +22408,25 @@ class ClientPutBucketReplicationReplicationConfigurationTypeDef(
 
         - **DeleteMarkerReplication** *(dict) --*
 
+          Specifies whether Amazon S3 replicates the delete markers. If you specify a ``Filter`` ,
+          you must specify this element. However, in the latest version of replication configuration
+          (when ``Filter`` is specified), Amazon S3 doesn't replicate delete markers. Therefore, the
+          ``DeleteMarkerReplication`` element can contain only <Status>Disabled</Status>. For an
+          example configuration, see `Basic Rule Configuration
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config>`__
+          .
+
+          .. note::
+
+            If you don't specify the Filter element, Amazon S3 assumes the replication configuration
+            is the earlier version, V1. In the earlier version, Amazon S3 handled replication of
+            delete markers differently. For more information, see `Backward Compatibility
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations>`__
+            .
+
           - **Status** *(string) --*
 
-            The status of the delete marker replication.
+            Indicates whether to replicate delete markers.
 
             .. note::
 
@@ -16580,6 +22446,8 @@ class ClientPutBucketRequestPaymentRequestPaymentConfigurationTypeDef(
     """
     Type definition for `ClientPutBucketRequestPayment` `RequestPaymentConfiguration`
 
+    Container for Payer.
+
     - **Payer** *(string) --* **[REQUIRED]**
 
       Specifies who pays for the download and request fees.
@@ -16596,6 +22464,8 @@ class ClientPutBucketTaggingTaggingTagSetTypeDef(
 ):
     """
     Type definition for `ClientPutBucketTaggingTagging` `TagSet`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --* **[REQUIRED]**
 
@@ -16617,9 +22487,15 @@ class ClientPutBucketTaggingTaggingTypeDef(_ClientPutBucketTaggingTaggingTypeDef
     """
     Type definition for `ClientPutBucketTagging` `Tagging`
 
+    Container for the TagSet and Tag elements.
+
     - **TagSet** *(list) --* **[REQUIRED]**
 
+      A collection for a a set of tags
+
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -16643,6 +22519,8 @@ class ClientPutBucketVersioningVersioningConfigurationTypeDef(
 ):
     """
     Type definition for `ClientPutBucketVersioning` `VersioningConfiguration`
+
+    Container for setting the versioning state.
 
     - **MFADelete** *(string) --*
 
@@ -16924,6 +22802,8 @@ class ClientPutBucketWebsiteWebsiteConfigurationTypeDef(
     """
     Type definition for `ClientPutBucketWebsite` `WebsiteConfiguration`
 
+    Container for the request.
+
     - **ErrorDocument** *(dict) --*
 
       The name of the error document for the website.
@@ -17045,6 +22925,8 @@ class ClientPutObjectAclAccessControlPolicyGrantsGranteeTypeDef(
     """
     Type definition for `ClientPutObjectAclAccessControlPolicyGrants` `Grantee`
 
+    The person being granted permissions.
+
     - **DisplayName** *(string) --*
 
       Screen name of the grantee.
@@ -17083,7 +22965,11 @@ class ClientPutObjectAclAccessControlPolicyGrantsTypeDef(
     """
     Type definition for `ClientPutObjectAclAccessControlPolicy` `Grants`
 
+    Container for grant information.
+
     - **Grantee** *(dict) --*
+
+      The person being granted permissions.
 
       - **DisplayName** *(string) --*
 
@@ -17128,7 +23014,11 @@ class ClientPutObjectAclAccessControlPolicyOwnerTypeDef(
 
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -17156,7 +23046,11 @@ class ClientPutObjectAclAccessControlPolicyTypeDef(
 
       - *(dict) --*
 
+        Container for grant information.
+
         - **Grantee** *(dict) --*
+
+          The person being granted permissions.
 
           - **DisplayName** *(string) --*
 
@@ -17188,7 +23082,11 @@ class ClientPutObjectAclAccessControlPolicyTypeDef(
 
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
     """
 
 
@@ -17259,7 +23157,7 @@ class ClientPutObjectLockConfigurationObjectLockConfigurationRuleDefaultRetentio
 
     - **Mode** *(string) --*
 
-      The default object lock retention mode you want to apply to new objects placed in the
+      The default Object Lock retention mode you want to apply to new objects placed in the
       specified bucket.
 
     - **Days** *(integer) --*
@@ -17287,7 +23185,7 @@ class ClientPutObjectLockConfigurationObjectLockConfigurationRuleTypeDef(
     """
     Type definition for `ClientPutObjectLockConfigurationObjectLockConfiguration` `Rule`
 
-    The object lock rule in place for the specified object.
+    The Object Lock rule in place for the specified object.
 
     - **DefaultRetention** *(dict) --*
 
@@ -17296,7 +23194,7 @@ class ClientPutObjectLockConfigurationObjectLockConfigurationRuleTypeDef(
 
       - **Mode** *(string) --*
 
-        The default object lock retention mode you want to apply to new objects placed in the
+        The default Object Lock retention mode you want to apply to new objects placed in the
         specified bucket.
 
       - **Days** *(integer) --*
@@ -17325,15 +23223,15 @@ class ClientPutObjectLockConfigurationObjectLockConfigurationTypeDef(
     """
     Type definition for `ClientPutObjectLockConfiguration` `ObjectLockConfiguration`
 
-    The object lock configuration that you want to apply to the specified bucket.
+    The Object Lock configuration that you want to apply to the specified bucket.
 
     - **ObjectLockEnabled** *(string) --*
 
-      Indicates whether this bucket has an object lock configuration enabled.
+      Indicates whether this bucket has an Object Lock configuration enabled.
 
     - **Rule** *(dict) --*
 
-      The object lock rule in place for the specified object.
+      The Object Lock rule in place for the specified object.
 
       - **DefaultRetention** *(dict) --*
 
@@ -17342,7 +23240,7 @@ class ClientPutObjectLockConfigurationObjectLockConfigurationTypeDef(
 
         - **Mode** *(string) --*
 
-          The default object lock retention mode you want to apply to new objects placed in the
+          The default Object Lock retention mode you want to apply to new objects placed in the
           specified bucket.
 
         - **Days** *(integer) --*
@@ -17397,8 +23295,9 @@ class ClientPutObjectResponseTypeDef(_ClientPutObjectResponseTypeDef):
 
     - **Expiration** *(string) --*
 
-      If the object expiration is configured, this will contain the expiration date (expiry-date)
-      and rule ID (rule-id). The value of rule-id is URL encoded.
+      If the expiration is configured for the object (see  PutBucketLifecycleConfiguration ), the
+      response includes this header. It includes the expiry-date and rule-id key-value pairs that
+      provide information about object expiration. The value of the rule-id is URL encoded.
 
     - **ETag** *(string) --*
 
@@ -17406,8 +23305,9 @@ class ClientPutObjectResponseTypeDef(_ClientPutObjectResponseTypeDef):
 
     - **ServerSideEncryption** *(string) --*
 
-      The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256,
-      aws:kms).
+      If you specified server-side encryption either with an AWS KMS customer master key (CMK) or
+      Amazon S3-managed encryption key in your PUT request, the response includes this header. It
+      confirms the encryption algorithm that Amazon S3 used to encrypt the object.
 
     - **VersionId** *(string) --*
 
@@ -17426,8 +23326,9 @@ class ClientPutObjectResponseTypeDef(_ClientPutObjectResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If the x-amz-server-side-encryption is present and has the value of aws:kms, this header
+      specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK) that was
+      used for the object.
 
     - **SSEKMSEncryptionContext** *(string) --*
 
@@ -17477,7 +23378,7 @@ class ClientPutObjectRetentionRetentionTypeDef(
 
     - **RetainUntilDate** *(datetime) --*
 
-      The date on which this object lock retention expires.
+      The date on which this Object Lock Retention will expire.
     """
 
 
@@ -17491,6 +23392,8 @@ class ClientPutObjectTaggingResponseTypeDef(_ClientPutObjectTaggingResponseTypeD
     Type definition for `ClientPutObjectTagging` `Response`
 
     - **VersionId** *(string) --*
+
+      The versionId of the object the tag-set was added to.
     """
 
 
@@ -17504,6 +23407,8 @@ class ClientPutObjectTaggingTaggingTagSetTypeDef(
 ):
     """
     Type definition for `ClientPutObjectTaggingTagging` `TagSet`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --* **[REQUIRED]**
 
@@ -17525,9 +23430,15 @@ class ClientPutObjectTaggingTaggingTypeDef(_ClientPutObjectTaggingTaggingTypeDef
     """
     Type definition for `ClientPutObjectTagging` `Tagging`
 
+    Container for the TagSet and Tag elements
+
     - **TagSet** *(list) --* **[REQUIRED]**
 
+      A collection for a a set of tags
+
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -17571,6 +23482,8 @@ class ClientPutPublicAccessBlockPublicAccessBlockConfigurationTypeDef(
       * PUT Bucket acl and PUT Object acl calls fail if the specified ACL is public.
 
       * PUT Object calls fail if the request includes a public ACL.
+
+      * PUT Bucket calls fail if the request includes a public ACL.
 
       Enabling this setting doesn't affect existing policies or ACLs.
 
@@ -17663,6 +23576,8 @@ class ClientRestoreObjectRestoreRequestOutputLocationS3AccessControlListGranteeT
     """
     Type definition for `ClientRestoreObjectRestoreRequestOutputLocationS3AccessControlList` `Grantee`
 
+    The person being granted permissions.
+
     - **DisplayName** *(string) --*
 
       Screen name of the grantee.
@@ -17701,7 +23616,11 @@ class ClientRestoreObjectRestoreRequestOutputLocationS3AccessControlListTypeDef(
     """
     Type definition for `ClientRestoreObjectRestoreRequestOutputLocationS3` `AccessControlList`
 
+    Container for grant information.
+
     - **Grantee** *(dict) --*
+
+      The person being granted permissions.
 
       - **DisplayName** *(string) --*
 
@@ -17747,6 +23666,8 @@ class ClientRestoreObjectRestoreRequestOutputLocationS3EncryptionTypeDef(
     """
     Type definition for `ClientRestoreObjectRestoreRequestOutputLocationS3` `Encryption`
 
+    Contains the type of server-side encryption used.
+
     - **EncryptionType** *(string) --* **[REQUIRED]**
 
       The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -17775,6 +23696,8 @@ class ClientRestoreObjectRestoreRequestOutputLocationS3TaggingTagSetTypeDef(
 ):
     """
     Type definition for `ClientRestoreObjectRestoreRequestOutputLocationS3Tagging` `TagSet`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --* **[REQUIRED]**
 
@@ -17806,7 +23729,11 @@ class ClientRestoreObjectRestoreRequestOutputLocationS3TaggingTypeDef(
 
     - **TagSet** *(list) --* **[REQUIRED]**
 
+      A collection for a a set of tags
+
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -17835,7 +23762,11 @@ class ClientRestoreObjectRestoreRequestOutputLocationS3UserMetadataTypeDef(
 
     - **Name** *(string) --*
 
+      Name of the Object.
+
     - **Value** *(string) --*
+
+      Value of the Object.
     """
 
 
@@ -17880,6 +23811,8 @@ class ClientRestoreObjectRestoreRequestOutputLocationS3TypeDef(
 
     - **Encryption** *(dict) --*
 
+      Contains the type of server-side encryption used.
+
       - **EncryptionType** *(string) --* **[REQUIRED]**
 
         The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -17905,7 +23838,11 @@ class ClientRestoreObjectRestoreRequestOutputLocationS3TypeDef(
 
       - *(dict) --*
 
+        Container for grant information.
+
         - **Grantee** *(dict) --*
+
+          The person being granted permissions.
 
           - **DisplayName** *(string) --*
 
@@ -17937,7 +23874,11 @@ class ClientRestoreObjectRestoreRequestOutputLocationS3TypeDef(
 
       - **TagSet** *(list) --* **[REQUIRED]**
 
+        A collection for a a set of tags
+
         - *(dict) --*
+
+          A container of a key value name pair.
 
           - **Key** *(string) --* **[REQUIRED]**
 
@@ -17957,7 +23898,11 @@ class ClientRestoreObjectRestoreRequestOutputLocationS3TypeDef(
 
         - **Name** *(string) --*
 
+          Name of the Object.
+
         - **Value** *(string) --*
+
+          Value of the Object.
 
     - **StorageClass** *(string) --*
 
@@ -17994,6 +23939,8 @@ class ClientRestoreObjectRestoreRequestOutputLocationTypeDef(
 
       - **Encryption** *(dict) --*
 
+        Contains the type of server-side encryption used.
+
         - **EncryptionType** *(string) --* **[REQUIRED]**
 
           The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -18019,7 +23966,11 @@ class ClientRestoreObjectRestoreRequestOutputLocationTypeDef(
 
         - *(dict) --*
 
+          Container for grant information.
+
           - **Grantee** *(dict) --*
+
+            The person being granted permissions.
 
             - **DisplayName** *(string) --*
 
@@ -18051,7 +24002,11 @@ class ClientRestoreObjectRestoreRequestOutputLocationTypeDef(
 
         - **TagSet** *(list) --* **[REQUIRED]**
 
+          A collection for a a set of tags
+
           - *(dict) --*
+
+            A container of a key value name pair.
 
             - **Key** *(string) --* **[REQUIRED]**
 
@@ -18071,7 +24026,11 @@ class ClientRestoreObjectRestoreRequestOutputLocationTypeDef(
 
           - **Name** *(string) --*
 
+            Name of the Object.
+
           - **Value** *(string) --*
+
+            Value of the Object.
 
       - **StorageClass** *(string) --*
 
@@ -18104,29 +24063,49 @@ class ClientRestoreObjectRestoreRequestSelectParametersInputSerializationCSVType
 
     - **FileHeaderInfo** *(string) --*
 
-      Describes the first line of input. Valid values: None, Ignore, Use.
+      Describes the first line of input. Valid values are:
+
+      * ``NONE`` : First line is not a header.
+
+      * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+      the column in an expression. You can use column position (such as _1, _2, …) to indicate
+      the column (``SELECT s._1 FROM OBJECT s`` ).
+
+      * ``Use`` : First line is a header, and you can use the header value to identify a column
+      in an expression (``SELECT "name" FROM OBJECT`` ).
 
     - **Comments** *(string) --*
 
-      The single character used to indicate a row should be ignored when present at the start
-      of a row.
+      A single character used to indicate that a row should be ignored when the character is
+      present at the start of that row. You can specify any character to indicate a comment
+      line.
 
     - **QuoteEscapeCharacter** *(string) --*
 
-      The single character used for escaping the quote character inside an already escaped
-      value.
+      A single character used for escaping the quotation mark character inside an already
+      escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
     - **RecordDelimiter** *(string) --*
 
-      The value used to separate individual records.
+      A single character used to separate individual records in the input. Instead of the
+      default value, you can specify an arbitrary delimiter.
 
     - **FieldDelimiter** *(string) --*
 
-      The value used to separate individual fields in a record.
+      A single character used to separate individual fields in a record. You can specify an
+      arbitrary delimiter.
 
     - **QuoteCharacter** *(string) --*
 
-      Value used for escaping where the field delimiter is part of the value.
+      A single character used for escaping when the field delimiter is part of the value. For
+      example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+      as follows: ``" a , b "`` .
+
+      Type: String
+
+      Default: ``"``
+
+      Ancestors: ``CSV``
 
     - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -18183,29 +24162,49 @@ class ClientRestoreObjectRestoreRequestSelectParametersInputSerializationTypeDef
 
       - **FileHeaderInfo** *(string) --*
 
-        Describes the first line of input. Valid values: None, Ignore, Use.
+        Describes the first line of input. Valid values are:
+
+        * ``NONE`` : First line is not a header.
+
+        * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+        the column in an expression. You can use column position (such as _1, _2, …) to indicate
+        the column (``SELECT s._1 FROM OBJECT s`` ).
+
+        * ``Use`` : First line is a header, and you can use the header value to identify a column
+        in an expression (``SELECT "name" FROM OBJECT`` ).
 
       - **Comments** *(string) --*
 
-        The single character used to indicate a row should be ignored when present at the start
-        of a row.
+        A single character used to indicate that a row should be ignored when the character is
+        present at the start of that row. You can specify any character to indicate a comment
+        line.
 
       - **QuoteEscapeCharacter** *(string) --*
 
-        The single character used for escaping the quote character inside an already escaped
-        value.
+        A single character used for escaping the quotation mark character inside an already
+        escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
       - **RecordDelimiter** *(string) --*
 
-        The value used to separate individual records.
+        A single character used to separate individual records in the input. Instead of the
+        default value, you can specify an arbitrary delimiter.
 
       - **FieldDelimiter** *(string) --*
 
-        The value used to separate individual fields in a record.
+        A single character used to separate individual fields in a record. You can specify an
+        arbitrary delimiter.
 
       - **QuoteCharacter** *(string) --*
 
-        Value used for escaping where the field delimiter is part of the value.
+        A single character used for escaping when the field delimiter is part of the value. For
+        example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+        as follows: ``" a , b "`` .
+
+        Type: String
+
+        Default: ``"``
+
+        Ancestors: ``CSV``
 
       - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -18254,23 +24253,32 @@ class ClientRestoreObjectRestoreRequestSelectParametersOutputSerializationCSVTyp
 
     - **QuoteFields** *(string) --*
 
-      Indicates whether or not all output fields should be quoted.
+      Indicates whether to use quotation marks around output fields.
+
+      * ``ALWAYS`` : Always use quotation marks for output fields.
+
+      * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
     - **QuoteEscapeCharacter** *(string) --*
 
-      Th single character used for escaping the quote character inside an already escaped value.
+      The single character used for escaping the quote character inside an already escaped
+      value.
 
     - **RecordDelimiter** *(string) --*
 
-      The value used to separate individual records.
+      A single character used to separate individual records in the output. Instead of the
+      default value, you can specify an arbitrary delimiter.
 
     - **FieldDelimiter** *(string) --*
 
-      The value used to separate individual fields in a record.
+      The value used to separate individual fields in a record. You can specify an arbitrary
+      delimiter.
 
     - **QuoteCharacter** *(string) --*
 
-      The value used for escaping where the field delimiter is part of the value.
+      A single character used for escaping when the field delimiter is part of the value. For
+      example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+      as follows: ``" a , b "`` .
     """
 
 
@@ -18319,23 +24327,32 @@ class ClientRestoreObjectRestoreRequestSelectParametersOutputSerializationTypeDe
 
       - **QuoteFields** *(string) --*
 
-        Indicates whether or not all output fields should be quoted.
+        Indicates whether to use quotation marks around output fields.
+
+        * ``ALWAYS`` : Always use quotation marks for output fields.
+
+        * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
       - **QuoteEscapeCharacter** *(string) --*
 
-        Th single character used for escaping the quote character inside an already escaped value.
+        The single character used for escaping the quote character inside an already escaped
+        value.
 
       - **RecordDelimiter** *(string) --*
 
-        The value used to separate individual records.
+        A single character used to separate individual records in the output. Instead of the
+        default value, you can specify an arbitrary delimiter.
 
       - **FieldDelimiter** *(string) --*
 
-        The value used to separate individual fields in a record.
+        The value used to separate individual fields in a record. You can specify an arbitrary
+        delimiter.
 
       - **QuoteCharacter** *(string) --*
 
-        The value used for escaping where the field delimiter is part of the value.
+        A single character used for escaping when the field delimiter is part of the value. For
+        example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+        as follows: ``" a , b "`` .
 
     - **JSON** *(dict) --*
 
@@ -18376,29 +24393,49 @@ class ClientRestoreObjectRestoreRequestSelectParametersTypeDef(
 
         - **FileHeaderInfo** *(string) --*
 
-          Describes the first line of input. Valid values: None, Ignore, Use.
+          Describes the first line of input. Valid values are:
+
+          * ``NONE`` : First line is not a header.
+
+          * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+          the column in an expression. You can use column position (such as _1, _2, …) to indicate
+          the column (``SELECT s._1 FROM OBJECT s`` ).
+
+          * ``Use`` : First line is a header, and you can use the header value to identify a column
+          in an expression (``SELECT "name" FROM OBJECT`` ).
 
         - **Comments** *(string) --*
 
-          The single character used to indicate a row should be ignored when present at the start
-          of a row.
+          A single character used to indicate that a row should be ignored when the character is
+          present at the start of that row. You can specify any character to indicate a comment
+          line.
 
         - **QuoteEscapeCharacter** *(string) --*
 
-          The single character used for escaping the quote character inside an already escaped
-          value.
+          A single character used for escaping the quotation mark character inside an already
+          escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
         - **RecordDelimiter** *(string) --*
 
-          The value used to separate individual records.
+          A single character used to separate individual records in the input. Instead of the
+          default value, you can specify an arbitrary delimiter.
 
         - **FieldDelimiter** *(string) --*
 
-          The value used to separate individual fields in a record.
+          A single character used to separate individual fields in a record. You can specify an
+          arbitrary delimiter.
 
         - **QuoteCharacter** *(string) --*
 
-          Value used for escaping where the field delimiter is part of the value.
+          A single character used for escaping when the field delimiter is part of the value. For
+          example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+          as follows: ``" a , b "`` .
+
+          Type: String
+
+          Default: ``"``
+
+          Ancestors: ``CSV``
 
         - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -18440,23 +24477,32 @@ class ClientRestoreObjectRestoreRequestSelectParametersTypeDef(
 
         - **QuoteFields** *(string) --*
 
-          Indicates whether or not all output fields should be quoted.
+          Indicates whether to use quotation marks around output fields.
+
+          * ``ALWAYS`` : Always use quotation marks for output fields.
+
+          * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
         - **QuoteEscapeCharacter** *(string) --*
 
-          Th single character used for escaping the quote character inside an already escaped value.
+          The single character used for escaping the quote character inside an already escaped
+          value.
 
         - **RecordDelimiter** *(string) --*
 
-          The value used to separate individual records.
+          A single character used to separate individual records in the output. Instead of the
+          default value, you can specify an arbitrary delimiter.
 
         - **FieldDelimiter** *(string) --*
 
-          The value used to separate individual fields in a record.
+          The value used to separate individual fields in a record. You can specify an arbitrary
+          delimiter.
 
         - **QuoteCharacter** *(string) --*
 
-          The value used for escaping where the field delimiter is part of the value.
+          A single character used for escaping when the field delimiter is part of the value. For
+          example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+          as follows: ``" a , b "`` .
 
       - **JSON** *(dict) --*
 
@@ -18488,6 +24534,8 @@ class ClientRestoreObjectRestoreRequestTypeDef(
 ):
     """
     Type definition for `ClientRestoreObject` `RestoreRequest`
+
+    Container for restore job parameters.
 
     - **Days** *(integer) --*
 
@@ -18528,29 +24576,49 @@ class ClientRestoreObjectRestoreRequestTypeDef(
 
           - **FileHeaderInfo** *(string) --*
 
-            Describes the first line of input. Valid values: None, Ignore, Use.
+            Describes the first line of input. Valid values are:
+
+            * ``NONE`` : First line is not a header.
+
+            * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+            the column in an expression. You can use column position (such as _1, _2, …) to indicate
+            the column (``SELECT s._1 FROM OBJECT s`` ).
+
+            * ``Use`` : First line is a header, and you can use the header value to identify a column
+            in an expression (``SELECT "name" FROM OBJECT`` ).
 
           - **Comments** *(string) --*
 
-            The single character used to indicate a row should be ignored when present at the start
-            of a row.
+            A single character used to indicate that a row should be ignored when the character is
+            present at the start of that row. You can specify any character to indicate a comment
+            line.
 
           - **QuoteEscapeCharacter** *(string) --*
 
-            The single character used for escaping the quote character inside an already escaped
-            value.
+            A single character used for escaping the quotation mark character inside an already
+            escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
           - **RecordDelimiter** *(string) --*
 
-            The value used to separate individual records.
+            A single character used to separate individual records in the input. Instead of the
+            default value, you can specify an arbitrary delimiter.
 
           - **FieldDelimiter** *(string) --*
 
-            The value used to separate individual fields in a record.
+            A single character used to separate individual fields in a record. You can specify an
+            arbitrary delimiter.
 
           - **QuoteCharacter** *(string) --*
 
-            Value used for escaping where the field delimiter is part of the value.
+            A single character used for escaping when the field delimiter is part of the value. For
+            example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+            as follows: ``" a , b "`` .
+
+            Type: String
+
+            Default: ``"``
+
+            Ancestors: ``CSV``
 
           - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -18592,23 +24660,32 @@ class ClientRestoreObjectRestoreRequestTypeDef(
 
           - **QuoteFields** *(string) --*
 
-            Indicates whether or not all output fields should be quoted.
+            Indicates whether to use quotation marks around output fields.
+
+            * ``ALWAYS`` : Always use quotation marks for output fields.
+
+            * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
           - **QuoteEscapeCharacter** *(string) --*
 
-            Th single character used for escaping the quote character inside an already escaped value.
+            The single character used for escaping the quote character inside an already escaped
+            value.
 
           - **RecordDelimiter** *(string) --*
 
-            The value used to separate individual records.
+            A single character used to separate individual records in the output. Instead of the
+            default value, you can specify an arbitrary delimiter.
 
           - **FieldDelimiter** *(string) --*
 
-            The value used to separate individual fields in a record.
+            The value used to separate individual fields in a record. You can specify an arbitrary
+            delimiter.
 
           - **QuoteCharacter** *(string) --*
 
-            The value used for escaping where the field delimiter is part of the value.
+            A single character used for escaping when the field delimiter is part of the value. For
+            example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+            as follows: ``" a , b "`` .
 
         - **JSON** *(dict) --*
 
@@ -18636,6 +24713,8 @@ class ClientRestoreObjectRestoreRequestTypeDef(
 
         - **Encryption** *(dict) --*
 
+          Contains the type of server-side encryption used.
+
           - **EncryptionType** *(string) --* **[REQUIRED]**
 
             The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -18661,7 +24740,11 @@ class ClientRestoreObjectRestoreRequestTypeDef(
 
           - *(dict) --*
 
+            Container for grant information.
+
             - **Grantee** *(dict) --*
+
+              The person being granted permissions.
 
               - **DisplayName** *(string) --*
 
@@ -18693,7 +24776,11 @@ class ClientRestoreObjectRestoreRequestTypeDef(
 
           - **TagSet** *(list) --* **[REQUIRED]**
 
+            A collection for a a set of tags
+
             - *(dict) --*
+
+              A container of a key value name pair.
 
               - **Key** *(string) --* **[REQUIRED]**
 
@@ -18713,7 +24800,11 @@ class ClientRestoreObjectRestoreRequestTypeDef(
 
             - **Name** *(string) --*
 
+              Name of the Object.
+
             - **Value** *(string) --*
+
+              Value of the Object.
 
         - **StorageClass** *(string) --*
 
@@ -18746,28 +24837,48 @@ class ClientSelectObjectContentInputSerializationCSVTypeDef(
 
     - **FileHeaderInfo** *(string) --*
 
-      Describes the first line of input. Valid values: None, Ignore, Use.
+      Describes the first line of input. Valid values are:
+
+      * ``NONE`` : First line is not a header.
+
+      * ``IGNORE`` : First line is a header, but you can't use the header values to indicate the
+      column in an expression. You can use column position (such as _1, _2, …) to indicate the
+      column (``SELECT s._1 FROM OBJECT s`` ).
+
+      * ``Use`` : First line is a header, and you can use the header value to identify a column in
+      an expression (``SELECT "name" FROM OBJECT`` ).
 
     - **Comments** *(string) --*
 
-      The single character used to indicate a row should be ignored when present at the start of a
-      row.
+      A single character used to indicate that a row should be ignored when the character is
+      present at the start of that row. You can specify any character to indicate a comment line.
 
     - **QuoteEscapeCharacter** *(string) --*
 
-      The single character used for escaping the quote character inside an already escaped value.
+      A single character used for escaping the quotation mark character inside an already escaped
+      value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
     - **RecordDelimiter** *(string) --*
 
-      The value used to separate individual records.
+      A single character used to separate individual records in the input. Instead of the default
+      value, you can specify an arbitrary delimiter.
 
     - **FieldDelimiter** *(string) --*
 
-      The value used to separate individual fields in a record.
+      A single character used to separate individual fields in a record. You can specify an
+      arbitrary delimiter.
 
     - **QuoteCharacter** *(string) --*
 
-      Value used for escaping where the field delimiter is part of the value.
+      A single character used for escaping when the field delimiter is part of the value. For
+      example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks, as
+      follows: ``" a , b "`` .
+
+      Type: String
+
+      Default: ``"``
+
+      Ancestors: ``CSV``
 
     - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -18823,28 +24934,48 @@ class ClientSelectObjectContentInputSerializationTypeDef(
 
       - **FileHeaderInfo** *(string) --*
 
-        Describes the first line of input. Valid values: None, Ignore, Use.
+        Describes the first line of input. Valid values are:
+
+        * ``NONE`` : First line is not a header.
+
+        * ``IGNORE`` : First line is a header, but you can't use the header values to indicate the
+        column in an expression. You can use column position (such as _1, _2, …) to indicate the
+        column (``SELECT s._1 FROM OBJECT s`` ).
+
+        * ``Use`` : First line is a header, and you can use the header value to identify a column in
+        an expression (``SELECT "name" FROM OBJECT`` ).
 
       - **Comments** *(string) --*
 
-        The single character used to indicate a row should be ignored when present at the start of a
-        row.
+        A single character used to indicate that a row should be ignored when the character is
+        present at the start of that row. You can specify any character to indicate a comment line.
 
       - **QuoteEscapeCharacter** *(string) --*
 
-        The single character used for escaping the quote character inside an already escaped value.
+        A single character used for escaping the quotation mark character inside an already escaped
+        value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
       - **RecordDelimiter** *(string) --*
 
-        The value used to separate individual records.
+        A single character used to separate individual records in the input. Instead of the default
+        value, you can specify an arbitrary delimiter.
 
       - **FieldDelimiter** *(string) --*
 
-        The value used to separate individual fields in a record.
+        A single character used to separate individual fields in a record. You can specify an
+        arbitrary delimiter.
 
       - **QuoteCharacter** *(string) --*
 
-        Value used for escaping where the field delimiter is part of the value.
+        A single character used for escaping when the field delimiter is part of the value. For
+        example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks, as
+        follows: ``" a , b "`` .
+
+        Type: String
+
+        Default: ``"``
+
+        Ancestors: ``CSV``
 
       - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -18892,23 +25023,31 @@ class ClientSelectObjectContentOutputSerializationCSVTypeDef(
 
     - **QuoteFields** *(string) --*
 
-      Indicates whether or not all output fields should be quoted.
+      Indicates whether to use quotation marks around output fields.
+
+      * ``ALWAYS`` : Always use quotation marks for output fields.
+
+      * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
     - **QuoteEscapeCharacter** *(string) --*
 
-      Th single character used for escaping the quote character inside an already escaped value.
+      The single character used for escaping the quote character inside an already escaped value.
 
     - **RecordDelimiter** *(string) --*
 
-      The value used to separate individual records.
+      A single character used to separate individual records in the output. Instead of the default
+      value, you can specify an arbitrary delimiter.
 
     - **FieldDelimiter** *(string) --*
 
-      The value used to separate individual fields in a record.
+      The value used to separate individual fields in a record. You can specify an arbitrary
+      delimiter.
 
     - **QuoteCharacter** *(string) --*
 
-      The value used for escaping where the field delimiter is part of the value.
+      A single character used for escaping when the field delimiter is part of the value. For
+      example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks, as
+      follows: ``" a , b "`` .
     """
 
 
@@ -18957,23 +25096,31 @@ class ClientSelectObjectContentOutputSerializationTypeDef(
 
       - **QuoteFields** *(string) --*
 
-        Indicates whether or not all output fields should be quoted.
+        Indicates whether to use quotation marks around output fields.
+
+        * ``ALWAYS`` : Always use quotation marks for output fields.
+
+        * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
       - **QuoteEscapeCharacter** *(string) --*
 
-        Th single character used for escaping the quote character inside an already escaped value.
+        The single character used for escaping the quote character inside an already escaped value.
 
       - **RecordDelimiter** *(string) --*
 
-        The value used to separate individual records.
+        A single character used to separate individual records in the output. Instead of the default
+        value, you can specify an arbitrary delimiter.
 
       - **FieldDelimiter** *(string) --*
 
-        The value used to separate individual fields in a record.
+        The value used to separate individual fields in a record. You can specify an arbitrary
+        delimiter.
 
       - **QuoteCharacter** *(string) --*
 
-        The value used for escaping where the field delimiter is part of the value.
+        A single character used for escaping when the field delimiter is part of the value. For
+        example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks, as
+        follows: ``" a , b "`` .
 
     - **JSON** *(dict) --*
 
@@ -19022,15 +25169,30 @@ class ClientSelectObjectContentScanRangeTypeDef(
     first byte is contained by the range. This parameter is optional, but when specified, it must not
     be empty. See RFC 2616, Section 14.35.1 about how to specify the start and end of the range.
 
+     ``ScanRange`` may be used in the following ways:
+
+    * ``<scanrange><start>50</start><end>100</end></scanrange>`` - process only the records starting
+    between the bytes 50 and 100 (inclusive, counting from zero)
+
+    * ``<scanrange><start>50</start></scanrange>`` - process only the records starting after the byte
+    50
+
+    * ``<scanrange><end>50</end></scanrange>`` - process only the records within the last 50 bytes of
+    the file.
+
     - **Start** *(integer) --*
 
       Specifies the start of the byte range. This parameter is optional. Valid values: non-negative
-      integers. The default value is 0.
+      integers. The default value is 0. If only start is supplied, it means scan from that point to
+      the end of the file.For example; ``<scanrange><start>50</start></scanrange>`` means scan from
+      byte 50 until the end of the file.
 
     - **End** *(integer) --*
 
       Specifies the end of the byte range. This parameter is optional. Valid values: non-negative
-      integers. The default value is one less than the size of the object being queried.
+      integers. The default value is one less than the size of the object being queried. If only the
+      End parameter is supplied, it is interpreted to mean scan the last N bytes of the file. For
+      example; ``<scanrange><end>50</end></scanrange>`` means scan the last 50 bytes.
     """
 
 
@@ -19046,6 +25208,8 @@ class ClientUploadPartCopyResponseCopyPartResultTypeDef(
 ):
     """
     Type definition for `ClientUploadPartCopyResponse` `CopyPartResult`
+
+    Container for all response elements.
 
     - **ETag** *(string) --*
 
@@ -19083,6 +25247,8 @@ class ClientUploadPartCopyResponseTypeDef(_ClientUploadPartCopyResponseTypeDef):
 
     - **CopyPartResult** *(dict) --*
 
+      Container for all response elements.
+
       - **ETag** *(string) --*
 
         Entity tag of the object.
@@ -19109,8 +25275,8 @@ class ClientUploadPartCopyResponseTypeDef(_ClientUploadPartCopyResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **RequestCharged** *(string) --*
 
@@ -19158,8 +25324,8 @@ class ClientUploadPartResponseTypeDef(_ClientUploadPartResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) was used for the object.
 
     - **RequestCharged** *(string) --*
 
@@ -19212,7 +25378,14 @@ class ListMultipartUploadsPaginateResponseCommonPrefixesTypeDef(
     """
     Type definition for `ListMultipartUploadsPaginateResponse` `CommonPrefixes`
 
+    Container for all (if there are any) keys between Prefix and the next occurrence of the
+    string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+    the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+    is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
     - **Prefix** *(string) --*
+
+      Container for the specified common prefix.
     """
 
 
@@ -19255,9 +25428,15 @@ class ListMultipartUploadsPaginateResponseUploadsOwnerTypeDef(
     """
     Type definition for `ListMultipartUploadsPaginateResponseUploads` `Owner`
 
+    Specifies the owner of the object that is part of the multipart upload.
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -19281,6 +25460,8 @@ class ListMultipartUploadsPaginateResponseUploadsTypeDef(
     """
     Type definition for `ListMultipartUploadsPaginateResponse` `Uploads`
 
+    Container for the MultipartUpload for the Amazon S3 object.
+
     - **UploadId** *(string) --*
 
       Upload ID that identifies the multipart upload.
@@ -19299,9 +25480,15 @@ class ListMultipartUploadsPaginateResponseUploadsTypeDef(
 
     - **Owner** *(dict) --*
 
+      Specifies the owner of the object that is part of the multipart upload.
+
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
 
     - **Initiator** *(dict) --*
 
@@ -19364,6 +25551,9 @@ class ListMultipartUploadsPaginateResponseTypeDef(
 
     - **Delimiter** *(string) --*
 
+      Contains the delimiter you specified in the request. If you don't specify a delimiter in your
+      request, this element is absent from the response.
+
     - **MaxUploads** *(integer) --*
 
       Maximum number of multipart uploads that could have been included in the response.
@@ -19376,7 +25566,12 @@ class ListMultipartUploadsPaginateResponseTypeDef(
 
     - **Uploads** *(list) --*
 
+      Container for elements related to a particular multipart upload. A response can contain zero
+      or more Upload elements.
+
       - *(dict) --*
+
+        Container for the MultipartUpload for the Amazon S3 object.
 
         - **UploadId** *(string) --*
 
@@ -19396,9 +25591,15 @@ class ListMultipartUploadsPaginateResponseTypeDef(
 
         - **Owner** *(dict) --*
 
+          Specifies the owner of the object that is part of the multipart upload.
+
           - **DisplayName** *(string) --*
 
+            Container for the display name of the owner
+
           - **ID** *(string) --*
+
+            Container for the ID of the owner
 
         - **Initiator** *(dict) --*
 
@@ -19415,13 +25616,29 @@ class ListMultipartUploadsPaginateResponseTypeDef(
 
     - **CommonPrefixes** *(list) --*
 
+      If you specify a delimiter in the request, then the result returns each distinct key prefix
+      containing the delimiter in a CommonPrefixes element. The distinct key prefixes are returned
+      in the Prefix child element.
+
       - *(dict) --*
 
+        Container for all (if there are any) keys between Prefix and the next occurrence of the
+        string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+        the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+        is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
         - **Prefix** *(string) --*
+
+          Container for the specified common prefix.
 
     - **EncodingType** *(string) --*
 
       Encoding type used by Amazon S3 to encode object keys in the response.
+
+      If you specify ``encoding-type`` request parameter, Amazon S3 includes this element in the
+      response, and returns encoded key name values in the following response elements:
+
+       ``Delimiter`` , ``KeyMarker`` , ``Prefix`` , ``NextKeyMarker`` , ``Key`` .
 
     - **NextToken** *(string) --*
 
@@ -19474,7 +25691,14 @@ class ListObjectVersionsPaginateResponseCommonPrefixesTypeDef(
     """
     Type definition for `ListObjectVersionsPaginateResponse` `CommonPrefixes`
 
+    Container for all (if there are any) keys between Prefix and the next occurrence of the
+    string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+    the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+    is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
     - **Prefix** *(string) --*
+
+      Container for the specified common prefix.
     """
 
 
@@ -19491,9 +25715,15 @@ class ListObjectVersionsPaginateResponseDeleteMarkersOwnerTypeDef(
     """
     Type definition for `ListObjectVersionsPaginateResponseDeleteMarkers` `Owner`
 
+    The account that created the delete marker.>
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -19516,11 +25746,19 @@ class ListObjectVersionsPaginateResponseDeleteMarkersTypeDef(
     """
     Type definition for `ListObjectVersionsPaginateResponse` `DeleteMarkers`
 
+    Information about the delete marker.
+
     - **Owner** *(dict) --*
+
+      The account that created the delete marker.>
 
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
 
     - **Key** *(string) --*
 
@@ -19553,9 +25791,15 @@ class ListObjectVersionsPaginateResponseVersionsOwnerTypeDef(
     """
     Type definition for `ListObjectVersionsPaginateResponseVersions` `Owner`
 
+    Specifies the Owner of the object.
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -19581,7 +25825,11 @@ class ListObjectVersionsPaginateResponseVersionsTypeDef(
     """
     Type definition for `ListObjectVersionsPaginateResponse` `Versions`
 
+    The version of an object.
+
     - **ETag** *(string) --*
+
+      The entity tag is an MD5 hash of that version of the object
 
     - **Size** *(integer) --*
 
@@ -19609,9 +25857,15 @@ class ListObjectVersionsPaginateResponseVersionsTypeDef(
 
     - **Owner** *(dict) --*
 
+      Specifies the Owner of the object.
+
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
     """
 
 
@@ -19654,11 +25908,19 @@ class ListObjectVersionsPaginateResponseTypeDef(
 
     - **VersionIdMarker** *(string) --*
 
+      Marks the last version of the Key returned in a truncated response.
+
     - **Versions** *(list) --*
+
+      Container for version information.
 
       - *(dict) --*
 
+        The version of an object.
+
         - **ETag** *(string) --*
+
+          The entity tag is an MD5 hash of that version of the object
 
         - **Size** *(integer) --*
 
@@ -19686,19 +25948,35 @@ class ListObjectVersionsPaginateResponseTypeDef(
 
         - **Owner** *(dict) --*
 
+          Specifies the Owner of the object.
+
           - **DisplayName** *(string) --*
 
+            Container for the display name of the owner
+
           - **ID** *(string) --*
+
+            Container for the ID of the owner
 
     - **DeleteMarkers** *(list) --*
 
+      Container for an object that is a delete marker.
+
       - *(dict) --*
+
+        Information about the delete marker.
 
         - **Owner** *(dict) --*
 
+          The account that created the delete marker.>
+
           - **DisplayName** *(string) --*
 
+            Container for the display name of the owner
+
           - **ID** *(string) --*
+
+            Container for the ID of the owner
 
         - **Key** *(string) --*
 
@@ -19718,21 +25996,48 @@ class ListObjectVersionsPaginateResponseTypeDef(
 
     - **Name** *(string) --*
 
+      Bucket owner's name.
+
     - **Prefix** *(string) --*
+
+      Selects objects that start with the value supplied by this parameter.
 
     - **Delimiter** *(string) --*
 
+      The delimeter grouping the included keys. A delimiter is a character that you specify to
+      group keys. All keys that contain the same string between the prefix and the first occurrence
+      of the delimiter are grouped under a single result element in CommonPrefixes. These groups
+      are counted as one result against the max-keys limitation. These keys are not returned
+      elsewhere in the response.
+
     - **MaxKeys** *(integer) --*
+
+      Specifies the maximum number of objects to return.
 
     - **CommonPrefixes** *(list) --*
 
+      All of the keys rolled up into a common prefix count as a single return when calculating the
+      number of returns.
+
       - *(dict) --*
+
+        Container for all (if there are any) keys between Prefix and the next occurrence of the
+        string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+        the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+        is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
 
         - **Prefix** *(string) --*
 
+          Container for the specified common prefix.
+
     - **EncodingType** *(string) --*
 
-      Encoding type used by Amazon S3 to encode object keys in the response.
+      Encoding type used by Amazon S3 to encode object key names in the XML response.
+
+      If you specify encoding-type request parameter, Amazon S3 includes this element in the
+      response, and returns encoded key name values in the following response elements:
+
+       ``KeyMarker, NextKeyMarker, Prefix, Key`` , and ``Delimiter`` .
 
     - **NextToken** *(string) --*
 
@@ -19783,7 +26088,14 @@ class ListObjectsPaginateResponseCommonPrefixesTypeDef(
     """
     Type definition for `ListObjectsPaginateResponse` `CommonPrefixes`
 
+    Container for all (if there are any) keys between Prefix and the next occurrence of the
+    string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+    the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+    is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
     - **Prefix** *(string) --*
+
+      Container for the specified common prefix.
     """
 
 
@@ -19800,9 +26112,15 @@ class ListObjectsPaginateResponseContentsOwnerTypeDef(
     """
     Type definition for `ListObjectsPaginateResponseContents` `Owner`
 
+    The owner of the object
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -19826,13 +26144,24 @@ class ListObjectsPaginateResponseContentsTypeDef(
     """
     Type definition for `ListObjectsPaginateResponse` `Contents`
 
+    An object consists of data and its descriptive metadata.
+
     - **Key** *(string) --*
+
+      The name that you assign to an object. You use the object key to retrieve the object.
 
     - **LastModified** *(datetime) --*
 
+      The date the Object was Last Modified
+
     - **ETag** *(string) --*
 
+      The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents
+      of an object, not its metadata.
+
     - **Size** *(integer) --*
+
+      Size in bytes of the object
 
     - **StorageClass** *(string) --*
 
@@ -19840,9 +26169,15 @@ class ListObjectsPaginateResponseContentsTypeDef(
 
     - **Owner** *(dict) --*
 
+      The owner of the object
+
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
     """
 
 
@@ -19876,6 +26211,9 @@ class ListObjectsPaginateResponseTypeDef(_ListObjectsPaginateResponseTypeDef):
 
     - **Marker** *(string) --*
 
+      Indicates where in the bucket listing begins. Marker is included in the response if it was
+      sent with the request.
+
     - **NextMarker** *(string) --*
 
       When response is truncated (the IsTruncated element value in the response is true), you can
@@ -19887,15 +26225,28 @@ class ListObjectsPaginateResponseTypeDef(_ListObjectsPaginateResponseTypeDef):
 
     - **Contents** *(list) --*
 
+      Metadata about each object returned.
+
       - *(dict) --*
+
+        An object consists of data and its descriptive metadata.
 
         - **Key** *(string) --*
 
+          The name that you assign to an object. You use the object key to retrieve the object.
+
         - **LastModified** *(datetime) --*
+
+          The date the Object was Last Modified
 
         - **ETag** *(string) --*
 
+          The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents
+          of an object, not its metadata.
+
         - **Size** *(integer) --*
+
+          Size in bytes of the object
 
         - **StorageClass** *(string) --*
 
@@ -19903,23 +26254,61 @@ class ListObjectsPaginateResponseTypeDef(_ListObjectsPaginateResponseTypeDef):
 
         - **Owner** *(dict) --*
 
+          The owner of the object
+
           - **DisplayName** *(string) --*
+
+            Container for the display name of the owner
 
           - **ID** *(string) --*
 
+            Container for the ID of the owner
+
     - **Name** *(string) --*
+
+      Name of the bucket.
 
     - **Prefix** *(string) --*
 
+      Keys that begin with the indicated prefix.
+
     - **Delimiter** *(string) --*
+
+      Causes keys that contain the same string between the prefix and the first occurrence of the
+      delimiter to be rolled up into a single result element in the CommonPrefixes collection.
+      These rolled-up keys are not returned elsewhere in the response. Each rolled-up result counts
+      as only one return against the MaxKeys value.
 
     - **MaxKeys** *(integer) --*
 
+      The maximum number of keys returned in the response body.
+
     - **CommonPrefixes** *(list) --*
+
+      All of the keys rolled up in a common prefix count as a single return when calculating the
+      number of returns.
+
+      A response can contain CommonPrefixes only if you specify a delimiter.
+
+      CommonPrefixes contains all (if there are any) keys between Prefix and the next occurrence of
+      the string specified by the delimiter.
+
+      CommonPrefixes lists keys that act like subdirectories in the directory specified by Prefix.
+
+      For example, if the prefix is notes/ and the delimiter is a slash (/) as in
+      notes/summer/july, the common prefix is notes/summer/. All of the keys that roll up into a
+      common prefix count as a single return when calculating the number of returns.
 
       - *(dict) --*
 
+        Container for all (if there are any) keys between Prefix and the next occurrence of the
+        string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+        the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+        is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
         - **Prefix** *(string) --*
+
+          Container for the specified common prefix.
 
     - **EncodingType** *(string) --*
 
@@ -19974,7 +26363,14 @@ class ListObjectsV2PaginateResponseCommonPrefixesTypeDef(
     """
     Type definition for `ListObjectsV2PaginateResponse` `CommonPrefixes`
 
+    Container for all (if there are any) keys between Prefix and the next occurrence of the
+    string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+    the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+    is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
     - **Prefix** *(string) --*
+
+      Container for the specified common prefix.
     """
 
 
@@ -19991,9 +26387,15 @@ class ListObjectsV2PaginateResponseContentsOwnerTypeDef(
     """
     Type definition for `ListObjectsV2PaginateResponseContents` `Owner`
 
+    The owner of the object
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -20017,13 +26419,24 @@ class ListObjectsV2PaginateResponseContentsTypeDef(
     """
     Type definition for `ListObjectsV2PaginateResponse` `Contents`
 
+    An object consists of data and its descriptive metadata.
+
     - **Key** *(string) --*
+
+      The name that you assign to an object. You use the object key to retrieve the object.
 
     - **LastModified** *(datetime) --*
 
+      The date the Object was Last Modified
+
     - **ETag** *(string) --*
 
+      The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents
+      of an object, not its metadata.
+
     - **Size** *(integer) --*
+
+      Size in bytes of the object
 
     - **StorageClass** *(string) --*
 
@@ -20031,9 +26444,15 @@ class ListObjectsV2PaginateResponseContentsTypeDef(
 
     - **Owner** *(dict) --*
 
+      The owner of the object
+
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
     """
 
 
@@ -20063,8 +26482,9 @@ class ListObjectsV2PaginateResponseTypeDef(_ListObjectsV2PaginateResponseTypeDef
 
     - **IsTruncated** *(boolean) --*
 
-      A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the
-      search criteria.
+      Set to false if all of the results were returned. Set to true if more keys are available to
+      return. If the number of results exceeds that specified by MaxKeys, all of the results might
+      not be returned.
 
     - **Contents** *(list) --*
 
@@ -20072,13 +26492,24 @@ class ListObjectsV2PaginateResponseTypeDef(_ListObjectsV2PaginateResponseTypeDef
 
       - *(dict) --*
 
+        An object consists of data and its descriptive metadata.
+
         - **Key** *(string) --*
+
+          The name that you assign to an object. You use the object key to retrieve the object.
 
         - **LastModified** *(datetime) --*
 
+          The date the Object was Last Modified
+
         - **ETag** *(string) --*
 
+          The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents
+          of an object, not its metadata.
+
         - **Size** *(integer) --*
+
+          Size in bytes of the object
 
         - **StorageClass** *(string) --*
 
@@ -20086,21 +26517,30 @@ class ListObjectsV2PaginateResponseTypeDef(_ListObjectsV2PaginateResponseTypeDef
 
         - **Owner** *(dict) --*
 
+          The owner of the object
+
           - **DisplayName** *(string) --*
+
+            Container for the display name of the owner
 
           - **ID** *(string) --*
 
+            Container for the ID of the owner
+
     - **Name** *(string) --*
 
-      Name of the bucket to list.
+      Name of the bucket.
 
     - **Prefix** *(string) --*
 
-      Limits the response to keys that begin with the specified prefix.
+      Keys that begin with the indicated prefix.
 
     - **Delimiter** *(string) --*
 
-      A delimiter is a character you use to group keys.
+      Causes keys that contain the same string between the prefix and the first occurrence of the
+      delimiter to be rolled up into a single result element in the CommonPrefixes collection.
+      These rolled-up keys are not returned elsewhere in the response. Each rolled-up result counts
+      as only one return against the MaxKeys value.
 
     - **MaxKeys** *(integer) --*
 
@@ -20109,16 +26549,40 @@ class ListObjectsV2PaginateResponseTypeDef(_ListObjectsV2PaginateResponseTypeDef
 
     - **CommonPrefixes** *(list) --*
 
-      CommonPrefixes contains all (if there are any) keys between Prefix and the next occurrence of
-      the string specified by delimiter
+      All of the keys rolled up into a common prefix count as a single return when calculating the
+      number of returns.
+
+      A response can contain ``CommonPrefixes`` only if you specify a delimiter.
+
+       ``CommonPrefixes`` contains all (if there are any) keys between ``Prefix`` and the next
+       occurrence of the string specified by a delimiter.
+
+       ``CommonPrefixes`` lists keys that act like subdirectories in the directory specified by
+       ``Prefix`` .
+
+      For example, if the prefix is ``notes/`` and the delimiter is a slash (``/`` ) as in
+      ``notes/summer/july`` , the common prefix is ``notes/summer/`` . All of the keys that roll up
+      into a common prefix count as a single return when calculating the number of returns.
 
       - *(dict) --*
 
+        Container for all (if there are any) keys between Prefix and the next occurrence of the
+        string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in
+        the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter
+        is a slash (/) as in notes/summer/july, the common prefix is notes/summer/.
+
         - **Prefix** *(string) --*
+
+          Container for the specified common prefix.
 
     - **EncodingType** *(string) --*
 
-      Encoding type used by Amazon S3 to encode object keys in the response.
+      Encoding type used by Amazon S3 to encode object key names in the XML response.
+
+      If you specify the encoding-type request parameter, Amazon S3 includes this element in the
+      response, and returns encoded key name values in the following response elements:
+
+       ``Delimiter, Prefix, Key,`` and ``StartAfter`` .
 
     - **KeyCount** *(integer) --*
 
@@ -20128,13 +26592,11 @@ class ListObjectsV2PaginateResponseTypeDef(_ListObjectsV2PaginateResponseTypeDef
 
     - **ContinuationToken** *(string) --*
 
-      ContinuationToken indicates Amazon S3 that the list is being continued on this bucket with a
-      token. ContinuationToken is obfuscated and is not a real key
+      If ContinuationToken was sent with the request, it is included in the response.
 
     - **StartAfter** *(string) --*
 
-      StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after
-      this specified key. StartAfter can be any key in the bucket
+      If StartAfter was sent with the request, it is included in the response.
 
     - **NextToken** *(string) --*
 
@@ -20187,7 +26649,9 @@ class ListPartsPaginateResponseInitiatorTypeDef(
     """
     Type definition for `ListPartsPaginateResponse` `Initiator`
 
-    Identifies who initiated the multipart upload.
+    Container element that identifies who initiated the multipart upload. If the initiator is an
+    AWS account, this element provides the same information as the Owner element. If the
+    initiator is an IAM User, then this element provides the user ARN and display name.
 
     - **ID** *(string) --*
 
@@ -20211,9 +26675,17 @@ class ListPartsPaginateResponseOwnerTypeDef(_ListPartsPaginateResponseOwnerTypeD
     """
     Type definition for `ListPartsPaginateResponse` `Owner`
 
+    Container element that identifies the object owner, after the object is created. If multipart
+    upload is initiated by an IAM user, this element provides the parent account ID and display
+    name.
+
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -20227,6 +26699,8 @@ _ListPartsPaginateResponsePartsTypeDef = TypedDict(
 class ListPartsPaginateResponsePartsTypeDef(_ListPartsPaginateResponsePartsTypeDef):
     """
     Type definition for `ListPartsPaginateResponse` `Parts`
+
+    Container for elements related to a part.
 
     - **PartNumber** *(integer) --*
 
@@ -20274,11 +26748,21 @@ class ListPartsPaginateResponseTypeDef(_ListPartsPaginateResponseTypeDef):
 
     - **AbortDate** *(datetime) --*
 
-      Date when multipart upload will become eligible for abort operation by lifecycle.
+      If the bucket has a lifecycle rule configured with an action to abort incomplete multipart
+      uploads and the prefix in the lifecycle rule matches the object name in the request, then the
+      response includes this header indicating when the initiated multipart upload will become
+      eligible for abort operation. For more information, see `Aborting Incomplete Multipart
+      Uploads Using a Bucket Lifecycle Policy
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config>`__
+      .
+
+      The response will also include the x-amz-abort-rule-id header that will provide the ID of the
+      lifecycle configuration rule that defines this action.
 
     - **AbortRuleId** *(string) --*
 
-      Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
+      This header is returned along with the x-amz-abort-date header. It identifies applicable
+      lifecycle configuration rule that defines the action to abort incomplete multipart uploads.
 
     - **Bucket** *(string) --*
 
@@ -20294,7 +26778,8 @@ class ListPartsPaginateResponseTypeDef(_ListPartsPaginateResponseTypeDef):
 
     - **PartNumberMarker** *(integer) --*
 
-      Part number after which listing begins.
+      When a list is truncated, this element specifies the last part in the list, as well as the
+      value to use for the part-number-marker request parameter in a subsequent request.
 
     - **MaxParts** *(integer) --*
 
@@ -20302,11 +26787,18 @@ class ListPartsPaginateResponseTypeDef(_ListPartsPaginateResponseTypeDef):
 
     - **IsTruncated** *(boolean) --*
 
-      Indicates whether the returned list of parts is truncated.
+      Indicates whether the returned list of parts is truncated. A true value indicates that the
+      list was truncated. A list can be truncated if the number of parts exceeds the limit returned
+      in the MaxParts element.
 
     - **Parts** *(list) --*
 
+      Container for elements related to a particular part. A response can contain zero or more Part
+      elements.
+
       - *(dict) --*
+
+        Container for elements related to a part.
 
         - **PartNumber** *(integer) --*
 
@@ -20326,7 +26818,9 @@ class ListPartsPaginateResponseTypeDef(_ListPartsPaginateResponseTypeDef):
 
     - **Initiator** *(dict) --*
 
-      Identifies who initiated the multipart upload.
+      Container element that identifies who initiated the multipart upload. If the initiator is an
+      AWS account, this element provides the same information as the Owner element. If the
+      initiator is an IAM User, then this element provides the user ARN and display name.
 
       - **ID** *(string) --*
 
@@ -20339,13 +26833,21 @@ class ListPartsPaginateResponseTypeDef(_ListPartsPaginateResponseTypeDef):
 
     - **Owner** *(dict) --*
 
+      Container element that identifies the object owner, after the object is created. If multipart
+      upload is initiated by an IAM user, this element provides the parent account ID and display
+      name.
+
       - **DisplayName** *(string) --*
+
+        Container for the display name of the owner
 
       - **ID** *(string) --*
 
+        Container for the ID of the owner
+
     - **StorageClass** *(string) --*
 
-      The class of storage used to store the object.
+      Class of storage (STANDARD or REDUCED_REDUNDANCY) used to store the uploaded object.
 
     - **RequestCharged** *(string) --*
 
@@ -20385,6 +26887,8 @@ class MultipartUploadCompleteMultipartUploadPartsTypeDef(
     """
     Type definition for `MultipartUploadCompleteMultipartUpload` `Parts`
 
+    Details of the parts that were uploaded.
+
     - **ETag** *(string) --*
 
       Entity tag returned when the part was uploaded.
@@ -20408,9 +26912,15 @@ class MultipartUploadCompleteMultipartUploadTypeDef(
     """
     Type definition for `MultipartUploadComplete` `MultipartUpload`
 
+    The container for the multipart upload request information.
+
     - **Parts** *(list) --*
 
+      Array of CompletedPart data types.
+
       - *(dict) --*
+
+        Details of the parts that were uploaded.
 
         - **ETag** *(string) --*
 
@@ -20434,6 +26944,8 @@ class MultipartUploadPartCopyFromResponseCopyPartResultTypeDef(
 ):
     """
     Type definition for `MultipartUploadPartCopyFromResponse` `CopyPartResult`
+
+    Container for all response elements.
 
     - **ETag** *(string) --*
 
@@ -20473,6 +26985,8 @@ class MultipartUploadPartCopyFromResponseTypeDef(
 
     - **CopyPartResult** *(dict) --*
 
+      Container for all response elements.
+
       - **ETag** *(string) --*
 
         Entity tag of the object.
@@ -20499,8 +27013,8 @@ class MultipartUploadPartCopyFromResponseTypeDef(
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **RequestCharged** *(string) --*
 
@@ -20550,8 +27064,8 @@ class MultipartUploadPartUploadResponseTypeDef(
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) was used for the object.
 
     - **RequestCharged** *(string) --*
 
@@ -20575,6 +27089,8 @@ class ObjectAclPutAccessControlPolicyGrantsGranteeTypeDef(
 ):
     """
     Type definition for `ObjectAclPutAccessControlPolicyGrants` `Grantee`
+
+    The person being granted permissions.
 
     - **DisplayName** *(string) --*
 
@@ -20611,7 +27127,11 @@ class ObjectAclPutAccessControlPolicyGrantsTypeDef(
     """
     Type definition for `ObjectAclPutAccessControlPolicy` `Grants`
 
+    Container for grant information.
+
     - **Grantee** *(dict) --*
+
+      The person being granted permissions.
 
       - **DisplayName** *(string) --*
 
@@ -20656,7 +27176,11 @@ class ObjectAclPutAccessControlPolicyOwnerTypeDef(
 
     - **DisplayName** *(string) --*
 
+      Container for the display name of the owner
+
     - **ID** *(string) --*
+
+      Container for the ID of the owner
     """
 
 
@@ -20682,7 +27206,11 @@ class ObjectAclPutAccessControlPolicyTypeDef(_ObjectAclPutAccessControlPolicyTyp
 
       - *(dict) --*
 
+        Container for grant information.
+
         - **Grantee** *(dict) --*
+
+          The person being granted permissions.
 
           - **DisplayName** *(string) --*
 
@@ -20714,7 +27242,11 @@ class ObjectAclPutAccessControlPolicyTypeDef(_ObjectAclPutAccessControlPolicyTyp
 
       - **DisplayName** *(string) --*
 
+        Container for the display name of the owner
+
       - **ID** *(string) --*
+
+        Container for the ID of the owner
     """
 
 
@@ -20746,9 +27278,17 @@ class ObjectCopyFromResponseCopyObjectResultTypeDef(
     """
     Type definition for `ObjectCopyFromResponse` `CopyObjectResult`
 
+    Container for all response elements.
+
     - **ETag** *(string) --*
 
+      Returns the ETag of the new object. The ETag reflects only changes to the contents of an
+      object, not its metadata. The source and destination ETag is identical for a successfully
+      copied object.
+
     - **LastModified** *(datetime) --*
+
+      Returns the date that the object was last modified.
     """
 
 
@@ -20776,15 +27316,25 @@ class ObjectCopyFromResponseTypeDef(_ObjectCopyFromResponseTypeDef):
 
     - **CopyObjectResult** *(dict) --*
 
+      Container for all response elements.
+
       - **ETag** *(string) --*
 
+        Returns the ETag of the new object. The ETag reflects only changes to the contents of an
+        object, not its metadata. The source and destination ETag is identical for a successfully
+        copied object.
+
       - **LastModified** *(datetime) --*
+
+        Returns the date that the object was last modified.
 
     - **Expiration** *(string) --*
 
       If the object expiration is configured, the response includes this header.
 
     - **CopySourceVersionId** *(string) --*
+
+      Version of the copied object in the destination bucket.
 
     - **VersionId** *(string) --*
 
@@ -20808,8 +27358,8 @@ class ObjectCopyFromResponseTypeDef(_ObjectCopyFromResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **SSEKMSEncryptionContext** *(string) --*
 
@@ -20925,6 +27475,8 @@ class ObjectGetResponseTypeDef(_ObjectGetResponseTypeDef):
 
     - **AcceptRanges** *(string) --*
 
+      Indicates that a range of bytes was specifed.
+
     - **Expiration** *(string) --*
 
       If the object expiration is configured (see PUT Bucket lifecycle), the response includes this
@@ -21022,16 +27574,22 @@ class ObjectGetResponseTypeDef(_ObjectGetResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **StorageClass** *(string) --*
+
+      Provides storage class information of the object. Amazon S3 returns this header for all
+      objects except for Standard storage class objects.
 
     - **RequestCharged** *(string) --*
 
       If present, indicates that the requester was successfully charged for the request.
 
     - **ReplicationStatus** *(string) --*
+
+      Amazon S3 can return this if your request involves a bucket that is either a source or
+      destination in a replication rule.
 
     - **PartsCount** *(integer) --*
 
@@ -21043,11 +27601,11 @@ class ObjectGetResponseTypeDef(_ObjectGetResponseTypeDef):
 
     - **ObjectLockMode** *(string) --*
 
-      The object lock mode currently in place for this object.
+      The Object Lock mode currently in place for this object.
 
     - **ObjectLockRetainUntilDate** *(datetime) --*
 
-      The date and time when this object's object lock will expire.
+      The date and time when this object's Object Lock will expire.
 
     - **ObjectLockLegalHoldStatus** *(string) --*
 
@@ -21102,8 +27660,9 @@ class ObjectPutResponseTypeDef(_ObjectPutResponseTypeDef):
 
     - **Expiration** *(string) --*
 
-      If the object expiration is configured, this will contain the expiration date (expiry-date)
-      and rule ID (rule-id). The value of rule-id is URL encoded.
+      If the expiration is configured for the object (see  PutBucketLifecycleConfiguration ), the
+      response includes this header. It includes the expiry-date and rule-id key-value pairs that
+      provide information about object expiration. The value of the rule-id is URL encoded.
 
     - **ETag** *(string) --*
 
@@ -21111,8 +27670,9 @@ class ObjectPutResponseTypeDef(_ObjectPutResponseTypeDef):
 
     - **ServerSideEncryption** *(string) --*
 
-      The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256,
-      aws:kms).
+      If you specified server-side encryption either with an AWS KMS customer master key (CMK) or
+      Amazon S3-managed encryption key in your PUT request, the response includes this header. It
+      confirms the encryption algorithm that Amazon S3 used to encrypt the object.
 
     - **VersionId** *(string) --*
 
@@ -21131,8 +27691,9 @@ class ObjectPutResponseTypeDef(_ObjectPutResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If the x-amz-server-side-encryption is present and has the value of aws:kms, this header
+      specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK) that was
+      used for the object.
 
     - **SSEKMSEncryptionContext** *(string) --*
 
@@ -21206,6 +27767,8 @@ class ObjectRestoreObjectRestoreRequestOutputLocationS3AccessControlListGranteeT
     """
     Type definition for `ObjectRestoreObjectRestoreRequestOutputLocationS3AccessControlList` `Grantee`
 
+    The person being granted permissions.
+
     - **DisplayName** *(string) --*
 
       Screen name of the grantee.
@@ -21244,7 +27807,11 @@ class ObjectRestoreObjectRestoreRequestOutputLocationS3AccessControlListTypeDef(
     """
     Type definition for `ObjectRestoreObjectRestoreRequestOutputLocationS3` `AccessControlList`
 
+    Container for grant information.
+
     - **Grantee** *(dict) --*
+
+      The person being granted permissions.
 
       - **DisplayName** *(string) --*
 
@@ -21290,6 +27857,8 @@ class ObjectRestoreObjectRestoreRequestOutputLocationS3EncryptionTypeDef(
     """
     Type definition for `ObjectRestoreObjectRestoreRequestOutputLocationS3` `Encryption`
 
+    Contains the type of server-side encryption used.
+
     - **EncryptionType** *(string) --* **[REQUIRED]**
 
       The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -21318,6 +27887,8 @@ class ObjectRestoreObjectRestoreRequestOutputLocationS3TaggingTagSetTypeDef(
 ):
     """
     Type definition for `ObjectRestoreObjectRestoreRequestOutputLocationS3Tagging` `TagSet`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --* **[REQUIRED]**
 
@@ -21349,7 +27920,11 @@ class ObjectRestoreObjectRestoreRequestOutputLocationS3TaggingTypeDef(
 
     - **TagSet** *(list) --* **[REQUIRED]**
 
+      A collection for a a set of tags
+
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -21378,7 +27953,11 @@ class ObjectRestoreObjectRestoreRequestOutputLocationS3UserMetadataTypeDef(
 
     - **Name** *(string) --*
 
+      Name of the Object.
+
     - **Value** *(string) --*
+
+      Value of the Object.
     """
 
 
@@ -21423,6 +28002,8 @@ class ObjectRestoreObjectRestoreRequestOutputLocationS3TypeDef(
 
     - **Encryption** *(dict) --*
 
+      Contains the type of server-side encryption used.
+
       - **EncryptionType** *(string) --* **[REQUIRED]**
 
         The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -21448,7 +28029,11 @@ class ObjectRestoreObjectRestoreRequestOutputLocationS3TypeDef(
 
       - *(dict) --*
 
+        Container for grant information.
+
         - **Grantee** *(dict) --*
+
+          The person being granted permissions.
 
           - **DisplayName** *(string) --*
 
@@ -21480,7 +28065,11 @@ class ObjectRestoreObjectRestoreRequestOutputLocationS3TypeDef(
 
       - **TagSet** *(list) --* **[REQUIRED]**
 
+        A collection for a a set of tags
+
         - *(dict) --*
+
+          A container of a key value name pair.
 
           - **Key** *(string) --* **[REQUIRED]**
 
@@ -21500,7 +28089,11 @@ class ObjectRestoreObjectRestoreRequestOutputLocationS3TypeDef(
 
         - **Name** *(string) --*
 
+          Name of the Object.
+
         - **Value** *(string) --*
+
+          Value of the Object.
 
     - **StorageClass** *(string) --*
 
@@ -21537,6 +28130,8 @@ class ObjectRestoreObjectRestoreRequestOutputLocationTypeDef(
 
       - **Encryption** *(dict) --*
 
+        Contains the type of server-side encryption used.
+
         - **EncryptionType** *(string) --* **[REQUIRED]**
 
           The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -21562,7 +28157,11 @@ class ObjectRestoreObjectRestoreRequestOutputLocationTypeDef(
 
         - *(dict) --*
 
+          Container for grant information.
+
           - **Grantee** *(dict) --*
+
+            The person being granted permissions.
 
             - **DisplayName** *(string) --*
 
@@ -21594,7 +28193,11 @@ class ObjectRestoreObjectRestoreRequestOutputLocationTypeDef(
 
         - **TagSet** *(list) --* **[REQUIRED]**
 
+          A collection for a a set of tags
+
           - *(dict) --*
+
+            A container of a key value name pair.
 
             - **Key** *(string) --* **[REQUIRED]**
 
@@ -21614,7 +28217,11 @@ class ObjectRestoreObjectRestoreRequestOutputLocationTypeDef(
 
           - **Name** *(string) --*
 
+            Name of the Object.
+
           - **Value** *(string) --*
+
+            Value of the Object.
 
       - **StorageClass** *(string) --*
 
@@ -21647,29 +28254,49 @@ class ObjectRestoreObjectRestoreRequestSelectParametersInputSerializationCSVType
 
     - **FileHeaderInfo** *(string) --*
 
-      Describes the first line of input. Valid values: None, Ignore, Use.
+      Describes the first line of input. Valid values are:
+
+      * ``NONE`` : First line is not a header.
+
+      * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+      the column in an expression. You can use column position (such as _1, _2, …) to indicate
+      the column (``SELECT s._1 FROM OBJECT s`` ).
+
+      * ``Use`` : First line is a header, and you can use the header value to identify a column
+      in an expression (``SELECT "name" FROM OBJECT`` ).
 
     - **Comments** *(string) --*
 
-      The single character used to indicate a row should be ignored when present at the start
-      of a row.
+      A single character used to indicate that a row should be ignored when the character is
+      present at the start of that row. You can specify any character to indicate a comment
+      line.
 
     - **QuoteEscapeCharacter** *(string) --*
 
-      The single character used for escaping the quote character inside an already escaped
-      value.
+      A single character used for escaping the quotation mark character inside an already
+      escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
     - **RecordDelimiter** *(string) --*
 
-      The value used to separate individual records.
+      A single character used to separate individual records in the input. Instead of the
+      default value, you can specify an arbitrary delimiter.
 
     - **FieldDelimiter** *(string) --*
 
-      The value used to separate individual fields in a record.
+      A single character used to separate individual fields in a record. You can specify an
+      arbitrary delimiter.
 
     - **QuoteCharacter** *(string) --*
 
-      Value used for escaping where the field delimiter is part of the value.
+      A single character used for escaping when the field delimiter is part of the value. For
+      example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+      as follows: ``" a , b "`` .
+
+      Type: String
+
+      Default: ``"``
+
+      Ancestors: ``CSV``
 
     - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -21726,29 +28353,49 @@ class ObjectRestoreObjectRestoreRequestSelectParametersInputSerializationTypeDef
 
       - **FileHeaderInfo** *(string) --*
 
-        Describes the first line of input. Valid values: None, Ignore, Use.
+        Describes the first line of input. Valid values are:
+
+        * ``NONE`` : First line is not a header.
+
+        * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+        the column in an expression. You can use column position (such as _1, _2, …) to indicate
+        the column (``SELECT s._1 FROM OBJECT s`` ).
+
+        * ``Use`` : First line is a header, and you can use the header value to identify a column
+        in an expression (``SELECT "name" FROM OBJECT`` ).
 
       - **Comments** *(string) --*
 
-        The single character used to indicate a row should be ignored when present at the start
-        of a row.
+        A single character used to indicate that a row should be ignored when the character is
+        present at the start of that row. You can specify any character to indicate a comment
+        line.
 
       - **QuoteEscapeCharacter** *(string) --*
 
-        The single character used for escaping the quote character inside an already escaped
-        value.
+        A single character used for escaping the quotation mark character inside an already
+        escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
       - **RecordDelimiter** *(string) --*
 
-        The value used to separate individual records.
+        A single character used to separate individual records in the input. Instead of the
+        default value, you can specify an arbitrary delimiter.
 
       - **FieldDelimiter** *(string) --*
 
-        The value used to separate individual fields in a record.
+        A single character used to separate individual fields in a record. You can specify an
+        arbitrary delimiter.
 
       - **QuoteCharacter** *(string) --*
 
-        Value used for escaping where the field delimiter is part of the value.
+        A single character used for escaping when the field delimiter is part of the value. For
+        example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+        as follows: ``" a , b "`` .
+
+        Type: String
+
+        Default: ``"``
+
+        Ancestors: ``CSV``
 
       - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -21797,23 +28444,32 @@ class ObjectRestoreObjectRestoreRequestSelectParametersOutputSerializationCSVTyp
 
     - **QuoteFields** *(string) --*
 
-      Indicates whether or not all output fields should be quoted.
+      Indicates whether to use quotation marks around output fields.
+
+      * ``ALWAYS`` : Always use quotation marks for output fields.
+
+      * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
     - **QuoteEscapeCharacter** *(string) --*
 
-      Th single character used for escaping the quote character inside an already escaped value.
+      The single character used for escaping the quote character inside an already escaped
+      value.
 
     - **RecordDelimiter** *(string) --*
 
-      The value used to separate individual records.
+      A single character used to separate individual records in the output. Instead of the
+      default value, you can specify an arbitrary delimiter.
 
     - **FieldDelimiter** *(string) --*
 
-      The value used to separate individual fields in a record.
+      The value used to separate individual fields in a record. You can specify an arbitrary
+      delimiter.
 
     - **QuoteCharacter** *(string) --*
 
-      The value used for escaping where the field delimiter is part of the value.
+      A single character used for escaping when the field delimiter is part of the value. For
+      example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+      as follows: ``" a , b "`` .
     """
 
 
@@ -21862,23 +28518,32 @@ class ObjectRestoreObjectRestoreRequestSelectParametersOutputSerializationTypeDe
 
       - **QuoteFields** *(string) --*
 
-        Indicates whether or not all output fields should be quoted.
+        Indicates whether to use quotation marks around output fields.
+
+        * ``ALWAYS`` : Always use quotation marks for output fields.
+
+        * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
       - **QuoteEscapeCharacter** *(string) --*
 
-        Th single character used for escaping the quote character inside an already escaped value.
+        The single character used for escaping the quote character inside an already escaped
+        value.
 
       - **RecordDelimiter** *(string) --*
 
-        The value used to separate individual records.
+        A single character used to separate individual records in the output. Instead of the
+        default value, you can specify an arbitrary delimiter.
 
       - **FieldDelimiter** *(string) --*
 
-        The value used to separate individual fields in a record.
+        The value used to separate individual fields in a record. You can specify an arbitrary
+        delimiter.
 
       - **QuoteCharacter** *(string) --*
 
-        The value used for escaping where the field delimiter is part of the value.
+        A single character used for escaping when the field delimiter is part of the value. For
+        example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+        as follows: ``" a , b "`` .
 
     - **JSON** *(dict) --*
 
@@ -21919,29 +28584,49 @@ class ObjectRestoreObjectRestoreRequestSelectParametersTypeDef(
 
         - **FileHeaderInfo** *(string) --*
 
-          Describes the first line of input. Valid values: None, Ignore, Use.
+          Describes the first line of input. Valid values are:
+
+          * ``NONE`` : First line is not a header.
+
+          * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+          the column in an expression. You can use column position (such as _1, _2, …) to indicate
+          the column (``SELECT s._1 FROM OBJECT s`` ).
+
+          * ``Use`` : First line is a header, and you can use the header value to identify a column
+          in an expression (``SELECT "name" FROM OBJECT`` ).
 
         - **Comments** *(string) --*
 
-          The single character used to indicate a row should be ignored when present at the start
-          of a row.
+          A single character used to indicate that a row should be ignored when the character is
+          present at the start of that row. You can specify any character to indicate a comment
+          line.
 
         - **QuoteEscapeCharacter** *(string) --*
 
-          The single character used for escaping the quote character inside an already escaped
-          value.
+          A single character used for escaping the quotation mark character inside an already
+          escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
         - **RecordDelimiter** *(string) --*
 
-          The value used to separate individual records.
+          A single character used to separate individual records in the input. Instead of the
+          default value, you can specify an arbitrary delimiter.
 
         - **FieldDelimiter** *(string) --*
 
-          The value used to separate individual fields in a record.
+          A single character used to separate individual fields in a record. You can specify an
+          arbitrary delimiter.
 
         - **QuoteCharacter** *(string) --*
 
-          Value used for escaping where the field delimiter is part of the value.
+          A single character used for escaping when the field delimiter is part of the value. For
+          example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+          as follows: ``" a , b "`` .
+
+          Type: String
+
+          Default: ``"``
+
+          Ancestors: ``CSV``
 
         - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -21983,23 +28668,32 @@ class ObjectRestoreObjectRestoreRequestSelectParametersTypeDef(
 
         - **QuoteFields** *(string) --*
 
-          Indicates whether or not all output fields should be quoted.
+          Indicates whether to use quotation marks around output fields.
+
+          * ``ALWAYS`` : Always use quotation marks for output fields.
+
+          * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
         - **QuoteEscapeCharacter** *(string) --*
 
-          Th single character used for escaping the quote character inside an already escaped value.
+          The single character used for escaping the quote character inside an already escaped
+          value.
 
         - **RecordDelimiter** *(string) --*
 
-          The value used to separate individual records.
+          A single character used to separate individual records in the output. Instead of the
+          default value, you can specify an arbitrary delimiter.
 
         - **FieldDelimiter** *(string) --*
 
-          The value used to separate individual fields in a record.
+          The value used to separate individual fields in a record. You can specify an arbitrary
+          delimiter.
 
         - **QuoteCharacter** *(string) --*
 
-          The value used for escaping where the field delimiter is part of the value.
+          A single character used for escaping when the field delimiter is part of the value. For
+          example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+          as follows: ``" a , b "`` .
 
       - **JSON** *(dict) --*
 
@@ -22031,6 +28725,8 @@ class ObjectRestoreObjectRestoreRequestTypeDef(
 ):
     """
     Type definition for `ObjectRestoreObject` `RestoreRequest`
+
+    Container for restore job parameters.
 
     - **Days** *(integer) --*
 
@@ -22071,29 +28767,49 @@ class ObjectRestoreObjectRestoreRequestTypeDef(
 
           - **FileHeaderInfo** *(string) --*
 
-            Describes the first line of input. Valid values: None, Ignore, Use.
+            Describes the first line of input. Valid values are:
+
+            * ``NONE`` : First line is not a header.
+
+            * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+            the column in an expression. You can use column position (such as _1, _2, …) to indicate
+            the column (``SELECT s._1 FROM OBJECT s`` ).
+
+            * ``Use`` : First line is a header, and you can use the header value to identify a column
+            in an expression (``SELECT "name" FROM OBJECT`` ).
 
           - **Comments** *(string) --*
 
-            The single character used to indicate a row should be ignored when present at the start
-            of a row.
+            A single character used to indicate that a row should be ignored when the character is
+            present at the start of that row. You can specify any character to indicate a comment
+            line.
 
           - **QuoteEscapeCharacter** *(string) --*
 
-            The single character used for escaping the quote character inside an already escaped
-            value.
+            A single character used for escaping the quotation mark character inside an already
+            escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
           - **RecordDelimiter** *(string) --*
 
-            The value used to separate individual records.
+            A single character used to separate individual records in the input. Instead of the
+            default value, you can specify an arbitrary delimiter.
 
           - **FieldDelimiter** *(string) --*
 
-            The value used to separate individual fields in a record.
+            A single character used to separate individual fields in a record. You can specify an
+            arbitrary delimiter.
 
           - **QuoteCharacter** *(string) --*
 
-            Value used for escaping where the field delimiter is part of the value.
+            A single character used for escaping when the field delimiter is part of the value. For
+            example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+            as follows: ``" a , b "`` .
+
+            Type: String
+
+            Default: ``"``
+
+            Ancestors: ``CSV``
 
           - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -22135,23 +28851,32 @@ class ObjectRestoreObjectRestoreRequestTypeDef(
 
           - **QuoteFields** *(string) --*
 
-            Indicates whether or not all output fields should be quoted.
+            Indicates whether to use quotation marks around output fields.
+
+            * ``ALWAYS`` : Always use quotation marks for output fields.
+
+            * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
           - **QuoteEscapeCharacter** *(string) --*
 
-            Th single character used for escaping the quote character inside an already escaped value.
+            The single character used for escaping the quote character inside an already escaped
+            value.
 
           - **RecordDelimiter** *(string) --*
 
-            The value used to separate individual records.
+            A single character used to separate individual records in the output. Instead of the
+            default value, you can specify an arbitrary delimiter.
 
           - **FieldDelimiter** *(string) --*
 
-            The value used to separate individual fields in a record.
+            The value used to separate individual fields in a record. You can specify an arbitrary
+            delimiter.
 
           - **QuoteCharacter** *(string) --*
 
-            The value used for escaping where the field delimiter is part of the value.
+            A single character used for escaping when the field delimiter is part of the value. For
+            example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+            as follows: ``" a , b "`` .
 
         - **JSON** *(dict) --*
 
@@ -22179,6 +28904,8 @@ class ObjectRestoreObjectRestoreRequestTypeDef(
 
         - **Encryption** *(dict) --*
 
+          Contains the type of server-side encryption used.
+
           - **EncryptionType** *(string) --* **[REQUIRED]**
 
             The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -22204,7 +28931,11 @@ class ObjectRestoreObjectRestoreRequestTypeDef(
 
           - *(dict) --*
 
+            Container for grant information.
+
             - **Grantee** *(dict) --*
+
+              The person being granted permissions.
 
               - **DisplayName** *(string) --*
 
@@ -22236,7 +28967,11 @@ class ObjectRestoreObjectRestoreRequestTypeDef(
 
           - **TagSet** *(list) --* **[REQUIRED]**
 
+            A collection for a a set of tags
+
             - *(dict) --*
+
+              A container of a key value name pair.
 
               - **Key** *(string) --* **[REQUIRED]**
 
@@ -22256,7 +28991,11 @@ class ObjectRestoreObjectRestoreRequestTypeDef(
 
             - **Name** *(string) --*
 
+              Name of the Object.
+
             - **Value** *(string) --*
+
+              Value of the Object.
 
         - **StorageClass** *(string) --*
 
@@ -22277,9 +29016,17 @@ class ObjectSummaryCopyFromResponseCopyObjectResultTypeDef(
     """
     Type definition for `ObjectSummaryCopyFromResponse` `CopyObjectResult`
 
+    Container for all response elements.
+
     - **ETag** *(string) --*
 
+      Returns the ETag of the new object. The ETag reflects only changes to the contents of an
+      object, not its metadata. The source and destination ETag is identical for a successfully
+      copied object.
+
     - **LastModified** *(datetime) --*
+
+      Returns the date that the object was last modified.
     """
 
 
@@ -22307,15 +29054,25 @@ class ObjectSummaryCopyFromResponseTypeDef(_ObjectSummaryCopyFromResponseTypeDef
 
     - **CopyObjectResult** *(dict) --*
 
+      Container for all response elements.
+
       - **ETag** *(string) --*
 
+        Returns the ETag of the new object. The ETag reflects only changes to the contents of an
+        object, not its metadata. The source and destination ETag is identical for a successfully
+        copied object.
+
       - **LastModified** *(datetime) --*
+
+        Returns the date that the object was last modified.
 
     - **Expiration** *(string) --*
 
       If the object expiration is configured, the response includes this header.
 
     - **CopySourceVersionId** *(string) --*
+
+      Version of the copied object in the destination bucket.
 
     - **VersionId** *(string) --*
 
@@ -22339,8 +29096,8 @@ class ObjectSummaryCopyFromResponseTypeDef(_ObjectSummaryCopyFromResponseTypeDef
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **SSEKMSEncryptionContext** *(string) --*
 
@@ -22433,6 +29190,8 @@ class ObjectSummaryGetResponseTypeDef(_ObjectSummaryGetResponseTypeDef):
 
     - **AcceptRanges** *(string) --*
 
+      Indicates that a range of bytes was specifed.
+
     - **Expiration** *(string) --*
 
       If the object expiration is configured (see PUT Bucket lifecycle), the response includes this
@@ -22530,16 +29289,22 @@ class ObjectSummaryGetResponseTypeDef(_ObjectSummaryGetResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **StorageClass** *(string) --*
+
+      Provides storage class information of the object. Amazon S3 returns this header for all
+      objects except for Standard storage class objects.
 
     - **RequestCharged** *(string) --*
 
       If present, indicates that the requester was successfully charged for the request.
 
     - **ReplicationStatus** *(string) --*
+
+      Amazon S3 can return this if your request involves a bucket that is either a source or
+      destination in a replication rule.
 
     - **PartsCount** *(integer) --*
 
@@ -22551,11 +29316,11 @@ class ObjectSummaryGetResponseTypeDef(_ObjectSummaryGetResponseTypeDef):
 
     - **ObjectLockMode** *(string) --*
 
-      The object lock mode currently in place for this object.
+      The Object Lock mode currently in place for this object.
 
     - **ObjectLockRetainUntilDate** *(datetime) --*
 
-      The date and time when this object's object lock will expire.
+      The date and time when this object's Object Lock will expire.
 
     - **ObjectLockLegalHoldStatus** *(string) --*
 
@@ -22587,8 +29352,9 @@ class ObjectSummaryPutResponseTypeDef(_ObjectSummaryPutResponseTypeDef):
 
     - **Expiration** *(string) --*
 
-      If the object expiration is configured, this will contain the expiration date (expiry-date)
-      and rule ID (rule-id). The value of rule-id is URL encoded.
+      If the expiration is configured for the object (see  PutBucketLifecycleConfiguration ), the
+      response includes this header. It includes the expiry-date and rule-id key-value pairs that
+      provide information about object expiration. The value of the rule-id is URL encoded.
 
     - **ETag** *(string) --*
 
@@ -22596,8 +29362,9 @@ class ObjectSummaryPutResponseTypeDef(_ObjectSummaryPutResponseTypeDef):
 
     - **ServerSideEncryption** *(string) --*
 
-      The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256,
-      aws:kms).
+      If you specified server-side encryption either with an AWS KMS customer master key (CMK) or
+      Amazon S3-managed encryption key in your PUT request, the response includes this header. It
+      confirms the encryption algorithm that Amazon S3 used to encrypt the object.
 
     - **VersionId** *(string) --*
 
@@ -22616,8 +29383,9 @@ class ObjectSummaryPutResponseTypeDef(_ObjectSummaryPutResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If the x-amz-server-side-encryption is present and has the value of aws:kms, this header
+      specifies the ID of the AWS Key Management Service (KMS) customer master key (CMK) that was
+      used for the object.
 
     - **SSEKMSEncryptionContext** *(string) --*
 
@@ -22694,6 +29462,8 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3AccessControlListG
     """
     Type definition for `ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3AccessControlList` `Grantee`
 
+    The person being granted permissions.
+
     - **DisplayName** *(string) --*
 
       Screen name of the grantee.
@@ -22732,7 +29502,11 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3AccessControlListT
     """
     Type definition for `ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3` `AccessControlList`
 
+    Container for grant information.
+
     - **Grantee** *(dict) --*
+
+      The person being granted permissions.
 
       - **DisplayName** *(string) --*
 
@@ -22778,6 +29552,8 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3EncryptionTypeDef(
     """
     Type definition for `ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3` `Encryption`
 
+    Contains the type of server-side encryption used.
+
     - **EncryptionType** *(string) --* **[REQUIRED]**
 
       The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -22806,6 +29582,8 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3TaggingTagSetTypeD
 ):
     """
     Type definition for `ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3Tagging` `TagSet`
+
+    A container of a key value name pair.
 
     - **Key** *(string) --* **[REQUIRED]**
 
@@ -22837,7 +29615,11 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3TaggingTypeDef(
 
     - **TagSet** *(list) --* **[REQUIRED]**
 
+      A collection for a a set of tags
+
       - *(dict) --*
+
+        A container of a key value name pair.
 
         - **Key** *(string) --* **[REQUIRED]**
 
@@ -22866,7 +29648,11 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3UserMetadataTypeDe
 
     - **Name** *(string) --*
 
+      Name of the Object.
+
     - **Value** *(string) --*
+
+      Value of the Object.
     """
 
 
@@ -22911,6 +29697,8 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3TypeDef(
 
     - **Encryption** *(dict) --*
 
+      Contains the type of server-side encryption used.
+
       - **EncryptionType** *(string) --* **[REQUIRED]**
 
         The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -22936,7 +29724,11 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3TypeDef(
 
       - *(dict) --*
 
+        Container for grant information.
+
         - **Grantee** *(dict) --*
+
+          The person being granted permissions.
 
           - **DisplayName** *(string) --*
 
@@ -22968,7 +29760,11 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3TypeDef(
 
       - **TagSet** *(list) --* **[REQUIRED]**
 
+        A collection for a a set of tags
+
         - *(dict) --*
+
+          A container of a key value name pair.
 
           - **Key** *(string) --* **[REQUIRED]**
 
@@ -22988,7 +29784,11 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationS3TypeDef(
 
         - **Name** *(string) --*
 
+          Name of the Object.
+
         - **Value** *(string) --*
+
+          Value of the Object.
 
     - **StorageClass** *(string) --*
 
@@ -23025,6 +29825,8 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationTypeDef(
 
       - **Encryption** *(dict) --*
 
+        Contains the type of server-side encryption used.
+
         - **EncryptionType** *(string) --* **[REQUIRED]**
 
           The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -23050,7 +29852,11 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationTypeDef(
 
         - *(dict) --*
 
+          Container for grant information.
+
           - **Grantee** *(dict) --*
+
+            The person being granted permissions.
 
             - **DisplayName** *(string) --*
 
@@ -23082,7 +29888,11 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationTypeDef(
 
         - **TagSet** *(list) --* **[REQUIRED]**
 
+          A collection for a a set of tags
+
           - *(dict) --*
+
+            A container of a key value name pair.
 
             - **Key** *(string) --* **[REQUIRED]**
 
@@ -23102,7 +29912,11 @@ class ObjectSummaryRestoreObjectRestoreRequestOutputLocationTypeDef(
 
           - **Name** *(string) --*
 
+            Name of the Object.
+
           - **Value** *(string) --*
+
+            Value of the Object.
 
       - **StorageClass** *(string) --*
 
@@ -23135,29 +29949,49 @@ class ObjectSummaryRestoreObjectRestoreRequestSelectParametersInputSerialization
 
     - **FileHeaderInfo** *(string) --*
 
-      Describes the first line of input. Valid values: None, Ignore, Use.
+      Describes the first line of input. Valid values are:
+
+      * ``NONE`` : First line is not a header.
+
+      * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+      the column in an expression. You can use column position (such as _1, _2, …) to indicate
+      the column (``SELECT s._1 FROM OBJECT s`` ).
+
+      * ``Use`` : First line is a header, and you can use the header value to identify a column
+      in an expression (``SELECT "name" FROM OBJECT`` ).
 
     - **Comments** *(string) --*
 
-      The single character used to indicate a row should be ignored when present at the start
-      of a row.
+      A single character used to indicate that a row should be ignored when the character is
+      present at the start of that row. You can specify any character to indicate a comment
+      line.
 
     - **QuoteEscapeCharacter** *(string) --*
 
-      The single character used for escaping the quote character inside an already escaped
-      value.
+      A single character used for escaping the quotation mark character inside an already
+      escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
     - **RecordDelimiter** *(string) --*
 
-      The value used to separate individual records.
+      A single character used to separate individual records in the input. Instead of the
+      default value, you can specify an arbitrary delimiter.
 
     - **FieldDelimiter** *(string) --*
 
-      The value used to separate individual fields in a record.
+      A single character used to separate individual fields in a record. You can specify an
+      arbitrary delimiter.
 
     - **QuoteCharacter** *(string) --*
 
-      Value used for escaping where the field delimiter is part of the value.
+      A single character used for escaping when the field delimiter is part of the value. For
+      example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+      as follows: ``" a , b "`` .
+
+      Type: String
+
+      Default: ``"``
+
+      Ancestors: ``CSV``
 
     - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -23214,29 +30048,49 @@ class ObjectSummaryRestoreObjectRestoreRequestSelectParametersInputSerialization
 
       - **FileHeaderInfo** *(string) --*
 
-        Describes the first line of input. Valid values: None, Ignore, Use.
+        Describes the first line of input. Valid values are:
+
+        * ``NONE`` : First line is not a header.
+
+        * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+        the column in an expression. You can use column position (such as _1, _2, …) to indicate
+        the column (``SELECT s._1 FROM OBJECT s`` ).
+
+        * ``Use`` : First line is a header, and you can use the header value to identify a column
+        in an expression (``SELECT "name" FROM OBJECT`` ).
 
       - **Comments** *(string) --*
 
-        The single character used to indicate a row should be ignored when present at the start
-        of a row.
+        A single character used to indicate that a row should be ignored when the character is
+        present at the start of that row. You can specify any character to indicate a comment
+        line.
 
       - **QuoteEscapeCharacter** *(string) --*
 
-        The single character used for escaping the quote character inside an already escaped
-        value.
+        A single character used for escaping the quotation mark character inside an already
+        escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
       - **RecordDelimiter** *(string) --*
 
-        The value used to separate individual records.
+        A single character used to separate individual records in the input. Instead of the
+        default value, you can specify an arbitrary delimiter.
 
       - **FieldDelimiter** *(string) --*
 
-        The value used to separate individual fields in a record.
+        A single character used to separate individual fields in a record. You can specify an
+        arbitrary delimiter.
 
       - **QuoteCharacter** *(string) --*
 
-        Value used for escaping where the field delimiter is part of the value.
+        A single character used for escaping when the field delimiter is part of the value. For
+        example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+        as follows: ``" a , b "`` .
+
+        Type: String
+
+        Default: ``"``
+
+        Ancestors: ``CSV``
 
       - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -23285,23 +30139,32 @@ class ObjectSummaryRestoreObjectRestoreRequestSelectParametersOutputSerializatio
 
     - **QuoteFields** *(string) --*
 
-      Indicates whether or not all output fields should be quoted.
+      Indicates whether to use quotation marks around output fields.
+
+      * ``ALWAYS`` : Always use quotation marks for output fields.
+
+      * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
     - **QuoteEscapeCharacter** *(string) --*
 
-      Th single character used for escaping the quote character inside an already escaped value.
+      The single character used for escaping the quote character inside an already escaped
+      value.
 
     - **RecordDelimiter** *(string) --*
 
-      The value used to separate individual records.
+      A single character used to separate individual records in the output. Instead of the
+      default value, you can specify an arbitrary delimiter.
 
     - **FieldDelimiter** *(string) --*
 
-      The value used to separate individual fields in a record.
+      The value used to separate individual fields in a record. You can specify an arbitrary
+      delimiter.
 
     - **QuoteCharacter** *(string) --*
 
-      The value used for escaping where the field delimiter is part of the value.
+      A single character used for escaping when the field delimiter is part of the value. For
+      example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+      as follows: ``" a , b "`` .
     """
 
 
@@ -23350,23 +30213,32 @@ class ObjectSummaryRestoreObjectRestoreRequestSelectParametersOutputSerializatio
 
       - **QuoteFields** *(string) --*
 
-        Indicates whether or not all output fields should be quoted.
+        Indicates whether to use quotation marks around output fields.
+
+        * ``ALWAYS`` : Always use quotation marks for output fields.
+
+        * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
       - **QuoteEscapeCharacter** *(string) --*
 
-        Th single character used for escaping the quote character inside an already escaped value.
+        The single character used for escaping the quote character inside an already escaped
+        value.
 
       - **RecordDelimiter** *(string) --*
 
-        The value used to separate individual records.
+        A single character used to separate individual records in the output. Instead of the
+        default value, you can specify an arbitrary delimiter.
 
       - **FieldDelimiter** *(string) --*
 
-        The value used to separate individual fields in a record.
+        The value used to separate individual fields in a record. You can specify an arbitrary
+        delimiter.
 
       - **QuoteCharacter** *(string) --*
 
-        The value used for escaping where the field delimiter is part of the value.
+        A single character used for escaping when the field delimiter is part of the value. For
+        example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+        as follows: ``" a , b "`` .
 
     - **JSON** *(dict) --*
 
@@ -23407,29 +30279,49 @@ class ObjectSummaryRestoreObjectRestoreRequestSelectParametersTypeDef(
 
         - **FileHeaderInfo** *(string) --*
 
-          Describes the first line of input. Valid values: None, Ignore, Use.
+          Describes the first line of input. Valid values are:
+
+          * ``NONE`` : First line is not a header.
+
+          * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+          the column in an expression. You can use column position (such as _1, _2, …) to indicate
+          the column (``SELECT s._1 FROM OBJECT s`` ).
+
+          * ``Use`` : First line is a header, and you can use the header value to identify a column
+          in an expression (``SELECT "name" FROM OBJECT`` ).
 
         - **Comments** *(string) --*
 
-          The single character used to indicate a row should be ignored when present at the start
-          of a row.
+          A single character used to indicate that a row should be ignored when the character is
+          present at the start of that row. You can specify any character to indicate a comment
+          line.
 
         - **QuoteEscapeCharacter** *(string) --*
 
-          The single character used for escaping the quote character inside an already escaped
-          value.
+          A single character used for escaping the quotation mark character inside an already
+          escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
         - **RecordDelimiter** *(string) --*
 
-          The value used to separate individual records.
+          A single character used to separate individual records in the input. Instead of the
+          default value, you can specify an arbitrary delimiter.
 
         - **FieldDelimiter** *(string) --*
 
-          The value used to separate individual fields in a record.
+          A single character used to separate individual fields in a record. You can specify an
+          arbitrary delimiter.
 
         - **QuoteCharacter** *(string) --*
 
-          Value used for escaping where the field delimiter is part of the value.
+          A single character used for escaping when the field delimiter is part of the value. For
+          example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+          as follows: ``" a , b "`` .
+
+          Type: String
+
+          Default: ``"``
+
+          Ancestors: ``CSV``
 
         - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -23471,23 +30363,32 @@ class ObjectSummaryRestoreObjectRestoreRequestSelectParametersTypeDef(
 
         - **QuoteFields** *(string) --*
 
-          Indicates whether or not all output fields should be quoted.
+          Indicates whether to use quotation marks around output fields.
+
+          * ``ALWAYS`` : Always use quotation marks for output fields.
+
+          * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
         - **QuoteEscapeCharacter** *(string) --*
 
-          Th single character used for escaping the quote character inside an already escaped value.
+          The single character used for escaping the quote character inside an already escaped
+          value.
 
         - **RecordDelimiter** *(string) --*
 
-          The value used to separate individual records.
+          A single character used to separate individual records in the output. Instead of the
+          default value, you can specify an arbitrary delimiter.
 
         - **FieldDelimiter** *(string) --*
 
-          The value used to separate individual fields in a record.
+          The value used to separate individual fields in a record. You can specify an arbitrary
+          delimiter.
 
         - **QuoteCharacter** *(string) --*
 
-          The value used for escaping where the field delimiter is part of the value.
+          A single character used for escaping when the field delimiter is part of the value. For
+          example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+          as follows: ``" a , b "`` .
 
       - **JSON** *(dict) --*
 
@@ -23519,6 +30420,8 @@ class ObjectSummaryRestoreObjectRestoreRequestTypeDef(
 ):
     """
     Type definition for `ObjectSummaryRestoreObject` `RestoreRequest`
+
+    Container for restore job parameters.
 
     - **Days** *(integer) --*
 
@@ -23559,29 +30462,49 @@ class ObjectSummaryRestoreObjectRestoreRequestTypeDef(
 
           - **FileHeaderInfo** *(string) --*
 
-            Describes the first line of input. Valid values: None, Ignore, Use.
+            Describes the first line of input. Valid values are:
+
+            * ``NONE`` : First line is not a header.
+
+            * ``IGNORE`` : First line is a header, but you can't use the header values to indicate
+            the column in an expression. You can use column position (such as _1, _2, …) to indicate
+            the column (``SELECT s._1 FROM OBJECT s`` ).
+
+            * ``Use`` : First line is a header, and you can use the header value to identify a column
+            in an expression (``SELECT "name" FROM OBJECT`` ).
 
           - **Comments** *(string) --*
 
-            The single character used to indicate a row should be ignored when present at the start
-            of a row.
+            A single character used to indicate that a row should be ignored when the character is
+            present at the start of that row. You can specify any character to indicate a comment
+            line.
 
           - **QuoteEscapeCharacter** *(string) --*
 
-            The single character used for escaping the quote character inside an already escaped
-            value.
+            A single character used for escaping the quotation mark character inside an already
+            escaped value. For example, the value ''' a , b ''' is parsed as " a , b ".
 
           - **RecordDelimiter** *(string) --*
 
-            The value used to separate individual records.
+            A single character used to separate individual records in the input. Instead of the
+            default value, you can specify an arbitrary delimiter.
 
           - **FieldDelimiter** *(string) --*
 
-            The value used to separate individual fields in a record.
+            A single character used to separate individual fields in a record. You can specify an
+            arbitrary delimiter.
 
           - **QuoteCharacter** *(string) --*
 
-            Value used for escaping where the field delimiter is part of the value.
+            A single character used for escaping when the field delimiter is part of the value. For
+            example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+            as follows: ``" a , b "`` .
+
+            Type: String
+
+            Default: ``"``
+
+            Ancestors: ``CSV``
 
           - **AllowQuotedRecordDelimiter** *(boolean) --*
 
@@ -23623,23 +30546,32 @@ class ObjectSummaryRestoreObjectRestoreRequestTypeDef(
 
           - **QuoteFields** *(string) --*
 
-            Indicates whether or not all output fields should be quoted.
+            Indicates whether to use quotation marks around output fields.
+
+            * ``ALWAYS`` : Always use quotation marks for output fields.
+
+            * ``ASNEEDED`` : Use quotation marks for output fields when needed.
 
           - **QuoteEscapeCharacter** *(string) --*
 
-            Th single character used for escaping the quote character inside an already escaped value.
+            The single character used for escaping the quote character inside an already escaped
+            value.
 
           - **RecordDelimiter** *(string) --*
 
-            The value used to separate individual records.
+            A single character used to separate individual records in the output. Instead of the
+            default value, you can specify an arbitrary delimiter.
 
           - **FieldDelimiter** *(string) --*
 
-            The value used to separate individual fields in a record.
+            The value used to separate individual fields in a record. You can specify an arbitrary
+            delimiter.
 
           - **QuoteCharacter** *(string) --*
 
-            The value used for escaping where the field delimiter is part of the value.
+            A single character used for escaping when the field delimiter is part of the value. For
+            example, if the value is ``a, b`` , Amazon S3 wraps this field value in quotation marks,
+            as follows: ``" a , b "`` .
 
         - **JSON** *(dict) --*
 
@@ -23667,6 +30599,8 @@ class ObjectSummaryRestoreObjectRestoreRequestTypeDef(
 
         - **Encryption** *(dict) --*
 
+          Contains the type of server-side encryption used.
+
           - **EncryptionType** *(string) --* **[REQUIRED]**
 
             The server-side encryption algorithm used when storing job results in Amazon S3 (e.g.,
@@ -23692,7 +30626,11 @@ class ObjectSummaryRestoreObjectRestoreRequestTypeDef(
 
           - *(dict) --*
 
+            Container for grant information.
+
             - **Grantee** *(dict) --*
+
+              The person being granted permissions.
 
               - **DisplayName** *(string) --*
 
@@ -23724,7 +30662,11 @@ class ObjectSummaryRestoreObjectRestoreRequestTypeDef(
 
           - **TagSet** *(list) --* **[REQUIRED]**
 
+            A collection for a a set of tags
+
             - *(dict) --*
+
+              A container of a key value name pair.
 
               - **Key** *(string) --* **[REQUIRED]**
 
@@ -23744,7 +30686,11 @@ class ObjectSummaryRestoreObjectRestoreRequestTypeDef(
 
             - **Name** *(string) --*
 
+              Name of the Object.
+
             - **Value** *(string) --*
+
+              Value of the Object.
 
         - **StorageClass** *(string) --*
 
@@ -23831,6 +30777,8 @@ class ObjectVersionGetResponseTypeDef(_ObjectVersionGetResponseTypeDef):
 
     - **AcceptRanges** *(string) --*
 
+      Indicates that a range of bytes was specifed.
+
     - **Expiration** *(string) --*
 
       If the object expiration is configured (see PUT Bucket lifecycle), the response includes this
@@ -23928,16 +30876,22 @@ class ObjectVersionGetResponseTypeDef(_ObjectVersionGetResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **StorageClass** *(string) --*
+
+      Provides storage class information of the object. Amazon S3 returns this header for all
+      objects except for Standard storage class objects.
 
     - **RequestCharged** *(string) --*
 
       If present, indicates that the requester was successfully charged for the request.
 
     - **ReplicationStatus** *(string) --*
+
+      Amazon S3 can return this if your request involves a bucket that is either a source or
+      destination in a replication rule.
 
     - **PartsCount** *(integer) --*
 
@@ -23949,11 +30903,11 @@ class ObjectVersionGetResponseTypeDef(_ObjectVersionGetResponseTypeDef):
 
     - **ObjectLockMode** *(string) --*
 
-      The object lock mode currently in place for this object.
+      The Object Lock mode currently in place for this object.
 
     - **ObjectLockRetainUntilDate** *(datetime) --*
 
-      The date and time when this object's object lock will expire.
+      The date and time when this object's Object Lock will expire.
 
     - **ObjectLockLegalHoldStatus** *(string) --*
 
@@ -24009,6 +30963,8 @@ class ObjectVersionHeadResponseTypeDef(_ObjectVersionHeadResponseTypeDef):
 
     - **AcceptRanges** *(string) --*
 
+      Indicates that a range of bytes was specifed.
+
     - **Expiration** *(string) --*
 
       If the object expiration is configured (see PUT Bucket lifecycle), the response includes this
@@ -24017,8 +30973,22 @@ class ObjectVersionHeadResponseTypeDef(_ObjectVersionHeadResponseTypeDef):
 
     - **Restore** *(string) --*
 
-      Provides information about object restoration operation and expiration time of the restored
-      object copy.
+      If the object is an archived object (an object whose storage class is GLACIER), the response
+      includes this header if either the archive restoration is in progress (see  RestoreObject or
+      an archive copy is already restored.
+
+      If an archive copy is already restored, the header value indicates when Amazon S3 is
+      scheduled to delete the object copy. For example:
+
+       ``x-amz-restore: ongoing-request="false", expiry-date="Fri, 23 Dec 2012 00:00:00 GMT"``
+
+      If the object restoration is in progress, the header returns the value
+      ``ongoing-request="true"`` .
+
+      For more information about archiving objects, see `Transitioning Objects\\: General
+      Considerations
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html#lifecycle-transition-general-considerations>`__
+      .
 
     - **LastModified** *(datetime) --*
 
@@ -24078,8 +31048,10 @@ class ObjectVersionHeadResponseTypeDef(_ObjectVersionHeadResponseTypeDef):
 
     - **ServerSideEncryption** *(string) --*
 
-      The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256,
-      aws:kms).
+      If the object is stored using server-side encryption either with an AWS KMS customer master
+      key (CMK) or an Amazon S3-managed encryption key, the response includes this header with the
+      value of the Server-side encryption algorithm used when storing this object in S3 (e.g.,
+      AES256, aws:kms).
 
     - **Metadata** *(dict) --*
 
@@ -24102,10 +31074,16 @@ class ObjectVersionHeadResponseTypeDef(_ObjectVersionHeadResponseTypeDef):
 
     - **SSEKMSKeyId** *(string) --*
 
-      If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key
-      that was used for the object.
+      If present, specifies the ID of the AWS Key Management Service (KMS) customer master key
+      (CMK) that was used for the object.
 
     - **StorageClass** *(string) --*
+
+      Provides storage class information of the object. Amazon S3 returns this header for all
+      objects except for Standard storage class objects.
+
+      For more information, see `Storage Classes
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html>`__ .
 
     - **RequestCharged** *(string) --*
 
@@ -24113,21 +31091,53 @@ class ObjectVersionHeadResponseTypeDef(_ObjectVersionHeadResponseTypeDef):
 
     - **ReplicationStatus** *(string) --*
 
+      Amazon S3 can return this header if your request involves a bucket that is either a source or
+      destination in a replication rule.
+
+      In replication you have a source bucket on which you configure replication and destination
+      bucket where Amazon S3 stores object replicas. When you request an object (GetObject) or
+      object metadata (HeadObject) from these buckets, Amazon S3 will return the
+      x-amz-replication-status header in the response as follows:
+
+      * If requesting object from the source bucket — Amazon S3 will return the
+      x-amz-replication-status header if object in your request is eligible for replication. For
+      example, suppose in your replication configuration you specify object prefix "TaxDocs"
+      requesting Amazon S3 to replicate objects with key prefix "TaxDocs". Then any objects you
+      upload with this key name prefix, for example "TaxDocs/document1.pdf", is eligible for
+      replication. For any object request with this key name prefix Amazon S3 will return the
+      x-amz-replication-status header with value PENDING, COMPLETED or FAILED indicating object
+      replication status.
+
+      * If requesting object from the destination bucket — Amazon S3 will return the
+      x-amz-replication-status header with value REPLICA if object in your request is a replica
+      that Amazon S3 created.
+
+      For more information, see `Replication
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ .
+
     - **PartsCount** *(integer) --*
 
       The count of parts this object has.
 
     - **ObjectLockMode** *(string) --*
 
-      The object lock mode currently in place for this object.
+      The Object Lock mode, if any, that's in effect for this object. This header is only returned
+      if the requester has the ``s3:GetObjectRetention`` permission. For more information about S3
+      Object Lock, see `Object Lock
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__ .
 
     - **ObjectLockRetainUntilDate** *(datetime) --*
 
-      The date and time when this object's object lock expires.
+      The date and time when the Object Lock retention period expires. This header is only returned
+      if the requester has the ``s3:GetObjectRetention`` permission.
 
     - **ObjectLockLegalHoldStatus** *(string) --*
 
-      The Legal Hold status for the specified object.
+      Specifies whether a legal hold is in effect for this object. This header is only returned if
+      the requester has the ``s3:GetObjectLegalHold`` permission. This header is not returned if
+      the specified version of this object has never had a legal hold applied. For more information
+      about S3 Object Lock, see `Object Lock
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html>`__ .
     """
 
 
@@ -24144,13 +31154,27 @@ class ObjectVersionsDeleteResponseDeletedTypeDef(
     """
     Type definition for `ObjectVersionsDeleteResponse` `Deleted`
 
+    Information about the deleted object.
+
     - **Key** *(string) --*
+
+      The name of the deleted object.
 
     - **VersionId** *(string) --*
 
+      The version ID of the deleted object.
+
     - **DeleteMarker** *(boolean) --*
 
+      Specifies whether the versioned object that was permanently deleted was (true) or was not
+      (false) a delete marker. In a simple DELETE, this header indicates whether (true) or not
+      (false) a delete marker was created.
+
     - **DeleteMarkerVersionId** *(string) --*
+
+      The version ID of the delete marker created as a result of the DELETE operation. If you
+      delete a specific object version, the value returned by this header is the version ID of
+      the object version deleted.
     """
 
 
@@ -24167,13 +31191,955 @@ class ObjectVersionsDeleteResponseErrorsTypeDef(
     """
     Type definition for `ObjectVersionsDeleteResponse` `Errors`
 
+    Container for all error elements.
+
     - **Key** *(string) --*
+
+      The error key.
 
     - **VersionId** *(string) --*
 
+      The version ID of the error.
+
     - **Code** *(string) --*
 
+      The error code is a string that uniquely identifies an error condition. It is meant to be
+      read and understood by programs that detect and handle errors by type.
+
+       **Amazon S3 error codes**
+
+      *
+
+        * *Code:* AccessDenied
+
+        * *Description:* Access Denied
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AccountProblem
+
+        * *Description:* There is a problem with your AWS account that prevents the operation
+        from completing successfully. Contact AWS Support for further assistance.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AllAccessDisabled
+
+        * *Description:* All access to this Amazon S3 resource has been disabled. Contact AWS
+        Support for further assistance.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AmbiguousGrantByEmailAddress
+
+        * *Description:* The email address you provided is associated with more than one
+        account.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AuthorizationHeaderMalformed
+
+        * *Description:* The authorization header you provided is invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *HTTP Status Code:* N/A
+
+      *
+
+        * *Code:* BadDigest
+
+        * *Description:* The Content-MD5 you specified did not match what we received.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* BucketAlreadyExists
+
+        * *Description:* The requested bucket name is not available. The bucket namespace is
+        shared by all users of the system. Please select a different name and try again.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* BucketAlreadyOwnedByYou
+
+        * *Description:* The bucket you tried to create already exists, and you own it. Amazon
+        S3 returns this error in all AWS Regions except in the North Virginia region. For
+        legacy compatibility, if you re-create an existing bucket that you already own in the
+        North Virginia region, Amazon S3 returns 200 OK and resets the bucket access control
+        lists (ACLs).
+
+        * *Code:* 409 Conflict (in all regions except the North Virginia region)
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* BucketNotEmpty
+
+        * *Description:* The bucket you tried to delete is not empty.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* CredentialsNotSupported
+
+        * *Description:* This request does not support credentials.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* CrossLocationLoggingProhibited
+
+        * *Description:* Cross-location logging not allowed. Buckets in one geographic location
+        cannot log information to a bucket in another location.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* EntityTooSmall
+
+        * *Description:* Your proposed upload is smaller than the minimum allowed object size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* EntityTooLarge
+
+        * *Description:* Your proposed upload exceeds the maximum allowed object size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* ExpiredToken
+
+        * *Description:* The provided token has expired.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* IllegalVersioningConfigurationException
+
+        * *Description:* Indicates that the versioning configuration specified in the request
+        is invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* IncompleteBody
+
+        * *Description:* You did not provide the number of bytes specified by the
+        Content-Length HTTP header
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* IncorrectNumberOfFilesInPostRequest
+
+        * *Description:* POST requires exactly one file upload per request.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InlineDataTooLarge
+
+        * *Description:* Inline data exceeds the maximum allowed size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InternalError
+
+        * *Description:* We encountered an internal error. Please try again.
+
+        * *HTTP Status Code:* 500 Internal Server Error
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* InvalidAccessKeyId
+
+        * *Description:* The AWS access key ID you provided does not exist in our records.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidAddressingHeader
+
+        * *Description:* You must specify the Anonymous role.
+
+        * *HTTP Status Code:* N/A
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidArgument
+
+        * *Description:* Invalid Argument
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidBucketName
+
+        * *Description:* The specified bucket is not valid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidBucketState
+
+        * *Description:* The request is not valid with the current state of the bucket.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidDigest
+
+        * *Description:* The Content-MD5 you specified is not valid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidEncryptionAlgorithmError
+
+        * *Description:* The encryption request you specified is not valid. The valid value is
+        AES256.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidLocationConstraint
+
+        * *Description:* The specified location constraint is not valid. For more information
+        about Regions, see `How to Select a Region for Your Buckets
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro>`__
+        .
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidObjectState
+
+        * *Description:* The operation is not valid for the current state of the object.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPart
+
+        * *Description:* One or more of the specified parts could not be found. The part might
+        not have been uploaded, or the specified entity tag might not have matched the part's
+        entity tag.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPartOrder
+
+        * *Description:* The list of parts was not in ascending order. Parts list must be
+        specified in order by part number.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPayer
+
+        * *Description:* All access to this object has been disabled. Please contact AWS
+        Support for further assistance.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPolicyDocument
+
+        * *Description:* The content of the form does not meet the conditions specified in the
+        policy document.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidRange
+
+        * *Description:* The requested range cannot be satisfied.
+
+        * *HTTP Status Code:* 416 Requested Range Not Satisfiable
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Please use AWS4-HMAC-SHA256.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* SOAP requests must be made over an HTTPS connection.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+        non-DNS compliant names.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+        periods (.) in their names.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Accelerate endpoint only supports virtual style
+        requests.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Accelerate is not configured on this bucket.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Accelerate is disabled on this bucket.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration is not supported on this bucket.
+        Contact AWS Support for more information.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration cannot be enabled on this bucket.
+        Contact AWS Support for more information.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidSecurity
+
+        * *Description:* The provided security credentials are not valid.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidSOAPRequest
+
+        * *Description:* The SOAP request body is invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidStorageClass
+
+        * *Description:* The storage class you specified is not valid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidTargetBucketForLogging
+
+        * *Description:* The target bucket for logging does not exist, is not owned by you, or
+        does not have the appropriate grants for the log-delivery group.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidToken
+
+        * *Description:* The provided token is malformed or otherwise invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidURI
+
+        * *Description:* Couldn't parse the specified URI.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* KeyTooLongError
+
+        * *Description:* Your key is too long.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MalformedACLError
+
+        * *Description:* The XML you provided was not well-formed or did not validate against
+        our published schema.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MalformedPOSTRequest
+
+        * *Description:* The body of your POST request is not well-formed multipart/form-data.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MalformedXML
+
+        * *Description:* This happens when the user sends malformed XML (XML that doesn't
+        conform to the published XSD) for the configuration. The error message is, "The XML you
+        provided was not well-formed or did not validate against our published schema."
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MaxMessageLengthExceeded
+
+        * *Description:* Your request was too big.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MaxPostPreDataLengthExceededError
+
+        * *Description:* Your POST request fields preceding the upload file were too large.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MetadataTooLarge
+
+        * *Description:* Your metadata headers exceed the maximum allowed metadata size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MethodNotAllowed
+
+        * *Description:* The specified method is not allowed against this resource.
+
+        * *HTTP Status Code:* 405 Method Not Allowed
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingAttachment
+
+        * *Description:* A SOAP attachment was expected, but none were found.
+
+        * *HTTP Status Code:* N/A
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingContentLength
+
+        * *Description:* You must provide the Content-Length HTTP header.
+
+        * *HTTP Status Code:* 411 Length Required
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingRequestBodyError
+
+        * *Description:* This happens when the user sends an empty XML document as a request.
+        The error message is, "Request body is empty."
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingSecurityElement
+
+        * *Description:* The SOAP 1.1 request is missing a security element.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingSecurityHeader
+
+        * *Description:* Your request is missing a required header.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoLoggingStatusForKey
+
+        * *Description:* There is no such thing as a logging status subresource for a key.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchBucket
+
+        * *Description:* The specified bucket does not exist.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchBucketPolicy
+
+        * *Description:* The specified bucket does not have a bucket policy.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchKey
+
+        * *Description:* The specified key does not exist.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchLifecycleConfiguration
+
+        * *Description:* The lifecycle configuration does not exist.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchUpload
+
+        * *Description:* The specified multipart upload does not exist. The upload ID might be
+        invalid, or the multipart upload might have been aborted or completed.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchVersion
+
+        * *Description:* Indicates that the version ID specified in the request does not match
+        an existing version.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NotImplemented
+
+        * *Description:* A header you provided implies functionality that is not implemented.
+
+        * *HTTP Status Code:* 501 Not Implemented
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* NotSignedUp
+
+        * *Description:* Your account is not signed up for the Amazon S3 service. You must sign
+        up before you can use Amazon S3. You can sign up at the following URL:
+        https://aws.amazon.com/s3
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* OperationAborted
+
+        * *Description:* A conflicting conditional operation is currently in progress against
+        this resource. Try again.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* PermanentRedirect
+
+        * *Description:* The bucket you are attempting to access must be addressed using the
+        specified endpoint. Send all future requests to this endpoint.
+
+        * *HTTP Status Code:* 301 Moved Permanently
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* PreconditionFailed
+
+        * *Description:* At least one of the preconditions you specified did not hold.
+
+        * *HTTP Status Code:* 412 Precondition Failed
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* Redirect
+
+        * *Description:* Temporary redirect.
+
+        * *HTTP Status Code:* 307 Moved Temporarily
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RestoreAlreadyInProgress
+
+        * *Description:* Object restore is already in progress.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestIsNotMultiPartContent
+
+        * *Description:* Bucket POST must be of the enclosure-type multipart/form-data.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestTimeout
+
+        * *Description:* Your socket connection to the server was not read from or written to
+        within the timeout period.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestTimeTooSkewed
+
+        * *Description:* The difference between the request time and the server's time is too
+        large.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestTorrentOfBucketError
+
+        * *Description:* Requesting the torrent file of a bucket is not permitted.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* SignatureDoesNotMatch
+
+        * *Description:* The request signature we calculated does not match the signature you
+        provided. Check your AWS secret access key and signing method. For more information,
+        see `REST Authentication
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html>`__ and `SOAP
+        Authentication
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/SOAPAuthentication.html>`__ for
+        details.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* ServiceUnavailable
+
+        * *Description:* Reduce your request rate.
+
+        * *HTTP Status Code:* 503 Service Unavailable
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* SlowDown
+
+        * *Description:* Reduce your request rate.
+
+        * *HTTP Status Code:* 503 Slow Down
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* TemporaryRedirect
+
+        * *Description:* You are being redirected to the bucket while DNS updates.
+
+        * *HTTP Status Code:* 307 Moved Temporarily
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* TokenRefreshRequired
+
+        * *Description:* The provided token must be refreshed.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* TooManyBuckets
+
+        * *Description:* You have attempted to create more buckets than allowed.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* UnexpectedContent
+
+        * *Description:* This request does not support content.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* UnresolvableGrantByEmailAddress
+
+        * *Description:* The email address you provided does not match any account on record.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* UserKeyMustBeSpecified
+
+        * *Description:* The bucket POST must contain the specified field name. If it is
+        specified, check the order of the fields.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
     - **Message** *(string) --*
+
+      The error message contains a generic description of the error condition in English. It is
+      intended for a human audience. Simple programs display the message directly to the end
+      user if they encounter an error condition they don't know how or don't care to handle.
+      Sophisticated programs with more exhaustive error handling and proper
+      internationalization are more likely to ignore the error message.
     """
 
 
@@ -24194,15 +32160,32 @@ class ObjectVersionsDeleteResponseTypeDef(_ObjectVersionsDeleteResponseTypeDef):
 
     - **Deleted** *(list) --*
 
+      Container element for a successful delete. It identifies the object that was successfully
+      deleted.
+
       - *(dict) --*
+
+        Information about the deleted object.
 
         - **Key** *(string) --*
 
+          The name of the deleted object.
+
         - **VersionId** *(string) --*
+
+          The version ID of the deleted object.
 
         - **DeleteMarker** *(boolean) --*
 
+          Specifies whether the versioned object that was permanently deleted was (true) or was not
+          (false) a delete marker. In a simple DELETE, this header indicates whether (true) or not
+          (false) a delete marker was created.
+
         - **DeleteMarkerVersionId** *(string) --*
+
+          The version ID of the delete marker created as a result of the DELETE operation. If you
+          delete a specific object version, the value returned by this header is the version ID of
+          the object version deleted.
 
     - **RequestCharged** *(string) --*
 
@@ -24210,15 +32193,960 @@ class ObjectVersionsDeleteResponseTypeDef(_ObjectVersionsDeleteResponseTypeDef):
 
     - **Errors** *(list) --*
 
+      Container for a failed delete operation that describes the object that Amazon S3 attempted to
+      delete and the error it encountered.
+
       - *(dict) --*
+
+        Container for all error elements.
 
         - **Key** *(string) --*
 
+          The error key.
+
         - **VersionId** *(string) --*
+
+          The version ID of the error.
 
         - **Code** *(string) --*
 
+          The error code is a string that uniquely identifies an error condition. It is meant to be
+          read and understood by programs that detect and handle errors by type.
+
+           **Amazon S3 error codes**
+
+          *
+
+            * *Code:* AccessDenied
+
+            * *Description:* Access Denied
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AccountProblem
+
+            * *Description:* There is a problem with your AWS account that prevents the operation
+            from completing successfully. Contact AWS Support for further assistance.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AllAccessDisabled
+
+            * *Description:* All access to this Amazon S3 resource has been disabled. Contact AWS
+            Support for further assistance.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AmbiguousGrantByEmailAddress
+
+            * *Description:* The email address you provided is associated with more than one
+            account.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AuthorizationHeaderMalformed
+
+            * *Description:* The authorization header you provided is invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *HTTP Status Code:* N/A
+
+          *
+
+            * *Code:* BadDigest
+
+            * *Description:* The Content-MD5 you specified did not match what we received.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* BucketAlreadyExists
+
+            * *Description:* The requested bucket name is not available. The bucket namespace is
+            shared by all users of the system. Please select a different name and try again.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* BucketAlreadyOwnedByYou
+
+            * *Description:* The bucket you tried to create already exists, and you own it. Amazon
+            S3 returns this error in all AWS Regions except in the North Virginia region. For
+            legacy compatibility, if you re-create an existing bucket that you already own in the
+            North Virginia region, Amazon S3 returns 200 OK and resets the bucket access control
+            lists (ACLs).
+
+            * *Code:* 409 Conflict (in all regions except the North Virginia region)
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* BucketNotEmpty
+
+            * *Description:* The bucket you tried to delete is not empty.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* CredentialsNotSupported
+
+            * *Description:* This request does not support credentials.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* CrossLocationLoggingProhibited
+
+            * *Description:* Cross-location logging not allowed. Buckets in one geographic location
+            cannot log information to a bucket in another location.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* EntityTooSmall
+
+            * *Description:* Your proposed upload is smaller than the minimum allowed object size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* EntityTooLarge
+
+            * *Description:* Your proposed upload exceeds the maximum allowed object size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* ExpiredToken
+
+            * *Description:* The provided token has expired.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* IllegalVersioningConfigurationException
+
+            * *Description:* Indicates that the versioning configuration specified in the request
+            is invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* IncompleteBody
+
+            * *Description:* You did not provide the number of bytes specified by the
+            Content-Length HTTP header
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* IncorrectNumberOfFilesInPostRequest
+
+            * *Description:* POST requires exactly one file upload per request.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InlineDataTooLarge
+
+            * *Description:* Inline data exceeds the maximum allowed size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InternalError
+
+            * *Description:* We encountered an internal error. Please try again.
+
+            * *HTTP Status Code:* 500 Internal Server Error
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* InvalidAccessKeyId
+
+            * *Description:* The AWS access key ID you provided does not exist in our records.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidAddressingHeader
+
+            * *Description:* You must specify the Anonymous role.
+
+            * *HTTP Status Code:* N/A
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidArgument
+
+            * *Description:* Invalid Argument
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidBucketName
+
+            * *Description:* The specified bucket is not valid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidBucketState
+
+            * *Description:* The request is not valid with the current state of the bucket.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidDigest
+
+            * *Description:* The Content-MD5 you specified is not valid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidEncryptionAlgorithmError
+
+            * *Description:* The encryption request you specified is not valid. The valid value is
+            AES256.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidLocationConstraint
+
+            * *Description:* The specified location constraint is not valid. For more information
+            about Regions, see `How to Select a Region for Your Buckets
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro>`__
+            .
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidObjectState
+
+            * *Description:* The operation is not valid for the current state of the object.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPart
+
+            * *Description:* One or more of the specified parts could not be found. The part might
+            not have been uploaded, or the specified entity tag might not have matched the part's
+            entity tag.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPartOrder
+
+            * *Description:* The list of parts was not in ascending order. Parts list must be
+            specified in order by part number.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPayer
+
+            * *Description:* All access to this object has been disabled. Please contact AWS
+            Support for further assistance.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPolicyDocument
+
+            * *Description:* The content of the form does not meet the conditions specified in the
+            policy document.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidRange
+
+            * *Description:* The requested range cannot be satisfied.
+
+            * *HTTP Status Code:* 416 Requested Range Not Satisfiable
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Please use AWS4-HMAC-SHA256.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* SOAP requests must be made over an HTTPS connection.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+            non-DNS compliant names.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+            periods (.) in their names.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Accelerate endpoint only supports virtual style
+            requests.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Accelerate is not configured on this bucket.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Accelerate is disabled on this bucket.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration is not supported on this bucket.
+            Contact AWS Support for more information.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration cannot be enabled on this bucket.
+            Contact AWS Support for more information.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidSecurity
+
+            * *Description:* The provided security credentials are not valid.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidSOAPRequest
+
+            * *Description:* The SOAP request body is invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidStorageClass
+
+            * *Description:* The storage class you specified is not valid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidTargetBucketForLogging
+
+            * *Description:* The target bucket for logging does not exist, is not owned by you, or
+            does not have the appropriate grants for the log-delivery group.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidToken
+
+            * *Description:* The provided token is malformed or otherwise invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidURI
+
+            * *Description:* Couldn't parse the specified URI.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* KeyTooLongError
+
+            * *Description:* Your key is too long.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MalformedACLError
+
+            * *Description:* The XML you provided was not well-formed or did not validate against
+            our published schema.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MalformedPOSTRequest
+
+            * *Description:* The body of your POST request is not well-formed multipart/form-data.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MalformedXML
+
+            * *Description:* This happens when the user sends malformed XML (XML that doesn't
+            conform to the published XSD) for the configuration. The error message is, "The XML you
+            provided was not well-formed or did not validate against our published schema."
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MaxMessageLengthExceeded
+
+            * *Description:* Your request was too big.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MaxPostPreDataLengthExceededError
+
+            * *Description:* Your POST request fields preceding the upload file were too large.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MetadataTooLarge
+
+            * *Description:* Your metadata headers exceed the maximum allowed metadata size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MethodNotAllowed
+
+            * *Description:* The specified method is not allowed against this resource.
+
+            * *HTTP Status Code:* 405 Method Not Allowed
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingAttachment
+
+            * *Description:* A SOAP attachment was expected, but none were found.
+
+            * *HTTP Status Code:* N/A
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingContentLength
+
+            * *Description:* You must provide the Content-Length HTTP header.
+
+            * *HTTP Status Code:* 411 Length Required
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingRequestBodyError
+
+            * *Description:* This happens when the user sends an empty XML document as a request.
+            The error message is, "Request body is empty."
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingSecurityElement
+
+            * *Description:* The SOAP 1.1 request is missing a security element.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingSecurityHeader
+
+            * *Description:* Your request is missing a required header.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoLoggingStatusForKey
+
+            * *Description:* There is no such thing as a logging status subresource for a key.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchBucket
+
+            * *Description:* The specified bucket does not exist.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchBucketPolicy
+
+            * *Description:* The specified bucket does not have a bucket policy.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchKey
+
+            * *Description:* The specified key does not exist.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchLifecycleConfiguration
+
+            * *Description:* The lifecycle configuration does not exist.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchUpload
+
+            * *Description:* The specified multipart upload does not exist. The upload ID might be
+            invalid, or the multipart upload might have been aborted or completed.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchVersion
+
+            * *Description:* Indicates that the version ID specified in the request does not match
+            an existing version.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NotImplemented
+
+            * *Description:* A header you provided implies functionality that is not implemented.
+
+            * *HTTP Status Code:* 501 Not Implemented
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* NotSignedUp
+
+            * *Description:* Your account is not signed up for the Amazon S3 service. You must sign
+            up before you can use Amazon S3. You can sign up at the following URL:
+            https://aws.amazon.com/s3
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* OperationAborted
+
+            * *Description:* A conflicting conditional operation is currently in progress against
+            this resource. Try again.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* PermanentRedirect
+
+            * *Description:* The bucket you are attempting to access must be addressed using the
+            specified endpoint. Send all future requests to this endpoint.
+
+            * *HTTP Status Code:* 301 Moved Permanently
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* PreconditionFailed
+
+            * *Description:* At least one of the preconditions you specified did not hold.
+
+            * *HTTP Status Code:* 412 Precondition Failed
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* Redirect
+
+            * *Description:* Temporary redirect.
+
+            * *HTTP Status Code:* 307 Moved Temporarily
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RestoreAlreadyInProgress
+
+            * *Description:* Object restore is already in progress.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestIsNotMultiPartContent
+
+            * *Description:* Bucket POST must be of the enclosure-type multipart/form-data.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestTimeout
+
+            * *Description:* Your socket connection to the server was not read from or written to
+            within the timeout period.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestTimeTooSkewed
+
+            * *Description:* The difference between the request time and the server's time is too
+            large.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestTorrentOfBucketError
+
+            * *Description:* Requesting the torrent file of a bucket is not permitted.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* SignatureDoesNotMatch
+
+            * *Description:* The request signature we calculated does not match the signature you
+            provided. Check your AWS secret access key and signing method. For more information,
+            see `REST Authentication
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html>`__ and `SOAP
+            Authentication
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/SOAPAuthentication.html>`__ for
+            details.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* ServiceUnavailable
+
+            * *Description:* Reduce your request rate.
+
+            * *HTTP Status Code:* 503 Service Unavailable
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* SlowDown
+
+            * *Description:* Reduce your request rate.
+
+            * *HTTP Status Code:* 503 Slow Down
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* TemporaryRedirect
+
+            * *Description:* You are being redirected to the bucket while DNS updates.
+
+            * *HTTP Status Code:* 307 Moved Temporarily
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* TokenRefreshRequired
+
+            * *Description:* The provided token must be refreshed.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* TooManyBuckets
+
+            * *Description:* You have attempted to create more buckets than allowed.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* UnexpectedContent
+
+            * *Description:* This request does not support content.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* UnresolvableGrantByEmailAddress
+
+            * *Description:* The email address you provided does not match any account on record.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* UserKeyMustBeSpecified
+
+            * *Description:* The bucket POST must contain the specified field name. If it is
+            specified, check the order of the fields.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
         - **Message** *(string) --*
+
+          The error message contains a generic description of the error condition in English. It is
+          intended for a human audience. Simple programs display the message directly to the end
+          user if they encounter an error condition they don't know how or don't care to handle.
+          Sophisticated programs with more exhaustive error handling and proper
+          internationalization are more likely to ignore the error message.
     """
 
 
@@ -24233,13 +33161,27 @@ class ObjectsDeleteResponseDeletedTypeDef(_ObjectsDeleteResponseDeletedTypeDef):
     """
     Type definition for `ObjectsDeleteResponse` `Deleted`
 
+    Information about the deleted object.
+
     - **Key** *(string) --*
+
+      The name of the deleted object.
 
     - **VersionId** *(string) --*
 
+      The version ID of the deleted object.
+
     - **DeleteMarker** *(boolean) --*
 
+      Specifies whether the versioned object that was permanently deleted was (true) or was not
+      (false) a delete marker. In a simple DELETE, this header indicates whether (true) or not
+      (false) a delete marker was created.
+
     - **DeleteMarkerVersionId** *(string) --*
+
+      The version ID of the delete marker created as a result of the DELETE operation. If you
+      delete a specific object version, the value returned by this header is the version ID of
+      the object version deleted.
     """
 
 
@@ -24254,13 +33196,955 @@ class ObjectsDeleteResponseErrorsTypeDef(_ObjectsDeleteResponseErrorsTypeDef):
     """
     Type definition for `ObjectsDeleteResponse` `Errors`
 
+    Container for all error elements.
+
     - **Key** *(string) --*
+
+      The error key.
 
     - **VersionId** *(string) --*
 
+      The version ID of the error.
+
     - **Code** *(string) --*
 
+      The error code is a string that uniquely identifies an error condition. It is meant to be
+      read and understood by programs that detect and handle errors by type.
+
+       **Amazon S3 error codes**
+
+      *
+
+        * *Code:* AccessDenied
+
+        * *Description:* Access Denied
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AccountProblem
+
+        * *Description:* There is a problem with your AWS account that prevents the operation
+        from completing successfully. Contact AWS Support for further assistance.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AllAccessDisabled
+
+        * *Description:* All access to this Amazon S3 resource has been disabled. Contact AWS
+        Support for further assistance.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AmbiguousGrantByEmailAddress
+
+        * *Description:* The email address you provided is associated with more than one
+        account.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* AuthorizationHeaderMalformed
+
+        * *Description:* The authorization header you provided is invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *HTTP Status Code:* N/A
+
+      *
+
+        * *Code:* BadDigest
+
+        * *Description:* The Content-MD5 you specified did not match what we received.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* BucketAlreadyExists
+
+        * *Description:* The requested bucket name is not available. The bucket namespace is
+        shared by all users of the system. Please select a different name and try again.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* BucketAlreadyOwnedByYou
+
+        * *Description:* The bucket you tried to create already exists, and you own it. Amazon
+        S3 returns this error in all AWS Regions except in the North Virginia region. For
+        legacy compatibility, if you re-create an existing bucket that you already own in the
+        North Virginia region, Amazon S3 returns 200 OK and resets the bucket access control
+        lists (ACLs).
+
+        * *Code:* 409 Conflict (in all regions except the North Virginia region)
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* BucketNotEmpty
+
+        * *Description:* The bucket you tried to delete is not empty.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* CredentialsNotSupported
+
+        * *Description:* This request does not support credentials.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* CrossLocationLoggingProhibited
+
+        * *Description:* Cross-location logging not allowed. Buckets in one geographic location
+        cannot log information to a bucket in another location.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* EntityTooSmall
+
+        * *Description:* Your proposed upload is smaller than the minimum allowed object size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* EntityTooLarge
+
+        * *Description:* Your proposed upload exceeds the maximum allowed object size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* ExpiredToken
+
+        * *Description:* The provided token has expired.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* IllegalVersioningConfigurationException
+
+        * *Description:* Indicates that the versioning configuration specified in the request
+        is invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* IncompleteBody
+
+        * *Description:* You did not provide the number of bytes specified by the
+        Content-Length HTTP header
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* IncorrectNumberOfFilesInPostRequest
+
+        * *Description:* POST requires exactly one file upload per request.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InlineDataTooLarge
+
+        * *Description:* Inline data exceeds the maximum allowed size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InternalError
+
+        * *Description:* We encountered an internal error. Please try again.
+
+        * *HTTP Status Code:* 500 Internal Server Error
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* InvalidAccessKeyId
+
+        * *Description:* The AWS access key ID you provided does not exist in our records.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidAddressingHeader
+
+        * *Description:* You must specify the Anonymous role.
+
+        * *HTTP Status Code:* N/A
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidArgument
+
+        * *Description:* Invalid Argument
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidBucketName
+
+        * *Description:* The specified bucket is not valid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidBucketState
+
+        * *Description:* The request is not valid with the current state of the bucket.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidDigest
+
+        * *Description:* The Content-MD5 you specified is not valid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidEncryptionAlgorithmError
+
+        * *Description:* The encryption request you specified is not valid. The valid value is
+        AES256.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidLocationConstraint
+
+        * *Description:* The specified location constraint is not valid. For more information
+        about Regions, see `How to Select a Region for Your Buckets
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro>`__
+        .
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidObjectState
+
+        * *Description:* The operation is not valid for the current state of the object.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPart
+
+        * *Description:* One or more of the specified parts could not be found. The part might
+        not have been uploaded, or the specified entity tag might not have matched the part's
+        entity tag.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPartOrder
+
+        * *Description:* The list of parts was not in ascending order. Parts list must be
+        specified in order by part number.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPayer
+
+        * *Description:* All access to this object has been disabled. Please contact AWS
+        Support for further assistance.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidPolicyDocument
+
+        * *Description:* The content of the form does not meet the conditions specified in the
+        policy document.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidRange
+
+        * *Description:* The requested range cannot be satisfied.
+
+        * *HTTP Status Code:* 416 Requested Range Not Satisfiable
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Please use AWS4-HMAC-SHA256.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* SOAP requests must be made over an HTTPS connection.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+        non-DNS compliant names.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+        periods (.) in their names.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Accelerate endpoint only supports virtual style
+        requests.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Accelerate is not configured on this bucket.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Accelerate is disabled on this bucket.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration is not supported on this bucket.
+        Contact AWS Support for more information.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidRequest
+
+        * *Description:* Amazon S3 Transfer Acceleration cannot be enabled on this bucket.
+        Contact AWS Support for more information.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *Code:* N/A
+
+      *
+
+        * *Code:* InvalidSecurity
+
+        * *Description:* The provided security credentials are not valid.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidSOAPRequest
+
+        * *Description:* The SOAP request body is invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidStorageClass
+
+        * *Description:* The storage class you specified is not valid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidTargetBucketForLogging
+
+        * *Description:* The target bucket for logging does not exist, is not owned by you, or
+        does not have the appropriate grants for the log-delivery group.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidToken
+
+        * *Description:* The provided token is malformed or otherwise invalid.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* InvalidURI
+
+        * *Description:* Couldn't parse the specified URI.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* KeyTooLongError
+
+        * *Description:* Your key is too long.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MalformedACLError
+
+        * *Description:* The XML you provided was not well-formed or did not validate against
+        our published schema.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MalformedPOSTRequest
+
+        * *Description:* The body of your POST request is not well-formed multipart/form-data.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MalformedXML
+
+        * *Description:* This happens when the user sends malformed XML (XML that doesn't
+        conform to the published XSD) for the configuration. The error message is, "The XML you
+        provided was not well-formed or did not validate against our published schema."
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MaxMessageLengthExceeded
+
+        * *Description:* Your request was too big.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MaxPostPreDataLengthExceededError
+
+        * *Description:* Your POST request fields preceding the upload file were too large.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MetadataTooLarge
+
+        * *Description:* Your metadata headers exceed the maximum allowed metadata size.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MethodNotAllowed
+
+        * *Description:* The specified method is not allowed against this resource.
+
+        * *HTTP Status Code:* 405 Method Not Allowed
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingAttachment
+
+        * *Description:* A SOAP attachment was expected, but none were found.
+
+        * *HTTP Status Code:* N/A
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingContentLength
+
+        * *Description:* You must provide the Content-Length HTTP header.
+
+        * *HTTP Status Code:* 411 Length Required
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingRequestBodyError
+
+        * *Description:* This happens when the user sends an empty XML document as a request.
+        The error message is, "Request body is empty."
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingSecurityElement
+
+        * *Description:* The SOAP 1.1 request is missing a security element.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* MissingSecurityHeader
+
+        * *Description:* Your request is missing a required header.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoLoggingStatusForKey
+
+        * *Description:* There is no such thing as a logging status subresource for a key.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchBucket
+
+        * *Description:* The specified bucket does not exist.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchBucketPolicy
+
+        * *Description:* The specified bucket does not have a bucket policy.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchKey
+
+        * *Description:* The specified key does not exist.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchLifecycleConfiguration
+
+        * *Description:* The lifecycle configuration does not exist.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchUpload
+
+        * *Description:* The specified multipart upload does not exist. The upload ID might be
+        invalid, or the multipart upload might have been aborted or completed.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NoSuchVersion
+
+        * *Description:* Indicates that the version ID specified in the request does not match
+        an existing version.
+
+        * *HTTP Status Code:* 404 Not Found
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* NotImplemented
+
+        * *Description:* A header you provided implies functionality that is not implemented.
+
+        * *HTTP Status Code:* 501 Not Implemented
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* NotSignedUp
+
+        * *Description:* Your account is not signed up for the Amazon S3 service. You must sign
+        up before you can use Amazon S3. You can sign up at the following URL:
+        https://aws.amazon.com/s3
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* OperationAborted
+
+        * *Description:* A conflicting conditional operation is currently in progress against
+        this resource. Try again.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* PermanentRedirect
+
+        * *Description:* The bucket you are attempting to access must be addressed using the
+        specified endpoint. Send all future requests to this endpoint.
+
+        * *HTTP Status Code:* 301 Moved Permanently
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* PreconditionFailed
+
+        * *Description:* At least one of the preconditions you specified did not hold.
+
+        * *HTTP Status Code:* 412 Precondition Failed
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* Redirect
+
+        * *Description:* Temporary redirect.
+
+        * *HTTP Status Code:* 307 Moved Temporarily
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RestoreAlreadyInProgress
+
+        * *Description:* Object restore is already in progress.
+
+        * *HTTP Status Code:* 409 Conflict
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestIsNotMultiPartContent
+
+        * *Description:* Bucket POST must be of the enclosure-type multipart/form-data.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestTimeout
+
+        * *Description:* Your socket connection to the server was not read from or written to
+        within the timeout period.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestTimeTooSkewed
+
+        * *Description:* The difference between the request time and the server's time is too
+        large.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* RequestTorrentOfBucketError
+
+        * *Description:* Requesting the torrent file of a bucket is not permitted.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* SignatureDoesNotMatch
+
+        * *Description:* The request signature we calculated does not match the signature you
+        provided. Check your AWS secret access key and signing method. For more information,
+        see `REST Authentication
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html>`__ and `SOAP
+        Authentication
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/SOAPAuthentication.html>`__ for
+        details.
+
+        * *HTTP Status Code:* 403 Forbidden
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* ServiceUnavailable
+
+        * *Description:* Reduce your request rate.
+
+        * *HTTP Status Code:* 503 Service Unavailable
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* SlowDown
+
+        * *Description:* Reduce your request rate.
+
+        * *HTTP Status Code:* 503 Slow Down
+
+        * *SOAP Fault Code Prefix:* Server
+
+      *
+
+        * *Code:* TemporaryRedirect
+
+        * *Description:* You are being redirected to the bucket while DNS updates.
+
+        * *HTTP Status Code:* 307 Moved Temporarily
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* TokenRefreshRequired
+
+        * *Description:* The provided token must be refreshed.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* TooManyBuckets
+
+        * *Description:* You have attempted to create more buckets than allowed.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* UnexpectedContent
+
+        * *Description:* This request does not support content.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* UnresolvableGrantByEmailAddress
+
+        * *Description:* The email address you provided does not match any account on record.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
+      *
+
+        * *Code:* UserKeyMustBeSpecified
+
+        * *Description:* The bucket POST must contain the specified field name. If it is
+        specified, check the order of the fields.
+
+        * *HTTP Status Code:* 400 Bad Request
+
+        * *SOAP Fault Code Prefix:* Client
+
     - **Message** *(string) --*
+
+      The error message contains a generic description of the error condition in English. It is
+      intended for a human audience. Simple programs display the message directly to the end
+      user if they encounter an error condition they don't know how or don't care to handle.
+      Sophisticated programs with more exhaustive error handling and proper
+      internationalization are more likely to ignore the error message.
     """
 
 
@@ -24281,15 +34165,32 @@ class ObjectsDeleteResponseTypeDef(_ObjectsDeleteResponseTypeDef):
 
     - **Deleted** *(list) --*
 
+      Container element for a successful delete. It identifies the object that was successfully
+      deleted.
+
       - *(dict) --*
+
+        Information about the deleted object.
 
         - **Key** *(string) --*
 
+          The name of the deleted object.
+
         - **VersionId** *(string) --*
+
+          The version ID of the deleted object.
 
         - **DeleteMarker** *(boolean) --*
 
+          Specifies whether the versioned object that was permanently deleted was (true) or was not
+          (false) a delete marker. In a simple DELETE, this header indicates whether (true) or not
+          (false) a delete marker was created.
+
         - **DeleteMarkerVersionId** *(string) --*
+
+          The version ID of the delete marker created as a result of the DELETE operation. If you
+          delete a specific object version, the value returned by this header is the version ID of
+          the object version deleted.
 
     - **RequestCharged** *(string) --*
 
@@ -24297,15 +34198,960 @@ class ObjectsDeleteResponseTypeDef(_ObjectsDeleteResponseTypeDef):
 
     - **Errors** *(list) --*
 
+      Container for a failed delete operation that describes the object that Amazon S3 attempted to
+      delete and the error it encountered.
+
       - *(dict) --*
+
+        Container for all error elements.
 
         - **Key** *(string) --*
 
+          The error key.
+
         - **VersionId** *(string) --*
+
+          The version ID of the error.
 
         - **Code** *(string) --*
 
+          The error code is a string that uniquely identifies an error condition. It is meant to be
+          read and understood by programs that detect and handle errors by type.
+
+           **Amazon S3 error codes**
+
+          *
+
+            * *Code:* AccessDenied
+
+            * *Description:* Access Denied
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AccountProblem
+
+            * *Description:* There is a problem with your AWS account that prevents the operation
+            from completing successfully. Contact AWS Support for further assistance.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AllAccessDisabled
+
+            * *Description:* All access to this Amazon S3 resource has been disabled. Contact AWS
+            Support for further assistance.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AmbiguousGrantByEmailAddress
+
+            * *Description:* The email address you provided is associated with more than one
+            account.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* AuthorizationHeaderMalformed
+
+            * *Description:* The authorization header you provided is invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *HTTP Status Code:* N/A
+
+          *
+
+            * *Code:* BadDigest
+
+            * *Description:* The Content-MD5 you specified did not match what we received.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* BucketAlreadyExists
+
+            * *Description:* The requested bucket name is not available. The bucket namespace is
+            shared by all users of the system. Please select a different name and try again.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* BucketAlreadyOwnedByYou
+
+            * *Description:* The bucket you tried to create already exists, and you own it. Amazon
+            S3 returns this error in all AWS Regions except in the North Virginia region. For
+            legacy compatibility, if you re-create an existing bucket that you already own in the
+            North Virginia region, Amazon S3 returns 200 OK and resets the bucket access control
+            lists (ACLs).
+
+            * *Code:* 409 Conflict (in all regions except the North Virginia region)
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* BucketNotEmpty
+
+            * *Description:* The bucket you tried to delete is not empty.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* CredentialsNotSupported
+
+            * *Description:* This request does not support credentials.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* CrossLocationLoggingProhibited
+
+            * *Description:* Cross-location logging not allowed. Buckets in one geographic location
+            cannot log information to a bucket in another location.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* EntityTooSmall
+
+            * *Description:* Your proposed upload is smaller than the minimum allowed object size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* EntityTooLarge
+
+            * *Description:* Your proposed upload exceeds the maximum allowed object size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* ExpiredToken
+
+            * *Description:* The provided token has expired.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* IllegalVersioningConfigurationException
+
+            * *Description:* Indicates that the versioning configuration specified in the request
+            is invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* IncompleteBody
+
+            * *Description:* You did not provide the number of bytes specified by the
+            Content-Length HTTP header
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* IncorrectNumberOfFilesInPostRequest
+
+            * *Description:* POST requires exactly one file upload per request.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InlineDataTooLarge
+
+            * *Description:* Inline data exceeds the maximum allowed size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InternalError
+
+            * *Description:* We encountered an internal error. Please try again.
+
+            * *HTTP Status Code:* 500 Internal Server Error
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* InvalidAccessKeyId
+
+            * *Description:* The AWS access key ID you provided does not exist in our records.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidAddressingHeader
+
+            * *Description:* You must specify the Anonymous role.
+
+            * *HTTP Status Code:* N/A
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidArgument
+
+            * *Description:* Invalid Argument
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidBucketName
+
+            * *Description:* The specified bucket is not valid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidBucketState
+
+            * *Description:* The request is not valid with the current state of the bucket.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidDigest
+
+            * *Description:* The Content-MD5 you specified is not valid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidEncryptionAlgorithmError
+
+            * *Description:* The encryption request you specified is not valid. The valid value is
+            AES256.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidLocationConstraint
+
+            * *Description:* The specified location constraint is not valid. For more information
+            about Regions, see `How to Select a Region for Your Buckets
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro>`__
+            .
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidObjectState
+
+            * *Description:* The operation is not valid for the current state of the object.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPart
+
+            * *Description:* One or more of the specified parts could not be found. The part might
+            not have been uploaded, or the specified entity tag might not have matched the part's
+            entity tag.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPartOrder
+
+            * *Description:* The list of parts was not in ascending order. Parts list must be
+            specified in order by part number.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPayer
+
+            * *Description:* All access to this object has been disabled. Please contact AWS
+            Support for further assistance.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidPolicyDocument
+
+            * *Description:* The content of the form does not meet the conditions specified in the
+            policy document.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidRange
+
+            * *Description:* The requested range cannot be satisfied.
+
+            * *HTTP Status Code:* 416 Requested Range Not Satisfiable
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Please use AWS4-HMAC-SHA256.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* SOAP requests must be made over an HTTPS connection.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+            non-DNS compliant names.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration is not supported for buckets with
+            periods (.) in their names.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Accelerate endpoint only supports virtual style
+            requests.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Accelerate is not configured on this bucket.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Accelerate is disabled on this bucket.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration is not supported on this bucket.
+            Contact AWS Support for more information.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidRequest
+
+            * *Description:* Amazon S3 Transfer Acceleration cannot be enabled on this bucket.
+            Contact AWS Support for more information.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *Code:* N/A
+
+          *
+
+            * *Code:* InvalidSecurity
+
+            * *Description:* The provided security credentials are not valid.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidSOAPRequest
+
+            * *Description:* The SOAP request body is invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidStorageClass
+
+            * *Description:* The storage class you specified is not valid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidTargetBucketForLogging
+
+            * *Description:* The target bucket for logging does not exist, is not owned by you, or
+            does not have the appropriate grants for the log-delivery group.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidToken
+
+            * *Description:* The provided token is malformed or otherwise invalid.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* InvalidURI
+
+            * *Description:* Couldn't parse the specified URI.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* KeyTooLongError
+
+            * *Description:* Your key is too long.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MalformedACLError
+
+            * *Description:* The XML you provided was not well-formed or did not validate against
+            our published schema.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MalformedPOSTRequest
+
+            * *Description:* The body of your POST request is not well-formed multipart/form-data.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MalformedXML
+
+            * *Description:* This happens when the user sends malformed XML (XML that doesn't
+            conform to the published XSD) for the configuration. The error message is, "The XML you
+            provided was not well-formed or did not validate against our published schema."
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MaxMessageLengthExceeded
+
+            * *Description:* Your request was too big.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MaxPostPreDataLengthExceededError
+
+            * *Description:* Your POST request fields preceding the upload file were too large.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MetadataTooLarge
+
+            * *Description:* Your metadata headers exceed the maximum allowed metadata size.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MethodNotAllowed
+
+            * *Description:* The specified method is not allowed against this resource.
+
+            * *HTTP Status Code:* 405 Method Not Allowed
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingAttachment
+
+            * *Description:* A SOAP attachment was expected, but none were found.
+
+            * *HTTP Status Code:* N/A
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingContentLength
+
+            * *Description:* You must provide the Content-Length HTTP header.
+
+            * *HTTP Status Code:* 411 Length Required
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingRequestBodyError
+
+            * *Description:* This happens when the user sends an empty XML document as a request.
+            The error message is, "Request body is empty."
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingSecurityElement
+
+            * *Description:* The SOAP 1.1 request is missing a security element.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* MissingSecurityHeader
+
+            * *Description:* Your request is missing a required header.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoLoggingStatusForKey
+
+            * *Description:* There is no such thing as a logging status subresource for a key.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchBucket
+
+            * *Description:* The specified bucket does not exist.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchBucketPolicy
+
+            * *Description:* The specified bucket does not have a bucket policy.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchKey
+
+            * *Description:* The specified key does not exist.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchLifecycleConfiguration
+
+            * *Description:* The lifecycle configuration does not exist.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchUpload
+
+            * *Description:* The specified multipart upload does not exist. The upload ID might be
+            invalid, or the multipart upload might have been aborted or completed.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NoSuchVersion
+
+            * *Description:* Indicates that the version ID specified in the request does not match
+            an existing version.
+
+            * *HTTP Status Code:* 404 Not Found
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* NotImplemented
+
+            * *Description:* A header you provided implies functionality that is not implemented.
+
+            * *HTTP Status Code:* 501 Not Implemented
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* NotSignedUp
+
+            * *Description:* Your account is not signed up for the Amazon S3 service. You must sign
+            up before you can use Amazon S3. You can sign up at the following URL:
+            https://aws.amazon.com/s3
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* OperationAborted
+
+            * *Description:* A conflicting conditional operation is currently in progress against
+            this resource. Try again.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* PermanentRedirect
+
+            * *Description:* The bucket you are attempting to access must be addressed using the
+            specified endpoint. Send all future requests to this endpoint.
+
+            * *HTTP Status Code:* 301 Moved Permanently
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* PreconditionFailed
+
+            * *Description:* At least one of the preconditions you specified did not hold.
+
+            * *HTTP Status Code:* 412 Precondition Failed
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* Redirect
+
+            * *Description:* Temporary redirect.
+
+            * *HTTP Status Code:* 307 Moved Temporarily
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RestoreAlreadyInProgress
+
+            * *Description:* Object restore is already in progress.
+
+            * *HTTP Status Code:* 409 Conflict
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestIsNotMultiPartContent
+
+            * *Description:* Bucket POST must be of the enclosure-type multipart/form-data.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestTimeout
+
+            * *Description:* Your socket connection to the server was not read from or written to
+            within the timeout period.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestTimeTooSkewed
+
+            * *Description:* The difference between the request time and the server's time is too
+            large.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* RequestTorrentOfBucketError
+
+            * *Description:* Requesting the torrent file of a bucket is not permitted.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* SignatureDoesNotMatch
+
+            * *Description:* The request signature we calculated does not match the signature you
+            provided. Check your AWS secret access key and signing method. For more information,
+            see `REST Authentication
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html>`__ and `SOAP
+            Authentication
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/SOAPAuthentication.html>`__ for
+            details.
+
+            * *HTTP Status Code:* 403 Forbidden
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* ServiceUnavailable
+
+            * *Description:* Reduce your request rate.
+
+            * *HTTP Status Code:* 503 Service Unavailable
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* SlowDown
+
+            * *Description:* Reduce your request rate.
+
+            * *HTTP Status Code:* 503 Slow Down
+
+            * *SOAP Fault Code Prefix:* Server
+
+          *
+
+            * *Code:* TemporaryRedirect
+
+            * *Description:* You are being redirected to the bucket while DNS updates.
+
+            * *HTTP Status Code:* 307 Moved Temporarily
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* TokenRefreshRequired
+
+            * *Description:* The provided token must be refreshed.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* TooManyBuckets
+
+            * *Description:* You have attempted to create more buckets than allowed.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* UnexpectedContent
+
+            * *Description:* This request does not support content.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* UnresolvableGrantByEmailAddress
+
+            * *Description:* The email address you provided does not match any account on record.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
+          *
+
+            * *Code:* UserKeyMustBeSpecified
+
+            * *Description:* The bucket POST must contain the specified field name. If it is
+            specified, check the order of the fields.
+
+            * *HTTP Status Code:* 400 Bad Request
+
+            * *SOAP Fault Code Prefix:* Client
+
         - **Message** *(string) --*
+
+          The error message contains a generic description of the error condition in English. It is
+          intended for a human audience. Simple programs display the message directly to the end
+          user if they encounter an error condition they don't know how or don't care to handle.
+          Sophisticated programs with more exhaustive error handling and proper
+          internationalization are more likely to ignore the error message.
     """
 
 
@@ -24321,6 +35167,8 @@ class ServiceResourceCreateBucketCreateBucketConfigurationTypeDef(
 ):
     """
     Type definition for `ServiceResourceCreateBucket` `CreateBucketConfiguration`
+
+    The configuration information for the bucket.
 
     - **LocationConstraint** *(string) --*
 

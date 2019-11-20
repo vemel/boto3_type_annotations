@@ -411,9 +411,9 @@ class ListFunctionsPaginator(Boto3Paginator):
                         'FunctionName': 'string',
                         'FunctionArn': 'string',
                         'Runtime':
-                        'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'java8'|'python2.7'
-                        |'python3.6'|'python3.7'|'dotnetcore1.0'|'dotnetcore2.0'|'dotnetcore2.1'
-                        |'nodejs4.3-edge'|'go1.x'|'ruby2.5'|'provided',
+                        'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'nodejs12.x'|'java8'
+                        |'java11'|'python2.7'|'python3.6'|'python3.7'|'python3.8'|'dotnetcore1.0'
+                        |'dotnetcore2.0'|'dotnetcore2.1'|'nodejs4.3-edge'|'go1.x'|'ruby2.5'|'provided',
                         'Role': 'string',
                         'Handler': 'string',
                         'CodeSize': 123,
@@ -645,9 +645,9 @@ class ListLayerVersionsPaginator(Boto3Paginator):
 
           response_iterator = paginator.paginate(
               CompatibleRuntime=
-                  'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'java8'|'python2.7'
-                  |'python3.6'|'python3.7'|'dotnetcore1.0'|'dotnetcore2.0'|'dotnetcore2.1'|'nodejs4.3-edge'
-                  |'go1.x'|'ruby2.5'|'provided',
+                  'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'nodejs12.x'|'java8'|'java11'
+                  |'python2.7'|'python3.6'|'python3.7'|'python3.8'|'dotnetcore1.0'|'dotnetcore2.0'
+                  |'dotnetcore2.1'|'nodejs4.3-edge'|'go1.x'|'ruby2.5'|'provided',
               LayerName='string',
               PaginationConfig={
                   'MaxItems': 123,
@@ -700,9 +700,10 @@ class ListLayerVersionsPaginator(Boto3Paginator):
                         'Description': 'string',
                         'CreatedDate': 'string',
                         'CompatibleRuntimes': [
-                            'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'java8'|'python2.7'
-                            |'python3.6'|'python3.7'|'dotnetcore1.0'|'dotnetcore2.0'|'dotnetcore2.1'
-                            |'nodejs4.3-edge'|'go1.x'|'ruby2.5'|'provided',
+                            'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'nodejs12.x'
+                            |'java8'|'java11'|'python2.7'|'python3.6'|'python3.7'|'python3.8'
+                            |'dotnetcore1.0'|'dotnetcore2.0'|'dotnetcore2.1'|'nodejs4.3-edge'|'go1.x'
+                            |'ruby2.5'|'provided',
                         ],
                         'LicenseInfo': 'string'
                     },
@@ -778,9 +779,9 @@ class ListLayersPaginator(Boto3Paginator):
 
           response_iterator = paginator.paginate(
               CompatibleRuntime=
-                  'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'java8'|'python2.7'
-                  |'python3.6'|'python3.7'|'dotnetcore1.0'|'dotnetcore2.0'|'dotnetcore2.1'|'nodejs4.3-edge'
-                  |'go1.x'|'ruby2.5'|'provided',
+                  'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'nodejs12.x'|'java8'|'java11'
+                  |'python2.7'|'python3.6'|'python3.7'|'python3.8'|'dotnetcore1.0'|'dotnetcore2.0'
+                  |'dotnetcore2.1'|'nodejs4.3-edge'|'go1.x'|'ruby2.5'|'provided',
               PaginationConfig={
                   'MaxItems': 123,
                   'PageSize': 123,
@@ -830,9 +831,10 @@ class ListLayersPaginator(Boto3Paginator):
                             'Description': 'string',
                             'CreatedDate': 'string',
                             'CompatibleRuntimes': [
-                                'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'java8'
-                                |'python2.7'|'python3.6'|'python3.7'|'dotnetcore1.0'|'dotnetcore2.0'
-                                |'dotnetcore2.1'|'nodejs4.3-edge'|'go1.x'|'ruby2.5'|'provided',
+                                'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'nodejs12.x'
+                                |'java8'|'java11'|'python2.7'|'python3.6'|'python3.7'|'python3.8'
+                                |'dotnetcore1.0'|'dotnetcore2.0'|'dotnetcore2.1'|'nodejs4.3-edge'|'go1.x'
+                                |'ruby2.5'|'provided',
                             ],
                             'LicenseInfo': 'string'
                         }
@@ -977,9 +979,9 @@ class ListVersionsByFunctionPaginator(Boto3Paginator):
                         'FunctionName': 'string',
                         'FunctionArn': 'string',
                         'Runtime':
-                        'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'java8'|'python2.7'
-                        |'python3.6'|'python3.7'|'dotnetcore1.0'|'dotnetcore2.0'|'dotnetcore2.1'
-                        |'nodejs4.3-edge'|'go1.x'|'ruby2.5'|'provided',
+                        'nodejs'|'nodejs4.3'|'nodejs6.10'|'nodejs8.10'|'nodejs10.x'|'nodejs12.x'|'java8'
+                        |'java11'|'python2.7'|'python3.6'|'python3.7'|'python3.8'|'dotnetcore1.0'
+                        |'dotnetcore2.0'|'dotnetcore2.1'|'nodejs4.3-edge'|'go1.x'|'ruby2.5'|'provided',
                         'Role': 'string',
                         'Handler': 'string',
                         'CodeSize': 123,

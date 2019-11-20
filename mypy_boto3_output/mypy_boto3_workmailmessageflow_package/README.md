@@ -1,4 +1,4 @@
 # mypy-boto3-workmailmessageflow
 
-Mypy-friendly type annotations for `boto3` 1.10.19 `workmailmessageflow` service.
+Mypy-friendly type annotations for `boto3` 1.10.22 `workmailmessageflow` service.
 More information can be found [here](https://github.com/vemel/mypy_boto3).

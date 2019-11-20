@@ -6066,9 +6066,7 @@ class DescribeInstancesPaginator(Boto3Paginator):
           * ``hypervisor`` - The hypervisor type of the instance (``ovm`` | ``xen`` ).
 
           * ``iam-instance-profile.arn`` - The instance profile associated with the instance. Specified as
-          an ARN.
-
-          * ``image-id`` - The ID of the image used to launch the instance.
+          an ARN. ``image-id`` - The ID of the image used to launch the instance.
 
           * ``instance-id`` - The ID of the instance.
 
@@ -6099,6 +6097,15 @@ class DescribeInstancesPaginator(Boto3Paginator):
           launch group (for example, 0, 1, 2, and so on).
 
           * ``launch-time`` - The time when the instance was launched.
+
+          * ``metadata-http-tokens`` - The metadata request authorization state (``optional`` |
+          ``required`` )
+
+          * ``metadata-http-put-response-hop-limit`` - The http metadata request put response hop limit
+          (integer, possible values ``1`` to ``64`` )
+
+          * ``metadata-http-endpoint`` - Enable or disable metadata access on http endpoint (``enabled`` |
+          ``disabled`` )
 
           * ``monitoring-state`` - Indicates whether detailed monitoring is enabled (``disabled`` |
           ``enabled`` ).
@@ -6556,7 +6563,13 @@ class DescribeInstancesPaginator(Boto3Paginator):
                                     {
                                         'LicenseConfigurationArn': 'string'
                                     },
-                                ]
+                                ],
+                                'MetadataOptions': {
+                                    'State': 'pending'|'applied',
+                                    'HttpTokens': 'optional'|'required',
+                                    'HttpPutResponseHopLimit': 123,
+                                    'HttpEndpoint': 'disabled'|'enabled'
+                                }
                             },
                         ],
                         'OwnerId': 'string',
@@ -7236,6 +7249,54 @@ class DescribeInstancesPaginator(Boto3Paginator):
                         - **LicenseConfigurationArn** *(string) --*
 
                           The Amazon Resource Name (ARN) of the license configuration.
+
+                    - **MetadataOptions** *(dict) --*
+
+                      The metadata options for the instance.
+
+                      - **State** *(string) --*
+
+                        The state of the metadata option changes.
+
+                         ``pending`` - The metadata options are being updated and the instance is not ready
+                         to process metadata traffic with the new selection.
+
+                         ``applied`` - The metadata options have been successfully applied on the instance.
+
+                      - **HttpTokens** *(string) --*
+
+                        The state of token usage for your instance metadata requests. If the parameter is
+                        not specified in the request, the default state is ``optional`` .
+
+                        If the state is ``optional`` , you can choose to retrieve instance metadata with or
+                        without a signed token header on your request. If you retrieve the IAM role
+                        credentials without a token, the version 1.0 role credentials are returned. If you
+                        retrieve the IAM role credentials using a valid signed token, the version 2.0 role
+                        credentials are returned.
+
+                        If the state is ``required`` , you must send a signed token header with any
+                        instance metadata retrieval requests. In this state, retrieving the IAM role
+                        credential always returns the version 2.0 credentials; the version 1.0 credentials
+                        are not available.
+
+                      - **HttpPutResponseHopLimit** *(integer) --*
+
+                        The desired HTTP PUT response hop limit for instance metadata requests. The larger
+                        the number, the further instance metadata requests can travel.
+
+                        Default: 1
+
+                        Possible values: Integers from 1 to 64
+
+                      - **HttpEndpoint** *(string) --*
+
+                        This parameter enables or disables the HTTP metadata endpoint on your instances. If
+                        the parameter is not specified, the default state is ``enabled`` .
+
+                        .. note::
+
+                          If you specify a value of ``disabled`` , you will not be able to access your
+                          instance metadata.
 
                 - **OwnerId** *(string) --*
 

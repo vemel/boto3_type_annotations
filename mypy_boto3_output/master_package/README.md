@@ -1,6 +1,6 @@
 # mypy_boto3
 
-Mypy-friendly type annotations for `boto3` 1.10.19.
+Mypy-friendly type annotations for `boto3` 1.10.22.
 More information can be found [here](https://github.com/vemel/mypy_boto3).
 
 ## Submodules

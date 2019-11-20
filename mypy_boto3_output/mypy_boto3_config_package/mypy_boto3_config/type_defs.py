@@ -53,6 +53,14 @@ __all__ = (
     "ClientDescribeConfigurationRecordersResponseConfigurationRecordersrecordingGroupTypeDef",
     "ClientDescribeConfigurationRecordersResponseConfigurationRecordersTypeDef",
     "ClientDescribeConfigurationRecordersResponseTypeDef",
+    "ClientDescribeConformancePackComplianceFiltersTypeDef",
+    "ClientDescribeConformancePackComplianceResponseConformancePackRuleComplianceListTypeDef",
+    "ClientDescribeConformancePackComplianceResponseTypeDef",
+    "ClientDescribeConformancePackStatusResponseConformancePackStatusDetailsTypeDef",
+    "ClientDescribeConformancePackStatusResponseTypeDef",
+    "ClientDescribeConformancePacksResponseConformancePackDetailsConformancePackInputParametersTypeDef",
+    "ClientDescribeConformancePacksResponseConformancePackDetailsTypeDef",
+    "ClientDescribeConformancePacksResponseTypeDef",
     "ClientDescribeDeliveryChannelStatusResponseDeliveryChannelsStatusconfigHistoryDeliveryInfoTypeDef",
     "ClientDescribeDeliveryChannelStatusResponseDeliveryChannelsStatusconfigSnapshotDeliveryInfoTypeDef",
     "ClientDescribeDeliveryChannelStatusResponseDeliveryChannelsStatusconfigStreamDeliveryInfoTypeDef",
@@ -67,6 +75,11 @@ __all__ = (
     "ClientDescribeOrganizationConfigRulesResponseOrganizationConfigRulesOrganizationManagedRuleMetadataTypeDef",
     "ClientDescribeOrganizationConfigRulesResponseOrganizationConfigRulesTypeDef",
     "ClientDescribeOrganizationConfigRulesResponseTypeDef",
+    "ClientDescribeOrganizationConformancePackStatusesResponseOrganizationConformancePackStatusesTypeDef",
+    "ClientDescribeOrganizationConformancePackStatusesResponseTypeDef",
+    "ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacksConformancePackInputParametersTypeDef",
+    "ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacksTypeDef",
+    "ClientDescribeOrganizationConformancePacksResponseTypeDef",
     "ClientDescribePendingAggregationRequestsResponsePendingAggregationRequestsTypeDef",
     "ClientDescribePendingAggregationRequestsResponseTypeDef",
     "ClientDescribeRemediationConfigurationsResponseRemediationConfigurationsExecutionControlsSsmControlsTypeDef",
@@ -120,11 +133,21 @@ __all__ = (
     "ClientGetComplianceSummaryByResourceTypeResponseComplianceSummariesByResourceTypeComplianceSummaryTypeDef",
     "ClientGetComplianceSummaryByResourceTypeResponseComplianceSummariesByResourceTypeTypeDef",
     "ClientGetComplianceSummaryByResourceTypeResponseTypeDef",
+    "ClientGetConformancePackComplianceDetailsFiltersTypeDef",
+    "ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifierEvaluationResultQualifierTypeDef",
+    "ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifierTypeDef",
+    "ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsTypeDef",
+    "ClientGetConformancePackComplianceDetailsResponseTypeDef",
+    "ClientGetConformancePackComplianceSummaryResponseConformancePackComplianceSummaryListTypeDef",
+    "ClientGetConformancePackComplianceSummaryResponseTypeDef",
     "ClientGetDiscoveredResourceCountsResponseresourceCountsTypeDef",
     "ClientGetDiscoveredResourceCountsResponseTypeDef",
     "ClientGetOrganizationConfigRuleDetailedStatusFiltersTypeDef",
     "ClientGetOrganizationConfigRuleDetailedStatusResponseOrganizationConfigRuleDetailedStatusTypeDef",
     "ClientGetOrganizationConfigRuleDetailedStatusResponseTypeDef",
+    "ClientGetOrganizationConformancePackDetailedStatusFiltersTypeDef",
+    "ClientGetOrganizationConformancePackDetailedStatusResponseOrganizationConformancePackDetailedStatusesTypeDef",
+    "ClientGetOrganizationConformancePackDetailedStatusResponseTypeDef",
     "ClientGetResourceConfigHistoryResponseconfigurationItemsrelationshipsTypeDef",
     "ClientGetResourceConfigHistoryResponseconfigurationItemsTypeDef",
     "ClientGetResourceConfigHistoryResponseTypeDef",
@@ -152,6 +175,8 @@ __all__ = (
     "ClientPutConfigurationAggregatorTagsTypeDef",
     "ClientPutConfigurationRecorderConfigurationRecorderrecordingGroupTypeDef",
     "ClientPutConfigurationRecorderConfigurationRecorderTypeDef",
+    "ClientPutConformancePackConformancePackInputParametersTypeDef",
+    "ClientPutConformancePackResponseTypeDef",
     "ClientPutDeliveryChannelDeliveryChannelconfigSnapshotDeliveryPropertiesTypeDef",
     "ClientPutDeliveryChannelDeliveryChannelTypeDef",
     "ClientPutEvaluationsEvaluationsTypeDef",
@@ -160,6 +185,8 @@ __all__ = (
     "ClientPutOrganizationConfigRuleOrganizationCustomRuleMetadataTypeDef",
     "ClientPutOrganizationConfigRuleOrganizationManagedRuleMetadataTypeDef",
     "ClientPutOrganizationConfigRuleResponseTypeDef",
+    "ClientPutOrganizationConformancePackConformancePackInputParametersTypeDef",
+    "ClientPutOrganizationConformancePackResponseTypeDef",
     "ClientPutRemediationConfigurationsRemediationConfigurationsExecutionControlsSsmControlsTypeDef",
     "ClientPutRemediationConfigurationsRemediationConfigurationsExecutionControlsTypeDef",
     "ClientPutRemediationConfigurationsRemediationConfigurationsParametersResourceValueTypeDef",
@@ -3341,6 +3368,439 @@ class ClientDescribeConfigurationRecordersResponseTypeDef(
     """
 
 
+_ClientDescribeConformancePackComplianceFiltersTypeDef = TypedDict(
+    "_ClientDescribeConformancePackComplianceFiltersTypeDef",
+    {"ConfigRuleNames": List[str], "ComplianceType": str},
+    total=False,
+)
+
+
+class ClientDescribeConformancePackComplianceFiltersTypeDef(
+    _ClientDescribeConformancePackComplianceFiltersTypeDef
+):
+    """
+    Type definition for `ClientDescribeConformancePackCompliance` `Filters`
+
+    A ``ConformancePackComplianceFilters`` object.
+
+    - **ConfigRuleNames** *(list) --*
+
+      Filters the results by AWS Config rule names.
+
+      - *(string) --*
+
+    - **ComplianceType** *(string) --*
+
+      Filters the results by compliance.
+
+      The allowed values are ``COMPLIANT`` and ``NON_COMPLIANT`` .
+    """
+
+
+_ClientDescribeConformancePackComplianceResponseConformancePackRuleComplianceListTypeDef = TypedDict(
+    "_ClientDescribeConformancePackComplianceResponseConformancePackRuleComplianceListTypeDef",
+    {"ConfigRuleName": str, "ComplianceType": str},
+    total=False,
+)
+
+
+class ClientDescribeConformancePackComplianceResponseConformancePackRuleComplianceListTypeDef(
+    _ClientDescribeConformancePackComplianceResponseConformancePackRuleComplianceListTypeDef
+):
+    """
+    Type definition for `ClientDescribeConformancePackComplianceResponse` `ConformancePackRuleComplianceList`
+
+    Compliance information of one or more AWS Config rules within a conformance pack. You can
+    filter using AWS Config rule names and compliance types.
+
+    - **ConfigRuleName** *(string) --*
+
+      Filters the results by AWS Config rule name.
+
+    - **ComplianceType** *(string) --*
+
+      Filters the results by compliance.
+
+      The allowed values are ``COMPLIANT`` and ``NON_COMPLIANT`` .
+    """
+
+
+_ClientDescribeConformancePackComplianceResponseTypeDef = TypedDict(
+    "_ClientDescribeConformancePackComplianceResponseTypeDef",
+    {
+        "ConformancePackName": str,
+        "ConformancePackRuleComplianceList": List[
+            ClientDescribeConformancePackComplianceResponseConformancePackRuleComplianceListTypeDef
+        ],
+        "NextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientDescribeConformancePackComplianceResponseTypeDef(
+    _ClientDescribeConformancePackComplianceResponseTypeDef
+):
+    """
+    Type definition for `ClientDescribeConformancePackCompliance` `Response`
+
+    - **ConformancePackName** *(string) --*
+
+      Name of the conformance pack.
+
+    - **ConformancePackRuleComplianceList** *(list) --*
+
+      Returns a list of ``ConformancePackRuleCompliance`` objects.
+
+      - *(dict) --*
+
+        Compliance information of one or more AWS Config rules within a conformance pack. You can
+        filter using AWS Config rule names and compliance types.
+
+        - **ConfigRuleName** *(string) --*
+
+          Filters the results by AWS Config rule name.
+
+        - **ComplianceType** *(string) --*
+
+          Filters the results by compliance.
+
+          The allowed values are ``COMPLIANT`` and ``NON_COMPLIANT`` .
+
+    - **NextToken** *(string) --*
+
+      The ``nextToken`` string returned in a previous request that you use to request the next page
+      of results in a paginated response.
+    """
+
+
+_ClientDescribeConformancePackStatusResponseConformancePackStatusDetailsTypeDef = TypedDict(
+    "_ClientDescribeConformancePackStatusResponseConformancePackStatusDetailsTypeDef",
+    {
+        "ConformancePackName": str,
+        "ConformancePackId": str,
+        "ConformancePackArn": str,
+        "ConformancePackState": str,
+        "StackArn": str,
+        "ConformancePackStatusReason": str,
+        "LastUpdateRequestedTime": datetime,
+        "LastUpdateCompletedTime": datetime,
+    },
+    total=False,
+)
+
+
+class ClientDescribeConformancePackStatusResponseConformancePackStatusDetailsTypeDef(
+    _ClientDescribeConformancePackStatusResponseConformancePackStatusDetailsTypeDef
+):
+    """
+    Type definition for `ClientDescribeConformancePackStatusResponse` `ConformancePackStatusDetails`
+
+    Status details of a conformance pack.
+
+    - **ConformancePackName** *(string) --*
+
+      Name of the conformance pack.
+
+    - **ConformancePackId** *(string) --*
+
+      ID of the conformance pack.
+
+    - **ConformancePackArn** *(string) --*
+
+      Amazon Resource Name (ARN) of comformance pack.
+
+    - **ConformancePackState** *(string) --*
+
+      Indicates deployment status of conformance pack.
+
+      AWS Config sets the state of the conformance pack to:
+
+      * CREATE_IN_PROGRESS when a conformance pack creation is in progress for an account.
+
+      * CREATE_COMPLETE when a conformance pack has been successfully created in your account.
+
+      * CREATE_FAILED when a conformance pack creation failed in your account.
+
+      * DELETE_IN_PROGRESS when a conformance pack deletion is in progress.
+
+      * DELETE_FAILED when a conformance pack deletion failed from your account.
+
+    - **StackArn** *(string) --*
+
+      Amazon Resource Name (ARN) of AWS CloudFormation stack.
+
+    - **ConformancePackStatusReason** *(string) --*
+
+      The reason of conformance pack creation failure.
+
+    - **LastUpdateRequestedTime** *(datetime) --*
+
+      Last time when conformation pack creation and update was requested.
+
+    - **LastUpdateCompletedTime** *(datetime) --*
+
+      Last time when conformation pack creation and update was successful.
+    """
+
+
+_ClientDescribeConformancePackStatusResponseTypeDef = TypedDict(
+    "_ClientDescribeConformancePackStatusResponseTypeDef",
+    {
+        "ConformancePackStatusDetails": List[
+            ClientDescribeConformancePackStatusResponseConformancePackStatusDetailsTypeDef
+        ],
+        "NextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientDescribeConformancePackStatusResponseTypeDef(
+    _ClientDescribeConformancePackStatusResponseTypeDef
+):
+    """
+    Type definition for `ClientDescribeConformancePackStatus` `Response`
+
+    - **ConformancePackStatusDetails** *(list) --*
+
+      A list of ``ConformancePackStatusDetail`` objects.
+
+      - *(dict) --*
+
+        Status details of a conformance pack.
+
+        - **ConformancePackName** *(string) --*
+
+          Name of the conformance pack.
+
+        - **ConformancePackId** *(string) --*
+
+          ID of the conformance pack.
+
+        - **ConformancePackArn** *(string) --*
+
+          Amazon Resource Name (ARN) of comformance pack.
+
+        - **ConformancePackState** *(string) --*
+
+          Indicates deployment status of conformance pack.
+
+          AWS Config sets the state of the conformance pack to:
+
+          * CREATE_IN_PROGRESS when a conformance pack creation is in progress for an account.
+
+          * CREATE_COMPLETE when a conformance pack has been successfully created in your account.
+
+          * CREATE_FAILED when a conformance pack creation failed in your account.
+
+          * DELETE_IN_PROGRESS when a conformance pack deletion is in progress.
+
+          * DELETE_FAILED when a conformance pack deletion failed from your account.
+
+        - **StackArn** *(string) --*
+
+          Amazon Resource Name (ARN) of AWS CloudFormation stack.
+
+        - **ConformancePackStatusReason** *(string) --*
+
+          The reason of conformance pack creation failure.
+
+        - **LastUpdateRequestedTime** *(datetime) --*
+
+          Last time when conformation pack creation and update was requested.
+
+        - **LastUpdateCompletedTime** *(datetime) --*
+
+          Last time when conformation pack creation and update was successful.
+
+    - **NextToken** *(string) --*
+
+      The ``nextToken`` string returned in a previous request that you use to request the next page
+      of results in a paginated response.
+    """
+
+
+_ClientDescribeConformancePacksResponseConformancePackDetailsConformancePackInputParametersTypeDef = TypedDict(
+    "_ClientDescribeConformancePacksResponseConformancePackDetailsConformancePackInputParametersTypeDef",
+    {"ParameterName": str, "ParameterValue": str},
+    total=False,
+)
+
+
+class ClientDescribeConformancePacksResponseConformancePackDetailsConformancePackInputParametersTypeDef(
+    _ClientDescribeConformancePacksResponseConformancePackDetailsConformancePackInputParametersTypeDef
+):
+    """
+    Type definition for `ClientDescribeConformancePacksResponseConformancePackDetails` `ConformancePackInputParameters`
+
+    Input parameters in the form of key-value pairs for the conformance pack, both of which
+    you define. Keys can have a maximum character length of 128 characters, and values can
+    have a maximum length of 256 characters.
+
+    - **ParameterName** *(string) --*
+
+      One part of a key-value pair.
+
+    - **ParameterValue** *(string) --*
+
+      Another part of the key-value pair.
+    """
+
+
+_ClientDescribeConformancePacksResponseConformancePackDetailsTypeDef = TypedDict(
+    "_ClientDescribeConformancePacksResponseConformancePackDetailsTypeDef",
+    {
+        "ConformancePackName": str,
+        "ConformancePackArn": str,
+        "ConformancePackId": str,
+        "DeliveryS3Bucket": str,
+        "DeliveryS3KeyPrefix": str,
+        "ConformancePackInputParameters": List[
+            ClientDescribeConformancePacksResponseConformancePackDetailsConformancePackInputParametersTypeDef
+        ],
+        "LastUpdateRequestedTime": datetime,
+        "CreatedBy": str,
+    },
+    total=False,
+)
+
+
+class ClientDescribeConformancePacksResponseConformancePackDetailsTypeDef(
+    _ClientDescribeConformancePacksResponseConformancePackDetailsTypeDef
+):
+    """
+    Type definition for `ClientDescribeConformancePacksResponse` `ConformancePackDetails`
+
+    Returns details of a conformance pack. A conformance pack is a collection of AWS Config
+    rules that can be easily deployed in an account and a region.
+
+    - **ConformancePackName** *(string) --*
+
+      Name of the conformance pack.
+
+    - **ConformancePackArn** *(string) --*
+
+      Amazon Resource Name (ARN) of the conformance pack.
+
+    - **ConformancePackId** *(string) --*
+
+      ID of the conformance pack.
+
+    - **DeliveryS3Bucket** *(string) --*
+
+      Location of an Amazon S3 bucket where AWS Config can deliver evaluation results and
+      conformance pack template that is used to create a pack.
+
+    - **DeliveryS3KeyPrefix** *(string) --*
+
+      Any folder structure you want to add to an Amazon S3 bucket.
+
+    - **ConformancePackInputParameters** *(list) --*
+
+      A list of ``ConformancePackInputParameter`` objects.
+
+      - *(dict) --*
+
+        Input parameters in the form of key-value pairs for the conformance pack, both of which
+        you define. Keys can have a maximum character length of 128 characters, and values can
+        have a maximum length of 256 characters.
+
+        - **ParameterName** *(string) --*
+
+          One part of a key-value pair.
+
+        - **ParameterValue** *(string) --*
+
+          Another part of the key-value pair.
+
+    - **LastUpdateRequestedTime** *(datetime) --*
+
+      Last time when conformation pack update was requested.
+
+    - **CreatedBy** *(string) --*
+    """
+
+
+_ClientDescribeConformancePacksResponseTypeDef = TypedDict(
+    "_ClientDescribeConformancePacksResponseTypeDef",
+    {
+        "ConformancePackDetails": List[
+            ClientDescribeConformancePacksResponseConformancePackDetailsTypeDef
+        ],
+        "NextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientDescribeConformancePacksResponseTypeDef(
+    _ClientDescribeConformancePacksResponseTypeDef
+):
+    """
+    Type definition for `ClientDescribeConformancePacks` `Response`
+
+    - **ConformancePackDetails** *(list) --*
+
+      Returns a list of ``ConformancePackDetail`` objects.
+
+      - *(dict) --*
+
+        Returns details of a conformance pack. A conformance pack is a collection of AWS Config
+        rules that can be easily deployed in an account and a region.
+
+        - **ConformancePackName** *(string) --*
+
+          Name of the conformance pack.
+
+        - **ConformancePackArn** *(string) --*
+
+          Amazon Resource Name (ARN) of the conformance pack.
+
+        - **ConformancePackId** *(string) --*
+
+          ID of the conformance pack.
+
+        - **DeliveryS3Bucket** *(string) --*
+
+          Location of an Amazon S3 bucket where AWS Config can deliver evaluation results and
+          conformance pack template that is used to create a pack.
+
+        - **DeliveryS3KeyPrefix** *(string) --*
+
+          Any folder structure you want to add to an Amazon S3 bucket.
+
+        - **ConformancePackInputParameters** *(list) --*
+
+          A list of ``ConformancePackInputParameter`` objects.
+
+          - *(dict) --*
+
+            Input parameters in the form of key-value pairs for the conformance pack, both of which
+            you define. Keys can have a maximum character length of 128 characters, and values can
+            have a maximum length of 256 characters.
+
+            - **ParameterName** *(string) --*
+
+              One part of a key-value pair.
+
+            - **ParameterValue** *(string) --*
+
+              Another part of the key-value pair.
+
+        - **LastUpdateRequestedTime** *(datetime) --*
+
+          Last time when conformation pack update was requested.
+
+        - **CreatedBy** *(string) --*
+
+    - **NextToken** *(string) --*
+
+      The ``nextToken`` string returned in a previous request that you use to request the next page
+      of results in a paginated response.
+    """
+
+
 _ClientDescribeDeliveryChannelStatusResponseDeliveryChannelsStatusconfigHistoryDeliveryInfoTypeDef = TypedDict(
     "_ClientDescribeDeliveryChannelStatusResponseDeliveryChannelsStatusconfigHistoryDeliveryInfoTypeDef",
     {
@@ -4229,7 +4689,7 @@ class ClientDescribeOrganizationConfigRulesResponseOrganizationConfigRulesTypeDe
 
     - **OrganizationConfigRuleArn** *(string) --*
 
-      The Amazon Resource Name (ARN) of organization config rule.
+      Amazon Resource Name (ARN) of organization config rule.
 
     - **OrganizationManagedRuleMetadata** *(dict) --*
 
@@ -4378,7 +4838,7 @@ class ClientDescribeOrganizationConfigRulesResponseTypeDef(
 
     - **OrganizationConfigRules** *(list) --*
 
-      Retuns a list ``OrganizationConfigRule`` objects.
+      Returns a list of ``OrganizationConfigRule`` objects.
 
       - *(dict) --*
 
@@ -4391,7 +4851,7 @@ class ClientDescribeOrganizationConfigRulesResponseTypeDef(
 
         - **OrganizationConfigRuleArn** *(string) --*
 
-          The Amazon Resource Name (ARN) of organization config rule.
+          Amazon Resource Name (ARN) of organization config rule.
 
         - **OrganizationManagedRuleMetadata** *(dict) --*
 
@@ -4522,6 +4982,351 @@ class ClientDescribeOrganizationConfigRulesResponseTypeDef(
 
       The ``nextToken`` string returned on a previous page that you use to get the next page of
       results in a paginated response.
+    """
+
+
+_ClientDescribeOrganizationConformancePackStatusesResponseOrganizationConformancePackStatusesTypeDef = TypedDict(
+    "_ClientDescribeOrganizationConformancePackStatusesResponseOrganizationConformancePackStatusesTypeDef",
+    {
+        "OrganizationConformancePackName": str,
+        "Status": str,
+        "ErrorCode": str,
+        "ErrorMessage": str,
+        "LastUpdateTime": datetime,
+    },
+    total=False,
+)
+
+
+class ClientDescribeOrganizationConformancePackStatusesResponseOrganizationConformancePackStatusesTypeDef(
+    _ClientDescribeOrganizationConformancePackStatusesResponseOrganizationConformancePackStatusesTypeDef
+):
+    """
+    Type definition for `ClientDescribeOrganizationConformancePackStatusesResponse` `OrganizationConformancePackStatuses`
+
+    Returns the status for an organization conformance pack in an organization.
+
+    - **OrganizationConformancePackName** *(string) --*
+
+      The name that you assign to organization conformance pack.
+
+    - **Status** *(string) --*
+
+      Indicates deployment status of an organization conformance pack. When master account
+      calls PutOrganizationConformancePack for the first time, conformance pack status is
+      created in all the member accounts. When master account calls
+      PutOrganizationConformancePack for the second time, conformance pack status is updated in
+      all the member accounts. Additionally, conformance pack status is updated when one or
+      more member accounts join or leave an organization. Conformance pack status is deleted
+      when the master account deletes OrganizationConformancePack in all the member accounts
+      and disables service access for ``config-multiaccountsetup.amazonaws.com`` .
+
+      AWS Config sets the state of the conformance pack to:
+
+      * ``CREATE_SUCCESSFUL`` when an organization conformance pack has been successfully
+      created in all the member accounts.
+
+      * ``CREATE_IN_PROGRESS`` when an organization conformance pack creation is in progress.
+
+      * ``CREATE_FAILED`` when an organization conformance pack creation failed in one or more
+      member accounts within that organization.
+
+      * ``DELETE_FAILED`` when an organization conformance pack deletion failed in one or more
+      member accounts within that organization.
+
+      * ``DELETE_IN_PROGRESS`` when an organization conformance pack deletion is in progress.
+
+      * ``DELETE_SUCCESSFUL`` when an organization conformance pack has been successfully
+      deleted from all the member accounts.
+
+      * ``UPDATE_SUCCESSFUL`` when an organization conformance pack has been successfully
+      updated in all the member accounts.
+
+      * ``UPDATE_IN_PROGRESS`` when an organization conformance pack update is in progress.
+
+      * ``UPDATE_FAILED`` when an organization conformance pack update failed in one or more
+      member accounts within that organization.
+
+    - **ErrorCode** *(string) --*
+
+      An error code that is returned when organization conformance pack creation or deletion
+      has failed in the member account.
+
+    - **ErrorMessage** *(string) --*
+
+      An error message indicating that organization conformance pack creation or deletion
+      failed due to an error.
+
+    - **LastUpdateTime** *(datetime) --*
+
+      The timestamp of the last update.
+    """
+
+
+_ClientDescribeOrganizationConformancePackStatusesResponseTypeDef = TypedDict(
+    "_ClientDescribeOrganizationConformancePackStatusesResponseTypeDef",
+    {
+        "OrganizationConformancePackStatuses": List[
+            ClientDescribeOrganizationConformancePackStatusesResponseOrganizationConformancePackStatusesTypeDef
+        ],
+        "NextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientDescribeOrganizationConformancePackStatusesResponseTypeDef(
+    _ClientDescribeOrganizationConformancePackStatusesResponseTypeDef
+):
+    """
+    Type definition for `ClientDescribeOrganizationConformancePackStatuses` `Response`
+
+    - **OrganizationConformancePackStatuses** *(list) --*
+
+      A list of ``OrganizationConformancePackStatus`` objects.
+
+      - *(dict) --*
+
+        Returns the status for an organization conformance pack in an organization.
+
+        - **OrganizationConformancePackName** *(string) --*
+
+          The name that you assign to organization conformance pack.
+
+        - **Status** *(string) --*
+
+          Indicates deployment status of an organization conformance pack. When master account
+          calls PutOrganizationConformancePack for the first time, conformance pack status is
+          created in all the member accounts. When master account calls
+          PutOrganizationConformancePack for the second time, conformance pack status is updated in
+          all the member accounts. Additionally, conformance pack status is updated when one or
+          more member accounts join or leave an organization. Conformance pack status is deleted
+          when the master account deletes OrganizationConformancePack in all the member accounts
+          and disables service access for ``config-multiaccountsetup.amazonaws.com`` .
+
+          AWS Config sets the state of the conformance pack to:
+
+          * ``CREATE_SUCCESSFUL`` when an organization conformance pack has been successfully
+          created in all the member accounts.
+
+          * ``CREATE_IN_PROGRESS`` when an organization conformance pack creation is in progress.
+
+          * ``CREATE_FAILED`` when an organization conformance pack creation failed in one or more
+          member accounts within that organization.
+
+          * ``DELETE_FAILED`` when an organization conformance pack deletion failed in one or more
+          member accounts within that organization.
+
+          * ``DELETE_IN_PROGRESS`` when an organization conformance pack deletion is in progress.
+
+          * ``DELETE_SUCCESSFUL`` when an organization conformance pack has been successfully
+          deleted from all the member accounts.
+
+          * ``UPDATE_SUCCESSFUL`` when an organization conformance pack has been successfully
+          updated in all the member accounts.
+
+          * ``UPDATE_IN_PROGRESS`` when an organization conformance pack update is in progress.
+
+          * ``UPDATE_FAILED`` when an organization conformance pack update failed in one or more
+          member accounts within that organization.
+
+        - **ErrorCode** *(string) --*
+
+          An error code that is returned when organization conformance pack creation or deletion
+          has failed in the member account.
+
+        - **ErrorMessage** *(string) --*
+
+          An error message indicating that organization conformance pack creation or deletion
+          failed due to an error.
+
+        - **LastUpdateTime** *(datetime) --*
+
+          The timestamp of the last update.
+
+    - **NextToken** *(string) --*
+
+      The nextToken string returned on a previous page that you use to get the next page of results
+      in a paginated response.
+    """
+
+
+_ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacksConformancePackInputParametersTypeDef = TypedDict(
+    "_ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacksConformancePackInputParametersTypeDef",
+    {"ParameterName": str, "ParameterValue": str},
+    total=False,
+)
+
+
+class ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacksConformancePackInputParametersTypeDef(
+    _ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacksConformancePackInputParametersTypeDef
+):
+    """
+    Type definition for `ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacks` `ConformancePackInputParameters`
+
+    Input parameters in the form of key-value pairs for the conformance pack, both of which
+    you define. Keys can have a maximum character length of 128 characters, and values can
+    have a maximum length of 256 characters.
+
+    - **ParameterName** *(string) --*
+
+      One part of a key-value pair.
+
+    - **ParameterValue** *(string) --*
+
+      Another part of the key-value pair.
+    """
+
+
+_ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacksTypeDef = TypedDict(
+    "_ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacksTypeDef",
+    {
+        "OrganizationConformancePackName": str,
+        "OrganizationConformancePackArn": str,
+        "DeliveryS3Bucket": str,
+        "DeliveryS3KeyPrefix": str,
+        "ConformancePackInputParameters": List[
+            ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacksConformancePackInputParametersTypeDef
+        ],
+        "ExcludedAccounts": List[str],
+        "LastUpdateTime": datetime,
+    },
+    total=False,
+)
+
+
+class ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacksTypeDef(
+    _ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacksTypeDef
+):
+    """
+    Type definition for `ClientDescribeOrganizationConformancePacksResponse` `OrganizationConformancePacks`
+
+    An organization conformance pack that has information about conformance packs that AWS
+    Config creates in member accounts.
+
+    - **OrganizationConformancePackName** *(string) --*
+
+      The name you assign to an organization conformance pack.
+
+    - **OrganizationConformancePackArn** *(string) --*
+
+      Amazon Resource Name (ARN) of organization conformance pack.
+
+    - **DeliveryS3Bucket** *(string) --*
+
+      Location of an Amazon S3 bucket where AWS Config can deliver evaluation results and
+      conformance pack template that is used to create a pack.
+
+    - **DeliveryS3KeyPrefix** *(string) --*
+
+      Any folder structure you want to add to an Amazon S3 bucket.
+
+    - **ConformancePackInputParameters** *(list) --*
+
+      A list of ``ConformancePackInputParameter`` objects.
+
+      - *(dict) --*
+
+        Input parameters in the form of key-value pairs for the conformance pack, both of which
+        you define. Keys can have a maximum character length of 128 characters, and values can
+        have a maximum length of 256 characters.
+
+        - **ParameterName** *(string) --*
+
+          One part of a key-value pair.
+
+        - **ParameterValue** *(string) --*
+
+          Another part of the key-value pair.
+
+    - **ExcludedAccounts** *(list) --*
+
+      A comma-separated list of accounts excluded from organization conformance pack.
+
+      - *(string) --*
+
+    - **LastUpdateTime** *(datetime) --*
+
+      Last time when organization conformation pack was updated.
+    """
+
+
+_ClientDescribeOrganizationConformancePacksResponseTypeDef = TypedDict(
+    "_ClientDescribeOrganizationConformancePacksResponseTypeDef",
+    {
+        "OrganizationConformancePacks": List[
+            ClientDescribeOrganizationConformancePacksResponseOrganizationConformancePacksTypeDef
+        ],
+        "NextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientDescribeOrganizationConformancePacksResponseTypeDef(
+    _ClientDescribeOrganizationConformancePacksResponseTypeDef
+):
+    """
+    Type definition for `ClientDescribeOrganizationConformancePacks` `Response`
+
+    - **OrganizationConformancePacks** *(list) --*
+
+      Returns a list of OrganizationConformancePacks objects.
+
+      - *(dict) --*
+
+        An organization conformance pack that has information about conformance packs that AWS
+        Config creates in member accounts.
+
+        - **OrganizationConformancePackName** *(string) --*
+
+          The name you assign to an organization conformance pack.
+
+        - **OrganizationConformancePackArn** *(string) --*
+
+          Amazon Resource Name (ARN) of organization conformance pack.
+
+        - **DeliveryS3Bucket** *(string) --*
+
+          Location of an Amazon S3 bucket where AWS Config can deliver evaluation results and
+          conformance pack template that is used to create a pack.
+
+        - **DeliveryS3KeyPrefix** *(string) --*
+
+          Any folder structure you want to add to an Amazon S3 bucket.
+
+        - **ConformancePackInputParameters** *(list) --*
+
+          A list of ``ConformancePackInputParameter`` objects.
+
+          - *(dict) --*
+
+            Input parameters in the form of key-value pairs for the conformance pack, both of which
+            you define. Keys can have a maximum character length of 128 characters, and values can
+            have a maximum length of 256 characters.
+
+            - **ParameterName** *(string) --*
+
+              One part of a key-value pair.
+
+            - **ParameterValue** *(string) --*
+
+              Another part of the key-value pair.
+
+        - **ExcludedAccounts** *(list) --*
+
+          A comma-separated list of accounts excluded from organization conformance pack.
+
+          - *(string) --*
+
+        - **LastUpdateTime** *(datetime) --*
+
+          Last time when organization conformation pack was updated.
+
+    - **NextToken** *(string) --*
+
+      The nextToken string returned on a previous page that you use to get the next page of results
+      in a paginated response.
     """
 
 
@@ -7352,6 +8157,330 @@ class ClientGetComplianceSummaryByResourceTypeResponseTypeDef(
     """
 
 
+_ClientGetConformancePackComplianceDetailsFiltersTypeDef = TypedDict(
+    "_ClientGetConformancePackComplianceDetailsFiltersTypeDef",
+    {
+        "ConfigRuleNames": List[str],
+        "ComplianceType": str,
+        "ResourceType": str,
+        "ResourceIds": List[str],
+    },
+    total=False,
+)
+
+
+class ClientGetConformancePackComplianceDetailsFiltersTypeDef(
+    _ClientGetConformancePackComplianceDetailsFiltersTypeDef
+):
+    """
+    Type definition for `ClientGetConformancePackComplianceDetails` `Filters`
+
+    A ``ConformancePackEvaluationFilters`` object.
+
+    - **ConfigRuleNames** *(list) --*
+
+      Filters the results by AWS Config rule names.
+
+      - *(string) --*
+
+    - **ComplianceType** *(string) --*
+
+      Filters the results by compliance.
+
+      The allowed values are ``COMPLIANT`` and ``NON_COMPLIANT`` .
+
+    - **ResourceType** *(string) --*
+
+      Filters the results by the resource type (for example, ``"AWS::EC2::Instance"`` ).
+
+    - **ResourceIds** *(list) --*
+
+      Filters the results by resource IDs.
+
+      - *(string) --*
+    """
+
+
+_ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifierEvaluationResultQualifierTypeDef = TypedDict(
+    "_ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifierEvaluationResultQualifierTypeDef",
+    {"ConfigRuleName": str, "ResourceType": str, "ResourceId": str},
+    total=False,
+)
+
+
+class ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifierEvaluationResultQualifierTypeDef(
+    _ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifierEvaluationResultQualifierTypeDef
+):
+    """
+    Type definition for `ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifier` `EvaluationResultQualifier`
+
+    Identifies an AWS Config rule used to evaluate an AWS resource, and provides the type
+    and ID of the evaluated resource.
+
+    - **ConfigRuleName** *(string) --*
+
+      The name of the AWS Config rule that was used in the evaluation.
+
+    - **ResourceType** *(string) --*
+
+      The type of AWS resource that was evaluated.
+
+    - **ResourceId** *(string) --*
+
+      The ID of the evaluated AWS resource.
+    """
+
+
+_ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifierTypeDef = TypedDict(
+    "_ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifierTypeDef",
+    {
+        "EvaluationResultQualifier": ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifierEvaluationResultQualifierTypeDef,
+        "OrderingTimestamp": datetime,
+    },
+    total=False,
+)
+
+
+class ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifierTypeDef(
+    _ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifierTypeDef
+):
+    """
+    Type definition for `ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResults` `EvaluationResultIdentifier`
+
+    Uniquely identifies an evaluation result.
+
+    - **EvaluationResultQualifier** *(dict) --*
+
+      Identifies an AWS Config rule used to evaluate an AWS resource, and provides the type
+      and ID of the evaluated resource.
+
+      - **ConfigRuleName** *(string) --*
+
+        The name of the AWS Config rule that was used in the evaluation.
+
+      - **ResourceType** *(string) --*
+
+        The type of AWS resource that was evaluated.
+
+      - **ResourceId** *(string) --*
+
+        The ID of the evaluated AWS resource.
+
+    - **OrderingTimestamp** *(datetime) --*
+
+      The time of the event that triggered the evaluation of your AWS resources. The time can
+      indicate when AWS Config delivered a configuration item change notification, or it can
+      indicate when AWS Config delivered the configuration snapshot, depending on which event
+      triggered the evaluation.
+    """
+
+
+_ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsTypeDef = TypedDict(
+    "_ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsTypeDef",
+    {
+        "ComplianceType": str,
+        "EvaluationResultIdentifier": ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsEvaluationResultIdentifierTypeDef,
+        "ConfigRuleInvokedTime": datetime,
+        "ResultRecordedTime": datetime,
+        "Annotation": str,
+    },
+    total=False,
+)
+
+
+class ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsTypeDef(
+    _ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsTypeDef
+):
+    """
+    Type definition for `ClientGetConformancePackComplianceDetailsResponse` `ConformancePackRuleEvaluationResults`
+
+    The details of a conformance pack evaluation. Provides AWS Config rule and AWS resource
+    type that was evaluated, the compliance of the conformance pack, related time stamps, and
+    supplementary information.
+
+    - **ComplianceType** *(string) --*
+
+      Filters the results by compliance.
+
+      The allowed values are ``COMPLIANT`` and ``NON_COMPLIANT`` .
+
+    - **EvaluationResultIdentifier** *(dict) --*
+
+      Uniquely identifies an evaluation result.
+
+      - **EvaluationResultQualifier** *(dict) --*
+
+        Identifies an AWS Config rule used to evaluate an AWS resource, and provides the type
+        and ID of the evaluated resource.
+
+        - **ConfigRuleName** *(string) --*
+
+          The name of the AWS Config rule that was used in the evaluation.
+
+        - **ResourceType** *(string) --*
+
+          The type of AWS resource that was evaluated.
+
+        - **ResourceId** *(string) --*
+
+          The ID of the evaluated AWS resource.
+
+      - **OrderingTimestamp** *(datetime) --*
+
+        The time of the event that triggered the evaluation of your AWS resources. The time can
+        indicate when AWS Config delivered a configuration item change notification, or it can
+        indicate when AWS Config delivered the configuration snapshot, depending on which event
+        triggered the evaluation.
+
+    - **ConfigRuleInvokedTime** *(datetime) --*
+
+      The time when AWS Config rule evaluated AWS resource.
+
+    - **ResultRecordedTime** *(datetime) --*
+
+      The time when AWS Config recorded the evaluation result.
+
+    - **Annotation** *(string) --*
+
+      Supplementary information about how the evaluation determined the compliance.
+    """
+
+
+_ClientGetConformancePackComplianceDetailsResponseTypeDef = TypedDict(
+    "_ClientGetConformancePackComplianceDetailsResponseTypeDef",
+    {
+        "ConformancePackName": str,
+        "ConformancePackRuleEvaluationResults": List[
+            ClientGetConformancePackComplianceDetailsResponseConformancePackRuleEvaluationResultsTypeDef
+        ],
+        "NextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientGetConformancePackComplianceDetailsResponseTypeDef(
+    _ClientGetConformancePackComplianceDetailsResponseTypeDef
+):
+    """
+    Type definition for `ClientGetConformancePackComplianceDetails` `Response`
+
+    - **ConformancePackName** *(string) --*
+
+      Name of the conformance pack.
+
+    - **ConformancePackRuleEvaluationResults** *(list) --*
+
+      Returns a list of ``ConformancePackEvaluationResult`` objects.
+
+      - *(dict) --*
+
+        The details of a conformance pack evaluation. Provides AWS Config rule and AWS resource
+        type that was evaluated, the compliance of the conformance pack, related time stamps, and
+        supplementary information.
+
+        - **ComplianceType** *(string) --*
+
+          Filters the results by compliance.
+
+          The allowed values are ``COMPLIANT`` and ``NON_COMPLIANT`` .
+
+        - **EvaluationResultIdentifier** *(dict) --*
+
+          Uniquely identifies an evaluation result.
+
+          - **EvaluationResultQualifier** *(dict) --*
+
+            Identifies an AWS Config rule used to evaluate an AWS resource, and provides the type
+            and ID of the evaluated resource.
+
+            - **ConfigRuleName** *(string) --*
+
+              The name of the AWS Config rule that was used in the evaluation.
+
+            - **ResourceType** *(string) --*
+
+              The type of AWS resource that was evaluated.
+
+            - **ResourceId** *(string) --*
+
+              The ID of the evaluated AWS resource.
+
+          - **OrderingTimestamp** *(datetime) --*
+
+            The time of the event that triggered the evaluation of your AWS resources. The time can
+            indicate when AWS Config delivered a configuration item change notification, or it can
+            indicate when AWS Config delivered the configuration snapshot, depending on which event
+            triggered the evaluation.
+
+        - **ConfigRuleInvokedTime** *(datetime) --*
+
+          The time when AWS Config rule evaluated AWS resource.
+
+        - **ResultRecordedTime** *(datetime) --*
+
+          The time when AWS Config recorded the evaluation result.
+
+        - **Annotation** *(string) --*
+
+          Supplementary information about how the evaluation determined the compliance.
+
+    - **NextToken** *(string) --*
+
+      The ``nextToken`` string returned in a previous request that you use to request the next page
+      of results in a paginated response.
+    """
+
+
+_ClientGetConformancePackComplianceSummaryResponseConformancePackComplianceSummaryListTypeDef = TypedDict(
+    "_ClientGetConformancePackComplianceSummaryResponseConformancePackComplianceSummaryListTypeDef",
+    {"ConformancePackName": str, "ConformancePackComplianceStatus": str},
+    total=False,
+)
+
+
+class ClientGetConformancePackComplianceSummaryResponseConformancePackComplianceSummaryListTypeDef(
+    _ClientGetConformancePackComplianceSummaryResponseConformancePackComplianceSummaryListTypeDef
+):
+    """
+    Type definition for `ClientGetConformancePackComplianceSummaryResponse` `ConformancePackComplianceSummaryList`
+
+    - **ConformancePackName** *(string) --*
+
+    - **ConformancePackComplianceStatus** *(string) --*
+    """
+
+
+_ClientGetConformancePackComplianceSummaryResponseTypeDef = TypedDict(
+    "_ClientGetConformancePackComplianceSummaryResponseTypeDef",
+    {
+        "ConformancePackComplianceSummaryList": List[
+            ClientGetConformancePackComplianceSummaryResponseConformancePackComplianceSummaryListTypeDef
+        ],
+        "NextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientGetConformancePackComplianceSummaryResponseTypeDef(
+    _ClientGetConformancePackComplianceSummaryResponseTypeDef
+):
+    """
+    Type definition for `ClientGetConformancePackComplianceSummary` `Response`
+
+    - **ConformancePackComplianceSummaryList** *(list) --*
+
+      - *(dict) --*
+
+        - **ConformancePackName** *(string) --*
+
+        - **ConformancePackComplianceStatus** *(string) --*
+
+    - **NextToken** *(string) --*
+    """
+
+
 _ClientGetDiscoveredResourceCountsResponseresourceCountsTypeDef = TypedDict(
     "_ClientGetDiscoveredResourceCountsResponseresourceCountsTypeDef",
     {"resourceType": str, "count": int},
@@ -7646,6 +8775,222 @@ class ClientGetOrganizationConfigRuleDetailedStatusResponseTypeDef(
 
       The ``nextToken`` string returned on a previous page that you use to get the next page of
       results in a paginated response.
+    """
+
+
+_ClientGetOrganizationConformancePackDetailedStatusFiltersTypeDef = TypedDict(
+    "_ClientGetOrganizationConformancePackDetailedStatusFiltersTypeDef",
+    {"AccountId": str, "Status": str},
+    total=False,
+)
+
+
+class ClientGetOrganizationConformancePackDetailedStatusFiltersTypeDef(
+    _ClientGetOrganizationConformancePackDetailedStatusFiltersTypeDef
+):
+    """
+    Type definition for `ClientGetOrganizationConformancePackDetailedStatus` `Filters`
+
+    An ``OrganizationResourceDetailedStatusFilters`` object.
+
+    - **AccountId** *(string) --*
+
+      The 12-digit account ID of the member account within an organization.
+
+    - **Status** *(string) --*
+
+      Indicates deployment status for conformance pack in a member account. When master account calls
+      ``PutOrganizationConformancePack`` action for the first time, conformance pack status is
+      created in the member account. When master account calls ``PutOrganizationConformancePack``
+      action for the second time, conformance pack status is updated in the member account.
+      Conformance pack status is deleted when the master account deletes
+      ``OrganizationConformancePack`` and disables service access for
+      ``config-multiaccountsetup.amazonaws.com`` .
+
+      AWS Config sets the state of the conformance pack to:
+
+      * ``CREATE_SUCCESSFUL`` when conformance pack has been created in the member account.
+
+      * ``CREATE_IN_PROGRESS`` when conformance pack is being created in the member account.
+
+      * ``CREATE_FAILED`` when conformance pack creation has failed in the member account.
+
+      * ``DELETE_FAILED`` when conformance pack deletion has failed in the member account.
+
+      * ``DELETE_IN_PROGRESS`` when conformance pack is being deleted in the member account.
+
+      * ``DELETE_SUCCESSFUL`` when conformance pack has been deleted in the member account.
+
+      * ``UPDATE_SUCCESSFUL`` when conformance pack has been updated in the member account.
+
+      * ``UPDATE_IN_PROGRESS`` when conformance pack is being updated in the member account.
+
+      * ``UPDATE_FAILED`` when conformance pack deletion has failed in the member account.
+    """
+
+
+_ClientGetOrganizationConformancePackDetailedStatusResponseOrganizationConformancePackDetailedStatusesTypeDef = TypedDict(
+    "_ClientGetOrganizationConformancePackDetailedStatusResponseOrganizationConformancePackDetailedStatusesTypeDef",
+    {
+        "AccountId": str,
+        "ConformancePackName": str,
+        "Status": str,
+        "ErrorCode": str,
+        "ErrorMessage": str,
+        "LastUpdateTime": datetime,
+    },
+    total=False,
+)
+
+
+class ClientGetOrganizationConformancePackDetailedStatusResponseOrganizationConformancePackDetailedStatusesTypeDef(
+    _ClientGetOrganizationConformancePackDetailedStatusResponseOrganizationConformancePackDetailedStatusesTypeDef
+):
+    """
+    Type definition for `ClientGetOrganizationConformancePackDetailedStatusResponse` `OrganizationConformancePackDetailedStatuses`
+
+    Organization conformance pack creation or deletion status in each member account. This
+    includes the name of the conformance pack, the status, error code and error message when
+    the conformance pack creation or deletion failed.
+
+    - **AccountId** *(string) --*
+
+      The 12-digit account ID of a member account.
+
+    - **ConformancePackName** *(string) --*
+
+      The name of conformance pack deployed in the member account.
+
+    - **Status** *(string) --*
+
+      Indicates deployment status for conformance pack in a member account. When master account
+      calls ``PutOrganizationConformancePack`` action for the first time, conformance pack
+      status is created in the member account. When master account calls
+      ``PutOrganizationConformancePack`` action for the second time, conformance pack status is
+      updated in the member account. Conformance pack status is deleted when the master account
+      deletes ``OrganizationConformancePack`` and disables service access for
+      ``config-multiaccountsetup.amazonaws.com`` .
+
+      AWS Config sets the state of the conformance pack to:
+
+      * ``CREATE_SUCCESSFUL`` when conformance pack has been created in the member account.
+
+      * ``CREATE_IN_PROGRESS`` when conformance pack is being created in the member account.
+
+      * ``CREATE_FAILED`` when conformance pack creation has failed in the member account.
+
+      * ``DELETE_FAILED`` when conformance pack deletion has failed in the member account.
+
+      * ``DELETE_IN_PROGRESS`` when conformance pack is being deleted in the member account.
+
+      * ``DELETE_SUCCESSFUL`` when conformance pack has been deleted in the member account.
+
+      * ``UPDATE_SUCCESSFUL`` when conformance pack has been updated in the member account.
+
+      * ``UPDATE_IN_PROGRESS`` when conformance pack is being updated in the member account.
+
+      * ``UPDATE_FAILED`` when conformance pack deletion has failed in the member account.
+
+    - **ErrorCode** *(string) --*
+
+      An error code that is returned when conformance pack creation or deletion failed in the
+      member account.
+
+    - **ErrorMessage** *(string) --*
+
+      An error message indicating that conformance pack account creation or deletion has failed
+      due to an error in the member account.
+
+    - **LastUpdateTime** *(datetime) --*
+
+      The timestamp of the last status update.
+    """
+
+
+_ClientGetOrganizationConformancePackDetailedStatusResponseTypeDef = TypedDict(
+    "_ClientGetOrganizationConformancePackDetailedStatusResponseTypeDef",
+    {
+        "OrganizationConformancePackDetailedStatuses": List[
+            ClientGetOrganizationConformancePackDetailedStatusResponseOrganizationConformancePackDetailedStatusesTypeDef
+        ],
+        "NextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientGetOrganizationConformancePackDetailedStatusResponseTypeDef(
+    _ClientGetOrganizationConformancePackDetailedStatusResponseTypeDef
+):
+    """
+    Type definition for `ClientGetOrganizationConformancePackDetailedStatus` `Response`
+
+    - **OrganizationConformancePackDetailedStatuses** *(list) --*
+
+      A list of ``OrganizationConformancePackDetailedStatus`` objects.
+
+      - *(dict) --*
+
+        Organization conformance pack creation or deletion status in each member account. This
+        includes the name of the conformance pack, the status, error code and error message when
+        the conformance pack creation or deletion failed.
+
+        - **AccountId** *(string) --*
+
+          The 12-digit account ID of a member account.
+
+        - **ConformancePackName** *(string) --*
+
+          The name of conformance pack deployed in the member account.
+
+        - **Status** *(string) --*
+
+          Indicates deployment status for conformance pack in a member account. When master account
+          calls ``PutOrganizationConformancePack`` action for the first time, conformance pack
+          status is created in the member account. When master account calls
+          ``PutOrganizationConformancePack`` action for the second time, conformance pack status is
+          updated in the member account. Conformance pack status is deleted when the master account
+          deletes ``OrganizationConformancePack`` and disables service access for
+          ``config-multiaccountsetup.amazonaws.com`` .
+
+          AWS Config sets the state of the conformance pack to:
+
+          * ``CREATE_SUCCESSFUL`` when conformance pack has been created in the member account.
+
+          * ``CREATE_IN_PROGRESS`` when conformance pack is being created in the member account.
+
+          * ``CREATE_FAILED`` when conformance pack creation has failed in the member account.
+
+          * ``DELETE_FAILED`` when conformance pack deletion has failed in the member account.
+
+          * ``DELETE_IN_PROGRESS`` when conformance pack is being deleted in the member account.
+
+          * ``DELETE_SUCCESSFUL`` when conformance pack has been deleted in the member account.
+
+          * ``UPDATE_SUCCESSFUL`` when conformance pack has been updated in the member account.
+
+          * ``UPDATE_IN_PROGRESS`` when conformance pack is being updated in the member account.
+
+          * ``UPDATE_FAILED`` when conformance pack deletion has failed in the member account.
+
+        - **ErrorCode** *(string) --*
+
+          An error code that is returned when conformance pack creation or deletion failed in the
+          member account.
+
+        - **ErrorMessage** *(string) --*
+
+          An error message indicating that conformance pack account creation or deletion has failed
+          due to an error in the member account.
+
+        - **LastUpdateTime** *(datetime) --*
+
+          The timestamp of the last status update.
+
+    - **NextToken** *(string) --*
+
+      The nextToken string returned on a previous page that you use to get the next page of results
+      in a paginated response.
     """
 
 
@@ -9298,6 +10643,47 @@ class ClientPutConfigurationRecorderConfigurationRecorderTypeDef(
     """
 
 
+_ClientPutConformancePackConformancePackInputParametersTypeDef = TypedDict(
+    "_ClientPutConformancePackConformancePackInputParametersTypeDef",
+    {"ParameterName": str, "ParameterValue": str},
+)
+
+
+class ClientPutConformancePackConformancePackInputParametersTypeDef(
+    _ClientPutConformancePackConformancePackInputParametersTypeDef
+):
+    """
+    Type definition for `ClientPutConformancePack` `ConformancePackInputParameters`
+
+    Input parameters in the form of key-value pairs for the conformance pack, both of which you
+    define. Keys can have a maximum character length of 128 characters, and values can have a
+    maximum length of 256 characters.
+
+    - **ParameterName** *(string) --* **[REQUIRED]**
+
+      One part of a key-value pair.
+
+    - **ParameterValue** *(string) --* **[REQUIRED]**
+
+      Another part of the key-value pair.
+    """
+
+
+_ClientPutConformancePackResponseTypeDef = TypedDict(
+    "_ClientPutConformancePackResponseTypeDef", {"ConformancePackArn": str}, total=False
+)
+
+
+class ClientPutConformancePackResponseTypeDef(_ClientPutConformancePackResponseTypeDef):
+    """
+    Type definition for `ClientPutConformancePack` `Response`
+
+    - **ConformancePackArn** *(string) --*
+
+      ARN of the conformance pack.
+    """
+
+
 _ClientPutDeliveryChannelDeliveryChannelconfigSnapshotDeliveryPropertiesTypeDef = TypedDict(
     "_ClientPutDeliveryChannelDeliveryChannelconfigSnapshotDeliveryPropertiesTypeDef",
     {"deliveryFrequency": str},
@@ -9735,6 +11121,51 @@ class ClientPutOrganizationConfigRuleResponseTypeDef(
     - **OrganizationConfigRuleArn** *(string) --*
 
       The Amazon Resource Name (ARN) of an organization config rule.
+    """
+
+
+_ClientPutOrganizationConformancePackConformancePackInputParametersTypeDef = TypedDict(
+    "_ClientPutOrganizationConformancePackConformancePackInputParametersTypeDef",
+    {"ParameterName": str, "ParameterValue": str},
+)
+
+
+class ClientPutOrganizationConformancePackConformancePackInputParametersTypeDef(
+    _ClientPutOrganizationConformancePackConformancePackInputParametersTypeDef
+):
+    """
+    Type definition for `ClientPutOrganizationConformancePack` `ConformancePackInputParameters`
+
+    Input parameters in the form of key-value pairs for the conformance pack, both of which you
+    define. Keys can have a maximum character length of 128 characters, and values can have a
+    maximum length of 256 characters.
+
+    - **ParameterName** *(string) --* **[REQUIRED]**
+
+      One part of a key-value pair.
+
+    - **ParameterValue** *(string) --* **[REQUIRED]**
+
+      Another part of the key-value pair.
+    """
+
+
+_ClientPutOrganizationConformancePackResponseTypeDef = TypedDict(
+    "_ClientPutOrganizationConformancePackResponseTypeDef",
+    {"OrganizationConformancePackArn": str},
+    total=False,
+)
+
+
+class ClientPutOrganizationConformancePackResponseTypeDef(
+    _ClientPutOrganizationConformancePackResponseTypeDef
+):
+    """
+    Type definition for `ClientPutOrganizationConformancePack` `Response`
+
+    - **OrganizationConformancePackArn** *(string) --*
+
+      ARN of the organization conformance pack.
     """
 
 

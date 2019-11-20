@@ -1,4 +1,4 @@
 # mypy-boto3-sts
 
-Mypy-friendly type annotations for `boto3` 1.10.19 `sts` service.
+Mypy-friendly type annotations for `boto3` 1.10.22 `sts` service.
 More information can be found [here](https://github.com/vemel/mypy_boto3).

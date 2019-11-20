@@ -61,6 +61,9 @@ __all__ = (
     "ClientCreatePatchBaselineSourcesTypeDef",
     "ClientCreatePatchBaselineTagsTypeDef",
     "ClientCreateResourceDataSyncS3DestinationTypeDef",
+    "ClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef",
+    "ClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceTypeDef",
+    "ClientCreateResourceDataSyncSyncSourceTypeDef",
     "ClientDeleteInventoryResponseDeletionSummarySummaryItemsTypeDef",
     "ClientDeleteInventoryResponseDeletionSummaryTypeDef",
     "ClientDeleteInventoryResponseTypeDef",
@@ -240,6 +243,7 @@ __all__ = (
     "ClientGetOpsSummaryResponseEntitiesDataTypeDef",
     "ClientGetOpsSummaryResponseEntitiesTypeDef",
     "ClientGetOpsSummaryResponseTypeDef",
+    "ClientGetOpsSummaryResultAttributesTypeDef",
     "ClientGetParameterHistoryResponseParametersPoliciesTypeDef",
     "ClientGetParameterHistoryResponseParametersTypeDef",
     "ClientGetParameterHistoryResponseTypeDef",
@@ -313,6 +317,9 @@ __all__ = (
     "ClientListResourceComplianceSummariesResponseResourceComplianceSummaryItemsTypeDef",
     "ClientListResourceComplianceSummariesResponseTypeDef",
     "ClientListResourceDataSyncResponseResourceDataSyncItemsS3DestinationTypeDef",
+    "ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef",
+    "ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceTypeDef",
+    "ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceTypeDef",
     "ClientListResourceDataSyncResponseResourceDataSyncItemsTypeDef",
     "ClientListResourceDataSyncResponseTypeDef",
     "ClientListTagsForResourceResponseTagListTypeDef",
@@ -623,6 +630,9 @@ __all__ = (
     "ListResourceComplianceSummariesPaginateResponseTypeDef",
     "ListResourceDataSyncPaginatePaginationConfigTypeDef",
     "ListResourceDataSyncPaginateResponseResourceDataSyncItemsS3DestinationTypeDef",
+    "ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef",
+    "ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceTypeDef",
+    "ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceTypeDef",
     "ListResourceDataSyncPaginateResponseResourceDataSyncItemsTypeDef",
     "ListResourceDataSyncPaginateResponseTypeDef",
 )
@@ -821,10 +831,18 @@ class ClientCreateAssociationBatchEntriesTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates how
+    to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association
+    was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -951,10 +969,18 @@ class ClientCreateAssociationBatchEntriesTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates how
+        to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+        This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the association
+        was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -1141,11 +1167,18 @@ class ClientCreateAssociationBatchResponseFailedEntryTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example
+    demonstrates how to target all resources in the resource group
+    **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE*
-    ,*AWS::EC2::VPC* ``
+    ,*AWS::EC2::VPC* ``   This example demonstrates how to target only Amazon EC2
+    instances and VPCs in your maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This
+    example demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -1273,11 +1306,18 @@ class ClientCreateAssociationBatchResponseFailedEntryTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example
+        demonstrates how to target all resources in the resource group
+        **ProductionResourceGroup** in your maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE*
-        ,*AWS::EC2::VPC* ``
+        ,*AWS::EC2::VPC* ``   This example demonstrates how to target only Amazon EC2
+        instances and VPCs in your maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This
+        example demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -1459,11 +1499,18 @@ class ClientCreateAssociationBatchResponseFailedTypeDef(
           * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
           * (Maintenance window targets only)
-          ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+          ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example
+          demonstrates how to target all resources in the resource group
+          **ProductionResourceGroup** in your maintenance window.
 
           * (Maintenance window targets only)
           ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE*
-          ,*AWS::EC2::VPC* ``
+          ,*AWS::EC2::VPC* ``   This example demonstrates how to target only Amazon EC2
+          instances and VPCs in your maintenance window.
+
+          * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This
+          example demonstrates how to target all managed instances in the AWS Region where the
+          association was created.
 
           For information about how to send commands that target instances using ``Key,Value``
           parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -1729,11 +1776,18 @@ class ClientCreateAssociationBatchResponseSuccessfulTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -1908,11 +1962,18 @@ class ClientCreateAssociationBatchResponseSuccessfulTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -2142,11 +2203,18 @@ class ClientCreateAssociationBatchResponseTypeDef(
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -2323,11 +2391,18 @@ class ClientCreateAssociationBatchResponseTypeDef(
               * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
               * (Maintenance window targets only)
-              ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+              ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example
+              demonstrates how to target all resources in the resource group
+              **ProductionResourceGroup** in your maintenance window.
 
               * (Maintenance window targets only)
               ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE*
-              ,*AWS::EC2::VPC* ``
+              ,*AWS::EC2::VPC* ``   This example demonstrates how to target only Amazon EC2
+              instances and VPCs in your maintenance window.
+
+              * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This
+              example demonstrates how to target all managed instances in the AWS Region where the
+              association was created.
 
               For information about how to send commands that target instances using ``Key,Value``
               parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -2657,10 +2732,18 @@ class ClientCreateAssociationResponseAssociationDescriptionTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+      This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+      maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association
+    was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -2836,10 +2919,18 @@ class ClientCreateAssociationResponseAssociationDescriptionTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+          This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+          maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the association
+        was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -3061,10 +3152,18 @@ class ClientCreateAssociationResponseTypeDef(_ClientCreateAssociationResponseTyp
           * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
           * (Maintenance window targets only)
-          ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+          ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+          how to target all resources in the resource group **ProductionResourceGroup** in your
+          maintenance window.
 
           * (Maintenance window targets only)
           ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+            This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+          * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+          demonstrates how to target all managed instances in the AWS Region where the association
+          was created.
 
           For information about how to send commands that target instances using ``Key,Value``
           parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -3188,9 +3287,17 @@ class ClientCreateAssociationTargetsTypeDef(_ClientCreateAssociationTargetsTypeD
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+      This example demonstrates how to target all resources in the resource group
+      **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+    window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association was
+    created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -4336,6 +4443,137 @@ class ClientCreateResourceDataSyncS3DestinationTypeDef(
     """
 
 
+_ClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef = TypedDict(
+    "_ClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef",
+    {"OrganizationalUnitId": str},
+    total=False,
+)
+
+
+class ClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef(
+    _ClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef
+):
+    """
+    Type definition for `ClientCreateResourceDataSyncSyncSourceAwsOrganizationsSource` `OrganizationalUnits`
+
+    The AWS Organizations organizational unit data source for the sync.
+
+    - **OrganizationalUnitId** *(string) --*
+
+      The AWS Organization unit ID data source for the sync.
+    """
+
+
+_RequiredClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceTypeDef = TypedDict(
+    "_RequiredClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceTypeDef",
+    {"OrganizationSourceType": str},
+)
+_OptionalClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceTypeDef = TypedDict(
+    "_OptionalClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceTypeDef",
+    {
+        "OrganizationalUnits": List[
+            ClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class ClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceTypeDef(
+    _RequiredClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceTypeDef,
+    _OptionalClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceTypeDef,
+):
+    """
+    Type definition for `ClientCreateResourceDataSyncSyncSource` `AwsOrganizationsSource`
+
+    The field name in ``SyncSource`` for the ``ResourceDataSyncAwsOrganizationsSource`` type.
+
+    - **OrganizationSourceType** *(string) --* **[REQUIRED]**
+
+      If an AWS Organization is present, this is either ``OrganizationalUnits`` or
+      ``EntireOrganization`` . For ``OrganizationalUnits`` , the data is aggregated from a set of
+      organization units. For ``EntireOrganization`` , the data is aggregated from the entire AWS
+      Organization.
+
+    - **OrganizationalUnits** *(list) --*
+
+      The AWS Organizations organization units included in the sync.
+
+      - *(dict) --*
+
+        The AWS Organizations organizational unit data source for the sync.
+
+        - **OrganizationalUnitId** *(string) --*
+
+          The AWS Organization unit ID data source for the sync.
+    """
+
+
+_RequiredClientCreateResourceDataSyncSyncSourceTypeDef = TypedDict(
+    "_RequiredClientCreateResourceDataSyncSyncSourceTypeDef",
+    {"SourceType": str, "SourceRegions": List[str]},
+)
+_OptionalClientCreateResourceDataSyncSyncSourceTypeDef = TypedDict(
+    "_OptionalClientCreateResourceDataSyncSyncSourceTypeDef",
+    {
+        "AwsOrganizationsSource": ClientCreateResourceDataSyncSyncSourceAwsOrganizationsSourceTypeDef,
+        "IncludeFutureRegions": bool,
+    },
+    total=False,
+)
+
+
+class ClientCreateResourceDataSyncSyncSourceTypeDef(
+    _RequiredClientCreateResourceDataSyncSyncSourceTypeDef,
+    _OptionalClientCreateResourceDataSyncSyncSourceTypeDef,
+):
+    """
+    Type definition for `ClientCreateResourceDataSync` `SyncSource`
+
+    Specify information about the data sources to synchronize.
+
+    - **SourceType** *(string) --* **[REQUIRED]**
+
+      The type of data source for the resource data sync. ``SourceType`` is either
+      ``AwsOrganizations`` (if an organization is present in AWS Organizations) or
+      ``singleAccountMultiRegions`` .
+
+    - **AwsOrganizationsSource** *(dict) --*
+
+      The field name in ``SyncSource`` for the ``ResourceDataSyncAwsOrganizationsSource`` type.
+
+      - **OrganizationSourceType** *(string) --* **[REQUIRED]**
+
+        If an AWS Organization is present, this is either ``OrganizationalUnits`` or
+        ``EntireOrganization`` . For ``OrganizationalUnits`` , the data is aggregated from a set of
+        organization units. For ``EntireOrganization`` , the data is aggregated from the entire AWS
+        Organization.
+
+      - **OrganizationalUnits** *(list) --*
+
+        The AWS Organizations organization units included in the sync.
+
+        - *(dict) --*
+
+          The AWS Organizations organizational unit data source for the sync.
+
+          - **OrganizationalUnitId** *(string) --*
+
+            The AWS Organization unit ID data source for the sync.
+
+    - **SourceRegions** *(list) --* **[REQUIRED]**
+
+      The ``SyncSource`` AWS Regions included in the resource data sync.
+
+      - *(string) --*
+
+    - **IncludeFutureRegions** *(boolean) --*
+
+      Whether to automatically synchronize and aggregate data from new AWS Regions when those Regions
+      come online.
+    """
+
+
 _ClientDeleteInventoryResponseDeletionSummarySummaryItemsTypeDef = TypedDict(
     "_ClientDeleteInventoryResponseDeletionSummarySummaryItemsTypeDef",
     {"Version": str, "Count": int, "RemainingCount": int},
@@ -5360,10 +5598,18 @@ class ClientDescribeAssociationResponseAssociationDescriptionTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+      This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+      maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association
+    was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -5539,10 +5785,18 @@ class ClientDescribeAssociationResponseAssociationDescriptionTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+          This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+          maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the association
+        was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -5766,10 +6020,18 @@ class ClientDescribeAssociationResponseTypeDef(
           * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
           * (Maintenance window targets only)
-          ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+          ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+          how to target all resources in the resource group **ProductionResourceGroup** in your
+          maintenance window.
 
           * (Maintenance window targets only)
           ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+            This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+          * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+          demonstrates how to target all managed instances in the AWS Region where the association
+          was created.
 
           For information about how to send commands that target instances using ``Key,Value``
           parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -5953,11 +6215,18 @@ class ClientDescribeAutomationExecutionsResponseAutomationExecutionMetadataListT
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -6119,11 +6388,18 @@ class ClientDescribeAutomationExecutionsResponseAutomationExecutionMetadataListT
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -6320,11 +6596,18 @@ class ClientDescribeAutomationExecutionsResponseTypeDef(
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -6551,11 +6834,18 @@ class ClientDescribeAutomationStepExecutionsResponseStepExecutionsTargetsTypeDef
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -6774,11 +7064,18 @@ class ClientDescribeAutomationStepExecutionsResponseStepExecutionsTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -7013,11 +7310,18 @@ class ClientDescribeAutomationStepExecutionsResponseTypeDef(
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -10279,9 +10583,17 @@ class ClientDescribeMaintenanceWindowScheduleTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+      This example demonstrates how to target all resources in the resource group
+      **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+    window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association was
+    created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -10368,11 +10680,18 @@ class ClientDescribeMaintenanceWindowTargetsResponseTargetsTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -10471,11 +10790,18 @@ class ClientDescribeMaintenanceWindowTargetsResponseTargetsTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -10586,11 +10912,18 @@ class ClientDescribeMaintenanceWindowTargetsResponseTypeDef(
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -10733,11 +11066,18 @@ class ClientDescribeMaintenanceWindowTasksResponseTasksTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -10869,11 +11209,18 @@ class ClientDescribeMaintenanceWindowTasksResponseTasksTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -11047,11 +11394,18 @@ class ClientDescribeMaintenanceWindowTasksResponseTypeDef(
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -11283,9 +11637,17 @@ class ClientDescribeMaintenanceWindowsForTargetTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+      This example demonstrates how to target all resources in the resource group
+      **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+    window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association was
+    created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -11537,6 +11899,8 @@ _ClientDescribeOpsItemsResponseOpsItemSummariesTypeDef = TypedDict(
         "OperationalData": Dict[
             str, ClientDescribeOpsItemsResponseOpsItemSummariesOperationalDataTypeDef
         ],
+        "Category": str,
+        "Severity": str,
     },
     total=False,
 )
@@ -11604,6 +11968,14 @@ class ClientDescribeOpsItemsResponseOpsItemSummariesTypeDef(
 
             The type of key-value pair. Valid types include ``SearchableString`` and ``String``
             .
+
+    - **Category** *(string) --*
+
+      A list of OpsItems by category.
+
+    - **Severity** *(string) --*
+
+      A list of OpsItems by severity.
     """
 
 
@@ -11687,6 +12059,14 @@ class ClientDescribeOpsItemsResponseTypeDef(_ClientDescribeOpsItemsResponseTypeD
 
                 The type of key-value pair. Valid types include ``SearchableString`` and ``String``
                 .
+
+        - **Category** *(string) --*
+
+          A list of OpsItems by category.
+
+        - **Severity** *(string) --*
+
+          A list of OpsItems by severity.
     """
 
 
@@ -12812,11 +13192,18 @@ class ClientGetAutomationExecutionResponseAutomationExecutionStepExecutionsTarge
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example
+    demonstrates how to target all resources in the resource group
+    **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE*
-    ,*AWS::EC2::VPC* ``
+    ,*AWS::EC2::VPC* ``   This example demonstrates how to target only Amazon EC2
+    instances and VPCs in your maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This
+    example demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -13038,11 +13425,18 @@ class ClientGetAutomationExecutionResponseAutomationExecutionStepExecutionsTypeD
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example
+        demonstrates how to target all resources in the resource group
+        **ProductionResourceGroup** in your maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE*
-        ,*AWS::EC2::VPC* ``
+        ,*AWS::EC2::VPC* ``   This example demonstrates how to target only Amazon EC2
+        instances and VPCs in your maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This
+        example demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -13183,10 +13577,18 @@ class ClientGetAutomationExecutionResponseAutomationExecutionTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+      This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+      maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association
+    was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -13447,11 +13849,18 @@ class ClientGetAutomationExecutionResponseAutomationExecutionTypeDef(
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example
+            demonstrates how to target all resources in the resource group
+            **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE*
-            ,*AWS::EC2::VPC* ``
+            ,*AWS::EC2::VPC* ``   This example demonstrates how to target only Amazon EC2
+            instances and VPCs in your maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This
+            example demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -13589,10 +13998,18 @@ class ClientGetAutomationExecutionResponseAutomationExecutionTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+          This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+          maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the association
+        was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -13927,11 +14344,18 @@ class ClientGetAutomationExecutionResponseTypeDef(
               * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
               * (Maintenance window targets only)
-              ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+              ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example
+              demonstrates how to target all resources in the resource group
+              **ProductionResourceGroup** in your maintenance window.
 
               * (Maintenance window targets only)
               ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE*
-              ,*AWS::EC2::VPC* ``
+              ,*AWS::EC2::VPC* ``   This example demonstrates how to target only Amazon EC2
+              instances and VPCs in your maintenance window.
+
+              * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This
+              example demonstrates how to target all managed instances in the AWS Region where the
+              association was created.
 
               For information about how to send commands that target instances using ``Key,Value``
               parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -14069,10 +14493,18 @@ class ClientGetAutomationExecutionResponseTypeDef(
           * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
           * (Maintenance window targets only)
-          ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+          ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+          how to target all resources in the resource group **ProductionResourceGroup** in your
+          maintenance window.
 
           * (Maintenance window targets only)
           ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+            This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+          * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+          demonstrates how to target all managed instances in the AWS Region where the association
+          was created.
 
           For information about how to send commands that target instances using ``Key,Value``
           parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -15558,10 +15990,18 @@ class ClientGetMaintenanceWindowTaskResponseTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates how
+    to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association
+    was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -16083,10 +16523,18 @@ class ClientGetMaintenanceWindowTaskResponseTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates how
+        to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+        This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the association
+        was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -16423,6 +16871,8 @@ _ClientGetOpsItemResponseOpsItemTypeDef = TypedDict(
         "OperationalData": Dict[
             str, ClientGetOpsItemResponseOpsItemOperationalDataTypeDef
         ],
+        "Category": str,
+        "Severity": str,
     },
     total=False,
 )
@@ -16551,6 +17001,15 @@ class ClientGetOpsItemResponseOpsItemTypeDef(_ClientGetOpsItemResponseOpsItemTyp
           - **Type** *(string) --*
 
             The type of key-value pair. Valid types include ``SearchableString`` and ``String`` .
+
+    - **Category** *(string) --*
+
+      An OpsItem category. Category options include: Availability, Cost, Performance, Recovery,
+      Security.
+
+    - **Severity** *(string) --*
+
+      The severity of the OpsItem. Severity options range from 1 to 4.
     """
 
 
@@ -16686,6 +17145,15 @@ class ClientGetOpsItemResponseTypeDef(_ClientGetOpsItemResponseTypeDef):
             - **Type** *(string) --*
 
               The type of key-value pair. Valid types include ``SearchableString`` and ``String`` .
+
+      - **Category** *(string) --*
+
+        An OpsItem category. Category options include: Availability, Cost, Performance, Recovery,
+        Security.
+
+      - **Severity** *(string) --*
+
+        The severity of the OpsItem. Severity options range from 1 to 4.
     """
 
 
@@ -16827,7 +17295,7 @@ class ClientGetOpsSummaryFiltersTypeDef(
 
 _ClientGetOpsSummaryResponseEntitiesDataTypeDef = TypedDict(
     "_ClientGetOpsSummaryResponseEntitiesDataTypeDef",
-    {"Content": List[Dict[str, str]]},
+    {"CaptureTime": str, "Content": List[Dict[str, str]]},
     total=False,
 )
 
@@ -16839,6 +17307,10 @@ class ClientGetOpsSummaryResponseEntitiesDataTypeDef(
     Type definition for `ClientGetOpsSummaryResponseEntities` `Data`
 
     The OpsItem summaries result item.
+
+    - **CaptureTime** *(string) --*
+
+      The time OpsItem data was captured.
 
     - **Content** *(list) --*
 
@@ -16880,6 +17352,10 @@ class ClientGetOpsSummaryResponseEntitiesTypeDef(
         - *(dict) --*
 
           The OpsItem summaries result item.
+
+          - **CaptureTime** *(string) --*
+
+            The time OpsItem data was captured.
 
           - **Content** *(list) --*
 
@@ -16926,6 +17402,10 @@ class ClientGetOpsSummaryResponseTypeDef(_ClientGetOpsSummaryResponseTypeDef):
 
               The OpsItem summaries result item.
 
+              - **CaptureTime** *(string) --*
+
+                The time OpsItem data was captured.
+
               - **Content** *(list) --*
 
                 The detailed data content for an OpsItem summaries result item.
@@ -16939,6 +17419,26 @@ class ClientGetOpsSummaryResponseTypeDef(_ClientGetOpsSummaryResponseTypeDef):
     - **NextToken** *(string) --*
 
       The token for the next set of items to return. Use this token to get the next set of results.
+    """
+
+
+_ClientGetOpsSummaryResultAttributesTypeDef = TypedDict(
+    "_ClientGetOpsSummaryResultAttributesTypeDef", {"TypeName": str}
+)
+
+
+class ClientGetOpsSummaryResultAttributesTypeDef(
+    _ClientGetOpsSummaryResultAttributesTypeDef
+):
+    """
+    Type definition for `ClientGetOpsSummary` `ResultAttributes`
+
+    The OpsItem data type to return.
+
+    - **TypeName** *(string) --* **[REQUIRED]**
+
+      Name of the data type. Valid value: AWS:OpsItem, AWS:EC2InstanceInformation,
+      AWS:OpsItemTrendline, or AWS:ComplianceSummary.
     """
 
 
@@ -18548,11 +19048,18 @@ class ClientListAssociationVersionsResponseAssociationVersionsTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -18667,11 +19174,18 @@ class ClientListAssociationVersionsResponseAssociationVersionsTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -18842,11 +19356,18 @@ class ClientListAssociationVersionsResponseTypeDef(
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -19034,11 +19555,18 @@ class ClientListAssociationsResponseAssociationsTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -19139,11 +19667,18 @@ class ClientListAssociationsResponseAssociationsTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -19274,11 +19809,18 @@ class ClientListAssociationsResponseTypeDef(_ClientListAssociationsResponseTypeD
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -20366,11 +20908,18 @@ class ClientListCommandsResponseCommandsTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -20502,11 +21051,18 @@ class ClientListCommandsResponseCommandsTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -20757,11 +21313,18 @@ class ClientListCommandsResponseTypeDef(_ClientListCommandsResponseTypeDef):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -22861,13 +23424,158 @@ class ClientListResourceDataSyncResponseResourceDataSyncItemsS3DestinationTypeDe
     """
 
 
+_ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef = TypedDict(
+    "_ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef",
+    {"OrganizationalUnitId": str},
+    total=False,
+)
+
+
+class ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef(
+    _ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef
+):
+    """
+    Type definition for `ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSource` `OrganizationalUnits`
+
+    The AWS Organizations organizational unit data source for the sync.
+
+    - **OrganizationalUnitId** *(string) --*
+
+      The AWS Organization unit ID data source for the sync.
+    """
+
+
+_ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceTypeDef = TypedDict(
+    "_ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceTypeDef",
+    {
+        "OrganizationSourceType": str,
+        "OrganizationalUnits": List[
+            ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef
+        ],
+    },
+    total=False,
+)
+
+
+class ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceTypeDef(
+    _ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceTypeDef
+):
+    """
+    Type definition for `ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSource` `AwsOrganizationsSource`
+
+    The field name in ``SyncSource`` for the ``ResourceDataSyncAwsOrganizationsSource``
+    type.
+
+    - **OrganizationSourceType** *(string) --*
+
+      If an AWS Organization is present, this is either ``OrganizationalUnits`` or
+      ``EntireOrganization`` . For ``OrganizationalUnits`` , the data is aggregated from a
+      set of organization units. For ``EntireOrganization`` , the data is aggregated from
+      the entire AWS Organization.
+
+    - **OrganizationalUnits** *(list) --*
+
+      The AWS Organizations organization units included in the sync.
+
+      - *(dict) --*
+
+        The AWS Organizations organizational unit data source for the sync.
+
+        - **OrganizationalUnitId** *(string) --*
+
+          The AWS Organization unit ID data source for the sync.
+    """
+
+
+_ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceTypeDef = TypedDict(
+    "_ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceTypeDef",
+    {
+        "SourceType": str,
+        "AwsOrganizationsSource": ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceTypeDef,
+        "SourceRegions": List[str],
+        "IncludeFutureRegions": bool,
+        "State": str,
+    },
+    total=False,
+)
+
+
+class ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceTypeDef(
+    _ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceTypeDef
+):
+    """
+    Type definition for `ClientListResourceDataSyncResponseResourceDataSyncItems` `SyncSource`
+
+    Information about the source where the data was synchronized.
+
+    - **SourceType** *(string) --*
+
+      The type of data source for the resource data sync. ``SourceType`` is either
+      ``AwsOrganizations`` (if an organization is present in AWS Organizations) or
+      ``singleAccountMultiRegions`` .
+
+    - **AwsOrganizationsSource** *(dict) --*
+
+      The field name in ``SyncSource`` for the ``ResourceDataSyncAwsOrganizationsSource``
+      type.
+
+      - **OrganizationSourceType** *(string) --*
+
+        If an AWS Organization is present, this is either ``OrganizationalUnits`` or
+        ``EntireOrganization`` . For ``OrganizationalUnits`` , the data is aggregated from a
+        set of organization units. For ``EntireOrganization`` , the data is aggregated from
+        the entire AWS Organization.
+
+      - **OrganizationalUnits** *(list) --*
+
+        The AWS Organizations organization units included in the sync.
+
+        - *(dict) --*
+
+          The AWS Organizations organizational unit data source for the sync.
+
+          - **OrganizationalUnitId** *(string) --*
+
+            The AWS Organization unit ID data source for the sync.
+
+    - **SourceRegions** *(list) --*
+
+      The ``SyncSource`` AWS Regions included in the resource data sync.
+
+      - *(string) --*
+
+    - **IncludeFutureRegions** *(boolean) --*
+
+      Whether to automatically synchronize and aggregate data from new AWS Regions when those
+      Regions come online.
+
+    - **State** *(string) --*
+
+      The data type name for including resource data sync state. There are four sync states:
+
+       ``OrganizationNotExists`` : Your organization doesn't exist.
+
+       ``NoPermissions`` : The system can't locate the service-linked role. This role is
+       automatically created when a user creates a resource data sync in Explorer.
+
+       ``InvalidOrganizationalUnit`` : You specified or selected an invalid unit in the
+       resource data sync configuration.
+
+       ``TrustedAccessDisabled`` : You disabled Systems Manager access in the organization in
+       AWS Organizations.
+    """
+
+
 _ClientListResourceDataSyncResponseResourceDataSyncItemsTypeDef = TypedDict(
     "_ClientListResourceDataSyncResponseResourceDataSyncItemsTypeDef",
     {
         "SyncName": str,
+        "SyncType": str,
+        "SyncSource": ClientListResourceDataSyncResponseResourceDataSyncItemsSyncSourceTypeDef,
         "S3Destination": ClientListResourceDataSyncResponseResourceDataSyncItemsS3DestinationTypeDef,
         "LastSyncTime": datetime,
         "LastSuccessfulSyncTime": datetime,
+        "SyncLastModifiedTime": datetime,
         "LastStatus": str,
         "SyncCreatedTime": datetime,
         "LastSyncStatusMessage": str,
@@ -22888,6 +23596,73 @@ class ClientListResourceDataSyncResponseResourceDataSyncItemsTypeDef(
     - **SyncName** *(string) --*
 
       The name of the Resource Data Sync.
+
+    - **SyncType** *(string) --*
+
+      The type of resource data sync. If ``SyncType`` is ``SyncToDestination`` , then the
+      resource data sync synchronizes data to an Amazon S3 bucket. If the ``SyncType`` is
+      ``SyncFromSource`` then the resource data sync synchronizes data from AWS Organizations
+      or from multiple AWS Regions.
+
+    - **SyncSource** *(dict) --*
+
+      Information about the source where the data was synchronized.
+
+      - **SourceType** *(string) --*
+
+        The type of data source for the resource data sync. ``SourceType`` is either
+        ``AwsOrganizations`` (if an organization is present in AWS Organizations) or
+        ``singleAccountMultiRegions`` .
+
+      - **AwsOrganizationsSource** *(dict) --*
+
+        The field name in ``SyncSource`` for the ``ResourceDataSyncAwsOrganizationsSource``
+        type.
+
+        - **OrganizationSourceType** *(string) --*
+
+          If an AWS Organization is present, this is either ``OrganizationalUnits`` or
+          ``EntireOrganization`` . For ``OrganizationalUnits`` , the data is aggregated from a
+          set of organization units. For ``EntireOrganization`` , the data is aggregated from
+          the entire AWS Organization.
+
+        - **OrganizationalUnits** *(list) --*
+
+          The AWS Organizations organization units included in the sync.
+
+          - *(dict) --*
+
+            The AWS Organizations organizational unit data source for the sync.
+
+            - **OrganizationalUnitId** *(string) --*
+
+              The AWS Organization unit ID data source for the sync.
+
+      - **SourceRegions** *(list) --*
+
+        The ``SyncSource`` AWS Regions included in the resource data sync.
+
+        - *(string) --*
+
+      - **IncludeFutureRegions** *(boolean) --*
+
+        Whether to automatically synchronize and aggregate data from new AWS Regions when those
+        Regions come online.
+
+      - **State** *(string) --*
+
+        The data type name for including resource data sync state. There are four sync states:
+
+         ``OrganizationNotExists`` : Your organization doesn't exist.
+
+         ``NoPermissions`` : The system can't locate the service-linked role. This role is
+         automatically created when a user creates a resource data sync in Explorer.
+
+         ``InvalidOrganizationalUnit`` : You specified or selected an invalid unit in the
+         resource data sync configuration.
+
+         ``TrustedAccessDisabled`` : You disabled Systems Manager access in the organization in
+         AWS Organizations.
 
     - **S3Destination** *(dict) --*
 
@@ -22921,6 +23696,10 @@ class ClientListResourceDataSyncResponseResourceDataSyncItemsTypeDef(
     - **LastSuccessfulSyncTime** *(datetime) --*
 
       The last time the sync operations returned a status of ``SUCCESSFUL`` (UTC).
+
+    - **SyncLastModifiedTime** *(datetime) --*
+
+      The date and time the resource data sync was changed.
 
     - **LastStatus** *(string) --*
 
@@ -22967,6 +23746,73 @@ class ClientListResourceDataSyncResponseTypeDef(
 
           The name of the Resource Data Sync.
 
+        - **SyncType** *(string) --*
+
+          The type of resource data sync. If ``SyncType`` is ``SyncToDestination`` , then the
+          resource data sync synchronizes data to an Amazon S3 bucket. If the ``SyncType`` is
+          ``SyncFromSource`` then the resource data sync synchronizes data from AWS Organizations
+          or from multiple AWS Regions.
+
+        - **SyncSource** *(dict) --*
+
+          Information about the source where the data was synchronized.
+
+          - **SourceType** *(string) --*
+
+            The type of data source for the resource data sync. ``SourceType`` is either
+            ``AwsOrganizations`` (if an organization is present in AWS Organizations) or
+            ``singleAccountMultiRegions`` .
+
+          - **AwsOrganizationsSource** *(dict) --*
+
+            The field name in ``SyncSource`` for the ``ResourceDataSyncAwsOrganizationsSource``
+            type.
+
+            - **OrganizationSourceType** *(string) --*
+
+              If an AWS Organization is present, this is either ``OrganizationalUnits`` or
+              ``EntireOrganization`` . For ``OrganizationalUnits`` , the data is aggregated from a
+              set of organization units. For ``EntireOrganization`` , the data is aggregated from
+              the entire AWS Organization.
+
+            - **OrganizationalUnits** *(list) --*
+
+              The AWS Organizations organization units included in the sync.
+
+              - *(dict) --*
+
+                The AWS Organizations organizational unit data source for the sync.
+
+                - **OrganizationalUnitId** *(string) --*
+
+                  The AWS Organization unit ID data source for the sync.
+
+          - **SourceRegions** *(list) --*
+
+            The ``SyncSource`` AWS Regions included in the resource data sync.
+
+            - *(string) --*
+
+          - **IncludeFutureRegions** *(boolean) --*
+
+            Whether to automatically synchronize and aggregate data from new AWS Regions when those
+            Regions come online.
+
+          - **State** *(string) --*
+
+            The data type name for including resource data sync state. There are four sync states:
+
+             ``OrganizationNotExists`` : Your organization doesn't exist.
+
+             ``NoPermissions`` : The system can't locate the service-linked role. This role is
+             automatically created when a user creates a resource data sync in Explorer.
+
+             ``InvalidOrganizationalUnit`` : You specified or selected an invalid unit in the
+             resource data sync configuration.
+
+             ``TrustedAccessDisabled`` : You disabled Systems Manager access in the organization in
+             AWS Organizations.
+
         - **S3Destination** *(dict) --*
 
           Configuration information for the target Amazon S3 bucket.
@@ -22999,6 +23845,10 @@ class ClientListResourceDataSyncResponseTypeDef(
         - **LastSuccessfulSyncTime** *(datetime) --*
 
           The last time the sync operations returned a status of ``SUCCESSFUL`` (UTC).
+
+        - **SyncLastModifiedTime** *(datetime) --*
+
+          The date and time the resource data sync was changed.
 
         - **LastStatus** *(string) --*
 
@@ -23390,9 +24240,17 @@ class ClientRegisterTargetWithMaintenanceWindowTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+      This example demonstrates how to target all resources in the resource group
+      **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+    window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association was
+    created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -23511,9 +24369,17 @@ class ClientRegisterTaskWithMaintenanceWindowTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+      This example demonstrates how to target all resources in the resource group
+      **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+    window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association was
+    created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -24272,10 +25138,18 @@ class ClientSendCommandResponseCommandTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+      This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+      maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association
+    was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -24405,10 +25279,18 @@ class ClientSendCommandResponseCommandTypeDef(_ClientSendCommandResponseCommandT
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+          This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+          maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the association
+        was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -24654,10 +25536,18 @@ class ClientSendCommandResponseTypeDef(_ClientSendCommandResponseTypeDef):
           * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
           * (Maintenance window targets only)
-          ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+          ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+          how to target all resources in the resource group **ProductionResourceGroup** in your
+          maintenance window.
 
           * (Maintenance window targets only)
           ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+            This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+          * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+          demonstrates how to target all managed instances in the AWS Region where the association
+          was created.
 
           For information about how to send commands that target instances using ``Key,Value``
           parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -24850,9 +25740,17 @@ class ClientSendCommandTargetsTypeDef(_ClientSendCommandTargetsTypeDef):
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+      This example demonstrates how to target all resources in the resource group
+      **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+    window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association was
+    created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -24978,9 +25876,17 @@ class ClientStartAutomationExecutionTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+      This example demonstrates how to target all resources in the resource group
+      **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+    window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association was
+    created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -25293,10 +26199,18 @@ class ClientUpdateAssociationResponseAssociationDescriptionTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+      This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+      maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association
+    was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -25472,10 +26386,18 @@ class ClientUpdateAssociationResponseAssociationDescriptionTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+          This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+          maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the association
+        was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -25697,10 +26619,18 @@ class ClientUpdateAssociationResponseTypeDef(_ClientUpdateAssociationResponseTyp
           * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
           * (Maintenance window targets only)
-          ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+          ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+          how to target all resources in the resource group **ProductionResourceGroup** in your
+          maintenance window.
 
           * (Maintenance window targets only)
           ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+            This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+          * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+          demonstrates how to target all managed instances in the AWS Region where the association
+          was created.
 
           For information about how to send commands that target instances using ``Key,Value``
           parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -26003,10 +26933,18 @@ class ClientUpdateAssociationStatusResponseAssociationDescriptionTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+      This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+      maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association
+    was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -26182,10 +27120,18 @@ class ClientUpdateAssociationStatusResponseAssociationDescriptionTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+          This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+          maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the association
+        was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -26409,10 +27355,18 @@ class ClientUpdateAssociationStatusResponseTypeDef(
           * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
           * (Maintenance window targets only)
-          ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+          ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+          how to target all resources in the resource group **ProductionResourceGroup** in your
+          maintenance window.
 
           * (Maintenance window targets only)
           ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+            This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+          * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+          demonstrates how to target all managed instances in the AWS Region where the association
+          was created.
 
           For information about how to send commands that target instances using ``Key,Value``
           parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -26536,9 +27490,17 @@ class ClientUpdateAssociationTargetsTypeDef(_ClientUpdateAssociationTargetsTypeD
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+      This example demonstrates how to target all resources in the resource group
+      **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+    window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association was
+    created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -27203,10 +28165,18 @@ class ClientUpdateMaintenanceWindowTargetResponseTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates how
+    to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association
+    was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -27287,10 +28257,18 @@ class ClientUpdateMaintenanceWindowTargetResponseTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates how
+        to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+        This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the association
+        was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -27361,9 +28339,17 @@ class ClientUpdateMaintenanceWindowTargetTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+      This example demonstrates how to target all resources in the resource group
+      **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+    window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association was
+    created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -27501,10 +28487,18 @@ class ClientUpdateMaintenanceWindowTaskResponseTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates how
+    to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association
+    was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -28025,10 +29019,18 @@ class ClientUpdateMaintenanceWindowTaskResponseTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates how
+        to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+        This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the association
+        was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -28309,9 +29311,17 @@ class ClientUpdateMaintenanceWindowTaskTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+      This example demonstrates how to target all resources in the resource group
+      **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+    window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association was
+    created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -30653,11 +31663,18 @@ class DescribeAutomationExecutionsPaginateResponseAutomationExecutionMetadataLis
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -30819,11 +31836,18 @@ class DescribeAutomationExecutionsPaginateResponseAutomationExecutionMetadataLis
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -31019,11 +32043,18 @@ class DescribeAutomationExecutionsPaginateResponseTypeDef(
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -31277,11 +32308,18 @@ class DescribeAutomationStepExecutionsPaginateResponseStepExecutionsTargetsTypeD
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -31500,11 +32538,18 @@ class DescribeAutomationStepExecutionsPaginateResponseStepExecutionsTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -31738,11 +32783,18 @@ class DescribeAutomationStepExecutionsPaginateResponseTypeDef(
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -34880,9 +35932,17 @@ class DescribeMaintenanceWindowSchedulePaginateTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+      This example demonstrates how to target all resources in the resource group
+      **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+    window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association was
+    created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -35001,11 +36061,18 @@ class DescribeMaintenanceWindowTargetsPaginateResponseTargetsTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -35104,11 +36171,18 @@ class DescribeMaintenanceWindowTargetsPaginateResponseTargetsTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -35216,11 +36290,18 @@ class DescribeMaintenanceWindowTargetsPaginateResponseTypeDef(
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -35390,11 +36471,18 @@ class DescribeMaintenanceWindowTasksPaginateResponseTasksTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -35527,11 +36615,18 @@ class DescribeMaintenanceWindowTasksPaginateResponseTasksTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -35702,11 +36797,18 @@ class DescribeMaintenanceWindowTasksPaginateResponseTypeDef(
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -35933,9 +37035,17 @@ class DescribeMaintenanceWindowsForTargetPaginateTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+      This example demonstrates how to target all resources in the resource group
+      **ProductionResourceGroup** in your maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
+    This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
+    window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the association was
+    created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -38314,11 +39424,18 @@ class ListAssociationVersionsPaginateResponseAssociationVersionsTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -38433,11 +39550,18 @@ class ListAssociationVersionsPaginateResponseAssociationVersionsTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -38607,11 +39731,18 @@ class ListAssociationVersionsPaginateResponseTypeDef(
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -38827,11 +39958,18 @@ class ListAssociationsPaginateResponseAssociationsTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -38932,11 +40070,18 @@ class ListAssociationsPaginateResponseAssociationsTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -39064,11 +40209,18 @@ class ListAssociationsPaginateResponseTypeDef(_ListAssociationsPaginateResponseT
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -40209,11 +41361,18 @@ class ListCommandsPaginateResponseCommandsTargetsTypeDef(
     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
     * (Maintenance window targets only)
-    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+    how to target all resources in the resource group **ProductionResourceGroup** in your
+    maintenance window.
 
     * (Maintenance window targets only)
     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-    ``
+    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+    maintenance window.
+
+    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+    demonstrates how to target all managed instances in the AWS Region where the
+    association was created.
 
     For information about how to send commands that target instances using ``Key,Value``
     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -40345,11 +41504,18 @@ class ListCommandsPaginateResponseCommandsTypeDef(
         * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
         * (Maintenance window targets only)
-        ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+        ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+        how to target all resources in the resource group **ProductionResourceGroup** in your
+        maintenance window.
 
         * (Maintenance window targets only)
         ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-        ``
+        ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+        maintenance window.
+
+        * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+        demonstrates how to target all managed instances in the AWS Region where the
+        association was created.
 
         For information about how to send commands that target instances using ``Key,Value``
         parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -40600,11 +41766,18 @@ class ListCommandsPaginateResponseTypeDef(_ListCommandsPaginateResponseTypeDef):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only)
-            ``Key=resource-groups:Name,Values=ProductionResourceGroup``
+            ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
+            how to target all resources in the resource group **ProductionResourceGroup** in your
+            maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-            ``
+            ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
+            maintenance window.
+
+            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
+            demonstrates how to target all managed instances in the AWS Region where the
+            association was created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -42779,13 +43952,158 @@ class ListResourceDataSyncPaginateResponseResourceDataSyncItemsS3DestinationType
     """
 
 
+_ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef = TypedDict(
+    "_ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef",
+    {"OrganizationalUnitId": str},
+    total=False,
+)
+
+
+class ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef(
+    _ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef
+):
+    """
+    Type definition for `ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSource` `OrganizationalUnits`
+
+    The AWS Organizations organizational unit data source for the sync.
+
+    - **OrganizationalUnitId** *(string) --*
+
+      The AWS Organization unit ID data source for the sync.
+    """
+
+
+_ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceTypeDef = TypedDict(
+    "_ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceTypeDef",
+    {
+        "OrganizationSourceType": str,
+        "OrganizationalUnits": List[
+            ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceOrganizationalUnitsTypeDef
+        ],
+    },
+    total=False,
+)
+
+
+class ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceTypeDef(
+    _ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceTypeDef
+):
+    """
+    Type definition for `ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSource` `AwsOrganizationsSource`
+
+    The field name in ``SyncSource`` for the ``ResourceDataSyncAwsOrganizationsSource``
+    type.
+
+    - **OrganizationSourceType** *(string) --*
+
+      If an AWS Organization is present, this is either ``OrganizationalUnits`` or
+      ``EntireOrganization`` . For ``OrganizationalUnits`` , the data is aggregated from a
+      set of organization units. For ``EntireOrganization`` , the data is aggregated from
+      the entire AWS Organization.
+
+    - **OrganizationalUnits** *(list) --*
+
+      The AWS Organizations organization units included in the sync.
+
+      - *(dict) --*
+
+        The AWS Organizations organizational unit data source for the sync.
+
+        - **OrganizationalUnitId** *(string) --*
+
+          The AWS Organization unit ID data source for the sync.
+    """
+
+
+_ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceTypeDef = TypedDict(
+    "_ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceTypeDef",
+    {
+        "SourceType": str,
+        "AwsOrganizationsSource": ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceAwsOrganizationsSourceTypeDef,
+        "SourceRegions": List[str],
+        "IncludeFutureRegions": bool,
+        "State": str,
+    },
+    total=False,
+)
+
+
+class ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceTypeDef(
+    _ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceTypeDef
+):
+    """
+    Type definition for `ListResourceDataSyncPaginateResponseResourceDataSyncItems` `SyncSource`
+
+    Information about the source where the data was synchronized.
+
+    - **SourceType** *(string) --*
+
+      The type of data source for the resource data sync. ``SourceType`` is either
+      ``AwsOrganizations`` (if an organization is present in AWS Organizations) or
+      ``singleAccountMultiRegions`` .
+
+    - **AwsOrganizationsSource** *(dict) --*
+
+      The field name in ``SyncSource`` for the ``ResourceDataSyncAwsOrganizationsSource``
+      type.
+
+      - **OrganizationSourceType** *(string) --*
+
+        If an AWS Organization is present, this is either ``OrganizationalUnits`` or
+        ``EntireOrganization`` . For ``OrganizationalUnits`` , the data is aggregated from a
+        set of organization units. For ``EntireOrganization`` , the data is aggregated from
+        the entire AWS Organization.
+
+      - **OrganizationalUnits** *(list) --*
+
+        The AWS Organizations organization units included in the sync.
+
+        - *(dict) --*
+
+          The AWS Organizations organizational unit data source for the sync.
+
+          - **OrganizationalUnitId** *(string) --*
+
+            The AWS Organization unit ID data source for the sync.
+
+    - **SourceRegions** *(list) --*
+
+      The ``SyncSource`` AWS Regions included in the resource data sync.
+
+      - *(string) --*
+
+    - **IncludeFutureRegions** *(boolean) --*
+
+      Whether to automatically synchronize and aggregate data from new AWS Regions when those
+      Regions come online.
+
+    - **State** *(string) --*
+
+      The data type name for including resource data sync state. There are four sync states:
+
+       ``OrganizationNotExists`` : Your organization doesn't exist.
+
+       ``NoPermissions`` : The system can't locate the service-linked role. This role is
+       automatically created when a user creates a resource data sync in Explorer.
+
+       ``InvalidOrganizationalUnit`` : You specified or selected an invalid unit in the
+       resource data sync configuration.
+
+       ``TrustedAccessDisabled`` : You disabled Systems Manager access in the organization in
+       AWS Organizations.
+    """
+
+
 _ListResourceDataSyncPaginateResponseResourceDataSyncItemsTypeDef = TypedDict(
     "_ListResourceDataSyncPaginateResponseResourceDataSyncItemsTypeDef",
     {
         "SyncName": str,
+        "SyncType": str,
+        "SyncSource": ListResourceDataSyncPaginateResponseResourceDataSyncItemsSyncSourceTypeDef,
         "S3Destination": ListResourceDataSyncPaginateResponseResourceDataSyncItemsS3DestinationTypeDef,
         "LastSyncTime": datetime,
         "LastSuccessfulSyncTime": datetime,
+        "SyncLastModifiedTime": datetime,
         "LastStatus": str,
         "SyncCreatedTime": datetime,
         "LastSyncStatusMessage": str,
@@ -42806,6 +44124,73 @@ class ListResourceDataSyncPaginateResponseResourceDataSyncItemsTypeDef(
     - **SyncName** *(string) --*
 
       The name of the Resource Data Sync.
+
+    - **SyncType** *(string) --*
+
+      The type of resource data sync. If ``SyncType`` is ``SyncToDestination`` , then the
+      resource data sync synchronizes data to an Amazon S3 bucket. If the ``SyncType`` is
+      ``SyncFromSource`` then the resource data sync synchronizes data from AWS Organizations
+      or from multiple AWS Regions.
+
+    - **SyncSource** *(dict) --*
+
+      Information about the source where the data was synchronized.
+
+      - **SourceType** *(string) --*
+
+        The type of data source for the resource data sync. ``SourceType`` is either
+        ``AwsOrganizations`` (if an organization is present in AWS Organizations) or
+        ``singleAccountMultiRegions`` .
+
+      - **AwsOrganizationsSource** *(dict) --*
+
+        The field name in ``SyncSource`` for the ``ResourceDataSyncAwsOrganizationsSource``
+        type.
+
+        - **OrganizationSourceType** *(string) --*
+
+          If an AWS Organization is present, this is either ``OrganizationalUnits`` or
+          ``EntireOrganization`` . For ``OrganizationalUnits`` , the data is aggregated from a
+          set of organization units. For ``EntireOrganization`` , the data is aggregated from
+          the entire AWS Organization.
+
+        - **OrganizationalUnits** *(list) --*
+
+          The AWS Organizations organization units included in the sync.
+
+          - *(dict) --*
+
+            The AWS Organizations organizational unit data source for the sync.
+
+            - **OrganizationalUnitId** *(string) --*
+
+              The AWS Organization unit ID data source for the sync.
+
+      - **SourceRegions** *(list) --*
+
+        The ``SyncSource`` AWS Regions included in the resource data sync.
+
+        - *(string) --*
+
+      - **IncludeFutureRegions** *(boolean) --*
+
+        Whether to automatically synchronize and aggregate data from new AWS Regions when those
+        Regions come online.
+
+      - **State** *(string) --*
+
+        The data type name for including resource data sync state. There are four sync states:
+
+         ``OrganizationNotExists`` : Your organization doesn't exist.
+
+         ``NoPermissions`` : The system can't locate the service-linked role. This role is
+         automatically created when a user creates a resource data sync in Explorer.
+
+         ``InvalidOrganizationalUnit`` : You specified or selected an invalid unit in the
+         resource data sync configuration.
+
+         ``TrustedAccessDisabled`` : You disabled Systems Manager access in the organization in
+         AWS Organizations.
 
     - **S3Destination** *(dict) --*
 
@@ -42839,6 +44224,10 @@ class ListResourceDataSyncPaginateResponseResourceDataSyncItemsTypeDef(
     - **LastSuccessfulSyncTime** *(datetime) --*
 
       The last time the sync operations returned a status of ``SUCCESSFUL`` (UTC).
+
+    - **SyncLastModifiedTime** *(datetime) --*
+
+      The date and time the resource data sync was changed.
 
     - **LastStatus** *(string) --*
 
@@ -42884,6 +44273,73 @@ class ListResourceDataSyncPaginateResponseTypeDef(
 
           The name of the Resource Data Sync.
 
+        - **SyncType** *(string) --*
+
+          The type of resource data sync. If ``SyncType`` is ``SyncToDestination`` , then the
+          resource data sync synchronizes data to an Amazon S3 bucket. If the ``SyncType`` is
+          ``SyncFromSource`` then the resource data sync synchronizes data from AWS Organizations
+          or from multiple AWS Regions.
+
+        - **SyncSource** *(dict) --*
+
+          Information about the source where the data was synchronized.
+
+          - **SourceType** *(string) --*
+
+            The type of data source for the resource data sync. ``SourceType`` is either
+            ``AwsOrganizations`` (if an organization is present in AWS Organizations) or
+            ``singleAccountMultiRegions`` .
+
+          - **AwsOrganizationsSource** *(dict) --*
+
+            The field name in ``SyncSource`` for the ``ResourceDataSyncAwsOrganizationsSource``
+            type.
+
+            - **OrganizationSourceType** *(string) --*
+
+              If an AWS Organization is present, this is either ``OrganizationalUnits`` or
+              ``EntireOrganization`` . For ``OrganizationalUnits`` , the data is aggregated from a
+              set of organization units. For ``EntireOrganization`` , the data is aggregated from
+              the entire AWS Organization.
+
+            - **OrganizationalUnits** *(list) --*
+
+              The AWS Organizations organization units included in the sync.
+
+              - *(dict) --*
+
+                The AWS Organizations organizational unit data source for the sync.
+
+                - **OrganizationalUnitId** *(string) --*
+
+                  The AWS Organization unit ID data source for the sync.
+
+          - **SourceRegions** *(list) --*
+
+            The ``SyncSource`` AWS Regions included in the resource data sync.
+
+            - *(string) --*
+
+          - **IncludeFutureRegions** *(boolean) --*
+
+            Whether to automatically synchronize and aggregate data from new AWS Regions when those
+            Regions come online.
+
+          - **State** *(string) --*
+
+            The data type name for including resource data sync state. There are four sync states:
+
+             ``OrganizationNotExists`` : Your organization doesn't exist.
+
+             ``NoPermissions`` : The system can't locate the service-linked role. This role is
+             automatically created when a user creates a resource data sync in Explorer.
+
+             ``InvalidOrganizationalUnit`` : You specified or selected an invalid unit in the
+             resource data sync configuration.
+
+             ``TrustedAccessDisabled`` : You disabled Systems Manager access in the organization in
+             AWS Organizations.
+
         - **S3Destination** *(dict) --*
 
           Configuration information for the target Amazon S3 bucket.
@@ -42916,6 +44372,10 @@ class ListResourceDataSyncPaginateResponseTypeDef(
         - **LastSuccessfulSyncTime** *(datetime) --*
 
           The last time the sync operations returned a status of ``SUCCESSFUL`` (UTC).
+
+        - **SyncLastModifiedTime** *(datetime) --*
+
+          The date and time the resource data sync was changed.
 
         - **LastStatus** *(string) --*
 

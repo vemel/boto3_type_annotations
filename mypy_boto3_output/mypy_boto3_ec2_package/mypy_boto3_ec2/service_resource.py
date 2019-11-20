@@ -96,6 +96,7 @@ from mypy_boto3_ec2.type_defs import (
     ServiceResourceCreateInstancesIpv6AddressesTypeDef,
     ServiceResourceCreateInstancesLaunchTemplateTypeDef,
     ServiceResourceCreateInstancesLicenseSpecificationsTypeDef,
+    ServiceResourceCreateInstancesMetadataOptionsTypeDef,
     ServiceResourceCreateInstancesMonitoringTypeDef,
     ServiceResourceCreateInstancesNetworkInterfacesTypeDef,
     ServiceResourceCreateInstancesPlacementTypeDef,
@@ -124,6 +125,7 @@ from mypy_boto3_ec2.type_defs import (
     SubnetCreateInstancesIpv6AddressesTypeDef,
     SubnetCreateInstancesLaunchTemplateTypeDef,
     SubnetCreateInstancesLicenseSpecificationsTypeDef,
+    SubnetCreateInstancesMetadataOptionsTypeDef,
     SubnetCreateInstancesMonitoringTypeDef,
     SubnetCreateInstancesNetworkInterfacesTypeDef,
     SubnetCreateInstancesPlacementTypeDef,
@@ -682,6 +684,7 @@ class ServiceResource(Boto3ServiceResource):
         LicenseSpecifications: List[
             ServiceResourceCreateInstancesLicenseSpecificationsTypeDef
         ] = None,
+        MetadataOptions: ServiceResourceCreateInstancesMetadataOptionsTypeDef = None,
     ) -> List[service_resource_scope.Instance]:
         """
         Launches the specified number of instances using an AMI for which you have permissions.
@@ -939,7 +942,12 @@ class ServiceResource(Boto3ServiceResource):
                   {
                       'LicenseConfigurationArn': 'string'
                   },
-              ]
+              ],
+              MetadataOptions={
+                  'HttpTokens': 'optional'|'required',
+                  'HttpPutResponseHopLimit': 123,
+                  'HttpEndpoint': 'disabled'|'enabled'
+              }
           )
         :type BlockDeviceMappings: list
         :param BlockDeviceMappings:
@@ -1678,6 +1686,45 @@ class ServiceResource(Boto3ServiceResource):
             - **LicenseConfigurationArn** *(string) --*
 
               The Amazon Resource Name (ARN) of the license configuration.
+
+        :type MetadataOptions: dict
+        :param MetadataOptions:
+
+          The metadata options for the instance. For more information, see `Instance Metadata and User Data
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html>`__ .
+
+          - **HttpTokens** *(string) --*
+
+            The state of token usage for your instance metadata requests. If the parameter is not specified
+            in the request, the default state is ``optional`` .
+
+            If the state is ``optional`` , you can choose to retrieve instance metadata with or without a
+            signed token header on your request. If you retrieve the IAM role credentials without a token,
+            the version 1.0 role credentials are returned. If you retrieve the IAM role credentials using a
+            valid signed token, the version 2.0 role credentials are returned.
+
+            If the state is ``required`` , you must send a signed token header with any instance metadata
+            retrieval requests. In this state, retrieving the IAM role credentials always returns the
+            version 2.0 credentials; the version 1.0 credentials are not available.
+
+          - **HttpPutResponseHopLimit** *(integer) --*
+
+            The desired HTTP PUT response hop limit for instance metadata requests. The larger the number,
+            the further instance metadata requests can travel.
+
+            Default: 1
+
+            Possible values: Integers from 1 to 64
+
+          - **HttpEndpoint** *(string) --*
+
+            This parameter enables or disables the HTTP metadata endpoint on your instances. If the
+            parameter is not specified, the default state is ``enabled`` .
+
+            .. note::
+
+              If you specify a value of ``disabled`` , you will not be able to access your instance
+              metadata.
 
         :rtype: list(:py:class:`ec2.Instance`)
         :returns: A list of Instance resources
@@ -4437,6 +4484,7 @@ class Instance(Boto3ServiceResource):
     capacity_reservation_specification: Dict[str, Any]
     hibernation_options: Dict[str, Any]
     licenses: List[Any]
+    metadata_options: Dict[str, Any]
     id: str
     volumes: service_resource_scope.InstanceVolumesCollection
     vpc_addresses: service_resource_scope.InstanceVpcAddressesCollection
@@ -6843,9 +6891,7 @@ class Instance(Boto3ServiceResource):
           * ``hypervisor`` - The hypervisor type of the instance (``ovm`` | ``xen`` ).
 
           * ``iam-instance-profile.arn`` - The instance profile associated with the instance. Specified as
-          an ARN.
-
-          * ``image-id`` - The ID of the image used to launch the instance.
+          an ARN. ``image-id`` - The ID of the image used to launch the instance.
 
           * ``instance-id`` - The ID of the instance.
 
@@ -6876,6 +6922,15 @@ class Instance(Boto3ServiceResource):
           launch group (for example, 0, 1, 2, and so on).
 
           * ``launch-time`` - The time when the instance was launched.
+
+          * ``metadata-http-tokens`` - The metadata request authorization state (``optional`` |
+          ``required`` )
+
+          * ``metadata-http-put-response-hop-limit`` - The http metadata request put response hop limit
+          (integer, possible values ``1`` to ``64`` )
+
+          * ``metadata-http-endpoint`` - Enable or disable metadata access on http endpoint (``enabled`` |
+          ``disabled`` )
 
           * ``monitoring-state`` - Indicates whether detailed monitoring is enabled (``disabled`` |
           ``enabled`` ).
@@ -7157,9 +7212,7 @@ class Instance(Boto3ServiceResource):
           * ``hypervisor`` - The hypervisor type of the instance (``ovm`` | ``xen`` ).
 
           * ``iam-instance-profile.arn`` - The instance profile associated with the instance. Specified as
-          an ARN.
-
-          * ``image-id`` - The ID of the image used to launch the instance.
+          an ARN. ``image-id`` - The ID of the image used to launch the instance.
 
           * ``instance-id`` - The ID of the instance.
 
@@ -7190,6 +7243,15 @@ class Instance(Boto3ServiceResource):
           launch group (for example, 0, 1, 2, and so on).
 
           * ``launch-time`` - The time when the instance was launched.
+
+          * ``metadata-http-tokens`` - The metadata request authorization state (``optional`` |
+          ``required`` )
+
+          * ``metadata-http-put-response-hop-limit`` - The http metadata request put response hop limit
+          (integer, possible values ``1`` to ``64`` )
+
+          * ``metadata-http-endpoint`` - Enable or disable metadata access on http endpoint (``enabled`` |
+          ``disabled`` )
 
           * ``monitoring-state`` - Indicates whether detailed monitoring is enabled (``disabled`` |
           ``enabled`` ).
@@ -7471,9 +7533,7 @@ class Instance(Boto3ServiceResource):
           * ``hypervisor`` - The hypervisor type of the instance (``ovm`` | ``xen`` ).
 
           * ``iam-instance-profile.arn`` - The instance profile associated with the instance. Specified as
-          an ARN.
-
-          * ``image-id`` - The ID of the image used to launch the instance.
+          an ARN. ``image-id`` - The ID of the image used to launch the instance.
 
           * ``instance-id`` - The ID of the instance.
 
@@ -7504,6 +7564,15 @@ class Instance(Boto3ServiceResource):
           launch group (for example, 0, 1, 2, and so on).
 
           * ``launch-time`` - The time when the instance was launched.
+
+          * ``metadata-http-tokens`` - The metadata request authorization state (``optional`` |
+          ``required`` )
+
+          * ``metadata-http-put-response-hop-limit`` - The http metadata request put response hop limit
+          (integer, possible values ``1`` to ``64`` )
+
+          * ``metadata-http-endpoint`` - Enable or disable metadata access on http endpoint (``enabled`` |
+          ``disabled`` )
 
           * ``monitoring-state`` - Indicates whether detailed monitoring is enabled (``disabled`` |
           ``enabled`` ).
@@ -7786,9 +7855,7 @@ class Instance(Boto3ServiceResource):
           * ``hypervisor`` - The hypervisor type of the instance (``ovm`` | ``xen`` ).
 
           * ``iam-instance-profile.arn`` - The instance profile associated with the instance. Specified as
-          an ARN.
-
-          * ``image-id`` - The ID of the image used to launch the instance.
+          an ARN. ``image-id`` - The ID of the image used to launch the instance.
 
           * ``instance-id`` - The ID of the instance.
 
@@ -7819,6 +7886,15 @@ class Instance(Boto3ServiceResource):
           launch group (for example, 0, 1, 2, and so on).
 
           * ``launch-time`` - The time when the instance was launched.
+
+          * ``metadata-http-tokens`` - The metadata request authorization state (``optional`` |
+          ``required`` )
+
+          * ``metadata-http-put-response-hop-limit`` - The http metadata request put response hop limit
+          (integer, possible values ``1`` to ``64`` )
+
+          * ``metadata-http-endpoint`` - Enable or disable metadata access on http endpoint (``enabled`` |
+          ``disabled`` )
 
           * ``monitoring-state`` - Indicates whether detailed monitoring is enabled (``disabled`` |
           ``enabled`` ).
@@ -12338,6 +12414,7 @@ class Subnet(Boto3ServiceResource):
         LicenseSpecifications: List[
             SubnetCreateInstancesLicenseSpecificationsTypeDef
         ] = None,
+        MetadataOptions: SubnetCreateInstancesMetadataOptionsTypeDef = None,
     ) -> List[service_resource_scope.Instance]:
         """
         Launches the specified number of instances using an AMI for which you have permissions.
@@ -12594,7 +12671,12 @@ class Subnet(Boto3ServiceResource):
                   {
                       'LicenseConfigurationArn': 'string'
                   },
-              ]
+              ],
+              MetadataOptions={
+                  'HttpTokens': 'optional'|'required',
+                  'HttpPutResponseHopLimit': 123,
+                  'HttpEndpoint': 'disabled'|'enabled'
+              }
           )
         :type BlockDeviceMappings: list
         :param BlockDeviceMappings:
@@ -13326,6 +13408,45 @@ class Subnet(Boto3ServiceResource):
             - **LicenseConfigurationArn** *(string) --*
 
               The Amazon Resource Name (ARN) of the license configuration.
+
+        :type MetadataOptions: dict
+        :param MetadataOptions:
+
+          The metadata options for the instance. For more information, see `Instance Metadata and User Data
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html>`__ .
+
+          - **HttpTokens** *(string) --*
+
+            The state of token usage for your instance metadata requests. If the parameter is not specified
+            in the request, the default state is ``optional`` .
+
+            If the state is ``optional`` , you can choose to retrieve instance metadata with or without a
+            signed token header on your request. If you retrieve the IAM role credentials without a token,
+            the version 1.0 role credentials are returned. If you retrieve the IAM role credentials using a
+            valid signed token, the version 2.0 role credentials are returned.
+
+            If the state is ``required`` , you must send a signed token header with any instance metadata
+            retrieval requests. In this state, retrieving the IAM role credentials always returns the
+            version 2.0 credentials; the version 1.0 credentials are not available.
+
+          - **HttpPutResponseHopLimit** *(integer) --*
+
+            The desired HTTP PUT response hop limit for instance metadata requests. The larger the number,
+            the further instance metadata requests can travel.
+
+            Default: 1
+
+            Possible values: Integers from 1 to 64
+
+          - **HttpEndpoint** *(string) --*
+
+            This parameter enables or disables the HTTP metadata endpoint on your instances. If the
+            parameter is not specified, the default state is ``enabled`` .
+
+            .. note::
+
+              If you specify a value of ``disabled`` , you will not be able to access your instance
+              metadata.
 
         :rtype: list(:py:class:`ec2.Instance`)
         :returns: A list of Instance resources
@@ -17441,9 +17562,7 @@ class ServiceResourceInstancesCollection(ResourceCollection):
           * ``hypervisor`` - The hypervisor type of the instance (``ovm`` | ``xen`` ).
 
           * ``iam-instance-profile.arn`` - The instance profile associated with the instance. Specified as
-          an ARN.
-
-          * ``image-id`` - The ID of the image used to launch the instance.
+          an ARN. ``image-id`` - The ID of the image used to launch the instance.
 
           * ``instance-id`` - The ID of the instance.
 
@@ -17474,6 +17593,15 @@ class ServiceResourceInstancesCollection(ResourceCollection):
           launch group (for example, 0, 1, 2, and so on).
 
           * ``launch-time`` - The time when the instance was launched.
+
+          * ``metadata-http-tokens`` - The metadata request authorization state (``optional`` |
+          ``required`` )
+
+          * ``metadata-http-put-response-hop-limit`` - The http metadata request put response hop limit
+          (integer, possible values ``1`` to ``64`` )
+
+          * ``metadata-http-endpoint`` - Enable or disable metadata access on http endpoint (``enabled`` |
+          ``disabled`` )
 
           * ``monitoring-state`` - Indicates whether detailed monitoring is enabled (``disabled`` |
           ``enabled`` ).

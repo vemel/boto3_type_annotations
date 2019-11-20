@@ -14,7 +14,7 @@ setup(
     license="MIT License",
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
-    description="Mypy-friendly boto3 1.10.19 type annotations for ram service.",
+    description="Mypy-friendly boto3 1.10.22 type annotations for ram service.",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",

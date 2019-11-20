@@ -1185,9 +1185,7 @@ class InstanceExistsWaiter(Boto3Waiter):
           * ``hypervisor`` - The hypervisor type of the instance (``ovm`` | ``xen`` ).
 
           * ``iam-instance-profile.arn`` - The instance profile associated with the instance. Specified as
-          an ARN.
-
-          * ``image-id`` - The ID of the image used to launch the instance.
+          an ARN. ``image-id`` - The ID of the image used to launch the instance.
 
           * ``instance-id`` - The ID of the instance.
 
@@ -1218,6 +1216,15 @@ class InstanceExistsWaiter(Boto3Waiter):
           launch group (for example, 0, 1, 2, and so on).
 
           * ``launch-time`` - The time when the instance was launched.
+
+          * ``metadata-http-tokens`` - The metadata request authorization state (``optional`` |
+          ``required`` )
+
+          * ``metadata-http-put-response-hop-limit`` - The http metadata request put response hop limit
+          (integer, possible values ``1`` to ``64`` )
+
+          * ``metadata-http-endpoint`` - Enable or disable metadata access on http endpoint (``enabled`` |
+          ``disabled`` )
 
           * ``monitoring-state`` - Indicates whether detailed monitoring is enabled (``disabled`` |
           ``enabled`` ).
@@ -1535,9 +1542,7 @@ class InstanceRunningWaiter(Boto3Waiter):
           * ``hypervisor`` - The hypervisor type of the instance (``ovm`` | ``xen`` ).
 
           * ``iam-instance-profile.arn`` - The instance profile associated with the instance. Specified as
-          an ARN.
-
-          * ``image-id`` - The ID of the image used to launch the instance.
+          an ARN. ``image-id`` - The ID of the image used to launch the instance.
 
           * ``instance-id`` - The ID of the instance.
 
@@ -1568,6 +1573,15 @@ class InstanceRunningWaiter(Boto3Waiter):
           launch group (for example, 0, 1, 2, and so on).
 
           * ``launch-time`` - The time when the instance was launched.
+
+          * ``metadata-http-tokens`` - The metadata request authorization state (``optional`` |
+          ``required`` )
+
+          * ``metadata-http-put-response-hop-limit`` - The http metadata request put response hop limit
+          (integer, possible values ``1`` to ``64`` )
+
+          * ``metadata-http-endpoint`` - Enable or disable metadata access on http endpoint (``enabled`` |
+          ``disabled`` )
 
           * ``monitoring-state`` - Indicates whether detailed monitoring is enabled (``disabled`` |
           ``enabled`` ).
@@ -2067,9 +2081,7 @@ class InstanceStoppedWaiter(Boto3Waiter):
           * ``hypervisor`` - The hypervisor type of the instance (``ovm`` | ``xen`` ).
 
           * ``iam-instance-profile.arn`` - The instance profile associated with the instance. Specified as
-          an ARN.
-
-          * ``image-id`` - The ID of the image used to launch the instance.
+          an ARN. ``image-id`` - The ID of the image used to launch the instance.
 
           * ``instance-id`` - The ID of the instance.
 
@@ -2100,6 +2112,15 @@ class InstanceStoppedWaiter(Boto3Waiter):
           launch group (for example, 0, 1, 2, and so on).
 
           * ``launch-time`` - The time when the instance was launched.
+
+          * ``metadata-http-tokens`` - The metadata request authorization state (``optional`` |
+          ``required`` )
+
+          * ``metadata-http-put-response-hop-limit`` - The http metadata request put response hop limit
+          (integer, possible values ``1`` to ``64`` )
+
+          * ``metadata-http-endpoint`` - Enable or disable metadata access on http endpoint (``enabled`` |
+          ``disabled`` )
 
           * ``monitoring-state`` - Indicates whether detailed monitoring is enabled (``disabled`` |
           ``enabled`` ).
@@ -2417,9 +2438,7 @@ class InstanceTerminatedWaiter(Boto3Waiter):
           * ``hypervisor`` - The hypervisor type of the instance (``ovm`` | ``xen`` ).
 
           * ``iam-instance-profile.arn`` - The instance profile associated with the instance. Specified as
-          an ARN.
-
-          * ``image-id`` - The ID of the image used to launch the instance.
+          an ARN. ``image-id`` - The ID of the image used to launch the instance.
 
           * ``instance-id`` - The ID of the instance.
 
@@ -2450,6 +2469,15 @@ class InstanceTerminatedWaiter(Boto3Waiter):
           launch group (for example, 0, 1, 2, and so on).
 
           * ``launch-time`` - The time when the instance was launched.
+
+          * ``metadata-http-tokens`` - The metadata request authorization state (``optional`` |
+          ``required`` )
+
+          * ``metadata-http-put-response-hop-limit`` - The http metadata request put response hop limit
+          (integer, possible values ``1`` to ``64`` )
+
+          * ``metadata-http-endpoint`` - Enable or disable metadata access on http endpoint (``enabled`` |
+          ``disabled`` )
 
           * ``monitoring-state`` - Indicates whether detailed monitoring is enabled (``disabled`` |
           ``enabled`` ).
@@ -5249,6 +5277,8 @@ class VpnConnectionAvailableWaiter(Boto3Waiter):
 
           * ``vpn-gateway-id`` - The ID of a virtual private gateway associated with the VPN connection.
 
+          * ``transit-gateway-id`` - The ID of a transit gateway associated with the VPN connection.
+
           - *(dict) --*
 
             A filter name and value pair that is used to return a more specific list of results from a
@@ -5393,6 +5423,8 @@ class VpnConnectionDeletedWaiter(Boto3Waiter):
           * ``vpn-connection-id`` - The ID of the VPN connection.
 
           * ``vpn-gateway-id`` - The ID of a virtual private gateway associated with the VPN connection.
+
+          * ``transit-gateway-id`` - The ID of a transit gateway associated with the VPN connection.
 
           - *(dict) --*
 
