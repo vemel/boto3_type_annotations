@@ -20,6 +20,8 @@ echo "__version__ = \"${VERSION}\"" >> builder/mypy_boto3_builder/version.py
 
 if [[ `git diff-index HEAD --` != "" ]]; then
     echo "There are changes: `git diff`"
+    git config --global user.email "volshebnyi@gmail.com"
+    git config --global user.name ${GITHUB_ACTOR}
     git add builder/mypy_boto3_builder/version.py
     git commit -m "Bump version to ${VERSION}"
     git tag ${VERSION}
