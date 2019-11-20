@@ -23,7 +23,7 @@ echo "Bumping version to ${VERSION}"
 echo '"Source of truth for version."' > builder/mypy_boto3_builder/version.py
 echo "__version__ = \"${VERSION}\"" >> builder/mypy_boto3_builder/version.py
 
-if [[ `git diff-index HEAD --` != "" ]]; then
+if [[ `git diff --stat | grep version` != "" ]]; then
     echo "There are changes: `git diff`"
     git config --global user.email "volshebnyi@gmail.com"
     git config --global user.name ${GITHUB_ACTOR}
