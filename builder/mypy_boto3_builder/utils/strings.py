@@ -42,23 +42,27 @@ def clean_doc(doc: Optional[str]) -> str:
             result.append(line)
             continue
 
-        while len(line) > LINE_LENGTH:
+        while True:
+            if len(line) <= LINE_LENGTH:
+                result.append(line)
+                break
+
             indent = " " * (len(line) - len(line.lstrip()))
             line = line.strip()
-            space_index = line.rfind(" ", 0, LINE_LENGTH - len(indent))
-            if space_index != -1:
+            space_index = line.rfind(" ", 0, LINE_LENGTH - len(indent) + 1)
+            if space_index > 0:
                 result.append(f"{indent}{line[:space_index].rstrip()}")
                 line = f"{indent}{line[space_index + 1 :]}"
                 continue
 
             equals_index = line.rfind("=", 0, LINE_LENGTH - len(indent))
-            if equals_index != -1:
-                result.append(f"{indent}{line[:equals_index+1].rstrip()}")
+            if equals_index > 0:
+                result.append(f"{indent}{line[:equals_index + 1].rstrip()}")
                 line = f"{indent}    {line[equals_index + 1 :]}"
                 continue
 
-            vertical_bar_index = line.rfind("|", 0, LINE_LENGTH - len(indent))
-            if vertical_bar_index != -1:
+            vertical_bar_index = line.rfind("|", 0, LINE_LENGTH - len(indent) + 1)
+            if vertical_bar_index > 0:
                 result.append(f"{indent}{line[:vertical_bar_index].rstrip()}")
                 line = f"{indent}{line[vertical_bar_index :]}"
                 continue
@@ -71,7 +75,6 @@ def clean_doc(doc: Optional[str]) -> str:
 
             result.append(f"{indent}{line}")
             break
-        result.append(line)
 
     return "\n".join(result)
 
