@@ -22,6 +22,11 @@ jobs:
         run: |
           pylint builder/mypy_boto3_builder
           mypy builder/mypy_boto3_builder
+      - name: Install
+        run: |
+          cd builder
+          python setup.py install
+          cd -
       - name: Test
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
