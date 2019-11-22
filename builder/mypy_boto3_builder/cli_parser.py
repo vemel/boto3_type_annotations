@@ -61,6 +61,11 @@ def get_cli_parser() -> argparse.ArgumentParser:
         "--skip-stubs", action="store_true", help="Whether to skip boto3 stubs"
     )
     parser.add_argument(
+        "--no-docs",
+        action="store_true",
+        help="Whether to generate output with no docstrings",
+    )
+    parser.add_argument(
         "output_path", metavar="OUTPUT_PATH", help="Output path", type=get_absolute_path
     )
     parser.add_argument(
