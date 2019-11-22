@@ -8,6 +8,8 @@
 
 `mypy`-friendly type annotations for `boto3`.
 
+Based on [boto3_type_annotations](https://github.com/alliefitter/boto3_type_annotations) by [@alliefitter](https://github.com/alliefitter).
+
 Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-boto3-modules)
 
 - [mypy_boto3](#mypyboto3)
