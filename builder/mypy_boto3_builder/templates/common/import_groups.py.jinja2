@@ -5,7 +5,7 @@
                 {% if import_record.safe -%}
                     {{ 'try:\n    ' -}}
                     {% include "common/import_record.py.jinja2" with context -%}
-                    {{ '\nexcept ImportError, ModuleNotFoundError:\n' -}}
+                    {{ '\nexcept (ImportError, ModuleNotFoundError):\n' -}}
                     {{ '    ' -}}
                     {{ import_record.get_local_name() -}}
                     {{ ' = Any' -}}

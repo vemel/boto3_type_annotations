@@ -45,6 +45,7 @@ class Boto3StubsPackage(Package):
             ImportRecord(ImportString("typing"), "Optional"),
             ImportRecord(ImportString("typing"), "Any"),
             ImportRecord(ImportString("typing"), "Union"),
+            ImportRecord(ImportString("boto3", "session")),
             ImportRecord(ImportString("boto3", "session"), "Session"),
             ImportRecord(ImportString("botocore", "client"), "Client"),
             ImportRecord(ImportString("botocore", "config"), "Config"),
