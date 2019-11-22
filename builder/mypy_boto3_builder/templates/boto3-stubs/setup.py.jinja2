@@ -7,9 +7,9 @@ LONG_DESCRIPTION = open(dirname(abspath(__file__)) + "/README.md", "r").read()
 
 
 setup(
-    name="{{ module.name }}",
+    name="{{ package.pypi_name }}",
     version="{{ version }}",
-    packages=["{{ module.package_name }}"],
+    packages=["{{ package.name }}"],
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
     author="Vlad Emelianov",
@@ -33,24 +33,24 @@ setup(
     ],
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
-    package_data={"{{ module.package_name }}": ["py.typed", "*.pyi", "*/*.pyi"]},
+    package_data={"{{ package.name }}": ["py.typed", "*.pyi", "*/*.pyi"]},
     install_requires=[
         "{{ master_pypi_name }}=={{ version }}",
     ],
     extras_require={
         "all": [
-            {% for service_name in module.service_names -%}
+            {% for service_name in package.service_names -%}
             "{{ service_name.pypi_name }}=={{ version }}",
             {% endfor -%}
         ],
         "essential": [
-            {% for service_name in module.service_names -%}
+            {% for service_name in package.service_names -%}
             {% if service_name.is_essential() -%}
             "{{ service_name.pypi_name }}=={{ version }}",
             {% endif -%}
             {% endfor -%}
         ],
-        {% for service_name in module.service_names -%}
+        {% for service_name in package.service_names -%}
         "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}=={{ version }}"],
         {% endfor -%}
     },

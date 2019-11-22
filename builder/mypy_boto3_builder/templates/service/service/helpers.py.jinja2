@@ -1,9 +1,9 @@
-"Helper functions for {{ module.service_name.boto3_name }} service"
+"Helper functions for {{ package.service_name.boto3_name }} service"
 
-{% with import_record_groups=module.get_helpers_import_record_groups() -%}
+{% with import_record_groups=package.get_helpers_import_record_groups() -%}
     {% include "common/import_groups.py.jinja2" with context -%}
 {% endwith -%}
 
-{% for function in module.helper_functions -%}
+{% for function in package.helper_functions -%}
     {% include "common/function.py.jinja2" with context -%}
 {% endfor -%}

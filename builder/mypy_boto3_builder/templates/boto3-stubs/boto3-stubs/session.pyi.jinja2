@@ -14,16 +14,16 @@ from botocore.model import ServiceModel
 from botocore.client import BaseClient
 from boto3.resources.base import ServiceResource
 
-{% for service_module in module.service_modules -%}
+{% for service_package in package.service_packages -%}
 try:
-    from {{ master_module_name }}.{{ service_module.service_name.import_name }}.client import Client as {{ service_module.service_name.class_prefix }}Client
+    from {{ master_module_name }}.{{ service_package.service_name.import_name }}.client import Client as {{ service_package.service_name.class_prefix }}Client
 except ImportError:
-    {{ service_module.service_name.class_prefix }}Client = Any
-{% if service_module.service_resource -%}
+    {{ service_package.service_name.class_prefix }}Client = Any
+{% if service_package.service_resource -%}
 try:
-    from {{ master_module_name }}.{{ service_module.service_name.import_name }}.service_resource import ServiceResource as {{ service_module.service_name.class_prefix }}ServiceResource
+    from {{ master_module_name }}.{{ service_package.service_name.import_name }}.service_resource import ServiceResource as {{ service_package.service_name.class_prefix }}ServiceResource
 except ImportError:
-    {{ service_module.service_name.class_prefix }}ServiceResource = Any
+    {{ service_package.service_name.class_prefix }}ServiceResource = Any
 {% endif %}
 {% endfor -%}
 
@@ -64,12 +64,12 @@ class Session(object):
     def get_credentials(self) -> Credentials: ...
     def _register_default_handlers(self) -> None: ...
 
-    {% for service_module in module.service_modules -%}
+    {% for service_package in package.service_packages -%}
     @overload
     # pylint: disable=arguments-differ
     def client(
         self,
-        service_name: Literal['{{ service_module.service_name.boto3_name }}'],
+        service_name: Literal['{{ service_package.service_name.boto3_name }}'],
         region_name: str = None,
         api_version: str = None,
         use_ssl: bool = None,
@@ -79,16 +79,16 @@ class Session(object):
         aws_secret_access_key: str = None,
         aws_session_token: str = None,
         config: Config = None
-    ) -> {{ service_module.service_name.class_prefix }}Client: ...
+    ) -> {{ service_package.service_name.class_prefix }}Client: ...
     {% endfor -%}
 
-    {% for service_module in module.service_modules -%}
-    {% if service_module.service_resource -%}
+    {% for service_package in package.service_packages -%}
+    {% if service_package.service_resource -%}
     @overload
     # pylint: disable=arguments-differ
     def resource(
         self,
-        service_name: Literal['{{ service_module.service_name.boto3_name }}'],
+        service_name: Literal['{{ service_package.service_name.boto3_name }}'],
         region_name: str = None,
         api_version: str = None,
         use_ssl: bool = None,
@@ -98,6 +98,6 @@ class Session(object):
         aws_secret_access_key: str = None,
         aws_session_token: str = None,
         config: Config = None
-    ) -> {{ service_module.service_name.class_prefix }}ServiceResource: ...
+    ) -> {{ service_package.service_name.class_prefix }}ServiceResource: ...
     {% endif -%}
     {% endfor -%}

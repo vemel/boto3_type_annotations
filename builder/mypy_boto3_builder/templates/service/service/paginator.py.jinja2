@@ -1,14 +1,14 @@
-"Main interface for {{ module.service_name.boto3_name }} Paginators"
+"Main interface for {{ package.service_name.boto3_name }} Paginators"
 from __future__ import annotations
 
-{% with import_record_groups=module.get_paginator_required_import_record_groups() -%}
+{% with import_record_groups=package.get_paginator_required_import_record_groups() -%}
     {% include "common/import_groups.py.jinja2" with context -%}
 {% endwith -%}
 
 {{ "\n\n" -}}
 
 __all__ = (
-{% for paginator in module.paginators -%}
+{% for paginator in package.paginators -%}
     {{ '"' -}}
     {{ paginator.name -}}
     {{ '"' -}}
@@ -18,7 +18,7 @@ __all__ = (
 
 {{ "\n\n" -}}
 
-{% for paginator in module.paginators -%}
+{% for paginator in package.paginators -%}
     {% with class=paginator -%}
         {% include "common/class.py.jinja2" with context -%}
     {% endwith -%}

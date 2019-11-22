@@ -11,7 +11,7 @@ except ModuleNotFoundError:
 
 from mypy_boto3_builder.constants import TEMPLATES_PATH
 from mypy_boto3_builder.enums.service_name import ServiceName
-from mypy_boto3_builder.structures.module_record import ModuleRecord
+from mypy_boto3_builder.structures.package import Package
 from mypy_boto3_builder.jinja_manager import JinjaManager
 
 BLACK_INSTALLED = "black" in locals()
@@ -57,7 +57,7 @@ def blackify(content: str, file_path: Path, fast: bool = True) -> str:
 
 def render_jinja2_template(
     template_path: Path,
-    module: Optional[ModuleRecord] = None,
+    package: Optional[Package] = None,
     service_name: Optional[ServiceName] = None,
 ) -> str:
     """
@@ -76,4 +76,4 @@ def render_jinja2_template(
         raise ValueError(f"Template {template_path} not found")
 
     template = JinjaManager.get_environment().get_template(template_path.as_posix())
-    return template.render(module=module, service_name=service_name,)
+    return template.render(package=package, service_name=service_name)

@@ -1,5 +1,5 @@
 """
-boto3-stubs module writer.
+boto3-stubs package writer.
 """
 from pathlib import Path
 import shutil
@@ -8,17 +8,17 @@ import filecmp
 
 from boto3 import __version__ as boto3_version
 
-from mypy_boto3_builder.structures.boto3_module import Boto3Module
+from mypy_boto3_builder.structures.boto3_stubs_package import Boto3StubsPackage
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import render_jinja2_template, blackify
 from mypy_boto3_builder.constants import BOTO3_STUBS_STATIC_PATH
 
 
-def write_boto3_stubs_module(
-    boto3_module: Boto3Module, output_path: Path
+def write_boto3_stubs_package(
+    package: Boto3StubsPackage, output_path: Path
 ) -> List[Path]:
     modified_paths: List[Path] = []
-    package_path = output_path / boto3_module.package_name
+    package_path = output_path / package.name
 
     output_path.mkdir(exist_ok=True)
     package_path.mkdir(exist_ok=True)
@@ -36,7 +36,7 @@ def write_boto3_stubs_module(
     ]
 
     for file_path, template_path in file_paths:
-        content = render_jinja2_template(template_path, module=boto3_module)
+        content = render_jinja2_template(template_path, package=package)
         content = blackify(content, file_path)
         if not file_path.exists() or file_path.read_text() != content:
             modified_paths.append(file_path)

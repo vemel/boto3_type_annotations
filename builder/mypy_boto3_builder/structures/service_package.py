@@ -15,11 +15,11 @@ from mypy_boto3_builder.structures.waiter import Waiter
 from mypy_boto3_builder.structures.paginator import Paginator
 from mypy_boto3_builder.structures.client import Client
 from mypy_boto3_builder.structures.function import Function
-from mypy_boto3_builder.structures.module_record import ModuleRecord
+from mypy_boto3_builder.structures.package import Package
 
 
 @dataclass
-class ServiceModule(ModuleRecord):
+class ServicePackage(Package):
     service_name: ServiceName
     client: Client
     service_resource: Optional[ServiceResource] = None

@@ -6,9 +6,9 @@ More information can be found [here](https://github.com/vemel/mypy_boto3).
 ## Submodules
 
 - `all` - Type annotations for all `boto3` services.
-{% if module.essential_service_names -%}
+{% if package.essential_service_names -%}
     {{ "- `essential` - Type annotations for " -}}
-    {% for service_name in module.essential_service_names -%}
+    {% for service_name in package.essential_service_names -%}
         {% if not loop.first -%}
             {{ " and " if loop.last else ", " -}}
         {% endif -%}
@@ -16,10 +16,10 @@ More information can be found [here](https://github.com/vemel/mypy_boto3).
         {{ service_name.boto3_name -}}
         {{ "`" -}}
     {% endfor -%}
-    {{ " services" if module.essential_service_names|length > 1 else " service" -}}
+    {{ " services" if package.essential_service_names|length > 1 else " service" -}}
     {{ ".\n" -}}
 {% endif -%}
-{% for service_name in module.service_names -%}
+{% for service_name in package.service_names -%}
     {{ "- `" -}}
     {{ service_name.boto3_name -}}
     {{ "` - Type annotations for `" -}}

@@ -1,14 +1,14 @@
-"Main interface for {{ module.service_name.boto3_name }} Client"
+"Main interface for {{ package.service_name.boto3_name }} Client"
 from __future__ import annotations
 
-{% with import_record_groups=module.get_client_required_import_record_groups() -%}
+{% with import_record_groups=package.get_client_required_import_record_groups() -%}
     {% include "common/import_groups.py.jinja2" with context -%}
 {% endwith -%}
 
 {{ "\n\n" -}}
 
 __all__ = (
-{% for name in module.client.get_all_names() -%}
+{% for name in package.client.get_all_names() -%}
     {{ '"' -}}
     {{ name -}}
     {{ '"' -}}
@@ -18,12 +18,12 @@ __all__ = (
 
 {{ "\n\n" -}}
 
-{% with class=module.client -%}
+{% with class=package.client -%}
     {% include "common/class.py.jinja2" with context -%}
 {% endwith -%}
 
 {{ "\n\n" -}}
 
-{% with class=module.client.exceptions_class -%}
+{% with class=package.client.exceptions_class -%}
     {% include "common/class.py.jinja2" with context -%}
 {% endwith -%}

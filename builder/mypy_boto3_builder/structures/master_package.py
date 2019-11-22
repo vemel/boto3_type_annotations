@@ -6,21 +6,21 @@ from dataclasses import dataclass, field
 from typing import List
 
 from mypy_boto3_builder.enums.service_name import ServiceName
-from mypy_boto3_builder.constants import BOTO3_STUBS_NAME
-from mypy_boto3_builder.structures.service_module import ServiceModule
-from mypy_boto3_builder.structures.module_record import ModuleRecord
+from mypy_boto3_builder.constants import PYPI_NAME, MODULE_NAME
+from mypy_boto3_builder.structures.service_package import ServicePackage
+from mypy_boto3_builder.structures.package import Package
 
 
 @dataclass
-class Boto3Module(ModuleRecord):
+class MasterPackage(Package):
     """
-    Structure for boto3-stubs module.
+    Structure for mypy-boto3 package.
     """
 
-    name: str = BOTO3_STUBS_NAME
-    package_name: str = BOTO3_STUBS_NAME
+    name: str = MODULE_NAME
+    pypi_name: str = PYPI_NAME
     service_names: List[ServiceName] = field(default_factory=lambda: [])
-    service_modules: List[ServiceModule] = field(default_factory=lambda: [])
+    service_packages: List[ServicePackage] = field(default_factory=lambda: [])
 
     @property
     def essential_service_names(self) -> List[ServiceName]:

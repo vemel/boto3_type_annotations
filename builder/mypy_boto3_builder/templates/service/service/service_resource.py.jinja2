@@ -1,14 +1,14 @@
-"Main interface for {{ module.service_name.boto3_name }} ServiceResource"
+"Main interface for {{ package.service_name.boto3_name }} ServiceResource"
 from __future__ import annotations
 
-{% with import_record_groups=module.get_service_resource_required_import_record_groups() -%}
+{% with import_record_groups=package.get_service_resource_required_import_record_groups() -%}
     {% include "common/import_groups.py.jinja2" with context -%}
 {% endwith -%}
 
 {{ "\n\n" -}}
 
 __all__ = (
-{% for name in module.service_resource.get_all_names() -%}
+{% for name in package.service_resource.get_all_names() -%}
     {{ '"' -}}
     {{ name -}}
     {{ '"' -}}
@@ -18,22 +18,22 @@ __all__ = (
 
 {{ "\n\n" -}}
 
-{% with class=module.service_resource -%}
+{% with class=package.service_resource -%}
     {% include "common/class.py.jinja2" with context -%}
 {% endwith -%}
 
 {{ "\n\n" -}}
 
-{% for sub_resource in module.service_resource.sub_resources -%}
+{% for sub_resource in package.service_resource.sub_resources -%}
     {% with class=sub_resource -%}
         {% include "common/class.py.jinja2" with context -%}
     {% endwith -%}
     {{ "\n\n\n" if not loop.last else "\n" -}}
 {% endfor -%}
 
-{{ "\n\n" if module.service_resource.sub_resources else "" -}}
+{{ "\n\n" if package.service_resource.sub_resources else "" -}}
 
-{% for collection in module.service_resource.get_collections() -%}
+{% for collection in package.service_resource.get_collections() -%}
     {% with class=collection -%}
         {% include "common/class.py.jinja2" with context -%}
     {% endwith -%}

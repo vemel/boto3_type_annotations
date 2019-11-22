@@ -1,19 +1,19 @@
 """
-Parser that produces `structures.MasterModule`.
+Parser that produces `structures.Boto3Module`.
 """
 from typing import Iterable
 from boto3.session import Session
 
-from mypy_boto3_builder.structures.master_module import MasterModule
+from mypy_boto3_builder.structures.boto3_stubs_package import Boto3StubsPackage
 from mypy_boto3_builder.enums.service_name import ServiceName
-from mypy_boto3_builder.parsers.fake_service_module import parse_fake_service_module
+from mypy_boto3_builder.parsers.fake_service_package import parse_fake_service_package
 
 
-def parse_master_module(
+def parse_boto3_stubs_package(
     session: Session, service_names: Iterable[ServiceName]
-) -> MasterModule:
+) -> Boto3StubsPackage:
     """
-    Parse data for master module.
+    Parse data for boto3-stubs package.
 
     Arguments:
         session -- boto3 session.
@@ -22,9 +22,11 @@ def parse_master_module(
     Returns:
         MasterModule structure.
     """
-    result = MasterModule()
+    result = Boto3StubsPackage()
     for service_name in service_names:
-        result.service_modules.append(parse_fake_service_module(session, service_name))
+        result.service_packages.append(
+            parse_fake_service_package(session, service_name)
+        )
         result.service_names.append(service_name)
 
     return result

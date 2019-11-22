@@ -7,12 +7,12 @@ LONG_DESCRIPTION = open(dirname(abspath(__file__)) + "/README.md", "r").read()
 
 
 setup(
-    name="{{ master_pypi_name }}",
+    name="{{ package.pypi_name }}",
     version="{{ version }}",
     packages=[
-        "{{ master_module_name }}",
-        {% for service_name in module.service_names -%}
-        "{{ master_module_name }}.{{ service_name.import_name }}",
+        "{{ package.name }}",
+        {% for service_name in package.service_names -%}
+        "{{ package.name }}.{{ service_name.import_name }}",
         {% endfor -%}
     ],
     url="https://github.com/vemel/mypy_boto3",
@@ -42,21 +42,21 @@ setup(
     extras_require={
         "stubs": ["{{ boto3_stubs_name }}=={{ version }}"],
         "essential": [
-            {% for service_name in module.service_names -%}
+            {% for service_name in package.service_names -%}
             {% if service_name.is_essential() -%}
             "{{ service_name.pypi_name }}=={{ version }}",
             {% endif -%}
             {% endfor -%}
         ],
         "all": [
-            {% for service_name in module.service_names -%}
+            {% for service_name in package.service_names -%}
             "{{ service_name.pypi_name }}=={{ version }}",
             {% endfor -%}
         ],
-        {% for service_name in module.service_names -%}
+        {% for service_name in package.service_names -%}
         "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}=={{ version }}"],
         {% endfor -%}
     },
-    package_data={"{{ master_module_name }}": ["py.typed"]},
+    package_data={"{{ package.name }}": ["py.typed"]},
     zip_safe=False,
 )

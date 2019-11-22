@@ -1,10 +1,10 @@
 """
-Service module writer.
+Service package writer.
 """
 from pathlib import Path
 from typing import List
 
-from mypy_boto3_builder.structures.service_module import ServiceModule
+from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import (
     render_jinja2_template,
@@ -13,11 +13,9 @@ from mypy_boto3_builder.writers.utils import (
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 
 
-def write_service_module(
-    service_module: ServiceModule, output_path: Path
-) -> List[Path]:
+def write_service_package(package: ServicePackage, output_path: Path) -> List[Path]:
     modified_paths: List[Path] = []
-    package_path = output_path / service_module.service_name.module_name
+    package_path = output_path / package.name
 
     output_path.mkdir(exist_ok=True)
     package_path.mkdir(exist_ok=True)
@@ -40,7 +38,7 @@ def write_service_module(
             module_templates_path / ServiceModuleName.helpers.template_name,
         ),
     ]
-    if service_module.service_resource:
+    if package.service_resource:
         file_paths.append(
             (
                 package_path / ServiceModuleName.service_resource.file_name,
@@ -48,21 +46,21 @@ def write_service_module(
                 / ServiceModuleName.service_resource.template_name,
             )
         )
-    if service_module.paginators:
+    if package.paginators:
         file_paths.append(
             (
                 package_path / ServiceModuleName.paginator.file_name,
                 module_templates_path / ServiceModuleName.paginator.template_name,
             )
         )
-    if service_module.waiters:
+    if package.waiters:
         file_paths.append(
             (
                 package_path / ServiceModuleName.waiter.file_name,
                 module_templates_path / ServiceModuleName.waiter.template_name,
             )
         )
-    if service_module.typed_dicts:
+    if package.typed_dicts:
         file_paths.append(
             (
                 package_path / ServiceModuleName.type_defs.file_name,
@@ -72,9 +70,7 @@ def write_service_module(
 
     for file_path, template_path in file_paths:
         content = render_jinja2_template(
-            template_path,
-            module=service_module,
-            service_name=service_module.service_name,
+            template_path, package=package, service_name=package.service_name,
         )
         content = blackify(content, file_path)
 

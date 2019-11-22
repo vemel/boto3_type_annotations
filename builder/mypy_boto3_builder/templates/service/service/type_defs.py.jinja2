@@ -1,14 +1,14 @@
-"Main interface for {{ module.service_name.boto3_name }} type defs"
+"Main interface for {{ package.service_name.boto3_name }} type defs"
 from __future__ import annotations
 
-{% with import_record_groups=module.get_type_defs_required_import_record_groups() -%}
+{% with import_record_groups=package.get_type_defs_required_import_record_groups() -%}
     {% include "common/import_groups.py.jinja2" with context -%}
 {% endwith -%}
 
 {{ "\n\n" -}}
 
 __all__ = (
-{% for typed_dict in module.typed_dicts -%}
+{% for typed_dict in package.typed_dicts -%}
     {{ '"' -}}
     {{ typed_dict.name -}}
     {{ '"' -}}
@@ -18,7 +18,7 @@ __all__ = (
 
 {{ "\n\n" -}}
 
-{% for typed_dict in module.typed_dicts -%}
+{% for typed_dict in package.typed_dicts -%}
     {% include "common/typed_dict.py.jinja2" with context -%}
     {{ "\n" -}}
 {% endfor -%}

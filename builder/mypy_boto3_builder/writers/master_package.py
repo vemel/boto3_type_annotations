@@ -1,21 +1,21 @@
 """
-Master module writer.
+Master package writer.
 """
 from pathlib import Path
 import shutil
 import filecmp
 from typing import List, Tuple
 
-from mypy_boto3_builder.structures.master_module import MasterModule
-from mypy_boto3_builder.structures.service_module import ServiceModule
+from mypy_boto3_builder.structures.master_package import MasterPackage
+from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import render_jinja2_template, blackify
 from mypy_boto3_builder.constants import MYPY_BOTO3_STATIC_PATH
 
 
-def write_master_module(master_module: MasterModule, output_path: Path) -> List[Path]:
+def write_master_package(package: MasterPackage, output_path: Path) -> List[Path]:
     modified_paths: List[Path] = []
-    package_path = output_path / master_module.package_name
+    package_path = output_path / package.name
 
     output_path.mkdir(exist_ok=True)
     package_path.mkdir(exist_ok=True)
@@ -37,21 +37,21 @@ def write_master_module(master_module: MasterModule, output_path: Path) -> List[
     ]
 
     for file_path, template_path in file_paths:
-        content = render_jinja2_template(template_path, module=master_module)
+        content = render_jinja2_template(template_path, package=package)
         content = blackify(content, file_path)
 
         if not file_path.exists() or file_path.read_text() != content:
             modified_paths.append(file_path)
             file_path.write_text(content)
 
-    for service_module in master_module.service_modules:
+    for service_package in package.service_packages:
         service_module_file_paths = get_service_module_file_paths(
-            service_module, package_path, templates_path
+            service_package, package_path, templates_path
         )
 
         for file_path, template_path in service_module_file_paths:
             content = render_jinja2_template(
-                template_path, service_name=service_module.service_name
+                template_path, service_name=service_package.service_name
             )
             content = blackify(content, file_path)
 
@@ -79,9 +79,9 @@ def write_master_module(master_module: MasterModule, output_path: Path) -> List[
 
 
 def get_service_module_file_paths(
-    service_module: ServiceModule, package_path: Path, templates_path: Path,
+    package: ServicePackage, package_path: Path, templates_path: Path,
 ) -> List[Tuple[Path, Path]]:
-    service_module_path = package_path / service_module.service_name.import_name
+    service_module_path = package_path / package.service_name.import_name
     service_module_path.mkdir(exist_ok=True)
     service_templates_path = templates_path / "master" / "service_module"
 
@@ -99,28 +99,28 @@ def get_service_module_file_paths(
             service_templates_path / "helpers.py.jinja2",
         ),
     ]
-    if service_module.service_resource:
+    if package.service_resource:
         file_paths.append(
             (
                 service_module_path / "service_resource.py",
                 service_templates_path / "service_resource.py.jinja2",
             )
         )
-    if service_module.waiters:
+    if package.waiters:
         file_paths.append(
             (
                 service_module_path / "waiter.py",
                 service_templates_path / "waiter.py.jinja2",
             )
         )
-    if service_module.paginators:
+    if package.paginators:
         file_paths.append(
             (
                 service_module_path / "paginator.py",
                 service_templates_path / "paginator.py.jinja2",
             )
         )
-    if service_module.typed_dicts:
+    if package.typed_dicts:
         file_paths.append(
             (
                 service_module_path / "type_defs.py",

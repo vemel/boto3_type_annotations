@@ -1,14 +1,14 @@
-"Main interface for {{ module.service_name.boto3_name }} Waiters"
+"Main interface for {{ package.service_name.boto3_name }} Waiters"
 from __future__ import annotations
 
-{% with import_record_groups=module.get_waiter_required_import_record_groups() -%}
+{% with import_record_groups=package.get_waiter_required_import_record_groups() -%}
     {% include "common/import_groups.py.jinja2" with context -%}
 {% endwith -%}
 
 {{ "\n\n" -}}
 
 __all__ = (
-{% for waiter in module.waiters -%}
+{% for waiter in package.waiters -%}
     {{ '"' -}}
     {{ waiter.name -}}
     {{ '"' -}}
@@ -18,7 +18,7 @@ __all__ = (
 
 {{ "\n\n" -}}
 
-{% for waiter in module.waiters -%}
+{% for waiter in package.waiters -%}
     {% with class=waiter -%}
         {% include "common/class.py.jinja2" with context -%}
     {% endwith -%}

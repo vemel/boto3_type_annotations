@@ -15,7 +15,7 @@ from mypy_boto3_builder.structures.method import Method
 from mypy_boto3_builder.structures.function import Function
 from mypy_boto3_builder.structures.waiter import Waiter
 from mypy_boto3_builder.structures.paginator import Paginator
-from mypy_boto3_builder.structures.service_module import ServiceModule
+from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.structures.argument import Argument
 from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
@@ -31,9 +31,11 @@ from mypy_boto3_builder.parsers.helpers import get_public_methods, parse_method
 from mypy_boto3_builder.parsers.boto3_utils import get_boto3_client
 
 
-def parse_service_module(session: Session, service_name: ServiceName) -> ServiceModule:
+def parse_service_package(
+    session: Session, service_name: ServiceName
+) -> ServicePackage:
     """
-    Extract all data from boto3 service meodule.
+    Extract all data from boto3 service package.
 
     Arguments:
         session -- boto3 session.
@@ -43,7 +45,9 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
         ServiceModule structure.
     """
     client = parse_client(session, service_name)
-    result = ServiceModule(
+    result = ServicePackage(
+        name=service_name.module_name,
+        pypi_name=service_name.pypi_name,
         service_name=service_name,
         client=client,
         service_resource=parse_service_resource(session, service_name),
