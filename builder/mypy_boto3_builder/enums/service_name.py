@@ -282,16 +282,3 @@ class ServiceName(enum.Enum):
 
         name_parts = [i.capitalize() for i in import_name.split("_") if i]
         return "".join(name_parts)
-
-
-def main() -> None:
-    for item in ServiceName.items():
-        link = f"https://pypi.org/project/{item.pypi_name}/"
-        description = (
-            f"Type annotations for `boto3` [{item.boto3_name}]({link}) service."
-        )
-        print(f"- `{item.value}` - {description}")
-
-
-if __name__ == "__main__":
-    main()
