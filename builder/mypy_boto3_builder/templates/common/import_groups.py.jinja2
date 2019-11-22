@@ -2,7 +2,16 @@
     {% if not import_record_group.is_builtins() -%}
         {% if import_record_group.import_records|length == 1 -%}
             {% with import_record = import_record_group.import_records[0] -%}
-                {% include "common/import_record.py.jinja2" with context -%}
+                {% if import_record.safe -%}
+                    {{ 'try:\n    ' -}}
+                    {% include "common/import_record.py.jinja2" with context -%}
+                    {{ '\nexcept ImportError, ModuleNotFoundError:\n' -}}
+                    {{ '    ' -}}
+                    {{ import_record.get_local_name() -}}
+                    {{ ' = Any' -}}
+                {% else -%}
+                    {% include "common/import_record.py.jinja2" with context -%}
+                {% endif -%}
             {% endwith -%}
         {% else -%}
             {{ 'from ' -}}

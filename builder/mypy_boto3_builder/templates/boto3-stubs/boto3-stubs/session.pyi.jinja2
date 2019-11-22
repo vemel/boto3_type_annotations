@@ -1,31 +1,7 @@
-# pylint: disable=unused-argument,multiple-statements
-from typing import List, Any, Union, overload
-from typing_extensions import Literal
-
-import boto3
-import boto3.utils
-from boto3.exceptions import ResourceNotExistsError, UnknownAPIVersionError
-from boto3.resources.factory import ResourceFactory
-from botocore.credentials import Credentials
-from botocore.config import Config
-from botocore.waiter import Waiter
-from botocore.loaders import Loader
-from botocore.model import ServiceModel
-from botocore.client import BaseClient
-from boto3.resources.base import ServiceResource
-
-{% for service_package in package.service_packages -%}
-try:
-    from {{ master_module_name }}.{{ service_package.service_name.import_name }}.client import Client as {{ service_package.service_name.class_prefix }}Client
-except ImportError:
-    {{ service_package.service_name.class_prefix }}Client = Any
-{% if service_package.service_resource -%}
-try:
-    from {{ master_module_name }}.{{ service_package.service_name.import_name }}.service_resource import ServiceResource as {{ service_package.service_name.class_prefix }}ServiceResource
-except ImportError:
-    {{ service_package.service_name.class_prefix }}ServiceResource = Any
-{% endif %}
-{% endfor -%}
+# pylint: disable=unused-argument,multiple-statements,unused-import
+{% with import_record_groups=package.get_session_required_import_record_groups() -%}
+    {% include "common/import_groups.py.jinja2" with context -%}
+{% endwith -%}
 
 
 class Session(object):
@@ -64,40 +40,8 @@ class Session(object):
     def get_credentials(self) -> Credentials: ...
     def _register_default_handlers(self) -> None: ...
 
-    {% for service_package in package.service_packages -%}
-    @overload
-    # pylint: disable=arguments-differ
-    def client(
-        self,
-        service_name: Literal['{{ service_package.service_name.boto3_name }}'],
-        region_name: str = None,
-        api_version: str = None,
-        use_ssl: bool = None,
-        verify: Union[str, bool] = None,
-        endpoint_url: str = None,
-        aws_access_key_id: str = None,
-        aws_secret_access_key: str = None,
-        aws_session_token: str = None,
-        config: Config = None
-    ) -> {{ service_package.service_name.class_prefix }}Client: ...
+{% filter indent(4, True) -%}
+    {% for method in package.session_methods -%}
+        {% include "common/method.py.jinja2" with context -%}
     {% endfor -%}
-
-    {% for service_package in package.service_packages -%}
-    {% if service_package.service_resource -%}
-    @overload
-    # pylint: disable=arguments-differ
-    def resource(
-        self,
-        service_name: Literal['{{ service_package.service_name.boto3_name }}'],
-        region_name: str = None,
-        api_version: str = None,
-        use_ssl: bool = None,
-        verify: Union[str, bool] = None,
-        endpoint_url: str = None,
-        aws_access_key_id: str = None,
-        aws_secret_access_key: str = None,
-        aws_session_token: str = None,
-        config: Config = None
-    ) -> {{ service_package.service_name.class_prefix }}ServiceResource: ...
-    {% endif -%}
-    {% endfor -%}
+{% endfilter -%}

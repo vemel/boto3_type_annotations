@@ -3,7 +3,6 @@ Helper for Python import strings.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
 from typing import Any
 from functools import total_ordering
 
@@ -11,7 +10,6 @@ from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.constants import MODULE_NAME, TYPE_DEFS_NAME
 
 
-@dataclass
 @total_ordering
 class ImportRecord:
     """
@@ -31,10 +29,13 @@ class ImportRecord:
         ImportString("botocore"),
     )
 
-    def __init__(self, source: ImportString, name: str = "", alias: str = "") -> None:
+    def __init__(
+        self, source: ImportString, name: str = "", alias: str = "", safe: bool = False
+    ) -> None:
         self.source = source
         self.name = name
         self.alias = alias
+        self.safe = safe
 
     def __bool__(self) -> bool:
         return bool(self.source)

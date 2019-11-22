@@ -3,7 +3,7 @@ Grouped by `source` import records for nicer rendering.
 """
 from __future__ import annotations
 
-from typing import Iterable, List
+from typing import Iterable, List, Set
 
 from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
@@ -38,7 +38,13 @@ class ImportRecordGroup:
             A list of generated `ImportRecordGroup`.
         """
         result: List[ImportRecordGroup] = []
-        for import_record in sorted(import_records):
+        all_import_records: Set[ImportRecord] = set(import_records)
+
+        for import_record in import_records:
+            if import_record.safe:
+                all_import_records.add(ImportRecord(ImportString("typing"), "Any"))
+
+        for import_record in sorted(all_import_records):
             if not import_record:
                 continue
             if (
@@ -46,6 +52,7 @@ class ImportRecordGroup:
                 or result[-1].source != import_record.source
                 or not result[-1].import_records[0].name
                 or not import_record.name
+                or import_record.safe
             ):
                 result.append(ImportRecordGroup(import_record.source, [import_record]))
             else:
