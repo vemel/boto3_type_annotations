@@ -17,8 +17,14 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip pylint mypy black boto3 jinja2
+          python -m pip install --upgrade pip pylint mypy black boto3 jinja2 pytest pytest-cov codecov
       - name: Lint
         run: |
           pylint builder/mypy_boto3_builder
           mypy builder/mypy_boto3_builder
+      - name: Test
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: |
+          pytest
+          pytest --cov-report term --cov=builder/mypy_boto3_builder
