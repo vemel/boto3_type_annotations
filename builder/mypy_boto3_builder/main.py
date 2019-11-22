@@ -3,6 +3,7 @@ Main entrypoint for builder.
 """
 from typing import List
 
+from boto3 import __version__ as boto3_version
 from boto3.session import Session
 
 from mypy_boto3_builder.writers.processors import (
@@ -14,8 +15,13 @@ from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.cli_parser import get_cli_parser
 from mypy_boto3_builder.enums.service_name import ServiceName
-from mypy_boto3_builder.jinja2_env import jinja2_env
-from mypy_boto3_builder.constants import MODULE_NAME, DUMMY_REGION, BOTO3_STUBS_NAME
+from mypy_boto3_builder.jinja_manager import JinjaManager
+from mypy_boto3_builder.constants import (
+    MODULE_NAME,
+    DUMMY_REGION,
+    BOTO3_STUBS_NAME,
+    PYPI_NAME,
+)
 
 
 def main() -> None:
@@ -36,8 +42,14 @@ def main() -> None:
 
         service_names.append(service_name)
 
-    if args.no_docs:
-        jinja2_env.globals["render_docstrings"] = False
+    JinjaManager.update_globals(
+        version=version,
+        master_pypi_name=PYPI_NAME,
+        master_module_name=MODULE_NAME,
+        boto3_stubs_name=BOTO3_STUBS_NAME,
+        boto3_version=boto3_version,
+        render_docstrings=not args.no_docs,
+    )
 
     if not args.skip_services:
         for service_name in service_names:
