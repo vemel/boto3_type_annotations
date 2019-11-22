@@ -6,7 +6,11 @@ from typing import Optional
 
 from boto3 import __version__ as boto3_version
 import jinja2
-import black
+
+try:
+    import black
+except ModuleNotFoundError:
+    pass
 
 from mypy_boto3_builder.constants import (
     TEMPLATES_PATH,
@@ -19,7 +23,8 @@ from mypy_boto3_builder.structures.module_record import ModuleRecord
 from mypy_boto3_builder.version import __version__ as version
 
 
-jinja2_env = jinja2.Environment(
+BLACK_INSTALLED = "black" in locals()
+JINJA2_ENV = jinja2.Environment(
     loader=jinja2.FileSystemLoader(TEMPLATES_PATH.as_posix()),
     undefined=jinja2.StrictUndefined,
 )
@@ -42,6 +47,9 @@ def blackify(content: str, file_path: Path, fast: bool = True) -> str:
     Raises:
         ValueError -- If `content` is not a valid Python code.
     """
+    if not BLACK_INSTALLED:
+        return content
+
     if file_path.suffix not in (".py", ".pyi"):
         return content
 
@@ -77,7 +85,7 @@ def render_jinja2_template(
     if not template_full_path.exists():
         raise ValueError(f"Template {template_path} not found")
 
-    template = jinja2_env.get_template(template_path.as_posix())
+    template = JINJA2_ENV.get_template(template_path.as_posix())
     return template.render(
         version=version,
         master_pypi_name=PYPI_NAME,
