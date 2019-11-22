@@ -149,7 +149,7 @@ pip install boto3==1.10.18
 
 # Install `mypy-boto3-builder`
 cd builder
-python setup.py install
+pip install .[black]
 cd ..
 
 # Set output path to any directory
