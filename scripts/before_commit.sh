@@ -6,5 +6,6 @@ cd $ROOT_PATH
 
 mypy --strict builder/mypy_boto3_builder
 pylint builder/mypy_boto3_builder
+pytest
 
 ./scripts/docs.sh

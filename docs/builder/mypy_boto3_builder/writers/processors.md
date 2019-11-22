@@ -18,7 +18,7 @@ def process_boto3_stubs(
     session: Session,
     service_names: Iterable[ServiceName],
     output_path: Path,
-) -> Boto3Module:
+) -> Boto3StubsPackage:
 ```
 
 ## process_master
@@ -30,7 +30,7 @@ def process_master(
     session: Session,
     service_names: Iterable[ServiceName],
     output_path: Path,
-) -> MasterModule:
+) -> MasterPackage:
 ```
 
 ## process_service
@@ -42,5 +42,5 @@ def process_service(
     session: Session,
     service_name: ServiceName,
     output_path: Path,
-) -> ServiceModule:
+) -> ServicePackage:
 ```

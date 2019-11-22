@@ -15,7 +15,6 @@ Enum with all AWS services.
         - [ServiceName().module_name](#servicenamemodule_name)
         - [ServiceName().pypi_name](#servicenamepypi_name)
         - [ServiceName.values](#servicenamevalues)
-    - [main](#main)
 
 ## ServiceName
 
@@ -126,11 +125,3 @@ Get all values - valid boto3 service names.
 #### Returns
 
 A list of supported boto3 service names.
-
-## main
-
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L287)
-
-```python
-def main() -> None:
-```

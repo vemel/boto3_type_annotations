@@ -11,6 +11,7 @@ Builder for `mypy_boto3`.
         - [Constants](constants.md#constants)
         - [Enums](enums/index.md#enums)
         - [Import Helpers](import_helpers/index.md#import-helpers)
+        - [JinjaManager](jinja_manager.md#jinjamanager)
         - [Logger](logger.md#logger)
         - [Main](main.md#main)
         - [Parsers](parsers/index.md#parsers)

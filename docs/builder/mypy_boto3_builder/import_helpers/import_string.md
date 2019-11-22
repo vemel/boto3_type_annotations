@@ -99,16 +99,16 @@ Check if import string starts with `other`.
 #### Examples
 
 ```python
-ImportString('my.name').startswith(ImportString('my'))
+ImportString('my', 'name').startswith(ImportString('my'))
 True
 
-ImportString('my_module.name').startswith(ImportString('my'))
+ImportString('my_module', 'name').startswith(ImportString('my'))
 False
 
-ImportString('my.name').startswith(ImportString('my.name'))
+ImportString('my', 'name').startswith(ImportString('my, 'name'))
 True
 
-ImportString('my.name').startswith(ImportString(''))
+ImportString('my', 'name').startswith(ImportString.empty())
 True
 ```
 
