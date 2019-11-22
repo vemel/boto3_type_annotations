@@ -22,4 +22,4 @@ jinja2 = "==2.10.3"
 mypy_boto3_builder = {path = "./builder",editable = true}
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
