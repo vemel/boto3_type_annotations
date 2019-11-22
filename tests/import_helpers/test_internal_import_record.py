@@ -40,4 +40,3 @@ class ImportRecordTestCase(unittest.TestCase):
         ImportRecordMock.assert_called_with(
             source="module_name.service_name", name="name", alias="alias"
         )
-
