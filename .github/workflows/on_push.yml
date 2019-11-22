@@ -32,4 +32,5 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
           pytest
-          pytest --cov-report term --cov=builder/mypy_boto3_builder
+          pytest --cov-report term --cov mypy_boto3_builder
+          codecov
