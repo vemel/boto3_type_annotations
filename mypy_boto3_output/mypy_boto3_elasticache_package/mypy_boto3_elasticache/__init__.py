@@ -1,7 +1,0 @@
-"Main interface for elasticache service"
-
-from mypy_boto3_elasticache.client import Client
-from mypy_boto3_elasticache.helpers import boto3_client
-
-
-__all__ = ("Client", "boto3_client")

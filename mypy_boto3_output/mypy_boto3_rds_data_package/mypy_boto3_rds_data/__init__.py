@@ -1,7 +1,0 @@
-"Main interface for rds-data service"
-
-from mypy_boto3_rds_data.client import Client
-from mypy_boto3_rds_data.helpers import boto3_client
-
-
-__all__ = ("Client", "boto3_client")
