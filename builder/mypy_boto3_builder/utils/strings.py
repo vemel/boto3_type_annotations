@@ -47,27 +47,30 @@ def clean_doc(doc: Optional[str]) -> str:
                 result.append(line)
                 break
 
-            indent = " " * (len(line) - len(line.lstrip()))
+            indent_length = len(line) - len(line.lstrip())
+            indent = " " * indent_length
             line = line.strip()
-            space_index = line.rfind(" ", 0, LINE_LENGTH - len(indent) + 1)
+            max_line_length = LINE_LENGTH - indent_length
+
+            space_index = line.rfind(" ", 0, max_line_length + 1)
             if space_index > 0:
                 result.append(f"{indent}{line[:space_index].rstrip()}")
                 line = f"{indent}{line[space_index + 1 :]}"
                 continue
 
-            equals_index = line.rfind("=", 0, LINE_LENGTH - len(indent))
+            equals_index = line.rfind("=", 0, max_line_length)
             if equals_index > 0:
                 result.append(f"{indent}{line[:equals_index + 1].rstrip()}")
                 line = f"{indent}    {line[equals_index + 1 :]}"
                 continue
 
-            vertical_bar_index = line.rfind("|", 0, LINE_LENGTH - len(indent) + 1)
+            vertical_bar_index = line.rfind("|", 0, max_line_length + 1)
             if vertical_bar_index > 0:
                 result.append(f"{indent}{line[:vertical_bar_index].rstrip()}")
                 line = f"{indent}{line[vertical_bar_index :]}"
                 continue
 
-            space_index = line.find(" ", LINE_LENGTH - len(indent))
+            space_index = line.find(" ", max_line_length)
             if space_index != -1:
                 result.append(f"{indent}{line[:space_index].rstrip()}")
                 line = f"{indent}{line[space_index + 1 :]}"

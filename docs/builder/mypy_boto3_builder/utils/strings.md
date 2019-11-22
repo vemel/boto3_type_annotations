@@ -38,7 +38,7 @@ Cleaned docstring.
 
 ## get_class_prefix
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L82)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L85)
 
 ```python
 def get_class_prefix(func_name: str) -> str:
