@@ -2,7 +2,8 @@
 Multiple string utils collection.
 """
 import re
-from typing import Optional, List
+import textwrap
+from typing import Optional, List, Iterator
 
 from mypy_boto3_builder.constants import LINE_LENGTH
 
@@ -10,7 +11,58 @@ from mypy_boto3_builder.constants import LINE_LENGTH
 RE_BACKSLASH = re.compile(r"\\{1,2}")
 
 
-def clean_doc(doc: Optional[str]) -> str:
+def wrap_line(line: str, max_length: int) -> Iterator[str]:
+    """
+    Wrap text line to fit `max_length`.
+
+    Arguments:
+        line -- Text to wrap.
+        max_length -- Result line max length.
+
+    Yields:
+        A string of wrapped text.
+    """
+    indent_length = len(line) - len(line.lstrip())
+    indent = " " * indent_length
+    max_line_length = max_length - indent_length
+    for result in textwrap.wrap(line.strip(), max_line_length, break_long_words=False):
+        yield f"{indent}{result}"
+
+
+def wrap_code_line(line: str, max_length: int) -> Iterator[str]:
+    """
+    Wrap source code line to fit `max_length`.
+
+    Arguments:
+        line -- Source code text to wrap.
+        max_length -- Result line max length.
+
+    Yields:
+        A string of wrapped text.
+    """
+    while len(line) > max_length:
+        indent_length = len(line) - len(line.lstrip())
+        indent = " " * indent_length
+
+        equals_index = line.rfind("=", 0, max_length)
+        if equals_index > 0:
+            yield line[: equals_index + 1].rstrip()
+            line = f"{indent}    {line[equals_index + 1 :]}"
+            continue
+
+        vertical_bar_index = line.rfind("|", indent_length + 1, max_length + 1)
+        if vertical_bar_index > 0:
+            yield line[:vertical_bar_index].rstrip()
+            line = f"{indent}{line[vertical_bar_index :]}"
+            continue
+
+        yield line
+        return
+
+    yield line
+
+
+def clean_doc(doc: Optional[str], max_length: int = LINE_LENGTH) -> str:
     """
     Clean docstring to be safely rendered.
 
@@ -22,6 +74,7 @@ def clean_doc(doc: Optional[str]) -> str:
 
     Arguments:
         doc -- Instance docstring.
+        max_length -- Result line max length.
 
     Returns:
         Cleaned docstring.
@@ -38,46 +91,17 @@ def clean_doc(doc: Optional[str]) -> str:
         if not line and result and not result[-1]:
             continue
 
-        if len(line) <= LINE_LENGTH:
+        if len(line) <= max_length:
             result.append(line)
             continue
 
-        while True:
-            if len(line) <= LINE_LENGTH:
-                result.append(line)
-                break
+        if " " in line.strip():
+            for sub_line in wrap_line(line, max_length):
+                result.append(sub_line)
+            continue
 
-            indent_length = len(line) - len(line.lstrip())
-            indent = " " * indent_length
-            line = line.strip()
-            max_line_length = LINE_LENGTH - indent_length
-
-            space_index = line.rfind(" ", 0, max_line_length + 1)
-            if space_index > 0:
-                result.append(f"{indent}{line[:space_index].rstrip()}")
-                line = f"{indent}{line[space_index + 1 :]}"
-                continue
-
-            equals_index = line.rfind("=", 0, max_line_length)
-            if equals_index > 0:
-                result.append(f"{indent}{line[:equals_index + 1].rstrip()}")
-                line = f"{indent}    {line[equals_index + 1 :]}"
-                continue
-
-            vertical_bar_index = line.rfind("|", 0, max_line_length + 1)
-            if vertical_bar_index > 0:
-                result.append(f"{indent}{line[:vertical_bar_index].rstrip()}")
-                line = f"{indent}{line[vertical_bar_index :]}"
-                continue
-
-            space_index = line.find(" ", max_line_length)
-            if space_index != -1:
-                result.append(f"{indent}{line[:space_index].rstrip()}")
-                line = f"{indent}{line[space_index + 1 :]}"
-                continue
-
-            result.append(f"{indent}{line}")
-            break
+        for sub_line in wrap_code_line(line, max_length):
+            result.append(sub_line)
 
     return "\n".join(result)
 

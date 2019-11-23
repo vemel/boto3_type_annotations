@@ -7,6 +7,8 @@ Multiple string utils collection.
 - [mypy-boto3](../../../README.md#mypy_boto3) / [Modules](../../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](../index.md#mypy-boto3-builder) / [Utils](index.md#utils) / Strings
     - [clean_doc](#clean_doc)
     - [get_class_prefix](#get_class_prefix)
+    - [wrap_code_line](#wrap_code_line)
+    - [wrap_line](#wrap_line)
 
 #### Attributes
 
@@ -14,10 +16,10 @@ Multiple string utils collection.
 
 ## clean_doc
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L13)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L65)
 
 ```python
-def clean_doc(doc: Optional[str]) -> str:
+def clean_doc(doc: Optional[str], max_length: int = LINE_LENGTH) -> str:
 ```
 
 Clean docstring to be safely rendered.
@@ -31,6 +33,7 @@ Clean docstring to be safely rendered.
 #### Arguments
 
 - `doc` - Instance docstring.
+- `max_length` - Result line max length.
 
 #### Returns
 
@@ -38,7 +41,7 @@ Cleaned docstring.
 
 ## get_class_prefix
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L85)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L109)
 
 ```python
 def get_class_prefix(func_name: str) -> str:
@@ -53,3 +56,41 @@ Get a valid Python class prefix from `func_name`.
 #### Returns
 
 String with a class prefix.
+
+## wrap_code_line
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L32)
+
+```python
+def wrap_code_line(line: str, max_length: int) -> Iterator[str]:
+```
+
+Wrap source code line to fit `max_length`.
+
+#### Arguments
+
+- `line` - Source code text to wrap.
+- `max_length` - Result line max length.
+
+#### Yields
+
+A string of wrapped text.
+
+## wrap_line
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L14)
+
+```python
+def wrap_line(line: str, max_length: int) -> Iterator[str]:
+```
+
+Wrap text line to fit `max_length`.
+
+#### Arguments
+
+- `line` - Text to wrap.
+- `max_length` - Result line max length.
+
+#### Yields
+
+A string of wrapped text.
