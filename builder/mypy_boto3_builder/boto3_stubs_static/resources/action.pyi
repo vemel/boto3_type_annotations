@@ -1,19 +1,15 @@
-# pylint: disable=unused-argument,multiple-statements,super-init-not-called,unused-import
+# pylint: disable=unused-argument,multiple-statements,super-init-not-called
 import logging
 from typing import List, Dict, Any, Union, Callable
 
-from botocore import xform_name
 from botocore.hooks import BaseEventHooks
 
-from boto3.resources.params import create_request_parameters
-from boto3.resources.response import RawHandler, ResourceHandler
 from boto3.resources.model import Action, Waiter
 from boto3.resources.factory import ResourceFactory
 from boto3.resources.base import ServiceResource
 from boto3.resources.collection import ResourceCollection
 
-from boto3.docs.docstring import ActionDocstring
-from boto3.utils import inject_attribute, ServiceContext
+from boto3.utils import ServiceContext
 
 logger: logging.Logger
 

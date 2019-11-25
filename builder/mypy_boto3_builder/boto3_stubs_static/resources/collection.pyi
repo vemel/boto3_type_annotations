@@ -1,22 +1,16 @@
-# pylint: disable=unused-argument,multiple-statements,super-init-not-called,unused-import,no-self-use,no-self-argument
+# pylint: disable=unused-argument,multiple-statements,super-init-not-called,no-self-use,no-self-argument
 from __future__ import annotations
 
 import logging
-from typing import Any, Iterator, List, Dict, Type
+from typing import Any, Iterator, List
 
-from botocore import xform_name
-from botocore.utils import merge_dicts
 from botocore.hooks import HierarchicalEmitter
-from botocore.model import ServiceModel
 
-from boto3.resources.action import BatchAction
-from boto3.resources.model import Collection, Action
+from boto3.resources.model import Collection
 from boto3.resources.base import ServiceResource
 from boto3.resources.factory import ResourceFactory
-from boto3.resources.params import create_request_parameters
 from boto3.resources.response import ResourceHandler
 from boto3.utils import ServiceContext
-from boto3.docs import docstring
 
 logger: logging.Logger
 

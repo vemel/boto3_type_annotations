@@ -1,11 +1,8 @@
-# pylint: disable=unused-argument,multiple-statements,unused-import,no-self-use
+# pylint: disable=unused-argument,multiple-statements,no-self-use
 from typing import Any, Iterable, List, Tuple, Optional, Dict, Union, Type
 
-import jmespath
-from botocore import xform_name
 from botocore.model import ServiceModel
 
-from boto3.resources.params import get_data_member
 from boto3.resources.factory import ResourceFactory
 from boto3.resources.model import Parameter, ResponseResource
 from boto3.resources.base import ServiceResource

@@ -69,7 +69,7 @@ class Collection(Action):
     @property
     def batch_actions(self) -> List[Action]: ...
 
-class ResourceModel(object):
+class ResourceModel:
     def __init__(
         self,
         name: str,

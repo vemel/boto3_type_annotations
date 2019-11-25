@@ -1,10 +1,6 @@
-# pylint: disable=unused-argument,multiple-statements,unused-import
+# pylint: disable=unused-argument,multiple-statements
 from typing import Pattern, Optional, Dict, Any
 
-import jmespath
-from botocore import xform_name
-
-from boto3.exceptions import ResourceLoadException
 from boto3.resources.base import ServiceResource
 from boto3.resources.model import Request
 

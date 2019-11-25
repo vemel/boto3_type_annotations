@@ -1,10 +1,9 @@
-# pylint: disable=unused-argument,multiple-statements,super-init-not-called,unused-import,no-self-use
+# pylint: disable=unused-argument,multiple-statements,super-init-not-called,no-self-use
 from __future__ import annotations
 
 import logging
 from typing import List, Dict, Any, Optional
 
-import boto3
 from boto3.resources.model import ResourceModel
 from botocore.client import BaseClient
 
