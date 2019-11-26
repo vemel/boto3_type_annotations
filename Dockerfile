@@ -24,5 +24,6 @@ USER builder
 WORKDIR /output
 
 ENV BOTO3_VERSION ""
+ENV BOTOCORE_VERSION ""
 
 ENTRYPOINT ["/builder/scripts/docker.sh"]
