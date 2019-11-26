@@ -26,7 +26,9 @@ ResourceModelDefinition = TypedDict(
 )
 
 class Identifier:
-    def __init__(self, name: str, member_name: Optional[str] = None) -> None: ...
+    def __init__(self, name: str, member_name: Optional[str] = None) -> None:
+        self.name: str
+        self.member_name: str
 
 class Action:
     def __init__(

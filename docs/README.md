@@ -197,7 +197,7 @@ docker run -v `pwd`/output:/output -ti mypy_boto3_builder
 docker run -v `pwd`/output:/output -ti mypy_boto3_builder -s s3
 
 # generate stubs for a specific boto3 version
-docker run -e BOTO3_VERSION=1.10.18 -v `pwd`/output:/output -ti mypy_boto3_builder
+docker run -e BOTO3_VERSION=1.10.18 BOTOCORE_VERSION=1.13.18 -v `pwd`/output:/output -ti mypy_boto3_builder
 ```
 
 - Install packages from `output` directory as described above

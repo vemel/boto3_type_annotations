@@ -9,7 +9,7 @@ Boto3 client parser, produces `structures.Client`.
 
 ## parse_client
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/client.py#L21)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/client.py#L20)
 
 ```python
 def parse_client(session: Session, service_name: ServiceName) -> Client:

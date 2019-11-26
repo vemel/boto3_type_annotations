@@ -2,7 +2,7 @@
 Boto3 ServiceResource.
 """
 from dataclasses import dataclass, field
-from typing import List, Set
+from typing import List, Set, Optional
 
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 
@@ -25,7 +25,7 @@ class ServiceResource(ClassRecord):
 
     name: str = "ServiceResource"
     service_name: ServiceName = ServiceName.ec2
-    boto3_service_resource: Boto3ServiceResource = None
+    boto3_service_resource: Optional[Boto3ServiceResource] = None
     collections: List[Collection] = field(default_factory=lambda: [])
     sub_resources: List[Resource] = field(default_factory=lambda: [])
     bases: List[FakeAnnotation] = field(

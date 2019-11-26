@@ -14,7 +14,7 @@ Helpers for parsing methods and attributes.
 [[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/helpers.py#L18)
 
 ```python
-def get_public_methods(inspect_class: type) -> Dict[str, FunctionType]:
+def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
 ```
 
 Extract public methods from any class.
@@ -47,7 +47,7 @@ A list of Attribute structures.
 
 ## parse_method
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/helpers.py#L65)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/helpers.py#L69)
 
 ```python
 def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:

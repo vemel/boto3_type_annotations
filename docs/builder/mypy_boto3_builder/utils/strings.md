@@ -16,10 +16,10 @@ Multiple string utils collection.
 
 ## clean_doc
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L65)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L75)
 
 ```python
-def clean_doc(doc: Optional[str], max_length: int = LINE_LENGTH) -> str:
+def clean_doc(doc: Optional[str], max_length: int) -> str:
 ```
 
 Clean docstring to be safely rendered.
@@ -28,7 +28,7 @@ Clean docstring to be safely rendered.
 - Returns extra empty lines.
 - Escapes backslashes.
 - Replace trible doublequotes with triple single quotes.
-- Tries to fit docstring to `LINE_LENGTH`
+- Tries to fit docstring to `max_length`
 
 #### Arguments
 
@@ -41,7 +41,7 @@ Cleaned docstring.
 
 ## get_class_prefix
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L109)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L119)
 
 ```python
 def get_class_prefix(func_name: str) -> str:
@@ -59,7 +59,7 @@ String with a class prefix.
 
 ## wrap_code_line
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L32)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L36)
 
 ```python
 def wrap_code_line(line: str, max_length: int) -> Iterator[str]:
@@ -78,7 +78,7 @@ A string of wrapped text.
 
 ## wrap_line
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L14)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L12)
 
 ```python
 def wrap_line(line: str, max_length: int) -> Iterator[str]:
