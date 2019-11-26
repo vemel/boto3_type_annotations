@@ -74,14 +74,9 @@ def parse_service_package(
         "paginators-1"
     ):
         session_client = get_boto3_client(session, service_name)
-
-        botocore_session = session._session  # pylint: disable=protected-access
-        service_paginator_model = botocore_session.get_paginator_model(
-            service_name.boto3_name
-        )
-        paginator_config = (
-            service_paginator_model._paginator_config  # pylint: disable=protected-access
-        )
+        paginator_config = session_loader.load_service_model(
+            service_name.boto3_name, "paginators-1", None
+        )["pagination"]
         for paginator_name in sorted(paginator_config):
             operation_name = xform_name(paginator_name)
             paginator = session_client.get_paginator(operation_name)
@@ -90,10 +85,9 @@ def parse_service_package(
                 parse_method(paginator_name, method_name, method)
                 for method_name, method in public_methods.items()
             ]
-            paginator_model = paginator._model  # pylint: disable=protected-access
             result.paginators.append(
                 Paginator(
-                    name=f"{paginator_model.name}Paginator",
+                    name=f"{paginator_name}Paginator",
                     operation_name=operation_name,
                     boto3_paginator=paginator,
                     docstring=f"Paginator for `{operation_name}`",

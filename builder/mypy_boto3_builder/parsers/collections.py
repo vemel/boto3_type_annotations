@@ -26,8 +26,6 @@ def parse_collections(
         A list of Collection structures.
     """
     result: List[Collection] = []
-    if not resource.meta.resource_model:
-        return result
     for collection in resource.meta.resource_model.collections:
         collection_class = getattr(resource, collection.name)
         public_methods = get_public_methods(collection_class)
