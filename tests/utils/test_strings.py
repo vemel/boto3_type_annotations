@@ -74,6 +74,10 @@ class StringsTestCase(unittest.TestCase):
             list(wrap_code_line("test=a|b|c|d", 10)), ["test=", "    a|b|c", "    |d"],
         )
         self.assertEqual(
+            list(wrap_code_line("test=a|b|really_long_option|d", 10)),
+            ["test=", "    a|b", "    |really_long_option", "    |d"],
+        )
+        self.assertEqual(
             list(wrap_code_line("my_key=my_looong_value", 10)),
             ["my_key=", "    my_looong_value"],
         )

@@ -25,7 +25,9 @@ def wrap_line(line: str, max_length: int) -> Iterator[str]:
     indent_length = len(line) - len(line.lstrip())
     indent = " " * indent_length
     max_line_length = max_length - indent_length
-    for result in textwrap.wrap(line.strip(), max_line_length, break_long_words=False):
+    for result in textwrap.wrap(
+        line.strip(), max_line_length, break_long_words=False, break_on_hyphens=False
+    ):
         yield f"{indent}{result}"
 
 
@@ -51,6 +53,12 @@ def wrap_code_line(line: str, max_length: int) -> Iterator[str]:
             continue
 
         vertical_bar_index = line.rfind("|", indent_length + 1, max_length + 1)
+        if vertical_bar_index > 0:
+            yield line[:vertical_bar_index].rstrip()
+            line = f"{indent}{line[vertical_bar_index :]}"
+            continue
+
+        vertical_bar_index = line.rfind("|", indent_length + 1)
         if vertical_bar_index > 0:
             yield line[:vertical_bar_index].rstrip()
             line = f"{indent}{line[vertical_bar_index :]}"
