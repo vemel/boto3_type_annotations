@@ -1,7 +1,14 @@
 # mypy_boto3
 
-Mypy-friendly type annotations for `boto3` {{ boto3_version }}.
+Mypy-friendly type annotations for `boto3 {{ boto3_version }}`.
 More information can be found [here](https://github.com/vemel/mypy_boto3).
+
+- [mypy_boto3](#mypyboto3)
+  - [How to use](#how-to-use)
+    - [Type checking](#type-checking)
+    - [Code auto-complete](#code-auto-complete)
+  - [How it works](#how-it-works)
+  - [Submodules](#submodules)
 
 ## How to use
 
@@ -43,6 +50,18 @@ from mypy_boto3.ec2 import Client, ServiceResource
 client: Client = boto3.client("ec2")
 resource: ServiceResource = boto3.resource("ec2")
 ```
+
+## How it works
+
+Fully automated [builder](https://github.com/vemel/mypy_boto3) carefully generates
+type annotations for each service, patiently waiting for `boto3` updates. It delivers
+a drop-in type annotations for you and makes sure that:
+
+- Latest version of `boto3` is used.
+- Each public class and method of every `boto3` service gets valid type annotations
+  extracted from latest documentation (blame `botocore` docs if types are incorrect).
+- Type annotations include up-to-date documentation.
+- Code is processed by [black](https://github.com/psf/black) for readability.
 
 ## Submodules
 
