@@ -5,7 +5,6 @@ import inspect
 from typing import List, Optional
 
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
-from boto3.resources.base import ResourceMeta as Boto3ResourceMeta
 from boto3.session import Session
 from boto3.utils import ServiceContext
 from botocore.exceptions import UnknownServiceError
@@ -15,7 +14,6 @@ from mypy_boto3_builder.structures.resource import Resource
 from mypy_boto3_builder.structures.service_resource import ServiceResource
 from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
-from mypy_boto3_builder.utils.strings import clean_doc
 from mypy_boto3_builder.parsers.boto3_utils import get_boto3_resource
 from mypy_boto3_builder.parsers.helpers import (
     get_public_methods,
@@ -70,7 +68,7 @@ def parse_service_resource(
     return ServiceResource(
         service_name=service_name,
         boto3_service_resource=service_resource,
-        docstring=clean_doc(inspect.getdoc(service_resource)),
+        docstring=inspect.getdoc(service_resource) or "",
         methods=methods,
         attributes=attributes,
         collections=collections,
@@ -79,7 +77,7 @@ def parse_service_resource(
 
 
 def get_sub_resources(
-    session: Session, service_name: ServiceName, resource: Boto3ResourceMeta
+    session: Session, service_name: ServiceName, resource: Boto3ServiceResource
 ) -> List[Boto3ServiceResource]:
     """
     Initialize ServiceResource sub-resources with fake data.

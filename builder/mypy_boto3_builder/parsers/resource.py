@@ -2,19 +2,17 @@
 Parser for Boto3 ServiceResource sub-resource, produces `structures.Resource`
 """
 import inspect
-from typing import List, Dict
+from typing import List, Dict, Type
 from types import FunctionType
 
 
 from boto3.docs.utils import is_resource_action
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
-from boto3.resources.base import ResourceMeta as Boto3ResourceMeta
 
 from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.structures.attribute import Attribute
 from mypy_boto3_builder.structures.resource import Resource
-from mypy_boto3_builder.utils.strings import clean_doc
 from mypy_boto3_builder.parsers.helpers import parse_attributes, parse_method
 from mypy_boto3_builder.parsers.identifiers import parse_identifiers
 from mypy_boto3_builder.parsers.collections import parse_collections
@@ -54,7 +52,7 @@ def parse_resource(
 
     return Resource(
         name=name,
-        docstring=clean_doc(inspect.getdoc(resource)),
+        docstring=inspect.getdoc(resource) or "",
         methods=methods,
         attributes=attributes,
         collections=collections,
@@ -62,7 +60,7 @@ def parse_resource(
 
 
 def get_resource_public_methods(
-    resource_class: Boto3ResourceMeta,
+    resource_class: Type[Boto3ServiceResource],
 ) -> Dict[str, FunctionType]:
     """
     Extract public methods from boto3 sub resource.

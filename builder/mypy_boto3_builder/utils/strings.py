@@ -5,8 +5,6 @@ import re
 import textwrap
 from typing import Optional, List, Iterator
 
-from mypy_boto3_builder.constants import LINE_LENGTH
-
 # Regexp to replace single backslashes
 RE_BACKSLASH = re.compile(r"\\{1,2}")
 
@@ -25,10 +23,14 @@ def wrap_line(line: str, max_length: int) -> Iterator[str]:
     indent_length = len(line) - len(line.lstrip())
     indent = " " * indent_length
     max_line_length = max_length - indent_length
-    for result in textwrap.wrap(
+    for sub_line in textwrap.wrap(
         line.strip(), max_line_length, break_long_words=False, break_on_hyphens=False
     ):
-        yield f"{indent}{result}"
+        indented_sub_line = f"{indent}{sub_line}"
+        if len(indented_sub_line) > max_line_length:
+            yield from wrap_code_line(indented_sub_line, max_line_length)
+            continue
+        yield indented_sub_line
 
 
 def wrap_code_line(line: str, max_length: int) -> Iterator[str]:
@@ -70,7 +72,7 @@ def wrap_code_line(line: str, max_length: int) -> Iterator[str]:
     yield line
 
 
-def clean_doc(doc: Optional[str], max_length: int = LINE_LENGTH) -> str:
+def clean_doc(doc: Optional[str], max_length: int) -> str:
     """
     Clean docstring to be safely rendered.
 
@@ -78,7 +80,7 @@ def clean_doc(doc: Optional[str], max_length: int = LINE_LENGTH) -> str:
     - Returns extra empty lines.
     - Escapes backslashes.
     - Replace trible doublequotes with triple single quotes.
-    - Tries to fit docstring to `LINE_LENGTH`
+    - Tries to fit docstring to `max_length`
 
     Arguments:
         doc -- Instance docstring.

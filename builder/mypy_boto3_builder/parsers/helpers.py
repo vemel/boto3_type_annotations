@@ -2,7 +2,7 @@
 Helpers for parsing methods and attributes.
 """
 import inspect
-from typing import List, Dict
+from typing import List, Dict, Any
 from types import FunctionType
 
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
@@ -11,11 +11,11 @@ from mypy_boto3_builder.structures.method import Method
 from mypy_boto3_builder.structures.attribute import Attribute
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
-from mypy_boto3_builder.utils.strings import clean_doc, get_class_prefix
+from mypy_boto3_builder.utils.strings import get_class_prefix
 from mypy_boto3_builder.parsers.docstring import DocstringParser
 
 
-def get_public_methods(inspect_class: type) -> Dict[str, FunctionType]:
+def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
     """
     Extract public methods from any class.
 
@@ -50,6 +50,10 @@ def parse_attributes(resource: Boto3ServiceResource) -> List[Attribute]:
         A list of Attribute structures.
     """
     result: List[Attribute] = []
+    if not resource.meta.client:
+        return result
+    if not resource.meta.resource_model:
+        return result
     service_model = resource.meta.client.meta.service_model
     if resource.meta.resource_model.shape:
         shape = service_model.shape_for(resource.meta.resource_model.shape)
@@ -79,7 +83,6 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
     arguments = docstring_parser.get_function_arguments(method)
     return_type: FakeAnnotation = TypeConstant(None)
     if doc:
-        doc = clean_doc(doc)
         docstring_parser.enrich_arguments(doc, arguments, prefix)
         return_type = docstring_parser.get_return_type(doc, prefix)
     else:

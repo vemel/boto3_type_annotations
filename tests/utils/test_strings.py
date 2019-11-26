@@ -15,15 +15,20 @@ class StringsTestCase(unittest.TestCase):
         self.assertEqual(get_class_prefix("myFunc"), "MyFunc")
 
     def test_clean_doc(self) -> None:
-        self.assertEqual(clean_doc(None), "")
-        self.assertEqual(clean_doc("line trim test   "), "line trim test")
-        self.assertEqual(clean_doc(r"backslash\\test\here"), r"backslash\\test\\here")
-        self.assertEqual(clean_doc('triple quotes""" test'), "triple quotes''' test")
+        self.assertEqual(clean_doc(None, 80), "")
+        self.assertEqual(clean_doc("line trim test   ", 80), "line trim test")
         self.assertEqual(
-            clean_doc("trailing lines test \n  \n\n"), "trailing lines test\n"
+            clean_doc(r"backslash\\test\here", 80), r"backslash\\test\\here"
         )
         self.assertEqual(
-            clean_doc("multiple empty lines\n\n\ntest"), "multiple empty lines\n\ntest"
+            clean_doc('triple quotes""" test', 80), "triple quotes''' test"
+        )
+        self.assertEqual(
+            clean_doc("trailing lines test \n  \n\n", 80), "trailing lines test\n"
+        )
+        self.assertEqual(
+            clean_doc("multiple empty lines\n\n\ntest", 80),
+            "multiple empty lines\n\ntest",
         )
 
         self.assertEqual(clean_doc("short line", 11), "short line")
@@ -53,7 +58,8 @@ class StringsTestCase(unittest.TestCase):
             ["  now with", "  some", "  indent"],
         )
         self.assertEqual(
-            list(wrap_line("this_is_a=code|line", 10)), ["this_is_a=code|line"]
+            list(wrap_line("this_is_a=code|line", 10)),
+            ["this_is_a=", "    code", "    |line"],
         )
 
     def test_wrap_code_line(self) -> None:

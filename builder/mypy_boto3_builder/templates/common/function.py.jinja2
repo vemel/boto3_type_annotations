@@ -17,7 +17,7 @@
         {% endif -%}
         {% if docstring -%}
             {{ '"""\n' -}}
-            {{ docstring -}}
+            {{ clean_doc(docstring, doc_line_length) -}}
             {{ '\n' -}}
             {{ '"""\n' -}}
         {% endif -%}

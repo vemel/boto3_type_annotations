@@ -1,2 +1,4 @@
 {% set function = method -%}
-{% include "common/function.py.jinja2" with context -%}
+{% with doc_line_length = doc_line_length - 4 -%}
+    {% include "common/function.py.jinja2" with context -%}
+{% endwith -%}

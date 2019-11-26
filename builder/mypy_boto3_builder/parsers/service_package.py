@@ -24,7 +24,6 @@ from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.import_helpers.import_string import ImportString
-from mypy_boto3_builder.utils.strings import clean_doc
 from mypy_boto3_builder.parsers.client import parse_client
 from mypy_boto3_builder.parsers.service_resource import parse_service_resource
 from mypy_boto3_builder.parsers.helpers import get_public_methods, parse_method
@@ -108,7 +107,7 @@ def parse_service_package(
         result.client.methods.append(
             Method(
                 name="get_paginator",
-                docstring=clean_doc(inspect.getdoc(client.boto3_client.get_paginator)),
+                docstring=inspect.getdoc(client.boto3_client.get_paginator) or "",
                 arguments=[
                     Argument("self", None),
                     Argument("operation_name", TypeClass(str)),
@@ -123,7 +122,7 @@ def parse_service_package(
         result.client.methods.append(
             Method(
                 name="get_waiter",
-                docstring=clean_doc(inspect.getdoc(client.boto3_client.get_waiter)),
+                docstring=inspect.getdoc(client.boto3_client.get_waiter) or "",
                 arguments=[
                     Argument("self", None),
                     Argument("waiter_name", TypeClass(str)),

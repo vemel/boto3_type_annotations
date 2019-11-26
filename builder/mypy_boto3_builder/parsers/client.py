@@ -15,7 +15,6 @@ from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.parsers.helpers import parse_method, get_public_methods
 from mypy_boto3_builder.parsers.boto3_utils import get_boto3_client
-from mypy_boto3_builder.utils.strings import clean_doc
 
 
 def parse_client(session: Session, service_name: ServiceName) -> Client:
@@ -45,7 +44,7 @@ def parse_client(session: Session, service_name: ServiceName) -> Client:
     result = Client(
         service_name=service_name,
         boto3_client=client,
-        docstring=clean_doc(inspect.getdoc(client)),
+        docstring=inspect.getdoc(client) or "",
         methods=methods,
     )
 
