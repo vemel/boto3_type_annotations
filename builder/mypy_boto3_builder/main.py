@@ -13,6 +13,7 @@ from mypy_boto3_builder.writers.processors import (
 )
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.logger import get_logger
+from mypy_boto3_builder.utils.strings import clean_doc
 from mypy_boto3_builder.cli_parser import get_cli_parser
 from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.jinja_manager import JinjaManager
@@ -21,6 +22,7 @@ from mypy_boto3_builder.constants import (
     DUMMY_REGION,
     BOTO3_STUBS_NAME,
     PYPI_NAME,
+    LINE_LENGTH,
 )
 
 
@@ -49,6 +51,8 @@ def main() -> None:
         boto3_stubs_name=BOTO3_STUBS_NAME,
         boto3_version=boto3_version,
         render_docstrings=not args.no_docs,
+        doc_line_length=LINE_LENGTH - 4,
+        clean_doc=clean_doc,
     )
 
     if not args.skip_services:

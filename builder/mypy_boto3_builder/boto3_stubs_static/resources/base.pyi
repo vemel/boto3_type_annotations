@@ -13,18 +13,25 @@ class ResourceMeta:
     def __init__(
         self,
         service_name: str,
-        identifiers: List[str] = None,
-        client: BaseClient = None,
-        data: Dict = None,
-        resource_model: ResourceModel = None,
-    ) -> None: ...
+        identifiers: Optional[List[str]] = None,
+        client: Optional[BaseClient] = None,
+        data: Optional[Dict] = None,
+        resource_model: Optional[ResourceModel] = None,
+    ) -> None:
+        self.service_name: str
+        self.identifiers: List[str]
+        self.client: BaseClient
+        self.data: Dict
+        self.resource_model: ResourceModel
     def __repr__(self) -> str: ...
     def __eq__(self, other: Any) -> bool: ...
     def copy(self) -> ResourceMeta: ...
 
 class ServiceResource:
-    meta: ResourceMeta
-    def __init__(self, client: Optional[BaseClient] = None) -> None: ...
+    def __init__(
+        self, *args: Any, client: Optional[BaseClient] = None, **kwargs: Any
+    ) -> None:
+        self.meta: ResourceMeta
     def __repr__(self) -> str: ...
     def __eq__(self, other: Any) -> bool: ...
     def __hash__(self) -> int: ...

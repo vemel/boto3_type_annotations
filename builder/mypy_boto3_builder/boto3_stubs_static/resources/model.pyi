@@ -31,7 +31,11 @@ class Identifier:
 class Action:
     def __init__(
         self, name: str, definition: ActionDefinition, resource_defs: Dict[str, Dict]
-    ) -> None: ...
+    ) -> None:
+        self.name: str
+        self.request: Optional[Request]
+        self.resource: Optional[ResponseResource]
+        self.path: Optional[str]
 
 class DefinitionWithParams:
     def __init__(self, definition: DefinitionWithParamsDefinition) -> None: ...
@@ -45,9 +49,14 @@ class Parameter:
         source: str,
         name: str = None,
         path: str = None,
-        value: Union[str, int, float, bool] = None,
+        value: Union[str, int, float, bool, None] = None,
         **kwargs: Any
-    ) -> None: ...
+    ) -> None:
+        self.target: str
+        self.source: str
+        self.name: Optional[str]
+        self.path: Optional[str]
+        self.value: Union[str, int, float, bool, None]
 
 class Request(DefinitionWithParams):
     def __init__(self, definition: RequestDefinition) -> None: ...
@@ -75,7 +84,9 @@ class ResourceModel:
         name: str,
         definition: ResourceModelDefinition,
         resource_defs: Dict[str, Dict],
-    ) -> None: ...
+    ) -> None:
+        self.name: str
+        self.shape: Optional[Shape]
     def load_rename_map(self, shape: Optional[Shape] = None) -> None: ...
     def get_attributes(self, shape: Shape) -> Dict[str, Tuple[str, Any]]: ...
     @property
