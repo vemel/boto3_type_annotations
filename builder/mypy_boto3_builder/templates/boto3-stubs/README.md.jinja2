@@ -3,6 +3,30 @@
 Mypy-friendly type annotations for `boto3` {{ boto3_version }}.
 More information can be found [here](https://github.com/vemel/mypy_boto3).
 
+## How to use
+
+Make sure you have [mypy](https://github.com/python/mypy) installed ans activated in your IDE.
+
+Install `boto3-stubs`, it will add type annotations for `boto3` package, no services included.
+
+```bash
+# install type annotations just for boto3
+pip install boto3-stubs
+
+# if you want services type annotations, install the ones you use
+# you can find a full list below
+pip install boto3-stubs[ec2, s3]
+```
+
+Use `boto3` as usual in your project and enjoy type checking.
+
+```python
+import boto3
+
+# Invalid service name, should be `dynamodb`. No worries, `mypy` will let you know.
+client = boto3.client("dynamo")
+```
+
 ## Submodules
 
 - `all` - Type annotations for all `boto3` services.

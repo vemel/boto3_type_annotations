@@ -1,5 +1,77 @@
 # {{ service_name.pypi_name }}
 
-Mypy-friendly type annotations for `boto3` {{ boto3_version }} `{{ service_name.boto3_name }}` service.
+Mypy-friendly auto-generated type annotations for `boto3` {{ boto3_version }} `{{ service_name.boto3_name }}` service.
 More information can be found [here](https://github.com/vemel/mypy_boto3).
-{{ '' -}}
+
+## How to use
+
+### Type checking
+
+Make sure you have [mypy](https://github.com/python/mypy) installed ans activated in your IDE.
+
+Install `boto3-stubs` for `{{ service_name.boto3_name }}` service.
+
+```bash
+pip install boto3-stubs[{{service_name.pypi_name}}]
+```
+
+Use `boto3` as usual in your project and enjoy type checking.
+
+```python
+import boto3
+
+# Use this client as usual, now mypy can check if your code is valid.
+client = boto3.client("{{ service_name.boto3_name }}")
+
+# works for session as well
+session = boto3.session.Session(region="us-west-1")
+session_client = session.client("{{ service_name.boto3_name }}")
+
+{% if package.service_resource -%}
+# Do you prefer resource approach? We've got you covered!
+resource = boto3.resource("{{ service_name.boto3_name }}")
+{% endif -%}
+```
+
+### Code auto-complete
+
+Not a single Python IDE supports `Literal` type overloads yet (but in `VSCode` support is just around the corner).
+Meanwhile, to have a nice auto-complete you can explicitly set types to help your IDE to get methods, arguments etc.
+
+```python
+import boto3
+from mypy_boto3.{{ service_name.import_name }} import Client
+{% if package.service_resource -%}
+from mypy_boto3.{{ service_name.import_name }} import ServiceResource
+{% endif %}
+{% if package.paginators -%}
+{% with paginator = package.paginators[0] -%}
+from mypy_boto3.{{ service_name.import_name }}.paginator import {{ paginator.name }}
+{% endwith -%}
+{% endif -%}
+{% if package.waiters -%}
+{% with waiter = package.waiters[0] -%}
+from mypy_boto3.{{ service_name.import_name }}.waiter import {{ waiter.name }}
+{% endwith -%}
+{% endif -%}
+{{ '\n' -}}
+# now you have auto-complete for methods, arguments and even return types
+client: Client = boto3.client("{{ service_name.boto3_name }}")
+{% if package.service_resource -%}
+{{ '\n' -}}# same for resource
+resource: ServiceResource = boto3.resource("{{ service_name.boto3_name }}")
+{% endif -%}
+{% if package.paginators -%}
+{% with paginator = package.paginators[0] -%}
+{{ '\n' -}}# even for paginators
+{{ paginator.operation_name }}_paginator: {{ paginator.name }} = client.get_paginator("{{ paginator.operation_name }}")
+{% endwith -%}
+{% endif -%}
+{% if package.waiters -%}
+{% with waiter = package.waiters[0] -%}
+{{ '\n' -}}# and waiters are also annotated
+{{ waiter.waiter_name }}_waiter: {{ waiter.name }} = client.get_waiter("{{ waiter.waiter_name }}")
+{% endwith -%}
+{% endif -%}
+```
+{{ '\n' -}}
