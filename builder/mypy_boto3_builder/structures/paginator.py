@@ -2,8 +2,7 @@
 Boto3 client Paginator.
 """
 from dataclasses import dataclass, field
-from typing import List
-from typing_extensions import overload
+from typing import List, overload
 
 from botocore.paginate import Paginator as Boto3Paginator
 

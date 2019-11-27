@@ -9,7 +9,7 @@ from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.import_record_group import ImportRecordGroup
 from mypy_boto3_builder.enums.service_name import ServiceName
-from mypy_boto3_builder.constants import BOTO3_STUBS_NAME, MODULE_NAME
+from mypy_boto3_builder.constants import BOTO3_STUBS_NAME, MODULE_NAME, TYPE_DEFS_NAME
 from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.structures.package import Package
 from mypy_boto3_builder.structures.function import Function
@@ -30,6 +30,7 @@ class Boto3StubsPackage(Package):
     session_methods: List[Method] = field(default_factory=lambda: [])
 
     MASTER_IMPORT_STRING = ImportString(MODULE_NAME)
+    MASTER_TYPE_DEFS_IMPORT_STRING = ImportString(MODULE_NAME, TYPE_DEFS_NAME)
 
     @property
     def essential_service_names(self) -> List[ServiceName]:
@@ -56,7 +57,10 @@ class Boto3StubsPackage(Package):
         for init_function in self.init_functions:
             for import_record in init_function.get_required_import_records():
                 if import_record.source.startswith(self.MASTER_IMPORT_STRING):
-                    import_record.safe = True
+                    if not import_record.source.startswith(
+                        self.MASTER_TYPE_DEFS_IMPORT_STRING
+                    ):
+                        import_record.safe = True
                 import_records.add(import_record)
 
         return ImportRecordGroup.from_import_records(import_records)
@@ -85,7 +89,10 @@ class Boto3StubsPackage(Package):
         for session_method in self.session_methods:
             for import_record in session_method.get_required_import_records():
                 if import_record.source.startswith(self.MASTER_IMPORT_STRING):
-                    import_record.safe = True
+                    if not import_record.source.startswith(
+                        self.MASTER_TYPE_DEFS_IMPORT_STRING
+                    ):
+                        import_record.safe = True
                 import_records.add(import_record)
 
         return ImportRecordGroup.from_import_records(import_records)

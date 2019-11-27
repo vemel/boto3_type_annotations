@@ -1,9 +1,8 @@
 """
 Parser that produces `structures.Boto3Module`.
 """
-from typing import Iterable, Union
+from typing import Iterable, Union, overload
 
-from typing_extensions import overload
 from boto3.session import Session
 from botocore.config import Config as Boto3Config
 

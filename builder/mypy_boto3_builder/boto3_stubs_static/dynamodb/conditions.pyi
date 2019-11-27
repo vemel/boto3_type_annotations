@@ -2,7 +2,7 @@
 from __future__ import annotations
 from typing import Pattern, Any, List, NamedTuple
 
-from typing_extensions import TypedDict, Literal
+from mypy_boto3.type_defs import TypedDict, Literal
 
 ATTR_NAME_REGEX: Pattern[str]
 

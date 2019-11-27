@@ -40,7 +40,7 @@ def Any() -> TypeAnnotation:
 
 ### TypeAnnotation().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_annotation.py#L78)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_annotation.py#L79)
 
 ```python
 def copy() -> TypeAnnotation:
@@ -66,7 +66,7 @@ def get_import_record() -> ImportRecord:
 
 ### TypeAnnotation().is_dict
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_annotation.py#L72)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_annotation.py#L73)
 
 ```python
 def is_dict() -> bool:
@@ -74,7 +74,7 @@ def is_dict() -> bool:
 
 ### TypeAnnotation().is_list
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_annotation.py#L75)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_annotation.py#L76)
 
 ```python
 def is_list() -> bool:

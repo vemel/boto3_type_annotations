@@ -1,4 +1,23 @@
-from typing_extensions import TypedDict
+"""
+Provides compatibility between `typing` and `typing_extensions`, defines types
+for undocumented methods.
+"""
+import sys
+
+if sys.version_info >= (3, 8):
+    from typing import TypedDict, Literal, overload  # pylint: disable=unused-import
+else:
+    from typing_extensions import TypedDict, Literal, overload
+
+
+__all__ = (
+    "TypedDict",
+    "Literal",
+    "overload",
+    "EC2Tag",
+    "S3CopySource",
+)
+
 
 # ec2 type defs
 

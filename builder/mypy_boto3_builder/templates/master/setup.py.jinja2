@@ -38,7 +38,7 @@ setup(
     ],
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
-    install_requires=["typing_extensions", "boto3"],
+    install_requires=["typing_extensions; python_version < '3.8'", "boto3"],
     extras_require={
         "stubs": ["{{ boto3_stubs_name }}=={{ boto3_version }}"],
         "essential": [

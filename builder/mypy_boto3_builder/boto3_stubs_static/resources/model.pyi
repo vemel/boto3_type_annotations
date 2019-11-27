@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import logging
 from typing import Optional, Dict, Any, List, Union, Tuple
-from typing_extensions import Literal, TypedDict
+from mypy_boto3.type_defs import Literal, TypedDict
 
 from botocore import xform_name
 from botocore.model import Shape

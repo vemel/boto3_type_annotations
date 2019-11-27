@@ -17,7 +17,6 @@ mypy = ">=0.740"
 
 [packages]
 boto3 = "*"
-typing_extensions = "==3.7.4.1"
 jinja2 = "==2.10.3"
 mypy_boto3_builder = {path = "./builder",editable = true}
 

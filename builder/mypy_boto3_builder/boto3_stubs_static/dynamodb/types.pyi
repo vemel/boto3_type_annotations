@@ -3,7 +3,7 @@ from __future__ import annotations
 from decimal import Context
 from typing import Tuple, Any, Dict
 
-from typing_extensions import Literal
+from mypy_boto3.type_defs import Literal
 
 DynamoDBDataType = Literal["S", "N", "B", "SS", "NS", "BS", "NULL", "BOOL", "M", "L"]
 

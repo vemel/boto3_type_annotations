@@ -1,5 +1,5 @@
 """
-Wrapper for `typing_extensions.TypedDict` type annotations.
+Wrapper for `typing/typing_extensions.TypedDict` type annotations.
 """
 from __future__ import annotations
 
@@ -40,7 +40,7 @@ class TypedDictAttribute:
 
 class TypeTypedDict(FakeAnnotation):
     """
-    Wrapper for `typing_extensions.TypedDict` type annotations.
+    Wrapper for `typing/typing_extensions.TypedDict` type annotations.
 
     Arguments:
         name -- Type name.

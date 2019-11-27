@@ -2,7 +2,7 @@
 
 > Auto-generated documentation for [builder.mypy_boto3_builder.type_annotations.type_typed_dict](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_typed_dict.py) module.
 
-Wrapper for `typing_extensions.TypedDict` type annotations.
+Wrapper for `typing/typing_extensions.TypedDict` type annotations.
 
 - [mypy-boto3](../../../README.md#mypy_boto3) / [Modules](../../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](../index.md#mypy-boto3-builder) / [Type Annotations](index.md#type-annotations) / TypeTypedDict
     - [TypeTypedDict](#typetypeddict)
@@ -36,7 +36,7 @@ class TypeTypedDict(FakeAnnotation):
     ) -> None:
 ```
 
-Wrapper for `typing_extensions.TypedDict` type annotations.
+Wrapper for `typing/typing_extensions.TypedDict` type annotations.
 
 #### Arguments
 

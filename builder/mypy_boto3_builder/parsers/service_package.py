@@ -2,8 +2,7 @@
 Parser that produces `structures.ServiceModule`.
 """
 import inspect
-from typing import Iterable, Union
-from typing_extensions import Literal
+from typing import Iterable, Union, Literal
 
 from boto3.session import Session
 from botocore import xform_name

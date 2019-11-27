@@ -2,8 +2,7 @@
 Boto3 client Waiter.
 """
 from dataclasses import dataclass, field
-from typing import List
-from typing_extensions import overload
+from typing import List, overload
 
 from botocore.waiter import Waiter as Boto3Waiter
 

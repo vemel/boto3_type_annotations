@@ -1,6 +1,6 @@
 # pylint: disable=unused-argument,multiple-statements,super-init-not-called
 from typing import Dict, Any, Iterable, List
-from typing_extensions import TypedDict
+from mypy_boto3.type_defs import TypedDict
 
 class Tag(TypedDict):
     Key: str

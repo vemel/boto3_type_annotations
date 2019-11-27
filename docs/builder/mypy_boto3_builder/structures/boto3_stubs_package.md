@@ -23,7 +23,7 @@ Structure for boto3-stubs module.
 
 ### Boto3StubsPackage().essential_service_names
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/boto3_stubs_package.py#L34)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/boto3_stubs_package.py#L35)
 
 ```python
 @property
@@ -32,7 +32,7 @@ def essential_service_names() -> List[ServiceName]:
 
 ### Boto3StubsPackage().get_init_required_import_record_groups
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/boto3_stubs_package.py#L42)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/boto3_stubs_package.py#L43)
 
 ```python
 def get_init_required_import_record_groups() -> List[ImportRecordGroup]:
@@ -40,7 +40,7 @@ def get_init_required_import_record_groups() -> List[ImportRecordGroup]:
 
 ### Boto3StubsPackage().get_session_required_import_record_groups
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/boto3_stubs_package.py#L64)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/boto3_stubs_package.py#L68)
 
 ```python
 def get_session_required_import_record_groups() -> List[ImportRecordGroup]:

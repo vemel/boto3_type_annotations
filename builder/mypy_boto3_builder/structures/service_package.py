@@ -10,6 +10,7 @@ from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.import_record_group import ImportRecordGroup
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
+from mypy_boto3_builder.type_annotations.type_def import TypeDef
 from mypy_boto3_builder.structures.service_resource import ServiceResource
 from mypy_boto3_builder.structures.waiter import Waiter
 from mypy_boto3_builder.structures.paginator import Paginator
@@ -157,15 +158,14 @@ class ServicePackage(Package):
 
     def get_type_defs_required_import_record_groups(self) -> List[ImportRecordGroup]:
         import_records: Set[ImportRecord] = set()
-        import_records.add(
-            ImportRecord(source=ImportString("typing_extensions"), name="TypedDict")
-        )
-        for type_dict in self.typed_dicts:
-            for type_annotation in type_dict.get_children_types():
-                import_record = type_annotation.get_import_record()
-                if import_record.is_type_defs():
-                    continue
-                import_records.add(import_record)
+        if self.typed_dicts:
+            import_records.add(TypeDef("TypedDict").get_import_record())
+            for types_dict in self.typed_dicts:
+                for type_annotation in types_dict.get_children_types():
+                    import_record = type_annotation.get_import_record()
+                    if import_record.is_type_defs():
+                        continue
+                    import_records.add(import_record)
 
         return ImportRecordGroup.from_import_records(import_records)
 
