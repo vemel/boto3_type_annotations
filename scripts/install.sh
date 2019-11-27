@@ -8,6 +8,17 @@ if [[ "$1" == "" ]]; then
     PACKAGES=${OUTPUT_PATH}/mypy_boto3_*
 fi
 
+if [[ "$1" == "master" ]]; then
+    echo Installing master package
+    cd ${OUTPUT_PATH}/master_package
+    python setup.py install 1>/dev/null 2>/dev/null
+
+    echo Installing boto3-stubs package
+    cd ${OUTPUT_PATH}/boto3_stubs_package
+    python setup.py install 1>/dev/null 2>/dev/null
+    exit
+fi
+
 for package in $PACKAGES
 do
     echo Installing $(basename ${package})
@@ -15,10 +26,3 @@ do
     python setup.py install 1>/dev/null 2>/dev/null
 done
 
-echo Installing master package
-cd ${OUTPUT_PATH}/master_package
-python setup.py install 1>/dev/null 2>/dev/null
-
-echo Installing boto3-stubs package
-cd ${OUTPUT_PATH}/boto3_stubs_package
-python setup.py install 1>/dev/null 2>/dev/null
