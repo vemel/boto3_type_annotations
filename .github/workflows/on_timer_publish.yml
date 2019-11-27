@@ -56,7 +56,7 @@ jobs:
           SKIP: ${{ steps.vars.outputs.skip }}
         run: |
           if [[ "${SKIP}" != "" ]]; then exit 0; fi
-          pip install setuptools wheel twine
+          python -m pip install setuptools wheel twine
       - name: Publish to PyPI
         env:
           SKIP: ${{ steps.vars.outputs.skip }}
