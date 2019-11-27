@@ -2,7 +2,7 @@ name: Check boto3 version and publish on new
 
 on:
   schedule:
-    - cron: '0 0/2 * * *'
+    - cron: "0 0/2 * * *"
 
 jobs:
   check:
@@ -29,20 +29,12 @@ jobs:
             SKIP="1"
           fi
           echo "##[set-output name=skip;]$(echo ${SKIP})"
-      - name: Install builder dependencies
-        env:
-          SKIP: ${{ steps.vars.outputs.skip }}
-        run: |
-          if [[ "${SKIP}" != "" ]]; then exit 0; fi
-          pip install -r builder/requirements.txt
       - name: Install builder
         env:
           SKIP: ${{ steps.vars.outputs.skip }}
         run: |
           if [[ "${SKIP}" != "" ]]; then exit 0; fi
-          cd builder
-          python setup.py install
-          cd -
+          python -m pip install mypy_boto3_builder
       - name: Build packages
         env:
           SKIP: ${{ steps.vars.outputs.skip }}
