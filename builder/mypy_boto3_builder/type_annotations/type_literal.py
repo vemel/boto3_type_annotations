@@ -19,9 +19,7 @@ class TypeLiteral(FakeAnnotation):
     """
 
     def __init__(self, *children: Any) -> None:
-        if not children:
-            raise ValueError(f"Empty children for literal: {children}")
-        self.children = children
+        self.children = list(children)
 
     def render(self) -> str:
         """
@@ -30,6 +28,8 @@ class TypeLiteral(FakeAnnotation):
         Returns:
             A string with a valid type annotation.
         """
+        if not self.children:
+            raise ValueError(f"Empty children for literal")
         children = ", ".join([repr(i) for i in self.children])
         return f"Literal[{children}]"
 
@@ -44,3 +44,15 @@ class TypeLiteral(FakeAnnotation):
         Create a copy of type annotation wrapper.
         """
         return TypeLiteral(*self.children)
+
+    def is_literal(self) -> bool:  # pylint: disable=no-self-use
+        """
+        Whether type annotation is `Literal`.
+        """
+        return True
+
+    def add_literal_child(self, child: Any) -> None:
+        """
+        Add new child to `TypeLiteral` annotation.
+        """
+        self.children.append(child)

@@ -9,6 +9,7 @@ Wrapper for classes like `Paginator`.
         - [TypeClass().copy](#typeclasscopy)
         - [TypeClass().get_import_name](#typeclassget_import_name)
         - [TypeClass().get_import_record](#typeclassget_import_record)
+        - [TypeClass().is_potential_literal](#typeclassis_potential_literal)
         - [TypeClass().render](#typeclassrender)
 
 ## TypeClass
@@ -52,6 +53,16 @@ def get_import_name() -> str:
 ```python
 def get_import_record() -> ImportRecord:
 ```
+
+### TypeClass().is_potential_literal
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_class.py#L59)
+
+```python
+def is_potential_literal() -> bool:
+```
+
+Whether type annotation can become a Literal.
 
 ### TypeClass().render
 

@@ -7,11 +7,14 @@ Parent class for all type annotation wrappers.
 - [mypy-boto3](../../../README.md#mypy_boto3) / [Modules](../../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](../index.md#mypy-boto3-builder) / [Type Annotations](index.md#type-annotations) / FakeAnnotation
     - [FakeAnnotation](#fakeannotation)
         - [FakeAnnotation().add_child](#fakeannotationadd_child)
+        - [FakeAnnotation().add_literal_child](#fakeannotationadd_literal_child)
         - [FakeAnnotation().copy](#fakeannotationcopy)
         - [FakeAnnotation().get_import_record](#fakeannotationget_import_record)
         - [FakeAnnotation().get_types](#fakeannotationget_types)
         - [FakeAnnotation().is_dict](#fakeannotationis_dict)
         - [FakeAnnotation().is_list](#fakeannotationis_list)
+        - [FakeAnnotation().is_literal](#fakeannotationis_literal)
+        - [FakeAnnotation().is_potential_literal](#fakeannotationis_potential_literal)
         - [FakeAnnotation().remove_children](#fakeannotationremove_children)
         - [FakeAnnotation().render](#fakeannotationrender)
 
@@ -34,11 +37,21 @@ Parent class for all type annotation wrappers.
 def add_child(child: FakeAnnotation) -> None:
 ```
 
-Add new child to `TypeSubstript` or `TypeTypedDict` annotation.
+Add new child to `TypeSubscript` or `TypeTypedDict` annotation.
+
+### FakeAnnotation().add_literal_child
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L68)
+
+```python
+def add_literal_child(child: Any) -> None:
+```
+
+Add new child to `TypeLiteral` annotation.
 
 ### FakeAnnotation().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L80)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L97)
 
 ```python
 @abstractmethod
@@ -70,23 +83,43 @@ Get all used type annotations recursively including self.
 
 ### FakeAnnotation().is_dict
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L68)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L73)
 
 ```python
 def is_dict() -> bool:
 ```
 
-Whether type annotation is `Dict` or `TypedDict`
+Whether type annotation is `Dict` or `TypedDict`.
 
 ### FakeAnnotation().is_list
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L74)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L79)
 
 ```python
 def is_list() -> bool:
 ```
 
-Whether type annotation is `List`
+Whether type annotation is `List`.
+
+### FakeAnnotation().is_literal
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L85)
+
+```python
+def is_literal() -> bool:
+```
+
+Whether type annotation is `Literal`.
+
+### FakeAnnotation().is_potential_literal
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L91)
+
+```python
+def is_potential_literal() -> bool:
+```
+
+Whether type annotation can be a `Literal`.
 
 ### FakeAnnotation().remove_children
 
@@ -96,7 +129,7 @@ Whether type annotation is `List`
 def remove_children() -> None:
 ```
 
-Remove all children from `TypeSubstript` or `TypeTypedDict` annotation.
+Remove all children from `TypeSubscript` or `TypeTypedDict` annotation.
 
 ### FakeAnnotation().render
 

@@ -14,6 +14,7 @@ from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
+from mypy_boto3_builder.type_annotations.type_literal import TypeLiteral
 from mypy_boto3_builder.type_annotations.type_def import TypeDef
 from mypy_boto3_builder.type_maps.type_map import TYPE_MAP
 from mypy_boto3_builder.type_maps.named_type_map import NAMED_TYPE_MAP
@@ -31,6 +32,7 @@ class DocstringParser:
         r"\- \*\*(?P<name>\S+)\*\* \*\((?P<type>.+)\) \-\-\*"
     )
     RE_SYNTAX_TYPE: Pattern[str] = re.compile(r"\- \*\((?P<type>.+)\) \-\-\*")
+    RE_LITERAL_STRING_TYPE: Pattern[str] = re.compile(r"\* \`\`(?P<value>[^`]+)\`\` - ")
 
     DEFAULT_METHOD_ARGUMENTS = {
         "create_tags": [
@@ -239,11 +241,27 @@ class DocstringParser:
             parent_type.remove_children()
             return self.parse_dict_syntax(name, parent_type, lines, prefix)
 
+        # if parent_type.is_potential_literal():
+        #     return self.parse_literal_syntax(parent_type, lines)
+
         child = self.parse_any_syntax(name, lines, prefix)
         if child is not TypeAnnotation.Any():
             if parent_type.is_list():
                 parent_type.remove_children()
             parent_type.add_child(child)
+        return parent_type
+
+    def parse_literal_syntax(
+        self, parent_type: FakeAnnotation, lines: List[str]
+    ) -> FakeAnnotation:
+        lines = IndentTrimmer.trim_lines(IndentTrimmer.trim_empty_lines(lines))
+        for line in lines:
+            match = self.RE_LITERAL_STRING_TYPE.match(line)
+            if match:
+                if not parent_type.is_literal():
+                    parent_type = TypeLiteral()
+                parent_type.add_literal_child(match.groupdict()["value"])
+
         return parent_type
 
     def parse_dict_syntax(

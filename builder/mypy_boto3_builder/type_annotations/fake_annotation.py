@@ -57,23 +57,40 @@ class FakeAnnotation:
 
     def remove_children(self) -> None:
         """
-        Remove all children from `TypeSubstript` or `TypeTypedDict` annotation.
+        Remove all children from `TypeSubscript` or `TypeTypedDict` annotation.
         """
 
     def add_child(self, child: FakeAnnotation) -> None:
         """
-        Add new child to `TypeSubstript` or `TypeTypedDict` annotation.
+        Add new child to `TypeSubscript` or `TypeTypedDict` annotation.
+        """
+
+    def add_literal_child(self, child: Any) -> None:
+        """
+        Add new child to `TypeLiteral` annotation.
         """
 
     def is_dict(self) -> bool:  # pylint: disable=no-self-use
         """
-        Whether type annotation is `Dict` or `TypedDict`
+        Whether type annotation is `Dict` or `TypedDict`.
         """
         return False
 
     def is_list(self) -> bool:  # pylint: disable=no-self-use
         """
-        Whether type annotation is `List`
+        Whether type annotation is `List`.
+        """
+        return False
+
+    def is_literal(self) -> bool:  # pylint: disable=no-self-use
+        """
+        Whether type annotation is `Literal`.
+        """
+        return False
+
+    def is_potential_literal(self) -> bool:  # pylint: disable=no-self-use
+        """
+        Whether type annotation can be a `Literal`.
         """
         return False
 
