@@ -17,6 +17,7 @@ Builder for `mypy_boto3`.
         - [Parsers](parsers/index.md#parsers)
         - [Structures](structures/index.md#structures)
         - [Type Annotations](type_annotations/index.md#type-annotations)
+        - [Type Defs](type_defs.md#type-defs)
         - [Type Maps](type_maps/index.md#type-maps)
         - [Utils](utils/index.md#utils)
         - [Version](version.md#version)

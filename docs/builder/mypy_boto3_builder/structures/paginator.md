@@ -11,7 +11,7 @@ Boto3 client Paginator.
 
 ## Paginator
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/paginator.py#L23)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/paginator.py#L24)
 
 ```python
 dataclass
@@ -22,7 +22,7 @@ Boto3 client Paginator.
 
 ### Paginator().get_client_method
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/paginator.py#L38)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/paginator.py#L39)
 
 ```python
 def get_client_method() -> Method:
@@ -30,7 +30,7 @@ def get_client_method() -> Method:
 
 ### Paginator().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/paginator.py#L35)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/paginator.py#L36)
 
 ```python
 def get_import_record() -> InternalImportRecord:
