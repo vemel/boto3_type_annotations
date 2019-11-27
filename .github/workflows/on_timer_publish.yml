@@ -2,7 +2,7 @@ name: Check boto3 version and publish on new
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 0/2 * * *'
 
 jobs:
   check:
@@ -35,38 +35,38 @@ jobs:
         run: |
           if [[ "${SKIP}" != "" ]]; then exit 0; fi
           pip install -r builder/requirements.txt
-      - name: Install builder
-        env:
-          SKIP: ${{ steps.vars.outputs.skip }}
-        run: |
-          if [[ "${SKIP}" != "" ]]; then exit 0; fi
-          cd builder
-          python setup.py install
-          cd -
-      - name: Build packages
-        env:
-          SKIP: ${{ steps.vars.outputs.skip }}
-        run: |
-          if [[ "${SKIP}" != "" ]]; then exit 0; fi
-          rm -rf mypy_boto3_output/*
-          scripts/build.sh
-      - name: Integration tests
-        env:
-          SKIP: ${{ steps.vars.outputs.skip }}
-        run: |
-          if [[ "${SKIP}" != "" ]]; then exit 0; fi
-          scripts/integration.sh
-      - name: Install dependencies for publishing
-        env:
-          SKIP: ${{ steps.vars.outputs.skip }}
-        run: |
-          if [[ "${SKIP}" != "" ]]; then exit 0; fi
-          pip install setuptools wheel twine
-      - name: Publish to PyPI
-        env:
-          SKIP: ${{ steps.vars.outputs.skip }}
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        run: |
-          if [[ "${SKIP}" != "" ]]; then exit 0; fi
-          scripts/release.sh
+      # - name: Install builder
+      #   env:
+      #     SKIP: ${{ steps.vars.outputs.skip }}
+      #   run: |
+      #     if [[ "${SKIP}" != "" ]]; then exit 0; fi
+      #     cd builder
+      #     python setup.py install
+      #     cd -
+      # - name: Build packages
+      #   env:
+      #     SKIP: ${{ steps.vars.outputs.skip }}
+      #   run: |
+      #     if [[ "${SKIP}" != "" ]]; then exit 0; fi
+      #     rm -rf mypy_boto3_output/*
+      #     scripts/build.sh
+      # - name: Integration tests
+      #   env:
+      #     SKIP: ${{ steps.vars.outputs.skip }}
+      #   run: |
+      #     if [[ "${SKIP}" != "" ]]; then exit 0; fi
+      #     scripts/integration.sh
+      # - name: Install dependencies for publishing
+      #   env:
+      #     SKIP: ${{ steps.vars.outputs.skip }}
+      #   run: |
+      #     if [[ "${SKIP}" != "" ]]; then exit 0; fi
+      #     pip install setuptools wheel twine
+      # - name: Publish to PyPI
+      #   env:
+      #     SKIP: ${{ steps.vars.outputs.skip }}
+      #     TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+      #     TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      #   run: |
+      #     if [[ "${SKIP}" != "" ]]; then exit 0; fi
+      #     scripts/release.sh
