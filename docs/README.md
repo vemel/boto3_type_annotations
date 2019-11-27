@@ -100,8 +100,6 @@ describe_volumes_paginator: DescribeVolumesPaginator = ec2_client.get_paginator(
 # works as expected
 ```
 
-I recommend the second approach because it can be easily removed once your IDE type resolution is fixed.
-
 ## How to build
 
 ### Locally
