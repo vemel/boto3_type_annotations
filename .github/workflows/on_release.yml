@@ -51,3 +51,16 @@ jobs:
           VERSION: ${{ steps.vars.outputs.version }}
         run: |
           scripts/dockerize.sh
+      - name: Install dependencies for publishing
+        run: |
+          pip install setuptools wheel twine
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          cd builder
+          rm -rf build *.egg-info dist/*
+          python setup.py build sdist bdist_wheel
+          twine upload dist/*
+          rm -rf build *.egg-info dist/*
