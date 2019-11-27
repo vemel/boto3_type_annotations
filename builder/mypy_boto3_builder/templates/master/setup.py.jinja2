@@ -8,7 +8,7 @@ LONG_DESCRIPTION = open(dirname(abspath(__file__)) + "/README.md", "r").read()
 
 setup(
     name="{{ package.pypi_name }}",
-    version="{{ version }}",
+    version="{{ boto3_version }}",
     packages=[
         "{{ package.name }}",
         {% for service_name in package.service_names -%}
@@ -40,21 +40,21 @@ setup(
     long_description_content_type="text/markdown",
     install_requires=["typing_extensions", "boto3"],
     extras_require={
-        "stubs": ["{{ boto3_stubs_name }}=={{ version }}"],
+        "stubs": ["{{ boto3_stubs_name }}=={{ boto3_version }}"],
         "essential": [
             {% for service_name in package.service_names -%}
             {% if service_name.is_essential() -%}
-            "{{ service_name.pypi_name }}=={{ version }}",
+            "{{ service_name.pypi_name }}=={{ boto3_version }}",
             {% endif -%}
             {% endfor -%}
         ],
         "all": [
             {% for service_name in package.service_names -%}
-            "{{ service_name.pypi_name }}=={{ version }}",
+            "{{ service_name.pypi_name }}=={{ boto3_version }}",
             {% endfor -%}
         ],
         {% for service_name in package.service_names -%}
-        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}=={{ version }}"],
+        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}=={{ boto3_version }}"],
         {% endfor -%}
     },
     package_data={"{{ package.name }}": ["py.typed"]},

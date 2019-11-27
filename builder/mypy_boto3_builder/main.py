@@ -45,7 +45,6 @@ def main() -> None:
         service_names.append(service_name)
 
     JinjaManager.update_globals(
-        version=version,
         master_pypi_name=PYPI_NAME,
         master_module_name=MODULE_NAME,
         boto3_stubs_name=BOTO3_STUBS_NAME,
