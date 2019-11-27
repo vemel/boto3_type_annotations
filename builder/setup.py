@@ -28,6 +28,7 @@ setup(
             "boto3_stubs_static/*.pyi",
             "boto3_stubs_static/*/*.pyi",
             "mypy_boto3_static/*.pyi",
+            "mypy_boto3_static/*.py",
         ]
     },
     author="Vlad Emelianov",
