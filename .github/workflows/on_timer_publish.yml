@@ -1,11 +1,11 @@
-name: Upload Python Packages
+name: Check boto3 version and publish on new
 
 on:
   schedule:
-    - cron: "0/5 * * * *"
+    - cron: '0/5 * * * *'
 
 jobs:
-  deploy:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
