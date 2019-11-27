@@ -75,45 +75,7 @@ bucket.upload_file(Filename="my.txt", key="my-txt")
 `mypy` correctly reveals types for `boto3-stubs`, but auto-complete in your IDE probably does not support
 overloaded functions, so methods and arguments auto-complete will not be very useful.
 
-To help IDE to resolve types correctly, there are some helper functions that return correct types with
-no function overloads.
-
-If your IDE supports overloaded functions, just use `boto3` as usual.
-
-```python
-import boto3
-
-# Any service can be used, we use `ec2` as an example.
-# All sub modules are named like `boto3` service names with underscores instead
-# of hyphens, e.g. `mypy_boto3.ec2_instance_connect`
-# For `lambda`, module name is `mypy_boto3.lambda_`
-from mypy_boto3.ec2 import boto3_client, boto3_resource
-from mypy_boto3.ec2.helpers import get_bundle_task_complete_waiter, get_describe_volumes_paginator
-
-session = boto3.session.Session(region_name="us-west-1")
-
-# equivalent of `boto3.client("ec2", region_name="us-west-1")` but return type is correct
-ec2_client = boto3_client(region_name="us-west-1")
-
-# equivalent of `session.client("ec2")`
-ec2_client = boto3_client(session)
-
-# same for `boto3.resource("ec2") or `session.resource("ec2")`
-ec2_resource = boto3_resource(session)
-
-# equivalent of `ec2_client.get_waiter("bundle_task_complete")`
-bundle_task_complete_waiter = get_bundle_task_complete_waiter(ec2_client)
-
-# equivalent of `ec2_client.get_paginator("describe_volumes")`
-describe_volumes_paginator = get_describe_volumes_paginator(ec2_client)
-
-# ec2_client, ec2_resource, bundle_task_complete_waiter and describe_volumes_paginator
-# now have correct type so IDE automoplete for methods, arguments and return types
-# works as expected
-```
-
-Alterntively, you can just set types manually. The same code with type anntations to get
-correct auto-complete:
+To help IDE to resolve types correctly, you can set types explicitly.
 
 ```python
 import boto3
@@ -132,6 +94,10 @@ ec2_resource: ServiceResource = session.resource("ec2")
 bundle_task_complete_waiter: BundleTaskCompleteWaiter = ec2_client.get_waiter("bundle_task_complete")
 
 describe_volumes_paginator: DescribeVolumesPaginator = ec2_client.get_paginator("describe_volumes")
+
+# ec2_client, ec2_resource, bundle_task_complete_waiter and describe_volumes_paginator
+# now have correct type so IDE automoplete for methods, arguments and return types
+# works as expected
 ```
 
 I recommend the second approach because it can be easily removed once your IDE type resolution is fixed.
