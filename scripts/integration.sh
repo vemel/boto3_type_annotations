@@ -18,11 +18,11 @@ do
     ${ROOT_PATH}/scripts/install.sh ${SERVICE_NAME}
     echo Running mypy for ${FILE_NAME}
     if [[ ! -f ${EXPECTED} ]]; then
-        mypy ${EXAMPLE} 1> ${EXPECTED} || true
+        mypy ${EXAMPLE} | grep -v ' note: ' > ${EXPECTED} || true
         echo "Created ${EXPECTED}"
         continue
     fi
-    mypy ${EXAMPLE} 1> ${OUTPUT} || true
+    mypy ${EXAMPLE} | grep -v ' note: ' > ${OUTPUT} || true
     DIFF=`diff ${OUTPUT} ${EXPECTED}` || true
     rm ${OUTPUT}
 
@@ -34,3 +34,5 @@ do
         exit 1
     fi
 done
+
+echo "All tests passed"
