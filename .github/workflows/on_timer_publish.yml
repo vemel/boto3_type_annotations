@@ -50,6 +50,9 @@ jobs:
           if [[ "${SKIP}" != "" ]]; then exit 0; fi
           rm -rf mypy_boto3_output/*
           scripts/build.sh
+      - name: Install integration test dependencies
+        run: |
+          python -m pip install mypy
       - name: Integration tests
         env:
           SKIP: ${{ steps.vars.outputs.skip }}
