@@ -20,29 +20,49 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: "3.8"
+      - name: Install builder dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r builder/requirements.txt
+      - name: Install builder
+        run: |
+          cd builder
+          python setup.py install
+          cd -
+      - name: Install test dependencies
+        run: |
+          python -m pip install pylint mypy pytest
+      - name: Lint
+        run: |
+          pylint builder/mypy_boto3_builder
+          mypy builder/mypy_boto3_builder
+      - name: Unit tests
+        run: |
+          pytest
       - name: Bump version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ steps.vars.outputs.version }}
         run: |
           scripts/bump_version.sh
-      - name: Install builder
+      - name: Install updated builder
         run: |
-          python -m pip install --upgrade pip
           cd builder
-          pip install -r requirements.txt
           python setup.py install
           cd -
+      - name: Build packages
+        run: |
+          rm -rf mypy_boto3_output/*
+          scripts/build.sh
+      - name: Integration tests
+        run: |
+          scripts/integration.sh
       - name: Dockerize
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ steps.vars.outputs.version }}
         run: |
           scripts/dockerize.sh
-      - name: Build packages
-        run: |
-          rm -rf mypy_boto3_output/*
-          scripts/build.sh
       - name: Install dependencies for publishing
         run: |
           pip install setuptools wheel twine
