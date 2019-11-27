@@ -2,7 +2,7 @@
 Parser that produces `structures.ServiceModule`.
 """
 import inspect
-from typing import Iterable, Union, Literal
+from typing import Iterable, Union
 
 from boto3.session import Session
 from botocore import xform_name
@@ -10,6 +10,7 @@ from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
 from botocore.config import Config as Boto3Config
 
+from mypy_boto3_builder.type_defs import Literal
 from mypy_boto3_builder.structures.method import Method
 from mypy_boto3_builder.structures.function import Function
 from mypy_boto3_builder.structures.waiter import Waiter

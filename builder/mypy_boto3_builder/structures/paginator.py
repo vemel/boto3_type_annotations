@@ -2,10 +2,11 @@
 Boto3 client Paginator.
 """
 from dataclasses import dataclass, field
-from typing import List, overload
+from typing import List
 
 from botocore.paginate import Paginator as Boto3Paginator
 
+from mypy_boto3_builder.type_defs import overload
 from mypy_boto3_builder.import_helpers.internal_import_record import (
     InternalImportRecord,
 )

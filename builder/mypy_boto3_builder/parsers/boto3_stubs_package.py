@@ -1,11 +1,12 @@
 """
 Parser that produces `structures.Boto3Module`.
 """
-from typing import Iterable, Union, overload
+from typing import Iterable, Union
 
 from boto3.session import Session
 from botocore.config import Config as Boto3Config
 
+from mypy_boto3_builder.type_defs import overload
 from mypy_boto3_builder.constants import MODULE_NAME
 from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.structures.function import Function
