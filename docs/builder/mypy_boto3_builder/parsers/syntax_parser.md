@@ -10,7 +10,7 @@ Botocore request syntax parser.
 
 ## SyntaxParser
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/syntax_parser.py#L32)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/syntax_parser.py#L31)
 
 ```python
 class SyntaxParser():
@@ -20,7 +20,7 @@ Botocore request syntax parser.
 
 ### SyntaxParser.parse_docstring
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/syntax_parser.py#L172)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/syntax_parser.py#L170)
 
 ```python
 @classmethod

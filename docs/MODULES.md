@@ -138,7 +138,7 @@ Full list of [mypy-boto3](README.md#mypy_boto3) project modules.
         - [Type Maps](builder/mypy_boto3_builder/type_maps/index.md#type-maps)
             - [Method Type Map](builder/mypy_boto3_builder/type_maps/method_type_map.md#method-type-map)
             - [Named Type Map](builder/mypy_boto3_builder/type_maps/named_type_map.md#named-type-map)
-            - [Request Type Map](builder/mypy_boto3_builder/type_maps/request_type_map.md#request-type-map)
+            - [Syntax Type Map](builder/mypy_boto3_builder/type_maps/syntax_type_map.md#syntax-type-map)
             - [Type Map](builder/mypy_boto3_builder/type_maps/type_map.md#type-map)
         - [Utils](builder/mypy_boto3_builder/utils/index.md#utils)
             - [IndentTrimmer](builder/mypy_boto3_builder/utils/indent_trimmer.md#indenttrimmer)

@@ -19,7 +19,7 @@ from pyparsing import (
     Forward,
 )
 
-from mypy_boto3_builder.type_maps.request_type_map import REQUEST_TYPE_MAP
+from mypy_boto3_builder.type_maps.syntax_type_map import SYNTAX_TYPE_MAP
 from mypy_boto3_builder.type_annotations.type_literal import TypeLiteral
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
@@ -112,8 +112,8 @@ class SyntaxParser:
 
     @classmethod
     def _parse_value(cls, value: str, typed_dict_name: str) -> FakeAnnotation:
-        if value in REQUEST_TYPE_MAP:
-            return REQUEST_TYPE_MAP[value]
+        if value in SYNTAX_TYPE_MAP:
+            return SYNTAX_TYPE_MAP[value]
 
         try:
             literal_items = cls.literal_items.parseString(value)
@@ -141,11 +141,11 @@ class SyntaxParser:
         except ParseException:
             pass
         else:
-            if dict_items[0][0] in REQUEST_TYPE_MAP:
+            if dict_items[0][0] in SYNTAX_TYPE_MAP:
                 subscript = TypeSubscript(Dict)
                 for dict_item_key, dict_item_value in dict_items:
                     key_name = cls._parse_constant(dict_item_key)
-                    subscript.add_child(REQUEST_TYPE_MAP[dict_item_key])
+                    subscript.add_child(SYNTAX_TYPE_MAP[dict_item_key])
                     subscript.add_child(
                         cls._parse_value(
                             dict_item_value,

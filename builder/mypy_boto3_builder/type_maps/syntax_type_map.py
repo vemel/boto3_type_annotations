@@ -1,5 +1,5 @@
 """
-String to type annotation map that find type annotation by argument name and type.
+String to type annotation map that find type annotation in botocore syntax
 """
 from typing import Dict, Union, IO
 
@@ -9,7 +9,7 @@ from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 
 
-REQUEST_TYPE_MAP: Dict[str, FakeAnnotation] = {
+SYNTAX_TYPE_MAP: Dict[str, FakeAnnotation] = {
     "{'... recursive ...'}": TypeSubscript(
         Dict, [TypeClass(str), TypeAnnotation.Any()]
     ),
