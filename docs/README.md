@@ -72,7 +72,7 @@ bucket.upload_file(Filename="my.txt", key="my-txt")
 
 ## If IDE auto-complete does not work
 
-`mypy` correctly reveals types for `boto3-stubs`, but auto-complete in your IDE probably does not support
+`mypy` correctly resolves types from `boto3-stubs`, but auto-complete in your IDE probably does not support
 overloaded functions, so methods and arguments auto-complete will not be very useful.
 
 To help IDE to resolve types correctly, you can set types explicitly.
@@ -109,12 +109,10 @@ version of `boto3`, you can use `mypy-boto3-builder`.
 
 ```bash
 # Install preferred version of `boto3`
-pip install boto3==1.10.18
+pip install boto3==1.10.18 botocore==1.13.18
 
 # Install `mypy-boto3-builder`
-cd builder
-pip install .[black]
-cd ..
+pip install mypy-boto3-builder[black]
 
 # Set output path to any directory
 OUTPUT_PATH=`pwd`/output
@@ -170,7 +168,7 @@ docker run -e BOTO3_VERSION=1.10.18 BOTOCORE_VERSION=1.13.18 -v `pwd`/output:/ou
 
 - `mypy` compatibility
 - Fully type annotated
-- No need to set types explicitly
+- No need to set types explicitly (depends on your IDE)
 - Generated types for return values and arguments
 - Added `ServiceResource` sub-collections
 - Support service-specific sub-modules
