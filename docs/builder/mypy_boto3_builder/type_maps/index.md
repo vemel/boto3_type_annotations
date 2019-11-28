@@ -6,4 +6,5 @@
     - Modules
         - [Method Type Map](method_type_map.md#method-type-map)
         - [Named Type Map](named_type_map.md#named-type-map)
+        - [Request Type Map](request_type_map.md#request-type-map)
         - [Type Map](type_map.md#type-map)

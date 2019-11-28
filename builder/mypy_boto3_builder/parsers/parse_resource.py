@@ -15,7 +15,7 @@ from mypy_boto3_builder.structures.attribute import Attribute
 from mypy_boto3_builder.structures.resource import Resource
 from mypy_boto3_builder.parsers.helpers import parse_attributes, parse_method
 from mypy_boto3_builder.parsers.identifiers import parse_identifiers
-from mypy_boto3_builder.parsers.collections import parse_collections
+from mypy_boto3_builder.parsers.parse_collections import parse_collections
 
 
 def parse_resource(

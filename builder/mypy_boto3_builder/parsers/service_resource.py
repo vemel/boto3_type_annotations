@@ -21,8 +21,8 @@ from mypy_boto3_builder.parsers.helpers import (
     parse_attributes,
 )
 from mypy_boto3_builder.parsers.identifiers import parse_identifiers
-from mypy_boto3_builder.parsers.collections import parse_collections
-from mypy_boto3_builder.parsers.resource import parse_resource
+from mypy_boto3_builder.parsers.parse_collections import parse_collections
+from mypy_boto3_builder.parsers.parse_resource import parse_resource
 from mypy_boto3_builder.parsers.boto3_utils import get_boto3_client
 
 

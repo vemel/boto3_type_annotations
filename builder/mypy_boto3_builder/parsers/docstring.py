@@ -14,13 +14,13 @@ from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
-from mypy_boto3_builder.type_annotations.type_literal import TypeLiteral
 from mypy_boto3_builder.type_annotations.type_def import TypeDef
 from mypy_boto3_builder.type_maps.type_map import TYPE_MAP
 from mypy_boto3_builder.type_maps.named_type_map import NAMED_TYPE_MAP
 from mypy_boto3_builder.type_maps.method_type_map import METHOD_TYPE_MAP
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.utils.indent_trimmer import IndentTrimmer
+from mypy_boto3_builder.parsers.syntax_parser import SyntaxParser
 
 
 class DocstringParser:
@@ -75,6 +75,15 @@ class DocstringParser:
         if syntax_return_type is not TypeAnnotation.Any():
             return_type = syntax_return_type
         return return_type
+
+    @staticmethod
+    def _find_argument(
+        argument_name: str, arguments: List[Argument]
+    ) -> Optional[Argument]:
+        for argument in arguments:
+            if argument.name == argument_name:
+                return argument
+        return None
 
     @staticmethod
     def _find_argument_or_append(
@@ -162,6 +171,7 @@ class DocstringParser:
             doc_line = doc_line.rstrip()
             doc_line_indent = IndentTrimmer.get_line_indent(doc_line)
             line = doc_line.strip()
+
             if line.startswith(":param "):
                 match = self.RE_PARAM.match(line)
                 if match:
@@ -197,6 +207,26 @@ class DocstringParser:
                 lines=syntax_lines,
                 prefix=prefix,
             )
+            argument.type = argument_type
+
+        self._enrich_arguments_from_syntax(docstring, arguments, prefix)
+
+    def _enrich_arguments_from_syntax(
+        self, docstring: str, arguments: List[Argument], prefix: str
+    ) -> None:
+        if "**Request Syntax**" not in docstring:
+            return
+
+        syntax_map = SyntaxParser.parse_docstring(docstring, prefix)
+        if not syntax_map:
+            return
+
+        for argument_name, argument_type in syntax_map.items():
+            if not argument_type.is_literal():
+                continue
+            argument = self._find_argument(argument_name, arguments)
+            if not argument:
+                continue
             argument.type = argument_type
 
     @staticmethod
@@ -241,27 +271,11 @@ class DocstringParser:
             parent_type.remove_children()
             return self.parse_dict_syntax(name, parent_type, lines, prefix)
 
-        # if parent_type.is_potential_literal():
-        #     return self.parse_literal_syntax(parent_type, lines)
-
         child = self.parse_any_syntax(name, lines, prefix)
         if child is not TypeAnnotation.Any():
             if parent_type.is_list():
                 parent_type.remove_children()
             parent_type.add_child(child)
-        return parent_type
-
-    def parse_literal_syntax(
-        self, parent_type: FakeAnnotation, lines: List[str]
-    ) -> FakeAnnotation:
-        lines = IndentTrimmer.trim_lines(IndentTrimmer.trim_empty_lines(lines))
-        for line in lines:
-            match = self.RE_LITERAL_STRING_TYPE.match(line)
-            if match:
-                if not parent_type.is_literal():
-                    parent_type = TypeLiteral()
-                parent_type.add_literal_child(match.groupdict()["value"])
-
         return parent_type
 
     def parse_dict_syntax(
