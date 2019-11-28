@@ -26,7 +26,6 @@ from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.utils.strings import get_class_prefix
-from mypy_boto3_builder.logger import get_logger
 
 
 class SyntaxParser:
@@ -34,7 +33,6 @@ class SyntaxParser:
     Botocore request syntax parser.
     """
 
-    logger = get_logger()
     variable_name = Word(alphanums + "_")
     name_value = Word(alphanums + "_")
     string_value = Combine(
@@ -110,7 +108,7 @@ class SyntaxParser:
         if value.isdigit():
             return int(value)
 
-        return TypeAnnotation.Any()
+        raise ValueError(f"Invalid constant: {value}")
 
     @classmethod
     def _parse_value(cls, value: str, typed_dict_name: str) -> FakeAnnotation:
@@ -195,7 +193,6 @@ class SyntaxParser:
                         + get_class_prefix(argument_name),
                     )
                 except ParseException as e:
-                    cls.logger.warning(f"Could not parse {argument_value}: {e}")
-                    return result
+                    raise ValueError(f"Could not parse {argument_value}: {e}")
                 result[argument_name] = value
         return result

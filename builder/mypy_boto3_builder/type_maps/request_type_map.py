@@ -1,7 +1,7 @@
 """
 String to type annotation map that find type annotation by argument name and type.
 """
-from typing import Dict
+from typing import Dict, Union, IO
 
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
@@ -16,4 +16,5 @@ REQUEST_TYPE_MAP: Dict[str, FakeAnnotation] = {
     "'string'": TypeClass(str),
     "b'bytes'": TypeClass(bytes),
     "True|False": TypeClass(bool),
+    "b'bytes'|file": TypeSubscript(Union, [TypeClass(bytes), TypeAnnotation(IO)]),
 }

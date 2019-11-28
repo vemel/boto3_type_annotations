@@ -217,9 +217,10 @@ class DocstringParser:
         if "**Request Syntax**" not in docstring:
             return
 
-        syntax_map = SyntaxParser.parse_docstring(docstring, prefix)
-        if not syntax_map:
-            return
+        try:
+            syntax_map = SyntaxParser.parse_docstring(docstring, prefix)
+        except ValueError as e:
+            self.logger.warning(f"{e}")
 
         for argument_name, argument_type in syntax_map.items():
             if not argument_type.is_literal():
