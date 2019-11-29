@@ -3,12 +3,12 @@
 {% if argument.type -%}
     {{ ': ' -}}
     {{ argument.type.render() -}}
-    {% if argument.default -%}
+    {% if not argument.required -%}
         {{ ' = ' -}}
         {{ argument.default.render() -}}
     {% endif -%}
 {% else -%}
-    {% if argument.default -%}
+    {% if not argument.required -%}
         {{ '=' -}}
         {{ argument.default.render() -}}
     {% endif -%}

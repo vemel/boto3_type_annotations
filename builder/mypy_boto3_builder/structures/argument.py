@@ -33,3 +33,7 @@ class Argument:
             types.update(self.default.get_types())
 
         return types
+
+    @property
+    def required(self) -> bool:
+        return self.default is None
