@@ -36,7 +36,7 @@ setup(
     author_email="vlad.emelianov.nz@gmail.com",
     description="Builder for mypy-boto3.",
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Environment :: Console",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
