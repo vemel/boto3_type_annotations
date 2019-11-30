@@ -24,7 +24,7 @@ class StringsTestCase(unittest.TestCase):
             clean_doc('triple quotes""" test', 80), "triple quotes''' test"
         )
         self.assertEqual(
-            clean_doc("trailing lines test \n  \n\n", 80), "trailing lines test\n"
+            clean_doc("trailing lines test \n  \n\n", 80), "trailing lines test"
         )
         self.assertEqual(
             clean_doc("multiple empty lines\n\n\ntest", 80),
