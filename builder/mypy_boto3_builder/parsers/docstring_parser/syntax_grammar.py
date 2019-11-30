@@ -25,7 +25,7 @@ class SyntaxGrammar:
     any_value ::= literal_value | list_value | dict_value | set_value | union_value | func_call | plain_value
     list_value ::= "[" any_value ("," any_value)* [","] "]"
     set_value ::= "{" any_value ("," any_value)* [","] "}"
-    func_call ::= name_value "(" plain_value ("," plain_value)* [","] ")"
+    func_call ::= name_value "(" any_value ("," any_value)* [","] ")"
     empty_dict_value ::= "{" [","] "}"
     non_empty_dict_value ::= "{" string_value ":" any_value ("," string_value ":" any_value)* [","] "}"
     dict_value ::= empty_dict_value | non_empty_dict_value
@@ -66,7 +66,7 @@ class SyntaxGrammar:
     func_call = Group(
         name_value.setResultsName("name")
         + Literal("(")
-        + delimitedList(Group(plain_value)).setResultsName("args")
+        + Optional(delimitedList(Group(any_value))).setResultsName("args")
         + Optional(",")
         + Literal(")")
     ).setResultsName("func_call")

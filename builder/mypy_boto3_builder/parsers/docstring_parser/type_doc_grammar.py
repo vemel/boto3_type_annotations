@@ -6,6 +6,7 @@ from pyparsing import (
     SkipTo,
     Literal,
     LineEnd,
+    LineStart,
     Word,
     alphanums,
     indentedBlock,
@@ -17,6 +18,7 @@ from pyparsing import (
 class TypeDocGrammar:
     """
     EOL ::= ["\r"] "\n"
+    SOL ::= LINE_START
     line ::= [^EOL]+ EOL
     word ::= alphanums + "_"
     indented_block ::= INDENT (line_indented | any_line)
@@ -32,6 +34,7 @@ class TypeDocGrammar:
     """
 
     indent_stack = [1]
+    SOL = LineStart().suppress()
     EOL = LineEnd().suppress()
     word = Word(alphanums + "_")
     line = SkipTo(LineEnd()) + EOL
@@ -43,20 +46,26 @@ class TypeDocGrammar:
     line_indented <<= any_line + indented_block
 
     type_definition = (
-        Literal(":type")
+        SOL
+        + Literal(":type")
         + SkipTo(":").setResultsName("name")
         + Literal(":")
         + SkipTo(EOL).setResultsName("type_name")
     )
 
-    rtype_definition = Literal(":rtype:") + SkipTo(EOL).setResultsName("type_name")
+    rtype_definition = (
+        SOL + Literal(":rtype:") + SkipTo(EOL).setResultsName("type_name")
+    )
 
-    returns_definition = (Literal(":returns:") | Literal(":return:")) + SkipTo(
-        EOL
-    ).setResultsName("description")
+    returns_definition = (
+        SOL
+        + (Literal(":returns:") | Literal(":return:"))
+        + SkipTo(EOL).setResultsName("description")
+    )
 
     param_definition = (
-        Literal(":param")
+        SOL
+        + Literal(":param")
         + SkipTo(":").setResultsName("name")
         + Literal(":")
         + SkipTo(EOL).setResultsName("description")
@@ -67,7 +76,8 @@ class TypeDocGrammar:
     response_structure = Literal("**Response Structure**") + line_indented
 
     typed_dict_key_line = (
-        Literal("-")
+        SOL
+        + Literal("-")
         + White(ws=" \t")
         + Literal("**")
         + word.setResultsName("name")
@@ -83,7 +93,8 @@ class TypeDocGrammar:
     )
 
     type_line = (
-        Literal("-")
+        SOL
+        + Literal("-")
         + White(ws=" \t")
         + Literal("*(")
         + word.setResultsName("type_name")

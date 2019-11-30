@@ -4,15 +4,17 @@ Structure for parsed as dict request or response syntax values.
 from __future__ import annotations
 
 from typing import Dict, Any, List, Union, Optional, IO
-from datetime import datetime
 
 from mypy_boto3_builder.type_maps.syntax_type_map import SYNTAX_TYPE_MAP
+from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.type_annotations.type_literal import TypeLiteral
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
+from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
+from mypy_boto3_builder.logger import get_logger
 
 
 class TypeValue:
@@ -21,6 +23,7 @@ class TypeValue:
     """
 
     def __init__(self, prefix: str, value: Dict[str, Any]) -> None:
+        self.logger = get_logger()
         self.prefix = prefix
         self.raw: Dict[str, Any] = value
         self.dict_items: Optional[List[Dict[str, Any]]] = value.get("dict_items")
@@ -78,7 +81,6 @@ class TypeValue:
         for item in self.dict_items:
             key_name = self._parse_constant(item["key"])
             prefix = f"{self.prefix}{key_name}"
-            print(item)
             typed_dict.add_attribute(
                 key_name, TypeValue(prefix, item["value"]).get_type(), required=False,
             )
@@ -109,16 +111,26 @@ class TypeValue:
         if plain_values == ["'... recursive ...'"]:
             return TypeAnnotation.Any()
 
-        raise ValueError(f"Unknown set: {self.raw}")
+        self.logger.warning(f"Unknown set: {self.raw}, fallback to Any")
+        return TypeAnnotation.Any()
 
-    def _get_type_func_call(self) -> TypeClass:
+    def _get_type_func_call(self) -> FakeAnnotation:
         if not self.func_call:
             raise ValueError(f"Value is not a func call: {self.raw}")
 
         if self.func_call["name"] == "datetime":
-            return TypeClass(datetime)
+            return ExternalImport(ImportString("datetime"), "datetime")
 
-        raise ValueError(f"Unknown function {self.func_call}")
+        if self.func_call["name"] == "StreamingBody":
+            return ExternalImport(ImportString("botocore", "response"), "StreamingBody")
+
+        if self.func_call["name"] == "EventStream":
+            return ExternalImport(
+                ImportString("botocore", "eventstream"), "EventStream"
+            )
+
+        self.logger.warning(f"Unknown function: {self.raw}, fallback to Any")
+        return TypeAnnotation.Any()
 
     def _get_type_plain(self) -> FakeAnnotation:
         if not self.value:
