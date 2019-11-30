@@ -7,11 +7,8 @@ from types import FunctionType
 
 
 from mypy_boto3_builder.structures.argument import Argument
-from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
-from mypy_boto3_builder.type_maps.type_map import TYPE_MAP
-from mypy_boto3_builder.type_maps.named_type_map import NAMED_TYPE_MAP
 from mypy_boto3_builder.type_maps.method_type_map import METHOD_TYPE_MAP
 
 
@@ -59,16 +56,3 @@ class ArgSpecParser:
                 argument.type = METHOD_TYPE_MAP[method_type]
 
         return arguments
-
-    @staticmethod
-    def parse_type(type_str: str, name: Optional[str] = None) -> FakeAnnotation:
-        if name is not None:
-            try:
-                return NAMED_TYPE_MAP[f"{name}: {type_str}"].copy()
-            except KeyError:
-                pass
-
-        try:
-            return TYPE_MAP[type_str].copy()
-        except KeyError:
-            raise ValueError(f"Unknown type: {type_str}")

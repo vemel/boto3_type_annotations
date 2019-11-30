@@ -62,7 +62,7 @@ def parse_attributes(resource: Boto3ServiceResource) -> List[Attribute]:
         attributes = resource.meta.resource_model.get_attributes(shape)
         for name, attribute in attributes.items():
             result.append(
-                Attribute(name, ArgSpecParser.parse_type(attribute[1].type_name))
+                Attribute(name, DocstringParser.parse_type(attribute[1].type_name))
             )
 
     return result

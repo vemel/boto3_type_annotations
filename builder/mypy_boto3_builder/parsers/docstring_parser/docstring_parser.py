@@ -7,6 +7,7 @@ import textwrap
 
 from mypy_boto3_builder.structures.argument import Argument
 from mypy_boto3_builder.type_maps.type_map import TYPE_MAP
+from mypy_boto3_builder.type_maps.named_type_map import NAMED_TYPE_MAP
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
@@ -260,3 +261,16 @@ class DocstringParser:
         if response_structure:
             syntax_return_type.docstring = response_structure.render()
         return syntax_return_type
+
+    @staticmethod
+    def parse_type(type_str: str, name: Optional[str] = None) -> FakeAnnotation:
+        if name is not None:
+            try:
+                return NAMED_TYPE_MAP[f"{name}: {type_str}"].copy()
+            except KeyError:
+                pass
+
+        try:
+            return TYPE_MAP[type_str].copy()
+        except KeyError:
+            raise ValueError(f"Unknown type: {type_str}")
