@@ -22,8 +22,10 @@ class TypeValue:
 
     def __init__(self, prefix: str, value: Dict[str, Any]) -> None:
         self.prefix = prefix
-        self.raw = value
-        self.dict_items = value.get("dict_items")
+        self.raw: Dict[str, Any] = value
+        self.dict_items: Optional[List[Dict[str, Any]]] = value.get("dict_items")
+        if value.get("empty_dict"):
+            self.dict_items = []
         self.set_items: Optional[List[Any]] = value.get("set_items")
         self.list_items: Optional[List[Any]] = value.get("list_items")
         self.func_call: Optional[Dict[str, Any]] = value.get("func_call")
@@ -76,6 +78,7 @@ class TypeValue:
         for item in self.dict_items:
             key_name = self._parse_constant(item["key"])
             prefix = f"{self.prefix}{key_name}"
+            print(item)
             typed_dict.add_attribute(
                 key_name, TypeValue(prefix, item["value"]).get_type(), required=False,
             )

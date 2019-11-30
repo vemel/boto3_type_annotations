@@ -12,7 +12,6 @@ from pyparsing import (
     Combine,
     Forward,
     Literal,
-    White,
 )
 
 
@@ -27,7 +26,9 @@ class SyntaxGrammar:
     list_value ::= "[" any_value ("," any_value)* [","] "]"
     set_value ::= "{" any_value ("," any_value)* [","] "}"
     func_call ::= name_value "(" plain_value ("," plain_value)* [","] ")"
-    dict_value ::= "{" string_value ":" any_value ("," string_value ":" any_value)* [","] "}"
+    empty_dict_value ::= "{" [","] "}"
+    non_empty_dict_value ::= "{" string_value ":" any_value ("," string_value ":" any_value)* [","] "}"
+    dict_value ::= empty_dict_value | non_empty_dict_value
     union_item ::= literal_value | list_value | dict_value | set_value | plain_value
     union_value ::= union_item ("or" union_item)+
     argument ::= alphanums "=" any_value
@@ -38,21 +39,23 @@ class SyntaxGrammar:
 
     variable_name = Word(alphanums + "_-.")
     name_value = Word(alphanums + "_-.")
-    string_value = Combine(Optional(Word(alphas, max=2)) + "'" + SkipTo("'") + "'")
+    string_value = Combine(
+        Optional(Word(alphas, max=2)) + Literal("'") + SkipTo("'") + Literal("'")
+    )
     plain_value = (string_value | name_value).setResultsName("value")
     literal_value = (
         Group(plain_value).setResultsName("literal_first_item")
-        + "|"
+        + Literal("|")
         + delimitedList(Group(plain_value), delim="|").setResultsName(
             "literal_rest_items"
         )
     )
     any_value = Forward()
     list_value = (
-        "["
+        Literal("[")
         + Group(delimitedList(Group(any_value))).setResultsName("list_items")
         + Optional(",")
-        + "]"
+        + Literal("]")
     )
     set_value = (
         "{"
@@ -62,13 +65,16 @@ class SyntaxGrammar:
     )
     func_call = Group(
         name_value.setResultsName("name")
-        + "("
+        + Literal("(")
         + delimitedList(Group(plain_value)).setResultsName("args")
         + Optional(",")
-        + ")"
+        + Literal(")")
     ).setResultsName("func_call")
-    dict_value = (
-        "{"
+    empty_dict_value = Group(
+        Literal("{") + Optional(",") + Literal("}")
+    ).setResultsName("empty_dict")
+    non_empty_dict_value = (
+        Literal("{")
         + Optional(
             delimitedList(
                 Group(
@@ -79,8 +85,9 @@ class SyntaxGrammar:
             ).setResultsName("dict_items")
         )
         + Optional(",")
-        + "}"
+        + Literal("}")
     )
+    dict_value = empty_dict_value | non_empty_dict_value
     union_item = literal_value | list_value | dict_value | set_value | plain_value
     union_value = (
         Group(union_item).setResultsName("union_first_item")
@@ -100,20 +107,19 @@ class SyntaxGrammar:
     )
     argument = (
         Word(alphanums).setResultsName("name")
-        + "="
+        + Literal("=")
         + Group(any_value).setResultsName("value")
     )
     definition = (
         SkipTo("(")
-        + "("
+        + Literal("(")
         + Optional(delimitedList(Group(argument))).setResultsName("arguments")
         + Optional(",")
-        + ")"
+        + Literal(")")
     )
-    request_syntax = "**Request Syntax**" + White() + "::" + definition
+    request_syntax = "**Request Syntax**" + Literal("::") + definition
     response_syntax = (
         "**Response Syntax**"
-        + White()
-        + "::"
+        + Literal("::")
         + Group(list_value | dict_value).setResultsName("value")
     )
