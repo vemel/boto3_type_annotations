@@ -7,6 +7,7 @@ Method or function argument.
 - [mypy-boto3](../../../README.md#mypy_boto3) / [Modules](../../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](../index.md#mypy-boto3-builder) / [Structures](index.md#structures) / Argument
     - [Argument](#argument)
         - [Argument().get_types](#argumentget_types)
+        - [Argument().required](#argumentrequired)
 
 ## Argument
 
@@ -32,4 +33,13 @@ Method or function argument.
 
 ```python
 def get_types() -> Set[FakeAnnotation]:
+```
+
+### Argument().required
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/argument.py#L37)
+
+```python
+@property
+def required() -> bool:
 ```

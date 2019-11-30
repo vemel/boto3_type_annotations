@@ -11,7 +11,12 @@ Based on [boto3_type_annotations](https://github.com/alliefitter/boto3_type_anno
 - [mypy_boto3](#mypyboto3)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [If IDE auto-complete does not work](#if-ide-auto-complete-does-not-work)
+    - [Setup your IDE](#setup-your-ide)
+    - [VSCode](#vscode)
+    - [PyCharm](#pycharm)
+    - [Other IDEs](#other-ides)
+    - [Explicit type annotations](#explicit-type-annotations)
+    - [Pylint compatibility](#pylint-compatibility)
   - [How to build](#how-to-build)
     - [Locally](#locally)
     - [With Docker image](#with-docker-image)
@@ -65,10 +70,41 @@ bucket = resource.Bucket("bucket")
 bucket.upload_file(Filename="my.txt", key="my-txt")
 ```
 
-## If IDE auto-complete does not work
+### Setup your IDE
 
-`mypy` correctly resolves types from `boto3-stubs`, but auto-complete in your IDE probably does not support
-overloaded functions, so methods and arguments auto-complete will not be very useful.
+### VSCode
+
+- Install [Official Python extension](https://github.com/microsoft/vscode-python)
+- Install [mypy](https://github.com/python/mypy)
+- Activate `mypy` checking in settings: `"python.linting.mypyEnabled": true`
+- Install `boto3-stubs` with `boto3` services you use
+- Use [explicit type annotations](#explicit-type-annotations) because
+  function overload is not fully supported yet
+
+### PyCharm
+
+- Install [mypy plugin](https://plugins.jetbrains.com/plugin/11086-mypy/)
+- Install [mypy](https://github.com/python/mypy)
+- Set path to `mypy` in `mypy plugin` settings
+- Install `boto3-stubs` with `boto3` services you use
+- Use [explicit type annotations](#explicit-type-annotations) because
+  function overload is not fully supported yet
+
+Official `mypy` plugin does not work for some reason at least for me. If you know
+how to setup it correctly, please let me know.
+
+Do not install all services, it slows down `PyCharm`. Install only the ones you use.
+
+### Other IDEs
+
+Please help me to extend this section.
+
+
+### Explicit type annotations
+
+`mypy` correctly resolves types from `boto3-stubs`, but auto-complete in your IDE
+probably does not fully support overloaded functions, so methods and arguments
+auto-complete will not be very useful.
 
 To help IDE to resolve types correctly, you can set types explicitly.
 
@@ -76,7 +112,6 @@ To help IDE to resolve types correctly, you can set types explicitly.
 import boto3
 
 from mypy_boto3.ec2 import Client, ServiceResource
-from mypy_boto3.ec2.helpers import get_bundle_task_complete_waiter, get_describe_volumes_paginator
 from mypy_boto3.ec2.waiters import BundleTaskCompleteWaiter
 from mypy_boto3.ec2.paginators import DescribeVolumesPaginator
 
@@ -93,6 +128,30 @@ describe_volumes_paginator: DescribeVolumesPaginator = ec2_client.get_paginator(
 # ec2_client, ec2_resource, bundle_task_complete_waiter and describe_volumes_paginator
 # now have correct type so IDE automoplete for methods, arguments and return types
 # works as expected
+```
+
+### Pylint compatibility
+
+It is totally safe to use `TYPE_CHECKING` flag in order to avoid `boto3-stubs`
+dependency in production.
+However, there is an issue in `pylint` that it complains about undefined
+variables. To fix it, set all types to `Any` in non-`TYPE_CHECKING` mode.
+
+```python
+import boto3
+from typing import Any, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from mypy_boto3.ec2 import Client, ServiceResource
+    from mypy_boto3.ec2.waiters import BundleTaskCompleteWaiter
+    from mypy_boto3.ec2.paginators import DescribeVolumesPaginator
+else:
+    Client = Any
+    ServiceResource = Any
+    BundleTaskCompleteWaiter = Any
+    DescribeVolumesPaginator = Any
+
+...
 ```
 
 ## How to build

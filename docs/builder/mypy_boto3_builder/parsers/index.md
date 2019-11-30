@@ -9,7 +9,7 @@ Parsers for boto3 clients and resources.
         - [Boto3 Stubs Package](boto3_stubs_package.md#boto3-stubs-package)
         - [Boto3 Utils](boto3_utils.md#boto3-utils)
         - [Client](client.md#client)
-        - [Docstring](docstring.md#docstring)
+        - [Docstring Parser](docstring_parser/index.md#docstring-parser)
         - [Fake Service Package](fake_service_package.md#fake-service-package)
         - [Helpers](helpers.md#helpers)
         - [Identifiers](identifiers.md#identifiers)
@@ -18,4 +18,3 @@ Parsers for boto3 clients and resources.
         - [Parse Resource](parse_resource.md#parse-resource)
         - [Service Package](service_package.md#service-package)
         - [Service Resource](service_resource.md#service-resource)
-        - [SyntaxParser](syntax_parser.md#syntaxparser)
