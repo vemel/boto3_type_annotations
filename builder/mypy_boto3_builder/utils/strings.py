@@ -113,6 +113,9 @@ def clean_doc(doc: Optional[str], max_length: int) -> str:
         for sub_line in wrap_code_line(line, max_length):
             result.append(sub_line)
 
+    while result and not result[-1].strip():
+        result.pop()
+
     return "\n".join(result)
 
 

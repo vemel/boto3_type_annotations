@@ -12,7 +12,8 @@ from mypy_boto3_builder.structures.attribute import Attribute
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.utils.strings import get_class_prefix
-from mypy_boto3_builder.parsers.docstring import DocstringParser
+from mypy_boto3_builder.parsers.docstring_parser.line_parser import LineParser
+from mypy_boto3_builder.parsers.docstring_parser.syntax_parser import SyntaxParser
 
 
 def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
@@ -60,7 +61,7 @@ def parse_attributes(resource: Boto3ServiceResource) -> List[Attribute]:
         attributes = resource.meta.resource_model.get_attributes(shape)
         for name, attribute in attributes.items():
             result.append(
-                Attribute(name, DocstringParser.parse_type(attribute[1].type_name))
+                Attribute(name, LineParser.parse_type(attribute[1].type_name))
             )
 
     return result
@@ -78,18 +79,14 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
         Method structure.
     """
     prefix = f"{get_class_prefix(parent_name)}{get_class_prefix(name)}"
-    docstring_parser = DocstringParser()
-    doc = inspect.getdoc(method) or ""
-    arguments = docstring_parser.get_function_arguments(method)
+    line_parser = LineParser()
+    docstring = inspect.getdoc(method) or ""
+    arguments = line_parser.get_function_arguments(method)
     return_type: FakeAnnotation = TypeConstant(None)
-    if doc:
-        docstring_parser.enrich_arguments(doc, arguments, prefix)
-        return_type = docstring_parser.get_return_type(doc, prefix)
-    else:
-        docless_arguments = docstring_parser.get_docless_method_arguments(name)
-        if docless_arguments:
-            arguments = docless_arguments
+    if docstring:
+        arguments = SyntaxParser(arguments).parse_docstring(docstring, prefix)
+        return_type = line_parser.get_return_type(docstring, prefix)
 
     return Method(
-        name=name, arguments=arguments, docstring=doc, return_type=return_type,
+        name=name, arguments=arguments, docstring=docstring, return_type=return_type,
     )

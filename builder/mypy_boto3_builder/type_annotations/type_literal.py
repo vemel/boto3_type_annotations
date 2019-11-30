@@ -51,6 +51,9 @@ class TypeLiteral(FakeAnnotation):
         """
         return True
 
+    def add_child(self, child: FakeAnnotation) -> None:
+        raise ValueError("Use add_literal_child function.")
+
     def add_literal_child(self, child: Any) -> None:
         """
         Add new child to `TypeLiteral` annotation.

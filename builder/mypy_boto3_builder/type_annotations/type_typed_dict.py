@@ -58,6 +58,13 @@ class TypeTypedDict(FakeAnnotation):
         self.children = list(children)
         self.docstring = docstring
 
+    def get_attribute(self, name: str) -> TypedDictAttribute:
+        for child in self.children:
+            if child.name == name:
+                return child
+
+        raise ValueError(f"No child with name {name}")
+
     def render(self) -> str:
         """
         Render type annotation to a valid Python code for local usage.

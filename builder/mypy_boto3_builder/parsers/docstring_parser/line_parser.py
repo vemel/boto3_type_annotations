@@ -13,17 +13,14 @@ from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
-from mypy_boto3_builder.type_annotations.type_class import TypeClass
-from mypy_boto3_builder.type_annotations.type_def import TypeDef
 from mypy_boto3_builder.type_maps.type_map import TYPE_MAP
 from mypy_boto3_builder.type_maps.named_type_map import NAMED_TYPE_MAP
 from mypy_boto3_builder.type_maps.method_type_map import METHOD_TYPE_MAP
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.utils.indent_trimmer import IndentTrimmer
-from mypy_boto3_builder.parsers.syntax_parser import SyntaxParser
 
 
-class DocstringParser:
+class LineParser:
     RE_PARAM: Pattern[str] = re.compile(r":param\s+(?P<name>\S+):")
     RE_TYPE: Pattern[str] = re.compile(r":type\s+(?P<name>\S+):\s+(?P<type>.+)")
     RE_RTYPE: Pattern[str] = re.compile(r":rtype:\s+(?P<type>.+)")
@@ -33,15 +30,6 @@ class DocstringParser:
     )
     RE_SYNTAX_TYPE: Pattern[str] = re.compile(r"\- \*\((?P<type>.+)\) \-\-\*")
     RE_LITERAL_STRING_TYPE: Pattern[str] = re.compile(r"\* \`\`(?P<value>[^`]+)\`\` - ")
-
-    DEFAULT_METHOD_ARGUMENTS = {
-        "create_tags": [
-            Argument("self", None),
-            Argument("Resources", TypeSubscript(List, [TypeAnnotation.Any()]),),
-            Argument("Tags", TypeSubscript(List, [TypeDef("EC2Tag")]),),
-            Argument("DryRun", TypeClass(bool), TypeConstant(False)),
-        ]
-    }
 
     def __init__(self) -> None:
         self.logger = get_logger()
@@ -108,14 +96,6 @@ class DocstringParser:
         )
         return arguments[-1]
 
-    def get_docless_method_arguments(
-        self, method_name: str
-    ) -> Optional[List[Argument]]:
-        if method_name not in self.DEFAULT_METHOD_ARGUMENTS:
-            self.logger.warning(f"Cannot annotate {method_name}")
-            return None
-        return self.DEFAULT_METHOD_ARGUMENTS[method_name]
-
     @staticmethod
     def _get_arguments_from_argspec(func: FunctionType) -> List[Argument]:
         arguments: List[Argument] = []
@@ -159,76 +139,6 @@ class DocstringParser:
                 argument.type = METHOD_TYPE_MAP[method_type]
 
         return arguments
-
-    def enrich_arguments(
-        self, docstring: str, arguments: List[Argument], prefix: str
-    ) -> None:
-        type_syntax: Dict[str, List[str]] = {}
-        argument: Optional[Argument] = None
-        argument_line_indent = 0
-
-        for doc_line in docstring.splitlines():
-            doc_line = doc_line.rstrip()
-            doc_line_indent = IndentTrimmer.get_line_indent(doc_line)
-            line = doc_line.strip()
-
-            if line.startswith(":param "):
-                match = self.RE_PARAM.match(line)
-                if match:
-                    argument_line_indent = doc_line_indent
-                    argument_name = match.groupdict()["name"]
-                    argument = self._find_argument_or_append(argument_name, arguments)
-                    if "**[REQUIRED]**" in line or "This **must** be set." in line:
-                        argument.default = None
-                continue
-            if line.startswith(":type "):
-                match = self.RE_TYPE.match(line)
-                if match:
-                    argument_line_indent = doc_line_indent
-                    argument_name = match.groupdict()["name"]
-                    argument_type_str = match.groupdict()["type"]
-                    argument = self._find_argument_or_append(argument_name, arguments)
-                    argument.type = self.parse_type(argument_type_str, argument_name)
-                continue
-            if line and doc_line_indent <= argument_line_indent:
-                argument = None
-                argument_line_indent = 0
-            if argument:
-                if argument.name not in type_syntax:
-                    type_syntax[argument.name] = []
-                type_syntax[argument.name].append(doc_line)
-
-        arguments.sort(key=lambda x: x.default is not None)
-        for argument_name, syntax_lines in type_syntax.items():
-            argument = self._find_argument_or_append(argument_name, arguments)
-            argument_type = self.parse_syntax(
-                name=argument.name,
-                parent_type=argument.type or TypeSubscript(TypeAnnotation(Dict)),
-                lines=syntax_lines,
-                prefix=prefix,
-            )
-            argument.type = argument_type
-
-        self._enrich_arguments_from_syntax(docstring, arguments, prefix)
-
-    def _enrich_arguments_from_syntax(
-        self, docstring: str, arguments: List[Argument], prefix: str
-    ) -> None:
-        if "**Request Syntax**" not in docstring:
-            return
-
-        try:
-            syntax_map = SyntaxParser.parse_docstring(docstring, prefix)
-        except ValueError as e:
-            self.logger.warning(f"{e}")
-
-        for argument_name, argument_type in syntax_map.items():
-            if not argument_type.is_literal():
-                continue
-            argument = self._find_argument(argument_name, arguments)
-            if not argument:
-                continue
-            argument.type = argument_type
 
     @staticmethod
     def parse_type(type_str: str, name: Optional[str] = None) -> FakeAnnotation:
@@ -327,7 +237,7 @@ class DocstringParser:
 
 
 def main() -> None:
-    result = DocstringParser().parse_syntax(
+    result = LineParser().parse_syntax(
         "Test",
         TypeSubscript(TypeAnnotation(Dict)),
         """
