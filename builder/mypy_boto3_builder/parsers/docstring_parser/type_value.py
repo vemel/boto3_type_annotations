@@ -1,4 +1,8 @@
+"""
+Structure for parsed as dict request or response syntax values.
+"""
 from __future__ import annotations
+
 from typing import Dict, Any, List, Union, Optional, IO
 from datetime import datetime
 
@@ -11,7 +15,11 @@ from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
 
 
-class ArgumentValue:
+class TypeValue:
+    """
+    Structure for parsed as dict request or response syntax values.
+    """
+
     def __init__(self, prefix: str, value: Dict[str, Any]) -> None:
         self.prefix = prefix
         self.raw = value
@@ -60,7 +68,7 @@ class ArgumentValue:
             result = TypeSubscript(Dict)
             result.add_child(SYNTAX_TYPE_MAP[first_key])
             result.add_child(
-                ArgumentValue(self.prefix, self.dict_items[0]["value"]).get_type()
+                TypeValue(self.prefix, self.dict_items[0]["value"]).get_type()
             )
             return result
 
@@ -69,9 +77,7 @@ class ArgumentValue:
             key_name = self._parse_constant(item["key"])
             prefix = f"{self.prefix}{key_name}"
             typed_dict.add_attribute(
-                key_name,
-                ArgumentValue(prefix, item["value"]).get_type(),
-                required=False,
+                key_name, TypeValue(prefix, item["value"]).get_type(), required=False,
             )
         return typed_dict
 
@@ -82,14 +88,14 @@ class ArgumentValue:
         result = TypeSubscript(List)
         for item_index, item in enumerate(self.list_items):
             prefix = f"{self.prefix}{item_index if item_index else ''}"
-            result.add_child(ArgumentValue(prefix, item).get_type())
+            result.add_child(TypeValue(prefix, item).get_type())
         return result
 
     def _get_type_union(self) -> TypeSubscript:
         result = TypeSubscript(Union)
         for item_index, item in enumerate(self.union_items):
             prefix = f"{self.prefix}{item_index if item_index else ''}"
-            result.add_child(ArgumentValue(prefix, item).get_type())
+            result.add_child(TypeValue(prefix, item).get_type())
         return result
 
     def _get_type_set(self) -> TypeAnnotation:

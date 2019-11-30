@@ -1,3 +1,6 @@
+"""
+Pyparsing grammar for argument type doc lines.
+"""
 from pyparsing import (
     Forward,
     SkipTo,
@@ -11,9 +14,26 @@ from pyparsing import (
 )
 
 
-class ArgumentsGrammar:
+class TypeDocGrammar:
+    """
+    EOL ::= ["\r"] "\n"
+    line ::= [^EOL]+ EOL
+    word ::= alphanums + "_"
+    indented_block ::= INDENT (line_indented | any_line)
+    line_indented ::= any_line indented_block
+    type_definition ::= ":type" [^:]+ ":" [^EOL]+
+    rtype_definition ::= ":rtype:" [^EOL]+
+    returns_definition ::= (":returns:" | ":return:") [^EOL]+
+    param_definition ::= ":param" [^:]+ ":" [^EOL]+ EOL [indented_block]
+    response_structure ::= "**Response Structure**" line [indented_block]
+    typed_dict_key_line ::= "-" "**" word "**" "*(" word ")" "--*" [^EOL]+ + EOL
+    type_line ::= "-" "*(" word ")" "--*" [^EOL]+ + EOL
+    any_line ::= typed_dict_key_line | type_line | line
+    """
+
     indent_stack = [1]
     EOL = LineEnd().suppress()
+    word = Word(alphanums + "_")
     line = SkipTo(LineEnd()) + EOL
     line_indented = Forward()
     any_line = Forward()
@@ -23,30 +43,38 @@ class ArgumentsGrammar:
     line_indented <<= any_line + indented_block
 
     type_definition = (
-        Literal(":type").suppress()
-        + Word(alphanums + "_").setResultsName("name")
-        + Literal(":").suppress()
+        Literal(":type")
+        + SkipTo(":").setResultsName("name")
+        + Literal(":")
         + SkipTo(EOL).setResultsName("type_name")
     )
 
+    rtype_definition = Literal(":rtype:") + SkipTo(EOL).setResultsName("type_name")
+
+    returns_definition = (Literal(":returns:") | Literal(":return:")) + SkipTo(
+        EOL
+    ).setResultsName("description")
+
     param_definition = (
-        Literal(":param").suppress()
-        + Word(alphanums + "_").setResultsName("name")
-        + Literal(":").suppress()
+        Literal(":param")
+        + SkipTo(":").setResultsName("name")
+        + Literal(":")
         + SkipTo(EOL).setResultsName("description")
         + EOL
         + Optional(indented_block)
     )
 
+    response_structure = Literal("**Response Structure**") + line_indented
+
     typed_dict_key_line = (
         Literal("-")
         + White(ws=" \t")
         + Literal("**")
-        + Word(alphanums + "_").setResultsName("name")
+        + word.setResultsName("name")
         + Literal("**")
         + White(ws=" \t")
         + Literal("*(")
-        + Word(alphanums + "_").setResultsName("type_name")
+        + word.setResultsName("type_name")
         + Literal(")")
         + White(ws=" \t")
         + Literal("--*")
@@ -58,7 +86,7 @@ class ArgumentsGrammar:
         Literal("-")
         + White(ws=" \t")
         + Literal("*(")
-        + Word(alphanums + "_").setResultsName("type_name")
+        + word.setResultsName("type_name")
         + Literal(")")
         + White(ws=" \t")
         + Literal("--*")

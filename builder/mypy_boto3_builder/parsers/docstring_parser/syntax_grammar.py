@@ -1,3 +1,6 @@
+"""
+Pyparsing grammar for request and response syntax.
+"""
 from pyparsing import (
     Word,
     alphanums,
@@ -17,7 +20,7 @@ class SyntaxGrammar:
     """
     variable_name ::= alphanums + "_-."
     name_value ::= alphanums + "_-."
-    string_value ::= alphas{0,2} "'"  [^"'"]+  "'"
+    string_value ::= alphas{0,2} "'"  [^']+  "'"
     plain_value ::= string_value | name_value
     literal_value ::= plain_value ("|" plain_value)+
     any_value ::= literal_value | list_value | dict_value | set_value | union_value | func_call | plain_value
@@ -27,6 +30,10 @@ class SyntaxGrammar:
     dict_value ::= "{" string_value ":" any_value ("," string_value ":" any_value)* [","] "}"
     union_item ::= literal_value | list_value | dict_value | set_value | plain_value
     union_value ::= union_item ("or" union_item)+
+    argument ::= alphanums "=" any_value
+    definition ::= [^']+ "(" argument ("," argument)* [","] ")"
+    request_syntax ::= "**Request Syntax**" "::" definition
+    response_syntax ::= "**Response Syntax**" "::" (list_value | dict_value)
     """
 
     variable_name = Word(alphanums + "_-.")
@@ -104,4 +111,9 @@ class SyntaxGrammar:
         + ")"
     )
     request_syntax = "**Request Syntax**" + White() + "::" + definition
-    response_syntax = "**Response Syntax**" + White() + "::" + definition
+    response_syntax = (
+        "**Response Syntax**"
+        + White()
+        + "::"
+        + Group(list_value | dict_value).setResultsName("value")
+    )

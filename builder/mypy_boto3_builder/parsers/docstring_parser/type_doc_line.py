@@ -1,9 +1,16 @@
+"""
+Structure for parsed as dict `:type:` or `:rtype:` nested lines.
+"""
 from __future__ import annotations
 
 from typing import Iterable, List, Any
 
 
-class ArgumentLine:
+class TypeDocLine:
+    """
+    Structure for parsed as dict `:type:` or `:rtype:` nested lines.
+    """
+
     def __init__(
         self,
         name: str = "",
@@ -19,10 +26,10 @@ class ArgumentLine:
         self._indented = indented
 
     @property
-    def indented(self) -> List[ArgumentLine]:
-        result: List[ArgumentLine] = []
+    def indented(self) -> List[TypeDocLine]:
+        result: List[TypeDocLine] = []
         for line in self._indented:
-            result.append(ArgumentLine(**line))
+            result.append(TypeDocLine(**line))
         return result
 
     @property

@@ -2,6 +2,7 @@
 Helpers for parsing methods and attributes.
 """
 import inspect
+import textwrap
 from typing import List, Dict, Any
 from types import FunctionType
 
@@ -12,8 +13,8 @@ from mypy_boto3_builder.structures.attribute import Attribute
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.utils.strings import get_class_prefix
-from mypy_boto3_builder.parsers.docstring_parser.line_parser import LineParser
-from mypy_boto3_builder.parsers.docstring_parser.syntax_parser import SyntaxParser
+from mypy_boto3_builder.parsers.docstring_parser.argspec_parser import ArgSpecParser
+from mypy_boto3_builder.parsers.docstring_parser.docstring_parser import DocstringParser
 
 
 def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
@@ -61,7 +62,7 @@ def parse_attributes(resource: Boto3ServiceResource) -> List[Attribute]:
         attributes = resource.meta.resource_model.get_attributes(shape)
         for name, attribute in attributes.items():
             result.append(
-                Attribute(name, LineParser.parse_type(attribute[1].type_name))
+                Attribute(name, ArgSpecParser.parse_type(attribute[1].type_name))
             )
 
     return result
@@ -78,14 +79,15 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
     Returns:
         Method structure.
     """
-    prefix = f"{get_class_prefix(parent_name)}{get_class_prefix(name)}"
-    line_parser = LineParser()
-    docstring = inspect.getdoc(method) or ""
-    arguments = line_parser.get_function_arguments(method)
+    arg_spec_parser = ArgSpecParser()
+    docstring = textwrap.dedent(inspect.getdoc(method) or "")
+    arguments = arg_spec_parser.get_function_arguments(method)
     return_type: FakeAnnotation = TypeConstant(None)
     if docstring:
-        arguments = SyntaxParser(arguments).parse_docstring(docstring, prefix)
-        return_type = line_parser.get_return_type(docstring, prefix)
+        prefix = f"{get_class_prefix(parent_name)}{get_class_prefix(name)}"
+        docstring_parser = DocstringParser(prefix, arguments)
+        arguments = docstring_parser.get_arguments(docstring)
+        return_type = docstring_parser.get_return_type(docstring)
 
     return Method(
         name=name, arguments=arguments, docstring=docstring, return_type=return_type,
