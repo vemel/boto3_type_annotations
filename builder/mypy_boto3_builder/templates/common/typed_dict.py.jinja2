@@ -44,7 +44,7 @@
             {{ clean_doc(typed_dict.docstring, doc_line_length) -}}
             {{ '\n' -}}
             {{ '"""\n' -}}
-        {% else %}
+        {% else -%}
             {{ "    pass\n" -}}
         {% endif -%}
     {% endfilter -%}
@@ -81,7 +81,7 @@
             {{ clean_doc(typed_dict.docstring, doc_line_length) -}}
             {{ '\n' -}}
             {{ '"""\n' -}}
-        {% else %}
+        {% else -%}
             {{ "    pass\n" -}}
         {% endif -%}
     {% endfilter -%}
