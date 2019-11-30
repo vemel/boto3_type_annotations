@@ -17,18 +17,21 @@ from pyparsing import (
 
 class SyntaxGrammar:
     """
+    ellipsis = "..."
     variable_name ::= alphanums + "_-."
     name_value ::= alphanums + "_-."
     string_value ::= alphas{0,2} "'"  [^']+  "'"
     plain_value ::= string_value | name_value
     literal_value ::= plain_value ("|" plain_value)+
     any_value ::= literal_value | list_value | dict_value | set_value | union_value | func_call | plain_value
-    list_value ::= "[" any_value ("," any_value)* [","] "]"
+    empty_list_value ::= "[" [ellipsis] [","] "]"
+    non_empty_list_value ::= "[" any_value ("," any_value)* [","] "]"
+    list_value ::= non_empty_list_value | empty_list_value
     set_value ::= "{" any_value ("," any_value)* [","] "}"
     func_call ::= name_value "(" any_value ("," any_value)* [","] ")"
-    empty_dict_value ::= "{" [","] "}"
+    empty_dict_value ::= "{" [ellipsis] [","] "}"
     non_empty_dict_value ::= "{" string_value ":" any_value ("," string_value ":" any_value)* [","] "}"
-    dict_value ::= empty_dict_value | non_empty_dict_value
+    dict_value ::= non_empty_dict_value | empty_dict_value
     union_item ::= literal_value | list_value | dict_value | set_value | plain_value
     union_value ::= union_item ("or" union_item)+
     argument ::= alphanums "=" any_value
@@ -37,6 +40,7 @@ class SyntaxGrammar:
     response_syntax ::= "**Response Syntax**" "::" (list_value | dict_value)
     """
 
+    ellipsis = Literal("...")
     variable_name = Word(alphanums + "_-.")
     name_value = Word(alphanums + "_-.")
     string_value = Combine(
@@ -51,12 +55,16 @@ class SyntaxGrammar:
         )
     )
     any_value = Forward()
-    list_value = (
+    empty_list_value = Group(
+        Literal("[") + Optional(ellipsis) + Optional(",") + Literal("]")
+    ).setResultsName("empty_list")
+    non_empty_list_value = (
         Literal("[")
         + Group(delimitedList(Group(any_value))).setResultsName("list_items")
         + Optional(",")
         + Literal("]")
     )
+    list_value = non_empty_list_value | empty_list_value
     set_value = (
         "{"
         + Group(delimitedList(Group(any_value))).setResultsName("set_items")
@@ -71,7 +79,7 @@ class SyntaxGrammar:
         + Literal(")")
     ).setResultsName("func_call")
     empty_dict_value = Group(
-        Literal("{") + Optional(",") + Literal("}")
+        Literal("{") + Optional(ellipsis) + Optional(",") + Literal("}")
     ).setResultsName("empty_dict")
     non_empty_dict_value = (
         Literal("{")
@@ -87,7 +95,7 @@ class SyntaxGrammar:
         + Optional(",")
         + Literal("}")
     )
-    dict_value = empty_dict_value | non_empty_dict_value
+    dict_value = non_empty_dict_value | empty_dict_value
     union_item = literal_value | list_value | dict_value | set_value | plain_value
     union_value = (
         Group(union_item).setResultsName("union_first_item")

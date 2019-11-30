@@ -5,6 +5,8 @@ from __future__ import annotations
 from typing import Dict, List, Optional
 import textwrap
 
+from pyparsing import ParseException
+
 from mypy_boto3_builder.structures.argument import Argument
 from mypy_boto3_builder.type_maps.type_map import TYPE_MAP
 from mypy_boto3_builder.type_maps.named_type_map import NAMED_TYPE_MAP
@@ -60,15 +62,16 @@ class DocstringParser:
         """
         if "**Request Syntax**" not in input_string:
             return
-        matches = [
-            i[0]
-            for i in SyntaxGrammar.request_syntax.scanString(input_string, maxMatches=1)
-        ]
-        if not matches:
-            self.logger.warning(f"Could not parse request syntax for {self.prefix}")
+
+        request_syntax_string = input_string[input_string.index("**Request Syntax**") :]
+        try:
+            match = SyntaxGrammar.request_syntax.parseString(request_syntax_string)
+        except ParseException as e:
+            self.logger.warning(f"Cannot parse request syntax for {self.prefix}")
+            self.logger.debug(e)
             return
 
-        argument_groups = matches[0].asDict().get("arguments", [])
+        argument_groups = match.asDict().get("arguments", [])
         for argument_dict in argument_groups:
             argument_name = argument_dict["name"]
             argument_prefix = self.prefix + get_class_prefix(argument_name)
@@ -80,16 +83,19 @@ class DocstringParser:
     def _parse_types(self, input_string: str) -> None:
         if ":type " not in input_string:
             return
-        TypeDocGrammar.reset()
-        matches = [
-            i[0] for i in TypeDocGrammar.type_definition.scanString(input_string)
-        ]
-        if not matches:
-            self.logger.warning(
-                f"Cannot parse types for {self.prefix}, fallback to simple type annotations"
-            )
-            return
-        for match in matches:
+
+        type_strings = [i for i in input_string.split("\n") if i.startswith(":type ")]
+        for type_string in type_strings:
+            TypeDocGrammar.reset()
+            try:
+                match = TypeDocGrammar.type_definition.parseString(type_string)
+            except ParseException as e:
+                self.logger.warning(
+                    f"Cannot parse param definition {type_string} for {self.prefix}"
+                )
+                self.logger.debug(e)
+                continue
+
             match_dict = match.asDict()
             argument_name = match_dict["name"]
             argument = self._find_argument_or_append(argument_name)
@@ -98,6 +104,7 @@ class DocstringParser:
     def _parse_params(self, input_string: str) -> None:
         if ":param " not in input_string:
             return
+
         TypeDocGrammar.reset()
         matches = [
             i[0] for i in TypeDocGrammar.param_definition.scanString(input_string)
@@ -196,11 +203,13 @@ class DocstringParser:
     def _parse_rtype(self, input_string: str) -> Optional[FakeAnnotation]:
         if ":rtype: " not in input_string:
             return None
+
         TypeDocGrammar.reset()
+        rtype_string = input_string[input_string.index(":rtype: ") :].split("\n", 1)[0]
         try:
-            match = next(TypeDocGrammar.rtype_definition.scanString(input_string))[0]
-        except StopIteration:
-            self.logger.warning(f"Cannot parse rtype for {self.prefix}")
+            match = TypeDocGrammar.rtype_definition.parseString(rtype_string)
+        except ParseException as e:
+            self.logger.warning(f"Cannot parse rtype for {self.prefix}: {e}")
             return None
 
         type_name = match.asDict()["type_name"]
@@ -215,12 +224,15 @@ class DocstringParser:
     def _parse_response_syntax(self, input_string: str) -> Optional[FakeAnnotation]:
         if "**Response Syntax**" not in input_string:
             return None
+
+        response_syntax_string = input_string[
+            input_string.index("**Response Syntax**") :
+        ]
         try:
-            match = next(SyntaxGrammar.response_syntax.scanString(input_string))[0]
-        except StopIteration:
-            self.logger.warning(
-                f"Cannot parse response syntax for {self.prefix}, fallback to simple type"
-            )
+            match = SyntaxGrammar.response_syntax.parseString(response_syntax_string)
+        except ParseException as e:
+            self.logger.warning(f"Cannot parse response syntax for {self.prefix}")
+            self.logger.debug(e)
             return None
 
         value = match.asDict()["value"]
@@ -229,10 +241,18 @@ class DocstringParser:
     def _parse_response_structure(self, input_string: str) -> Optional[TypeDocLine]:
         if "**Response Structure**" not in input_string:
             return None
+
+        TypeDocGrammar.reset()
+        response_structure_string = input_string[
+            input_string.index("**Response Structure**") :
+        ]
         try:
-            match = next(TypeDocGrammar.response_structure.scanString(input_string))[0]
-        except StopIteration:
+            match = TypeDocGrammar.response_structure.parseString(
+                response_structure_string
+            )
+        except ParseException as e:
             self.logger.warning(f"Cannot parse response structure for {self.prefix}")
+            self.logger.debug(e)
             return None
 
         return TypeDocLine(**match.asDict())

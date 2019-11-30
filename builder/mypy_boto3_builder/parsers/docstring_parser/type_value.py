@@ -31,6 +31,8 @@ class TypeValue:
             self.dict_items = []
         self.set_items: Optional[List[Any]] = value.get("set_items")
         self.list_items: Optional[List[Any]] = value.get("list_items")
+        if value.get("empty_list"):
+            self.list_items = []
         self.func_call: Optional[Dict[str, Any]] = value.get("func_call")
         self.union_items: List[Any] = []
         if value.get("union_first_item"):
