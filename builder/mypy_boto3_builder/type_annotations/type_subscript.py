@@ -69,4 +69,4 @@ class TypeSubscript(FakeAnnotation):
         """
         Create a copy of type annotation wrapper.
         """
-        return TypeSubscript(self.parent.wrapped_type, list(self.children))
+        return TypeSubscript(self.parent, list(self.children))

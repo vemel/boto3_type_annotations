@@ -98,11 +98,18 @@ class TypeValue:
             result.add_child(TypeValue(prefix, item).get_type())
         return result
 
-    def _get_type_union(self) -> TypeSubscript:
+    def _get_type_union(self) -> FakeAnnotation:
+        if not self.union_items:
+            return Type.Any
+
         result = TypeSubscript(Type.Union)
         for item_index, item in enumerate(self.union_items):
             prefix = f"{self.prefix}{item_index if item_index else ''}"
             result.add_child(TypeValue(prefix, item).get_type())
+
+        if all(i is result.children[0] for i in result.children):
+            return result.children[0]
+
         return result
 
     def _get_type_set(self) -> TypeAnnotation:
@@ -162,6 +169,10 @@ class TypeValue:
             return TypeLiteral(*item_constants)
 
         item_types = [i.get_type() for i in items]
+
+        if all([i is item_types[0] for i in item_types]):
+            return item_types[0]
+
         return TypeSubscript(Type.Union, item_types)
 
     @staticmethod
