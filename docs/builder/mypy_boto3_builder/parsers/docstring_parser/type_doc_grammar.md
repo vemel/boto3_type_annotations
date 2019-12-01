@@ -35,7 +35,7 @@ class TypeDocGrammar():
 
 ### TypeDocGrammar.fail_action
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_doc_grammar.py#L110)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_doc_grammar.py#L108)
 
 ```python
 @classmethod
@@ -49,7 +49,7 @@ def fail_action(
 
 ### TypeDocGrammar.reset
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_doc_grammar.py#L123)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_doc_grammar.py#L126)
 
 ```python
 @classmethod

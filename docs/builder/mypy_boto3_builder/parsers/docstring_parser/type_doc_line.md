@@ -27,28 +27,50 @@ class TypeDocLine():
 
 Structure for parsed as dict `:type:` or `:rtype:` nested lines.
 
+#### Arguments
+
+- `name` - Argument or TypedDict key name
+- `type_name` - Argument or TypedDict key type string.
+- `line` - Raw original line parts.
+- `description` - Rest of line for argument or TypedDict key definition.
+- `indented` - Intended lines.
+
 ### TypeDocLine().indented
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_doc_line.py#L28)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_doc_line.py#L35)
 
 ```python
 @property
 def indented() -> List[TypeDocLine]:
 ```
 
+Get indented lines list.
+
+#### Returns
+
+A list of [TypeDocLine](#typedocline).
+
 ### TypeDocLine().render
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_doc_line.py#L39)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_doc_line.py#L55)
 
 ```python
 def render() -> str:
 ```
 
+Get original string with indentation.
+
+#### Returns
+
+A string as close as possible to original.
+
 ### TypeDocLine().required
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_doc_line.py#L35)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_doc_line.py#L48)
 
 ```python
 @property
 def required() -> bool:
 ```
+
+Whether the argument or TypedDict key is required.

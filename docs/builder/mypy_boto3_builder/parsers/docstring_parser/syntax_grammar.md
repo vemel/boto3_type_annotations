@@ -15,16 +15,20 @@ Pyparsing grammar for request and response syntax.
 class SyntaxGrammar():
 ```
 
+ellipsis = "..."
 variable_name ::= alphanums + "_-."
 name_value ::= alphanums + "_-."
 string_value ::= alphas{0,2} "'"  [^']+  "'"
 plain_value ::= string_value | name_value
-literal_value ::= plain_value ("|" plain_value)+
+literal_item ::= list_value | dict_value | set_value | plain_value
+literal_value ::= literal_item ("|" literal_item)+
 any_value ::= literal_value | list_value | dict_value | set_value | union_value | func_call | plain_value
-list_value ::= "[" any_value ("," any_value)* [","] "]"
+empty_list_value ::= "[" [ellipsis] [","] "]"
+non_empty_list_value ::= "[" any_value ("," any_value)* [","] "]"
+list_value ::= empty_list_value | non_empty_list_value
 set_value ::= "{" any_value ("," any_value)* [","] "}"
 func_call ::= name_value "(" any_value ("," any_value)* [","] ")"
-empty_dict_value ::= "{" [","] "}"
+empty_dict_value ::= "{" [ellipsis] [","] "}"
 non_empty_dict_value ::= "{" string_value ":" any_value ("," string_value ":" any_value)* [","] "}"
 dict_value ::= empty_dict_value | non_empty_dict_value
 union_item ::= literal_value | list_value | dict_value | set_value | plain_value

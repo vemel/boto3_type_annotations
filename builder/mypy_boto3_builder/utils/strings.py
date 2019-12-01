@@ -140,6 +140,8 @@ def get_line_with_indented(input_string: str, multi_first_line: bool = False) ->
     """
     Get first line of the string with all indented lines.
 
+    Fixes invalid unindent.
+
     Arguments:
         input_string -- Input string.
 

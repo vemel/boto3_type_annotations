@@ -10,7 +10,7 @@ Parser that produces `structures.ServiceModule`.
 
 ## get_helper_body
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/service_package.py#L226)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/service_package.py#L235)
 
 ```python
 def get_helper_body(
@@ -22,7 +22,7 @@ def get_helper_body(
 
 ## parse_service_package
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/service_package.py#L33)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/service_package.py#L34)
 
 ```python
 def parse_service_package(

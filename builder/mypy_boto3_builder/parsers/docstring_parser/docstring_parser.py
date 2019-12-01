@@ -30,12 +30,14 @@ from mypy_boto3_builder.utils.strings import get_line_with_indented
 class DocstringParser:
     """
     Botocore docstring parser.
+
+    Arguments:
+        prefix -- Prefix for generated TypeDict names.
+        arguments -- List of arguments extracted from argspec.
     """
 
+    # Regexp to parse `:param <name>` definitions
     RE_PARAM: Pattern[str] = re.compile("\n:param ")
-    RE_RESPONSE_STRUCTURE: Pattern[str] = re.compile(
-        r"\*\*Response Structure\*\*(\s*\n)*"
-    )
 
     def __init__(self, prefix: str, arguments: List[Argument]) -> None:
         self.prefix = prefix
@@ -58,16 +60,6 @@ class DocstringParser:
         return self.arguments_map[name]
 
     def _parse_request_syntax(self, input_string: str) -> None:
-        """
-        Parse type annotations for request arguments.
-
-        Arguments:
-            input_string -- Request syntax from dotocore docs.
-            prefix -- Prefix for TypedDict classes.
-
-        Returns:
-            Mapping of argument name to its type annotation.
-        """
         if "**Request Syntax**" not in input_string:
             return
 
@@ -193,6 +185,15 @@ class DocstringParser:
             self._fix_keys(child, line)
 
     def get_arguments(self, input_string: str) -> List[Argument]:
+        """
+        Get list of function arguments with type annottions.
+
+        Arguments:
+            input_string -- Function docstring.
+
+        Returns:
+            A list of `Argument` structures.
+        """
         input_string = textwrap.dedent(input_string)
         self._parse_types(input_string)
         self._parse_request_syntax(input_string)
@@ -294,6 +295,15 @@ class DocstringParser:
         return TypeDocLine(**match.asDict())
 
     def get_return_type(self, input_string: str) -> FakeAnnotation:
+        """
+        Get function return type annotation.
+
+        Arguments:
+            input_string -- Function docstring.
+
+        Returns:
+            A valid type annotation.
+        """
         input_string = textwrap.dedent(input_string)
         return_type = self._parse_rtype(input_string)
         if return_type is None:
@@ -322,6 +332,19 @@ class DocstringParser:
 
     @staticmethod
     def parse_type(type_str: str, name: Optional[str] = None) -> FakeAnnotation:
+        """
+        Get type annotation from type string.
+
+        Arguments:
+            type_str -- Type string.
+            name -- Argument name.
+
+        Returns:
+            A valid type annotation.
+
+        Raises:
+            ValueError -- If `type_str` is unknown.
+        """
         if name is not None:
             try:
                 return NAMED_TYPE_MAP[f"{name}: {type_str}"].copy()

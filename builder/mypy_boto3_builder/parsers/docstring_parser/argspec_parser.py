@@ -1,5 +1,5 @@
 """
-Argspec parser for arguments.
+Converter of function argspec to `Argument` list.
 """
 import inspect
 from typing import List, Optional
@@ -13,6 +13,10 @@ from mypy_boto3_builder.type_maps.method_type_map import METHOD_TYPE_MAP
 
 
 class ArgSpecParser:
+    """
+    Converter of function argspec to `Argument` list.
+    """
+
     @staticmethod
     def _get_arguments_from_argspec(func: FunctionType) -> List[Argument]:
         arguments: List[Argument] = []
