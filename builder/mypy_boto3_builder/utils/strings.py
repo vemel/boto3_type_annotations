@@ -136,7 +136,7 @@ def get_class_prefix(func_name: str) -> str:
     return "".join(parts)
 
 
-def get_line_with_indented(input_string: str) -> str:
+def get_line_with_indented(input_string: str, multi_first_line: bool = False) -> str:
     """
     Get first line of the string with all indented lines.
 
@@ -155,7 +155,19 @@ def get_line_with_indented(input_string: str) -> str:
             result.append(line)
             continue
 
+        if not line:
+            result.append(line)
+            continue
+
         line_indent = IndentTrimmer.get_line_indent(line)
+        if (
+            multi_first_line
+            and indented_lines_indent is None
+            and line_indent == first_line_indent
+        ):
+            result.append(line)
+            continue
+
         if line_indent <= first_line_indent:
             break
 
@@ -168,5 +180,8 @@ def get_line_with_indented(input_string: str) -> str:
             break
 
         result.append(line)
+
+    while result and not result[-1]:
+        result.pop()
 
     return "\n".join(result)

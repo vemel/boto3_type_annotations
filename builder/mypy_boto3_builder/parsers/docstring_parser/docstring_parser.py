@@ -2,8 +2,10 @@
 Botocore docstring parser.
 """
 from __future__ import annotations
-from typing import Dict, List, Optional
+
+import re
 import textwrap
+from typing import Dict, List, Optional, Pattern
 
 from pyparsing import ParseException
 
@@ -22,12 +24,18 @@ from mypy_boto3_builder.parsers.docstring_parser.syntax_grammar import SyntaxGra
 from mypy_boto3_builder.parsers.docstring_parser.type_doc_grammar import TypeDocGrammar
 from mypy_boto3_builder.parsers.docstring_parser.type_doc_line import TypeDocLine
 from mypy_boto3_builder.parsers.docstring_parser.type_value import TypeValue
+from mypy_boto3_builder.utils.strings import get_line_with_indented
 
 
 class DocstringParser:
     """
     Botocore docstring parser.
     """
+
+    RE_PARAM: Pattern[str] = re.compile("\n:param ")
+    RE_RESPONSE_STRUCTURE: Pattern[str] = re.compile(
+        r"\*\*Response Structure\*\*(\s*\n)*"
+    )
 
     def __init__(self, prefix: str, arguments: List[Argument]) -> None:
         self.prefix = prefix
@@ -63,7 +71,15 @@ class DocstringParser:
         if "**Request Syntax**" not in input_string:
             return
 
-        request_syntax_string = input_string[input_string.index("**Request Syntax**") :]
+        request_syntax_index = input_string.index("**Request Syntax**")
+        while (
+            request_syntax_index > 0 and input_string[request_syntax_index - 1] == " "
+        ):
+            request_syntax_index = request_syntax_index - 1
+        request_syntax_string = get_line_with_indented(
+            input_string[request_syntax_index:], True
+        )
+
         try:
             match = SyntaxGrammar.request_syntax.parseString(request_syntax_string)
         except ParseException as e:
@@ -91,7 +107,7 @@ class DocstringParser:
                 match = TypeDocGrammar.type_definition.parseString(type_string)
             except ParseException as e:
                 self.logger.warning(
-                    f"Cannot parse param definition {type_string} for {self.prefix}"
+                    f"Cannot parse type definition {type_string} for {self.prefix}"
                 )
                 self.logger.debug(e)
                 continue
@@ -105,16 +121,20 @@ class DocstringParser:
         if ":param " not in input_string:
             return
 
-        TypeDocGrammar.reset()
-        matches = [
-            i[0] for i in TypeDocGrammar.param_definition.scanString(input_string)
-        ]
-        if not matches:
-            self.logger.warning(
-                f"Cannot parse parameters for {self.prefix}, fallback to simple type annotations"
-            )
-            return
-        for match in matches:
+        for re_match in self.RE_PARAM.finditer(input_string):
+            start_index = re_match.start()
+            param_string = get_line_with_indented(input_string[start_index + 1 :])
+
+            TypeDocGrammar.reset()
+            try:
+                match = TypeDocGrammar.param_definition.parseString(param_string)
+            except ParseException as e:
+                self.logger.warning(
+                    f"Cannot parse param definition {param_string} for {self.prefix}"
+                )
+                self.logger.debug(e)
+                continue
+
             argument_line = TypeDocLine(**match.asDict())
             if not argument_line.name:
                 continue
@@ -225,9 +245,15 @@ class DocstringParser:
         if "**Response Syntax**" not in input_string:
             return None
 
-        response_syntax_string = input_string[
-            input_string.index("**Response Syntax**") :
-        ]
+        response_syntax_index = input_string.index("**Response Syntax**")
+        while (
+            response_syntax_index > 0 and input_string[response_syntax_index - 1] == " "
+        ):
+            response_syntax_index = response_syntax_index - 1
+        response_syntax_string = get_line_with_indented(
+            input_string[response_syntax_index:], True
+        )
+
         try:
             match = SyntaxGrammar.response_syntax.parseString(response_syntax_string)
         except ParseException as e:
@@ -238,24 +264,13 @@ class DocstringParser:
         value = match.asDict()["value"]
         return TypeValue(f"{self.prefix}Response", value).get_type()
 
-    def _parse_response_structure(self, input_string: str) -> Optional[TypeDocLine]:
-        if "**Response Structure**" not in input_string:
-            return None
+    def _get_response_docstring(self, input_string: str) -> str:
+        re_match = self.RE_RESPONSE_STRUCTURE.search(input_string)
+        if not re_match:
+            return ""
 
-        TypeDocGrammar.reset()
-        response_structure_string = input_string[
-            input_string.index("**Response Structure**") :
-        ]
-        try:
-            match = TypeDocGrammar.response_structure.parseString(
-                response_structure_string
-            )
-        except ParseException as e:
-            self.logger.warning(f"Cannot parse response structure for {self.prefix}")
-            self.logger.debug(e)
-            return None
-
-        return TypeDocLine(**match.asDict())
+        result = get_line_with_indented(input_string[re_match.end() :])
+        return result
 
     def get_return_type(self, input_string: str) -> FakeAnnotation:
         input_string = textwrap.dedent(input_string)
@@ -277,9 +292,7 @@ class DocstringParser:
         if not isinstance(syntax_return_type, TypeTypedDict):
             return syntax_return_type
 
-        response_structure = self._parse_response_structure(input_string)
-        if response_structure:
-            syntax_return_type.docstring = response_structure.render()
+        syntax_return_type.docstring = self._get_response_docstring(input_string)
         return syntax_return_type
 
     @staticmethod
