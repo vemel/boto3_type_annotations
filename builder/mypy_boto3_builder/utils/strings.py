@@ -147,11 +147,11 @@ def get_line_with_indented(input_string: str, multi_first_line: bool = False) ->
         A string with first line and following indented lines.
     """
     result: List[str] = []
-    first_line_indent = None
-    indented_lines_indent = None
+    indent_stack: List[int] = []
     for line in input_string.splitlines():
-        if first_line_indent is None:
-            first_line_indent = IndentTrimmer.get_line_indent(line)
+        line_indent = IndentTrimmer.get_line_indent(line)
+        if not indent_stack:
+            indent_stack.append(line_indent)
             result.append(line)
             continue
 
@@ -159,25 +159,31 @@ def get_line_with_indented(input_string: str, multi_first_line: bool = False) ->
             result.append(line)
             continue
 
-        line_indent = IndentTrimmer.get_line_indent(line)
-        if (
-            multi_first_line
-            and indented_lines_indent is None
-            and line_indent == first_line_indent
-        ):
+        if line_indent < indent_stack[0]:
+            break
+
+        if line_indent == indent_stack[0]:
+            if not multi_first_line:
+                break
+
+            if len(indent_stack) > 1:
+                break
+
+        if line_indent == indent_stack[-1]:
             result.append(line)
             continue
 
-        if line_indent <= first_line_indent:
-            break
-
-        if indented_lines_indent is None:
-            indented_lines_indent = line_indent
+        if line_indent > indent_stack[-1]:
+            indent_stack.append(line_indent)
             result.append(line)
             continue
 
-        if line_indent < indented_lines_indent:
-            break
+        while len(indent_stack) > 1 and line_indent <= indent_stack[-2]:
+            indent_stack.pop()
+
+        if indent_stack[-1] != line_indent:
+            result.append(f"{' ' * indent_stack[-1]}{line[line_indent:]}")
+            continue
 
         result.append(line)
 

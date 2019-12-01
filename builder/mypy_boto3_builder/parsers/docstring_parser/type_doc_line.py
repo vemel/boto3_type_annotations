@@ -43,5 +43,6 @@ class TypeDocLine:
             result.append(self.line)
             result.append("")
         for indented_line in self.indented:
-            result.append(f"{indent}{indented_line.render()}")
+            for indented_line_line in indented_line.render().splitlines():
+                result.append(f"{indent}{indented_line_line}")
         return "\n".join(result)

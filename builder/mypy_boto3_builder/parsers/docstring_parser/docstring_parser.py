@@ -266,7 +266,7 @@ class DocstringParser:
         value = match.asDict()["value"]
         return TypeValue(f"{self.prefix}Response", value).get_type()
 
-    def _get_response_structure(self, input_string: str) -> Optional[TypeDocLine]:
+    def _parse_response_structure(self, input_string: str) -> Optional[TypeDocLine]:
         if "**Response Structure**" not in input_string:
             return None
 
@@ -313,7 +313,7 @@ class DocstringParser:
         if not isinstance(syntax_return_type, TypeTypedDict):
             return syntax_return_type
 
-        response_structure = self._get_response_structure(input_string)
+        response_structure = self._parse_response_structure(input_string)
         if response_structure:
             syntax_return_type.docstring = response_structure.render()
             self._fix_keys(syntax_return_type, response_structure)

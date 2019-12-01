@@ -97,3 +97,7 @@ class StringsTestCase(unittest.TestCase):
         self.assertEqual(get_line_with_indented(" a\n  b\n  c\n d"), " a\n  b\n  c")
         self.assertEqual(get_line_with_indented(""), "")
         self.assertEqual(get_line_with_indented("a\n\nb\n c\nd", True), "a\n\nb\n c")
+        self.assertEqual(
+            get_line_with_indented(" a\n\n b\n   c\n  d\ne", True),
+            " a\n\n b\n   c\n   d",
+        )
