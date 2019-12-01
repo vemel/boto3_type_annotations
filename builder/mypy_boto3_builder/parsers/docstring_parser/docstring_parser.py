@@ -15,9 +15,7 @@ from mypy_boto3_builder.type_maps.named_type_map import NAMED_TYPE_MAP
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
-from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
-from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
-from mypy_boto3_builder.type_annotations.type_class import TypeClass
+from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.utils.strings import get_class_prefix
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.parsers.docstring_parser.syntax_grammar import SyntaxGrammar
@@ -54,9 +52,7 @@ class DocstringParser:
             if key.startswith("*"):
                 del self.arguments_map[key]
 
-        self.arguments_map[name] = Argument(
-            name, TypeAnnotation.Any(), TypeConstant(None)
-        )
+        self.arguments_map[name] = Argument(name, Type.Any, Type.none)
         return self.arguments_map[name]
 
     def _parse_request_syntax(self, input_string: str) -> None:
@@ -168,7 +164,7 @@ class DocstringParser:
 
             attribute = typed_dict.get_attribute(line.name)
             attribute.required = line.required
-            if attribute.type_annotation is TypeAnnotation.Any():
+            if attribute.type_annotation is Type.Any:
                 attribute.type_annotation = TYPE_MAP[line.type_name]
             if not line.indented:
                 continue
@@ -216,10 +212,10 @@ class DocstringParser:
 
         description = match.asDict()["description"]
         if description == "None":
-            return TypeConstant(None)
+            return Type.none
 
         if "True" in description or "False" in description:
-            return TypeClass(bool)
+            return Type.bool
 
         return None
 
@@ -311,7 +307,7 @@ class DocstringParser:
             if returns_return_type:
                 return returns_return_type
 
-            return TypeConstant(None)
+            return Type.none
 
         if not return_type.is_dict():
             return return_type

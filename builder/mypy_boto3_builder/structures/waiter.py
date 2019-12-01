@@ -6,13 +6,12 @@ from typing import List
 
 from botocore.waiter import Waiter as Boto3Waiter
 
-from mypy_boto3_builder.type_defs import overload
 from mypy_boto3_builder.import_helpers.internal_import_record import (
     InternalImportRecord,
 )
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
-from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
+from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.type_literal import TypeLiteral
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
@@ -40,7 +39,7 @@ class Waiter(ClassRecord):
         return Method(
             name="get_waiter",
             docstring=f"Get Waiter `{self.waiter_name}`.",
-            decorators=[TypeAnnotation(overload)],
+            decorators=[Type.overload],
             arguments=[
                 Argument("self", None),
                 Argument("waiter_name", TypeLiteral(self.waiter_name)),

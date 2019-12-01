@@ -2,7 +2,7 @@
 Parser that produces `structures.ServiceModule`.
 """
 import inspect
-from typing import Iterable, Union
+from typing import Iterable
 
 from boto3.session import Session
 from botocore import xform_name
@@ -21,8 +21,8 @@ from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
-from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
+from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.parsers.client import parse_client
 from mypy_boto3_builder.parsers.service_resource import parse_service_resource
@@ -113,7 +113,7 @@ def parse_service_package(
                 docstring=inspect.getdoc(client.boto3_client.get_paginator) or "",
                 arguments=[
                     Argument("self", None),
-                    Argument("operation_name", TypeClass(str)),
+                    Argument("operation_name", Type.str),
                 ],
                 return_type=TypeClass(Boto3Paginator, alias="Boto3Paginator"),
             )
@@ -126,30 +126,25 @@ def parse_service_package(
             Method(
                 name="get_waiter",
                 docstring=inspect.getdoc(client.boto3_client.get_waiter) or "",
-                arguments=[
-                    Argument("self", None),
-                    Argument("waiter_name", TypeClass(str)),
-                ],
+                arguments=[Argument("self", None), Argument("waiter_name", Type.str),],
                 return_type=TypeClass(Boto3Waiter, alias="Boto3Waiter"),
             )
         )
 
     result.typed_dicts = result.extract_typed_dicts(result.get_types(), {})
     helper_arguments = [
-        Argument("session", TypeClass(Session), TypeConstant(None)),
-        Argument("region_name", TypeClass(str), TypeConstant(None)),
-        Argument("api_version", TypeClass(str), TypeConstant(None)),
-        Argument("use_ssl", TypeClass(bool), TypeConstant(None)),
+        Argument("session", TypeClass(Session), Type.none),
+        Argument("region_name", Type.str, Type.none),
+        Argument("api_version", Type.str, Type.none),
+        Argument("use_ssl", Type.bool, Type.none),
         Argument(
-            "verify",
-            TypeSubscript(Union, [TypeClass(str), TypeClass(bool)]),
-            TypeConstant(None),
+            "verify", TypeSubscript(Type.Union, [Type.str, Type.bool]), Type.none,
         ),
-        Argument("endpoint_url", TypeClass(str), TypeConstant(None)),
-        Argument("aws_access_key_id", TypeClass(str), TypeConstant(None)),
-        Argument("aws_secret_access_key", TypeClass(str), TypeConstant(None)),
-        Argument("aws_session_token", TypeClass(str), TypeConstant(None)),
-        Argument("config", TypeClass(Boto3Config), TypeConstant(None)),
+        Argument("endpoint_url", Type.str, Type.none),
+        Argument("aws_access_key_id", Type.str, Type.none),
+        Argument("aws_secret_access_key", Type.str, Type.none),
+        Argument("aws_session_token", Type.str, Type.none),
+        Argument("config", TypeClass(Boto3Config), Type.none),
     ]
     client_helper = Function(
         name="boto3_client",

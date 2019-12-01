@@ -1,23 +1,21 @@
 """
 Parser that produces `structures.Boto3Module`.
 """
-from typing import Iterable, Union
+from typing import Iterable
 
 from boto3.session import Session
 from botocore.config import Config as Boto3Config
 
-from mypy_boto3_builder.type_defs import overload
 from mypy_boto3_builder.constants import MODULE_NAME
 from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.structures.function import Function
 from mypy_boto3_builder.structures.argument import Argument
 from mypy_boto3_builder.structures.method import Method
 from mypy_boto3_builder.structures.boto3_stubs_package import Boto3StubsPackage
-from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
+from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
-from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.type_literal import TypeLiteral
 from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.parsers.fake_service_package import parse_fake_service_package
@@ -44,19 +42,17 @@ def parse_boto3_stubs_package(
         result.service_names.append(service_name)
 
     client_function_arguments = [
-        Argument("region_name", TypeClass(str), TypeConstant(None)),
-        Argument("api_version", TypeClass(str), TypeConstant(None)),
-        Argument("use_ssl", TypeClass(bool), TypeConstant(None)),
+        Argument("region_name", Type.str, Type.none),
+        Argument("api_version", Type.str, Type.none),
+        Argument("use_ssl", Type.bool, Type.none),
         Argument(
-            "verify",
-            TypeSubscript(Union, [TypeClass(str), TypeClass(bool)]),
-            TypeConstant(None),
+            "verify", TypeSubscript(Type.Union, [Type.str, Type.bool]), Type.none,
         ),
-        Argument("endpoint_url", TypeClass(str), TypeConstant(None)),
-        Argument("aws_access_key_id", TypeClass(str), TypeConstant(None)),
-        Argument("aws_secret_access_key", TypeClass(str), TypeConstant(None)),
-        Argument("aws_session_token", TypeClass(str), TypeConstant(None)),
-        Argument("config", TypeClass(Boto3Config), TypeConstant(None)),
+        Argument("endpoint_url", Type.str, Type.none),
+        Argument("aws_access_key_id", Type.str, Type.none),
+        Argument("aws_secret_access_key", Type.str, Type.none),
+        Argument("aws_session_token", Type.str, Type.none),
+        Argument("config", TypeClass(Boto3Config), Type.none),
     ]
 
     for service_package in result.service_packages:
@@ -64,7 +60,7 @@ def parse_boto3_stubs_package(
             Function(
                 name=f"client",
                 docstring="",
-                decorators=[TypeAnnotation(overload)],
+                decorators=[Type.overload],
                 arguments=[
                     Argument(
                         "service_name",
@@ -84,7 +80,7 @@ def parse_boto3_stubs_package(
             Method(
                 name=f"client",
                 docstring="",
-                decorators=[TypeAnnotation(overload)],
+                decorators=[Type.overload],
                 arguments=[
                     Argument("self", None),
                     Argument(
@@ -110,7 +106,7 @@ def parse_boto3_stubs_package(
             Function(
                 name=f"resource",
                 docstring="",
-                decorators=[TypeAnnotation(overload)],
+                decorators=[Type.overload],
                 arguments=[
                     Argument(
                         "service_name",
@@ -130,7 +126,7 @@ def parse_boto3_stubs_package(
             Method(
                 name=f"resource",
                 docstring="",
-                decorators=[TypeAnnotation(overload)],
+                decorators=[Type.overload],
                 arguments=[
                     Argument("self", None),
                     Argument(

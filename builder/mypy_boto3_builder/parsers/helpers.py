@@ -10,7 +10,7 @@ from boto3.resources.base import ServiceResource as Boto3ServiceResource
 
 from mypy_boto3_builder.structures.method import Method
 from mypy_boto3_builder.structures.attribute import Attribute
-from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
+from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.utils.strings import get_class_prefix
 from mypy_boto3_builder.parsers.docstring_parser.argspec_parser import ArgSpecParser
@@ -82,7 +82,7 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
     arg_spec_parser = ArgSpecParser()
     docstring = textwrap.dedent(inspect.getdoc(method) or "")
     arguments = arg_spec_parser.get_function_arguments(method)
-    return_type: FakeAnnotation = TypeConstant(None)
+    return_type: FakeAnnotation = Type.none
     if docstring:
         prefix = f"{get_class_prefix(parent_name)}{get_class_prefix(name)}"
         docstring_parser = DocstringParser(prefix, arguments)

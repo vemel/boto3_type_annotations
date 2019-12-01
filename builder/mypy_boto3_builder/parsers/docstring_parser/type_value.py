@@ -3,7 +3,7 @@ Structure for parsed as dict request or response syntax values.
 """
 from __future__ import annotations
 
-from typing import Dict, Any, List, Union, Optional
+from typing import Dict, Any, List, Optional
 
 from mypy_boto3_builder.type_maps.syntax_type_map import SYNTAX_TYPE_MAP
 from mypy_boto3_builder.import_helpers.import_string import ImportString
@@ -12,8 +12,8 @@ from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
+from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
-from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.logger import get_logger
 
 
@@ -68,11 +68,11 @@ class TypeValue:
 
     def _get_type_dict(self) -> FakeAnnotation:
         if not self.dict_items:
-            return TypeSubscript(Dict, [TypeClass(str), TypeAnnotation.Any()])
+            return TypeSubscript(Type.Dict, [Type.str, Type.Any])
 
         first_key = self.dict_items[0]["key"]
         if first_key in SYNTAX_TYPE_MAP:
-            result = TypeSubscript(Dict)
+            result = TypeSubscript(Type.Dict)
             result.add_child(SYNTAX_TYPE_MAP[first_key])
             result.add_child(
                 TypeValue(self.prefix, self.dict_items[0]["value"]).get_type()
@@ -90,16 +90,16 @@ class TypeValue:
 
     def _get_type_list(self) -> TypeSubscript:
         if not self.list_items:
-            return TypeSubscript(List, [TypeAnnotation.Any()])
+            return TypeSubscript(Type.List, [Type.Any])
 
-        result = TypeSubscript(List)
+        result = TypeSubscript(Type.List)
         for item_index, item in enumerate(self.list_items):
             prefix = f"{self.prefix}{item_index if item_index else ''}"
             result.add_child(TypeValue(prefix, item).get_type())
         return result
 
     def _get_type_union(self) -> TypeSubscript:
-        result = TypeSubscript(Union)
+        result = TypeSubscript(Type.Union)
         for item_index, item in enumerate(self.union_items):
             prefix = f"{self.prefix}{item_index if item_index else ''}"
             result.add_child(TypeValue(prefix, item).get_type())
@@ -107,14 +107,14 @@ class TypeValue:
 
     def _get_type_set(self) -> TypeAnnotation:
         if not self.set_items:
-            return TypeAnnotation.Any()
+            return Type.Any
 
         plain_values = [i["value"] for i in self.set_items]
         if plain_values == ["'... recursive ...'"]:
-            return TypeAnnotation.Any()
+            return Type.Any
 
         self.logger.warning(f"Unknown set: {self.raw}, fallback to Any")
-        return TypeAnnotation.Any()
+        return Type.Any
 
     def _get_type_func_call(self) -> FakeAnnotation:
         if not self.func_call:
@@ -132,7 +132,7 @@ class TypeValue:
             )
 
         self.logger.warning(f"Unknown function: {self.raw}, fallback to Any")
-        return TypeAnnotation.Any()
+        return Type.Any
 
     def _get_type_plain(self) -> FakeAnnotation:
         if not self.value:
@@ -142,10 +142,10 @@ class TypeValue:
             return SYNTAX_TYPE_MAP[self.value]
 
         if self.value.startswith("'"):
-            return TypeClass(str)
+            return Type.str
 
         self.logger.warning(f"Unknown plain value: {self.raw}, fallback to Any")
-        return TypeAnnotation.Any()
+        return Type.Any
 
     def is_literal_item(self) -> bool:
         if self.value is None:
@@ -156,18 +156,13 @@ class TypeValue:
         if not self.literal_items:
             raise ValueError(f"Value is not literal: {self.raw}")
 
-        # if plain_values == ["True", "False"]:
-        #     return TypeClass(bool)
-        # if plain_values == ["b'bytes'", "file"]:
-        #     return TypeSubscript(Union, [TypeClass(bytes), TypeAnnotation(IO)])
-
         items = [TypeValue(self.prefix, i) for i in self.literal_items]
         if all(i.is_literal_item() for i in items):
             item_constants = [self._parse_constant(i.value or "") for i in items]
             return TypeLiteral(*item_constants)
 
         item_types = [i.get_type() for i in items]
-        return TypeSubscript(Union, item_types)
+        return TypeSubscript(Type.Union, item_types)
 
     @staticmethod
     def _parse_constant(value: str) -> Any:
