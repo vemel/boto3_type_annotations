@@ -19,4 +19,5 @@ SYNTAX_TYPE_MAP: Dict[str, FakeAnnotation] = {
     "True": TypeClass(bool),
     "False": TypeClass(bool),
     "file": TypeAnnotation(IO),
+    "...": TypeAnnotation.Any(),
 }

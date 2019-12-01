@@ -270,7 +270,7 @@ class DocstringParser:
             return ""
 
         result = get_line_with_indented(input_string[re_match.end() :])
-        return result
+        return textwrap.dedent(result)
 
     def get_return_type(self, input_string: str) -> FakeAnnotation:
         input_string = textwrap.dedent(input_string)
