@@ -29,7 +29,7 @@ Structure for parsed as dict request or response syntax values.
 
 ### TypeValue().get_type
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_value.py#L182)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_value.py#L188)
 
 ```python
 def get_type() -> FakeAnnotation:
@@ -69,7 +69,7 @@ def is_literal() -> bool:
 
 ### TypeValue().is_literal_item
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_value.py#L150)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/type_value.py#L157)
 
 ```python
 def is_literal_item() -> bool:

@@ -10,7 +10,7 @@ Converter of function argspec to `Argument` list.
 
 ## ArgSpecParser
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/argspec_parser.py#L15)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/argspec_parser.py#L16)
 
 ```python
 class ArgSpecParser():
@@ -20,7 +20,7 @@ Converter of function argspec to `Argument` list.
 
 ### ArgSpecParser().get_function_arguments
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/argspec_parser.py#L53)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/argspec_parser.py#L52)
 
 ```python
 def get_function_arguments(func: FunctionType) -> List[Argument]:
