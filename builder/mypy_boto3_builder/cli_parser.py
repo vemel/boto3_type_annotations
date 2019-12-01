@@ -61,6 +61,11 @@ def get_cli_parser() -> argparse.ArgumentParser:
         "--skip-stubs", action="store_true", help="Whether to skip boto3 stubs"
     )
     parser.add_argument(
+        "--panic",
+        action="store_true",
+        help="Raise exception on logger warning and above",
+    )
+    parser.add_argument(
         "--no-docs",
         action="store_true",
         help="Whether to generate output with no docstrings",

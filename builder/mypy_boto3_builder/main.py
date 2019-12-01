@@ -32,7 +32,7 @@ def main() -> None:
     """
     parser = get_cli_parser()
     args = parser.parse_args()
-    logger = get_logger(verbose=args.debug)
+    logger = get_logger(verbose=args.debug, panic=args.panic)
     session = Session(region_name=DUMMY_REGION)
     args.output_path.mkdir(exist_ok=True)
     service_names: List[ServiceName] = []
@@ -55,8 +55,10 @@ def main() -> None:
     )
 
     if not args.skip_services:
-        for service_name in service_names:
-            logger.info(f"Generating {service_name.module_name} module")
+        for index, service_name in enumerate(service_names):
+            logger.info(
+                f"[{index + 1}/{len(service_names)}] Generating {service_name.module_name} module"
+            )
             output_path = args.output_path / f"{service_name.module_name}_package"
             process_service(
                 session=session, output_path=output_path, service_name=service_name
