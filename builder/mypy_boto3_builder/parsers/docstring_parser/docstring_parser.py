@@ -150,9 +150,9 @@ class DocstringParser:
             if isinstance(argument.type, TypeTypedDict):
                 argument.type.docstring = argument_line.render()
 
-            self._mark_required_keys(argument.type, argument_line)
+            self._fix_keys(argument.type, argument_line)
 
-    def _mark_required_keys(
+    def _fix_keys(
         self, type_annotation: FakeAnnotation, argument_line: TypeDocLine
     ) -> None:
         if not argument_line.indented:
@@ -161,12 +161,12 @@ class DocstringParser:
         if isinstance(type_annotation, TypeSubscript):
             if not type_annotation.children:
                 return
-            self._mark_required_keys_subscript(type_annotation, argument_line)
+            self._fix_keys_subscript(type_annotation, argument_line)
 
         if isinstance(type_annotation, TypeTypedDict):
-            self._mark_required_keys_typed_dict(type_annotation, argument_line)
+            self._fix_keys_typed_dict(type_annotation, argument_line)
 
-    def _mark_required_keys_typed_dict(
+    def _fix_keys_typed_dict(
         self, typed_dict: TypeTypedDict, argument_line: TypeDocLine,
     ) -> None:
         typed_dict.docstring = argument_line.render()
@@ -176,19 +176,21 @@ class DocstringParser:
 
             attribute = typed_dict.get_attribute(line.name)
             attribute.required = line.required
+            if attribute.type_annotation is TypeAnnotation.Any():
+                attribute.type_annotation = TYPE_MAP[line.type_name]
             if not line.indented:
                 continue
 
-            self._mark_required_keys(attribute.type_annotation, line)
+            self._fix_keys(attribute.type_annotation, line)
 
-    def _mark_required_keys_subscript(
+    def _fix_keys_subscript(
         self, subscript: TypeSubscript, argument_line: TypeDocLine,
     ) -> None:
         child = subscript.children[0]
         for line in argument_line.indented:
             if not line.type_name:
                 continue
-            self._mark_required_keys(child, line)
+            self._fix_keys(child, line)
 
     def get_arguments(self, input_string: str) -> List[Argument]:
         input_string = textwrap.dedent(input_string)
@@ -249,7 +251,7 @@ class DocstringParser:
         while (
             response_syntax_index > 0 and input_string[response_syntax_index - 1] == " "
         ):
-            response_syntax_index = response_syntax_index - 1
+            response_syntax_index -= 1
         response_syntax_string = get_line_with_indented(
             input_string[response_syntax_index:], True
         )
@@ -264,13 +266,32 @@ class DocstringParser:
         value = match.asDict()["value"]
         return TypeValue(f"{self.prefix}Response", value).get_type()
 
-    def _get_response_docstring(self, input_string: str) -> str:
-        re_match = self.RE_RESPONSE_STRUCTURE.search(input_string)
-        if not re_match:
-            return ""
+    def _get_response_structure(self, input_string: str) -> Optional[TypeDocLine]:
+        if "**Response Structure**" not in input_string:
+            return None
 
-        result = get_line_with_indented(input_string[re_match.end() :])
-        return textwrap.dedent(result)
+        response_structure_index = input_string.index("**Response Structure**")
+        while (
+            response_structure_index > 0
+            and input_string[response_structure_index - 1] == " "
+        ):
+            response_structure_index -= 1
+
+        response_structure_string = get_line_with_indented(
+            input_string[response_structure_index:], True
+        )
+
+        TypeDocGrammar.reset()
+        try:
+            match = TypeDocGrammar.response_structure.parseString(
+                response_structure_string
+            )
+        except ParseException as e:
+            self.logger.warning(f"Cannot parse response structure for {self.prefix}")
+            self.logger.debug(e)
+            return None
+
+        return TypeDocLine(**match.asDict())
 
     def get_return_type(self, input_string: str) -> FakeAnnotation:
         input_string = textwrap.dedent(input_string)
@@ -292,7 +313,11 @@ class DocstringParser:
         if not isinstance(syntax_return_type, TypeTypedDict):
             return syntax_return_type
 
-        syntax_return_type.docstring = self._get_response_docstring(input_string)
+        response_structure = self._get_response_structure(input_string)
+        if response_structure:
+            syntax_return_type.docstring = response_structure.render()
+            self._fix_keys(syntax_return_type, response_structure)
+
         return syntax_return_type
 
     @staticmethod

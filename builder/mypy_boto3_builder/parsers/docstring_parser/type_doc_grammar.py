@@ -76,8 +76,7 @@ class TypeDocGrammar:
     response_structure = Literal("**Response Structure**") + line_indented
 
     typed_dict_key_line = (
-        SOL
-        + Literal("-")
+        Literal("-")
         + White(ws=" \t")
         + Literal("**")
         + word.setResultsName("name")
@@ -93,8 +92,7 @@ class TypeDocGrammar:
     )
 
     type_line = (
-        SOL
-        + Literal("-")
+        Literal("-")
         + White(ws=" \t")
         + Literal("*(")
         + word.setResultsName("type_name")
