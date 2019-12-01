@@ -3,7 +3,7 @@ Structure for parsed as dict request or response syntax values.
 """
 from __future__ import annotations
 
-from typing import Dict, Any, List, Union, Optional, IO
+from typing import Dict, Any, List, Union, Optional
 
 from mypy_boto3_builder.type_maps.syntax_type_map import SYNTAX_TYPE_MAP
 from mypy_boto3_builder.import_helpers.import_string import ImportString
@@ -141,23 +141,33 @@ class TypeValue:
         if self.value in SYNTAX_TYPE_MAP:
             return SYNTAX_TYPE_MAP[self.value]
 
-        return TypeClass(str)
+        if self.value.startswith("'"):
+            return TypeClass(str)
+
+        self.logger.warning(f"Unknown plain value: {self.raw}, fallback to Any")
+        return TypeAnnotation.Any()
+
+    def is_literal_item(self) -> bool:
+        if self.value is None:
+            return False
+        return self.value.startswith("'")
 
     def _get_type_literal(self) -> FakeAnnotation:
         if not self.literal_items:
             raise ValueError(f"Value is not literal: {self.raw}")
 
-        plain_values = [i["value"] for i in self.literal_items]
-        if plain_values == ["True", "False"]:
-            return TypeClass(bool)
-        if plain_values == ["b'bytes'", "file"]:
-            return TypeSubscript(Union, [TypeClass(bytes), TypeAnnotation(IO)])
+        # if plain_values == ["True", "False"]:
+        #     return TypeClass(bool)
+        # if plain_values == ["b'bytes'", "file"]:
+        #     return TypeSubscript(Union, [TypeClass(bytes), TypeAnnotation(IO)])
 
-        result = TypeLiteral()
-        for item in self.literal_items:
-            result.add_literal_child(self._parse_constant(item["value"]))
+        items = [TypeValue(self.prefix, i) for i in self.literal_items]
+        if all(i.is_literal_item() for i in items):
+            item_constants = [self._parse_constant(i.value or "") for i in items]
+            return TypeLiteral(*item_constants)
 
-        return result
+        item_types = [i.get_type() for i in items]
+        return TypeSubscript(Union, item_types)
 
     @staticmethod
     def _parse_constant(value: str) -> Any:

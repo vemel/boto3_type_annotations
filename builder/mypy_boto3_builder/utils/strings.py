@@ -5,6 +5,9 @@ import re
 import textwrap
 from typing import Optional, List, Iterator
 
+from mypy_boto3_builder.utils.indent_trimmer import IndentTrimmer
+
+
 # Regexp to replace single backslashes
 RE_BACKSLASH = re.compile(r"\\{1,2}")
 
@@ -131,3 +134,39 @@ def get_class_prefix(func_name: str) -> str:
     """
     parts = [f"{i[:1].upper()}{i[1:]}" for i in func_name.split("_") if i]
     return "".join(parts)
+
+
+def get_line_with_indented(input_string: str) -> str:
+    """
+    Get first line of the string with all indented lines.
+
+    Arguments:
+        input_string -- Input string.
+
+    Returns:
+        A string with first line and following indented lines.
+    """
+    result: List[str] = []
+    first_line_indent = None
+    indented_lines_indent = None
+    for line in input_string.splitlines():
+        if first_line_indent is None:
+            first_line_indent = IndentTrimmer.get_line_indent(line)
+            result.append(line)
+            continue
+
+        line_indent = IndentTrimmer.get_line_indent(line)
+        if line_indent <= first_line_indent:
+            break
+
+        if indented_lines_indent is None:
+            indented_lines_indent = line_indent
+            result.append(line)
+            continue
+
+        if line_indent < indented_lines_indent:
+            break
+
+        result.append(line)
+
+    return "\n".join(result)

@@ -5,6 +5,7 @@ from mypy_boto3_builder.utils.strings import (
     clean_doc,
     wrap_code_line,
     wrap_line,
+    get_line_with_indented,
 )
 
 
@@ -87,3 +88,9 @@ class StringsTestCase(unittest.TestCase):
             list(wrap_code_line("my_key=my_looong_value", 10)),
             ["my_key=", "    my_looong_value"],
         )
+
+    def test_get_line_with_indented(self) -> None:
+        self.assertEqual(get_line_with_indented("a\nb\nc"), "a")
+        self.assertEqual(get_line_with_indented("a\n b\n  c\n d\ne"), "a\n b\n  c\n d")
+        self.assertEqual(get_line_with_indented(" a\n  b\n  c\n d"), " a\n  b\n  c")
+        self.assertEqual(get_line_with_indented(""), "")

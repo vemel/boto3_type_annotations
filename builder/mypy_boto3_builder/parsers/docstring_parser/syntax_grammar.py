@@ -22,16 +22,17 @@ class SyntaxGrammar:
     name_value ::= alphanums + "_-."
     string_value ::= alphas{0,2} "'"  [^']+  "'"
     plain_value ::= string_value | name_value
-    literal_value ::= plain_value ("|" plain_value)+
+    literal_item ::= list_value | dict_value | set_value | plain_value
+    literal_value ::= literal_item ("|" literal_item)+
     any_value ::= literal_value | list_value | dict_value | set_value | union_value | func_call | plain_value
     empty_list_value ::= "[" [ellipsis] [","] "]"
     non_empty_list_value ::= "[" any_value ("," any_value)* [","] "]"
-    list_value ::= non_empty_list_value | empty_list_value
+    list_value ::= empty_list_value | non_empty_list_value
     set_value ::= "{" any_value ("," any_value)* [","] "}"
     func_call ::= name_value "(" any_value ("," any_value)* [","] ")"
     empty_dict_value ::= "{" [ellipsis] [","] "}"
     non_empty_dict_value ::= "{" string_value ":" any_value ("," string_value ":" any_value)* [","] "}"
-    dict_value ::= non_empty_dict_value | empty_dict_value
+    dict_value ::= empty_dict_value | non_empty_dict_value
     union_item ::= literal_value | list_value | dict_value | set_value | plain_value
     union_value ::= union_item ("or" union_item)+
     argument ::= alphanums "=" any_value
@@ -47,10 +48,11 @@ class SyntaxGrammar:
         Optional(Word(alphas, max=2)) + Literal("'") + SkipTo("'") + Literal("'")
     )
     plain_value = (string_value | name_value).setResultsName("value")
+    literal_item = Forward()
     literal_value = (
-        Group(plain_value).setResultsName("literal_first_item")
+        Group(literal_item).setResultsName("literal_first_item")
         + Literal("|")
-        + delimitedList(Group(plain_value), delim="|").setResultsName(
+        + delimitedList(Group(literal_item), delim="|").setResultsName(
             "literal_rest_items"
         )
     )
@@ -64,7 +66,7 @@ class SyntaxGrammar:
         + Optional(",")
         + Literal("]")
     )
-    list_value = non_empty_list_value | empty_list_value
+    list_value = empty_list_value | non_empty_list_value
     set_value = (
         "{"
         + Group(delimitedList(Group(any_value))).setResultsName("set_items")
@@ -95,7 +97,8 @@ class SyntaxGrammar:
         + Optional(",")
         + Literal("}")
     )
-    dict_value = non_empty_dict_value | empty_dict_value
+    dict_value = empty_dict_value | non_empty_dict_value
+    literal_item <<= list_value | dict_value | set_value | plain_value
     union_item = literal_value | list_value | dict_value | set_value | plain_value
     union_value = (
         Group(union_item).setResultsName("union_first_item")
