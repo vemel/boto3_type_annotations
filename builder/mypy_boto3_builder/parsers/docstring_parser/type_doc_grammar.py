@@ -12,6 +12,7 @@ from pyparsing import (
     indentedBlock,
     Optional,
     White,
+    ParserElement,
 )
 
 
@@ -107,24 +108,22 @@ class TypeDocGrammar:
 
     @classmethod
     def fail_action(
-        cls, _input_string: str, _chr_index: int, _source: str, _error: str
+        cls, _input_string: str, _chr_index: int, _source: str, error: BaseException
     ) -> None:
-        pass
-        # column = col(chr_index, input_string)
-        # print(
-        #     "fail", column, cls.indent_stack, _error,
-        # )
-        # while cls.indent_stack and column < cls.indent_stack[-1]:
-        #     cls.indent_stack.pop()
-        # if column not in cls.indent_stack:
-        #     cls.indent_stack.append(column)
-        #     cls.indent_stack.sort()
-        # if not cls.indent_stack or column != cls.indent_stack[-1]:
-        #     cls.indent_stack.append(column)
-        #     cls.indent_stack.sort()
+        if "found end of text" not in str(error):
+            raise error
 
     @classmethod
     def reset(cls) -> None:
+        cls.disable_packrat()
         cls.indented_block.setFailAction(cls.fail_action)
-        while len(cls.indent_stack) > 1:
-            cls.indent_stack.pop()
+        cls.indent_stack.clear()
+        cls.indent_stack.append(1)
+
+    @staticmethod
+    def enable_packrat() -> None:
+        ParserElement.enablePackrat(cache_size_limit=128)
+
+    @staticmethod
+    def disable_packrat() -> None:
+        ParserElement.enablePackrat(cache_size_limit=None)

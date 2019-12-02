@@ -12,6 +12,7 @@ from pyparsing import (
     Combine,
     Forward,
     Literal,
+    ParserElement,
 )
 
 
@@ -134,3 +135,15 @@ class SyntaxGrammar:
         + Literal("::")
         + Group(list_value | dict_value).setResultsName("value")
     )
+
+    @classmethod
+    def reset(cls) -> None:
+        cls.disable_packrat()
+
+    @staticmethod
+    def enable_packrat() -> None:
+        ParserElement.enablePackrat(cache_size_limit=128)
+
+    @staticmethod
+    def disable_packrat() -> None:
+        ParserElement.enablePackrat(cache_size_limit=None)

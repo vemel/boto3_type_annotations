@@ -68,6 +68,8 @@ class DocstringParser:
             input_string[request_syntax_index:], True
         )
 
+        SyntaxGrammar.reset()
+        SyntaxGrammar.enable_packrat()
         try:
             match = SyntaxGrammar.request_syntax.parseString(request_syntax_string)
         except ParseException as e:
@@ -89,8 +91,8 @@ class DocstringParser:
             return
 
         type_strings = [i for i in input_string.split("\n") if i.startswith(":type ")]
+        TypeDocGrammar.reset()
         for type_string in type_strings:
-            TypeDocGrammar.reset()
             try:
                 match = TypeDocGrammar.type_definition.parseString(type_string)
             except ParseException as e:
@@ -253,6 +255,8 @@ class DocstringParser:
             input_string[response_syntax_index:], True
         )
 
+        SyntaxGrammar.reset()
+        SyntaxGrammar.enable_packrat()
         try:
             match = SyntaxGrammar.response_syntax.parseString(response_syntax_string)
         except ParseException as e:
@@ -277,6 +281,7 @@ class DocstringParser:
         response_structure_string = get_line_with_indented(
             input_string[response_structure_index:], True
         )
+        response_structure_string = textwrap.dedent(response_structure_string)
 
         TypeDocGrammar.reset()
         try:
