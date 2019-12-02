@@ -19,7 +19,7 @@ from mypy_boto3_builder.parsers.parse_collections import parse_collections
 
 
 def parse_resource(
-    resource: Boto3ServiceResource, service_name: ServiceName
+    name: str, resource: Boto3ServiceResource, service_name: ServiceName
 ) -> Resource:
     """
     Parse boto3 sub Resource data.
@@ -30,8 +30,6 @@ def parse_resource(
     Returns:
         Resource structure.
     """
-    name = resource.__class__.__name__.split(".", 1)[-1]
-
     public_methods = get_resource_public_methods(resource.__class__)
     methods = [
         parse_method(name, method_name, method)

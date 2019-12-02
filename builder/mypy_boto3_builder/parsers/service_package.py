@@ -48,7 +48,6 @@ def parse_service_package(
     logger.debug("Parsing Client")
     client = parse_client(session, service_name)
 
-    logger.debug("Parsing ServiceResource")
     service_resource = parse_service_resource(session, service_name)
 
     result = ServicePackage(
@@ -60,7 +59,7 @@ def parse_service_package(
     )
 
     for waiter_name in client.boto3_client.waiter_names:
-        logger.debug(f"Parsing waiter {waiter_name}")
+        logger.debug(f"Parsing Waiter {waiter_name}")
         waiter = client.boto3_client.get_waiter(waiter_name)
         public_methods = get_public_methods(waiter)
         methods = [
@@ -86,7 +85,7 @@ def parse_service_package(
             service_name.boto3_name, "paginators-1", None
         )["pagination"]
         for paginator_name in sorted(paginator_config):
-            logger.debug(f"Parsing paginator {paginator_name}")
+            logger.debug(f"Parsing Paginator {paginator_name}")
             operation_name = xform_name(paginator_name)
             paginator = session_client.get_paginator(operation_name)
             public_methods = get_public_methods(paginator)

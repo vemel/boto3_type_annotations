@@ -10,7 +10,6 @@ from boto3.utils import ServiceContext
 from botocore.exceptions import UnknownServiceError
 
 from mypy_boto3_builder.structures.attribute import Attribute
-from mypy_boto3_builder.structures.resource import Resource
 from mypy_boto3_builder.structures.service_resource import ServiceResource
 from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
@@ -24,6 +23,7 @@ from mypy_boto3_builder.parsers.identifiers import parse_identifiers
 from mypy_boto3_builder.parsers.parse_collections import parse_collections
 from mypy_boto3_builder.parsers.parse_resource import parse_resource
 from mypy_boto3_builder.parsers.boto3_utils import get_boto3_client
+from mypy_boto3_builder.logger import get_logger
 
 
 def parse_service_resource(
@@ -43,37 +43,40 @@ def parse_service_resource(
     if service_resource is None:
         return None
 
+    logger = get_logger()
+    logger.debug("Parsing ServiceResource")
+    result = ServiceResource(
+        service_name=service_name,
+        boto3_service_resource=service_resource,
+        docstring=inspect.getdoc(service_resource) or "",
+    )
+
     public_methods = get_public_methods(service_resource)
-    methods = [
-        parse_method("ServiceResource", method_name, method)
-        for method_name, method in public_methods.items()
-    ]
+    for method_name, method in public_methods.items():
+        result.methods.append(parse_method("ServiceResource", method_name, method))
 
-    attributes: List[Attribute] = []
-    attributes.extend(parse_attributes(service_resource))
-    attributes.extend(parse_identifiers(service_resource))
+    logger.debug(f"Parsing ServiceResource attributes")
+    result.attributes.extend(parse_attributes(service_resource))
+    result.attributes.extend(parse_identifiers(service_resource))
 
+    logger.debug(f"Parsing ServiceResource collections")
     collections = parse_collections("ServiceResource", service_resource)
     for collection in collections:
-        attributes.append(
+        result.attributes.append(
             Attribute(
                 collection.attribute_name, InternalImport(collection.name, service_name)
             )
         )
+        result.collections.append(collection)
 
-    sub_resources: List[Resource] = []
     for sub_resource in get_sub_resources(session, service_name, service_resource):
-        sub_resources.append(parse_resource(sub_resource, service_name))
+        sub_resource_name = sub_resource.__class__.__name__.split(".", 1)[-1]
+        logger.debug(f"Parsing {sub_resource_name} sub resource")
+        result.sub_resources.append(
+            parse_resource(sub_resource_name, sub_resource, service_name)
+        )
 
-    return ServiceResource(
-        service_name=service_name,
-        boto3_service_resource=service_resource,
-        docstring=inspect.getdoc(service_resource) or "",
-        methods=methods,
-        attributes=attributes,
-        collections=collections,
-        sub_resources=sub_resources,
-    )
+    return result
 
 
 def get_sub_resources(
