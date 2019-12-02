@@ -6,10 +6,13 @@ Pyparsing grammar for request and response syntax.
 
 - [mypy-boto3](../../../../README.md#mypy_boto3) / [Modules](../../../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](../../index.md#mypy-boto3-builder) / [Parsers](../index.md#parsers) / [Docstring Parser](index.md#docstring-parser) / SyntaxGrammar
     - [SyntaxGrammar](#syntaxgrammar)
+        - [SyntaxGrammar.disable_packrat](#syntaxgrammardisable_packrat)
+        - [SyntaxGrammar.enable_packrat](#syntaxgrammarenable_packrat)
+        - [SyntaxGrammar.reset](#syntaxgrammarreset)
 
 ## SyntaxGrammar
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/syntax_grammar.py#L18)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/syntax_grammar.py#L19)
 
 ```python
 class SyntaxGrammar():
@@ -37,3 +40,30 @@ argument ::= alphanums "=" any_value
 definition ::= [^']+ "(" argument ("," argument)* [","] ")"
 request_syntax ::= "**Request Syntax**" "::" definition
 response_syntax ::= "**Response Syntax**" "::" (list_value | dict_value)
+
+### SyntaxGrammar.disable_packrat
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/syntax_grammar.py#L147)
+
+```python
+@staticmethod
+def disable_packrat() -> None:
+```
+
+### SyntaxGrammar.enable_packrat
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/syntax_grammar.py#L143)
+
+```python
+@staticmethod
+def enable_packrat() -> None:
+```
+
+### SyntaxGrammar.reset
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/syntax_grammar.py#L139)
+
+```python
+@classmethod
+def reset() -> None:
+```

@@ -9,10 +9,10 @@ Logging utils.
 
 ## get_logger
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/logger.py#L7)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/logger.py#L45)
 
 ```python
-def get_logger(verbose: bool = False) -> logging.Logger:
+def get_logger(verbose: bool = False, panic: bool = False) -> Logger:
 ```
 
 Get Logger instance.
@@ -20,7 +20,12 @@ Get Logger instance.
 #### Arguments
 
 - `verbose` - Set log level to DEBUG.
+- `panic` - Raise RuntimeError on warning.
 
 #### Returns
 
-Standard Logger.
+Overriden Logger.
+
+#### See also
+
+- [Logger](#logger)

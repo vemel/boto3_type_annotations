@@ -14,13 +14,14 @@ Converter of function argspec to `Argument` list.
 
 ```python
 class ArgSpecParser():
+    def __init__(prefix: str) -> None:
 ```
 
 Converter of function argspec to `Argument` list.
 
 ### ArgSpecParser().get_function_arguments
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/argspec_parser.py#L52)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/argspec_parser.py#L55)
 
 ```python
 def get_function_arguments(func: FunctionType) -> List[Argument]:

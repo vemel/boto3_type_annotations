@@ -10,7 +10,7 @@ Parser for Boto3 ServiceResource sub-resource, produces `structures.Resource`
 
 ## get_resource_public_methods
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/parse_resource.py#L62)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/parse_resource.py#L60)
 
 ```python
 def get_resource_public_methods(
@@ -34,6 +34,7 @@ A dictionary of method name and method.
 
 ```python
 def parse_resource(
+    name: str,
     resource: Boto3ServiceResource,
     service_name: ServiceName,
 ) -> Resource:
