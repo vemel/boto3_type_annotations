@@ -37,16 +37,14 @@ def parse_client(session: Session, service_name: ServiceName) -> Client:
     if "get_waiter" in public_methods:
         del public_methods["get_waiter"]
 
-    methods = [
-        parse_method("Client", method_name, method)
-        for method_name, method in public_methods.items()
-    ]
     result = Client(
         service_name=service_name,
         boto3_client=client,
         docstring=inspect.getdoc(client) or "",
-        methods=methods,
     )
+
+    for method_name, method in public_methods.items():
+        result.methods.append(parse_method("Client", method_name, method))
 
     service_model = client.meta.service_model
     client_exceptions = ClientExceptionsFactory().create_client_exceptions(

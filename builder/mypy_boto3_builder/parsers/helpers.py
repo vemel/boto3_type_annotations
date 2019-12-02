@@ -15,6 +15,7 @@ from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.utils.strings import get_class_prefix
 from mypy_boto3_builder.parsers.docstring_parser.argspec_parser import ArgSpecParser
 from mypy_boto3_builder.parsers.docstring_parser.docstring_parser import DocstringParser
+from mypy_boto3_builder.logger import get_logger
 
 
 def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
@@ -79,6 +80,8 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
     Returns:
         Method structure.
     """
+    logger = get_logger()
+    logger.debug(f"Parsing {parent_name}.{name} method")
     arg_spec_parser = ArgSpecParser()
     docstring = textwrap.dedent(inspect.getdoc(method) or "")
     arguments = arg_spec_parser.get_function_arguments(method)
