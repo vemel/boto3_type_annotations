@@ -52,13 +52,12 @@ def get_cli_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("-v", "--version", action="version", version=version)
     parser.add_argument(
-        "--skip-master", action="store_true", help="Whether to skip master module"
+        "--skip-master",
+        action="store_true",
+        help="Whether to skip master and stubs modules",
     )
     parser.add_argument(
         "--skip-services", action="store_true", help="Whether to skip service modules"
-    )
-    parser.add_argument(
-        "--skip-stubs", action="store_true", help="Whether to skip boto3 stubs"
     )
     parser.add_argument(
         "--panic",

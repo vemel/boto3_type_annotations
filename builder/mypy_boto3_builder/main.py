@@ -71,7 +71,6 @@ def main() -> None:
             session=session, output_path=output_path, service_names=service_names
         )
 
-    if not args.skip_stubs:
         logger.info(f"Generating {BOTO3_STUBS_NAME} module")
         output_path = args.output_path / "boto3_stubs_package"
         process_boto3_stubs(
