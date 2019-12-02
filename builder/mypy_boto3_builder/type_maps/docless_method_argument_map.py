@@ -9,7 +9,7 @@ __all__ = ("DOCLESS_METHOD_ARGUMENT_MAP",)
 
 
 DOCLESS_METHOD_ARGUMENT_MAP = {
-    "create_tags": [
+    "ServiceResource.create_tags": [
         Argument("self", None),
         Argument("Resources", TypeSubscript(Type.List, [Type.Any]),),
         Argument("Tags", TypeSubscript(Type.List, [TypeDef("EC2Tag")]),),

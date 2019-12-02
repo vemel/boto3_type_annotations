@@ -18,6 +18,9 @@ class ArgSpecParser:
     Converter of function argspec to `Argument` list.
     """
 
+    def __init__(self, prefix: str) -> None:
+        self.prefix = prefix
+
     @staticmethod
     def _get_arguments_from_argspec(func: FunctionType) -> List[Argument]:
         arguments: List[Argument] = []
@@ -54,6 +57,9 @@ class ArgSpecParser:
         arguments = self._get_arguments_from_argspec(func)
 
         for argument in arguments:
+            if argument.type is not Type.Any:
+                continue
+
             method_type = f"{func_name}: {argument.name}"
             if method_type in METHOD_TYPE_MAP:
                 argument.type = METHOD_TYPE_MAP[method_type]

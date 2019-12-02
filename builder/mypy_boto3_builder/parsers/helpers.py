@@ -60,13 +60,16 @@ def parse_attributes(resource: Boto3ServiceResource) -> List[Attribute]:
         return result
     if not resource.meta.resource_model:
         return result
+
     service_model = resource.meta.client.meta.service_model
     if resource.meta.resource_model.shape:
         shape = service_model.shape_for(resource.meta.resource_model.shape)
         attributes = resource.meta.resource_model.get_attributes(shape)
         for name, attribute in attributes.items():
             result.append(
-                Attribute(name, DocstringParser.parse_type(attribute[1].type_name))
+                Attribute(
+                    name, DocstringParser.parse_type(attribute[1].type_name, name)
+                )
             )
 
     return result
@@ -85,20 +88,20 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
     """
     logger = get_logger()
     logger.debug(f"Parsing {parent_name}.{name} method")
-    arg_spec_parser = ArgSpecParser()
     docstring = textwrap.dedent(inspect.getdoc(method) or "")
     return_type: FakeAnnotation = Type.none
     if not docstring:
         logger.debug(f"Fixing {parent_name}.{name} method with no docstring")
         return Method(
             name=name,
-            arguments=DOCLESS_METHOD_ARGUMENT_MAP[name],
+            arguments=DOCLESS_METHOD_ARGUMENT_MAP[f"{parent_name}.{name}"],
             docstring=docstring,
             return_type=return_type,
         )
 
-    arguments = arg_spec_parser.get_function_arguments(method)
     prefix = f"{get_class_prefix(parent_name)}{get_class_prefix(name)}"
+    arg_spec_parser = ArgSpecParser(prefix)
+    arguments = arg_spec_parser.get_function_arguments(method)
     docstring_parser = DocstringParser(prefix, arguments)
     arguments = docstring_parser.get_arguments(docstring)
     return_type = docstring_parser.get_return_type(docstring)

@@ -10,7 +10,7 @@ from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.type_annotations.type_def import TypeDef
 
 
-NAMED_TYPE_MAP: Dict[str, FakeAnnotation] = {
+ARGUMENT_TYPE_MAP: Dict[str, FakeAnnotation] = {
     "DryRun: bool": TypeConstant(False),
     "Tags: dict": TypeSubscript(Type.List, [TypeDef("EC2Tag")]),
     "Tags: list": TypeSubscript(Type.List, [TypeDef("EC2Tag")]),

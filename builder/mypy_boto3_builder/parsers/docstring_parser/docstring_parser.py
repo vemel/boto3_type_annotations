@@ -11,7 +11,7 @@ from pyparsing import ParseException
 
 from mypy_boto3_builder.structures.argument import Argument
 from mypy_boto3_builder.type_maps.type_map import TYPE_MAP
-from mypy_boto3_builder.type_maps.named_type_map import NAMED_TYPE_MAP
+from mypy_boto3_builder.type_maps.argument_type_map import ARGUMENT_TYPE_MAP
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
@@ -104,8 +104,9 @@ class DocstringParser:
 
             match_dict = match.asDict()
             argument_name = match_dict["name"]
+            type_str = match_dict["type_name"]
             argument = self._find_argument_or_append(argument_name)
-            argument.type = TYPE_MAP[match_dict["type_name"]]
+            argument.type = self.parse_type(type_str, argument_name)
 
     def _parse_params(self, input_string: str) -> None:
         if ":param " not in input_string:
@@ -348,9 +349,11 @@ class DocstringParser:
         """
         if name is not None:
             try:
-                return NAMED_TYPE_MAP[f"{name}: {type_str}"].copy()
+                result = ARGUMENT_TYPE_MAP[f"{name}: {type_str}"].copy()
             except KeyError:
                 pass
+            else:
+                return result
 
         try:
             return TYPE_MAP[type_str].copy()
