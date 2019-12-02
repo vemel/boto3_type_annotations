@@ -10,6 +10,9 @@ from boto3.resources.base import ServiceResource as Boto3ServiceResource
 
 from mypy_boto3_builder.structures.method import Method
 from mypy_boto3_builder.structures.attribute import Attribute
+from mypy_boto3_builder.type_maps.docless_method_argument_map import (
+    DOCLESS_METHOD_ARGUMENT_MAP,
+)
 from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.utils.strings import get_class_prefix
@@ -84,13 +87,21 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
     logger.debug(f"Parsing {parent_name}.{name} method")
     arg_spec_parser = ArgSpecParser()
     docstring = textwrap.dedent(inspect.getdoc(method) or "")
-    arguments = arg_spec_parser.get_function_arguments(method)
     return_type: FakeAnnotation = Type.none
-    if docstring:
-        prefix = f"{get_class_prefix(parent_name)}{get_class_prefix(name)}"
-        docstring_parser = DocstringParser(prefix, arguments)
-        arguments = docstring_parser.get_arguments(docstring)
-        return_type = docstring_parser.get_return_type(docstring)
+    if not docstring:
+        logger.debug(f"Fixing {parent_name}.{name} method with no docstring")
+        return Method(
+            name=name,
+            arguments=DOCLESS_METHOD_ARGUMENT_MAP[name],
+            docstring=docstring,
+            return_type=return_type,
+        )
+
+    arguments = arg_spec_parser.get_function_arguments(method)
+    prefix = f"{get_class_prefix(parent_name)}{get_class_prefix(name)}"
+    docstring_parser = DocstringParser(prefix, arguments)
+    arguments = docstring_parser.get_arguments(docstring)
+    return_type = docstring_parser.get_return_type(docstring)
 
     return Method(
         name=name, arguments=arguments, docstring=docstring, return_type=return_type,
