@@ -37,6 +37,13 @@ def main() -> None:
     args.output_path.mkdir(exist_ok=True)
     service_names: List[ServiceName] = []
     available_services = session.get_available_services()
+    if len(args.service_names) == len(ServiceName.items()):
+        for available_service in available_services:
+            try:
+                ServiceName(available_service)
+            except ValueError:
+                logger.info(f"Service {available_service} is not supported, skipping.")
+
     for service_name in args.service_names:
         if service_name.value not in available_services:
             logger.warning(f"Service {service_name.value} is not avaialble, skipping.")
