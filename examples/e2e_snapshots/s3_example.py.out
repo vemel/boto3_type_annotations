@@ -1,11 +1,11 @@
 examples/s3_example.py:20: error: Unexpected keyword argument "key" for "upload_file" of "Bucket"
 examples/s3_example.py:23: error: Extra key 'key' for TypedDict "S3CopySource"
-examples/s3_example.py:33: error: Unexpected keyword argument "bucket" for "wait" of "BucketExistsWaiter"
+examples/s3_example.py:33: error: Unexpected keyword argument "bucket" for "wait" of "BucketExistsWaiter"; did you mean "Bucket"?
 examples/s3_example.py:39: error: Missing positional argument "Key" in call to "get_object" of "Client"
 examples/s3_example.py:42: error: TypedDict "ClientGetObjectResponseTypeDef" has no key 'expiration'
 examples/s3_example.py:47: error: Extra key 'Allowedorigins' for TypedDict "ClientPutBucketCorsCORSConfigurationCORSRulesTypeDef"
 examples/s3_example.py:51: error: Argument "Key" to "get_object" of "Client" has incompatible type "None"; expected "str"
-examples/s3_example.py:66: error: Unexpected keyword argument "bucket" for "wait" of "BucketExistsWaiter"
+examples/s3_example.py:66: error: Unexpected keyword argument "bucket" for "wait" of "BucketExistsWaiter"; did you mean "Bucket"?
 examples/s3_example.py:72: error: Missing positional argument "Key" in call to "get_object" of "Client"
 examples/s3_example.py:75: error: TypedDict "ClientGetObjectResponseTypeDef" has no key 'expiration'
 examples/s3_example.py:80: error: Extra key 'Allowedorigins' for TypedDict "ClientPutBucketCorsCORSConfigurationCORSRulesTypeDef"

@@ -13,7 +13,7 @@ rope = "==0.14.0"
 vulture = "==1.1"
 handsdown = "==0.3.4"
 twine = "==2.0.0"
-mypy = ">=0.740"
+mypy = ">=0.750"
 
 [packages]
 boto3 = "*"
