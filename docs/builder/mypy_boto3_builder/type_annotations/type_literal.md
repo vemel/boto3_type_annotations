@@ -30,7 +30,7 @@ Wrapper for `typing/typing_extensions.Literal` type annotations like `Literal['a
 
 ### TypeLiteral().add_child
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L54)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L59)
 
 ```python
 def add_child(child: FakeAnnotation) -> None:
@@ -38,7 +38,7 @@ def add_child(child: FakeAnnotation) -> None:
 
 ### TypeLiteral().add_literal_child
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L57)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L62)
 
 ```python
 def add_literal_child(child: Any) -> None:
@@ -48,7 +48,7 @@ Add new child to [TypeLiteral](#typeliteral) annotation.
 
 ### TypeLiteral().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L42)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L47)
 
 ```python
 def copy() -> TypeLiteral:
@@ -68,7 +68,7 @@ Get import record required for using type annotation.
 
 ### TypeLiteral().is_literal
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L48)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L53)
 
 ```python
 def is_literal() -> bool:

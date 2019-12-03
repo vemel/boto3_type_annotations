@@ -28,7 +28,7 @@ Enum with all AWS services.
 
 ### ServiceName().boto3_name
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L267)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L289)
 
 ```python
 @property
@@ -39,7 +39,7 @@ Boto3 service name.
 
 ### ServiceName().class_prefix
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L274)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L296)
 
 ```python
 @property
@@ -50,7 +50,7 @@ Class prefix for internal classes.
 
 ### ServiceName().extras_name
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L232)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L254)
 
 ```python
 @property
@@ -61,7 +61,7 @@ Extras name for subpackage installation.
 
 ### ServiceName().import_name
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L239)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L261)
 
 ```python
 @property
@@ -72,7 +72,7 @@ Submodule name in main module.
 
 ### ServiceName().is_essential
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L253)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L275)
 
 ```python
 def is_essential() -> bool:
@@ -82,7 +82,7 @@ Whether service is essential and installed with main package by default.
 
 ### ServiceName.items
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L211)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L233)
 
 ```python
 @classmethod
@@ -91,7 +91,7 @@ def items() -> List[ServiceName]:
 
 ### ServiceName().module_name
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L225)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L247)
 
 ```python
 @property
@@ -102,7 +102,7 @@ Package name for given service.
 
 ### ServiceName().pypi_name
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L246)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L268)
 
 ```python
 @property
@@ -113,7 +113,7 @@ Name of package on PyPI.
 
 ### ServiceName.values
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L215)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py#L237)
 
 ```python
 @classmethod
