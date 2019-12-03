@@ -75,6 +75,12 @@ class ImportRecord:
         if self.source == other.source:
             return self.name > other.name
 
+        if self.safe and not other.safe:
+            return True
+
+        if other.safe and not self.safe:
+            return False
+
         if self.is_local() and not other.is_local():
             return True
 
