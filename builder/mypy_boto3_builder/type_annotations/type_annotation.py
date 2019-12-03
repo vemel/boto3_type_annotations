@@ -9,7 +9,6 @@ from mypy_boto3_builder.type_defs import overload
 from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
-from mypy_boto3_builder.type_annotations.type_def import TypeDef
 
 
 class TypeAnnotation(FakeAnnotation):
@@ -58,11 +57,7 @@ class TypeAnnotation(FakeAnnotation):
         return str(getattr(self.wrapped_type, "_name"))
 
     def get_import_record(self) -> ImportRecord:
-        source = "typing"
-        if self.wrapped_type is overload:
-            return TypeDef("overload").get_import_record()
-
-        return ImportRecord(source=ImportString(source), name=self.get_import_name())
+        return ImportRecord(source=ImportString("typing"), name=self.get_import_name())
 
     def is_dict(self) -> bool:
         return self.wrapped_type is Dict
