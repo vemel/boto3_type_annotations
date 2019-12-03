@@ -1,9 +1,8 @@
 """
 Predefined FakeAnnotation instances.
 """
-from typing import Union, Optional, Any, Dict, List, Callable, IO
+from typing import Union, Optional, Any, Dict, List, Callable, IO, overload
 
-from mypy_boto3_builder.type_defs import overload
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.type_class import TypeClass

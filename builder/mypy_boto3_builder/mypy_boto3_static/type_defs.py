@@ -5,15 +5,12 @@ for undocumented methods.
 import sys
 
 if sys.version_info >= (3, 8):
-    from typing import TypedDict, Literal, overload  # pylint: disable=no-name-in-module
+    from typing import TypedDict
 else:
-    from typing_extensions import TypedDict, Literal, overload
+    from typing_extensions import TypedDict
 
 
 __all__ = (
-    "TypedDict",
-    "Literal",
-    "overload",
     "EC2Tag",
     "S3CopySource",
 )

@@ -3,7 +3,7 @@ Helper for Python import strings.
 """
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Optional, Tuple
 from functools import total_ordering
 
 from mypy_boto3_builder.import_helpers.import_string import ImportString
@@ -19,6 +19,9 @@ class ImportRecord:
         source -- Source of import.
         name -- Import name.
         alias -- Import local name.
+        fallback_any -- Whether to fallback to Any type on ImportError.
+        min_version -- Minimum Python version, used for fallback.
+        fallback -- Fallback ImportRecord.
     """
 
     _is_internal = False
@@ -30,12 +33,20 @@ class ImportRecord:
     )
 
     def __init__(
-        self, source: ImportString, name: str = "", alias: str = "", safe: bool = False
+        self,
+        source: ImportString,
+        name: str = "",
+        alias: str = "",
+        fallback_any: bool = False,
+        min_version: Tuple[int, ...] = (3, 8),
+        fallback: Optional[ImportRecord] = None,
     ) -> None:
         self.source = source
         self.name = name
         self.alias = alias
-        self.safe = safe
+        self.fallback_any = fallback_any
+        self.min_version = min_version
+        self.fallback = fallback
 
     def __bool__(self) -> bool:
         return bool(self.source)
@@ -75,10 +86,16 @@ class ImportRecord:
         if self.source == other.source:
             return self.name > other.name
 
-        if self.safe and not other.safe:
+        if self.fallback_any and not other.fallback_any:
             return True
 
-        if other.safe and not self.safe:
+        if other.fallback_any and not self.fallback_any:
+            return False
+
+        if self.fallback is not None and other.fallback is None:
+            return True
+
+        if other.fallback is not None and self.fallback is None:
             return False
 
         if self.is_local() and not other.is_local():
@@ -151,3 +168,12 @@ class ImportRecord:
         Overriden by `InternalImportRecord`.
         """
         return self
+
+    def is_standalone(self) -> bool:
+        """
+        Whether import record should not be grouped.
+        """
+        if not self.name or self.fallback_any or self.fallback:
+            return True
+
+        return False

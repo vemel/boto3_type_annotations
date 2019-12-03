@@ -1,9 +1,14 @@
 # pylint: disable=unused-argument,multiple-statements,no-self-use
 from __future__ import annotations
+
+import sys
 from decimal import Context
 from typing import Tuple, Any, Dict
 
-from mypy_boto3.type_defs import Literal
+if sys.version_info >= (3, 8):
+    from typing import Literal
+else:
+    from typing_extensions import Literal
 
 DynamoDBDataType = Literal["S", "N", "B", "SS", "NS", "BS", "NULL", "BOOL", "M", "L"]
 

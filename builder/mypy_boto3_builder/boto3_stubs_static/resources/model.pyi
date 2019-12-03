@@ -1,12 +1,17 @@
 # pylint: disable=unused-argument,multiple-statements,super-init-not-called,no-self-use,unused-import
 from __future__ import annotations
 
+import sys
 import logging
 from typing import Optional, Dict, Any, List, Union, Tuple
-from mypy_boto3.type_defs import Literal, TypedDict
 
 from botocore import xform_name
 from botocore.model import Shape
+
+if sys.version_info >= (3, 8):
+    from typing import Literal, TypedDict
+else:
+    from typing_extensions import Literal, TypedDict
 
 logger: logging.Logger
 

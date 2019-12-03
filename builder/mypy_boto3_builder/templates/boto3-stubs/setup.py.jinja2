@@ -35,7 +35,7 @@ setup(
     long_description_content_type="text/markdown",
     package_data={"{{ package.name }}": ["py.typed", "*.pyi", "*/*.pyi"]},
     install_requires=[
-        "{{ master_pypi_name }}=={{ boto3_version }}",
+        "typing_extensions; python_version < '3.8'",
     ],
     extras_require={
         "all": [

@@ -57,10 +57,7 @@ class Boto3StubsPackage(Package):
         for init_function in self.init_functions:
             for import_record in init_function.get_required_import_records():
                 if import_record.source.startswith(self.MASTER_IMPORT_STRING):
-                    if not import_record.source.startswith(
-                        self.MASTER_TYPE_DEFS_IMPORT_STRING
-                    ):
-                        import_record.safe = True
+                    import_record.fallback_any = True
                 import_records.add(import_record)
 
         return ImportRecordGroup.from_import_records(import_records)
@@ -89,10 +86,7 @@ class Boto3StubsPackage(Package):
         for session_method in self.session_methods:
             for import_record in session_method.get_required_import_records():
                 if import_record.source.startswith(self.MASTER_IMPORT_STRING):
-                    if not import_record.source.startswith(
-                        self.MASTER_TYPE_DEFS_IMPORT_STRING
-                    ):
-                        import_record.safe = True
+                    import_record.fallback_any = True
                 import_records.add(import_record)
 
         return ImportRecordGroup.from_import_records(import_records)

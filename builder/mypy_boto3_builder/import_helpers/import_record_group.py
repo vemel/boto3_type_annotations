@@ -41,18 +41,22 @@ class ImportRecordGroup:
         all_import_records: Set[ImportRecord] = set(import_records)
 
         for import_record in import_records:
-            if import_record.safe:
+            if import_record.fallback_any:
                 all_import_records.add(ImportRecord(ImportString("typing"), "Any"))
+            if import_record.fallback:
+                all_import_records.add(ImportRecord(ImportString("sys")))
 
         for import_record in sorted(all_import_records):
             if not import_record:
+                continue
+            if import_record.is_builtins():
                 continue
             if (
                 not result
                 or result[-1].source != import_record.source
                 or not result[-1].import_records[0].name
-                or not import_record.name
-                or import_record.safe
+                or import_record.is_standalone()
+                or result[-1].import_records[0].is_standalone()
             ):
                 result.append(ImportRecordGroup(import_record.source, [import_record]))
             else:
