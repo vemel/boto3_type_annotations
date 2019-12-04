@@ -4,7 +4,7 @@ class {{ class.name }}{% if class.bases %}({% for base in class.bases %}{{ base.
     {% with docstring = class.docstring if render_docstrings else None -%}
         {% if docstring -%}
             {{ '"""\n' -}}
-            {{ docstring.replace("/latest/", "/" + boto3_version + "/") -}}
+            {{ docstring -}}
             {{ '\n' -}}
             {{ '"""\n' -}}
         {% endif -%}

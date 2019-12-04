@@ -8,7 +8,7 @@ from typing import List, Set
 from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.import_record_group import ImportRecordGroup
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.constants import BOTO3_STUBS_NAME, MODULE_NAME, TYPE_DEFS_NAME
 from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.structures.package import Package

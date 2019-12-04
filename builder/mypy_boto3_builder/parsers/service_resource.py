@@ -10,7 +10,7 @@ from botocore.exceptions import UnknownServiceError
 
 from mypy_boto3_builder.structures.attribute import Attribute
 from mypy_boto3_builder.structures.service_resource import ServiceResource
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.parsers.boto3_utils import get_boto3_resource
 from mypy_boto3_builder.parsers.helpers import (
@@ -48,8 +48,8 @@ def parse_service_resource(
         service_name=service_name,
         boto3_service_resource=service_resource,
         docstring=(
-            f"[{service_name.class_prefix}.ServiceResource documentation]"
-            f"({service_name.get_doc_link()}.ServiceResource)"
+            f"[{service_name.class_name}.ServiceResource documentation]"
+            f"({service_name.doc_link}.ServiceResource)"
         ),
     )
 
@@ -58,7 +58,7 @@ def parse_service_resource(
         method = parse_method("ServiceResource", method_name, public_method)
         method.docstring = (
             f"[ServiceResource.{method_name} documentation]"
-            f"({service_name.get_doc_link()}.ServiceResource.{method_name})"
+            f"({service_name.doc_link}.ServiceResource.{method_name})"
         )
         result.methods.append(method)
 

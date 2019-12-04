@@ -10,7 +10,7 @@ except ModuleNotFoundError:
     pass
 
 from mypy_boto3_builder.constants import TEMPLATES_PATH, LINE_LENGTH
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.structures.package import Package
 from mypy_boto3_builder.jinja_manager import JinjaManager
 

@@ -15,7 +15,7 @@ from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.utils.strings import clean_doc
 from mypy_boto3_builder.cli_parser import get_cli_parser
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName, ServiceNameCatalog
 from mypy_boto3_builder.jinja_manager import JinjaManager
 from mypy_boto3_builder.constants import (
     MODULE_NAME,
@@ -37,18 +37,19 @@ def main() -> None:
     args.output_path.mkdir(exist_ok=True)
     service_names: List[ServiceName] = []
     available_services = session.get_available_services()
-    if len(args.service_names) == len(ServiceName.items()):
+    if len(args.service_names) == len(ServiceNameCatalog.ITEMS):
         for available_service in available_services:
             try:
-                ServiceName(available_service)
+                ServiceNameCatalog.find(available_service)
             except ValueError:
                 logger.info(f"Service {available_service} is not supported, skipping.")
 
     for service_name in args.service_names:
-        if service_name.value not in available_services:
-            logger.warning(f"Service {service_name.value} is not avaialble, skipping.")
+        if service_name.name not in available_services:
+            logger.warning(f"Service {service_name.name} is not avaialble, skipping.")
             continue
 
+        service_name.boto3_version = boto3_version
         service_names.append(service_name)
 
     JinjaManager.update_globals(

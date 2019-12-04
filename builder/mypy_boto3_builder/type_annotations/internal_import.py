@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.internal_import_record import (

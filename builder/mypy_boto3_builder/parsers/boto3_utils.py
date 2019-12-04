@@ -8,7 +8,7 @@ from boto3.session import Session
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from botocore.client import BaseClient
 
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName
 
 
 def get_boto3_client(session: Session, service_name: ServiceName) -> BaseClient:

@@ -5,7 +5,7 @@ Structure for boto3-stubs module.
 from dataclasses import dataclass, field
 from typing import List
 
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.constants import PYPI_NAME, MODULE_NAME
 from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.structures.package import Package

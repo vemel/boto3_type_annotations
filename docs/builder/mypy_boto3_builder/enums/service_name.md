@@ -1,6 +1,6 @@
 # ServiceName
 
-> Auto-generated documentation for [builder.mypy_boto3_builder.enums.service_name](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py) module.
+> Auto-generated documentation for [builder.mypy_boto3_builder.service_name](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/enums/service_name.py) module.
 
 Enum with all AWS services.
 

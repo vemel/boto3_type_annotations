@@ -4,7 +4,7 @@ CLI parser.
 import argparse
 from pathlib import Path
 
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName, ServiceNameCatalog
 from mypy_boto3_builder.version import __version__ as version
 
 
@@ -32,9 +32,9 @@ def get_service_name(name: str) -> ServiceName:
         argparse.ArgumentTypeError -- If service not found.
     """
     try:
-        return ServiceName(name)
-    except ValueError:
-        raise argparse.ArgumentTypeError(f"Unknown service {name}")
+        return ServiceNameCatalog.find(name)
+    except ValueError as e:
+        raise argparse.ArgumentTypeError(e)
 
 
 def get_cli_parser() -> argparse.ArgumentParser:
@@ -80,6 +80,6 @@ def get_cli_parser() -> argparse.ArgumentParser:
         metavar="SERVICE_NAME",
         help="List of AWS services, by default ",
         type=get_service_name,
-        default=ServiceName.items(),
+        default=ServiceNameCatalog.ITEMS,
     )
     return parser

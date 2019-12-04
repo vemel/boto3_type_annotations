@@ -17,7 +17,7 @@ from mypy_boto3_builder.structures.waiter import Waiter
 from mypy_boto3_builder.structures.paginator import Paginator
 from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.structures.argument import Argument
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
@@ -72,7 +72,7 @@ def parse_service_package(
             method = parse_method(waiter_name, method_name, public_method)
             method.docstring = (
                 f"[{waiter_name}.{method_name} documentation]"
-                f"({service_name.get_doc_link()}.Waiter.{waiter_name}.{method_name})"
+                f"({service_name.doc_link}.Waiter.{waiter_name}.{method_name})"
             )
             waiter_record.methods.append(method)
         result.waiters.append(waiter_record)
@@ -100,7 +100,7 @@ def parse_service_package(
                 method = parse_method(paginator_name, method_name, public_method)
                 method.docstring = (
                     f"[{paginator_name}.{method_name} documentation]"
-                    f"({service_name.get_doc_link()}.Paginator.{paginator_name}.{method_name})"
+                    f"({service_name.doc_link}.Paginator.{paginator_name}.{method_name})"
                 )
                 paginator_record.methods.append(method)
             result.paginators.append(paginator_record)

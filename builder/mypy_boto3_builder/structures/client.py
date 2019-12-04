@@ -6,7 +6,7 @@ from typing import List, Set
 
 from botocore.client import BaseClient
 
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName, ServiceNameCatalog
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.import_string import ImportString
@@ -22,7 +22,7 @@ class Client(ClassRecord):
     """
 
     name: str = "Client"
-    service_name: ServiceName = ServiceName.ec2
+    service_name: ServiceName = ServiceNameCatalog.ec2
     boto3_client: BaseClient = None
     exceptions_class: ClassRecord = field(
         default_factory=lambda: ClassRecord(name="Exceptions")

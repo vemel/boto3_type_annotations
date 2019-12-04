@@ -6,7 +6,7 @@ from typing import List
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 
 from mypy_boto3_builder.structures.collection import Collection
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.utils.strings import get_class_prefix
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.parsers.helpers import get_public_methods, parse_method
@@ -32,12 +32,9 @@ def parse_collections(
             attribute_name=collection.name,
             docstring=(
                 f"[{parent_name}.{collection.name} documentation]"
-                f"({service_name.get_doc_link()}.{parent_name}.{collection.name})"
+                f"({service_name.doc_link}.{parent_name}.{collection.name})"
             ),
-            type=InternalImport(
-                name=collection.name,
-                service_name=ServiceName(resource.meta.service_name),
-            ),
+            type=InternalImport(name=collection.name, service_name=service_name),
         )
         public_methods = get_public_methods(collection_class)
 

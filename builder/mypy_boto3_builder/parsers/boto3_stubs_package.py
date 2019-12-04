@@ -17,7 +17,7 @@ from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.type_literal import TypeLiteral
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.parsers.fake_service_package import parse_fake_service_package
 
 
@@ -71,7 +71,7 @@ def parse_boto3_stubs_package(
                 return_type=ExternalImport(
                     ImportString(MODULE_NAME, service_package.service_name.import_name),
                     service_package.client.name,
-                    f"{service_package.service_name.class_prefix}{service_package.client.name}",
+                    f"{service_package.service_name.class_name}{service_package.client.name}",
                     fallback_any=True,
                 ),
                 body=f"...",
@@ -93,7 +93,7 @@ def parse_boto3_stubs_package(
                 return_type=ExternalImport(
                     ImportString(MODULE_NAME, service_package.service_name.import_name),
                     service_package.client.name,
-                    f"{service_package.service_name.class_prefix}{service_package.client.name}",
+                    f"{service_package.service_name.class_name}{service_package.client.name}",
                     fallback_any=True,
                 ),
                 body=f"...",
@@ -119,7 +119,7 @@ def parse_boto3_stubs_package(
                 return_type=ExternalImport(
                     ImportString(MODULE_NAME, service_package.service_name.import_name),
                     service_package.service_resource.name,
-                    f"{service_package.service_name.class_prefix}{service_package.service_resource.name}",
+                    f"{service_package.service_name.class_name}{service_package.service_resource.name}",
                     fallback_any=True,
                 ),
                 body=f"...",
@@ -141,7 +141,7 @@ def parse_boto3_stubs_package(
                 return_type=ExternalImport(
                     ImportString(MODULE_NAME, service_package.service_name.import_name),
                     service_package.service_resource.name,
-                    f"{service_package.service_name.class_prefix}{service_package.service_resource.name}",
+                    f"{service_package.service_name.class_name}{service_package.service_resource.name}",
                     fallback_any=True,
                 ),
                 body=f"...",

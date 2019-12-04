@@ -21,12 +21,12 @@ class IndentTrimmerTestCase(unittest.TestCase):
         PathMock.assert_called_with("test/output")
         self.assertEqual(result, PathMock().absolute())
 
-    @patch("mypy_boto3_builder.cli_parser.ServiceName")
-    def test_get_service_name(self, ServiceNameMock: MagicMock) -> None:
+    @patch("mypy_boto3_builder.cli_parser.ServiceNameCatalog")
+    def test_get_service_name(self, ServiceNameCatalogMock: MagicMock) -> None:
         result = get_service_name("name")
-        ServiceNameMock.assert_called_with("name")
-        self.assertEqual(result, ServiceNameMock())
+        ServiceNameCatalogMock.find.assert_called_with("name")
+        self.assertEqual(result, ServiceNameCatalogMock.find())
 
-        ServiceNameMock.side_effect = ValueError()
+        ServiceNameCatalogMock.find.side_effect = ValueError()
         with self.assertRaises(argparse.ArgumentTypeError):
             get_service_name("name")

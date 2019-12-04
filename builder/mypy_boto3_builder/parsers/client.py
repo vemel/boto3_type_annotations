@@ -7,7 +7,7 @@ from botocore.exceptions import ClientError
 
 from mypy_boto3_builder.structures.client import Client
 from mypy_boto3_builder.structures.attribute import Attribute
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
@@ -39,8 +39,8 @@ def parse_client(session: Session, service_name: ServiceName) -> Client:
         service_name=service_name,
         boto3_client=client,
         docstring=(
-            f"[{service_name.class_prefix}.Client documentation]"
-            f"({service_name.get_doc_link()}.Client)"
+            f"[{service_name.class_name}.Client documentation]"
+            f"({service_name.doc_link}.Client)"
         ),
     )
 
@@ -48,7 +48,7 @@ def parse_client(session: Session, service_name: ServiceName) -> Client:
         method = parse_method("Client", method_name, public_method)
         method.docstring = (
             f"[Client.{method_name} documentation]"
-            f"({service_name.get_doc_link()}.Client.{method_name})"
+            f"({service_name.doc_link}.Client.{method_name})"
         )
         result.methods.append(method)
 

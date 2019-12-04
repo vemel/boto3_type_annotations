@@ -5,7 +5,7 @@ from typing import Iterable
 from boto3.session import Session
 
 from mypy_boto3_builder.structures.master_package import MasterPackage
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.parsers.fake_service_package import parse_fake_service_package
 
 

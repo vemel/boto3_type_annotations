@@ -17,7 +17,7 @@
         {% endif -%}
         {% if docstring -%}
             {{ '"""\n' -}}
-            {{ docstring.replace("/latest/", "/" + boto3_version + "/") -}}
+            {{ docstring -}}
             {{ '\n' -}}
             {{ '"""\n' -}}
         {% endif -%}

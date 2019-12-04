@@ -6,7 +6,7 @@ from typing import List, Set, Optional
 
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName, ServiceNameCatalog
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.import_string import ImportString
@@ -24,7 +24,7 @@ class ServiceResource(ClassRecord):
     """
 
     name: str = "ServiceResource"
-    service_name: ServiceName = ServiceName.ec2
+    service_name: ServiceName = ServiceNameCatalog.ec2
     boto3_service_resource: Optional[Boto3ServiceResource] = None
     collections: List[Collection] = field(default_factory=lambda: [])
     sub_resources: List[Resource] = field(default_factory=lambda: [])

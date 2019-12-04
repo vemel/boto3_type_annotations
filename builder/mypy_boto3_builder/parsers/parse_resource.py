@@ -9,7 +9,7 @@ from types import FunctionType
 from boto3.docs.utils import is_resource_action
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 
-from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.structures.attribute import Attribute
 from mypy_boto3_builder.structures.resource import Resource
@@ -34,7 +34,7 @@ def parse_resource(
         name=name,
         docstring=(
             f"[{name} documentation]"
-            f"({service_name.get_doc_link()}.ServiceResource.{name})"
+            f"({service_name.doc_link}.ServiceResource.{name})"
         ),
     )
 
