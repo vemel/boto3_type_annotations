@@ -41,8 +41,6 @@ class ImportRecordGroup:
         all_import_records: Set[ImportRecord] = set(import_records)
 
         for import_record in import_records:
-            if import_record.fallback_any:
-                all_import_records.add(ImportRecord(ImportString("typing"), "Any"))
             if import_record.fallback:
                 all_import_records.add(ImportRecord(ImportString("sys")))
 

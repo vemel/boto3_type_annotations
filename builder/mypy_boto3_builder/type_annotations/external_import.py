@@ -17,22 +17,13 @@ class ExternalImport(FakeAnnotation):
         source -- Module import string.
         name -- Import name.
         alias -- Import local name.
-        fallback_any -- Whether to fallback to Any type on ImportError.
     """
 
-    def __init__(
-        self,
-        source: ImportString,
-        name: str = "",
-        alias: str = "",
-        fallback_any: bool = False,
-    ) -> None:
+    def __init__(self, source: ImportString, name: str = "", alias: str = "",) -> None:
         self.source = source
         self.name = name
         self.alias = alias
-        self.import_record = ImportRecord(
-            source=source, name=name, alias=alias, fallback_any=fallback_any
-        )
+        self.import_record = ImportRecord(source=source, name=name, alias=alias)
 
     def render(self) -> str:
         """

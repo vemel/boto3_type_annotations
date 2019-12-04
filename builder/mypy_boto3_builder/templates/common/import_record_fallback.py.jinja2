@@ -6,12 +6,5 @@ else:
     {% include "common/import_record.py.jinja2" with context -%}
     {% endwith -%}
 {% else -%}
-{% if import_record.fallback_any -%}
-try:
-    {% include "common/import_record.py.jinja2" with context -%}{{ "\n" -}}
-except (ImportError, ModuleNotFoundError):
-    {{ import_record.get_local_name() -}}{{ " = Any" -}}
-{% else -%}
 {% include "common/import_record.py.jinja2" with context -%}
-{% endif -%}
 {% endif -%}

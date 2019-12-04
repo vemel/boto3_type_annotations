@@ -19,7 +19,6 @@ class ImportRecord:
         source -- Source of import.
         name -- Import name.
         alias -- Import local name.
-        fallback_any -- Whether to fallback to Any type on ImportError.
         min_version -- Minimum Python version, used for fallback.
         fallback -- Fallback ImportRecord.
     """
@@ -37,14 +36,12 @@ class ImportRecord:
         source: ImportString,
         name: str = "",
         alias: str = "",
-        fallback_any: bool = False,
         min_version: Tuple[int, ...] = (3, 8),
         fallback: Optional[ImportRecord] = None,
     ) -> None:
         self.source = source
         self.name = name
         self.alias = alias
-        self.fallback_any = fallback_any
         self.min_version = min_version
         self.fallback = fallback
 
@@ -85,12 +82,6 @@ class ImportRecord:
     def __gt__(self, other: ImportRecord) -> bool:
         if self.source == other.source:
             return self.name > other.name
-
-        if self.fallback_any and not other.fallback_any:
-            return True
-
-        if other.fallback_any and not self.fallback_any:
-            return False
 
         if self.fallback is not None and other.fallback is None:
             return True
@@ -173,7 +164,7 @@ class ImportRecord:
         """
         Whether import record should not be grouped.
         """
-        if not self.name or self.fallback_any or self.fallback:
+        if not self.name or self.fallback:
             return True
 
         return False
