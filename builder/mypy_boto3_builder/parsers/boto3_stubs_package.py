@@ -72,6 +72,7 @@ def parse_boto3_stubs_package(
                     ImportString(MODULE_NAME, service_package.service_name.import_name),
                     service_package.client.name,
                     f"{service_package.service_name.class_prefix}{service_package.client.name}",
+                    fallback_any=True,
                 ),
                 body=f"...",
             )
@@ -93,6 +94,7 @@ def parse_boto3_stubs_package(
                     ImportString(MODULE_NAME, service_package.service_name.import_name),
                     service_package.client.name,
                     f"{service_package.service_name.class_prefix}{service_package.client.name}",
+                    fallback_any=True,
                 ),
                 body=f"...",
             )
@@ -118,6 +120,7 @@ def parse_boto3_stubs_package(
                     ImportString(MODULE_NAME, service_package.service_name.import_name),
                     service_package.service_resource.name,
                     f"{service_package.service_name.class_prefix}{service_package.service_resource.name}",
+                    fallback_any=True,
                 ),
                 body=f"...",
             )
@@ -139,6 +142,7 @@ def parse_boto3_stubs_package(
                     ImportString(MODULE_NAME, service_package.service_name.import_name),
                     service_package.service_resource.name,
                     f"{service_package.service_name.class_prefix}{service_package.service_resource.name}",
+                    fallback_any=True,
                 ),
                 body=f"...",
             )

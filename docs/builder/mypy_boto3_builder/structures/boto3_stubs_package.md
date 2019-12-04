@@ -40,7 +40,7 @@ def get_init_required_import_record_groups() -> List[ImportRecordGroup]:
 
 ### Boto3StubsPackage().get_session_required_import_record_groups
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/boto3_stubs_package.py#L65)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/boto3_stubs_package.py#L62)
 
 ```python
 def get_session_required_import_record_groups() -> List[ImportRecordGroup]:

@@ -38,7 +38,7 @@ setup(
         "typing_extensions; python_version < '3.8'",
     ],
     extras_require={
-        "master": ["{{ master_pypi_name }}=={{ boto3_version }}"]},
+        "master": ["{{ master_pypi_name }}=={{ boto3_version }}"],
         "all": [
             {% for service_name in package.service_names -%}
             "{{ service_name.pypi_name }}[master]=={{ boto3_version }}",
