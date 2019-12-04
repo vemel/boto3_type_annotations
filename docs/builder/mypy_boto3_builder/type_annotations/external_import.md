@@ -20,7 +20,6 @@ class ExternalImport(FakeAnnotation):
         source: ImportString,
         name: str = '',
         alias: str = '',
-        fallback_any: bool = False,
     ) -> None:
 ```
 
@@ -32,11 +31,10 @@ Wrapper for type annotations imported from 3rd party libraries, like
 - `source` - Module import string.
 - `name` - Import name.
 - `alias` - Import local name.
-- `fallback_any` - Whether to fallback to Any type on ImportError.
 
 ### ExternalImport().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/external_import.py#L52)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/external_import.py#L43)
 
 ```python
 def copy() -> ExternalImport:
@@ -46,7 +44,7 @@ Create a copy of type annotation wrapper.
 
 ### ExternalImport().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/external_import.py#L46)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/external_import.py#L37)
 
 ```python
 def get_import_record() -> ImportRecord:
@@ -56,7 +54,7 @@ Get import record required for using type annotation.
 
 ### ExternalImport().render
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/external_import.py#L37)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/external_import.py#L28)
 
 ```python
 def render() -> str:

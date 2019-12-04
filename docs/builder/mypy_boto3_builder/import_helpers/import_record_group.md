@@ -51,7 +51,7 @@ A list of generated [ImportRecordGroup](#importrecordgroup).
 
 ### ImportRecordGroup().is_builtins
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record_group.py#L67)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record_group.py#L65)
 
 ```python
 def is_builtins() -> bool:

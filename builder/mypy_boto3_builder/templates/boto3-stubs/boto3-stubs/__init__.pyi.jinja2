@@ -52,6 +52,7 @@ def client(
     config: Config = None,
 ) -> Any: ...
 
+{% if package.resource_service_names %}
 def resource(
     service_name: Literal[{% for sevice_name in package.resource_service_names %}{{ '"' + sevice_name.boto3_name + '"' }}{{ "," if not loop.last else "" }}{% endfor %}],
     region_name: str = None,
@@ -64,3 +65,4 @@ def resource(
     aws_session_token: str = None,
     config: Config = None,
 ) -> Any: ...
+{% endif %}
