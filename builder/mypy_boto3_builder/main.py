@@ -85,6 +85,8 @@ def main() -> None:
             session=session, output_path=output_path, service_names=service_names
         )
 
+    logger.info(f"Completed")
+
 
 if __name__ == "__main__":
     main()
