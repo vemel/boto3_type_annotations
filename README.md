@@ -34,7 +34,7 @@ Based on [boto3_type_annotations](https://github.com/alliefitter/boto3_type_anno
 pip install boto3-stubs[essential]
 
 # install annotations for other services
-pip install boto3-stubs[acm, apigateway]
+pip install boto3-stubs[acm,apigateway]
 
 # or install annotations for all services
 # WARNING: this requires ~170 MB of space
@@ -45,15 +45,17 @@ pip install boto3-stubs[all]
 
 - Install [mypy](https://github.com/python/mypy) and optionally enable it in your IDE
 - Install [boto3](https://github.com/boto/boto3)
-- Now imports from `boto3` and `boto3.session` have correct types and code autocomplete
+- Use explicit types for `boto3.client`, `boto3.session.client`,
+  `client.get_waiter` and `client.get_paginator` calls to enjoy code auto-complete and
+  correct type hints
 
 ```python
 import boto3
 
-from mypy_boto3.s3 import Client, ServiceResource
+from mypy_boto3 import s3
 
 
-client: Client = boto3.client("s3")
+client: s3.Client = boto3.client("s3")
 
 # IDE autocomplete suggests function name and arguments here
 client.create_bucket(Bucket="bucket")
@@ -64,13 +66,19 @@ client.get_object(Bucket="bucket")
 # (mypy) error: Argument "Key" to "get_object" of "Client" has incompatible type "None"; expected "str"
 client.get_object(Bucket="bucket", Key=None)
 
-resource: ServiceResource = boto3.Session(region_name="us-west-1").resource("s3")
+resource: s3.ServiceResource = boto3.Session(region_name="us-west-1").resource("s3")
 
 # IDE autocomplete suggests function name and arguments here
 bucket = resource.Bucket("bucket")
 
-# (mypy) error: Unexpected keyword argument "key" for "upload_file" of "Bucket"
+# (mypy) error: Unexpected keyword argument "key" for "upload_file" of "Bucket"; did you mean "Key"?
 bucket.upload_file(Filename="my.txt", key="my-txt")
+
+# waiters and paginators are also annotated
+waiter: s3.BucketExistsWaiter = client.get_waiter("bucket_exists")
+paginator: s3.ListMultipartUploadsPaginator = client.get_paginator(
+    "list_multipart_uploads"
+)
 ```
 
 ### Setup your IDE
@@ -236,10 +244,10 @@ docker run -e BOTO3_VERSION=1.10.18 BOTOCORE_VERSION=1.13.18 -v `pwd`/output:/ou
 You can install any sub-modules using `pip`
 
 ```bash
-# pip install boto3-stubs[<submodule_name>, ...]
+# pip install boto3-stubs[<submodule_name>,...]
 
 # install ec2, s3 and sqs type annotations
-pip install boto3-stubs[s3, ec2, sqs]
+pip install boto3-stubs[s3,ec2,sqs]
 
 # install type annotations for all boto3 services
 pip install boto3-stubs[all]
