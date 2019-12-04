@@ -15,11 +15,8 @@ DUMMY_REGION = "us-west-2"
 # Jinja2 templates for boto3-stubs
 TEMPLATES_PATH = Path(__file__).parent / "templates"
 
-# Staitc *.pyi files for boto3-stubs
+# Static *.pyi files for boto3-stubs
 BOTO3_STUBS_STATIC_PATH = Path(__file__).parent / "boto3_stubs_static"
-
-# Staitc *.pyi files for mypy-boto3
-MYPY_BOTO3_STATIC_PATH = Path(__file__).parent / "mypy_boto3_static"
 
 # Boto3 stubs module name
 BOTO3_STUBS_NAME = "boto3-stubs"

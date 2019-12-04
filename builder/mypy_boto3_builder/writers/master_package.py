@@ -2,15 +2,12 @@
 Master package writer.
 """
 from pathlib import Path
-import shutil
-import filecmp
 from typing import List, Tuple
 
 from mypy_boto3_builder.structures.master_package import MasterPackage
 from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import render_jinja2_template, blackify
-from mypy_boto3_builder.constants import MYPY_BOTO3_STATIC_PATH
 
 
 def write_master_package(package: MasterPackage, output_path: Path) -> List[Path]:
@@ -58,22 +55,6 @@ def write_master_package(package: MasterPackage, output_path: Path) -> List[Path
             if not file_path.exists() or file_path.read_text() != content:
                 modified_paths.append(file_path)
                 file_path.write_text(content)
-
-    for static_path in MYPY_BOTO3_STATIC_PATH.glob("**/*.py"):
-        relative_output_path = static_path.relative_to(MYPY_BOTO3_STATIC_PATH)
-        file_path = (
-            package_path
-            / relative_output_path.parent
-            / f"{relative_output_path.stem}.py"
-        )
-        file_path.parent.mkdir(exist_ok=True)
-        if file_path.exists() and filecmp.cmp(
-            static_path.as_posix(), file_path.as_posix()
-        ):
-            continue
-
-        shutil.copy(static_path, file_path)
-        modified_paths.append(file_path)
 
     return modified_paths
 
