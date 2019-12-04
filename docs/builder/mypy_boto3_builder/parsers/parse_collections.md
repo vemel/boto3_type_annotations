@@ -9,12 +9,13 @@ Boto3 ServiceResource collections parser, produces `structures.Collection`.
 
 ## parse_collections
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/parse_collections.py#L16)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/parse_collections.py#L15)
 
 ```python
 def parse_collections(
     parent_name: str,
     resource: Boto3ServiceResource,
+    service_name: ServiceName,
 ) -> List[Collection]:
 ```
 

@@ -10,7 +10,7 @@ Parser for Boto3 ServiceResource, produces `structires.ServiceResource`.
 
 ## get_sub_resources
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/service_resource.py#L82)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/service_resource.py#L89)
 
 ```python
 def get_sub_resources(
@@ -34,7 +34,7 @@ A list of initialized `Boto3ServiceResource`.
 
 ## parse_service_resource
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/service_resource.py#L29)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/service_resource.py#L28)
 
 ```python
 def parse_service_resource(

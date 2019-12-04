@@ -15,6 +15,7 @@ Builder for `mypy_boto3`.
         - [Logger](logger.md#logger)
         - [Main](main.md#main)
         - [Parsers](parsers/index.md#parsers)
+        - [ServiceName](service_name.md#servicename)
         - [Structures](structures/index.md#structures)
         - [Type Annotations](type_annotations/index.md#type-annotations)
         - [Type Defs](type_defs.md#type-defs)
