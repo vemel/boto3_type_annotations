@@ -11,6 +11,7 @@ def s3_resource_example() -> None:
     session = boto3.session.Session(region_name="us-west-1")
 
     resource: s3.ServiceResource = session.resource("s3")
+    _resource: s3.ServiceResource = boto3.resource("s3")
 
     # IDE autocomplete suggests function name and arguments here
     bucket = resource.Bucket("bucket")
