@@ -88,10 +88,10 @@ bucket.upload_file(Filename="my.txt", key="my-txt")
 - Set path to `mypy` in `mypy plugin` settings
 - Install `boto3-stubs` with `boto3` services you use
 - Use [explicit type annotations](#explicit-type-annotations) because
-  function overload is not fully supported yet
+  function overload works extremely slow
 
-Official `mypy` plugin does not work for some reason at least for me. If you know
-how to setup it correctly, please let me know.
+Official `mypy` plugin does not work for some reason for me. If you know
+how to setup it correctly, please hep me to update this section.
 
 Do not install all services, it slows down `PyCharm`. Install only the ones you use.
 

@@ -42,6 +42,7 @@ class Boto3StubsPackage(Package):
 
     def get_init_required_import_record_groups(self) -> List[ImportRecordGroup]:
         import_records: Set[ImportRecord] = {
+            ImportRecord(ImportString("__future__"), "annotations"),
             ImportRecord(ImportString("logging")),
             ImportRecord(ImportString("typing"), "Optional"),
             ImportRecord(ImportString("typing"), "Any"),
@@ -61,6 +62,7 @@ class Boto3StubsPackage(Package):
 
     def get_session_required_import_record_groups(self) -> List[ImportRecordGroup]:
         import_records: Set[ImportRecord] = {
+            ImportRecord(ImportString("__future__"), "annotations"),
             ImportRecord(ImportString("typing"), "List"),
             ImportRecord(ImportString("typing"), "Any"),
             ImportRecord(ImportString("typing"), "Union"),

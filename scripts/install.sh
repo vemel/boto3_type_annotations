@@ -11,11 +11,11 @@ fi
 if [[ "$1" == "master" ]]; then
     echo Installing master package
     cd ${OUTPUT_PATH}/master_package
-    pip install .
+    python -m pip install .
 
     echo Installing boto3-stubs package
     cd ${OUTPUT_PATH}/boto3_stubs_package
-    pip install .[master]
+    python -m pip install .[master]
     exit
 fi
 
@@ -23,6 +23,6 @@ for package in $PACKAGES
 do
     echo Installing $(basename ${package})
     cd ${package}
-    pip install .
+    python -m pip install .
 done
 
