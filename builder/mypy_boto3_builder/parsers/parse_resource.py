@@ -2,7 +2,7 @@
 Parser for Boto3 ServiceResource sub-resource, produces `structures.Resource`
 """
 import inspect
-from typing import List, Dict, Type
+from typing import Dict, Type
 from types import FunctionType
 
 
@@ -30,31 +30,32 @@ def parse_resource(
     Returns:
         Resource structure.
     """
+    result = Resource(
+        name=name,
+        docstring=(
+            f"[{name} documentation]"
+            f"({service_name.get_doc_link()}.ServiceResource.{name})"
+        ),
+    )
+
     public_methods = get_resource_public_methods(resource.__class__)
-    methods = [
-        parse_method(name, method_name, method)
-        for method_name, method in public_methods.items()
-    ]
+    for method_name, public_method in public_methods.items():
+        method = parse_method(name, method_name, public_method)
+        result.methods.append(method)
 
-    attributes: List[Attribute] = []
-    attributes.extend(parse_attributes(resource))
-    attributes.extend(parse_identifiers(resource))
+    result.attributes.extend(parse_attributes(resource))
+    result.attributes.extend(parse_identifiers(resource))
 
-    collections = parse_collections(name, resource)
+    collections = parse_collections(name, resource, service_name)
     for collection in collections:
-        attributes.append(
+        result.collections.append(collection)
+        result.attributes.append(
             Attribute(
                 collection.attribute_name, InternalImport(collection.name, service_name)
             )
         )
 
-    return Resource(
-        name=name,
-        docstring=inspect.getdoc(resource) or "",
-        methods=methods,
-        attributes=attributes,
-        collections=collections,
-    )
+    return result
 
 
 def get_resource_public_methods(

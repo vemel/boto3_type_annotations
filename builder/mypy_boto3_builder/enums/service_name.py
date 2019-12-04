@@ -4,7 +4,7 @@ Enum with all AWS services.
 from __future__ import annotations
 
 import enum
-from typing import List
+from typing import List, Optional
 
 from mypy_boto3_builder.constants import PYPI_NAME, MODULE_NAME
 
@@ -304,3 +304,9 @@ class ServiceName(enum.Enum):
 
         name_parts = [i.capitalize() for i in import_name.split("_") if i]
         return "".join(name_parts)
+
+    def get_doc_link(self, boto3_version: Optional[str] = "latest") -> str:
+        return (
+            "https://boto3.amazonaws.com/v1/documentation/api/"
+            f"{boto3_version}/reference/services/{self.boto3_name}.html#{self.class_prefix}"
+        )

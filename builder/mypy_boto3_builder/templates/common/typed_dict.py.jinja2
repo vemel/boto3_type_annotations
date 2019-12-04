@@ -41,7 +41,7 @@
     {% filter indent(4, True) -%}
         {% if typed_dict.docstring -%}
             {{ '"""\n' -}}
-            {{ clean_doc(typed_dict.docstring, doc_line_length) -}}
+            {{ typed_dict.docstring.replace("/latest/", "/" + boto3_version + "/") -}}
             {{ '\n' -}}
             {{ '"""\n' -}}
         {% else -%}
@@ -78,7 +78,7 @@
     {% filter indent(4, True) -%}
         {% if typed_dict.docstring -%}
             {{ '"""\n' -}}
-            {{ clean_doc(typed_dict.docstring, doc_line_length) -}}
+            {{ typed_dict.docstring.replace("/latest/", "/" + boto3_version + "/") -}}
             {{ '\n' -}}
             {{ '"""\n' -}}
         {% else -%}

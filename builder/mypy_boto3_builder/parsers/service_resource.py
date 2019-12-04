@@ -1,7 +1,6 @@
 """
 Parser for Boto3 ServiceResource, produces `structires.ServiceResource`.
 """
-import inspect
 from typing import List, Optional
 
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
@@ -48,26 +47,34 @@ def parse_service_resource(
     result = ServiceResource(
         service_name=service_name,
         boto3_service_resource=service_resource,
-        docstring=inspect.getdoc(service_resource) or "",
+        docstring=(
+            f"[{service_name.class_prefix}.ServiceResource documentation]"
+            f"({service_name.get_doc_link()}.ServiceResource)"
+        ),
     )
 
     public_methods = get_public_methods(service_resource)
-    for method_name, method in public_methods.items():
-        result.methods.append(parse_method("ServiceResource", method_name, method))
+    for method_name, public_method in public_methods.items():
+        method = parse_method("ServiceResource", method_name, public_method)
+        method.docstring = (
+            f"[ServiceResource.{method_name} documentation]"
+            f"({service_name.get_doc_link()}.ServiceResource.{method_name})"
+        )
+        result.methods.append(method)
 
     logger.debug(f"Parsing ServiceResource attributes")
     result.attributes.extend(parse_attributes(service_resource))
     result.attributes.extend(parse_identifiers(service_resource))
 
     logger.debug(f"Parsing ServiceResource collections")
-    collections = parse_collections("ServiceResource", service_resource)
+    collections = parse_collections("ServiceResource", service_resource, service_name)
     for collection in collections:
+        result.collections.append(collection)
         result.attributes.append(
             Attribute(
                 collection.attribute_name, InternalImport(collection.name, service_name)
             )
         )
-        result.collections.append(collection)
 
     for sub_resource in get_sub_resources(session, service_name, service_resource):
         sub_resource_name = sub_resource.__class__.__name__.split(".", 1)[-1]

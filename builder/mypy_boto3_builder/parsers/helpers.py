@@ -95,7 +95,6 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
         return Method(
             name=name,
             arguments=DOCLESS_METHOD_ARGUMENT_MAP[f"{parent_name}.{name}"],
-            docstring=docstring,
             return_type=return_type,
         )
 
@@ -106,6 +105,4 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
     arguments = docstring_parser.get_arguments(docstring)
     return_type = docstring_parser.get_return_type(docstring)
 
-    return Method(
-        name=name, arguments=arguments, docstring=docstring, return_type=return_type,
-    )
+    return Method(name=name, arguments=arguments, return_type=return_type)

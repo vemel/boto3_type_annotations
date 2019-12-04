@@ -1,8 +1,6 @@
 """
 Boto3 client parser, produces `structures.Client`.
 """
-import inspect
-
 from boto3.session import Session
 from botocore.errorfactory import ClientExceptionsFactory
 from botocore.exceptions import ClientError
@@ -40,11 +38,19 @@ def parse_client(session: Session, service_name: ServiceName) -> Client:
     result = Client(
         service_name=service_name,
         boto3_client=client,
-        docstring=inspect.getdoc(client) or "",
+        docstring=(
+            f"[{service_name.class_prefix}.Client documentation]"
+            f"({service_name.get_doc_link()}.Client)"
+        ),
     )
 
-    for method_name, method in public_methods.items():
-        result.methods.append(parse_method("Client", method_name, method))
+    for method_name, public_method in public_methods.items():
+        method = parse_method("Client", method_name, public_method)
+        method.docstring = (
+            f"[Client.{method_name} documentation]"
+            f"({service_name.get_doc_link()}.Client.{method_name})"
+        )
+        result.methods.append(method)
 
     service_model = client.meta.service_model
     client_exceptions = ClientExceptionsFactory().create_client_exceptions(

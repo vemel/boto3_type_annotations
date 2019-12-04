@@ -61,20 +61,21 @@ def parse_service_package(
     for waiter_name in client.boto3_client.waiter_names:
         logger.debug(f"Parsing Waiter {waiter_name}")
         waiter = client.boto3_client.get_waiter(waiter_name)
-        public_methods = get_public_methods(waiter)
-        methods = [
-            parse_method(waiter_name, method_name, method)
-            for method_name, method in public_methods.items()
-        ]
-        result.waiters.append(
-            Waiter(
-                name=f"{waiter.name}Waiter",
-                waiter_name=waiter_name,
-                boto3_waiter=waiter,
-                docstring=f"Waiter for `{waiter_name}` name.",
-                methods=methods,
-            )
+        waiter_record = Waiter(
+            name=f"{waiter.name}Waiter",
+            waiter_name=waiter_name,
+            boto3_waiter=waiter,
+            docstring=f"Waiter for `{waiter_name}` name.",
         )
+        public_methods = get_public_methods(waiter)
+        for method_name, public_method in public_methods.items():
+            method = parse_method(waiter_name, method_name, public_method)
+            method.docstring = (
+                f"[{waiter_name}.{method_name} documentation]"
+                f"({service_name.get_doc_link()}.Waiter.{waiter_name}.{method_name})"
+            )
+            waiter_record.methods.append(method)
+        result.waiters.append(waiter_record)
 
     session_loader = session._loader  # pylint: disable=protected-access
     if service_name.boto3_name in session_loader.list_available_services(
@@ -88,20 +89,21 @@ def parse_service_package(
             logger.debug(f"Parsing Paginator {paginator_name}")
             operation_name = xform_name(paginator_name)
             paginator = session_client.get_paginator(operation_name)
-            public_methods = get_public_methods(paginator)
-            methods = [
-                parse_method(paginator_name, method_name, method)
-                for method_name, method in public_methods.items()
-            ]
-            result.paginators.append(
-                Paginator(
-                    name=f"{paginator_name}Paginator",
-                    operation_name=operation_name,
-                    boto3_paginator=paginator,
-                    docstring=f"Paginator for `{operation_name}`",
-                    methods=methods,
-                )
+            paginator_record = Paginator(
+                name=f"{paginator_name}Paginator",
+                operation_name=operation_name,
+                boto3_paginator=paginator,
+                docstring=f"Paginator for `{operation_name}`",
             )
+            public_methods = get_public_methods(paginator)
+            for method_name, public_method in public_methods.items():
+                method = parse_method(paginator_name, method_name, public_method)
+                method.docstring = (
+                    f"[{paginator_name}.{method_name} documentation]"
+                    f"({service_name.get_doc_link()}.Paginator.{paginator_name}.{method_name})"
+                )
+                paginator_record.methods.append(method)
+            result.paginators.append(paginator_record)
 
     if result.paginators:
         for paginator in result.paginators:
@@ -109,7 +111,6 @@ def parse_service_package(
         result.client.methods.append(
             Method(
                 name="get_paginator",
-                docstring=inspect.getdoc(client.boto3_client.get_paginator) or "",
                 arguments=[
                     Argument("self", None),
                     Argument("operation_name", Type.str),

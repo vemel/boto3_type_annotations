@@ -17,8 +17,8 @@ class Function:
 
     name: str
     arguments: List[Argument]
-    docstring: str
     return_type: FakeAnnotation
+    docstring: str = ""
     decorators: List[FakeAnnotation] = field(default_factory=lambda: [])
     body: str = ""
 

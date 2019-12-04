@@ -138,9 +138,6 @@ class DocstringParser:
             if not argument.type:
                 continue
 
-            if isinstance(argument.type, TypeTypedDict):
-                argument.type.docstring = argument_line.render()
-
             self._fix_keys(argument.type, argument_line)
 
     def _fix_keys(
@@ -160,7 +157,6 @@ class DocstringParser:
     def _fix_keys_typed_dict(
         self, typed_dict: TypeTypedDict, argument_line: TypeDocLine,
     ) -> None:
-        typed_dict.docstring = argument_line.render()
         for line in argument_line.indented:
             if not line.name:
                 continue
@@ -327,7 +323,6 @@ class DocstringParser:
 
         response_structure = self._parse_response_structure(input_string)
         if response_structure:
-            syntax_return_type.docstring = response_structure.render()
             self._fix_keys(syntax_return_type, response_structure)
 
         return syntax_return_type
