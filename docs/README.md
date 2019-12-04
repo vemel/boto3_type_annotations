@@ -172,27 +172,13 @@ pip install boto3==1.10.18 botocore==1.13.18
 # Install `mypy-boto3-builder`
 pip install mypy-boto3-builder[black]
 
-# Set output path to any directory
-OUTPUT_PATH=`pwd`/output
-
 # Build all packages
 # You can specify required services explicitly like
-# mypy_boto3_builder ${OUTPUT_PATH} -s ec2 s3
-mypy_boto3_builder ${OUTPUT_PATH}
+# ./scripts/build.sh -s ec2 s3
+./scripts/build.sh
 
-# Install custom `mypy-boto3` service packages
-PACKAGES=${OUTPUT_PATH}/mypy_boto3_*
-for PACKAGE in $PACKAGES
-do
-    cd ${PACKAGE}
-    python setup.py install
-done
-
-# Install custom `mypy-boto3` and `boto3-stubs` packages
-cd ${OUTPUT_PATH}/master_package
-python setup.py install
-cd ${OUTPUT_PATH}/boto3_stubs_package
-python setup.py install
+# Install custom `mypy-boto3` packages
+./scripts/install.sh
 ```
 
 ### With Docker image
