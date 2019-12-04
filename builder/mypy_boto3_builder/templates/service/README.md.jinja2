@@ -21,7 +21,7 @@ Install `boto3-stubs` for `{{ service_name.boto3_name }}` service.
 pip install boto3-stubs[{{service_name.pypi_name}}]
 ```
 
-Use `boto3` as usual in your project and enjoy type checking.
+Use `boto3` with `{{ master_module_name }}` in your project and enjoy type checking.
 
 ```python
 import boto3
@@ -56,49 +56,6 @@ resource: {{ service_name.import_name }}.ServiceResource = boto3.resource("{{ se
 {% endfor -%}
 {% endif -%}
 ```
-
-### Code auto-complete
-
-Not a single Python IDE supports `Literal` type overloads yet (but in `VSCode` support is just around the corner).
-Meanwhile, to have a nice auto-complete you can explicitly set types to help your IDE to get methods, arguments etc.
-
-```python
-import boto3
-from mypy_boto3.{{ service_name.import_name }} import Client
-{% if package.service_resource -%}
-from mypy_boto3.{{ service_name.import_name }} import ServiceResource
-{% endif %}
-{% if package.paginators -%}
-{% with paginator = package.paginators[0] -%}
-from mypy_boto3.{{ service_name.import_name }}.paginator import {{ paginator.name }}
-{% endwith -%}
-{% endif -%}
-{% if package.waiters -%}
-{% with waiter = package.waiters[0] -%}
-from mypy_boto3.{{ service_name.import_name }}.waiter import {{ waiter.name }}
-{% endwith -%}
-{% endif -%}
-{{ '\n' -}}
-# now you have auto-complete for methods, arguments and even return types
-client: Client = boto3.client("{{ service_name.boto3_name }}")
-{% if package.service_resource -%}
-{{ '\n' -}}# same for resource
-resource: ServiceResource = boto3.resource("{{ service_name.boto3_name }}")
-{% endif -%}
-{% if package.paginators -%}
-{% with paginator = package.paginators[0] -%}
-{{ '\n' -}}# even for paginators
-{{ paginator.operation_name }}_paginator: {{ paginator.name }} = client.get_paginator("{{ paginator.operation_name }}")
-{% endwith -%}
-{% endif -%}
-{% if package.waiters -%}
-{% with waiter = package.waiters[0] -%}
-{{ '\n' -}}# and waiters are also annotated
-{{ waiter.waiter_name }}_waiter: {{ waiter.name }} = client.get_waiter("{{ waiter.waiter_name }}")
-{% endwith -%}
-{% endif -%}
-```
-{{ '\n' -}}
 
 ## How it works
 
