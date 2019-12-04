@@ -26,16 +26,34 @@ Use `boto3` as usual in your project and enjoy type checking.
 ```python
 import boto3
 
+from {{ master_module_name }} import {{ service_name.import_name }}
+
 # Use this client as usual, now mypy can check if your code is valid.
-client = boto3.client("{{ service_name.boto3_name }}")
+client: {{ service_name.import_name }}.Client = boto3.client("{{ service_name.boto3_name }}")
 
 # works for session as well
 session = boto3.session.Session(region="us-west-1")
-session_client = session.client("{{ service_name.boto3_name }}")
+session_client: {{ service_name.import_name }}.Client = session.client("{{ service_name.boto3_name }}")
 
 {% if package.service_resource -%}
 # Do you prefer resource approach? We've got you covered!
-resource = boto3.resource("{{ service_name.boto3_name }}")
+resource: {{ service_name.import_name }}.ServiceResource = boto3.resource("{{ service_name.boto3_name }}")
+{% endif -%}
+
+{% if package.waiters -%}
+{{ '\n' -}}
+# Waiters need type annotation on creation
+{% for waiter in package.waiters -%}
+{{ waiter.waiter_name }}_waiter: {{ service_name.import_name }}.{{ waiter.name }} = client.get_waiter("{{ waiter.waiter_name }}")
+{% endfor -%}
+{% endif -%}
+
+{% if package.paginators -%}
+{{ '\n' -}}
+# Paginators need type annotation on creation
+{% for paginator in package.paginators -%}
+{{ paginator.operation_name }}_paginator: {{ service_name.import_name }}.{{ paginator.name }} = client.get_paginator("{{ paginator.operation_name }}")
+{% endfor -%}
 {% endif -%}
 ```
 

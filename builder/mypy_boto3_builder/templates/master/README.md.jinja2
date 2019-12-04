@@ -31,7 +31,9 @@ Use `boto3` as usual in your project and enjoy type checking.
 ```python
 import boto3
 
-client = boto3.client("s3")
+from {{ master_module_name }}.s3 import Client
+
+client: Client = boto3.client("s3")
 
 # Oh, it must be `Bucket`... Thanks, `mypy`!
 client.create_bucket(bucket="bucket")
@@ -44,11 +46,14 @@ Meanwhile, to have a nice auto-complete you can explicitly set types to help you
 
 ```python
 import boto3_name
-from mypy_boto3.ec2 import Client, ServiceResource
+
+from {{ master_module_name }} import ec2
+
+# this is the only place where you have to set types explicitly
+client: ec2.Client = boto3.client("ec2")
+resource: ec2.ServiceResource = boto3.resource("ec2")
 
 # now you have auto-complete for methods, arguments and even return types
-client: Client = boto3.client("ec2")
-resource: ServiceResource = boto3.resource("ec2")
 ```
 
 ## How it works

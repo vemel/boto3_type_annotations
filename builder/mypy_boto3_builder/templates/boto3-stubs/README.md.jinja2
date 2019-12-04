@@ -28,8 +28,13 @@ Use `boto3` as usual in your project and enjoy type checking.
 ```python
 import boto3
 
-# Invalid service name, should be `dynamodb`. No worries, `mypy` will let you know.
-client = boto3.client("dynamo")
+from {{ master_module_name }} import dynamodb
+
+# Enjoy auto-complete for now
+client: dynamodb.Client = boto3.client("dynamodb")
+
+# argument hints and correct return type is provided by boto3-stubs
+client.query("my_table")
 ```
 
 ## How it works

@@ -84,15 +84,22 @@ class ServicePackage(Package):
                     self.service_resource.name,
                 )
             )
-        for helper_function in self.helper_functions:
-            if helper_function.name not in ("boto3_client", "boto3_resource"):
-                continue
+        for waiter in self.waiters:
             import_records.add(
                 ImportRecord(
                     ImportString(
-                        self.service_name.module_name, ServiceModuleName.helpers.name
+                        self.service_name.module_name, ServiceModuleName.waiter.name,
                     ),
-                    helper_function.name,
+                    waiter.name,
+                )
+            )
+        for paginator in self.paginators:
+            import_records.add(
+                ImportRecord(
+                    ImportString(
+                        self.service_name.module_name, ServiceModuleName.paginator.name,
+                    ),
+                    paginator.name,
                 )
             )
 
@@ -102,10 +109,10 @@ class ServicePackage(Package):
         result = [self.client.name]
         if self.service_resource:
             result.append(self.service_resource.name)
-        for helper_function in self.helper_functions:
-            if helper_function.name not in ("boto3_client", "boto3_resource"):
-                continue
-            result.append(helper_function.name)
+        for waiter in self.waiters:
+            result.append(waiter.name)
+        for paginator in self.paginators:
+            result.append(paginator.name)
         return result
 
     def get_client_required_import_record_groups(self) -> List[ImportRecordGroup]:

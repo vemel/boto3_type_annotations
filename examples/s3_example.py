@@ -2,16 +2,15 @@
 
 import boto3
 
-from mypy_boto3.s3 import Client, ServiceResource, boto3_client, boto3_resource
-from mypy_boto3.s3.helpers import get_bucket_exists_waiter
-from mypy_boto3.s3.waiter import BucketExistsWaiter
+from mypy_boto3 import s3
+import mypy_boto3.s3.helpers as s3_helpers
 
 
 def s3_resource_example() -> None:
     # optionally use Session type from botocore
     session = boto3.session.Session(region_name="us-west-1")
 
-    resource: ServiceResource = session.resource("s3")
+    resource: s3.ServiceResource = session.resource("s3")
 
     # IDE autocomplete suggests function name and arguments here
     bucket = resource.Bucket("bucket")
@@ -25,9 +24,9 @@ def s3_resource_example() -> None:
 
 def s3_client_example() -> None:
     # equivalent of `boto3.client('s3')`
-    client: Client = boto3.client("s3")
+    client: s3.Client = boto3.client("s3")
 
-    bucket_exists_waiter: BucketExistsWaiter = client.get_waiter("bucket_exists")
+    bucket_exists_waiter: s3.BucketExistsWaiter = client.get_waiter("bucket_exists")
 
     # (mypy) error: Unexpected keyword argument "bucket" for "wait" of "BucketExistsWaiter"
     bucket_exists_waiter.wait(bucket="bucket")
@@ -55,12 +54,12 @@ def helpers_example() -> None:
     session = boto3.session.Session(region_name="us-west-1")
 
     # equivalent of `boto3.client('s3')`
-    client = boto3_client()
-    resource = boto3_resource(session)
+    client = s3_helpers.boto3_client()
+    resource = s3_helpers.boto3_resource(session)
 
     _bucket = resource.Bucket("bucket")
 
-    bucket_exists_waiter = get_bucket_exists_waiter(client)
+    bucket_exists_waiter = s3_helpers.get_bucket_exists_waiter(client)
 
     # (mypy) error: Unexpected keyword argument "bucket" for "wait" of "BucketExistsWaiter"
     bucket_exists_waiter.wait(bucket="bucket")
