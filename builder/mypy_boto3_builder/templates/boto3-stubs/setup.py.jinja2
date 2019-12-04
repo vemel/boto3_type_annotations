@@ -38,20 +38,21 @@ setup(
         "typing_extensions; python_version < '3.8'",
     ],
     extras_require={
+        "master": ["{{ master_pypi_name }}=={{ boto3_version }}"]},
         "all": [
             {% for service_name in package.service_names -%}
-            "{{ service_name.pypi_name }}=={{ boto3_version }}",
+            "{{ service_name.pypi_name }}[master]=={{ boto3_version }}",
             {% endfor -%}
         ],
         "essential": [
             {% for service_name in package.service_names -%}
             {% if service_name.is_essential() -%}
-            "{{ service_name.pypi_name }}=={{ boto3_version }}",
+            "{{ service_name.pypi_name }}[master]=={{ boto3_version }}",
             {% endif -%}
             {% endfor -%}
         ],
         {% for service_name in package.service_names -%}
-        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}=={{ boto3_version }}"],
+        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}[master]=={{ boto3_version }}"],
         {% endfor -%}
     },
     zip_safe=False,
