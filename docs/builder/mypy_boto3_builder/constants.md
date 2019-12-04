@@ -12,8 +12,7 @@ Constants and paths.
 - `PYPI_NAME` - PyPI module name: `'mypy-boto3'`
 - `DUMMY_REGION` - Random region to initialize services: `'us-west-2'`
 - `TEMPLATES_PATH` - Jinja2 templates for boto3-stubs: `Path(__file__).parent / 'templates'`
-- `BOTO3_STUBS_STATIC_PATH` - Staitc *.pyi files for boto3-stubs: `Path(__file__).parent / 'boto3_stubs_static'`
-- `MYPY_BOTO3_STATIC_PATH` - Staitc *.pyi files for mypy-boto3: `Path(__file__).parent / 'mypy_boto3_static'`
+- `BOTO3_STUBS_STATIC_PATH` - Static *.pyi files for boto3-stubs: `Path(__file__).parent / 'boto3_stubs_static'`
 - `BOTO3_STUBS_NAME` - Boto3 stubs module name: `'boto3-stubs'`
 - `LINE_LENGTH` - Max line length for boto3 docs: `100`
 - `TYPE_DEFS_NAME` - type defs module name: `'type_defs'`
