@@ -27,6 +27,8 @@ Use `boto3` with `{{ master_module_name }}` in your project and enjoy type check
 import boto3
 
 from {{ master_module_name }} import {{ service_name.import_name }}
+# alternative import if you do not want to install {{ master_module_name }} package
+# import {{ service_name.module_name }} as {{ service_name.import_name }}
 
 # Use this client as usual, now mypy can check if your code is valid.
 client: {{ service_name.import_name }}.Client = boto3.client("{{ service_name.boto3_name }}")
