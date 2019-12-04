@@ -55,7 +55,9 @@ pip install boto3-stubs[all]
 ```python
 import boto3
 
-client = boto3.client("s3")
+from mypy_boto3.s3 import Client, ServiceResource
+
+client: Client = boto3.client("s3")
 
 # IDE autocomplete suggests function name and arguments here
 client.create_bucket(Bucket="bucket")
@@ -66,7 +68,7 @@ client.get_object(Bucket="bucket")
 # (mypy) error: Argument "Key" to "get_object" of "Client" has incompatible type "None"; expected "str"
 client.get_object(Bucket="bucket", Key=None)
 
-resource = boto3.Session(region_name="us-west-1").resource("s3")
+resource: ServiceResource = boto3.Session(region_name="us-west-1").resource("s3")
 
 # IDE autocomplete suggests function name and arguments here
 bucket = resource.Bucket("bucket")
@@ -106,11 +108,10 @@ Please help me to extend this section.
 
 ### Explicit type annotations
 
-`mypy` correctly resolves types from `boto3-stubs`, but auto-complete in your IDE
-probably does not fully support overloaded functions, so methods and arguments
-auto-complete will not be very useful.
+Automatic type discovery is too stressful for PyCharm and does not work in VSCode.
+So implicit type annotations support has been removed as it is not useful.
 
-To help IDE to resolve types correctly, you can set types explicitly.
+To get full advantage of `boto3-stubs`, you can set types explicitly.
 
 ```python
 import boto3
@@ -119,10 +120,14 @@ from mypy_boto3.ec2 import Client, ServiceResource
 from mypy_boto3.ec2.waiters import BundleTaskCompleteWaiter
 from mypy_boto3.ec2.paginators import DescribeVolumesPaginator
 
+# covered by boto3-stubs, no explicit type required
 session = boto3.session.Session(region_name="us-west-1")
 
+# by default it is botocore.client.BaseClient, but we explicitly
+# set it to S3.Client
 ec2_client: Client = boto3.client("ec2", region_name="us-west-1")
 
+# same for resource
 ec2_resource: ServiceResource = session.resource("ec2")
 
 bundle_task_complete_waiter: BundleTaskCompleteWaiter = ec2_client.get_waiter("bundle_task_complete")
@@ -130,8 +135,8 @@ bundle_task_complete_waiter: BundleTaskCompleteWaiter = ec2_client.get_waiter("b
 describe_volumes_paginator: DescribeVolumesPaginator = ec2_client.get_paginator("describe_volumes")
 
 # ec2_client, ec2_resource, bundle_task_complete_waiter and describe_volumes_paginator
-# now have correct type so IDE automoplete for methods, arguments and return types
-# works as expected
+# now have correct type so IDE autocomplete for methods, arguments and return types
+# works as expected. You do not need to specify types explicitly further
 ```
 
 ### Pylint compatibility

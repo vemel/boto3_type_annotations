@@ -68,7 +68,7 @@ class Session:
         aws_secret_access_key: str = None,
         aws_session_token: str = None,
         config: Config = None,
-    ) -> Any: ...
+    ) -> BaseClient: ...
 
 {% if package.resource_service_names %}
     def resource(
@@ -83,5 +83,5 @@ class Session:
         aws_secret_access_key: str = None,
         aws_session_token: str = None,
         config: Config = None,
-    ) -> Any: ...
+    ) -> ServiceResource: ...
 {% endif %}

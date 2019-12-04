@@ -5,7 +5,7 @@ from typing import Any, Optional, Union, overload
 
 import boto3.session
 from boto3.session import Session
-from botocore.client import Client
+from botocore.client import BaseClient
 from botocore.config import Config
 from botocore.service_resource import ServiceResource
 
@@ -48,7 +48,7 @@ def client(
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
     config: Config = None,
-) -> Any: ...
+) -> BaseClient: ...
 
 {% if package.resource_service_names %}
 def resource(
@@ -62,5 +62,5 @@ def resource(
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
     config: Config = None,
-) -> Any: ...
+) -> ServiceResource: ...
 {% endif %}
