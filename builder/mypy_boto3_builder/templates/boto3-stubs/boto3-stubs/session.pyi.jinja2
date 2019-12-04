@@ -1,7 +1,25 @@
 # pylint: disable=unused-argument,multiple-statements,unused-import
-{% with import_record_groups=package.get_session_required_import_record_groups() -%}
-    {% include "common/import_groups.py.jinja2" with context -%}
-{% endwith -%}
+from __future__ import annotations
+
+import sys
+from typing import Any, List, Union, overload
+
+import boto3
+import boto3.utils
+from boto3.exceptions import ResourceNotExistsError, UnknownAPIVersionError
+from boto3.resources.base import ServiceResource
+from boto3.resources.factory import ResourceFactory
+from botocore.client import BaseClient
+from botocore.config import Config
+from botocore.credentials import Credentials
+from botocore.loaders import Loader
+from botocore.model import ServiceModel
+from botocore.waiter import Waiter
+
+if sys.version_info >= (3, 8):
+    from typing import Literal
+else:
+    from typing_extensions import Literal
 
 
 class Session:
@@ -40,8 +58,30 @@ class Session:
     def get_credentials(self) -> Credentials: ...
     def _register_default_handlers(self) -> None: ...
 
-{% filter indent(4, True) -%}
-    {% for method in package.session_methods -%}
-        {% include "common/method.py.jinja2" with context -%}
-    {% endfor -%}
-{% endfilter -%}
+    def client(
+        self,
+        service_name: Literal[{% for sevice_name in package.service_names %}{{ '"' + sevice_name.boto3_name + '"' }}{{ "," if not loop.last else "" }}{% endfor %}],
+        region_name: str = None,
+        api_version: str = None,
+        use_ssl: bool = None,
+        verify: Union[str, bool] = None,
+        endpoint_url: str = None,
+        aws_access_key_id: str = None,
+        aws_secret_access_key: str = None,
+        aws_session_token: str = None,
+        config: Config = None,
+    ) -> Any: ...
+
+    def resource(
+        self,
+        service_name: Literal[{% for sevice_name in package.resource_service_names %}{{ '"' + sevice_name.boto3_name + '"' }}{{ "," if not loop.last else "" }}{% endfor %}],
+        region_name: str = None,
+        api_version: str = None,
+        use_ssl: bool = None,
+        verify: Union[str, bool] = None,
+        endpoint_url: str = None,
+        aws_access_key_id: str = None,
+        aws_secret_access_key: str = None,
+        aws_session_token: str = None,
+        config: Config = None,
+    ) -> Any: ...

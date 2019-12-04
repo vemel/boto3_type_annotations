@@ -1,6 +1,11 @@
 # pylint: disable=unused-argument,multiple-statements,super-init-not-called
+import sys
 from typing import Dict, Any, Iterable, List
-from mypy_boto3.type_defs import TypedDict
+
+if sys.version_info >= (3, 8):
+    from typing import TypedDict
+else:
+    from typing_extensions import TypedDict
 
 class Tag(TypedDict):
     Key: str

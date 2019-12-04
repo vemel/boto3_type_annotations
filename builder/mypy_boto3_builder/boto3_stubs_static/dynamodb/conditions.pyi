@@ -1,8 +1,13 @@
 # pylint: disable=unused-argument,multiple-statements,no-self-use,super-init-not-called
 from __future__ import annotations
+
+import sys
 from typing import Pattern, Any, List, NamedTuple
 
-from mypy_boto3.type_defs import TypedDict, Literal
+if sys.version_info >= (3, 8):
+    from typing import TypedDict, Literal
+else:
+    from typing_extensions import TypedDict, Literal
 
 ATTR_NAME_REGEX: Pattern[str]
 
