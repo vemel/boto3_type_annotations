@@ -50,6 +50,7 @@ class DocstringParser:
 
         for key in list(self.arguments_map):
             if key.startswith("*"):
+                print("remove", self.prefix, self.arguments_map.keys())
                 del self.arguments_map[key]
 
         self.arguments_map[name] = Argument(name, Type.Any, Type.none)

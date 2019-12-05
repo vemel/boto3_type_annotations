@@ -11,11 +11,17 @@ from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
-from mypy_boto3_builder.parsers.helpers import parse_method, get_public_methods
+from mypy_boto3_builder.parsers.helpers import (
+    parse_method,
+    get_public_methods,
+)
 from mypy_boto3_builder.parsers.boto3_utils import get_boto3_client
+from mypy_boto3_builder.parsers.shape_parser import ShapeParser
 
 
-def parse_client(session: Session, service_name: ServiceName) -> Client:
+def parse_client(
+    session: Session, service_name: ServiceName, shape_parser: ShapeParser
+) -> Client:
     """
     Parse boto3 client to a structure.
 
@@ -45,7 +51,9 @@ def parse_client(session: Session, service_name: ServiceName) -> Client:
     )
 
     for method_name, public_method in public_methods.items():
-        method = parse_method("Client", method_name, public_method)
+        method = shape_parser.get_method(method_name)
+        if not method:
+            method = parse_method("Client", method_name, public_method)
         method.docstring = (
             f"[Client.{method_name} documentation]"
             f"({service_name.doc_link}.Client.{method_name})"

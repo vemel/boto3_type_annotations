@@ -98,6 +98,7 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
             return_type=return_type,
         )
 
+    print(parent_name, name, len(docstring))
     prefix = f"{get_class_prefix(parent_name)}{get_class_prefix(name)}"
     arg_spec_parser = ArgSpecParser(prefix)
     arguments = arg_spec_parser.get_function_arguments(method)

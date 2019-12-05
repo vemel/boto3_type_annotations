@@ -21,3 +21,11 @@ ec2_tag_type = TypeTypedDict(
         TypedDictAttribute("Value", Type.str, False),
     ],
 )
+
+waiter_config_type = TypeTypedDict(
+    "WaiterConfigTypeDef",
+    [
+        TypedDictAttribute("Delay", Type.int, False),
+        TypedDictAttribute("MaxAttempts", Type.int, False),
+    ],
+)

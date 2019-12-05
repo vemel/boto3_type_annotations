@@ -13,6 +13,7 @@ from mypy_boto3_builder.parsers.client import parse_client
 from mypy_boto3_builder.parsers.service_resource import parse_service_resource
 from mypy_boto3_builder.parsers.helpers import get_public_methods, parse_method
 from mypy_boto3_builder.parsers.boto3_utils import get_boto3_client
+from mypy_boto3_builder.parsers.shape_parser import ShapeParser
 from mypy_boto3_builder.logger import get_logger
 
 
@@ -30,9 +31,13 @@ def parse_service_package(
         ServiceModule structure.
     """
     logger = get_logger()
+    session_loader = session._loader  # pylint: disable=protected-access
+    service_shape = session_loader.load_service_model(
+        service_name.boto3_name, "service-2"
+    )
     logger.debug("Parsing Client")
-    client = parse_client(session, service_name)
-
+    shape_parser = ShapeParser(service_shape)
+    client = parse_client(session, service_name, shape_parser)
     service_resource = parse_service_resource(session, service_name)
 
     result = ServicePackage(
@@ -48,22 +53,23 @@ def parse_service_package(
         waiter = client.boto3_client.get_waiter(waiter_name)
         waiter_record = Waiter(
             name=f"{waiter.name}Waiter",
-            class_name=waiter.name,
+            docstring=(
+                f"[Waiter.{waiter.name} documentation]"
+                f"({service_name.doc_link}.Waiter.{waiter.name})"
+            ),
             waiter_name=waiter_name,
             boto3_waiter=waiter,
-            docstring=f"Waiter for `{waiter_name}` name.",
         )
         public_methods = get_public_methods(waiter)
         for method_name, public_method in public_methods.items():
             method = parse_method(waiter_name, method_name, public_method)
             method.docstring = (
-                f"[{waiter_name}.{method_name} documentation]"
-                f"({service_name.doc_link}.Waiter.{waiter_name}.{method_name})"
+                f"[{waiter.name}.{method_name} documentation]"
+                f"({service_name.doc_link}.Waiter.{waiter.name}.{method_name})"
             )
             waiter_record.methods.append(method)
         result.waiters.append(waiter_record)
 
-    session_loader = session._loader  # pylint: disable=protected-access
     if service_name.boto3_name in session_loader.list_available_services(
         "paginators-1"
     ):
@@ -77,10 +83,12 @@ def parse_service_package(
             paginator = session_client.get_paginator(operation_name)
             paginator_record = Paginator(
                 name=f"{paginator_name}Paginator",
-                class_name=paginator_name,
                 operation_name=operation_name,
                 boto3_paginator=paginator,
-                docstring=f"Paginator for `{operation_name}`",
+                docstring=(
+                    f"[Paginator.{paginator_name} documentation]"
+                    f"({service_name.doc_link}.Paginator.{paginator_name})"
+                ),
             )
             public_methods = get_public_methods(paginator)
             for method_name, public_method in public_methods.items():
@@ -94,18 +102,10 @@ def parse_service_package(
 
     for paginator in result.paginators:
         method = paginator.get_client_method()
-        method.docstring = (
-            f"[Paginator.{paginator.class_name} documentation]"
-            f"({service_name.doc_link}.Paginator.{paginator.class_name})"
-        )
         result.client.methods.append(method)
 
     for waiter in result.waiters:
         method = waiter.get_client_method()
-        method.docstring = (
-            f"[Waiter.{waiter.class_name} documentation]"
-            f"({service_name.doc_link}.Waiter.{waiter.class_name})"
-        )
         result.client.methods.append(method)
 
     result.typed_dicts = result.extract_typed_dicts(result.get_types(), {})

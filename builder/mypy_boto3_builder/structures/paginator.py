@@ -27,7 +27,6 @@ class Paginator(ClassRecord):
     """
 
     operation_name: str = "operation_name"
-    class_name: str = "Paginator"
     boto3_paginator: Boto3Paginator = None
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [TypeClass(Boto3Paginator, alias="Boto3Paginator")]
@@ -40,6 +39,7 @@ class Paginator(ClassRecord):
         return Method(
             name="get_paginator",
             decorators=[Type.overload],
+            docstring=self.docstring,
             arguments=[
                 Argument("self", None),
                 Argument("operation_name", TypeLiteral(self.operation_name)),
