@@ -46,7 +46,7 @@ def main() -> None:
 
     for service_name in args.service_names:
         if service_name.name not in available_services:
-            logger.warning(f"Service {service_name.name} is not avaialble, skipping.")
+            logger.warning(f"Service {service_name.name} is not available, skipping.")
             continue
 
         service_name.boto3_version = boto3_version

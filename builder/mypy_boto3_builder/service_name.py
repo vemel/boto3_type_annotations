@@ -189,6 +189,7 @@ class ServiceNameCatalog:
         ServiceName("kinesis", "Kinesis"),
         ServiceName("kinesis-video-archived-media", "KinesisVideoArchivedMedia"),
         ServiceName("kinesis-video-media", "KinesisVideoMedia"),
+        ServiceName("kinesis-video-signaling", "KinesisVideoSignalingChannels"),
         ServiceName("kinesisanalytics", "KinesisAnalytics"),
         ServiceName("kinesisanalyticsv2", "KinesisAnalyticsV2"),
         ServiceName("kinesisvideo", "KinesisVideo"),
