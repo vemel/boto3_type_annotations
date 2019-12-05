@@ -34,9 +34,11 @@ Use `boto3` with `{{ master_module_name }}` in your project and enjoy type check
 ```python
 import boto3
 
-from {{ master_module_name }}.s3 import Client
+from {{ master_module_name }} import s3
+# alternative import if you do not want to install {{ master_module_name }} package
+# import mypy_boto3_s3 as s3
 
-client: Client = boto3.client("s3")
+client: s3.Client = boto3.client("s3")
 
 # Oh, it must be `Bucket`... Thanks, `mypy`!
 client.create_bucket(bucket="bucket")
