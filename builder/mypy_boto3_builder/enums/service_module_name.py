@@ -11,7 +11,6 @@ class ServiceModuleName(enum.Enum):
     paginator = "paginator"
     waiter = "waiter"
     type_defs = "type_defs"
-    helpers = "helpers"
 
     @property
     def file_name(self) -> str:

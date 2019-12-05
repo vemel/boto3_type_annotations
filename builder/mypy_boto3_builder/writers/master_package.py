@@ -75,10 +75,6 @@ def get_service_module_file_paths(
             service_module_path / "client.py",
             service_templates_path / "client.py.jinja2",
         ),
-        (
-            service_module_path / "helpers.py",
-            service_templates_path / "helpers.py.jinja2",
-        ),
     ]
     if package.service_resource:
         file_paths.append(

@@ -1,28 +1,20 @@
 """
 Parser that produces `structures.ServiceModule`.
 """
-from typing import Iterable
 
 from boto3.session import Session
 from botocore import xform_name
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
-from botocore.config import Config as Boto3Config
 
-from mypy_boto3_builder.type_defs import Literal
 from mypy_boto3_builder.structures.method import Method
-from mypy_boto3_builder.structures.function import Function
 from mypy_boto3_builder.structures.waiter import Waiter
 from mypy_boto3_builder.structures.paginator import Paginator
 from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.structures.argument import Argument
 from mypy_boto3_builder.service_name import ServiceName
-from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
-from mypy_boto3_builder.type_annotations.external_import import ExternalImport
-from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.type import Type
-from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.parsers.client import parse_client
 from mypy_boto3_builder.parsers.service_resource import parse_service_resource
 from mypy_boto3_builder.parsers.helpers import get_public_methods, parse_method
@@ -138,119 +130,5 @@ def parse_service_package(
         )
 
     result.typed_dicts = result.extract_typed_dicts(result.get_types(), {})
-    helper_arguments = [
-        Argument("session", TypeClass(Session), Type.none),
-        Argument("region_name", Type.str, Type.none),
-        Argument("api_version", Type.str, Type.none),
-        Argument("use_ssl", Type.bool, Type.none),
-        Argument(
-            "verify", TypeSubscript(Type.Union, [Type.str, Type.bool]), Type.none,
-        ),
-        Argument("endpoint_url", Type.str, Type.none),
-        Argument("aws_access_key_id", Type.str, Type.none),
-        Argument("aws_secret_access_key", Type.str, Type.none),
-        Argument("aws_session_token", Type.str, Type.none),
-        Argument("config", TypeClass(Boto3Config), Type.none),
-    ]
-    client_helper = Function(
-        name="boto3_client",
-        docstring=f"Equivalent of `boto3.client('{service_name.boto3_name}')`, returns a correct type.",
-        arguments=helper_arguments,
-        return_type=ExternalImport(
-            ImportString(service_name.module_name, ServiceModuleName.client.name),
-            result.client.name,
-        ),
-        body=get_helper_body(helper_arguments, "client", service_name),
-    )
-    result.helper_functions.append(client_helper)
-    if result.service_resource:
-        resource_helper = Function(
-            name="boto3_resource",
-            docstring=f"Equivalent of `boto3.resource('{service_name.boto3_name}')`, returns a correct type.",
-            arguments=helper_arguments,
-            return_type=ExternalImport(
-                ImportString(
-                    service_name.module_name, ServiceModuleName.service_resource.name
-                ),
-                result.service_resource.name,
-            ),
-            body=get_helper_body(helper_arguments, "resource", service_name),
-        )
-        result.helper_functions.append(resource_helper)
-
-    for paginator in result.paginators:
-        result.helper_functions.append(
-            Function(
-                name=f"get_{paginator.operation_name}_paginator",
-                docstring=f"Equivalent of `client.get_paginator('{paginator.operation_name}')`, returns a correct type.",
-                arguments=[
-                    Argument(
-                        name="client",
-                        type=ExternalImport(
-                            ImportString(
-                                service_name.module_name, ServiceModuleName.client.name
-                            ),
-                            result.client.name,
-                        ),
-                    )
-                ],
-                return_type=ExternalImport(
-                    ImportString(
-                        service_name.module_name, ServiceModuleName.paginator.name
-                    ),
-                    paginator.name,
-                ),
-                body=f"return client.get_paginator('{paginator.operation_name}')",
-            )
-        )
-
-    for waiter in result.waiters:
-        result.helper_functions.append(
-            Function(
-                name=f"get_{waiter.waiter_name}_waiter",
-                docstring=f"Equivalent of `client.get_waiter('{waiter.waiter_name}')`, returns a correct type.",
-                arguments=[
-                    Argument(
-                        name="client",
-                        type=ExternalImport(
-                            ImportString(
-                                service_name.module_name, ServiceModuleName.client.name
-                            ),
-                            result.client.name,
-                        ),
-                    )
-                ],
-                return_type=ExternalImport(
-                    ImportString(
-                        service_name.module_name, ServiceModuleName.waiter.name
-                    ),
-                    waiter.name,
-                ),
-                body=f"return client.get_waiter('{waiter.waiter_name}')",
-            )
-        )
 
     return result
-
-
-def get_helper_body(
-    arguments: Iterable[Argument],
-    function_name: Literal["resource", "client"],
-    service_name: ServiceName,
-) -> str:
-    helper_body_lines = [
-        "kwargs: Dict[str, Any] = {}",
-    ]
-    for argument in arguments:
-        if argument.name == "session":
-            continue
-        helper_body_lines.append(f"if {argument.name} is not None:")
-        helper_body_lines.append(f'    kwargs["{argument.name}"] = {argument.name}')
-    helper_body_lines.append("if session is not None:")
-    helper_body_lines.append(
-        f"    return session.{function_name}('{service_name.boto3_name}', **kwargs)"
-    )
-    helper_body_lines.append(
-        f"return boto3.{function_name}('{service_name.boto3_name}', **kwargs)"
-    )
-    return "\n".join(helper_body_lines)

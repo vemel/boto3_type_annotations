@@ -33,10 +33,6 @@ def write_service_package(package: ServicePackage, output_path: Path) -> List[Pa
             package_path / ServiceModuleName.client.file_name,
             module_templates_path / ServiceModuleName.client.template_name,
         ),
-        (
-            package_path / ServiceModuleName.helpers.file_name,
-            module_templates_path / ServiceModuleName.helpers.template_name,
-        ),
     ]
     if package.service_resource:
         file_paths.append(
