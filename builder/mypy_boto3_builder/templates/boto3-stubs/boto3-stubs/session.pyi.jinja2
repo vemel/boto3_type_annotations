@@ -5,9 +5,9 @@ from typing import Any, List, Union, overload
 import boto3
 import boto3.utils
 from boto3.exceptions import ResourceNotExistsError, UnknownAPIVersionError
-from boto3.resources.base import ServiceResource
 from boto3.resources.factory import ResourceFactory
 from botocore.client import BaseClient
+from botocore.service_resource import ServiceResource
 from botocore.config import Config
 from botocore.credentials import Credentials
 from botocore.loaders import Loader
