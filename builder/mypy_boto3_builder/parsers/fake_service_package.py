@@ -43,8 +43,13 @@ def parse_fake_service_package(
         result.service_resource = ServiceResource()
 
     for waiter_name in boto3_client.waiter_names:
-        waiter_class_name = f"{get_class_prefix(waiter_name)}Waiter"
-        result.waiters.append(Waiter(waiter_class_name, waiter_name=waiter_name))
+        real_class_name = get_class_prefix(waiter_name)
+        waiter_class_name = f"{real_class_name}Waiter"
+        result.waiters.append(
+            Waiter(
+                waiter_class_name, class_name=real_class_name, waiter_name=waiter_name,
+            )
+        )
 
     session_loader = session._loader  # pylint: disable=protected-access
     if service_name.boto3_name in session_loader.list_available_services(
@@ -56,7 +61,11 @@ def parse_fake_service_package(
         for paginator_name in sorted(paginator_config):
             operation_name = xform_name(paginator_name)
             result.paginators.append(
-                Paginator(f"{paginator_name}Paginator", operation_name=operation_name)
+                Paginator(
+                    f"{paginator_name}Paginator",
+                    class_name=paginator_name,
+                    operation_name=operation_name,
+                )
             )
 
     return result

@@ -27,6 +27,7 @@ class Paginator(ClassRecord):
     """
 
     operation_name: str = "operation_name"
+    class_name: str = "Paginator"
     boto3_paginator: Boto3Paginator = None
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [TypeClass(Boto3Paginator, alias="Boto3Paginator")]
@@ -38,7 +39,6 @@ class Paginator(ClassRecord):
     def get_client_method(self) -> Method:
         return Method(
             name="get_paginator",
-            docstring=f"Get Paginator for `{self.operation_name}` operation.",
             decorators=[Type.overload],
             arguments=[
                 Argument("self", None),

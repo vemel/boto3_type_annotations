@@ -4,17 +4,11 @@ Parser that produces `structures.ServiceModule`.
 
 from boto3.session import Session
 from botocore import xform_name
-from botocore.paginate import Paginator as Boto3Paginator
-from botocore.waiter import Waiter as Boto3Waiter
 
-from mypy_boto3_builder.structures.method import Method
 from mypy_boto3_builder.structures.waiter import Waiter
 from mypy_boto3_builder.structures.paginator import Paginator
 from mypy_boto3_builder.structures.service_package import ServicePackage
-from mypy_boto3_builder.structures.argument import Argument
 from mypy_boto3_builder.service_name import ServiceName
-from mypy_boto3_builder.type_annotations.type_class import TypeClass
-from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.parsers.client import parse_client
 from mypy_boto3_builder.parsers.service_resource import parse_service_resource
 from mypy_boto3_builder.parsers.helpers import get_public_methods, parse_method
@@ -54,6 +48,7 @@ def parse_service_package(
         waiter = client.boto3_client.get_waiter(waiter_name)
         waiter_record = Waiter(
             name=f"{waiter.name}Waiter",
+            class_name=waiter.name,
             waiter_name=waiter_name,
             boto3_waiter=waiter,
             docstring=f"Waiter for `{waiter_name}` name.",
@@ -82,6 +77,7 @@ def parse_service_package(
             paginator = session_client.get_paginator(operation_name)
             paginator_record = Paginator(
                 name=f"{paginator_name}Paginator",
+                class_name=paginator_name,
                 operation_name=operation_name,
                 boto3_paginator=paginator,
                 docstring=f"Paginator for `{operation_name}`",
@@ -96,38 +92,21 @@ def parse_service_package(
                 paginator_record.methods.append(method)
             result.paginators.append(paginator_record)
 
-    if result.paginators:
-        for paginator in result.paginators:
-            result.client.methods.append(paginator.get_client_method())
-        result.client.methods.append(
-            Method(
-                name="get_paginator",
-                docstring=(
-                    f"[Client.get_paginator documentation]"
-                    f"({service_name.doc_link}.Client.get_paginator)"
-                ),
-                arguments=[
-                    Argument("self", None),
-                    Argument("operation_name", Type.str),
-                ],
-                return_type=TypeClass(Boto3Paginator, alias="Boto3Paginator"),
-            )
+    for paginator in result.paginators:
+        method = paginator.get_client_method()
+        method.docstring = (
+            f"[Paginator.{paginator.class_name} documentation]"
+            f"({service_name.doc_link}.Paginator.{paginator.class_name})"
         )
+        result.client.methods.append(method)
 
-    if result.waiters:
-        for waiter in result.waiters:
-            result.client.methods.append(waiter.get_client_method())
-        result.client.methods.append(
-            Method(
-                name="get_waiter",
-                docstring=(
-                    f"[Client.get_waiter documentation]"
-                    f"({service_name.doc_link}.Client.get_waiter)"
-                ),
-                arguments=[Argument("self", None), Argument("waiter_name", Type.str),],
-                return_type=TypeClass(Boto3Waiter, alias="Boto3Waiter"),
-            )
+    for waiter in result.waiters:
+        method = waiter.get_client_method()
+        method.docstring = (
+            f"[Waiter.{waiter.class_name} documentation]"
+            f"({service_name.doc_link}.Waiter.{waiter.class_name})"
         )
+        result.client.methods.append(method)
 
     result.typed_dicts = result.extract_typed_dicts(result.get_types(), {})
 

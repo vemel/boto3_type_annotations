@@ -27,6 +27,7 @@ class Waiter(ClassRecord):
     """
 
     waiter_name: str = "waiter_name"
+    class_name: str = "Waiter"
     boto3_waiter: Boto3Waiter = None
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [TypeClass(Boto3Waiter, alias="Boto3Waiter")]
@@ -38,7 +39,6 @@ class Waiter(ClassRecord):
     def get_client_method(self) -> Method:
         return Method(
             name="get_waiter",
-            docstring=f"Get Waiter `{self.waiter_name}`.",
             decorators=[Type.overload],
             arguments=[
                 Argument("self", None),
