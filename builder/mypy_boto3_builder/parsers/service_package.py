@@ -11,7 +11,6 @@ from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.parsers.client import parse_client
 from mypy_boto3_builder.parsers.service_resource import parse_service_resource
-from mypy_boto3_builder.parsers.helpers import get_public_methods, parse_method
 from mypy_boto3_builder.parsers.shape_parser import ShapeParser
 from mypy_boto3_builder.logger import get_logger
 
@@ -79,17 +78,12 @@ def parse_service_package(
             ),
         )
 
-        # paginate_method = shape_parser.get_paginate_method(paginator_name)
-        # paginator.methods.append(paginate_method)
-
-        public_methods = get_public_methods(paginator)
-        for method_name, public_method in public_methods.items():
-            method = parse_method(paginator_name, method_name, public_method)
-            method.docstring = (
-                f"[{paginator_name}.{method_name} documentation]"
-                f"({service_name.doc_link}.Paginator.{paginator_name}.{method_name})"
-            )
-            paginator_record.methods.append(method)
+        paginate_method = shape_parser.get_paginate_method(paginator_name)
+        paginate_method.docstring = (
+            f"[{paginator_name}.paginate documentation]"
+            f"({service_name.doc_link}.Paginator.{paginator_name}.paginate)"
+        )
+        paginator_record.methods.append(paginate_method)
         result.paginators.append(paginator_record)
 
     for paginator in result.paginators:

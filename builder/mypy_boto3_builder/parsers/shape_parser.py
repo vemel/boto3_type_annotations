@@ -15,7 +15,10 @@ from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.utils.strings import get_class_prefix
 from mypy_boto3_builder.logger import get_logger
-from mypy_boto3_builder.type_maps.typed_dicts import waiter_config_type
+from mypy_boto3_builder.type_maps.typed_dicts import (
+    waiter_config_type,
+    paginator_config_type,
+)
 
 
 Shape = Dict[str, Any]
@@ -54,8 +57,11 @@ class ShapeParser:
     def _get_shape(self, name: str) -> Shape:
         return self._shapes.get(name, {})
 
-    def _get_operation(self, name: str) -> Optional[Shape]:
-        return self._operations.get(name)
+    def _get_operation(self, name: str) -> Shape:
+        return self._operations[name]
+
+    def _get_paginator(self, name: str) -> Shape:
+        return self._paginators_shape["pagination"][name]
 
     def get_paginator_names(self) -> List[str]:
         result: List[str] = []
@@ -86,8 +92,9 @@ class ShapeParser:
 
     def get_client_method(self, method_name: str) -> Optional[Method]:
         operation_name = get_class_prefix(method_name)
-        operation_shape = self._get_operation(operation_name)
-        if operation_shape is None:
+        try:
+            operation_shape = self._get_operation(operation_name)
+        except KeyError:
             return None
 
         return_type: FakeAnnotation = Type.none
@@ -154,13 +161,34 @@ class ShapeParser:
         return Type.Any
 
     def get_paginate_method(self, paginator_name: str) -> Method:
-        return Method("paginate", [], Type.none)
+        operation_name = paginator_name
+        paginator_shape = self._get_paginator(paginator_name)
+        operation_shape = self._get_operation(operation_name)
+        skip_argument_names: List[str] = []
+        input_token = paginator_shape["input_token"]
+        if isinstance(input_token, list):
+            skip_argument_names.extend(input_token)
+        else:
+            skip_argument_names.append(input_token)
+        skip_argument_names.append(paginator_shape["limit_key"])
+
+        arguments: List[Argument] = []
+
+        if "input" in operation_shape:
+            for argument in self._parse_arguments(operation_shape["input"]["shape"]):
+                if argument.name in skip_argument_names:
+                    continue
+                arguments.append(argument)
+
+        arguments.append(Argument("PaginationConfig", paginator_config_type, Type.none))
+
+        return_type = self._parse_return_type(operation_shape["output"]["shape"])
+
+        return Method("paginate", arguments, return_type)
 
     def get_wait_method(self, waiter_name: str) -> Method:
         operation_name = self._waiters_shape["waiters"][waiter_name]["operation"]
         operation_shape = self._get_operation(operation_name)
-        if operation_shape is None:
-            raise ValueError(f"Unknwon operation {operation_name}")
 
         arguments: List[Argument] = []
 

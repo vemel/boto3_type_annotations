@@ -29,3 +29,12 @@ waiter_config_type = TypeTypedDict(
         TypedDictAttribute("MaxAttempts", Type.int, False),
     ],
 )
+
+paginator_config_type = TypeTypedDict(
+    "PaginatorConfigTypeDef",
+    [
+        TypedDictAttribute("MaxItems", Type.int, False),
+        TypedDictAttribute("PageSize", Type.int, False),
+        TypedDictAttribute("StartingToken", Type.str, False),
+    ],
+)
