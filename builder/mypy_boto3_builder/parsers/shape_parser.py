@@ -1,5 +1,9 @@
 from typing import Dict, List, Any, Optional
 
+from boto3.session import Session
+from botocore.exceptions import UnknownServiceError
+
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.structures.argument import Argument
 from mypy_boto3_builder.structures.method import Method
 from mypy_boto3_builder.import_helpers.import_string import ImportString
@@ -17,8 +21,25 @@ Shape = Dict[str, Any]
 
 
 class ShapeParser:
-    def __init__(self, service_shape: Shape):
-        self._service_shape = service_shape
+    def __init__(self, session: Session, service_name: ServiceName):
+        loader = session._loader  # pylint: disable=protected-access
+        self._service_shape = loader.load_service_model(
+            service_name.boto3_name, "service-2"
+        )
+        self._waiters_shape: Shape = {}
+        try:
+            self._waiters_shape = loader.load_service_model(
+                service_name.boto3_name, "waiters-1"
+            )
+        except UnknownServiceError:
+            pass
+        self._paginators_shape: Shape = {}
+        try:
+            self._paginators_shape = loader.load_service_model(
+                service_name.boto3_name, "paginators-1"
+            )
+        except UnknownServiceError:
+            pass
         self.logger = get_logger()
 
     @property
@@ -34,6 +55,13 @@ class ShapeParser:
 
     def _get_operation(self, name: str) -> Optional[Shape]:
         return self._operations.get(name)
+
+    def get_paginator_names(self) -> List[str]:
+        result: List[str] = []
+        for name in self._paginators_shape.get("pagination", []):
+            result.append(name)
+        result.sort()
+        return result
 
     def _parse_arguments(self, shape_name: str) -> List[Argument]:
         shape = self._get_shape(shape_name)
@@ -55,7 +83,7 @@ class ShapeParser:
     def _parse_return_type(self, shape_name: str) -> FakeAnnotation:
         return self._parse_shape(shape_name)
 
-    def get_method(self, method_name: str) -> Optional[Method]:
+    def get_client_method(self, method_name: str) -> Optional[Method]:
         operation_name = get_class_prefix(method_name)
         operation_shape = self._get_operation(operation_name)
         if operation_shape is None:

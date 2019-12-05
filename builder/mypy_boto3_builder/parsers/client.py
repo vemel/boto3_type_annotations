@@ -51,7 +51,7 @@ def parse_client(
     )
 
     for method_name, public_method in public_methods.items():
-        method = shape_parser.get_method(method_name)
+        method = shape_parser.get_client_method(method_name)
         if not method:
             method = parse_method("Client", method_name, public_method)
         method.docstring = (

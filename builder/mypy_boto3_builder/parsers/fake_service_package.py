@@ -12,6 +12,7 @@ from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.parsers.boto3_utils import get_boto3_resource, get_boto3_client
 from mypy_boto3_builder.utils.strings import get_class_prefix
+from mypy_boto3_builder.parsers.shape_parser import ShapeParser
 
 
 def parse_fake_service_package(
@@ -29,6 +30,8 @@ def parse_fake_service_package(
     Returns:
         ServiceModule structure.
     """
+    shape_parser = ShapeParser(session, service_name)
+
     result = ServicePackage(
         name=service_name.module_name,
         pypi_name=service_name.pypi_name,
@@ -47,17 +50,10 @@ def parse_fake_service_package(
         waiter_class_name = f"{real_class_name}Waiter"
         result.waiters.append(Waiter(waiter_class_name, waiter_name=waiter_name))
 
-    session_loader = session._loader  # pylint: disable=protected-access
-    if service_name.boto3_name in session_loader.list_available_services(
-        "paginators-1"
-    ):
-        paginator_config = session_loader.load_service_model(
-            service_name.boto3_name, "paginators-1", None
-        )["pagination"]
-        for paginator_name in sorted(paginator_config):
-            operation_name = xform_name(paginator_name)
-            result.paginators.append(
-                Paginator(f"{paginator_name}Paginator", operation_name=operation_name)
-            )
+    for paginator_name in shape_parser.get_paginator_names():
+        operation_name = xform_name(paginator_name)
+        result.paginators.append(
+            Paginator(f"{paginator_name}Paginator", operation_name=operation_name)
+        )
 
     return result

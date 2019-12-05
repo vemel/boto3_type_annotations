@@ -12,7 +12,6 @@ from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.parsers.client import parse_client
 from mypy_boto3_builder.parsers.service_resource import parse_service_resource
 from mypy_boto3_builder.parsers.helpers import get_public_methods, parse_method
-from mypy_boto3_builder.parsers.boto3_utils import get_boto3_client
 from mypy_boto3_builder.parsers.shape_parser import ShapeParser
 from mypy_boto3_builder.logger import get_logger
 
@@ -31,12 +30,9 @@ def parse_service_package(
         ServiceModule structure.
     """
     logger = get_logger()
-    session_loader = session._loader  # pylint: disable=protected-access
-    service_shape = session_loader.load_service_model(
-        service_name.boto3_name, "service-2"
-    )
+    logger.debug("Parsing Shapes")
+    shape_parser = ShapeParser(session, service_name)
     logger.debug("Parsing Client")
-    shape_parser = ShapeParser(service_shape)
     client = parse_client(session, service_name, shape_parser)
     service_resource = parse_service_resource(session, service_name)
 
@@ -70,35 +66,28 @@ def parse_service_package(
             waiter_record.methods.append(method)
         result.waiters.append(waiter_record)
 
-    if service_name.boto3_name in session_loader.list_available_services(
-        "paginators-1"
-    ):
-        session_client = get_boto3_client(session, service_name)
-        paginator_config = session_loader.load_service_model(
-            service_name.boto3_name, "paginators-1", None
-        )["pagination"]
-        for paginator_name in sorted(paginator_config):
-            logger.debug(f"Parsing Paginator {paginator_name}")
-            operation_name = xform_name(paginator_name)
-            paginator = session_client.get_paginator(operation_name)
-            paginator_record = Paginator(
-                name=f"{paginator_name}Paginator",
-                operation_name=operation_name,
-                boto3_paginator=paginator,
-                docstring=(
-                    f"[Paginator.{paginator_name} documentation]"
-                    f"({service_name.doc_link}.Paginator.{paginator_name})"
-                ),
+    for paginator_name in shape_parser.get_paginator_names():
+        logger.debug(f"Parsing Paginator {paginator_name}")
+        operation_name = xform_name(paginator_name)
+        paginator = client.boto3_client.get_paginator(operation_name)
+        paginator_record = Paginator(
+            name=f"{paginator_name}Paginator",
+            operation_name=operation_name,
+            boto3_paginator=paginator,
+            docstring=(
+                f"[Paginator.{paginator_name} documentation]"
+                f"({service_name.doc_link}.Paginator.{paginator_name})"
+            ),
+        )
+        public_methods = get_public_methods(paginator)
+        for method_name, public_method in public_methods.items():
+            method = parse_method(paginator_name, method_name, public_method)
+            method.docstring = (
+                f"[{paginator_name}.{method_name} documentation]"
+                f"({service_name.doc_link}.Paginator.{paginator_name}.{method_name})"
             )
-            public_methods = get_public_methods(paginator)
-            for method_name, public_method in public_methods.items():
-                method = parse_method(paginator_name, method_name, public_method)
-                method.docstring = (
-                    f"[{paginator_name}.{method_name} documentation]"
-                    f"({service_name.doc_link}.Paginator.{paginator_name}.{method_name})"
-                )
-                paginator_record.methods.append(method)
-            result.paginators.append(paginator_record)
+            paginator_record.methods.append(method)
+        result.paginators.append(paginator_record)
 
     for paginator in result.paginators:
         method = paginator.get_client_method()
