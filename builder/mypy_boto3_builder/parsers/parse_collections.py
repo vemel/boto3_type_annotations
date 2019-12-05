@@ -61,6 +61,7 @@ def parse_collections(
                     Argument("UploadIdMarker", Type.str, Type.none),
                 ],
                 self_type,
+                decorators=[Type.classmethod],
             )
         )
         collection_record.methods.append(
@@ -68,6 +69,7 @@ def parse_collections(
                 "limit",
                 [Argument("cls", None), Argument("count", Type.int)],
                 self_type,
+                decorators=[Type.classmethod],
             )
         )
         collection_record.methods.append(
@@ -75,24 +77,20 @@ def parse_collections(
                 "page_size",
                 [Argument("cls", None), Argument("count", Type.int)],
                 self_type,
+                decorators=[Type.classmethod],
             )
         )
         collection_record.methods.append(
             Method(
                 "pages",
-                [Argument("cls", None), Argument("count", Type.int)],
+                [Argument("cls", None)],
                 TypeSubscript(
                     Type.List,
                     [InternalImport(name=object_class_name, service_name=service_name)],
                 ),
+                decorators=[Type.classmethod],
             )
         )
-
-        # public_methods = get_public_methods(collection_class)
-
-        # for method_name, public_method in public_methods.items():
-        #     method = parse_method(collection.name, method_name, public_method)
-        #     collection_record.methods.append(method)
 
         result.append(collection_record)
     return result

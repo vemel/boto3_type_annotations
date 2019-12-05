@@ -21,6 +21,8 @@ class Type:
     Callable = TypeAnnotation(Callable)
     IO = TypeAnnotation(IO)
     overload = TypeAnnotation(overload)
+    classmethod = TypeClass(classmethod)
+    staticmethod = TypeClass(staticmethod)
     none = TypeConstant(None)
     str = TypeClass(str)
     bool = TypeClass(bool)
