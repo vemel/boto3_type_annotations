@@ -75,7 +75,9 @@ class Waiter(DefinitionWithParams):
 class ResponseResource:
     def __init__(
         self, definition: ResponseResourceDefinition, resource_defs: Dict[str, Dict]
-    ) -> None: ...
+    ) -> None:
+        self.type: str
+        self.path: str
     @property
     def identifiers(self) -> List[Identifier]: ...
     @property
