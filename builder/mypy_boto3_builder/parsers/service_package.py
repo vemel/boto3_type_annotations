@@ -1,7 +1,6 @@
 """
 Parser that produces `structures.ServiceModule`.
 """
-import inspect
 from typing import Iterable
 
 from boto3.session import Session
@@ -111,6 +110,10 @@ def parse_service_package(
         result.client.methods.append(
             Method(
                 name="get_paginator",
+                docstring=(
+                    f"[Client.get_paginator documentation]"
+                    f"({service_name.doc_link}.Client.get_paginator)"
+                ),
                 arguments=[
                     Argument("self", None),
                     Argument("operation_name", Type.str),
@@ -125,7 +128,10 @@ def parse_service_package(
         result.client.methods.append(
             Method(
                 name="get_waiter",
-                docstring=inspect.getdoc(client.boto3_client.get_waiter) or "",
+                docstring=(
+                    f"[Client.get_waiter documentation]"
+                    f"({service_name.doc_link}.Client.get_waiter)"
+                ),
                 arguments=[Argument("self", None), Argument("waiter_name", Type.str),],
                 return_type=TypeClass(Boto3Waiter, alias="Boto3Waiter"),
             )
