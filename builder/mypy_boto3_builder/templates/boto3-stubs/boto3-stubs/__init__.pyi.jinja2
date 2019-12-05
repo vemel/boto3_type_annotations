@@ -5,9 +5,9 @@ from typing import Any, Optional, Union, overload
 
 import boto3.session
 from boto3.session import Session
+from boto3.resources.base import ServiceResource
 from botocore.client import BaseClient
 from botocore.config import Config
-from botocore.service_resource import ServiceResource
 
 if sys.version_info >= (3, 8):
     from typing import Literal
