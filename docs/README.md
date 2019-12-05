@@ -42,7 +42,7 @@ pip install boto3-stubs[essential]
 pip install boto3-stubs[acm,apigateway]
 
 # or install annotations for all services
-# WARNING: this requires ~50 MB of space
+# WARNING: this requires ~40 MB of space
 pip install boto3-stubs[all]
 ```
 
