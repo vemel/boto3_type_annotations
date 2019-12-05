@@ -9,3 +9,4 @@
         - [Method Type Map](method_type_map.md#method-type-map)
         - [Syntax Type Map](syntax_type_map.md#syntax-type-map)
         - [Type Map](type_map.md#type-map)
+        - [Typed Dicts](typed_dicts.md#typed-dicts)

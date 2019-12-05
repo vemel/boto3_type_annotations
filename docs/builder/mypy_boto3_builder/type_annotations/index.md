@@ -14,7 +14,6 @@ to a valid Python code.
         - [TypeAnnotation](type_annotation.md#typeannotation)
         - [TypeClass](type_class.md#typeclass)
         - [TypeConstant](type_constant.md#typeconstant)
-        - [TypeDef](type_def.md#typedef)
         - [TypeLiteral](type_literal.md#typeliteral)
         - [TypeSubscript](type_subscript.md#typesubscript)
         - [TypeTypedDict](type_typed_dict.md#typetypeddict)
