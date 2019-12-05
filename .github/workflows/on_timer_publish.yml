@@ -28,6 +28,7 @@ jobs:
             echo No new versions found, skipping the rest
             SKIP="1"
           fi
+          SKIP="1"
           echo "##[set-output name=skip;]$(echo ${SKIP})"
       - name: Install builder
         env:
