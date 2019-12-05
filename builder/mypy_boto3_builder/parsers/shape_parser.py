@@ -15,6 +15,7 @@ from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.utils.strings import get_class_prefix
 from mypy_boto3_builder.logger import get_logger
+from mypy_boto3_builder.type_maps.typed_dicts import waiter_config_type
 
 
 Shape = Dict[str, Any]
@@ -29,7 +30,7 @@ class ShapeParser:
         self._waiters_shape: Shape = {}
         try:
             self._waiters_shape = loader.load_service_model(
-                service_name.boto3_name, "waiters-1"
+                service_name.boto3_name, "waiters-2"
             )
         except UnknownServiceError:
             pass
@@ -151,3 +152,21 @@ class ShapeParser:
             return type_subscript
         self.logger.warning(f"Unknown shape: {shape}")
         return Type.Any
+
+    def get_paginate_method(self, paginator_name: str) -> Method:
+        return Method("paginate", [], Type.none)
+
+    def get_wait_method(self, waiter_name: str) -> Method:
+        operation_name = self._waiters_shape["waiters"][waiter_name]["operation"]
+        operation_shape = self._get_operation(operation_name)
+        if operation_shape is None:
+            raise ValueError(f"Unknwon operation {operation_name}")
+
+        arguments: List[Argument] = []
+
+        if "input" in operation_shape:
+            arguments = self._parse_arguments(operation_shape["input"]["shape"])
+
+        arguments.append(Argument("WaiterConfig", waiter_config_type, Type.none))
+
+        return Method(name="wait", arguments=arguments, return_type=Type.none)

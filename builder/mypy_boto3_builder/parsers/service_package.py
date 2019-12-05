@@ -56,14 +56,13 @@ def parse_service_package(
             waiter_name=waiter_name,
             boto3_waiter=waiter,
         )
-        public_methods = get_public_methods(waiter)
-        for method_name, public_method in public_methods.items():
-            method = parse_method(waiter_name, method_name, public_method)
-            method.docstring = (
-                f"[{waiter.name}.{method_name} documentation]"
-                f"({service_name.doc_link}.Waiter.{waiter.name}.{method_name})"
-            )
-            waiter_record.methods.append(method)
+
+        wait_method = shape_parser.get_wait_method(waiter.name)
+        wait_method.docstring = (
+            f"[{waiter.name}.wait documentation]"
+            f"({service_name.doc_link}.Waiter.{waiter.name}.wait)"
+        )
+        waiter_record.methods.append(wait_method)
         result.waiters.append(waiter_record)
 
     for paginator_name in shape_parser.get_paginator_names():
@@ -79,6 +78,10 @@ def parse_service_package(
                 f"({service_name.doc_link}.Paginator.{paginator_name})"
             ),
         )
+
+        # paginate_method = shape_parser.get_paginate_method(paginator_name)
+        # paginator.methods.append(paginate_method)
+
         public_methods = get_public_methods(paginator)
         for method_name, public_method in public_methods.items():
             method = parse_method(paginator_name, method_name, public_method)
