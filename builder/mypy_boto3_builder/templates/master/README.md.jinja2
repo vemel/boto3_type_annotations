@@ -40,7 +40,7 @@ from {{ master_module_name }} import s3
 
 client: s3.Client = boto3.client("s3")
 
-# Oh, it must be `Bucket`... Thanks, `mypy`!
+# Oh, it must be `Bucket`... Thanks, mypy!
 client.create_bucket(bucket="bucket")
 ```
 
