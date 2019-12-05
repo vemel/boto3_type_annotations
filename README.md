@@ -74,7 +74,7 @@ bucket = resource.Bucket("bucket")
 # (mypy) error: Unexpected keyword argument "key" for "upload_file" of "Bucket"; did you mean "Key"?
 bucket.upload_file(Filename="my.txt", key="my-txt")
 
-# waiters and paginators are also annotated
+# waiters and paginators are annotated as well
 waiter: s3.BucketExistsWaiter = client.get_waiter("bucket_exists")
 paginator: s3.ListMultipartUploadsPaginator = client.get_paginator(
     "list_multipart_uploads"
@@ -98,8 +98,8 @@ paginator: s3.ListMultipartUploadsPaginator = client.get_paginator(
 - Install [mypy](https://github.com/python/mypy)
 - Set path to `mypy` in `mypy plugin` settings
 - Install `boto3-stubs` with `boto3` services you use
-- Use [explicit type annotations](#explicit-type-annotations) because
-  function overload works extremely slow
+- Use [explicit type annotations](#explicit-type-annotations), but `client.get_waiter`
+  and `client.get_paginator` should return correct types without explicit type annotations
 
 Official `mypy` plugin does not work for some reason for me. If you know
 how to setup it correctly, please hep me to update this section.
@@ -120,23 +120,21 @@ To get full advantage of `boto3-stubs`, you can set types explicitly.
 ```python
 import boto3
 
-from mypy_boto3.ec2 import Client, ServiceResource
-from mypy_boto3.ec2.waiters import BundleTaskCompleteWaiter
-from mypy_boto3.ec2.paginators import DescribeVolumesPaginator
+from mypy_boto3 import ec2
 
 # covered by boto3-stubs, no explicit type required
 session = boto3.session.Session(region_name="us-west-1")
 
 # by default it is botocore.client.BaseClient, but we explicitly
-# set it to S3.Client
-ec2_client: Client = boto3.client("ec2", region_name="us-west-1")
+# set it to EC2.Client
+ec2_client: ec2.Client = boto3.client("ec2", region_name="us-west-1")
 
 # same for resource
-ec2_resource: ServiceResource = session.resource("ec2")
+ec2_resource: ec2.ServiceResource = session.resource("ec2")
 
-bundle_task_complete_waiter: BundleTaskCompleteWaiter = ec2_client.get_waiter("bundle_task_complete")
-
-describe_volumes_paginator: DescribeVolumesPaginator = ec2_client.get_paginator("describe_volumes")
+# PyCharm does not need explicit type annotations here, but VSCode does
+bundle_task_complete_waiter: ec2.BundleTaskCompleteWaiter = ec2_client.get_waiter("bundle_task_complete")
+describe_volumes_paginator: ec2.DescribeVolumesPaginator = ec2_client.get_paginator("describe_volumes")
 
 # ec2_client, ec2_resource, bundle_task_complete_waiter and describe_volumes_paginator
 # now have correct type so IDE autocomplete for methods, arguments and return types
