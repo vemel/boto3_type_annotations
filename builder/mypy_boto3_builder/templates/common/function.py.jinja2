@@ -11,17 +11,15 @@
 {% endfilter -%}
 {{ ') -> ' -}}{{ function.return_type.render() -}}{{ ':\n' -}}
 {% filter indent(4, True) -%}
-    {% with docstring = function.docstring if render_docstrings else None -%}
-        {% if not docstring and not function.body -%}
-            {{ 'pass' -}}
-        {% endif -%}
-        {% if docstring -%}
-            {{ '"""\n' -}}
-            {{ docstring -}}
-            {{ '\n' -}}
-            {{ '"""\n' -}}
-        {% endif -%}
-    {% endwith -%}
+    {% if not function.docstring and not function.body -%}
+        {{ 'pass' -}}
+    {% endif -%}
+    {% if function.docstring -%}
+        {{ '"""\n' -}}
+        {{ function.docstring -}}
+        {{ '\n' -}}
+        {{ '"""\n' -}}
+    {% endif -%}
     {% if function.body -%}
         {{ function.body -}}
         {{ '\n' -}}

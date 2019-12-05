@@ -30,24 +30,10 @@
 
     {{ 'class ' -}}
     {{ typed_dict.name -}}
-    {{ "(" -}}
-    {{ '_Required' -}}
-    {{ typed_dict.name -}}
-    {{ ", " -}}
-    {{ '_Optional' -}}
-    {{ typed_dict.name -}}
-    {{ ")" -}}
-    {{ ':\n' -}}
-    {% filter indent(4, True) -%}
-        {% if typed_dict.docstring -%}
-            {{ '"""\n' -}}
-            {{ typed_dict.docstring -}}
-            {{ '\n' -}}
-            {{ '"""\n' -}}
-        {% else -%}
-            {{ "    pass\n" -}}
-        {% endif -%}
-    {% endfilter -%}
+    {{ '(' -}}
+    {{ '_Required' -}}{{ typed_dict.name -}}
+    {{ ', _Optional' -}}{{ typed_dict.name -}}
+    {{ '):\n    pass\n' -}}
 {% else -%}
     {{ typed_dict.name -}}
     {{ ' = TypedDict("' -}}

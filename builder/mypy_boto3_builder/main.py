@@ -57,7 +57,6 @@ def main() -> None:
         master_module_name=MODULE_NAME,
         boto3_stubs_name=BOTO3_STUBS_NAME,
         boto3_version=boto3_version,
-        render_docstrings=not args.no_docs,
         doc_line_length=LINE_LENGTH - 4,
         clean_doc=clean_doc,
     )
