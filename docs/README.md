@@ -36,13 +36,14 @@ Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-
 ```bash
 # install `boto3` type annotations
 # for ec2, s3, rds, lambda, sqs, dynamo and cloudformation
+# Consumes ~10 MB of space
 pip install boto3-stubs[essential]
 
 # install annotations for other services
 pip install boto3-stubs[acm,apigateway]
 
 # or install annotations for all services
-# WARNING: this requires ~40 MB of space
+# WARNING: this requires ~30 MB of space
 pip install boto3-stubs[all]
 ```
 
