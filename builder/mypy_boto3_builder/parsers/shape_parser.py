@@ -247,6 +247,9 @@ class ShapeParser:
         return type_subscript
 
     def _parse_shape_structure(self, shape: StructureShape) -> FakeAnnotation:
+        if not shape.members.items():
+            return TypeSubscript(Type.Dict, [Type.str, Type.Any])
+
         required = shape.required_members
         typed_dict_name = f"{shape.name}TypeDef"
         if typed_dict_name in self._typed_dict_map:
@@ -325,7 +328,7 @@ class ShapeParser:
         arguments: List[Argument] = [Argument("self", None)]
 
         if operation_shape.input_shape is not None:
-            arguments = self._parse_arguments(operation_shape.input_shape)
+            arguments.extend(self._parse_arguments(operation_shape.input_shape))
 
         arguments.append(Argument("WaiterConfig", waiter_config_type, Type.none))
 

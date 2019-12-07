@@ -37,10 +37,10 @@ def s3_client_example() -> None:
     # (mypy) error: Missing positional argument "Key" in call to "get_object" of "Client"
     client.get_object(Bucket="bucket")
 
-    # (mypy) error: TypedDict "ClientGetObjectResponseTypeDef" has no key 'expiration'
+    # (mypy) error: TypedDict "GetObjectOutputTypeDef" has no key 'expiration'
     _expiration = client.get_object(Bucket="bucket", Key="key")["expiration"]
 
-    # (mypy) error: Extra key 'Allowedorigins' for TypedDict "ClientPutBucketCorsCORSConfigurationCORSRulesTypeDef"
+    # (mypy) error: Extra key 'Allowedorigins' for TypedDict "CORSRuleTypeDef"
     client.put_bucket_cors(
         "Bucket",
         {"CORSRules": [{"AllowedMethods": ["get"], "Allowedorigins": ["localhost"]}]},
