@@ -48,39 +48,27 @@ class ShapeParser:
         "blob": TypeSubscript(Type.Union, [Type.bytes, Type.IO]),
     }
 
-    def _patch_service_model(self) -> None:
-        if self.service_name is ServiceNameCatalog.cloudsearchdomain:
-            operation = self._get_operation("Search")
-            self._rename_input_member(operation, "return", "returnFields")
-        if self.service_name is ServiceNameCatalog.logs:
-            operation = self._get_operation("CreateExportTask")
-            self._rename_input_member(operation, "from", "fromTime")
-        if self.service_name is ServiceNameCatalog.ec2:
-            for operation_name in self._get_operation_names():
-                operation = self._get_operation(operation_name)
-                try:
-                    self._rename_input_member(operation, "Filter", "Filters")
-                except KeyError:
-                    continue
-        if self.service_name is ServiceNameCatalog.s3:
-            operation_names = [
-                # "DeleteObjects",
-                "PutBucketAcl",
-                "PutBucketCors",
-                "PutBucketLifecycle",
-                "PutBucketLogging",
-                "PutBucketNotification",
-                "PutBucketPolicy",
-                "PutBucketReplication",
-                "PutBucketRequestPayment",
-                "PutBucketTagging",
-                "PutBucketVersioning",
-                "PutBucketWebsite",
-                "PutObjectAcl",
-            ]
-            for operation_name in operation_names:
-                operation = self._get_operation(operation_name)
-                self._delete_input_member(operation, "ContentMD5")
+    ARGUMENT_ALIASES: Dict[str, Dict[str, Dict[str, str]]] = {
+        ServiceNameCatalog.cloudsearchdomain.boto3_name: {
+            "Search": {"return": "returnFields"}
+        },
+        ServiceNameCatalog.logs.boto3_name: {"CreateExportTask": {"from": "fromTime"}},
+        ServiceNameCatalog.ec2.boto3_name: {"*": {"Filter": "Filters"}},
+        ServiceNameCatalog.s3.boto3_name: {
+            "PutBucketAcl": {"ContentMD5": "None"},
+            "PutBucketCors": {"ContentMD5": "None"},
+            "PutBucketLifecycle": {"ContentMD5": "None"},
+            "PutBucketLogging": {"ContentMD5": "None"},
+            "PutBucketNotification": {"ContentMD5": "None"},
+            "PutBucketPolicy": {"ContentMD5": "None"},
+            "PutBucketReplication": {"ContentMD5": "None"},
+            "PutBucketRequestPayment": {"ContentMD5": "None"},
+            "PutBucketTagging": {"ContentMD5": "None"},
+            "PutBucketVersioning": {"ContentMD5": "None"},
+            "PutBucketWebsite": {"ContentMD5": "None"},
+            "PutObjectAcl": {"ContentMD5": "None"},
+        },
+    }
 
     def __init__(self, session: Session, service_name: ServiceName):
         loader = session._loader  # pylint: disable=protected-access
@@ -89,7 +77,6 @@ class ShapeParser:
         self.service_name = service_name
         self.service_model = ServiceModel(service_data, service_name.boto3_name)
         self._typed_dict_map: Dict[str, TypeTypedDict] = {}
-        self._patch_service_model()
         self._waiters_shape: Shape = {}
         try:
             self._waiters_shape = loader.load_service_model(
@@ -174,18 +161,40 @@ class ShapeParser:
         result.sort()
         return result
 
-    def _parse_arguments(self, shape: StructureShape) -> List[Argument]:
-        operation_name = shape.name
+    def _get_argument_alias(self, operation_name: str, argument_name: str) -> str:
+        service_map = self.ARGUMENT_ALIASES.get(self.service_name.boto3_name)
+        if not service_map:
+            return argument_name
 
+        operation_map: Dict[str, str] = {}
+        if "*" in service_map:
+            operation_map = service_map["*"]
+        if operation_name in service_map:
+            operation_map = service_map[operation_name]
+
+        if not operation_map:
+            return argument_name
+
+        if argument_name not in operation_map:
+            return argument_name
+
+        return operation_map[argument_name]
+
+    def _parse_arguments(
+        self, operation_name: str, shape: StructureShape
+    ) -> List[Argument]:
         result: List[Argument] = []
         required = shape.required_members
         for argument_name, argument_shape in shape.members.items():
+            argument_alias = self._get_argument_alias(operation_name, argument_name)
+            if argument_alias == "None":
+                continue
             argument_type_stub = get_argument_type_stub(operation_name, argument_name)
             if argument_type_stub is not None:
                 argument_type = argument_type_stub
             else:
                 argument_type = self._parse_shape(argument_shape)
-            argument = Argument(argument_name, argument_type)
+            argument = Argument(argument_alias, argument_type)
             if argument_name not in required:
                 argument.default = Type.none
             result.append(argument)
@@ -210,7 +219,9 @@ class ShapeParser:
             arguments: List[Argument] = [Argument("self", None)]
 
             if operation_model.input_shape is not None:
-                arguments.extend(self._parse_arguments(operation_model.input_shape))
+                arguments.extend(
+                    self._parse_arguments(operation_name, operation_model.input_shape)
+                )
 
             if operation_model.output_shape is not None:
                 return_type = self._parse_return_type(operation_model.output_shape)
@@ -308,7 +319,9 @@ class ShapeParser:
         arguments: List[Argument] = [Argument("self", None)]
 
         if operation_shape.input_shape is not None:
-            for argument in self._parse_arguments(operation_shape.input_shape):
+            for argument in self._parse_arguments(
+                operation_name, operation_shape.input_shape
+            ):
                 if argument.name in skip_argument_names:
                     continue
                 arguments.append(argument)
@@ -328,7 +341,9 @@ class ShapeParser:
         arguments: List[Argument] = [Argument("self", None)]
 
         if operation_shape.input_shape is not None:
-            arguments.extend(self._parse_arguments(operation_shape.input_shape))
+            arguments.extend(
+                self._parse_arguments(operation_name, operation_shape.input_shape)
+            )
 
         arguments.append(Argument("WaiterConfig", waiter_config_type, Type.none))
 
@@ -382,14 +397,17 @@ class ShapeParser:
             )
 
         if "request" in action_shape:
-            operation_shape = self._get_operation(action_shape["request"]["operation"])
+            operation_name = action_shape["request"]["operation"]
+            operation_shape = self._get_operation(operation_name)
             skip_argument_names: List[str] = [
                 i["target"]
                 for i in action_shape["request"].get("params", {})
                 if i["source"] == "identifier"
             ]
             if operation_shape.input_shape is not None:
-                for argument in self._parse_arguments(operation_shape.input_shape):
+                for argument in self._parse_arguments(
+                    operation_name, operation_shape.input_shape
+                ):
                     if argument.name not in skip_argument_names:
                         arguments.append(argument)
             if operation_shape.output_shape is not None:
