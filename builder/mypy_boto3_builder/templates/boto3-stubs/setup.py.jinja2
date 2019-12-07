@@ -8,7 +8,7 @@ LONG_DESCRIPTION = open(dirname(abspath(__file__)) + "/README.md", "r").read()
 
 setup(
     name="{{ package.pypi_name }}",
-    version="{{ boto3_version }}",
+    version="{{ build_version }}",
     packages=["{{ package.name }}"],
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
@@ -38,21 +38,21 @@ setup(
         "typing_extensions; python_version < '3.8'",
     ],
     extras_require={
-        "master": ["{{ master_pypi_name }}=={{ boto3_version }}"],
+        "master": ["{{ master_pypi_name }}=={{ build_version }}"],
         "all": [
             {% for service_name in package.service_names -%}
-            "{{ service_name.pypi_name }}[master]=={{ boto3_version }}",
+            "{{ service_name.pypi_name }}[master]=={{ build_version }}",
             {% endfor -%}
         ],
         "essential": [
             {% for service_name in package.service_names -%}
             {% if service_name.is_essential() -%}
-            "{{ service_name.pypi_name }}[master]=={{ boto3_version }}",
+            "{{ service_name.pypi_name }}[master]=={{ build_version }}",
             {% endif -%}
             {% endfor -%}
         ],
         {% for service_name in package.service_names -%}
-        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}[master]=={{ boto3_version }}"],
+        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}[master]=={{ build_version }}"],
         {% endfor -%}
     },
     zip_safe=False,

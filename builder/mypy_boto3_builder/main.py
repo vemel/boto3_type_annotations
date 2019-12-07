@@ -57,6 +57,7 @@ def main() -> None:
         master_module_name=MODULE_NAME,
         boto3_stubs_name=BOTO3_STUBS_NAME,
         boto3_version=boto3_version,
+        build_version=args.build_version or boto3_version,
         doc_line_length=LINE_LENGTH - 4,
         clean_doc=clean_doc,
     )

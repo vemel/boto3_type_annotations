@@ -50,6 +50,11 @@ def get_cli_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "-d", "--debug", action="store_true", help="Show debug messages"
     )
+    parser.add_argument(
+        "-b",
+        "--build-version",
+        help="Set custom pacakges version, otherwise boto3 version is used.",
+    )
     parser.add_argument("-v", "--version", action="version", version=version)
     parser.add_argument(
         "--skip-master",
