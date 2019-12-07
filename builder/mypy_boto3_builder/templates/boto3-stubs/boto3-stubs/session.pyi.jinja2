@@ -18,6 +18,8 @@ if sys.version_info >= (3, 8):
 else:
     from typing_extensions import Literal
 
+### IMPORTS
+### ENDIMPORTS
 
 class Session:
     def __init__(
@@ -55,9 +57,11 @@ class Session:
     def get_credentials(self) -> Credentials: ...
     def _register_default_handlers(self) -> None: ...
 
+
+### CLIENT
     def client(
         self,
-        service_name: Literal[{% for sevice_name in package.service_names %}{{ '"' + sevice_name.boto3_name + '"' }}{{ "," if not loop.last else "" }}{% endfor %}],
+        service_name: str,
         region_name: str = None,
         api_version: str = None,
         use_ssl: bool = None,
@@ -68,11 +72,12 @@ class Session:
         aws_session_token: str = None,
         config: Config = None,
     ) -> BaseClient: ...
+### ENDCLIENT
 
-{% if package.resource_service_names %}
+### RESOURCE
     def resource(
         self,
-        service_name: Literal[{% for sevice_name in package.resource_service_names %}{{ '"' + sevice_name.boto3_name + '"' }}{{ "," if not loop.last else "" }}{% endfor %}],
+        service_name: str,
         region_name: str = None,
         api_version: str = None,
         use_ssl: bool = None,
@@ -83,4 +88,4 @@ class Session:
         aws_session_token: str = None,
         config: Config = None,
     ) -> Any: ...
-{% endif %}
+### ENDRESOURCE

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 8):
 else:
     from typing_extensions import Literal
 
+### IMPORTS
+### ENDIMPORTS
 
 __author__: str
 __version__: str
@@ -36,8 +38,9 @@ class NullHandler(logging.Handler):
     def emit(self, record: Any) -> Any:
         pass
 
+### CLIENT
 def client(
-    service_name: Literal[{% for sevice_name in package.service_names %}{{ '"' + sevice_name.boto3_name + '"' }}{{ "," if not loop.last else "" }}{% endfor %}],
+    service_name: str,
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -48,10 +51,11 @@ def client(
     aws_session_token: str = None,
     config: Config = None,
 ) -> BaseClient: ...
+### ENDCLIENT
 
-{% if package.resource_service_names %}
+### RESOURCE
 def resource(
-    service_name: Literal[{% for sevice_name in package.resource_service_names %}{{ '"' + sevice_name.boto3_name + '"' }}{{ "," if not loop.last else "" }}{% endfor %}],
+    service_name: str,
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -62,4 +66,4 @@ def resource(
     aws_session_token: str = None,
     config: Config = None,
 ) -> Any: ...
-{% endif %}
+### ENDRESOURCE

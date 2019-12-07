@@ -18,19 +18,15 @@ def write_master_package(package: MasterPackage, output_path: Path) -> List[Path
     package_path.mkdir(exist_ok=True)
 
     templates_path = Path("master")
+    module_templates_path = templates_path / "master"
     file_paths = [
         (output_path / "setup.py", templates_path / "setup.py.jinja2"),
         (output_path / "README.md", templates_path / "README.md.jinja2"),
-        (
-            package_path / "__init__.py",
-            templates_path / "master" / "__init__.py.jinja2",
-        ),
-        (
-            package_path / "__main__.py",
-            templates_path / "master" / "__main__.py.jinja2",
-        ),
-        (package_path / "py.typed", templates_path / "master" / "py.typed.jinja2",),
-        (package_path / "version.py", templates_path / "master" / "version.py.jinja2",),
+        (package_path / "__init__.py", module_templates_path / "__init__.py.jinja2"),
+        (package_path / "__main__.py", module_templates_path / "__main__.py.jinja2"),
+        (package_path / "py.typed", module_templates_path / "py.typed.jinja2"),
+        (package_path / "version.py", module_templates_path / "version.py.jinja2"),
+        (package_path / "main.py", module_templates_path / "main.py.jinja2"),
     ]
 
     for file_path, template_path in file_paths:
@@ -75,6 +71,10 @@ def get_service_module_file_paths(
             service_module_path / "client.py",
             service_templates_path / "client.py.jinja2",
         ),
+        (
+            service_module_path / "type_defs.py",
+            service_templates_path / "type_defs.py.jinja2",
+        ),
     ]
     if package.service_resource:
         file_paths.append(
@@ -95,13 +95,6 @@ def get_service_module_file_paths(
             (
                 service_module_path / "paginator.py",
                 service_templates_path / "paginator.py.jinja2",
-            )
-        )
-    if package.typed_dicts:
-        file_paths.append(
-            (
-                service_module_path / "type_defs.py",
-                service_templates_path / "type_defs.py.jinja2",
             )
         )
     return file_paths
