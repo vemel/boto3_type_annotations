@@ -20,7 +20,11 @@ class Function:
     return_type: FakeAnnotation
     docstring: str = ""
     decorators: List[FakeAnnotation] = field(default_factory=lambda: [])
-    body: str = ""
+    body_lines: List[str] = field(default_factory=lambda: [])
+
+    @property
+    def body(self) -> str:
+        return "\n".join(self.body_lines)
 
     def get_types(self) -> Set[FakeAnnotation]:
         types = self.return_type.get_types()

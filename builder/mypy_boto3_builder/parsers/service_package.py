@@ -33,7 +33,7 @@ def parse_service_package(
     shape_parser = ShapeParser(session, service_name)
     logger.debug("Parsing Client")
     client = parse_client(session, service_name, shape_parser)
-    service_resource = parse_service_resource(session, service_name)
+    service_resource = parse_service_resource(session, service_name, shape_parser)
 
     result = ServicePackage(
         name=service_name.module_name,

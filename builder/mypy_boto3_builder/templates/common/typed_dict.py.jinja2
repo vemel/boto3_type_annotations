@@ -9,7 +9,7 @@
         {{ '"' -}}
         {{ child.name -}}
         {{ '": ' -}}
-        {{ child.type_annotation -}}
+        {{ child.type_annotation.render(typed_dict.name) -}}
         {{ ", " if not loop.last else "" -}}
     {% endfor -%}
     {{ "})\n" -}}
@@ -23,7 +23,7 @@
         {{ '"' -}}
         {{ child.name -}}
         {{ '": ' -}}
-        {{ child.type_annotation -}}
+        {{ child.type_annotation.render(typed_dict.name) -}}
         {{ ", " if not loop.last else "" -}}
     {% endfor -%}
     {{ "}, total=False)\n" -}}
@@ -43,7 +43,7 @@
         {{ '"' -}}
         {{ child.name -}}
         {{ '": ' -}}
-        {{ child.type_annotation -}}
+        {{ child.type_annotation.render(typed_dict.name) -}}
         {{ ", " if not loop.last else "" -}}
     {% endfor -%}
     {{ "}" -}}

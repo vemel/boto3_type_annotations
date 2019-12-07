@@ -38,7 +38,7 @@ class FakeAnnotation:
         return self.render()
 
     @abstractmethod
-    def render(self) -> str:
+    def render(self, parent_name: str = "") -> str:
         """
         Render type annotation to a valid Python code for local usage.
         """
@@ -73,6 +73,12 @@ class FakeAnnotation:
     def is_dict(self) -> bool:  # pylint: disable=no-self-use
         """
         Whether type annotation is `Dict` or `TypedDict`.
+        """
+        return False
+
+    def is_typed_dict(self) -> bool:  # pylint: disable=no-self-use
+        """
+        Whether type annotation is `TypedDict`.
         """
         return False
 

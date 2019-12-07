@@ -22,11 +22,12 @@ from mypy_boto3_builder.parsers.identifiers import parse_identifiers
 from mypy_boto3_builder.parsers.parse_collections import parse_collections
 from mypy_boto3_builder.parsers.parse_resource import parse_resource
 from mypy_boto3_builder.parsers.boto3_utils import get_boto3_client
+from mypy_boto3_builder.parsers.shape_parser import ShapeParser
 from mypy_boto3_builder.logger import get_logger
 
 
 def parse_service_resource(
-    session: Session, service_name: ServiceName
+    session: Session, service_name: ServiceName, shape_parser: ShapeParser
 ) -> Optional[ServiceResource]:
     """
     Parse boto3 ServiceResource data.
@@ -54,8 +55,12 @@ def parse_service_resource(
     )
 
     public_methods = get_public_methods(service_resource)
+    shape_methods_map = shape_parser.get_service_resource_method_map()
     for method_name, public_method in public_methods.items():
-        method = parse_method("ServiceResource", method_name, public_method)
+        if method_name in shape_methods_map:
+            method = shape_methods_map[method_name]
+        else:
+            method = parse_method("ServiceResource", method_name, public_method)
         method.docstring = (
             f"[ServiceResource.{method_name} documentation]"
             f"({service_name.doc_link}.ServiceResource.{method_name})"
@@ -80,7 +85,7 @@ def parse_service_resource(
         sub_resource_name = sub_resource.__class__.__name__.split(".", 1)[-1]
         logger.debug(f"Parsing {sub_resource_name} sub resource")
         result.sub_resources.append(
-            parse_resource(sub_resource_name, sub_resource, service_name)
+            parse_resource(sub_resource_name, sub_resource, service_name, shape_parser)
         )
 
     return result

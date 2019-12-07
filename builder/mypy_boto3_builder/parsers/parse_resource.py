@@ -16,10 +16,14 @@ from mypy_boto3_builder.structures.resource import Resource
 from mypy_boto3_builder.parsers.helpers import parse_attributes, parse_method
 from mypy_boto3_builder.parsers.identifiers import parse_identifiers
 from mypy_boto3_builder.parsers.parse_collections import parse_collections
+from mypy_boto3_builder.parsers.shape_parser import ShapeParser
 
 
 def parse_resource(
-    name: str, resource: Boto3ServiceResource, service_name: ServiceName
+    name: str,
+    resource: Boto3ServiceResource,
+    service_name: ServiceName,
+    shape_parser: ShapeParser,
 ) -> Resource:
     """
     Parse boto3 sub Resource data.
@@ -37,10 +41,13 @@ def parse_resource(
             f"({service_name.doc_link}.ServiceResource.{name})"
         ),
     )
-
+    shape_methods_map = shape_parser.get_resource_method_map(name)
     public_methods = get_resource_public_methods(resource.__class__)
     for method_name, public_method in public_methods.items():
-        method = parse_method(name, method_name, public_method)
+        if method_name in shape_methods_map:
+            method = shape_methods_map[method_name]
+        else:
+            method = parse_method(name, method_name, public_method)
         result.methods.append(method)
 
     result.attributes.extend(parse_attributes(resource))

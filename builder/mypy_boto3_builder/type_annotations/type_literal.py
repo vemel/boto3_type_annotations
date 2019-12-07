@@ -21,7 +21,7 @@ class TypeLiteral(FakeAnnotation):
     def __init__(self, *children: Any) -> None:
         self.children = list(children)
 
-    def render(self) -> str:
+    def render(self, parent_name: str = "") -> str:
         """
         Render type annotation to a valid Python code for local usage.
 

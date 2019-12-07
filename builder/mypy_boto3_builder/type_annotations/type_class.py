@@ -23,7 +23,7 @@ class TypeClass(FakeAnnotation):
         self.value = value
         self.alias = alias
 
-    def render(self) -> str:
+    def render(self, parent_name: str = "") -> str:
         """
         Render type annotation to a valid Python code for local usage.
 

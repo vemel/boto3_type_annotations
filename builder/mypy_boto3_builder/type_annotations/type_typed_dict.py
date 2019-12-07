@@ -65,13 +65,16 @@ class TypeTypedDict(FakeAnnotation):
 
         raise ValueError(f"No child with name {name}")
 
-    def render(self) -> str:
+    def render(self, parent_name: str = "") -> str:
         """
         Render type annotation to a valid Python code for local usage.
 
         Returns:
             A string with a valid type annotation.
         """
+        if parent_name and parent_name == self.name:
+            return f'"{self.name}"'
+
         return self.name
 
     def get_import_record(self) -> ImportRecord:
@@ -105,6 +108,12 @@ class TypeTypedDict(FakeAnnotation):
         self.children.append(TypedDictAttribute(name, type_annotation, required))
 
     def is_dict(self) -> bool:
+        """
+        Always True as it is a TypedDict.
+        """
+        return True
+
+    def is_typed_dict(self) -> bool:
         """
         Always True as it is a TypedDict.
         """

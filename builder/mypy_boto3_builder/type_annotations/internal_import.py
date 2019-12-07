@@ -35,7 +35,7 @@ class InternalImport(FakeAnnotation):
         self.service_name = service_name
         self.module_name = module_name
 
-    def render(self) -> str:
+    def render(self, parent_name: str = "") -> str:
         """
         Render type annotation to a valid Python code for local usage.
 

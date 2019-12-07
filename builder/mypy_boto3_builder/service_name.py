@@ -307,6 +307,8 @@ class ServiceNameCatalog:
     dynamodb = ITEM_MAP["dynamodb"]
     sqs = ITEM_MAP["sqs"]
     cloudformation = ITEM_MAP["cloudformation"]
+    cloudsearchdomain = ITEM_MAP["cloudsearchdomain"]
+    logs = ITEM_MAP["logs"]
 
     @classmethod
     def find(cls, name: str) -> ServiceName:

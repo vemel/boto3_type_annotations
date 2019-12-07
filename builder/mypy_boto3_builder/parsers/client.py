@@ -50,9 +50,11 @@ def parse_client(
         ),
     )
 
+    shape_method_map = shape_parser.get_client_method_map()
     for method_name, public_method in public_methods.items():
-        method = shape_parser.get_client_method(method_name)
-        if not method:
+        if method_name in shape_method_map:
+            method = shape_method_map[method_name]
+        else:
             method = parse_method("Client", method_name, public_method)
         method.docstring = (
             f"[Client.{method_name} documentation]"

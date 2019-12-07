@@ -20,7 +20,7 @@ class TypeConstant(FakeAnnotation):
     def __init__(self, value: Any) -> None:
         self.value = value
 
-    def render(self) -> str:
+    def render(self, parent_name: str = "") -> str:
         """
         Render type annotation to a valid Python code for local usage.
 

@@ -18,6 +18,7 @@ class Collection(ClassRecord):
     """
 
     attribute_name: str = "collection"
+    parent_name: str = "Parent"
     type: FakeAnnotation = Type.Any
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [

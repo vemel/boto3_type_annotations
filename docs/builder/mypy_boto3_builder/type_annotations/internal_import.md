@@ -57,7 +57,7 @@ Get import record required for using type annotation.
 [[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L38)
 
 ```python
-def render() -> str:
+def render(parent_name: str = '') -> str:
 ```
 
 Render type annotation to a valid Python code for local usage.

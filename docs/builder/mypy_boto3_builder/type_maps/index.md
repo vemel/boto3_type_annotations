@@ -7,6 +7,7 @@
         - [Argument Type Map](argument_type_map.md#argument-type-map)
         - [Docless Method Argument Map](docless_method_argument_map.md#docless-method-argument-map)
         - [Method Type Map](method_type_map.md#method-type-map)
+        - [Operation Type Map](operation_type_map.md#operation-type-map)
         - [Syntax Type Map](syntax_type_map.md#syntax-type-map)
         - [Type Map](type_map.md#type-map)
         - [Typed Dicts](typed_dicts.md#typed-dicts)

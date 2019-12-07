@@ -87,17 +87,17 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
         Method structure.
     """
     logger = get_logger()
-    logger.debug(f"Parsing {parent_name}.{name} method")
     docstring = textwrap.dedent(inspect.getdoc(method) or "")
     return_type: FakeAnnotation = Type.none
     if not docstring:
-        logger.debug(f"Fixing {parent_name}.{name} method with no docstring")
+        logger.info(f"Fixing {parent_name}.{name} method with no docstring")
         return Method(
             name=name,
             arguments=DOCLESS_METHOD_ARGUMENT_MAP[f"{parent_name}.{name}"],
             return_type=return_type,
         )
 
+    logger.debug(f"Slow parsing of {parent_name}.{name}: {len(docstring)} chars")
     prefix = f"{get_class_prefix(parent_name)}{get_class_prefix(name)}"
     arg_spec_parser = ArgSpecParser(prefix)
     arguments = arg_spec_parser.get_function_arguments(method)

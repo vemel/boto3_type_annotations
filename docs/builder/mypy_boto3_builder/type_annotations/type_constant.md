@@ -48,7 +48,7 @@ def get_import_record() -> ImportRecord:
 [[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L23)
 
 ```python
-def render() -> str:
+def render(parent_name: str = '') -> str:
 ```
 
 Render type annotation to a valid Python code for local usage.

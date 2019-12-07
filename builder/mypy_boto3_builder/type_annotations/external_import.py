@@ -25,7 +25,7 @@ class ExternalImport(FakeAnnotation):
         self.alias = alias
         self.import_record = ImportRecord(source=source, name=name, alias=alias)
 
-    def render(self) -> str:
+    def render(self, parent_name: str = "") -> str:
         """
         Get string with local name to use.
 

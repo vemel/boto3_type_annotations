@@ -34,6 +34,7 @@ def parse_collections(
         object_class_name = collection.resource.type
         collection_record = Collection(
             name=f"{parent_name}{get_class_prefix(collection.name)}Collection",
+            parent_name=parent_name,
             attribute_name=collection.name,
             docstring=(
                 f"[{parent_name}.{collection.name} documentation]"
@@ -56,7 +57,7 @@ def parse_collections(
                     Argument("Delimiter", Type.str, Type.none),
                     Argument("EncodingType", Type.str, Type.none),
                     Argument("KeyMarker", Type.str, Type.none),
-                    Argument("MaxUploads", Type.str, Type.none),
+                    Argument("MaxUploads", Type.int, Type.none),
                     Argument("Prefix", Type.str, Type.none),
                     Argument("UploadIdMarker", Type.str, Type.none),
                 ],
