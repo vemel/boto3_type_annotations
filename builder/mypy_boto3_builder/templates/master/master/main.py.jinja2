@@ -3,6 +3,7 @@ import importlib
 import pathlib
 import logging
 import re
+import sys
 from typing import List, Dict
 
 from {{ master_module_name }}.version import __version__ as version
@@ -90,11 +91,14 @@ def main() -> None:
     logger = get_logger(log_level)
 
     if not BOTO3_STUBS_PATH.is_dir():
-        print(
-            "Directory {BOTO3_STUBS_PATH} does not exist, make"
-            " sure boto3-stubs are installed in the same location."
+        logger.error(
+            (
+                "Directory %s does not exist, make"
+                " sure boto3-stubs are installed to the same location."
+            ),
+            BOTO3_STUBS_PATH
         )
-        exit(1)
+        sys.exit(1)
 
     init_client_functions: List[str] = []
     init_resource_functions: List[str] = []
@@ -237,6 +241,12 @@ def main() -> None:
     logger.debug("Updated %s", INIT_PATH)
     SESSION_PATH.write_text(session_contents)
     logger.debug("Updated %s", SESSION_PATH)
+
+    if not discovered_submodules:
+        logger.warning("No services submodules discovered, install the ones you use and run this command again")
+        logger.info("https://mypy-boto3.readthedocs.io/en/latest/#sub-modules")
+        sys.exit()
+
     names_str = ""
     for i, submodule in enumerate(discovered_submodules):
         name = submodule["boto3_name"]
@@ -249,8 +259,4 @@ def main() -> None:
         
         names_str = "{} and {}".format(names_str, name)
 
-    if names_str:
-        logger.info("You can now use %s type annotations.", names_str)
-    else:
-        logger.warning("No services submodules discovered, install the ones you use and run this command again")
-        logger.info("https://mypy-boto3.readthedocs.io/en/latest/#sub-modules")
+    logger.info("You can now use %s type annotations.", names_str)
