@@ -23,8 +23,12 @@ pip install boto3-stubs
 # Consumes ~10 MB of space
 pip install boto3-stubs[essential]
 
-# install annotations for other services
+# or install annotations for services you use
 pip install boto3-stubs[acm,apigateway]
+
+# build service index. You should execute this command everytime
+# you update boto3-stubs or install/remove services
+python -m mypy_boto3
 ```
 
 Use `boto3` with `{{ master_module_name }}` in your project and enjoy type checking.

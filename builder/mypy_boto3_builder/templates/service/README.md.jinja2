@@ -19,6 +19,10 @@ Install `boto3-stubs` for `{{ service_name.boto3_name }}` service.
 
 ```bash
 pip install boto3-stubs[{{service_name.pypi_name}}]
+
+# build service index. You should execute this command everytime
+# you update boto3-stubs or install/remove services
+python -m mypy_boto3
 ```
 
 Use `boto3` with `{{ master_module_name }}` in your project and enjoy type checking.
@@ -31,6 +35,9 @@ from {{ master_module_name }} import {{ service_name.import_name }}
 # import {{ service_name.module_name }} as {{ service_name.import_name }}
 
 # Use this client as usual, now mypy can check if your code is valid.
+# Check if your IDE supports function overloads,
+# you probably do not need explicit type annotations
+# client = boto3.client("{{ service_name.boto3_name }}")
 client: {{ service_name.import_name }}.Client = boto3.client("{{ service_name.boto3_name }}")
 
 # works for session as well

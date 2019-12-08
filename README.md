@@ -35,10 +35,10 @@ Based on [boto3_type_annotations](https://github.com/alliefitter/boto3_type_anno
 # Consumes ~7 MB of space
 python -m pip install boto3-stubs[essential]
 
-# install annotations for other services you use
+# or install annotations for services you use
 python -m pip install boto3-stubs[acm,apigateway]
 
-# build suservices index. You should execute this command everytime
+# build service index. You should execute this command everytime
 # you update boto3-stubs or install/remove services
 python -m mypy_boto3
 ```
@@ -256,6 +256,10 @@ python -m pip install boto3-stubs[essential]
 
 # install ec2, s3 and sqs type annotations
 python -m pip install boto3-stubs[s3,ec2,sqs]
+
+# build service index. You should execute this command everytime
+# you update boto3-stubs or install/remove services
+python -m mypy_boto3
 ```
 
 ### List of all sub-modules
