@@ -3,12 +3,12 @@ Structure for boto3-stubs module.
 """
 
 from dataclasses import dataclass, field
-from typing import List
+from typing import List, Tuple
 
-from mypy_boto3_builder.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName, ServiceNameCatalog
 from mypy_boto3_builder.constants import PYPI_NAME, MODULE_NAME
-from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.structures.package import Package
+from mypy_boto3_builder.structures.service_package import ServicePackage
 
 
 @dataclass
@@ -19,7 +19,6 @@ class MasterPackage(Package):
 
     name: str = MODULE_NAME
     pypi_name: str = PYPI_NAME
-    service_names: List[ServiceName] = field(default_factory=lambda: [])
     service_packages: List[ServicePackage] = field(default_factory=lambda: [])
 
     @property
@@ -29,3 +28,7 @@ class MasterPackage(Package):
             if service_name.is_essential():
                 result.append(service_name)
         return result
+
+    @property
+    def service_names(self) -> Tuple[ServiceName, ...]:
+        return ServiceNameCatalog.ITEMS

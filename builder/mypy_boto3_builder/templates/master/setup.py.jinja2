@@ -11,9 +11,6 @@ setup(
     version="{{ build_version }}",
     packages=[
         "{{ package.name }}",
-        {% for service_name in package.service_names -%}
-        "{{ package.name }}.{{ service_name.import_name }}",
-        {% endfor -%}
     ],
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
@@ -38,9 +35,12 @@ setup(
     ],
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
-    install_requires=["boto3", "typing_extensions; python_version < '3.8'"],
+    install_requires=[
+        "boto3",
+        "typing_extensions; python_version < '3.8'",
+        "{{ boto3_stubs_name }}=={{ build_version }}",
+    ],
     extras_require={
-        "stubs": ["{{ boto3_stubs_name }}=={{ build_version }}"],
         "essential": [
             {% for service_name in package.service_names -%}
             {% if service_name.is_essential() -%}

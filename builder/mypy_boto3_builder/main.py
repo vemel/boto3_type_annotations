@@ -78,15 +78,11 @@ def main() -> None:
     if not args.skip_master:
         logger.info(f"Generating {MODULE_NAME} module")
         output_path = args.output_path / "master_package"
-        process_master(
-            session=session, output_path=output_path, service_names=service_names
-        )
+        process_master(session, output_path)
 
         logger.info(f"Generating {BOTO3_STUBS_NAME} module")
         output_path = args.output_path / "boto3_stubs_package"
-        process_boto3_stubs(
-            session=session, output_path=output_path, service_names=service_names
-        )
+        process_boto3_stubs(output_path)
 
     logger.info(f"Completed")
 

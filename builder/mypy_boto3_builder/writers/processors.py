@@ -2,14 +2,12 @@
 Processors for parsing and writing modules.
 """
 from pathlib import Path
-from typing import Iterable
 
 from boto3.session import Session
 
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.parsers.master_package import parse_master_package
-from mypy_boto3_builder.parsers.boto3_stubs_package import parse_boto3_stubs_package
 from mypy_boto3_builder.parsers.service_package import parse_service_package
 from mypy_boto3_builder.structures.boto3_stubs_package import Boto3StubsPackage
 from mypy_boto3_builder.structures.master_package import MasterPackage
@@ -25,32 +23,28 @@ from mypy_boto3_builder.writers.service_package import write_service_package
 logger = get_logger()
 
 
-def process_boto3_stubs(
-    session: Session, service_names: Iterable[ServiceName], output_path: Path
-) -> Boto3StubsPackage:
+def process_boto3_stubs(output_path: Path) -> Boto3StubsPackage:
     logger.debug(f"Parsing boto3 stubs")
-    boto3_module = parse_boto3_stubs_package(session, service_names)
+    boto3_stub_package = Boto3StubsPackage()
     logger.debug(f"Writing boto3 stubs to {NicePath(output_path)}")
 
-    modified_paths = write_boto3_stubs_package(boto3_module, output_path)
+    modified_paths = write_boto3_stubs_package(boto3_stub_package, output_path)
     for modified_path in modified_paths:
         logger.debug(f"Updated {NicePath(modified_path)}")
 
-    return boto3_module
+    return boto3_stub_package
 
 
-def process_master(
-    session: Session, service_names: Iterable[ServiceName], output_path: Path
-) -> MasterPackage:
+def process_master(session: Session, output_path: Path) -> MasterPackage:
     logger.debug(f"Parsing master")
-    master_module = parse_master_package(session, service_names)
+    master_package = parse_master_package(session)
     logger.debug(f"Writing master to {NicePath(output_path)}")
 
-    modified_paths = write_master_package(master_module, output_path)
+    modified_paths = write_master_package(master_package, output_path)
     for modified_path in modified_paths:
         logger.debug(f"Updated {NicePath(modified_path)}")
 
-    return master_module
+    return master_package
 
 
 def process_service(

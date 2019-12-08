@@ -2,13 +2,12 @@
 Structure for boto3-stubs module.
 """
 
-from dataclasses import dataclass, field
-from typing import List
+from dataclasses import dataclass
+from typing import List, Tuple
 
 from mypy_boto3_builder.import_helpers.import_string import ImportString
-from mypy_boto3_builder.service_name import ServiceName
+from mypy_boto3_builder.service_name import ServiceName, ServiceNameCatalog
 from mypy_boto3_builder.constants import BOTO3_STUBS_NAME, MODULE_NAME, TYPE_DEFS_NAME
-from mypy_boto3_builder.structures.service_package import ServicePackage
 from mypy_boto3_builder.structures.package import Package
 
 
@@ -20,8 +19,6 @@ class Boto3StubsPackage(Package):
 
     name: str = BOTO3_STUBS_NAME
     pypi_name: str = BOTO3_STUBS_NAME
-    service_names: List[ServiceName] = field(default_factory=lambda: [])
-    service_packages: List[ServicePackage] = field(default_factory=lambda: [])
 
     MASTER_IMPORT_STRING = ImportString(MODULE_NAME)
     MASTER_TYPE_DEFS_IMPORT_STRING = ImportString(MODULE_NAME, TYPE_DEFS_NAME)
@@ -35,9 +32,5 @@ class Boto3StubsPackage(Package):
         return result
 
     @property
-    def resource_service_names(self) -> List[ServiceName]:
-        result: List[ServiceName] = []
-        for service_package in self.service_packages:
-            if service_package.service_resource is not None:
-                result.append(service_package.service_name)
-        return result
+    def service_names(self) -> Tuple[ServiceName, ...]:
+        return ServiceNameCatalog.ITEMS

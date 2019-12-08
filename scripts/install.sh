@@ -16,7 +16,7 @@ if [[ "$1" == "master" ]]; then
     echo Installing boto3-stubs package
     cd ${OUTPUT_PATH}/boto3_stubs_package
     python -m pip install .[master]
-    python -m mypy_boto3
+    python -m mypy_boto3 -d
     exit
 fi
 
@@ -27,4 +27,4 @@ do
     python -m pip install .
 done
 
-python -m mypy_boto3
+python -m mypy_boto3 -d
