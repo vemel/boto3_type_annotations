@@ -13,7 +13,6 @@ def parse_master_package(session: Session) -> MasterPackage:
 
     Arguments:
         session -- boto3 session.
-        service_name -- Target service name.
 
     Returns:
         MasterModule structure.

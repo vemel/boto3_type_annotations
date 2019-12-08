@@ -93,7 +93,6 @@ Full list of [mypy-boto3](README.md#mypy_boto3) project modules.
         - [Logger](builder/mypy_boto3_builder/logger.md#logger)
         - [Main](builder/mypy_boto3_builder/main.md#main)
         - [Parsers](builder/mypy_boto3_builder/parsers/index.md#parsers)
-            - [Boto3 Stubs Package](builder/mypy_boto3_builder/parsers/boto3_stubs_package.md#boto3-stubs-package)
             - [Boto3 Utils](builder/mypy_boto3_builder/parsers/boto3_utils.md#boto3-utils)
             - [Client](builder/mypy_boto3_builder/parsers/client.md#client)
             - [Docstring Parser](builder/mypy_boto3_builder/parsers/docstring_parser/index.md#docstring-parser)

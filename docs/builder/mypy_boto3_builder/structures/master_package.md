@@ -7,6 +7,7 @@ Structure for boto3-stubs module.
 - [mypy-boto3](../../../README.md#mypy_boto3) / [Modules](../../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](../index.md#mypy-boto3-builder) / [Structures](index.md#structures) / MasterPackage
     - [MasterPackage](#masterpackage)
         - [MasterPackage().essential_service_names](#masterpackageessential_service_names)
+        - [MasterPackage().service_names](#masterpackageservice_names)
 
 ## MasterPackage
 
@@ -21,9 +22,18 @@ Structure for mypy-boto3 package.
 
 ### MasterPackage().essential_service_names
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/master_package.py#L25)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/master_package.py#L24)
 
 ```python
 @property
 def essential_service_names() -> List[ServiceName]:
+```
+
+### MasterPackage().service_names
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/master_package.py#L32)
+
+```python
+@property
+def service_names() -> Tuple[ServiceName, ...]:
 ```

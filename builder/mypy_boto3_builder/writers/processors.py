@@ -24,6 +24,15 @@ logger = get_logger()
 
 
 def process_boto3_stubs(output_path: Path) -> Boto3StubsPackage:
+    """
+    Parse and write stubs package `boto3_stubs`.
+
+    Arguments:
+        output_path -- Package output path.
+
+    Return:
+        Parsed Boto3StubsPackage.
+    """
     logger.debug(f"Parsing boto3 stubs")
     boto3_stub_package = Boto3StubsPackage()
     logger.debug(f"Writing boto3 stubs to {NicePath(output_path)}")
@@ -36,6 +45,16 @@ def process_boto3_stubs(output_path: Path) -> Boto3StubsPackage:
 
 
 def process_master(session: Session, output_path: Path) -> MasterPackage:
+    """
+    Parse and write master package `mypy_boto3`.
+
+    Arguments:
+        session -- boto3 session.
+        output_path -- Package output path.
+
+    Return:
+        Parsed MasterPackage.
+    """
     logger.debug(f"Parsing master")
     master_package = parse_master_package(session)
     logger.debug(f"Writing master to {NicePath(output_path)}")
@@ -50,6 +69,17 @@ def process_master(session: Session, output_path: Path) -> MasterPackage:
 def process_service(
     session: Session, service_name: ServiceName, output_path: Path
 ) -> ServicePackage:
+    """
+    Parse and write service package `mypy_boto3_*`.
+
+    Arguments:
+        session -- boto3 session.
+        service_name -- Target service name.
+        output_path -- Package output path.
+
+    Return:
+        Parsed ServicePackage.
+    """
     logger.debug(f"Parsing {service_name.boto3_name}")
     service_module = parse_service_package(session, service_name)
     logger.debug(f"Writing {service_name.boto3_name} to {NicePath(output_path)}")

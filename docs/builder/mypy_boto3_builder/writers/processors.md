@@ -11,31 +11,44 @@ Processors for parsing and writing modules.
 
 ## process_boto3_stubs
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L28)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L26)
 
 ```python
-def process_boto3_stubs(
-    session: Session,
-    service_names: Iterable[ServiceName],
-    output_path: Path,
-) -> Boto3StubsPackage:
+def process_boto3_stubs(output_path: Path) -> Boto3StubsPackage:
 ```
+
+Parse and write stubs package `boto3_stubs`.
+
+#### Arguments
+
+- `output_path` - Package output path.
+
+#### Returns
+
+Parsed Boto3StubsPackage.
 
 ## process_master
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L42)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L47)
 
 ```python
-def process_master(
-    session: Session,
-    service_names: Iterable[ServiceName],
-    output_path: Path,
-) -> MasterPackage:
+def process_master(session: Session, output_path: Path) -> MasterPackage:
 ```
+
+Parse and write master package `mypy_boto3`.
+
+#### Arguments
+
+- `session` - boto3 session.
+- `output_path` - Package output path.
+
+#### Returns
+
+Parsed MasterPackage.
 
 ## process_service
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L56)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L69)
 
 ```python
 def process_service(
@@ -44,3 +57,15 @@ def process_service(
     output_path: Path,
 ) -> ServicePackage:
 ```
+
+Parse and write service package `mypy_boto3_*`.
+
+#### Arguments
+
+- `session` - boto3 session.
+- `service_name` - Target service name.
+- `output_path` - Package output path.
+
+#### Returns
+
+Parsed ServicePackage.
