@@ -15,7 +15,7 @@ jobs:
           echo "GitHub ref ${GITHUB_REF}"
           VERSION=`echo "${GITHUB_REF}" | cut -f 3 -d "/" | cut -f 1 -d "-"`
           LAST_PACKAGE_VERSION=`pip search boto3-stubs | grep -Po '^boto3\-stubs \S+' | grep -Po '\d+\.\d+\.\d+(\.\d+)?'`
-          PACKAGE_VERSION=`echo "${LAST_PACKAGE_VERSION} | awk 'BEGIN{FS=OFS="."}{$4=$4+1; print$0;}"`
+          PACKAGE_VERSION=`echo "${LAST_PACKAGE_VERSION}" | awk 'BEGIN{FS=OFS="."}{$4=$4+1; print$0;}`
 
           echo Builder version: ${VERSION}
           echo Last package version: ${LAST_PACKAGE_VERSION}
