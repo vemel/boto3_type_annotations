@@ -3,6 +3,8 @@ import importlib
 import pathlib
 import logging
 import re
+from typing import List, Dict
+
 from {{ master_module_name }}.version import __version__ as version
 
 ROOT_PATH = pathlib.Path(__file__).absolute().parent
