@@ -247,4 +247,8 @@ def main() -> None:
         
         names_str = "{} and {}".format(names_str, name)
 
-    logger.info("Done, you can now use %s type annotations.", names_str)
+    if names_str:
+        logger.info("Done, you can now use %s type annotations.", names_str)
+    else:
+        logger.warning("No services submodules discovered, install the ones you use and run this command again")
+        logger.info("https://mypy-boto3.readthedocs.io/en/latest/#sub-modules")

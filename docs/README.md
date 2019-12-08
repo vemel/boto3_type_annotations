@@ -37,14 +37,14 @@ Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-
 # install `boto3` type annotations
 # for ec2, s3, rds, lambda, sqs, dynamo and cloudformation
 # Consumes ~7 MB of space
-pip install boto3-stubs[essential]
+python -m pip install boto3-stubs[essential]
 
 # install annotations for other services you use
-pip install boto3-stubs[acm,apigateway]
+python -m pip install boto3-stubs[acm,apigateway]
 
 # build suservices index. You need to execute this command everytime
 # you update boto3-stubs or install/remove services
-mypy_boto3
+python -m mypy_boto3
 ```
 
 ## Usage
@@ -97,7 +97,7 @@ paginator: s3.ListMultipartUploadsPaginator = client.get_paginator(
 - Install [mypy](https://github.com/python/mypy)
 - Activate `mypy` checking in settings: `"python.linting.mypyEnabled": true`
 - Install `boto3-stubs` with `boto3` services you use
-- Run `mypy_boto3`
+- Run `python -m mypy_boto3`
 - Use [explicit type annotations](#explicit-type-annotations) because
   function overload is not fully supported yet
 
@@ -107,7 +107,7 @@ paginator: s3.ListMultipartUploadsPaginator = client.get_paginator(
 - Install [mypy](https://github.com/python/mypy)
 - Set path to `mypy` in `mypy plugin` settings
 - Install `boto3-stubs` with `boto3` services you use
-- Run `mypy_boto3`
+- Run `python -m mypy_boto3`
 
 Official `mypy` plugin does not work for some reason for me. If you know
 how to setup it correctly, please hep me to update this section.
@@ -250,11 +250,12 @@ You can install any sub-modules using `pip`
 ```bash
 # pip install boto3-stubs[<submodule_name>,...]
 
-# install ec2, s3 and sqs type annotations
-pip install boto3-stubs[s3,ec2,sqs]
+# install `boto3` type annotations
+# for ec2, s3, rds, lambda, sqs, dynamo and cloudformation
+python -m pip install boto3-stubs[essential]
 
-# install type annotations for all boto3 services
-pip install boto3-stubs[all]
+# install ec2, s3 and sqs type annotations
+python -m pip install boto3-stubs[s3,ec2,sqs]
 ```
 
 ### List of all sub-modules
