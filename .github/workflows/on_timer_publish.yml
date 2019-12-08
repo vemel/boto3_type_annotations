@@ -19,19 +19,22 @@ jobs:
       - name: Extract versions from pip
         id: vars
         run: |
-          LATEST=`pip search boto3 | grep -Po '^boto3 \S+' | grep -Po '\d+\.\d+\.\d+'`
-          CURRENT=`pip search boto3-stubs | grep -Po '^boto3\-stubs \S+' | grep -Po '\d+\.\d+\.\d+'`
-          VERSION="${LATEST}.0"
+          BOT03_VERSION=`pip search boto3 | grep -Po '^boto3 \S+' | grep -Po '\d+\.\d+\.\d+'`
+          LAST_BUILD_BOTO3_VERSION=`pip search boto3-stubs | grep -Po '^boto3\-stubs \S+' | grep -Po '\d+\.\d+\.\d+'`
+          BUILD_VERSION="${BOT03_VERSION}.0"
           SKIP=""
-          echo Current version: ${CURRENT}
-          echo Latest version: ${LATEST}
-          echo Build version: ${VERSION}
-          if [[ "${CURRENT}" == "${LATEST}" ]]; then
+          if [[ "${BOT03_VERSION}" == "${LAST_BUILD_BOTO3_VERSION}" ]]; then
             echo No new versions found, skipping the rest
             SKIP="1"
           fi
+
+          echo Boto3 version: ${BOT03_VERSION}
+          echo Last build boto3 version: ${LAST_BUILD_BOTO3_VERSION}
+          echo Build version: ${BUILD_VERSION}
+          echo Skip: ${SKIP}
+
           echo "##[set-output name=skip;]$(echo ${SKIP})"
-          echo "##[set-output name=version;]$(echo ${VERSION})"
+          echo "##[set-output name=build_version;]$(echo ${BUILD_VERSION})"
       - name: Install builder
         env:
           SKIP: ${{ steps.vars.outputs.skip }}
@@ -41,11 +44,11 @@ jobs:
       - name: Build packages
         env:
           SKIP: ${{ steps.vars.outputs.skip }}
-          VERSION: ${{ steps.vars.outputs.version }}
+          BUILD_VERSION: ${{ steps.vars.outputs.build_version }}
         run: |
           if [[ "${SKIP}" != "" ]]; then exit 0; fi
           rm -rf mypy_boto3_output/*
-          scripts/build.sh --panic -d -b $VERSION
+          scripts/build.sh --panic -d -b $BUILD_VERSION
       - name: Install integration test dependencies
         env:
           SKIP: ${{ steps.vars.outputs.skip }}
