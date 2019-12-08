@@ -34,19 +34,19 @@ Based on [boto3_type_annotations](https://github.com/alliefitter/boto3_type_anno
 # Consumes ~7 MB of space
 pip install boto3-stubs[essential]
 
-# install annotations for other services
+# install annotations for other services you use
 pip install boto3-stubs[acm,apigateway]
 
-# or install annotations for all services
-# WARNING: this requires ~20 MB of space
-pip install boto3-stubs[all]
+# build suservices index. You need to execute this command everytime
+# you update boto3-stubs or install/remove services
+mypy_boto3
 ```
 
 ## Usage
 
 - Install [mypy](https://github.com/python/mypy) and optionally enable it in your IDE
 - Install [boto3](https://github.com/boto/boto3)
-- Use explicit types for `boto3.client`, `boto3.session.client`,
+- VSCode: Use explicit types for `boto3.client`, `boto3.session.client`,
   `client.get_waiter` and `client.get_paginator` calls to enjoy code auto-complete and
   correct type hints
 
@@ -55,7 +55,9 @@ import boto3
 
 from mypy_boto3 import s3
 
-
+# you need explicit type annotatins only if your IDE do not support
+# function overloads (e.g. VSCode). FOr PyCHarm anf mypy you do not need
+# to set type explicitly
 client: s3.Client = boto3.client("s3")
 
 # IDE autocomplete suggests function name and arguments here
@@ -90,6 +92,7 @@ paginator: s3.ListMultipartUploadsPaginator = client.get_paginator(
 - Install [mypy](https://github.com/python/mypy)
 - Activate `mypy` checking in settings: `"python.linting.mypyEnabled": true`
 - Install `boto3-stubs` with `boto3` services you use
+- Run `mypy_boto3`
 - Use [explicit type annotations](#explicit-type-annotations) because
   function overload is not fully supported yet
 
@@ -99,13 +102,10 @@ paginator: s3.ListMultipartUploadsPaginator = client.get_paginator(
 - Install [mypy](https://github.com/python/mypy)
 - Set path to `mypy` in `mypy plugin` settings
 - Install `boto3-stubs` with `boto3` services you use
-- Use [explicit type annotations](#explicit-type-annotations), but `client.get_waiter`
-  and `client.get_paginator` should return correct types without explicit type annotations
+- Run `mypy_boto3`
 
 Official `mypy` plugin does not work for some reason for me. If you know
 how to setup it correctly, please hep me to update this section.
-
-Do not install all services, it slows down `PyCharm`. Install only the ones you use.
 
 ### Other IDEs
 
@@ -254,7 +254,6 @@ pip install boto3-stubs[all]
 
 ### List of all sub-modules
 
-- `all` - Type annotations for all `boto3` services.
 - `essential` - Type annotations for `ec2`, `s3`, `rds`, `lambda`, `sqs`, `dynamodb` and `cloudformation` services.
 - `accessanalyzer` - Type annotations for `boto3` [accessanalyzer](https://pypi.org/project/mypy-boto3-accessanalyzer/) service.
 - `acm` - Type annotations for `boto3` [acm](https://pypi.org/project/mypy-boto3-acm/) service.

@@ -25,7 +25,7 @@ SUBMODULES = [
     {% endfor -%}
 ]
 
-FUNCTION_TEMPLATE = """def {name}(
+FUNCTION_TEMPLATE = """{overload}def {name}(
     service_name: {service_name_type},
     region_name: str = None,
     api_version: str = None,
@@ -38,7 +38,7 @@ FUNCTION_TEMPLATE = """def {name}(
     config: Config = None,
 ) -> {return_type}: ..."""
 
-METHOD_TEMPLATE = """    def {name}(
+METHOD_TEMPLATE = """    {overload}def {name}(
         self,
         service_name: {service_name_type},
         region_name: str = None,
@@ -101,28 +101,30 @@ def main() -> None:
     imports: List[str] = []
     init_contents = INIT_PATH.read_text()
     session_contents = SESSION_PATH.read_text()
-    discovered_names: List[str] = []
+    discovered_submodules: List[Dict] = []
     for submodule in SUBMODULES:
         if importlib.find_loader(submodule["module_name"]) is None:
             continue
 
-        discovered_names.append(submodule["boto3_name"])
+        discovered_submodules.append(submodule)
         logger.info(
             "Discovered %s subresource in %s",
             submodule["boto3_name"],
             submodule["module_name"],
         )
+    
+    for submodule in discovered_submodules:
         init_client_functions.append(
-            "@overload\n"
-            + FUNCTION_TEMPLATE.format(
+            FUNCTION_TEMPLATE.format(
+                overload="@overload\n" if len(discovered_submodules) > 1 else "",
                 name="client",
                 service_name_type='Literal["{}"]'.format(submodule["boto3_name"]),
                 return_type="{}Client".format(submodule["class_name"]),
             )
         )
         session_client_functions.append(
-            "@overload\n"
-            + FUNCTION_TEMPLATE.format(
+            METHOD_TEMPLATE.format(
+                overload="@overload\n    " if len(discovered_submodules) > 1 else "",
                 name="client",
                 service_name_type='Literal["{}"]'.format(submodule["boto3_name"]),
                 return_type="{}Client".format(submodule["class_name"]),
@@ -135,16 +137,16 @@ def main() -> None:
         )
         if submodule["has_resource"]:
             init_resource_functions.append(
-                "@overload\n"
-                + FUNCTION_TEMPLATE.format(
+                FUNCTION_TEMPLATE.format(
+                    overload="@overload\n" if len(discovered_submodules) > 1 else "",
                     name="resource",
                     service_name_type='Literal["{}"]'.format(submodule["boto3_name"]),
                     return_type="{}ServiceResource".format(submodule["class_name"]),
                 )
             )
             session_resource_functions.append(
-                "@overload\n"
-                + METHOD_TEMPLATE.format(
+                METHOD_TEMPLATE.format(
+                    overload="@overload\n    " if len(discovered_submodules) > 1 else "",
                     name="resource",
                     service_name_type='Literal["{}"]'.format(submodule["boto3_name"]),
                     return_type="{}ServiceResource".format(submodule["class_name"]),
@@ -159,25 +161,37 @@ def main() -> None:
     if not init_client_functions:
         init_client_functions.append(
             FUNCTION_TEMPLATE.format(
-                name="client", service_name_type="str", return_type="BaseClient",
+                overload="",
+                name="client",
+                service_name_type="str",
+                return_type="Any",
             )
         )
     if not init_resource_functions:
         init_resource_functions.append(
             FUNCTION_TEMPLATE.format(
-                name="resource", service_name_type="str", return_type="Any",
+                overload="",
+                name="resource",
+                service_name_type="str",
+                return_type="Any",
             )
         )
     if not session_client_functions:
         session_client_functions.append(
             METHOD_TEMPLATE.format(
-                name="client", service_name_type="str", return_type="BaseClient",
+                overload="",
+                name="client",
+                service_name_type="str",
+                return_type="Any",
             )
         )
     if not session_resource_functions:
         session_resource_functions.append(
             METHOD_TEMPLATE.format(
-                name="resource", service_name_type="str", return_type="Any",
+                overload="",
+                name="resource",
+                service_name_type="str",
+                return_type="Any",
             )
         )
 
@@ -194,33 +208,41 @@ def main() -> None:
     client_string = "### CLIENT\n{}\n### ENDCLIENT".format(
         "\n".join(init_client_functions) if init_client_functions else "\n"
     )
+    session_client_string = "### CLIENT\n{}\n    ### ENDCLIENT".format(
+        "\n".join(session_client_functions) if session_client_functions else "\n"
+    )
     init_contents = re.sub(
         r"### CLIENT.+### ENDCLIENT", client_string, init_contents, flags=re.S
     )
     session_contents = re.sub(
-        r"### CLIENT.+### ENDCLIENT", client_string, session_contents, flags=re.S
+        r"### CLIENT.+### ENDCLIENT", session_client_string, session_contents, flags=re.S
     )
 
     resource_string = "### RESOURCE\n{}\n### ENDRESOURCE".format(
         "\n".join(init_resource_functions) if init_resource_functions else "\n"
     )
+    session_resource_string = "### RESOURCE\n{}\n    ### ENDRESOURCE".format(
+        "\n".join(session_resource_functions) if session_resource_functions else "\n"
+    )
     init_contents = re.sub(
         r"### RESOURCE.+### ENDRESOURCE", resource_string, init_contents, flags=re.S
     )
     session_contents = re.sub(
-        r"### RESOURCE.+### ENDRESOURCE", resource_string, session_contents, flags=re.S
+        r"### RESOURCE.+### ENDRESOURCE", session_resource_string, session_contents, flags=re.S
     )
 
     INIT_PATH.write_text(init_contents)
     logger.debug("Updated %s", INIT_PATH)
     SESSION_PATH.write_text(session_contents)
+    print(session_contents)
     logger.debug("Updated %s", SESSION_PATH)
     names_str = ""
-    for i, name in enumerate(discovered_names):
+    for i, submodule in enumerate(discovered_submodules):
+        name = submodule["boto3_name"]
         if not i:
             names_str = name
             continue
-        if i < len(discovered_names) - 1:
+        if i < len(discovered_submodules) - 1:
             names_str = "{}, {}".format(names_str, name)
             continue
         

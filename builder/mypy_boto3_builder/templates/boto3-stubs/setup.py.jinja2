@@ -39,11 +39,6 @@ setup(
     ],
     extras_require={
         "master": ["{{ master_pypi_name }}=={{ build_version }}"],
-        "all": [
-            {% for service_name in package.service_names -%}
-            "{{ service_name.pypi_name }}[master]=={{ build_version }}",
-            {% endfor -%}
-        ],
         "essential": [
             {% for service_name in package.service_names -%}
             {% if service_name.is_essential() -%}
