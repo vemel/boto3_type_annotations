@@ -5,7 +5,7 @@ ROOT_PATH=$(dirname $(dirname $(realpath $0)))
 OUTPUT_PATH=${ROOT_PATH}/mypy_boto3_output
 PACKAGES=${OUTPUT_PATH}/mypy_boto3_$1_package
 if [[ "$1" == "" ]]; then
-    PACKAGES=${OUTPUT_PATH}/mypy_boto3_*
+    PACKAGES=${OUTPUT_PATH}/*_package
 fi
 
 if [[ "$1" == "master" ]]; then
