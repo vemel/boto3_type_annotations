@@ -53,7 +53,6 @@ setup(
     entry_points={
         "console_scripts": ["mypy_boto3_builder = mypy_boto3_builder.main:main"]
     },
-    extras_require={"black": ["black==19.10b0"]},
     install_requires=INSTALL_REQUIRES,
     zip_safe=False,
 )

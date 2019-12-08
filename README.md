@@ -180,10 +180,10 @@ version of `boto3`, you can use `mypy-boto3-builder`.
 
 ```bash
 # Install preferred version of `boto3`
-pip install boto3==1.10.18 botocore==1.13.18
+python -m pip install boto3==1.10.18 botocore==1.13.18
 
 # Install `mypy-boto3-builder`
-pip install mypy-boto3-builder[black]
+python -m pip install mypy-boto3-builder
 
 # Build all packages
 # You can specify required services explicitly like
