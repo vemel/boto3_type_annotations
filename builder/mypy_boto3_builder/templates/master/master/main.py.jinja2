@@ -67,8 +67,8 @@ def get_parser() -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument("-v", "--version", action="version", version=version)
-    parser.add_argument("-d", "--debug", action="store_true", help="Hide log messages")
-    parser.add_argument("-q", "--quiet", action="store_true", help="Verbose log messages")
+    parser.add_argument("-d", "--debug", action="store_true", help="Hide log output")
+    parser.add_argument("-q", "--quiet", action="store_true", help="Verbose log output")
     return parser
 
 
