@@ -9,10 +9,11 @@ from typing import List, Dict
 from {{ master_module_name }}.version import __version__ as version
 
 ROOT_PATH = pathlib.Path(__file__).absolute().parent
-BOTO3_STUBS_PATH = ROOT_PATH.parent / "{{ boto3_stubs_name }}"
+BOTO3_STUBS_NAME = "{{ boto3_stubs_name }}"
+MODULE_NAME = "{{ master_module_name }}"
+BOTO3_STUBS_PATH = ROOT_PATH.parent / BOTO3_STUBS_NAME
 INIT_PATH = BOTO3_STUBS_PATH / "__init__.pyi"
 SESSION_PATH = BOTO3_STUBS_PATH / "session.pyi"
-MODULE_NAME = "{{ master_module_name }}"
 SUBMODULES = [
     {% for service_package in package.service_packages -%}
     dict(
@@ -58,8 +59,12 @@ METHOD_TEMPLATE = """    {overload}def {name}(
 
 def get_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        "boto3-stubs manager",
-        description="Launch after install or remove services. You may require sudo.",
+        MODULE_NAME,
+        description=(
+            "Service stubs generator for boto3-stubs."
+            " Run it after boto3-stubs every update, install or remove services."
+            " Use it only with local python installation."
+        ),
     )
     parser.add_argument("-v", "--version", action="version", version=version)
     parser.add_argument("-d", "--debug", action="store_true", help="Hide log messages")
@@ -70,9 +75,7 @@ def get_parser() -> argparse.ArgumentParser:
 def get_logger(level: int) -> logging.Logger:
     logger = logging.getLogger("{{ master_module_name }}")
     stream_handler = logging.StreamHandler()
-    formatter = logging.Formatter(
-        "%(asctime)s %(name)s: %(levelname)-8s %(message)s", datefmt="%H:%M:%S"
-    )
+    formatter = logging.Formatter("%(name)s: %(levelname)-8s %(message)s")
     stream_handler.setFormatter(formatter)
     stream_handler.setLevel(level)
     logger.addHandler(stream_handler)
