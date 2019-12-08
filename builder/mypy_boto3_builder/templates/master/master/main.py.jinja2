@@ -234,7 +234,6 @@ def main() -> None:
     INIT_PATH.write_text(init_contents)
     logger.debug("Updated %s", INIT_PATH)
     SESSION_PATH.write_text(session_contents)
-    print(session_contents)
     logger.debug("Updated %s", SESSION_PATH)
     names_str = ""
     for i, submodule in enumerate(discovered_submodules):

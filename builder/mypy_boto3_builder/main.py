@@ -52,15 +52,18 @@ def main() -> None:
         service_name.boto3_version = boto3_version
         service_names.append(service_name)
 
+    build_version = args.build_version or boto3_version
     JinjaManager.update_globals(
         master_pypi_name=PYPI_NAME,
         master_module_name=MODULE_NAME,
         boto3_stubs_name=BOTO3_STUBS_NAME,
         boto3_version=boto3_version,
-        build_version=args.build_version or boto3_version,
+        build_version=build_version,
         doc_line_length=LINE_LENGTH - 4,
         clean_doc=clean_doc,
     )
+
+    logger.info(f"Bulding version {build_version}")
 
     if not args.skip_services:
         for index, service_name in enumerate(service_names):
