@@ -94,6 +94,8 @@ def main() -> None:
         log_level = logging.CRITICAL
     logger = get_logger(log_level)
 
+    logger.debug('Using Python packages directory %s', ROOT_PATH.parent)
+
     if not BOTO3_STUBS_PATH.is_dir():
         logger.error(
             (
