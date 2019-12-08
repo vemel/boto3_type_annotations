@@ -10,6 +10,7 @@ Based on [boto3_type_annotations](https://github.com/alliefitter/boto3_type_anno
 
 - [mypy_boto3](#mypyboto3)
   - [Installation](#installation)
+  - [Latest changes](#latest-changes)
   - [Usage](#usage)
     - [Setup your IDE](#setup-your-ide)
     - [VSCode](#vscode)
@@ -37,10 +38,14 @@ python -m pip install boto3-stubs[essential]
 # install annotations for other services you use
 python -m pip install boto3-stubs[acm,apigateway]
 
-# build suservices index. You need to execute this command everytime
+# build suservices index. You should execute this command everytime
 # you update boto3-stubs or install/remove services
 python -m mypy_boto3
 ```
+
+## Latest changes
+
+Full changelog can be found in [Releases](https://github.com/vemel/mypy_boto3/releases).
 
 ## Usage
 
