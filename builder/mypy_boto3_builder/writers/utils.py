@@ -4,17 +4,12 @@ Jinja2 renderer and black formatter.
 from pathlib import Path
 from typing import Optional
 
-try:
-    import black
-except ModuleNotFoundError:
-    pass
+import black
 
 from mypy_boto3_builder.constants import TEMPLATES_PATH, LINE_LENGTH
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.structures.package import Package
 from mypy_boto3_builder.jinja_manager import JinjaManager
-
-BLACK_INSTALLED = "black" in locals()
 
 
 def blackify(content: str, file_path: Path, fast: bool = True) -> str:
@@ -34,9 +29,6 @@ def blackify(content: str, file_path: Path, fast: bool = True) -> str:
     Raises:
         ValueError -- If `content` is not a valid Python code.
     """
-    if not BLACK_INSTALLED:
-        return content
-
     if file_path.suffix not in (".py", ".pyi"):
         return content
 
