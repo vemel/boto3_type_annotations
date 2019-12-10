@@ -47,7 +47,12 @@ def parse_collections(
         )
 
         collection_record.methods.append(
-            Method("all", [Argument("cls", None)], self_type)
+            Method(
+                "all",
+                [Argument("cls", None)],
+                self_type,
+                decorators=[Type.classmethod],
+            )
         )
         collection_record.methods.append(
             Method(
