@@ -350,7 +350,13 @@ class ShapeParser:
         return Method(name="wait", arguments=arguments, return_type=Type.none)
 
     def get_service_resource_method_map(self) -> Dict[str, Method]:
-        result: Dict[str, Method] = {}
+        result: Dict[str, Method] = {
+            "get_available_subresources": Method(
+                "get_available_subresources",
+                [Argument("self", None)],
+                TypeSubscript(Type.List, [Type.str]),
+            ),
+        }
         service_resource_shape = self._get_service_resource()
         for action_name, action_shape in service_resource_shape.get(
             "actions", {}
