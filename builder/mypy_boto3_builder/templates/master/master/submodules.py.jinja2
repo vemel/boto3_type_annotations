@@ -1,0 +1,22 @@
+import importlib.util
+from typing import List, Dict, Any
+
+SUBMODULES: List[Dict[str, Any]] = [
+    {% for service_package in package.service_packages -%}
+    dict(
+        module_name="{{ service_package.service_name.module_name }}",
+        import_name="{{ service_package.service_name.import_name }}",
+        boto3_name="{{ service_package.service_name.boto3_name }}",
+        class_name="{{ service_package.service_name.class_name }}",
+        has_resource={{ "True" if service_package.service_resource else "False" }},
+        has_waiter={{ "True" if service_package.waiters else "False" }},
+        has_paginator={{ "True" if service_package.paginators else "False" }}
+    )
+    {{ ",\n" if not loop.last else "\n" -}}
+    {% endfor -%}
+]
+
+INSTALLED_SUBMODULES: List[Dict[str, Any]] = []
+for submodule in SUBMODULES:
+    if importlib.util.find_spec(submodule["module_name"]) is not None:
+        INSTALLED_SUBMODULES.append(submodule)

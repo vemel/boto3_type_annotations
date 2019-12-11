@@ -1,5 +1,4 @@
 import argparse
-import importlib
 import pathlib
 import logging
 import re
@@ -8,27 +7,11 @@ import shutil
 from typing import List, Dict
 
 from {{ master_module_name }}.version import __version__ as version
+from {{ master_module_name }}.submodules import SUBMODULES, INSTALLED_SUBMODULES
 
 ROOT_PATH = pathlib.Path(__file__).absolute().parent
 BOTO3_STUBS_NAME = "{{ boto3_stubs_name }}"
 MODULE_NAME = "{{ master_module_name }}"
-BOTO3_STUBS_PATH = ROOT_PATH.parent / BOTO3_STUBS_NAME
-INIT_PATH = BOTO3_STUBS_PATH / "__init__.pyi"
-SESSION_PATH = BOTO3_STUBS_PATH / "session.pyi"
-SUBMODULES = [
-    {% for service_package in package.service_packages -%}
-    dict(
-        module_name="{{ service_package.service_name.module_name }}",
-        import_name="{{ service_package.service_name.import_name }}",
-        boto3_name="{{ service_package.service_name.boto3_name }}",
-        class_name="{{ service_package.service_name.class_name }}",
-        has_resource={{ "True" if service_package.service_resource else "False" }},
-        has_waiter={{ "True" if service_package.waiters else "False" }},
-        has_paginator={{ "True" if service_package.paginators else "False" }}
-    )
-    {{ ",\n" if not loop.last else "\n" -}}
-    {% endfor -%}
-]
 
 FUNCTION_TEMPLATE = """{overload}def {name}(
     service_name: {service_name_type},
@@ -41,7 +24,8 @@ FUNCTION_TEMPLATE = """{overload}def {name}(
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
     config: Config = None,
-) -> {return_type}: ..."""
+) -> {return_type}:
+    pass"""
 
 METHOD_TEMPLATE = """    {overload}def {name}(
         self,
@@ -55,7 +39,8 @@ METHOD_TEMPLATE = """    {overload}def {name}(
         aws_secret_access_key: str = None,
         aws_session_token: str = None,
         config: Config = None,
-    ) -> {return_type}: ..."""
+    ) -> {return_type}:
+        pass"""
 
 
 def get_parser() -> argparse.ArgumentParser:
@@ -95,14 +80,15 @@ def main() -> None:
     logger = get_logger(log_level)
 
     logger.debug('Using Python packages directory %s', ROOT_PATH.parent)
+    boto3_stubs_path = ROOT_PATH.parent / BOTO3_STUBS_NAME
 
-    if not BOTO3_STUBS_PATH.is_dir():
+    if not boto3_stubs_path.is_dir():
         logger.error(
             (
                 "Directory %s does not exist, make"
                 " sure boto3-stubs are installed to the same location."
             ),
-            BOTO3_STUBS_PATH
+            boto3_stubs_path,
         )
         sys.exit(1)
 
@@ -111,24 +97,17 @@ def main() -> None:
     session_client_functions: List[str] = []
     session_resource_functions: List[str] = []
     imports: List[str] = []
-    init_contents = INIT_PATH.read_text()
-    session_contents = SESSION_PATH.read_text()
-    discovered_submodules: List[Dict] = []
-    for submodule in SUBMODULES:
-        if importlib.find_loader(submodule["module_name"]) is None:
-            continue
-
-        discovered_submodules.append(submodule)
+    for submodule in INSTALLED_SUBMODULES:
         logger.info(
             "Discovered %s subresource in %s",
             submodule["boto3_name"],
             submodule["module_name"],
         )
 
-    for submodule in discovered_submodules:
+    for submodule in INSTALLED_SUBMODULES:
         init_client_functions.append(
             FUNCTION_TEMPLATE.format(
-                overload="@overload\n" if len(discovered_submodules) > 1 else "",
+                overload="@overload\n" if len(INSTALLED_SUBMODULES) > 1 else "",
                 name="client",
                 service_name_type='Literal["{}"]'.format(submodule["boto3_name"]),
                 return_type="{}Client".format(submodule["class_name"]),
@@ -136,7 +115,7 @@ def main() -> None:
         )
         session_client_functions.append(
             METHOD_TEMPLATE.format(
-                overload="@overload\n    " if len(discovered_submodules) > 1 else "",
+                overload="@overload\n    " if len(INSTALLED_SUBMODULES) > 1 else "",
                 name="client",
                 service_name_type='Literal["{}"]'.format(submodule["boto3_name"]),
                 return_type="{}Client".format(submodule["class_name"]),
@@ -150,7 +129,7 @@ def main() -> None:
         if submodule["has_resource"]:
             init_resource_functions.append(
                 FUNCTION_TEMPLATE.format(
-                    overload="@overload\n" if len(discovered_submodules) > 1 else "",
+                    overload="@overload\n" if len(INSTALLED_SUBMODULES) > 1 else "",
                     name="resource",
                     service_name_type='Literal["{}"]'.format(submodule["boto3_name"]),
                     return_type="{}ServiceResource".format(submodule["class_name"]),
@@ -158,7 +137,7 @@ def main() -> None:
             )
             session_resource_functions.append(
                 METHOD_TEMPLATE.format(
-                    overload="@overload\n    " if len(discovered_submodules) > 1 else "",
+                    overload="@overload\n    " if len(INSTALLED_SUBMODULES) > 1 else "",
                     name="resource",
                     service_name_type='Literal["{}"]'.format(submodule["boto3_name"]),
                     return_type="{}ServiceResource".format(submodule["class_name"]),
@@ -188,60 +167,49 @@ def main() -> None:
                 return_type="Any",
             )
         )
-    if not session_client_functions:
-        session_client_functions.append(
-            METHOD_TEMPLATE.format(
-                overload="",
-                name="client",
-                service_name_type="str",
-                return_type="Any",
-            )
+    session_client_functions.append(
+        METHOD_TEMPLATE.format(
+            overload="",
+            name="client",
+            service_name_type="str",
+            return_type="Any",
         )
-    if not session_resource_functions:
-        session_resource_functions.append(
-            METHOD_TEMPLATE.format(
-                overload="",
-                name="resource",
-                service_name_type="str",
-                return_type="Any",
-            )
+    )
+    session_resource_functions.append(
+        METHOD_TEMPLATE.format(
+            overload="",
+            name="resource",
+            service_name_type="str",
+            return_type="Any",
         )
-
-    imports_string = "### IMPORTS\n{}\n### ENDIMPORTS".format(
-        "\n".join(imports) if imports else "\n"
-    )
-    init_contents = re.sub(
-        r"### IMPORTS.+### ENDIMPORTS", imports_string, init_contents, flags=re.S
-    )
-    session_contents = re.sub(
-        r"### IMPORTS.+### ENDIMPORTS", imports_string, session_contents, flags=re.S
     )
 
-    client_string = "### CLIENT\n{}\n### ENDCLIENT".format(
-        "\n".join(init_client_functions) if init_client_functions else "\n"
-    )
-    session_client_string = "### CLIENT\n{}\n    ### ENDCLIENT".format(
-        "\n".join(session_client_functions) if session_client_functions else "\n"
-    )
-    init_contents = re.sub(
-        r"### CLIENT.+### ENDCLIENT", client_string, init_contents, flags=re.S
-    )
-    session_contents = re.sub(
-        r"### CLIENT.+### ENDCLIENT", session_client_string, session_contents, flags=re.S
-    )
+    init_contents: List[str] = [
+        "import sys",
+        "from typing import overload, Any",
+        "if sys.version_info >= (3, 8):",
+        "    from typing import Literal",
+        "else:",
+        "    from typing_extensions import Literal",
+    ]
+    init_contents.extend(imports)
+    init_contents.append('')
+    init_contents.extend(init_client_functions)
+    init_contents.extend(init_resource_functions)
 
-    resource_string = "### RESOURCE\n{}\n### ENDRESOURCE".format(
-        "\n".join(init_resource_functions) if init_resource_functions else "\n"
-    )
-    session_resource_string = "### RESOURCE\n{}\n    ### ENDRESOURCE".format(
-        "\n".join(session_resource_functions) if session_resource_functions else "\n"
-    )
-    init_contents = re.sub(
-        r"### RESOURCE.+### ENDRESOURCE", resource_string, init_contents, flags=re.S
-    )
-    session_contents = re.sub(
-        r"### RESOURCE.+### ENDRESOURCE", session_resource_string, session_contents, flags=re.S
-    )
+    session_contents: List[str] = [
+        "import sys",
+        "from typing import overload, Any",
+        "if sys.version_info >= (3, 8):",
+        "    from typing import Literal",
+        "else:",
+        "    from typing_extensions import Literal",
+    ]
+    session_contents.extend(imports)
+    session_contents.append('')
+    session_contents.append('class Session:')
+    session_contents.extend(session_client_functions)
+    session_contents.extend(session_resource_functions)
 
     def write_text(path: pathlib.Path, text: str) -> None:
         logger.debug("Updating %s", path)
@@ -249,7 +217,7 @@ def main() -> None:
 
     for submodule in SUBMODULES:
         submodule_path = ROOT_PATH / submodule["import_name"]
-        if submodule not in discovered_submodules:
+        if submodule not in INSTALLED_SUBMODULES:
             if submodule_path.exists():
                 logger.debug("Removing directory for deleted service %s", submodule_path)
                 shutil.rmtree(submodule_path)
@@ -278,21 +246,21 @@ def main() -> None:
                 'from {}.paginator import *'.format(submodule["module_name"]),
             )
 
-    write_text(INIT_PATH, init_contents)
-    write_text(SESSION_PATH, session_contents)
+    write_text(ROOT_PATH / "boto3_init_gen.py", "\n".join(init_contents))
+    write_text(ROOT_PATH / "boto3_session_gen.py", "\n".join(session_contents))
 
-    if not discovered_submodules:
+    if not INSTALLED_SUBMODULES:
         logger.warning("No services submodules discovered, install the ones you use and run this command again")
         logger.info("https://mypy-boto3.readthedocs.io/en/latest/#sub-modules")
         sys.exit()
 
     names_str = ""
-    for i, submodule in enumerate(discovered_submodules):
+    for i, submodule in enumerate(INSTALLED_SUBMODULES):
         name = submodule["boto3_name"]
         if not i:
             names_str = name
             continue
-        if i < len(discovered_submodules) - 1:
+        if i < len(INSTALLED_SUBMODULES) - 1:
             names_str = "{}, {}".format(names_str, name)
             continue
 

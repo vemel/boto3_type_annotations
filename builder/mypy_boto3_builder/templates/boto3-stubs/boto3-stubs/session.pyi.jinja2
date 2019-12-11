@@ -1,26 +1,53 @@
 # pylint: disable=unused-argument,multiple-statements,unused-import
-import sys
-from typing import Any, List, Union, overload
+from typing import Any, List
 
 import boto3
 import boto3.utils
+from boto3.resources.factory import ResourceFactory
 from boto3.exceptions import ResourceNotExistsError, UnknownAPIVersionError
 from boto3.resources.factory import ResourceFactory
-from botocore.config import Config
+
+import botocore.session
 from botocore.credentials import Credentials
 from botocore.loaders import Loader
 from botocore.model import ServiceModel
-from botocore.waiter import Waiter
+from botocore.client import Config
+from botocore.exceptions import DataNotFoundError, UnknownServiceError
 
-if sys.version_info >= (3, 8):
-    from typing import Literal
-else:
-    from typing_extensions import Literal
+class _SessionServicesFallback:
+    def client(
+        self,
+        service_name: str,
+        region_name: str = None,
+        api_version: str = None,
+        use_ssl: bool = None,
+        verify: Union[str, bool] = None,
+        endpoint_url: str = None,
+        aws_access_key_id: str = None,
+        aws_secret_access_key: str = None,
+        aws_session_token: str = None,
+        config: Config = None,
+    ) -> Any: ...
+    def resource(
+        self,
+        service_name: str,
+        region_name: str = None,
+        api_version: str = None,
+        use_ssl: bool = None,
+        verify: Union[str, bool] = None,
+        endpoint_url: str = None,
+        aws_access_key_id: str = None,
+        aws_secret_access_key: str = None,
+        aws_session_token: str = None,
+        config: Config = None,
+    ) -> Any: ...
 
-### IMPORTS
-### ENDIMPORTS
+try:
+    from mypy_boto3.boto3_session import Session as SessionServices
+except (ImportError, ModuleNotFoundError):
+    SessionServices = _SessionServicesFallback
 
-class Session:
+class Session(SessionServices):
     def __init__(
         self,
         aws_access_key_id: str = None,
@@ -55,35 +82,3 @@ class Session:
     ) -> List[str]: ...
     def get_credentials(self) -> Credentials: ...
     def _register_default_handlers(self) -> None: ...
-
-    ### CLIENT
-    def client(
-        self,
-        service_name: str,
-        region_name: str = None,
-        api_version: str = None,
-        use_ssl: bool = None,
-        verify: Union[str, bool] = None,
-        endpoint_url: str = None,
-        aws_access_key_id: str = None,
-        aws_secret_access_key: str = None,
-        aws_session_token: str = None,
-        config: Config = None,
-    ) -> Any: ...
-    ### ENDCLIENT
-
-    ### RESOURCE
-    def resource(
-        self,
-        service_name: str,
-        region_name: str = None,
-        api_version: str = None,
-        use_ssl: bool = None,
-        verify: Union[str, bool] = None,
-        endpoint_url: str = None,
-        aws_access_key_id: str = None,
-        aws_secret_access_key: str = None,
-        aws_session_token: str = None,
-        config: Config = None,
-    ) -> Any: ...
-    ### ENDRESOURCE
