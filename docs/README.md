@@ -44,7 +44,7 @@ python -m pip install boto3-stubs[essential]
 python -m pip install boto3-stubs[acm,apigateway]
 
 # build service index. You should execute this command everytime
-# you update boto3-stubs or install/remove services
+# you install or remove service packages
 python -m mypy_boto3
 ```
 
@@ -263,7 +263,7 @@ python -m pip install boto3-stubs[essential]
 python -m pip install boto3-stubs[s3,ec2,sqs]
 
 # build service index. You should execute this command everytime
-# you update boto3-stubs or install/remove services
+# you install or remove service packages
 python -m mypy_boto3
 ```
 
