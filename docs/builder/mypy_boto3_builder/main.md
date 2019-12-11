@@ -9,7 +9,7 @@ Main entrypoint for builder.
 
 ## main
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/main.py#L29)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/main.py#L27)
 
 ```python
 def main() -> None:

@@ -74,6 +74,15 @@ class ServicePackage(Package):
                 self.client.name,
             )
         )
+        import_records.add(
+            ImportRecord(
+                ImportString(
+                    self.service_name.module_name, ServiceModuleName.client.name
+                ),
+                self.client.name,
+                alias=self.client.alias_name,
+            )
+        )
         if self.service_resource:
             import_records.add(
                 ImportRecord(
@@ -82,6 +91,16 @@ class ServicePackage(Package):
                         ServiceModuleName.service_resource.name,
                     ),
                     self.service_resource.name,
+                )
+            )
+            import_records.add(
+                ImportRecord(
+                    ImportString(
+                        self.service_name.module_name,
+                        ServiceModuleName.service_resource.name,
+                    ),
+                    self.service_resource.name,
+                    alias=self.service_resource.alias_name,
                 )
             )
         for waiter in self.waiters:
@@ -106,13 +125,17 @@ class ServicePackage(Package):
         return ImportRecordGroup.from_import_records(import_records)
 
     def get_init_all_names(self) -> List[str]:
-        result = [self.client.name]
+        names = {self.client.name, self.client.alias_name}
         if self.service_resource:
-            result.append(self.service_resource.name)
+            names.add(self.service_resource.name)
+            names.add(self.service_resource.alias_name)
         for waiter in self.waiters:
-            result.append(waiter.name)
+            names.add(waiter.name)
         for paginator in self.paginators:
-            result.append(paginator.name)
+            names.add(paginator.name)
+
+        result = list(names)
+        result.sort()
         return result
 
     def get_client_required_import_record_groups(self) -> List[ImportRecordGroup]:

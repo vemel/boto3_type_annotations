@@ -38,15 +38,15 @@ from {{ master_module_name }} import {{ service_name.import_name }}
 # Check if your IDE supports function overloads,
 # you probably do not need explicit type annotations
 # client = boto3.client("{{ service_name.boto3_name }}")
-client: {{ service_name.import_name }}.Client = boto3.client("{{ service_name.boto3_name }}")
+client: {{ service_name.import_name }}.{{ package.client.name }} = boto3.client("{{ service_name.boto3_name }}")
 
 # works for session as well
 session = boto3.session.Session(region="us-west-1")
-session_client: {{ service_name.import_name }}.Client = session.client("{{ service_name.boto3_name }}")
+session_client: {{ service_name.import_name }}.{{ package.client.name }} = session.client("{{ service_name.boto3_name }}")
 
 {% if package.service_resource -%}
 # Do you prefer resource approach? We've got you covered!
-resource: {{ service_name.import_name }}.ServiceResource = boto3.resource("{{ service_name.boto3_name }}")
+resource: {{ service_name.import_name }}.{{ package.service_resource.name }} = boto3.resource("{{ service_name.boto3_name }}")
 {% endif -%}
 
 {% if package.waiters -%}

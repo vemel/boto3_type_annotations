@@ -24,6 +24,7 @@ class ServiceResource(ClassRecord):
     """
 
     name: str = "ServiceResource"
+    alias_name: str = "ServiceResource"
     service_name: ServiceName = ServiceNameCatalog.ec2
     boto3_service_resource: Optional[Boto3ServiceResource] = None
     collections: List[Collection] = field(default_factory=lambda: [])

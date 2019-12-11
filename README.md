@@ -63,7 +63,7 @@ from mypy_boto3 import s3
 # you need explicit type annotatins only if your IDE do not support
 # function overloads (e.g. VSCode). FOr PyCHarm anf mypy you do not need
 # to set type explicitly
-client: s3.Client = boto3.client("s3")
+client: s3.S3Client = boto3.client("s3")
 
 # IDE autocomplete suggests function name and arguments here
 client.create_bucket(Bucket="bucket")
@@ -74,7 +74,7 @@ client.get_object(Bucket="bucket")
 # (mypy) error: Argument "Key" to "get_object" of "Client" has incompatible type "None"; expected "str"
 client.get_object(Bucket="bucket", Key=None)
 
-resource: s3.ServiceResource = boto3.Session(region_name="us-west-1").resource("s3")
+resource: s3.S3ServiceResource = boto3.Session(region_name="us-west-1").resource("s3")
 
 # IDE autocomplete suggests function name and arguments here
 bucket = resource.Bucket("bucket")
@@ -132,11 +132,11 @@ from mypy_boto3 import ec2
 session = boto3.session.Session(region_name="us-west-1")
 
 # by default it is botocore.client.BaseClient, but we explicitly
-# set it to EC2.Client
-ec2_client: ec2.Client = boto3.client("ec2", region_name="us-west-1")
+# set it to EC2.EC2Client
+ec2_client: ec2.EC2Client = boto3.client("ec2", region_name="us-west-1")
 
 # same for resource
-ec2_resource: ec2.ServiceResource = session.resource("ec2")
+ec2_resource: ec2.EC2ServiceResource = session.resource("ec2")
 
 # PyCharm does not need explicit type annotations here, but VSCode does
 bundle_task_complete_waiter: ec2.BundleTaskCompleteWaiter = ec2_client.get_waiter("bundle_task_complete")

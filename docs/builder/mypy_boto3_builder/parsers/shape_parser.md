@@ -47,7 +47,7 @@ def get_paginator_names() -> List[str]:
 
 ### ShapeParser().get_resource_method_map
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/shape_parser.py#L363)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/shape_parser.py#L369)
 
 ```python
 def get_resource_method_map(resource_name: str) -> Dict[str, Method]:

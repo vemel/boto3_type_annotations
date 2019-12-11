@@ -39,7 +39,7 @@ import boto3
 from {{ master_module_name }} import dynamodb
 
 # Enjoy auto-complete for now
-client: dynamodb.Client = boto3.client("dynamodb")
+client: dynamodb.DynamoDBClient = boto3.client("dynamodb")
 
 # argument hints and correct return type is provided by boto3-stubs
 client.query("my_table")

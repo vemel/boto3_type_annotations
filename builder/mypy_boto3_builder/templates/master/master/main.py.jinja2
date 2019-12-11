@@ -122,7 +122,7 @@ def main() -> None:
             )
         )
         imports.append(
-            "from {{ master_module_name }}.{} import Client as {}Client".format(
+            "from {{ master_module_name }}.{} import {}Client".format(
                 submodule["import_name"], submodule["class_name"],
             )
         )
@@ -144,7 +144,7 @@ def main() -> None:
                 )
             )
             imports.append(
-                "from {{ master_module_name }}.{} import ServiceResource as {}ServiceResource".format(
+                "from {{ master_module_name }}.{} import {}ServiceResource".format(
                     submodule["import_name"], submodule["class_name"],
                 )
             )

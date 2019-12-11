@@ -22,6 +22,7 @@ class Client(ClassRecord):
     """
 
     name: str = "Client"
+    alias_name: str = "Client"
     service_name: ServiceName = ServiceNameCatalog.ec2
     boto3_client: BaseClient = None
     exceptions_class: ClassRecord = field(
