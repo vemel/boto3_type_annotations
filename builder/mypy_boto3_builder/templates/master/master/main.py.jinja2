@@ -167,22 +167,24 @@ def main() -> None:
                 return_type="Any",
             )
         )
-    session_client_functions.append(
-        METHOD_TEMPLATE.format(
-            overload="",
-            name="client",
-            service_name_type="str",
-            return_type="Any",
+    if not session_client_functions:
+        session_client_functions.append(
+            METHOD_TEMPLATE.format(
+                overload="",
+                name="client",
+                service_name_type="str",
+                return_type="Any",
+            )
         )
-    )
-    session_resource_functions.append(
-        METHOD_TEMPLATE.format(
-            overload="",
-            name="resource",
-            service_name_type="str",
-            return_type="Any",
+    if not session_resource_functions:
+        session_resource_functions.append(
+            METHOD_TEMPLATE.format(
+                overload="",
+                name="resource",
+                service_name_type="str",
+                return_type="Any",
+            )
         )
-    )
 
     init_contents: List[str] = [
         "import sys",
