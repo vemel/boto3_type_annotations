@@ -1,6 +1,4 @@
 # pylint: disable=unused-argument,multiple-statements,super-init-not-called,no-self-use
-from __future__ import annotations
-
 import logging
 from typing import List, Dict, Any, Optional
 
@@ -25,7 +23,7 @@ class ResourceMeta:
         self.resource_model: ResourceModel
     def __repr__(self) -> str: ...
     def __eq__(self, other: Any) -> bool: ...
-    def copy(self) -> ResourceMeta: ...
+    def copy(self) -> "ResourceMeta": ...
 
 class ServiceResource:
     def __init__(

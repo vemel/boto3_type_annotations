@@ -1,6 +1,4 @@
 # pylint: disable=unused-argument,multiple-statements,no-self-use
-from __future__ import annotations
-
 import sys
 from decimal import Context
 from typing import Tuple, Any, Dict

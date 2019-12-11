@@ -1,6 +1,4 @@
 # pylint: disable=unused-argument,multiple-statements,super-init-not-called,no-self-use,unused-import
-from __future__ import annotations
-
 import sys
 import logging
 from typing import Optional, Dict, Any, List, Union, Tuple
@@ -81,7 +79,7 @@ class ResponseResource:
     @property
     def identifiers(self) -> List[Identifier]: ...
     @property
-    def model(self) -> ResourceModel: ...
+    def model(self) -> "ResourceModel": ...
 
 class Collection(Action):
     @property

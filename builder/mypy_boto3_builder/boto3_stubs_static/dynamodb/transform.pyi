@@ -1,5 +1,4 @@
 # pylint: disable=unused-argument,multiple-statements,no-self-use
-from __future__ import annotations
 from typing import List, Any, Optional, Dict, Callable
 
 from botocore.model import Shape
