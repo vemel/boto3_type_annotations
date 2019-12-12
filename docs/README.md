@@ -66,17 +66,17 @@ import boto3
 from mypy_boto3 import s3
 
 # you need explicit type annotatins only if your IDE do not support
-# function overloads (e.g. VSCode). FOr PyCHarm anf mypy you do not need
-# to set type explicitly
+# function overloads (e.g. VSCode). For PyCharm anf mypy you do not need
+# to set types explicitly
 client: s3.S3Client = boto3.client("s3")
 
 # IDE autocomplete suggests function name and arguments here
 client.create_bucket(Bucket="bucket")
 
-# (mypy) error: Missing positional argument "Key" in call to "get_object" of "Client"
+# (mypy) error: Missing positional argument "Key" in call to "get_object" of "S3Client"
 client.get_object(Bucket="bucket")
 
-# (mypy) error: Argument "Key" to "get_object" of "Client" has incompatible type "None"; expected "str"
+# (mypy) error: Argument "Key" to "get_object" of "S3Client" has incompatible type "None"; expected "str"
 client.get_object(Bucket="bucket", Key=None)
 
 resource: s3.S3ServiceResource = boto3.Session(region_name="us-west-1").resource("s3")
