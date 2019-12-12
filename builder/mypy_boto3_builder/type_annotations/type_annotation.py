@@ -3,7 +3,7 @@ Wrapper for simple type annotation like `str` or `Dict`.
 """
 from __future__ import annotations
 
-from typing import Union, Optional, Any, Dict, List, Callable, IO, overload
+from typing import Union, Optional, Any, Dict, List, Callable, IO, overload, Generator
 
 from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
@@ -25,6 +25,7 @@ class TypeAnnotation(FakeAnnotation):
         List,
         Optional,
         Callable,
+        Generator,
         IO,
         overload,
     ]

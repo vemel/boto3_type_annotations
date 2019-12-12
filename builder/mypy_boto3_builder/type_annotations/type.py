@@ -1,7 +1,7 @@
 """
 Predefined FakeAnnotation instances.
 """
-from typing import Union, Optional, Any, Dict, List, Callable, IO, overload
+from typing import Union, Optional, Any, Dict, List, Callable, IO, overload, Generator
 
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
@@ -30,3 +30,4 @@ class Type:
     int = TypeClass(int)
     float = TypeClass(float)
     Ellipsis = TypeConstant(...)
+    Generator = TypeAnnotation(Generator)
