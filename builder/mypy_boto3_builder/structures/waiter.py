@@ -6,9 +6,6 @@ from typing import List
 
 from botocore.waiter import Waiter as Boto3Waiter
 
-from mypy_boto3_builder.import_helpers.internal_import_record import (
-    InternalImportRecord,
-)
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type import Type
@@ -31,9 +28,6 @@ class Waiter(ClassRecord):
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [TypeClass(Boto3Waiter, alias="Boto3Waiter")]
     )
-
-    def get_import_record(self) -> InternalImportRecord:
-        return InternalImportRecord(ServiceModuleName.waiter, name=self.name)
 
     def get_client_method(self) -> Method:
         return Method(
