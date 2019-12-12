@@ -105,5 +105,6 @@ ENV/
 
 # Typing
 .mypy_cache
+.pytest_cache
 
 mypy_boto3_output
