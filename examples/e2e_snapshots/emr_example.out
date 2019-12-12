@@ -1,0 +1,2 @@
+examples/emr_example.py:10: error: List item 0 has incompatible type "int"; expected "str"
+Found 1 error in 1 file (checked 1 source file)
