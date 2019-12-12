@@ -19,8 +19,6 @@ if [[ "$1" == "master" ]]; then
     cd ${OUTPUT_PATH}/master_package
     python -m pip install .
     cd -
-
-    python -m mypy_boto3 -d
     exit
 fi
 
@@ -31,5 +29,3 @@ do
     python -m pip install .
     cd -
 done
-
-python -m mypy_boto3 -d

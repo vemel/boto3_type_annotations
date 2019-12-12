@@ -17,6 +17,10 @@ SUBMODULES: List[Dict[str, Any]] = [
 ]
 
 INSTALLED_SUBMODULES: List[Dict[str, Any]] = []
+installed_submodule_names: List[str] = []
 for submodule in SUBMODULES:
     if importlib.util.find_spec(submodule["module_name"]) is not None:
         INSTALLED_SUBMODULES.append(submodule)
+        installed_submodule_names.append(submodule["boto3_name"])
+
+CACHE_KEY = ','.join(installed_submodule_names)

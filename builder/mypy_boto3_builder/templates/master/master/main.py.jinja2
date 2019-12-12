@@ -7,9 +7,14 @@ import shutil
 from typing import List, Dict
 
 from {{ master_module_name }}.version import __version__ as version
-from {{ master_module_name }}.submodules import SUBMODULES, INSTALLED_SUBMODULES
+from {{ master_module_name }}.submodules import (
+    SUBMODULES,
+    INSTALLED_SUBMODULES,
+    CACHE_KEY,
+)
 
 ROOT_PATH = pathlib.Path(__file__).absolute().parent
+CACHE_PATH = ROOT_PATH / 'cache.txt'
 BOTO3_STUBS_NAME = "{{ boto3_stubs_name }}"
 MODULE_NAME = "{{ master_module_name }}"
 
@@ -77,6 +82,40 @@ def main() -> None:
         log_level = logging.DEBUG
     if args.quiet:
         log_level = logging.CRITICAL
+    build_index(log_level)
+    set_cache_key()
+
+
+def _is_build_required() -> bool:
+    if not CACHE_PATH.exists():
+        return True
+
+    if CACHE_PATH.read_text() != CACHE_KEY:
+        return True
+
+    return False
+
+
+def set_cache_key() -> None:
+    CACHE_PATH.write_text(CACHE_KEY)
+
+
+def maybe_build_index() -> bool:
+    """
+    Check cache and build index if cache is outdated.
+    """
+    is_required = _is_build_required()
+    if is_required:
+        build_index()
+        set_cache_key()
+
+    return is_required
+
+
+def build_index(log_level: int = logging.CRITICAL) -> None:
+    """
+    Build index for installed services.
+    """
     logger = get_logger(log_level)
 
     logger.debug('Using Python packages directory %s', ROOT_PATH.parent)
