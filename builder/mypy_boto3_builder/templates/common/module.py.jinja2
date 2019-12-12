@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 {% for import_record in module_record.import_records -%}
 {{ import_record.render() }}
 {% endfor -%}
