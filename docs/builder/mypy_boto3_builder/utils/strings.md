@@ -10,7 +10,7 @@ Multiple string utils collection.
 
 ## get_class_prefix
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L9)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L7)
 
 ```python
 def get_class_prefix(func_name: str) -> str:
@@ -28,7 +28,7 @@ String with a class prefix.
 
 ## get_line_with_indented
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L23)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/strings.py#L21)
 
 ```python
 def get_line_with_indented(

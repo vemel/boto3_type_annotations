@@ -19,7 +19,6 @@ class SyntaxGrammar():
 ```
 
 ellipsis = "..."
-variable_name ::= alphanums + "_-."
 name_value ::= alphanums + "_-."
 string_value ::= alphas{0,2} "'"  [^']+  "'"
 plain_value ::= string_value | name_value
@@ -43,7 +42,7 @@ response_syntax ::= "**Response Syntax**" "::" (list_value | dict_value)
 
 ### SyntaxGrammar.disable_packrat
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/syntax_grammar.py#L147)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/syntax_grammar.py#L145)
 
 ```python
 @staticmethod
@@ -52,7 +51,7 @@ def disable_packrat() -> None:
 
 ### SyntaxGrammar.enable_packrat
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/syntax_grammar.py#L143)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/syntax_grammar.py#L141)
 
 ```python
 @staticmethod
@@ -61,7 +60,7 @@ def enable_packrat() -> None:
 
 ### SyntaxGrammar.reset
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/syntax_grammar.py#L139)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/syntax_grammar.py#L137)
 
 ```python
 @classmethod

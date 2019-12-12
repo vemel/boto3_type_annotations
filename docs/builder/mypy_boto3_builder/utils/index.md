@@ -4,6 +4,5 @@
 
 - [mypy-boto3](../../../README.md#mypy_boto3) / [Modules](../../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](../index.md#mypy-boto3-builder) / Utils
     - Modules
-        - [IndentTrimmer](indent_trimmer.md#indenttrimmer)
         - [NicePath](nice_path.md#nicepath)
         - [Strings](strings.md#strings)

@@ -3,8 +3,6 @@ Multiple string utils collection.
 """
 from typing import List
 
-from mypy_boto3_builder.utils.indent_trimmer import IndentTrimmer
-
 
 def get_class_prefix(func_name: str) -> str:
     """
@@ -35,7 +33,7 @@ def get_line_with_indented(input_string: str, multi_first_line: bool = False) ->
     result: List[str] = []
     indent_stack: List[int] = []
     for line in input_string.splitlines():
-        line_indent = IndentTrimmer.get_line_indent(line)
+        line_indent = len(line) - len(line.lstrip())
         if not indent_stack:
             indent_stack.append(line_indent)
             result.append(line)

@@ -149,7 +149,6 @@ Full list of [mypy-boto3](README.md#mypy_boto3) project modules.
             - [Type Map](builder/mypy_boto3_builder/type_maps/type_map.md#type-map)
             - [Typed Dicts](builder/mypy_boto3_builder/type_maps/typed_dicts.md#typed-dicts)
         - [Utils](builder/mypy_boto3_builder/utils/index.md#utils)
-            - [IndentTrimmer](builder/mypy_boto3_builder/utils/indent_trimmer.md#indenttrimmer)
             - [NicePath](builder/mypy_boto3_builder/utils/nice_path.md#nicepath)
             - [Strings](builder/mypy_boto3_builder/utils/strings.md#strings)
         - [Version](builder/mypy_boto3_builder/version.md#version)

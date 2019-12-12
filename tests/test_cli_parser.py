@@ -9,7 +9,7 @@ from mypy_boto3_builder.cli_parser import (
 )
 
 
-class IndentTrimmerTestCase(unittest.TestCase):
+class CLIParserTestCase(unittest.TestCase):
     @patch("mypy_boto3_builder.cli_parser.argparse")
     def test_get_cli_parser(self, argparse_mock: MagicMock) -> None:
         result = get_cli_parser()

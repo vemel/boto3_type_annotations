@@ -12,7 +12,6 @@ Wrapper for subscript type annotations, like `List[str]`.
         - [TypeSubscript().get_types](#typesubscriptget_types)
         - [TypeSubscript().is_dict](#typesubscriptis_dict)
         - [TypeSubscript().is_list](#typesubscriptis_list)
-        - [TypeSubscript().remove_children](#typesubscriptremove_children)
         - [TypeSubscript().render](#typesubscriptrender)
 
 ## TypeSubscript
@@ -36,7 +35,7 @@ Wrapper for subscript type annotations, like `List[str]`.
 
 ### TypeSubscript().add_child
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_subscript.py#L59)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_subscript.py#L56)
 
 ```python
 def add_child(child: FakeAnnotation) -> None:
@@ -44,7 +43,7 @@ def add_child(child: FakeAnnotation) -> None:
 
 ### TypeSubscript().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_subscript.py#L68)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_subscript.py#L65)
 
 ```python
 def copy() -> TypeSubscript:
@@ -72,7 +71,7 @@ def get_types() -> Set[FakeAnnotation]:
 
 ### TypeSubscript().is_dict
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_subscript.py#L62)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_subscript.py#L59)
 
 ```python
 def is_dict() -> bool:
@@ -80,18 +79,10 @@ def is_dict() -> bool:
 
 ### TypeSubscript().is_list
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_subscript.py#L65)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_subscript.py#L62)
 
 ```python
 def is_list() -> bool:
-```
-
-### TypeSubscript().remove_children
-
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_subscript.py#L56)
-
-```python
-def remove_children() -> None:
 ```
 
 ### TypeSubscript().render
