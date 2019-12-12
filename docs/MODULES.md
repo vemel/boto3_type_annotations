@@ -139,7 +139,6 @@ Full list of [mypy-boto3](README.md#mypy_boto3) project modules.
             - [TypeLiteral](builder/mypy_boto3_builder/type_annotations/type_literal.md#typeliteral)
             - [TypeSubscript](builder/mypy_boto3_builder/type_annotations/type_subscript.md#typesubscript)
             - [TypeTypedDict](builder/mypy_boto3_builder/type_annotations/type_typed_dict.md#typetypeddict)
-        - [Type Defs](builder/mypy_boto3_builder/type_defs.md#type-defs)
         - [Type Maps](builder/mypy_boto3_builder/type_maps/index.md#type-maps)
             - [Argument Type Map](builder/mypy_boto3_builder/type_maps/argument_type_map.md#argument-type-map)
             - [Docless Method Argument Map](builder/mypy_boto3_builder/type_maps/docless_method_argument_map.md#docless-method-argument-map)
