@@ -55,12 +55,3 @@ class TypeClass(FakeAnnotation):
         Create a copy of type annotation wrapper.
         """
         return TypeClass(self.value, self.alias)
-
-    def is_potential_literal(self) -> bool:
-        """
-        Whether type annotation can become a Literal.
-        """
-        if self.value is str:
-            return True
-
-        return False

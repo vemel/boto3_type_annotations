@@ -19,7 +19,6 @@ from pyparsing import (
 class SyntaxGrammar:
     """
     ellipsis = "..."
-    variable_name ::= alphanums + "_-."
     name_value ::= alphanums + "_-."
     string_value ::= alphas{0,2} "'"  [^']+  "'"
     plain_value ::= string_value | name_value
@@ -43,7 +42,6 @@ class SyntaxGrammar:
     """
 
     ellipsis = Literal("...")
-    variable_name = Word(alphanums + "_-.")
     name_value = Word(alphanums + "_-.")
     string_value = Combine(
         Optional(Word(alphas, max=2)) + Literal("'") + SkipTo("'") + Literal("'")

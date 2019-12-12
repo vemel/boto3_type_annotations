@@ -53,9 +53,6 @@ class TypeSubscript(FakeAnnotation):
             result.update(child.get_types())
         return result
 
-    def remove_children(self) -> None:
-        self.children.clear()
-
     def add_child(self, child: FakeAnnotation) -> None:
         self.children.append(child)
 

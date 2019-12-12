@@ -101,9 +101,6 @@ class ShapeParser:
 
         self.logger = get_logger()
 
-    def _get_shape(self, name: str) -> Shape:
-        return self.service_model.shape_for(name)
-
     def _get_operation(self, name: str) -> OperationModel:
         return self.service_model.operation_model(name)
 
@@ -111,19 +108,6 @@ class ShapeParser:
         return list(
             self.service_model.operation_names
         )  # pylint: disable=not-an-iterable
-
-    @staticmethod
-    def _rename_input_member(
-        operation: OperationModel, old_name: str, new_name: str
-    ) -> None:
-        members = operation.input_shape.members
-        members[new_name] = members[old_name]
-        del members[old_name]
-
-    @staticmethod
-    def _delete_input_member(operation: OperationModel, name: str) -> None:
-        members = operation.input_shape.members
-        del members[name]
 
     def _get_paginator(self, name: str) -> Shape:
         try:
@@ -139,20 +123,6 @@ class ShapeParser:
             return self._resources_shape["resources"][name]
         except KeyError:
             raise ShapeParserError(f"Unknown resource: {name}")
-
-    def _get_resource_collection_shape(self, resouce_name: str, name: str) -> Shape:
-        try:
-            return self._get_resource_shape(resouce_name)["hasMany"][name]
-        except KeyError:
-            raise ShapeParserError(
-                f"Unknown resource collection: {resouce_name}.{name}"
-            )
-
-    def _get_resource_action_shape(self, resouce_name: str, name: str) -> Shape:
-        try:
-            return self._get_resource_shape(resouce_name)["actions"][name]
-        except KeyError:
-            raise ShapeParserError(f"Unknown resource action: {resouce_name}.{name}")
 
     def get_paginator_names(self) -> List[str]:
         result: List[str] = []

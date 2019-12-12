@@ -16,11 +16,6 @@ class ImportRecordTestCase(unittest.TestCase):
         self.assertEqual(result.name, "name")
         self.assertEqual(result.alias, "alias")
 
-    def test_is_internal(self) -> None:
-        service_name_mock = MagicMock()
-        service_name_mock.name = "service_name"
-        self.assertTrue(InternalImportRecord(service_name_mock).is_internal())
-
     @patch("mypy_boto3_builder.import_helpers.internal_import_record.ImportString")
     @patch("mypy_boto3_builder.import_helpers.internal_import_record.ImportRecord")
     def test_get_external(

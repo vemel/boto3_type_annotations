@@ -124,9 +124,6 @@ class ImportRecordTestCase(unittest.TestCase):
         self.assertTrue(ImportRecord(ImportString("type_defs")).is_local())
         self.assertFalse(ImportRecord(ImportString("other")).is_local())
 
-    def test_is_internal(self) -> None:
-        self.assertFalse(ImportRecord(ImportString("test")).is_internal())
-
     def test_get_external(self) -> None:
         item = ImportRecord(ImportString("test"))
         self.assertIs(item.get_external("module_name"), item)

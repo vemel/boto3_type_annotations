@@ -23,7 +23,6 @@ class ImportRecord:
         fallback -- Fallback ImportRecord.
     """
 
-    _is_internal = False
     type_defs_import_string = ImportString(TYPE_DEFS_NAME)
     builtins_import_string = ImportString("builtins")
     third_party_import_strings = (
@@ -145,12 +144,6 @@ class ImportRecord:
             return True
 
         return False
-
-    def is_internal(self) -> bool:
-        """
-        Whether import is internal and requires `get_external` call before rendering.
-        """
-        return self._is_internal
 
     def get_external(self, _module_name: str) -> ImportRecord:
         """
