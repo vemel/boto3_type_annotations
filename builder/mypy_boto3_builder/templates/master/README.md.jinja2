@@ -27,10 +27,6 @@ Install `boto3-stubs` for services that you use to get type checking working.
 ```bash
 # You can find a full list of modules below
 python -m pip install boto3-stubs[s3,ec2]
-
-# build service index. You should execute this command everytime
-# you install or remove service packages
-python -m mypy_boto3
 ```
 
 Use `boto3` with `{{ master_module_name }}` in your project and enjoy type checking.
@@ -66,6 +62,15 @@ client: ec2.EC2Client = boto3.client("ec2")
 resource: ec2.EC2ServiceResource = boto3.resource("ec2")
 
 # now you have auto-complete for methods, arguments and even return types
+```
+
+### Build services index
+
+This packages provides a CLI to build services index for `boto3-stubs`.
+
+```bash
+# Use this command when you add or remove service packages
+python -m mypy_boto3
 ```
 
 ## How it works

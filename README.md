@@ -10,6 +10,7 @@ Based on [boto3_type_annotations](https://github.com/alliefitter/boto3_type_anno
 
 - [mypy_boto3](#mypyboto3)
   - [Installation](#installation)
+    - [Build services index manually](#build-services-index-manually)
   - [Latest changes](#latest-changes)
   - [Usage](#usage)
     - [Setup your IDE](#setup-your-ide)
@@ -37,9 +38,19 @@ python -m pip install boto3-stubs[essential]
 
 # or install annotations for services you use
 python -m pip install boto3-stubs[acm,apigateway]
+```
 
-# build service index. You should execute this command everytime
-# you install or remove service packages
+### Build services index manually
+
+This package generates a few source files depending on services that you installed.
+Generation is done by a post-install script, so as long as you use `pip`, `pipfile`
+or `poetry` everything should be done automatically.
+
+However, if you use any other way and notice that services stubs do not work,
+you can build services index manually.
+
+```bash
+# Use this command when you add or remove service packages
 python -m mypy_boto3
 ```
 
