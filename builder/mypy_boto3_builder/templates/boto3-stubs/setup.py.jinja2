@@ -59,10 +59,7 @@ setup(
             {% endfor -%}
         ],
         {% for service_name in package.service_names -%}
-        "{{ service_name.extras_name }}": [
-            "{{ master_pypi_name }}=={{ build_version }}",
-            "{{ service_name.pypi_name }}=={{ build_version }}",
-        ],
+        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}=={{ build_version }}"],
         {% endfor -%}
     },
     zip_safe=False,
