@@ -10,9 +10,12 @@ LONG_DESCRIPTION = open(dirname(abspath(__file__)) + "/README.md", "r").read()
 class PostInstallCommand(install):
     def run(self):
         install.run(self)
-        from mypy_boto3.main import build_index, set_cache_key
-        build_index()
-        set_cache_key()
+        try:
+            from mypy_boto3.main import build_index, set_cache_key
+            build_index()
+            set_cache_key()
+        except:
+            pass
 
 
 setup(
