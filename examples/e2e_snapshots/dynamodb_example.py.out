@@ -1,2 +1,2 @@
-examples/dynamodb_example.py:10: error: Argument "TableName" to "list_backups" of "DynamoDBClient" has incompatible type "int"; expected "Optional[str]"
+examples/dynamodb_example.py:16: error: Argument "TableName" to "list_backups" of "DynamoDBClient" has incompatible type "int"; expected "Optional[str]"
 Found 1 error in 1 file (checked 1 source file)
