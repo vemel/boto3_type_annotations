@@ -13,6 +13,7 @@ class PostInstallCommand(install):
         try:
             from mypy_boto3.main import maybe_build_index
             maybe_build_index()
+            print('mypy_boto3: Package index updated')
         except:
             pass
 

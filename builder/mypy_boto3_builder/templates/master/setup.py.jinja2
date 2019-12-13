@@ -1,10 +1,26 @@
+import os
 from os.path import abspath, dirname
 
 from setuptools import setup
+from setuptools.command.install import install
 
 
 LONG_DESCRIPTION = open(dirname(abspath(__file__)) + "/README.md", "r").read()
 
+
+
+class PostInstallCommand(install):
+    def run(self):
+        install.run(self)
+        cwd = os.getcwd()
+        os.chdir(dirname(cwd))
+        try:
+            from mypy_boto3.main import maybe_build_index
+            maybe_build_index()
+            print('mypy_boto3: Package index updated')
+        except:
+            pass
+        os.chdir(cwd)
 
 setup(
     name="{{ package.pypi_name }}",
@@ -53,5 +69,8 @@ setup(
     zip_safe=False,
     entry_points={
         "console_scripts": ["mypy_boto3 = mypy_boto3.main:main"]
+    },
+    cmdclass={
+        'install': PostInstallCommand,
     },
 )
