@@ -79,14 +79,14 @@ class ImportRecord:
         return not self == other
 
     def __gt__(self, other: ImportRecord) -> bool:
-        if self.source == other.source:
-            return self.name > other.name
-
         if self.fallback is not None and other.fallback is None:
             return True
 
         if other.fallback is not None and self.fallback is None:
             return False
+
+        if self.source == other.source:
+            return self.name > other.name
 
         if self.is_local() and not other.is_local():
             return True

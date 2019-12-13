@@ -63,19 +63,29 @@ class ImportRecordTestCase(unittest.TestCase):
             ImportRecord(other_source, "test")
             > ImportRecord(third_party_source, "name")
         )
-        self.assertTrue(
+        self.assertGreater(
+            ImportRecord(local_source, "name"), ImportRecord(third_party_source, "test")
+        )
+        self.assertGreater(
+            ImportRecord(local_source, "name"), ImportRecord(other_source, "test")
+        )
+        self.assertGreater(
+            ImportRecord(third_party_source, "name"), ImportRecord(other_source, "test")
+        )
+        self.assertGreater(
+            ImportRecord(ImportString("zzz")), ImportRecord(ImportString("aaa"))
+        )
+        self.assertGreater(
+            ImportRecord(
+                local_source, "test", fallback=ImportRecord(local_source, "test2")
+            ),
+            ImportRecord(local_source, "name"),
+        )
+        self.assertFalse(
             ImportRecord(local_source, "name")
-            > ImportRecord(third_party_source, "test")
-        )
-        self.assertTrue(
-            ImportRecord(local_source, "name") > ImportRecord(other_source, "test")
-        )
-        self.assertTrue(
-            ImportRecord(third_party_source, "name")
-            > ImportRecord(other_source, "test")
-        )
-        self.assertTrue(
-            ImportRecord(ImportString("zzz")) > ImportRecord(ImportString("aaa"))
+            > ImportRecord(
+                local_source, "test", fallback=ImportRecord(local_source, "test2")
+            )
         )
 
     @patch("mypy_boto3_builder.import_helpers.import_record.ImportString")
@@ -127,3 +137,14 @@ class ImportRecordTestCase(unittest.TestCase):
     def test_get_external(self) -> None:
         item = ImportRecord(ImportString("test"))
         self.assertIs(item.get_external("module_name"), item)
+
+    def test_is_standalone(self) -> None:
+        self.assertFalse(ImportRecord(ImportString("test"), name="my").is_standalone())
+        self.assertTrue(ImportRecord(ImportString("test")).is_standalone())
+        self.assertTrue(
+            ImportRecord(
+                ImportString("test"),
+                name="my",
+                fallback=ImportRecord(ImportString("test2")),
+            ).is_standalone()
+        )
