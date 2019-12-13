@@ -59,7 +59,6 @@ a drop-in type annotations for you and makes sure that:
 
 ## Submodules
 
-- `master` - Install `mypy-boto3` package with no services.
 {% if package.essential_service_names -%}
     {{ "- `essential` - Type annotations for " -}}
     {% for service_name in package.essential_service_names -%}

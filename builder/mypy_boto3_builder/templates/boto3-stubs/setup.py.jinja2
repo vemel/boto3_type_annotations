@@ -10,13 +10,9 @@ LONG_DESCRIPTION = open(dirname(abspath(__file__)) + "/README.md", "r").read()
 class PostInstallCommand(install):
     def run(self):
         install.run(self)
-        try:
-            from mypy_boto3.main import build_index, set_cache_key
-        except:
-            pass
-        else:
-            build_index()
-            set_cache_key()
+        from mypy_boto3.main import build_index, set_cache_key
+        build_index()
+        set_cache_key()
 
 
 setup(
@@ -49,18 +45,18 @@ setup(
     package_data={"{{ package.name }}": ["py.typed", "*.pyi", "*/*.pyi"]},
     install_requires=[
         "typing_extensions; python_version < '3.8'",
+        "{{ master_pypi_name }}=={{ build_version }}",
     ],
     extras_require={
-        "master": ["{{ master_pypi_name }}=={{ build_version }}"],
         "essential": [
             {% for service_name in package.service_names -%}
             {% if service_name.is_essential() -%}
-            "{{ service_name.pypi_name }}[master]=={{ build_version }}",
+            "{{ service_name.pypi_name }}=={{ build_version }}",
             {% endif -%}
             {% endfor -%}
         ],
         {% for service_name in package.service_names -%}
-        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}[master]=={{ build_version }}"],
+        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}=={{ build_version }}"],
         {% endfor -%}
     },
     zip_safe=False,

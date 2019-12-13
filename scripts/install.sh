@@ -9,16 +9,16 @@ if [[ "$1" == "" ]]; then
 fi
 
 if [[ "$1" == "master" ]]; then
+    echo Installing master package
+    cd ${OUTPUT_PATH}/master_package
+    python -m pip install .
+    cd -
 
     echo Installing boto3-stubs package
     cd ${OUTPUT_PATH}/boto3_stubs_package
     python -m pip install .
     cd -
 
-    echo Installing master package
-    cd ${OUTPUT_PATH}/master_package
-    python -m pip install .
-    cd -
     exit
 fi
 
