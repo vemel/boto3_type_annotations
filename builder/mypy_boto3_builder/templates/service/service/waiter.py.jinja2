@@ -1,4 +1,6 @@
 "Main interface for {{ package.service_name.boto3_name }} service Waiters"
+from __future__ import annotations
+
 {% with import_record_groups=package.get_waiter_required_import_record_groups() -%}
     {% include "common/import_groups.py.jinja2" with context -%}
 {% endwith -%}

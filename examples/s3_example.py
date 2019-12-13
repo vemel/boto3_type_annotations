@@ -1,13 +1,14 @@
 # install `pip install boto3-stubs[s3]`
 
 import boto3
+from mypy_boto3.s3 import S3Client, S3ServiceResource
 
 
 def s3_resource_example() -> None:
     # optionally use Session type from botocore
     session = boto3.session.Session(region_name="us-west-1")
 
-    resource = session.resource("s3")
+    resource: S3ServiceResource = session.resource("s3")
     _resource = boto3.resource("s3")
 
     # IDE autocomplete suggests function name and arguments here
@@ -21,8 +22,7 @@ def s3_resource_example() -> None:
 
 
 def s3_client_example() -> None:
-    # equivalent of `boto3.client('s3')`
-    client = boto3.client("s3")
+    client: S3Client = boto3.client("s3")
 
     bucket_exists_waiter = client.get_waiter("bucket_exists")
 
