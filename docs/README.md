@@ -36,6 +36,9 @@ Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-
 ## Installation
 
 ```bash
+# install main `boto3` stub files
+python -m pip install boto3-stubs
+
 # install `boto3` type annotations
 # for ec2, s3, rds, lambda, sqs, dynamo and cloudformation
 # Consumes ~7 MB of space

@@ -31,6 +31,9 @@ Based on [boto3_type_annotations](https://github.com/alliefitter/boto3_type_anno
 ## Installation
 
 ```bash
+# install main `boto3` stub files
+python -m pip install boto3-stubs
+
 # install `boto3` type annotations
 # for ec2, s3, rds, lambda, sqs, dynamo and cloudformation
 # Consumes ~7 MB of space
