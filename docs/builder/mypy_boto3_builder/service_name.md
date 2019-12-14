@@ -97,12 +97,26 @@ Finder for boto3 services by name.
 
 ### ServiceNameCatalog.find
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/service_name.py#L313)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/service_name.py#L314)
 
 ```python
 @classmethod
 def find(name: str) -> ServiceName:
 ```
+
+Get [ServiceName](#servicename) by import name.
+
+#### Arguments
+
+- `name` - Service import name.
+
+#### Returns
+
+ServiceName.
+
+#### Raises
+
+- `ValueError` - If ServiceName not found.
 
 #### See also
 

@@ -1,3 +1,6 @@
+"""
+Parser for botocore shape files.
+"""
 from typing import Dict, List, Any
 
 from boto3.session import Session
@@ -38,6 +41,15 @@ class ShapeParserError(Exception):
 
 
 class ShapeParser:
+    """
+    Parser for botocore shape files.
+
+    Arguments:
+        session -- Boto3 session.
+        service_name -- ServiceName.
+    """
+
+    # Type map for shape types.
     SHAPE_TYPE_MAP = {
         "integer": Type.int,
         "long": Type.int,
@@ -48,6 +60,9 @@ class ShapeParser:
         "blob": TypeSubscript(Type.Union, [Type.bytes, Type.IO]),
     }
 
+    # Alias map fixes added by botocore for documentation build.
+    # https://github.com/boto/botocore/blob/develop/botocore/handlers.py#L773
+    # https://github.com/boto/botocore/blob/develop/botocore/handlers.py#L1055
     ARGUMENT_ALIASES: Dict[str, Dict[str, Dict[str, str]]] = {
         ServiceNameCatalog.cloudsearchdomain.boto3_name: {
             "Search": {"return": "returnFields"}
@@ -125,6 +140,12 @@ class ShapeParser:
             raise ShapeParserError(f"Unknown resource: {name}")
 
     def get_paginator_names(self) -> List[str]:
+        """
+        Get available paginator names.
+
+        Returns:
+            A list of paginator names.
+        """
         result: List[str] = []
         for name in self._paginators_shape.get("pagination", []):
             result.append(name)
@@ -176,6 +197,12 @@ class ShapeParser:
         return self._parse_shape(shape)
 
     def get_client_method_map(self) -> Dict[str, Method]:
+        """
+        Get client methods from shape.
+
+        Returns:
+            A map of method name to Method.
+        """
         result: Dict[str, Method] = {
             "can_paginate": Method(
                 "can_paginate",
@@ -274,6 +301,15 @@ class ShapeParser:
         return Type.Any
 
     def get_paginate_method(self, paginator_name: str) -> Method:
+        """
+        Get Paginator `paginate` method.
+
+        Arguments:
+            paginator_name -- Paginator name.
+
+        Returns:
+            Method.
+        """
         operation_name = paginator_name
         paginator_shape = self._get_paginator(paginator_name)
         operation_shape = self._get_operation(operation_name)
@@ -312,6 +348,15 @@ class ShapeParser:
         return Method("paginate", arguments, return_type)
 
     def get_wait_method(self, waiter_name: str) -> Method:
+        """
+        Get Waiter `wait` method.
+
+        Arguments:
+            waiter_name -- Waiter name.
+
+        Returns:
+            Method.
+        """
         operation_name = self._waiters_shape["waiters"][waiter_name]["operation"]
         operation_shape = self._get_operation(operation_name)
 
@@ -327,6 +372,12 @@ class ShapeParser:
         return Method(name="wait", arguments=arguments, return_type=Type.none)
 
     def get_service_resource_method_map(self) -> Dict[str, Method]:
+        """
+        Get methods for ServiceResource.
+
+        Returns:
+            A map of method name to Method.
+        """
         result: Dict[str, Method] = {
             "get_available_subresources": Method(
                 "get_available_subresources",
@@ -344,6 +395,15 @@ class ShapeParser:
         return result
 
     def get_resource_method_map(self, resource_name: str) -> Dict[str, Method]:
+        """
+        Get methods for Resource.
+
+        Arguments:
+            resource_name -- Resource name.
+
+        Returns:
+            A map of method name to Method.
+        """
         resource_shape = self._get_resource_shape(resource_name)
         result: Dict[str, Method] = {
             "get_available_subresources": Method(

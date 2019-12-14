@@ -131,8 +131,8 @@ class ServiceNameCatalog:
         ServiceName("datapipeline", "DataPipeline"),
         ServiceName("datasync", "DataSync"),
         ServiceName("dax", "DAX"),
-        ServiceName("devicefarm", "DeviceFarm"),
         ServiceName("detective", "Detective"),
+        ServiceName("devicefarm", "DeviceFarm"),
         ServiceName("directconnect", "DirectConnect"),
         ServiceName("discovery", "ApplicationDiscoveryService"),
         ServiceName("dlm", "DLM"),
@@ -313,6 +313,18 @@ class ServiceNameCatalog:
 
     @classmethod
     def find(cls, name: str) -> ServiceName:
+        """
+        Get `ServiceName` by import name.
+
+        Arguments:
+            name -- Service import name.
+
+        Returns:
+            ServiceName.
+
+        Raises:
+            ValueError -- If ServiceName not found.
+        """
         try:
             return cls.ITEM_MAP[name]
         except KeyError:
