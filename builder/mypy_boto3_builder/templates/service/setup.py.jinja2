@@ -12,6 +12,7 @@ See [{{ master_module_name}}](https://pypi.org/project/mypy-boto3/) for more inf
 class PostInstallCommand(install):
     def run(self):
         install.run(self)
+        print("{{ master_module_name }}: Running post-install script")
         try:
             from {{ master_module_name }}.main import maybe_build_index
             maybe_build_index()
@@ -50,7 +51,5 @@ setup(
         "typing_extensions; python_version < '3.8'",
     ],
     zip_safe=False,
-    cmdclass={
-        'install': PostInstallCommand,
-    },
+    cmdclass={'install': PostInstallCommand},
 )

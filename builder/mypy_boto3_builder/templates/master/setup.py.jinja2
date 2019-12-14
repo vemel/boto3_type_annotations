@@ -38,18 +38,6 @@ setup(
         "boto3",
         "typing_extensions; python_version < '3.8'",
     ],
-    extras_require={
-        "essential": [
-            {% for service_name in package.service_names -%}
-            {% if service_name.is_essential() -%}
-            "{{ service_name.pypi_name }}=={{ build_version }}",
-            {% endif -%}
-            {% endfor -%}
-        ],
-        {% for service_name in package.service_names -%}
-        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}=={{ build_version }}"],
-        {% endfor -%}
-    },
     package_data={"{{ package.name }}": ["py.typed"]},
     zip_safe=False,
     entry_points={

@@ -1,9 +1,32 @@
 from os.path import abspath, dirname
 
 from setuptools import setup
+from setuptools.command.install import install
 
 
 LONG_DESCRIPTION = open(dirname(abspath(__file__)) + "/README.md", "r").read()
+
+
+class PostInstallCommand(install):
+    def run(self):
+        install.run(self)
+        print("{{ master_module_name }}: Running post-install script")
+        try:
+            from {{ master_module_name }}.main import maybe_build_index
+            maybe_build_index()
+            print("{{ master_module_name }}: Package index updated")
+        except:
+            print("{{ master_module_name }}: Package index update failed", sys.exc_info())
+
+
+def install_master():
+    try:
+        from pip._internal import main as pip_main
+        pip_main.main(["install", "{{ master_pypi_name }}=={{ build_version }}"])
+    except Exception as e:
+        print("Installation of {{ master_pypi_name }}=={{ build_version }} failed", e)
+
+install_master()
 
 
 setup(
@@ -44,11 +67,9 @@ setup(
             {% endfor -%}
         ],
         {% for service_name in package.service_names -%}
-        "{{ service_name.extras_name }}": [
-            "{{ master_pypi_name }}=={{ build_version }}",
-            "{{ service_name.pypi_name }}=={{ build_version }}",
-        ],
+        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}=={{ build_version }}"],
         {% endfor -%}
     },
     zip_safe=False,
+    cmdclass={'install': PostInstallCommand},
 )

@@ -88,7 +88,7 @@ a drop-in type annotations for you and makes sure that:
 ## Submodules
 
 {% if package.essential_service_names -%}
-    {{ "- `essential` - Type annotations for " -}}
+    {{ "- `" }}{{ boto3_stubs_name -}}{{ "[essential]` - Type annotations for " -}}
     {% for service_name in package.essential_service_names -%}
         {% if not loop.first -%}
             {{ " and " if loop.last else ", " -}}
@@ -102,7 +102,7 @@ a drop-in type annotations for you and makes sure that:
 {% endif -%}
 {% for service_name in package.service_names -%}
     {{ "- `" -}}
-    {{ service_name.boto3_name -}}
+    {{ boto3_stubs_name -}}{{ "[" -}}{{ service_name.boto3_name -}}{{ "]" -}}
     {{ "` - Type annotations for `" -}}
     {{ service_name.boto3_name -}}
     {{ "` service." -}}
