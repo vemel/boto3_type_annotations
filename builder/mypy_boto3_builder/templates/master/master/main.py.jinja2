@@ -119,17 +119,6 @@ def build_index(log_level: int = logging.CRITICAL) -> None:
     logger = get_logger(log_level)
 
     logger.debug('Using Python packages directory %s', ROOT_PATH.parent)
-    boto3_stubs_path = ROOT_PATH.parent / BOTO3_STUBS_NAME
-
-    if not boto3_stubs_path.is_dir():
-        logger.error(
-            (
-                "Directory %s does not exist, make"
-                " sure boto3-stubs are installed to the same location."
-            ),
-            boto3_stubs_path,
-        )
-        sys.exit(1)
 
     init_client_functions: List[str] = []
     init_resource_functions: List[str] = []

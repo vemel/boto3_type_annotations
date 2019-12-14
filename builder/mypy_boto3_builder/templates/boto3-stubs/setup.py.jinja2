@@ -1,24 +1,9 @@
 from os.path import abspath, dirname
-import traceback
 
 from setuptools import setup
-from setuptools.command.install import install
 
 
 LONG_DESCRIPTION = open(dirname(abspath(__file__)) + "/README.md", "r").read()
-
-
-class PostInstallCommand(install):
-    def run(self):
-        install.run(self)
-        print("{{ master_module_name }}: Running post-install script")
-        try:
-            from {{ master_module_name }}.main import maybe_build_index
-            maybe_build_index()
-            print("{{ master_module_name }}: Package index updated")
-        except:
-            print("{{ master_module_name }}: Package index update failed", sys.exc_info())
-            print(traceback.format_exc())
 
 
 def install_master():
@@ -73,5 +58,4 @@ setup(
         {% endfor -%}
     },
     zip_safe=False,
-    cmdclass={'install': PostInstallCommand},
 )
