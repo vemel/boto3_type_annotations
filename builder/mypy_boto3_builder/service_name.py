@@ -132,6 +132,7 @@ class ServiceNameCatalog:
         ServiceName("datasync", "DataSync"),
         ServiceName("dax", "DAX"),
         ServiceName("devicefarm", "DeviceFarm"),
+        ServiceName("detective", "Detective"),
         ServiceName("directconnect", "DirectConnect"),
         ServiceName("discovery", "ApplicationDiscoveryService"),
         ServiceName("dlm", "DLM"),
