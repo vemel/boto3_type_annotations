@@ -56,24 +56,32 @@ a drop-in type annotations for you and makes sure that:
 ## Submodules
 
 {% if package.essential_service_names -%}
-    {{ "- `essential` - Type annotations for " -}}
+    {{ "- `" -}}
+    {{ boto3_stubs_name -}}
+    {{ "[essential]` - Type annotations for " -}}
     {% for service_name in package.essential_service_names -%}
         {% if not loop.first -%}
             {{ " and " if loop.last else ", " -}}
         {% endif -%}
-        {{ "`" -}}
-        {{ service_name.boto3_name -}}
-        {{ "`" -}}
+        {{ "[" -}}
+        {{ service_name.class_name -}}
+        {{ "](" -}}
+        {{ service_name.doc_link -}}
+        {{ ")" -}}
     {% endfor -%}
     {{ " services" if package.essential_service_names|length > 1 else " service" -}}
     {{ ".\n" -}}
 {% endif -%}
 {% for service_name in package.service_names -%}
     {{ "- `" -}}
+    {{ boto3_stubs_name -}}
+    {{ "[" -}}
     {{ service_name.boto3_name -}}
-    {{ "` - Type annotations for `" -}}
-    {{ service_name.boto3_name -}}
-    {{ "` service." -}}
+    {{ "]` - Type annotations for [" -}}
+    {{ service_name.class_name -}}
+    {{ "](" -}}
+    {{ service_name.doc_link -}}
+    {{ ") service." -}}
     {{ "" if loop.last else "\n" -}}
 {% endfor -%}
 {{ '\n' -}}

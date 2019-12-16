@@ -275,220 +275,222 @@ python -m mypy_boto3
 
 ### List of all sub-modules
 
-- `essential` - Type annotations for `ec2`, `s3`, `rds`, `lambda`, `sqs`, `dynamodb` and `cloudformation` services.
-- `accessanalyzer` - Type annotations for `boto3` [accessanalyzer](https://pypi.org/project/mypy-boto3-accessanalyzer/) service.
-- `acm` - Type annotations for `boto3` [acm](https://pypi.org/project/mypy-boto3-acm/) service.
-- `acm-pca` - Type annotations for `boto3` [acm-pca](https://pypi.org/project/mypy-boto3-acm-pca/) service.
-- `alexaforbusiness` - Type annotations for `boto3` [alexaforbusiness](https://pypi.org/project/mypy-boto3-alexaforbusiness/) service.
-- `amplify` - Type annotations for `boto3` [amplify](https://pypi.org/project/mypy-boto3-amplify/) service.
-- `apigateway` - Type annotations for `boto3` [apigateway](https://pypi.org/project/mypy-boto3-apigateway/) service.
-- `apigatewaymanagementapi` - Type annotations for `boto3` [apigatewaymanagementapi](https://pypi.org/project/mypy-boto3-apigatewaymanagementapi/) service.
-- `apigatewayv2` - Type annotations for `boto3` [apigatewayv2](https://pypi.org/project/mypy-boto3-apigatewayv2/) service.
-- `appconfig` - Type annotations for `boto3` [appconfig](https://pypi.org/project/mypy-boto3-appconfig/) service.
-- `application-autoscaling` - Type annotations for `boto3` [application-autoscaling](https://pypi.org/project/mypy-boto3-application-autoscaling/) service.
-- `application-insights` - Type annotations for `boto3` [application-insights](https://pypi.org/project/mypy-boto3-application-insights/) service.
-- `appmesh` - Type annotations for `boto3` [appmesh](https://pypi.org/project/mypy-boto3-appmesh/) service.
-- `appstream` - Type annotations for `boto3` [appstream](https://pypi.org/project/mypy-boto3-appstream/) service.
-- `appsync` - Type annotations for `boto3` [appsync](https://pypi.org/project/mypy-boto3-appsync/) service.
-- `athena` - Type annotations for `boto3` [athena](https://pypi.org/project/mypy-boto3-athena/) service.
-- `autoscaling` - Type annotations for `boto3` [autoscaling](https://pypi.org/project/mypy-boto3-autoscaling/) service.
-- `autoscaling-plans` - Type annotations for `boto3` [autoscaling-plans](https://pypi.org/project/mypy-boto3-autoscaling-plans/) service.
-- `backup` - Type annotations for `boto3` [backup](https://pypi.org/project/mypy-boto3-backup/) service.
-- `batch` - Type annotations for `boto3` [batch](https://pypi.org/project/mypy-boto3-batch/) service.
-- `budgets` - Type annotations for `boto3` [budgets](https://pypi.org/project/mypy-boto3-budgets/) service.
-- `ce` - Type annotations for `boto3` [ce](https://pypi.org/project/mypy-boto3-ce/) service.
-- `chime` - Type annotations for `boto3` [chime](https://pypi.org/project/mypy-boto3-chime/) service.
-- `cloud9` - Type annotations for `boto3` [cloud9](https://pypi.org/project/mypy-boto3-cloud9/) service.
-- `clouddirectory` - Type annotations for `boto3` [clouddirectory](https://pypi.org/project/mypy-boto3-clouddirectory/) service.
-- `cloudformation` - Type annotations for `boto3` [cloudformation](https://pypi.org/project/mypy-boto3-cloudformation/) service.
-- `cloudfront` - Type annotations for `boto3` [cloudfront](https://pypi.org/project/mypy-boto3-cloudfront/) service.
-- `cloudhsm` - Type annotations for `boto3` [cloudhsm](https://pypi.org/project/mypy-boto3-cloudhsm/) service.
-- `cloudhsmv2` - Type annotations for `boto3` [cloudhsmv2](https://pypi.org/project/mypy-boto3-cloudhsmv2/) service.
-- `cloudsearch` - Type annotations for `boto3` [cloudsearch](https://pypi.org/project/mypy-boto3-cloudsearch/) service.
-- `cloudsearchdomain` - Type annotations for `boto3` [cloudsearchdomain](https://pypi.org/project/mypy-boto3-cloudsearchdomain/) service.
-- `cloudtrail` - Type annotations for `boto3` [cloudtrail](https://pypi.org/project/mypy-boto3-cloudtrail/) service.
-- `cloudwatch` - Type annotations for `boto3` [cloudwatch](https://pypi.org/project/mypy-boto3-cloudwatch/) service.
-- `codebuild` - Type annotations for `boto3` [codebuild](https://pypi.org/project/mypy-boto3-codebuild/) service.
-- `codecommit` - Type annotations for `boto3` [codecommit](https://pypi.org/project/mypy-boto3-codecommit/) service.
-- `codedeploy` - Type annotations for `boto3` [codedeploy](https://pypi.org/project/mypy-boto3-codedeploy/) service.
-- `codeguru-reviewer` - Type annotations for `boto3` [codeguru-reviewer](https://pypi.org/project/mypy-boto3-codeguru-reviewer/) service.
-- `codeguruprofiler` - Type annotations for `boto3` [codeguruprofiler](https://pypi.org/project/mypy-boto3-codeguruprofiler/) service.
-- `codepipeline` - Type annotations for `boto3` [codepipeline](https://pypi.org/project/mypy-boto3-codepipeline/) service.
-- `codestar` - Type annotations for `boto3` [codestar](https://pypi.org/project/mypy-boto3-codestar/) service.
-- `codestar-notifications` - Type annotations for `boto3` [codestar-notifications](https://pypi.org/project/mypy-boto3-codestar-notifications/) service.
-- `cognito-identity` - Type annotations for `boto3` [cognito-identity](https://pypi.org/project/mypy-boto3-cognito-identity/) service.
-- `cognito-idp` - Type annotations for `boto3` [cognito-idp](https://pypi.org/project/mypy-boto3-cognito-idp/) service.
-- `cognito-sync` - Type annotations for `boto3` [cognito-sync](https://pypi.org/project/mypy-boto3-cognito-sync/) service.
-- `comprehend` - Type annotations for `boto3` [comprehend](https://pypi.org/project/mypy-boto3-comprehend/) service.
-- `comprehendmedical` - Type annotations for `boto3` [comprehendmedical](https://pypi.org/project/mypy-boto3-comprehendmedical/) service.
-- `compute-optimizer` - Type annotations for `boto3` [compute-optimizer](https://pypi.org/project/mypy-boto3-compute-optimizer/) service.
-- `config` - Type annotations for `boto3` [config](https://pypi.org/project/mypy-boto3-config/) service.
-- `connect` - Type annotations for `boto3` [connect](https://pypi.org/project/mypy-boto3-connect/) service.
-- `connectparticipant` - Type annotations for `boto3` [connectparticipant](https://pypi.org/project/mypy-boto3-connectparticipant/) service.
-- `cur` - Type annotations for `boto3` [cur](https://pypi.org/project/mypy-boto3-cur/) service.
-- `dataexchange` - Type annotations for `boto3` [dataexchange](https://pypi.org/project/mypy-boto3-dataexchange/) service.
-- `datapipeline` - Type annotations for `boto3` [datapipeline](https://pypi.org/project/mypy-boto3-datapipeline/) service.
-- `datasync` - Type annotations for `boto3` [datasync](https://pypi.org/project/mypy-boto3-datasync/) service.
-- `dax` - Type annotations for `boto3` [dax](https://pypi.org/project/mypy-boto3-dax/) service.
-- `detective` - Type annotations for `boto3` [detective](https://pypi.org/project/mypy-boto3-detective/) service.
-- `devicefarm` - Type annotations for `boto3` [devicefarm](https://pypi.org/project/mypy-boto3-devicefarm/) service.
-- `directconnect` - Type annotations for `boto3` [directconnect](https://pypi.org/project/mypy-boto3-directconnect/) service.
-- `discovery` - Type annotations for `boto3` [discovery](https://pypi.org/project/mypy-boto3-discovery/) service.
-- `dlm` - Type annotations for `boto3` [dlm](https://pypi.org/project/mypy-boto3-dlm/) service.
-- `dms` - Type annotations for `boto3` [dms](https://pypi.org/project/mypy-boto3-dms/) service.
-- `docdb` - Type annotations for `boto3` [docdb](https://pypi.org/project/mypy-boto3-docdb/) service.
-- `ds` - Type annotations for `boto3` [ds](https://pypi.org/project/mypy-boto3-ds/) service.
-- `dynamodb` - Type annotations for `boto3` [dynamodb](https://pypi.org/project/mypy-boto3-dynamodb/) service.
-- `dynamodbstreams` - Type annotations for `boto3` [dynamodbstreams](https://pypi.org/project/mypy-boto3-dynamodbstreams/) service.
-- `ec2` - Type annotations for `boto3` [ec2](https://pypi.org/project/mypy-boto3-ec2/) service.
-- `ec2-instance-connect` - Type annotations for `boto3` [ec2-instance-connect](https://pypi.org/project/mypy-boto3-ec2-instance-connect/) service.
-- `ecr` - Type annotations for `boto3` [ecr](https://pypi.org/project/mypy-boto3-ecr/) service.
-- `ecs` - Type annotations for `boto3` [ecs](https://pypi.org/project/mypy-boto3-ecs/) service.
-- `efs` - Type annotations for `boto3` [efs](https://pypi.org/project/mypy-boto3-efs/) service.
-- `eks` - Type annotations for `boto3` [eks](https://pypi.org/project/mypy-boto3-eks/) service.
-- `elastic-inference` - Type annotations for `boto3` [elastic-inference](https://pypi.org/project/mypy-boto3-elastic-inference/) service.
-- `elasticache` - Type annotations for `boto3` [elasticache](https://pypi.org/project/mypy-boto3-elasticache/) service.
-- `elasticbeanstalk` - Type annotations for `boto3` [elasticbeanstalk](https://pypi.org/project/mypy-boto3-elasticbeanstalk/) service.
-- `elastictranscoder` - Type annotations for `boto3` [elastictranscoder](https://pypi.org/project/mypy-boto3-elastictranscoder/) service.
-- `elb` - Type annotations for `boto3` [elb](https://pypi.org/project/mypy-boto3-elb/) service.
-- `elbv2` - Type annotations for `boto3` [elbv2](https://pypi.org/project/mypy-boto3-elbv2/) service.
-- `emr` - Type annotations for `boto3` [emr](https://pypi.org/project/mypy-boto3-emr/) service.
-- `es` - Type annotations for `boto3` [es](https://pypi.org/project/mypy-boto3-es/) service.
-- `events` - Type annotations for `boto3` [events](https://pypi.org/project/mypy-boto3-events/) service.
-- `firehose` - Type annotations for `boto3` [firehose](https://pypi.org/project/mypy-boto3-firehose/) service.
-- `fms` - Type annotations for `boto3` [fms](https://pypi.org/project/mypy-boto3-fms/) service.
-- `forecast` - Type annotations for `boto3` [forecast](https://pypi.org/project/mypy-boto3-forecast/) service.
-- `forecastquery` - Type annotations for `boto3` [forecastquery](https://pypi.org/project/mypy-boto3-forecastquery/) service.
-- `frauddetector` - Type annotations for `boto3` [frauddetector](https://pypi.org/project/mypy-boto3-frauddetector/) service.
-- `fsx` - Type annotations for `boto3` [fsx](https://pypi.org/project/mypy-boto3-fsx/) service.
-- `gamelift` - Type annotations for `boto3` [gamelift](https://pypi.org/project/mypy-boto3-gamelift/) service.
-- `glacier` - Type annotations for `boto3` [glacier](https://pypi.org/project/mypy-boto3-glacier/) service.
-- `globalaccelerator` - Type annotations for `boto3` [globalaccelerator](https://pypi.org/project/mypy-boto3-globalaccelerator/) service.
-- `glue` - Type annotations for `boto3` [glue](https://pypi.org/project/mypy-boto3-glue/) service.
-- `greengrass` - Type annotations for `boto3` [greengrass](https://pypi.org/project/mypy-boto3-greengrass/) service.
-- `groundstation` - Type annotations for `boto3` [groundstation](https://pypi.org/project/mypy-boto3-groundstation/) service.
-- `guardduty` - Type annotations for `boto3` [guardduty](https://pypi.org/project/mypy-boto3-guardduty/) service.
-- `health` - Type annotations for `boto3` [health](https://pypi.org/project/mypy-boto3-health/) service.
-- `iam` - Type annotations for `boto3` [iam](https://pypi.org/project/mypy-boto3-iam/) service.
-- `imagebuilder` - Type annotations for `boto3` [imagebuilder](https://pypi.org/project/mypy-boto3-imagebuilder/) service.
-- `importexport` - Type annotations for `boto3` [importexport](https://pypi.org/project/mypy-boto3-importexport/) service.
-- `inspector` - Type annotations for `boto3` [inspector](https://pypi.org/project/mypy-boto3-inspector/) service.
-- `iot` - Type annotations for `boto3` [iot](https://pypi.org/project/mypy-boto3-iot/) service.
-- `iot-data` - Type annotations for `boto3` [iot-data](https://pypi.org/project/mypy-boto3-iot-data/) service.
-- `iot-jobs-data` - Type annotations for `boto3` [iot-jobs-data](https://pypi.org/project/mypy-boto3-iot-jobs-data/) service.
-- `iot1click-devices` - Type annotations for `boto3` [iot1click-devices](https://pypi.org/project/mypy-boto3-iot1click-devices/) service.
-- `iot1click-projects` - Type annotations for `boto3` [iot1click-projects](https://pypi.org/project/mypy-boto3-iot1click-projects/) service.
-- `iotanalytics` - Type annotations for `boto3` [iotanalytics](https://pypi.org/project/mypy-boto3-iotanalytics/) service.
-- `iotevents` - Type annotations for `boto3` [iotevents](https://pypi.org/project/mypy-boto3-iotevents/) service.
-- `iotevents-data` - Type annotations for `boto3` [iotevents-data](https://pypi.org/project/mypy-boto3-iotevents-data/) service.
-- `iotsecuretunneling` - Type annotations for `boto3` [iotsecuretunneling](https://pypi.org/project/mypy-boto3-iotsecuretunneling/) service.
-- `iotthingsgraph` - Type annotations for `boto3` [iotthingsgraph](https://pypi.org/project/mypy-boto3-iotthingsgraph/) service.
-- `kafka` - Type annotations for `boto3` [kafka](https://pypi.org/project/mypy-boto3-kafka/) service.
-- `kendra` - Type annotations for `boto3` [kendra](https://pypi.org/project/mypy-boto3-kendra/) service.
-- `kinesis` - Type annotations for `boto3` [kinesis](https://pypi.org/project/mypy-boto3-kinesis/) service.
-- `kinesis-video-archived-media` - Type annotations for `boto3` [kinesis-video-archived-media](https://pypi.org/project/mypy-boto3-kinesis-video-archived-media/) service.
-- `kinesis-video-media` - Type annotations for `boto3` [kinesis-video-media](https://pypi.org/project/mypy-boto3-kinesis-video-media/) service.
-- `kinesisanalytics` - Type annotations for `boto3` [kinesisanalytics](https://pypi.org/project/mypy-boto3-kinesisanalytics/) service.
-- `kinesisanalyticsv2` - Type annotations for `boto3` [kinesisanalyticsv2](https://pypi.org/project/mypy-boto3-kinesisanalyticsv2/) service.
-- `kinesisvideo` - Type annotations for `boto3` [kinesisvideo](https://pypi.org/project/mypy-boto3-kinesisvideo/) service.
-- `kms` - Type annotations for `boto3` [kms](https://pypi.org/project/mypy-boto3-kms/) service.
-- `lakeformation` - Type annotations for `boto3` [lakeformation](https://pypi.org/project/mypy-boto3-lakeformation/) service.
-- `lambda` - Type annotations for `boto3` [lambda](https://pypi.org/project/mypy-boto3-lambda/) service.
-- `lex-models` - Type annotations for `boto3` [lex-models](https://pypi.org/project/mypy-boto3-lex-models/) service.
-- `lex-runtime` - Type annotations for `boto3` [lex-runtime](https://pypi.org/project/mypy-boto3-lex-runtime/) service.
-- `license-manager` - Type annotations for `boto3` [license-manager](https://pypi.org/project/mypy-boto3-license-manager/) service.
-- `lightsail` - Type annotations for `boto3` [lightsail](https://pypi.org/project/mypy-boto3-lightsail/) service.
-- `logs` - Type annotations for `boto3` [logs](https://pypi.org/project/mypy-boto3-logs/) service.
-- `machinelearning` - Type annotations for `boto3` [machinelearning](https://pypi.org/project/mypy-boto3-machinelearning/) service.
-- `macie` - Type annotations for `boto3` [macie](https://pypi.org/project/mypy-boto3-macie/) service.
-- `managedblockchain` - Type annotations for `boto3` [managedblockchain](https://pypi.org/project/mypy-boto3-managedblockchain/) service.
-- `marketplace-catalog` - Type annotations for `boto3` [marketplace-catalog](https://pypi.org/project/mypy-boto3-marketplace-catalog/) service.
-- `marketplace-entitlement` - Type annotations for `boto3` [marketplace-entitlement](https://pypi.org/project/mypy-boto3-marketplace-entitlement/) service.
-- `marketplacecommerceanalytics` - Type annotations for `boto3` [marketplacecommerceanalytics](https://pypi.org/project/mypy-boto3-marketplacecommerceanalytics/) service.
-- `mediaconnect` - Type annotations for `boto3` [mediaconnect](https://pypi.org/project/mypy-boto3-mediaconnect/) service.
-- `mediaconvert` - Type annotations for `boto3` [mediaconvert](https://pypi.org/project/mypy-boto3-mediaconvert/) service.
-- `medialive` - Type annotations for `boto3` [medialive](https://pypi.org/project/mypy-boto3-medialive/) service.
-- `mediapackage` - Type annotations for `boto3` [mediapackage](https://pypi.org/project/mypy-boto3-mediapackage/) service.
-- `mediapackage-vod` - Type annotations for `boto3` [mediapackage-vod](https://pypi.org/project/mypy-boto3-mediapackage-vod/) service.
-- `mediastore` - Type annotations for `boto3` [mediastore](https://pypi.org/project/mypy-boto3-mediastore/) service.
-- `mediastore-data` - Type annotations for `boto3` [mediastore-data](https://pypi.org/project/mypy-boto3-mediastore-data/) service.
-- `mediatailor` - Type annotations for `boto3` [mediatailor](https://pypi.org/project/mypy-boto3-mediatailor/) service.
-- `meteringmarketplace` - Type annotations for `boto3` [meteringmarketplace](https://pypi.org/project/mypy-boto3-meteringmarketplace/) service.
-- `mgh` - Type annotations for `boto3` [mgh](https://pypi.org/project/mypy-boto3-mgh/) service.
-- `migrationhub-config` - Type annotations for `boto3` [migrationhub-config](https://pypi.org/project/mypy-boto3-migrationhub-config/) service.
-- `mobile` - Type annotations for `boto3` [mobile](https://pypi.org/project/mypy-boto3-mobile/) service.
-- `mq` - Type annotations for `boto3` [mq](https://pypi.org/project/mypy-boto3-mq/) service.
-- `mturk` - Type annotations for `boto3` [mturk](https://pypi.org/project/mypy-boto3-mturk/) service.
-- `neptune` - Type annotations for `boto3` [neptune](https://pypi.org/project/mypy-boto3-neptune/) service.
-- `networkmanager` - Type annotations for `boto3` [networkmanager](https://pypi.org/project/mypy-boto3-networkmanager/) service.
-- `opsworks` - Type annotations for `boto3` [opsworks](https://pypi.org/project/mypy-boto3-opsworks/) service.
-- `opsworkscm` - Type annotations for `boto3` [opsworkscm](https://pypi.org/project/mypy-boto3-opsworkscm/) service.
-- `organizations` - Type annotations for `boto3` [organizations](https://pypi.org/project/mypy-boto3-organizations/) service.
-- `outposts` - Type annotations for `boto3` [outposts](https://pypi.org/project/mypy-boto3-outposts/) service.
-- `personalize` - Type annotations for `boto3` [personalize](https://pypi.org/project/mypy-boto3-personalize/) service.
-- `personalize-events` - Type annotations for `boto3` [personalize-events](https://pypi.org/project/mypy-boto3-personalize-events/) service.
-- `personalize-runtime` - Type annotations for `boto3` [personalize-runtime](https://pypi.org/project/mypy-boto3-personalize-runtime/) service.
-- `pi` - Type annotations for `boto3` [pi](https://pypi.org/project/mypy-boto3-pi/) service.
-- `pinpoint` - Type annotations for `boto3` [pinpoint](https://pypi.org/project/mypy-boto3-pinpoint/) service.
-- `pinpoint-email` - Type annotations for `boto3` [pinpoint-email](https://pypi.org/project/mypy-boto3-pinpoint-email/) service.
-- `pinpoint-sms-voice` - Type annotations for `boto3` [pinpoint-sms-voice](https://pypi.org/project/mypy-boto3-pinpoint-sms-voice/) service.
-- `polly` - Type annotations for `boto3` [polly](https://pypi.org/project/mypy-boto3-polly/) service.
-- `pricing` - Type annotations for `boto3` [pricing](https://pypi.org/project/mypy-boto3-pricing/) service.
-- `qldb` - Type annotations for `boto3` [qldb](https://pypi.org/project/mypy-boto3-qldb/) service.
-- `qldb-session` - Type annotations for `boto3` [qldb-session](https://pypi.org/project/mypy-boto3-qldb-session/) service.
-- `quicksight` - Type annotations for `boto3` [quicksight](https://pypi.org/project/mypy-boto3-quicksight/) service.
-- `ram` - Type annotations for `boto3` [ram](https://pypi.org/project/mypy-boto3-ram/) service.
-- `rds` - Type annotations for `boto3` [rds](https://pypi.org/project/mypy-boto3-rds/) service.
-- `rds-data` - Type annotations for `boto3` [rds-data](https://pypi.org/project/mypy-boto3-rds-data/) service.
-- `redshift` - Type annotations for `boto3` [redshift](https://pypi.org/project/mypy-boto3-redshift/) service.
-- `rekognition` - Type annotations for `boto3` [rekognition](https://pypi.org/project/mypy-boto3-rekognition/) service.
-- `resource-groups` - Type annotations for `boto3` [resource-groups](https://pypi.org/project/mypy-boto3-resource-groups/) service.
-- `resourcegroupstaggingapi` - Type annotations for `boto3` [resourcegroupstaggingapi](https://pypi.org/project/mypy-boto3-resourcegroupstaggingapi/) service.
-- `robomaker` - Type annotations for `boto3` [robomaker](https://pypi.org/project/mypy-boto3-robomaker/) service.
-- `route53` - Type annotations for `boto3` [route53](https://pypi.org/project/mypy-boto3-route53/) service.
-- `route53domains` - Type annotations for `boto3` [route53domains](https://pypi.org/project/mypy-boto3-route53domains/) service.
-- `route53resolver` - Type annotations for `boto3` [route53resolver](https://pypi.org/project/mypy-boto3-route53resolver/) service.
-- `s3` - Type annotations for `boto3` [s3](https://pypi.org/project/mypy-boto3-s3/) service.
-- `s3control` - Type annotations for `boto3` [s3control](https://pypi.org/project/mypy-boto3-s3control/) service.
-- `sagemaker` - Type annotations for `boto3` [sagemaker](https://pypi.org/project/mypy-boto3-sagemaker/) service.
-- `sagemaker-a2i-runtime` - Type annotations for `boto3` [sagemaker-a2i-runtime](https://pypi.org/project/mypy-boto3-sagemaker-a2i-runtime/) service.
-- `sagemaker-runtime` - Type annotations for `boto3` [sagemaker-runtime](https://pypi.org/project/mypy-boto3-sagemaker-runtime/) service.
-- `savingsplans` - Type annotations for `boto3` [savingsplans](https://pypi.org/project/mypy-boto3-savingsplans/) service.
-- `schemas` - Type annotations for `boto3` [schemas](https://pypi.org/project/mypy-boto3-schemas/) service.
-- `sdb` - Type annotations for `boto3` [sdb](https://pypi.org/project/mypy-boto3-sdb/) service.
-- `secretsmanager` - Type annotations for `boto3` [secretsmanager](https://pypi.org/project/mypy-boto3-secretsmanager/) service.
-- `securityhub` - Type annotations for `boto3` [securityhub](https://pypi.org/project/mypy-boto3-securityhub/) service.
-- `serverlessrepo` - Type annotations for `boto3` [serverlessrepo](https://pypi.org/project/mypy-boto3-serverlessrepo/) service.
-- `service-quotas` - Type annotations for `boto3` [service-quotas](https://pypi.org/project/mypy-boto3-service-quotas/) service.
-- `servicecatalog` - Type annotations for `boto3` [servicecatalog](https://pypi.org/project/mypy-boto3-servicecatalog/) service.
-- `servicediscovery` - Type annotations for `boto3` [servicediscovery](https://pypi.org/project/mypy-boto3-servicediscovery/) service.
-- `ses` - Type annotations for `boto3` [ses](https://pypi.org/project/mypy-boto3-ses/) service.
-- `sesv2` - Type annotations for `boto3` [sesv2](https://pypi.org/project/mypy-boto3-sesv2/) service.
-- `shield` - Type annotations for `boto3` [shield](https://pypi.org/project/mypy-boto3-shield/) service.
-- `signer` - Type annotations for `boto3` [signer](https://pypi.org/project/mypy-boto3-signer/) service.
-- `sms` - Type annotations for `boto3` [sms](https://pypi.org/project/mypy-boto3-sms/) service.
-- `sms-voice` - Type annotations for `boto3` [sms-voice](https://pypi.org/project/mypy-boto3-sms-voice/) service.
-- `snowball` - Type annotations for `boto3` [snowball](https://pypi.org/project/mypy-boto3-snowball/) service.
-- `sns` - Type annotations for `boto3` [sns](https://pypi.org/project/mypy-boto3-sns/) service.
-- `sqs` - Type annotations for `boto3` [sqs](https://pypi.org/project/mypy-boto3-sqs/) service.
-- `ssm` - Type annotations for `boto3` [ssm](https://pypi.org/project/mypy-boto3-ssm/) service.
-- `sso` - Type annotations for `boto3` [sso](https://pypi.org/project/mypy-boto3-sso/) service.
-- `sso-oidc` - Type annotations for `boto3` [sso-oidc](https://pypi.org/project/mypy-boto3-sso-oidc/) service.
-- `stepfunctions` - Type annotations for `boto3` [stepfunctions](https://pypi.org/project/mypy-boto3-stepfunctions/) service.
-- `storagegateway` - Type annotations for `boto3` [storagegateway](https://pypi.org/project/mypy-boto3-storagegateway/) service.
-- `sts` - Type annotations for `boto3` [sts](https://pypi.org/project/mypy-boto3-sts/) service.
-- `support` - Type annotations for `boto3` [support](https://pypi.org/project/mypy-boto3-support/) service.
-- `swf` - Type annotations for `boto3` [swf](https://pypi.org/project/mypy-boto3-swf/) service.
-- `textract` - Type annotations for `boto3` [textract](https://pypi.org/project/mypy-boto3-textract/) service.
-- `transcribe` - Type annotations for `boto3` [transcribe](https://pypi.org/project/mypy-boto3-transcribe/) service.
-- `transfer` - Type annotations for `boto3` [transfer](https://pypi.org/project/mypy-boto3-transfer/) service.
-- `translate` - Type annotations for `boto3` [translate](https://pypi.org/project/mypy-boto3-translate/) service.
-- `waf` - Type annotations for `boto3` [waf](https://pypi.org/project/mypy-boto3-waf/) service.
-- `waf-regional` - Type annotations for `boto3` [waf-regional](https://pypi.org/project/mypy-boto3-waf-regional/) service.
-- `wafv2` - Type annotations for `boto3` [wafv2](https://pypi.org/project/mypy-boto3-wafv2/) service.
-- `workdocs` - Type annotations for `boto3` [workdocs](https://pypi.org/project/mypy-boto3-workdocs/) service.
-- `worklink` - Type annotations for `boto3` [worklink](https://pypi.org/project/mypy-boto3-worklink/) service.
-- `workmail` - Type annotations for `boto3` [workmail](https://pypi.org/project/mypy-boto3-workmail/) service.
-- `workmailmessageflow` - Type annotations for `boto3` [workmailmessageflow](https://pypi.org/project/mypy-boto3-workmailmessageflow/) service.
-- `workspaces` - Type annotations for `boto3` [workspaces](https://pypi.org/project/mypy-boto3-workspaces/) service.
-- `xray` - Type annotations for `boto3` [xray](https://pypi.org/project/mypy-boto3-xray/) service.
+- `boto3-stubs[essential]` - Type annotations for [CloudFormation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudformation.html#CloudFormation), [DynamoDB](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB), [EC2](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html#EC2), [Lambda](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/lambda.html#Lambda), [RDS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/rds.html#RDS), [S3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3) and [SQS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sqs.html#SQS) services.
+- `boto3-stubs[accessanalyzer]` - Type annotations for [AccessAnalyzer](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/accessanalyzer.html#AccessAnalyzer) service.
+- `boto3-stubs[acm]` - Type annotations for [ACM](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/acm.html#ACM) service.
+- `boto3-stubs[acm-pca]` - Type annotations for [ACMPCA](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/acm-pca.html#ACMPCA) service.
+- `boto3-stubs[alexaforbusiness]` - Type annotations for [AlexaForBusiness](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/alexaforbusiness.html#AlexaForBusiness) service.
+- `boto3-stubs[amplify]` - Type annotations for [Amplify](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/amplify.html#Amplify) service.
+- `boto3-stubs[apigateway]` - Type annotations for [APIGateway](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/apigateway.html#APIGateway) service.
+- `boto3-stubs[apigatewaymanagementapi]` - Type annotations for [ApiGatewayManagementApi](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/apigatewaymanagementapi.html#ApiGatewayManagementApi) service.
+- `boto3-stubs[apigatewayv2]` - Type annotations for [ApiGatewayV2](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/apigatewayv2.html#ApiGatewayV2) service.
+- `boto3-stubs[appconfig]` - Type annotations for [AppConfig](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/appconfig.html#AppConfig) service.
+- `boto3-stubs[application-autoscaling]` - Type annotations for [ApplicationAutoScaling](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/application-autoscaling.html#ApplicationAutoScaling) service.
+- `boto3-stubs[application-insights]` - Type annotations for [ApplicationInsights](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/application-insights.html#ApplicationInsights) service.
+- `boto3-stubs[appmesh]` - Type annotations for [AppMesh](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/appmesh.html#AppMesh) service.
+- `boto3-stubs[appstream]` - Type annotations for [AppStream](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/appstream.html#AppStream) service.
+- `boto3-stubs[appsync]` - Type annotations for [AppSync](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/appsync.html#AppSync) service.
+- `boto3-stubs[athena]` - Type annotations for [Athena](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/athena.html#Athena) service.
+- `boto3-stubs[autoscaling]` - Type annotations for [AutoScaling](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/autoscaling.html#AutoScaling) service.
+- `boto3-stubs[autoscaling-plans]` - Type annotations for [AutoScalingPlans](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/autoscaling-plans.html#AutoScalingPlans) service.
+- `boto3-stubs[backup]` - Type annotations for [Backup](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/backup.html#Backup) service.
+- `boto3-stubs[batch]` - Type annotations for [Batch](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/batch.html#Batch) service.
+- `boto3-stubs[budgets]` - Type annotations for [Budgets](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/budgets.html#Budgets) service.
+- `boto3-stubs[ce]` - Type annotations for [CostExplorer](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ce.html#CostExplorer) service.
+- `boto3-stubs[chime]` - Type annotations for [Chime](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/chime.html#Chime) service.
+- `boto3-stubs[cloud9]` - Type annotations for [Cloud9](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloud9.html#Cloud9) service.
+- `boto3-stubs[clouddirectory]` - Type annotations for [CloudDirectory](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/clouddirectory.html#CloudDirectory) service.
+- `boto3-stubs[cloudformation]` - Type annotations for [CloudFormation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudformation.html#CloudFormation) service.
+- `boto3-stubs[cloudfront]` - Type annotations for [CloudFront](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudfront.html#CloudFront) service.
+- `boto3-stubs[cloudhsm]` - Type annotations for [CloudHSM](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudhsm.html#CloudHSM) service.
+- `boto3-stubs[cloudhsmv2]` - Type annotations for [CloudHSMV2](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudhsmv2.html#CloudHSMV2) service.
+- `boto3-stubs[cloudsearch]` - Type annotations for [CloudSearch](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudsearch.html#CloudSearch) service.
+- `boto3-stubs[cloudsearchdomain]` - Type annotations for [CloudSearchDomain](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudsearchdomain.html#CloudSearchDomain) service.
+- `boto3-stubs[cloudtrail]` - Type annotations for [CloudTrail](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudtrail.html#CloudTrail) service.
+- `boto3-stubs[cloudwatch]` - Type annotations for [CloudWatch](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudwatch.html#CloudWatch) service.
+- `boto3-stubs[codebuild]` - Type annotations for [CodeBuild](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codebuild.html#CodeBuild) service.
+- `boto3-stubs[codecommit]` - Type annotations for [CodeCommit](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codecommit.html#CodeCommit) service.
+- `boto3-stubs[codedeploy]` - Type annotations for [CodeDeploy](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codedeploy.html#CodeDeploy) service.
+- `boto3-stubs[codeguru-reviewer]` - Type annotations for [CodeGuruReviewer](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeguru-reviewer.html#CodeGuruReviewer) service.
+- `boto3-stubs[codeguruprofiler]` - Type annotations for [CodeGuruProfiler](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeguruprofiler.html#CodeGuruProfiler) service.
+- `boto3-stubs[codepipeline]` - Type annotations for [CodePipeline](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codepipeline.html#CodePipeline) service.
+- `boto3-stubs[codestar]` - Type annotations for [CodeStar](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codestar.html#CodeStar) service.
+- `boto3-stubs[codestar-notifications]` - Type annotations for [CodeStarNotifications](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codestar-notifications.html#CodeStarNotifications) service.
+- `boto3-stubs[cognito-identity]` - Type annotations for [CognitoIdentity](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-identity.html#CognitoIdentity) service.
+- `boto3-stubs[cognito-idp]` - Type annotations for [CognitoIdentityProvider](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-idp.html#CognitoIdentityProvider) service.
+- `boto3-stubs[cognito-sync]` - Type annotations for [CognitoSync](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-sync.html#CognitoSync) service.
+- `boto3-stubs[comprehend]` - Type annotations for [Comprehend](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/comprehend.html#Comprehend) service.
+- `boto3-stubs[comprehendmedical]` - Type annotations for [ComprehendMedical](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/comprehendmedical.html#ComprehendMedical) service.
+- `boto3-stubs[compute-optimizer]` - Type annotations for [ComputeOptimizer](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/compute-optimizer.html#ComputeOptimizer) service.
+- `boto3-stubs[config]` - Type annotations for [ConfigService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/config.html#ConfigService) service.
+- `boto3-stubs[connect]` - Type annotations for [Connect](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/connect.html#Connect) service.
+- `boto3-stubs[connectparticipant]` - Type annotations for [ConnectParticipant](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/connectparticipant.html#ConnectParticipant) service.
+- `boto3-stubs[cur]` - Type annotations for [CostandUsageReportService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cur.html#CostandUsageReportService) service.
+- `boto3-stubs[dataexchange]` - Type annotations for [DataExchange](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dataexchange.html#DataExchange) service.
+- `boto3-stubs[datapipeline]` - Type annotations for [DataPipeline](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/datapipeline.html#DataPipeline) service.
+- `boto3-stubs[datasync]` - Type annotations for [DataSync](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/datasync.html#DataSync) service.
+- `boto3-stubs[dax]` - Type annotations for [DAX](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dax.html#DAX) service.
+- `boto3-stubs[detective]` - Type annotations for [Detective](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/detective.html#Detective) service.
+- `boto3-stubs[devicefarm]` - Type annotations for [DeviceFarm](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/devicefarm.html#DeviceFarm) service.
+- `boto3-stubs[directconnect]` - Type annotations for [DirectConnect](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/directconnect.html#DirectConnect) service.
+- `boto3-stubs[discovery]` - Type annotations for [ApplicationDiscoveryService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/discovery.html#ApplicationDiscoveryService) service.
+- `boto3-stubs[dlm]` - Type annotations for [DLM](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dlm.html#DLM) service.
+- `boto3-stubs[dms]` - Type annotations for [DatabaseMigrationService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dms.html#DatabaseMigrationService) service.
+- `boto3-stubs[docdb]` - Type annotations for [DocDB](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/docdb.html#DocDB) service.
+- `boto3-stubs[ds]` - Type annotations for [DirectoryService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ds.html#DirectoryService) service.
+- `boto3-stubs[dynamodb]` - Type annotations for [DynamoDB](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#DynamoDB) service.
+- `boto3-stubs[dynamodbstreams]` - Type annotations for [DynamoDBStreams](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodbstreams.html#DynamoDBStreams) service.
+- `boto3-stubs[ebs]` - Type annotations for [EBS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ebs.html#EBS) service.
+- `boto3-stubs[ec2]` - Type annotations for [EC2](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html#EC2) service.
+- `boto3-stubs[ec2-instance-connect]` - Type annotations for [EC2InstanceConnect](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2-instance-connect.html#EC2InstanceConnect) service.
+- `boto3-stubs[ecr]` - Type annotations for [ECR](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ecr.html#ECR) service.
+- `boto3-stubs[ecs]` - Type annotations for [ECS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ecs.html#ECS) service.
+- `boto3-stubs[efs]` - Type annotations for [EFS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/efs.html#EFS) service.
+- `boto3-stubs[eks]` - Type annotations for [EKS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/eks.html#EKS) service.
+- `boto3-stubs[elastic-inference]` - Type annotations for [ElasticInference](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/elastic-inference.html#ElasticInference) service.
+- `boto3-stubs[elasticache]` - Type annotations for [ElastiCache](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/elasticache.html#ElastiCache) service.
+- `boto3-stubs[elasticbeanstalk]` - Type annotations for [ElasticBeanstalk](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/elasticbeanstalk.html#ElasticBeanstalk) service.
+- `boto3-stubs[elastictranscoder]` - Type annotations for [ElasticTranscoder](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/elastictranscoder.html#ElasticTranscoder) service.
+- `boto3-stubs[elb]` - Type annotations for [ElasticLoadBalancing](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/elb.html#ElasticLoadBalancing) service.
+- `boto3-stubs[elbv2]` - Type annotations for [ElasticLoadBalancingv2](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/elbv2.html#ElasticLoadBalancingv2) service.
+- `boto3-stubs[emr]` - Type annotations for [EMR](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/emr.html#EMR) service.
+- `boto3-stubs[es]` - Type annotations for [ElasticsearchService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/es.html#ElasticsearchService) service.
+- `boto3-stubs[events]` - Type annotations for [EventBridge](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/events.html#EventBridge) service.
+- `boto3-stubs[firehose]` - Type annotations for [Firehose](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/firehose.html#Firehose) service.
+- `boto3-stubs[fms]` - Type annotations for [FMS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/fms.html#FMS) service.
+- `boto3-stubs[forecast]` - Type annotations for [ForecastService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/forecast.html#ForecastService) service.
+- `boto3-stubs[forecastquery]` - Type annotations for [ForecastQueryService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/forecastquery.html#ForecastQueryService) service.
+- `boto3-stubs[frauddetector]` - Type annotations for [FraudDetector](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/frauddetector.html#FraudDetector) service.
+- `boto3-stubs[fsx]` - Type annotations for [FSx](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/fsx.html#FSx) service.
+- `boto3-stubs[gamelift]` - Type annotations for [GameLift](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/gamelift.html#GameLift) service.
+- `boto3-stubs[glacier]` - Type annotations for [Glacier](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/glacier.html#Glacier) service.
+- `boto3-stubs[globalaccelerator]` - Type annotations for [GlobalAccelerator](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/globalaccelerator.html#GlobalAccelerator) service.
+- `boto3-stubs[glue]` - Type annotations for [Glue](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/glue.html#Glue) service.
+- `boto3-stubs[greengrass]` - Type annotations for [Greengrass](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/greengrass.html#Greengrass) service.
+- `boto3-stubs[groundstation]` - Type annotations for [GroundStation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/groundstation.html#GroundStation) service.
+- `boto3-stubs[guardduty]` - Type annotations for [GuardDuty](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/guardduty.html#GuardDuty) service.
+- `boto3-stubs[health]` - Type annotations for [Health](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/health.html#Health) service.
+- `boto3-stubs[iam]` - Type annotations for [IAM](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iam.html#IAM) service.
+- `boto3-stubs[imagebuilder]` - Type annotations for [Imagebuilder](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/imagebuilder.html#Imagebuilder) service.
+- `boto3-stubs[importexport]` - Type annotations for [ImportExport](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/importexport.html#ImportExport) service.
+- `boto3-stubs[inspector]` - Type annotations for [Inspector](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/inspector.html#Inspector) service.
+- `boto3-stubs[iot]` - Type annotations for [IoT](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iot.html#IoT) service.
+- `boto3-stubs[iot-data]` - Type annotations for [IoTDataPlane](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iot-data.html#IoTDataPlane) service.
+- `boto3-stubs[iot-jobs-data]` - Type annotations for [IoTJobsDataPlane](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iot-jobs-data.html#IoTJobsDataPlane) service.
+- `boto3-stubs[iot1click-devices]` - Type annotations for [IoT1ClickDevicesService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iot1click-devices.html#IoT1ClickDevicesService) service.
+- `boto3-stubs[iot1click-projects]` - Type annotations for [IoT1ClickProjects](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iot1click-projects.html#IoT1ClickProjects) service.
+- `boto3-stubs[iotanalytics]` - Type annotations for [IoTAnalytics](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iotanalytics.html#IoTAnalytics) service.
+- `boto3-stubs[iotevents]` - Type annotations for [IoTEvents](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iotevents.html#IoTEvents) service.
+- `boto3-stubs[iotevents-data]` - Type annotations for [IoTEventsData](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iotevents-data.html#IoTEventsData) service.
+- `boto3-stubs[iotsecuretunneling]` - Type annotations for [IoTSecureTunneling](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iotsecuretunneling.html#IoTSecureTunneling) service.
+- `boto3-stubs[iotthingsgraph]` - Type annotations for [IoTThingsGraph](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iotthingsgraph.html#IoTThingsGraph) service.
+- `boto3-stubs[kafka]` - Type annotations for [Kafka](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/kafka.html#Kafka) service.
+- `boto3-stubs[kendra]` - Type annotations for [Kendra](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/kendra.html#Kendra) service.
+- `boto3-stubs[kinesis]` - Type annotations for [Kinesis](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/kinesis.html#Kinesis) service.
+- `boto3-stubs[kinesis-video-archived-media]` - Type annotations for [KinesisVideoArchivedMedia](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/kinesis-video-archived-media.html#KinesisVideoArchivedMedia) service.
+- `boto3-stubs[kinesis-video-media]` - Type annotations for [KinesisVideoMedia](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/kinesis-video-media.html#KinesisVideoMedia) service.
+- `boto3-stubs[kinesis-video-signaling]` - Type annotations for [KinesisVideoSignalingChannels](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/kinesis-video-signaling.html#KinesisVideoSignalingChannels) service.
+- `boto3-stubs[kinesisanalytics]` - Type annotations for [KinesisAnalytics](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/kinesisanalytics.html#KinesisAnalytics) service.
+- `boto3-stubs[kinesisanalyticsv2]` - Type annotations for [KinesisAnalyticsV2](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/kinesisanalyticsv2.html#KinesisAnalyticsV2) service.
+- `boto3-stubs[kinesisvideo]` - Type annotations for [KinesisVideo](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/kinesisvideo.html#KinesisVideo) service.
+- `boto3-stubs[kms]` - Type annotations for [KMS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/kms.html#KMS) service.
+- `boto3-stubs[lakeformation]` - Type annotations for [LakeFormation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/lakeformation.html#LakeFormation) service.
+- `boto3-stubs[lambda]` - Type annotations for [Lambda](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/lambda.html#Lambda) service.
+- `boto3-stubs[lex-models]` - Type annotations for [LexModelBuildingService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/lex-models.html#LexModelBuildingService) service.
+- `boto3-stubs[lex-runtime]` - Type annotations for [LexRuntimeService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/lex-runtime.html#LexRuntimeService) service.
+- `boto3-stubs[license-manager]` - Type annotations for [LicenseManager](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/license-manager.html#LicenseManager) service.
+- `boto3-stubs[lightsail]` - Type annotations for [Lightsail](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/lightsail.html#Lightsail) service.
+- `boto3-stubs[logs]` - Type annotations for [CloudWatchLogs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/logs.html#CloudWatchLogs) service.
+- `boto3-stubs[machinelearning]` - Type annotations for [MachineLearning](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/machinelearning.html#MachineLearning) service.
+- `boto3-stubs[macie]` - Type annotations for [Macie](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/macie.html#Macie) service.
+- `boto3-stubs[managedblockchain]` - Type annotations for [ManagedBlockchain](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/managedblockchain.html#ManagedBlockchain) service.
+- `boto3-stubs[marketplace-catalog]` - Type annotations for [MarketplaceCatalog](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/marketplace-catalog.html#MarketplaceCatalog) service.
+- `boto3-stubs[marketplace-entitlement]` - Type annotations for [MarketplaceEntitlementService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/marketplace-entitlement.html#MarketplaceEntitlementService) service.
+- `boto3-stubs[marketplacecommerceanalytics]` - Type annotations for [MarketplaceCommerceAnalytics](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/marketplacecommerceanalytics.html#MarketplaceCommerceAnalytics) service.
+- `boto3-stubs[mediaconnect]` - Type annotations for [MediaConnect](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/mediaconnect.html#MediaConnect) service.
+- `boto3-stubs[mediaconvert]` - Type annotations for [MediaConvert](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/mediaconvert.html#MediaConvert) service.
+- `boto3-stubs[medialive]` - Type annotations for [MediaLive](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/medialive.html#MediaLive) service.
+- `boto3-stubs[mediapackage]` - Type annotations for [MediaPackage](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/mediapackage.html#MediaPackage) service.
+- `boto3-stubs[mediapackage-vod]` - Type annotations for [MediaPackageVod](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/mediapackage-vod.html#MediaPackageVod) service.
+- `boto3-stubs[mediastore]` - Type annotations for [MediaStore](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/mediastore.html#MediaStore) service.
+- `boto3-stubs[mediastore-data]` - Type annotations for [MediaStoreData](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/mediastore-data.html#MediaStoreData) service.
+- `boto3-stubs[mediatailor]` - Type annotations for [MediaTailor](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/mediatailor.html#MediaTailor) service.
+- `boto3-stubs[meteringmarketplace]` - Type annotations for [MarketplaceMetering](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/meteringmarketplace.html#MarketplaceMetering) service.
+- `boto3-stubs[mgh]` - Type annotations for [MigrationHub](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/mgh.html#MigrationHub) service.
+- `boto3-stubs[migrationhub-config]` - Type annotations for [MigrationHubConfig](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/migrationhub-config.html#MigrationHubConfig) service.
+- `boto3-stubs[mobile]` - Type annotations for [Mobile](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/mobile.html#Mobile) service.
+- `boto3-stubs[mq]` - Type annotations for [MQ](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/mq.html#MQ) service.
+- `boto3-stubs[mturk]` - Type annotations for [MTurk](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/mturk.html#MTurk) service.
+- `boto3-stubs[neptune]` - Type annotations for [Neptune](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/neptune.html#Neptune) service.
+- `boto3-stubs[networkmanager]` - Type annotations for [NetworkManager](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/networkmanager.html#NetworkManager) service.
+- `boto3-stubs[opsworks]` - Type annotations for [OpsWorks](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/opsworks.html#OpsWorks) service.
+- `boto3-stubs[opsworkscm]` - Type annotations for [OpsWorksCM](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/opsworkscm.html#OpsWorksCM) service.
+- `boto3-stubs[organizations]` - Type annotations for [Organizations](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/organizations.html#Organizations) service.
+- `boto3-stubs[outposts]` - Type annotations for [Outposts](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/outposts.html#Outposts) service.
+- `boto3-stubs[personalize]` - Type annotations for [Personalize](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/personalize.html#Personalize) service.
+- `boto3-stubs[personalize-events]` - Type annotations for [PersonalizeEvents](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/personalize-events.html#PersonalizeEvents) service.
+- `boto3-stubs[personalize-runtime]` - Type annotations for [PersonalizeRuntime](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/personalize-runtime.html#PersonalizeRuntime) service.
+- `boto3-stubs[pi]` - Type annotations for [PI](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/pi.html#PI) service.
+- `boto3-stubs[pinpoint]` - Type annotations for [Pinpoint](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/pinpoint.html#Pinpoint) service.
+- `boto3-stubs[pinpoint-email]` - Type annotations for [PinpointEmail](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/pinpoint-email.html#PinpointEmail) service.
+- `boto3-stubs[pinpoint-sms-voice]` - Type annotations for [PinpointSMSVoice](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/pinpoint-sms-voice.html#PinpointSMSVoice) service.
+- `boto3-stubs[polly]` - Type annotations for [Polly](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/polly.html#Polly) service.
+- `boto3-stubs[pricing]` - Type annotations for [Pricing](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/pricing.html#Pricing) service.
+- `boto3-stubs[qldb]` - Type annotations for [QLDB](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/qldb.html#QLDB) service.
+- `boto3-stubs[qldb-session]` - Type annotations for [QLDBSession](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/qldb-session.html#QLDBSession) service.
+- `boto3-stubs[quicksight]` - Type annotations for [QuickSight](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/quicksight.html#QuickSight) service.
+- `boto3-stubs[ram]` - Type annotations for [RAM](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ram.html#RAM) service.
+- `boto3-stubs[rds]` - Type annotations for [RDS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/rds.html#RDS) service.
+- `boto3-stubs[rds-data]` - Type annotations for [RDSDataService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/rds-data.html#RDSDataService) service.
+- `boto3-stubs[redshift]` - Type annotations for [Redshift](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/redshift.html#Redshift) service.
+- `boto3-stubs[rekognition]` - Type annotations for [Rekognition](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/rekognition.html#Rekognition) service.
+- `boto3-stubs[resource-groups]` - Type annotations for [ResourceGroups](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/resource-groups.html#ResourceGroups) service.
+- `boto3-stubs[resourcegroupstaggingapi]` - Type annotations for [ResourceGroupsTaggingAPI](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/resourcegroupstaggingapi.html#ResourceGroupsTaggingAPI) service.
+- `boto3-stubs[robomaker]` - Type annotations for [RoboMaker](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/robomaker.html#RoboMaker) service.
+- `boto3-stubs[route53]` - Type annotations for [Route53](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/route53.html#Route53) service.
+- `boto3-stubs[route53domains]` - Type annotations for [Route53Domains](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/route53domains.html#Route53Domains) service.
+- `boto3-stubs[route53resolver]` - Type annotations for [Route53Resolver](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/route53resolver.html#Route53Resolver) service.
+- `boto3-stubs[s3]` - Type annotations for [S3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3) service.
+- `boto3-stubs[s3control]` - Type annotations for [S3Control](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3control.html#S3Control) service.
+- `boto3-stubs[sagemaker]` - Type annotations for [SageMaker](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker.html#SageMaker) service.
+- `boto3-stubs[sagemaker-a2i-runtime]` - Type annotations for [AugmentedAIRuntime](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-a2i-runtime.html#AugmentedAIRuntime) service.
+- `boto3-stubs[sagemaker-runtime]` - Type annotations for [SageMakerRuntime](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sagemaker-runtime.html#SageMakerRuntime) service.
+- `boto3-stubs[savingsplans]` - Type annotations for [SavingsPlans](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/savingsplans.html#SavingsPlans) service.
+- `boto3-stubs[schemas]` - Type annotations for [Schemas](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/schemas.html#Schemas) service.
+- `boto3-stubs[sdb]` - Type annotations for [SimpleDB](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sdb.html#SimpleDB) service.
+- `boto3-stubs[secretsmanager]` - Type annotations for [SecretsManager](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/secretsmanager.html#SecretsManager) service.
+- `boto3-stubs[securityhub]` - Type annotations for [SecurityHub](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/securityhub.html#SecurityHub) service.
+- `boto3-stubs[serverlessrepo]` - Type annotations for [ServerlessApplicationRepository](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/serverlessrepo.html#ServerlessApplicationRepository) service.
+- `boto3-stubs[service-quotas]` - Type annotations for [ServiceQuotas](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/service-quotas.html#ServiceQuotas) service.
+- `boto3-stubs[servicecatalog]` - Type annotations for [ServiceCatalog](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/servicecatalog.html#ServiceCatalog) service.
+- `boto3-stubs[servicediscovery]` - Type annotations for [ServiceDiscovery](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/servicediscovery.html#ServiceDiscovery) service.
+- `boto3-stubs[ses]` - Type annotations for [SES](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ses.html#SES) service.
+- `boto3-stubs[sesv2]` - Type annotations for [SESV2](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sesv2.html#SESV2) service.
+- `boto3-stubs[shield]` - Type annotations for [Shield](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/shield.html#Shield) service.
+- `boto3-stubs[signer]` - Type annotations for [Signer](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/signer.html#Signer) service.
+- `boto3-stubs[sms]` - Type annotations for [SMS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sms.html#SMS) service.
+- `boto3-stubs[sms-voice]` - Type annotations for [SMSVoice](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sms-voice.html#SMSVoice) service.
+- `boto3-stubs[snowball]` - Type annotations for [Snowball](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/snowball.html#Snowball) service.
+- `boto3-stubs[sns]` - Type annotations for [SNS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sns.html#SNS) service.
+- `boto3-stubs[sqs]` - Type annotations for [SQS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sqs.html#SQS) service.
+- `boto3-stubs[ssm]` - Type annotations for [SSM](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ssm.html#SSM) service.
+- `boto3-stubs[sso]` - Type annotations for [SSO](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sso.html#SSO) service.
+- `boto3-stubs[sso-oidc]` - Type annotations for [SSOOIDC](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sso-oidc.html#SSOOIDC) service.
+- `boto3-stubs[stepfunctions]` - Type annotations for [SFN](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/stepfunctions.html#SFN) service.
+- `boto3-stubs[storagegateway]` - Type annotations for [StorageGateway](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/storagegateway.html#StorageGateway) service.
+- `boto3-stubs[sts]` - Type annotations for [STS](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sts.html#STS) service.
+- `boto3-stubs[support]` - Type annotations for [Support](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/support.html#Support) service.
+- `boto3-stubs[swf]` - Type annotations for [SWF](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/swf.html#SWF) service.
+- `boto3-stubs[textract]` - Type annotations for [Textract](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/textract.html#Textract) service.
+- `boto3-stubs[transcribe]` - Type annotations for [TranscribeService](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/transcribe.html#TranscribeService) service.
+- `boto3-stubs[transfer]` - Type annotations for [Transfer](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/transfer.html#Transfer) service.
+- `boto3-stubs[translate]` - Type annotations for [Translate](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/translate.html#Translate) service.
+- `boto3-stubs[waf]` - Type annotations for [WAF](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/waf.html#WAF) service.
+- `boto3-stubs[waf-regional]` - Type annotations for [WAFRegional](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/waf-regional.html#WAFRegional) service.
+- `boto3-stubs[wafv2]` - Type annotations for [WAFV2](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/wafv2.html#WAFV2) service.
+- `boto3-stubs[workdocs]` - Type annotations for [WorkDocs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/workdocs.html#WorkDocs) service.
+- `boto3-stubs[worklink]` - Type annotations for [WorkLink](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/worklink.html#WorkLink) service.
+- `boto3-stubs[workmail]` - Type annotations for [WorkMail](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/workmail.html#WorkMail) service.
+- `boto3-stubs[workmailmessageflow]` - Type annotations for [WorkMailMessageFlow](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/workmailmessageflow.html#WorkMailMessageFlow) service.
+- `boto3-stubs[workspaces]` - Type annotations for [WorkSpaces](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/workspaces.html#WorkSpaces) service.
+- `boto3-stubs[xray]` - Type annotations for [XRay](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/xray.html#XRay) service.
