@@ -44,6 +44,7 @@ setup(
     package_data={"{{ package.name }}": ["py.typed", "*.pyi", "*/*.pyi"]},
     install_requires=[
         "typing_extensions; python_version < '3.8'",
+        "{{ master_pypi_name }}=={{ build_version }}",
     ],
     extras_require={
         "essential": [
