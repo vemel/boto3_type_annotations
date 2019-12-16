@@ -66,6 +66,7 @@ jobs:
         env:
           SKIP: ${{ steps.vars.outputs.skip }}
           BOT03_VERSION: ${{ steps.vars.outputs.boto3_version }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [[ "${SKIP}" != "" ]]; then exit 0; fi
           git config --global user.email "volshebnyi@gmail.com"
