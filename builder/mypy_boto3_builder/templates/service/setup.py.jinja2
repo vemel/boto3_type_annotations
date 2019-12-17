@@ -42,9 +42,16 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Typing :: Typed",
     ],
+    keywords='boto3 {{ service_name.boto3_name }} type-annotations boto3-stubs mypy mypy-stubs typeshed autocomplete auto-generated',
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     package_data={"{{ service_name.module_name }}": ["py.typed"]},
+    python_requires='>=3.7',
+    project_urls={
+        'Documentation': 'https://mypy-boto3.readthedocs.io/en/latest/',
+        'Source': 'https://github.com/vemel/mypy_boto3',
+        'Tracker': 'https://github.com/vemel/mypy_boto3/issues',
+    },
     install_requires=[
         "typing_extensions; python_version < '3.8'",
     ],
