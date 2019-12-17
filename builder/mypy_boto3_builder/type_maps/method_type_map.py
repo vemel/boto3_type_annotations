@@ -15,6 +15,9 @@ from mypy_boto3_builder.type_maps.typed_dicts import (
 )
 
 
+__all__ = ("get_method_type_stub",)
+
+
 ArgumentTypeMap = Dict[str, FakeAnnotation]
 MethodTypeMap = Dict[str, ArgumentTypeMap]
 ClassTypeMap = Dict[str, MethodTypeMap]
@@ -29,12 +32,14 @@ TYPE_MAP: ServiceTypeMap = {
                 "Tags": TypeSubscript(Type.List, [ec2_tag_type]),
                 "DryRun": Type.bool,
             },
+        },
+        "Client": {
             "delete_tags": {
                 "Resources": TypeSubscript(Type.List, [Type.Any]),
                 "Tags": TypeSubscript(Type.List, [ec2_tag_type]),
                 "DryRun": Type.bool,
             },
-        }
+        },
     },
     ServiceNameCatalog.s3.boto3_name: {
         "Client": {

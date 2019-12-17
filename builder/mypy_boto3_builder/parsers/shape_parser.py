@@ -184,6 +184,7 @@ class ShapeParser:
             argument_alias = self._get_argument_alias(operation_name, argument_name)
             if argument_alias == "None":
                 continue
+
             argument_type_stub = get_method_type_stub(
                 self.service_name, class_name, method_name, argument_name
             )

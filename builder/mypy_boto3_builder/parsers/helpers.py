@@ -15,6 +15,7 @@ from mypy_boto3_builder.utils.strings import get_class_prefix
 from mypy_boto3_builder.parsers.docstring_parser.argspec_parser import ArgSpecParser
 from mypy_boto3_builder.parsers.docstring_parser.docstring_parser import DocstringParser
 from mypy_boto3_builder.logger import get_logger
+from mypy_boto3_builder.type_maps.method_argument_map import get_method_arguments_stub
 
 
 def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
@@ -91,11 +92,15 @@ def parse_method(
     logger.debug(f"Slow parsing of {method_name}: {len(docstring)} chars")
     prefix = f"{get_class_prefix(parent_name)}{get_class_prefix(name)}"
     arg_spec_parser = ArgSpecParser(prefix, service_name)
-    arguments = arg_spec_parser.get_arguments(parent_name, name, method)
-    docstring_parser = DocstringParser(prefix, arguments)
-    arguments = docstring_parser.get_arguments(docstring)
+
+    arguments = get_method_arguments_stub(service_name, parent_name, name)
+    if arguments is None:
+        arguments = arg_spec_parser.get_arguments(parent_name, name, method)
+        docstring_parser = DocstringParser(prefix, arguments)
+        arguments = docstring_parser.get_arguments(docstring)
+
     return_type = arg_spec_parser.get_return_type(parent_name, name)
     if return_type is None:
-        return_type = docstring_parser.get_return_type(docstring)
+        return_type = DocstringParser(prefix, []).get_return_type(docstring)
 
     return Method(name=name, arguments=arguments, return_type=return_type)
