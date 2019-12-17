@@ -19,8 +19,9 @@ jobs:
       - name: Extract versions from pip
         id: vars
         run: |
-          BOT03_VERSION=`pip search boto3 | grep -Po '^boto3 \S+' | grep -Po '\d+\.\d+\.\d+'`
-          LAST_BUILD_BOTO3_VERSION=`pip search boto3-stubs | grep -Po '^boto3\-stubs \S+' | grep -Po '\d+\.\d+\.\d+'`
+          pip install -U boto3 boto3-stubs
+          BOT03_VERSION=`pip show boto3 | grep 'Version:' | grep -Po '\d+\.\d+\.\d+'`
+          LAST_BUILD_BOTO3_VERSION=`pip show boto3-stubs | grep 'Version:' | grep -Po '\d+\.\d+\.\d+'`
           BUILD_VERSION="${BOT03_VERSION}.0"
           SKIP=""
           if [[ "${BOT03_VERSION}" == "${LAST_BUILD_BOTO3_VERSION}" ]]; then
