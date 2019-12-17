@@ -8,15 +8,19 @@ Botocore docstring parser.
     - [DocstringParser](#docstringparser)
         - [DocstringParser().get_arguments](#docstringparserget_arguments)
         - [DocstringParser().get_return_type](#docstringparserget_return_type)
-        - [DocstringParser.parse_type](#docstringparserparse_type)
 
 ## DocstringParser
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/docstring_parser.py#L28)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/docstring_parser.py#L29)
 
 ```python
 class DocstringParser():
-    def __init__(prefix: str, arguments: List[Argument]) -> None:
+    def __init__(
+        service_name: ServiceName,
+        class_name: str,
+        method_name: str,
+        arguments: List[Argument],
+    ) -> None:
 ```
 
 Botocore docstring parser.
@@ -24,11 +28,13 @@ Botocore docstring parser.
 #### Arguments
 
 - `prefix` - Prefix for generated TypeDict names.
+- `class_name` - Parent class name.
+- `method_name` - Method name.
 - `arguments` - List of arguments extracted from argspec.
 
 ### DocstringParser().get_arguments
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/docstring_parser.py#L182)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/docstring_parser.py#L200)
 
 ```python
 def get_arguments(input_string: str) -> List[Argument]:
@@ -46,7 +52,7 @@ A list of `Argument` structures.
 
 ### DocstringParser().get_return_type
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/docstring_parser.py#L295)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/docstring_parser.py#L307)
 
 ```python
 def get_return_type(input_string: str) -> FakeAnnotation:
@@ -61,27 +67,3 @@ Get function return type annotation.
 #### Returns
 
 A valid type annotation.
-
-### DocstringParser.parse_type
-
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/docstring_parser.py#L330)
-
-```python
-@staticmethod
-def parse_type(type_str: str, name: Optional[str] = None) -> FakeAnnotation:
-```
-
-Get type annotation from type string.
-
-#### Arguments
-
-- `type_str` - Type string.
-- `name` - Argument name.
-
-#### Returns
-
-A valid type annotation.
-
-#### Raises
-
-- `ValueError` - If `type_str` is unknown.

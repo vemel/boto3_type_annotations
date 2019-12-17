@@ -54,7 +54,7 @@ def parse_resource(
         )
         result.methods.append(method)
 
-    result.attributes.extend(parse_attributes(resource))
+    result.attributes.extend(parse_attributes(service_name, name, resource))
     result.attributes.extend(parse_identifiers(resource))
 
     collections = parse_collections(name, resource, service_name)

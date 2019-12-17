@@ -16,6 +16,8 @@ from mypy_boto3_builder.parsers.docstring_parser.argspec_parser import ArgSpecPa
 from mypy_boto3_builder.parsers.docstring_parser.docstring_parser import DocstringParser
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.type_maps.method_argument_map import get_method_arguments_stub
+from mypy_boto3_builder.type_maps.method_type_map import get_method_type_stub
+from mypy_boto3_builder.type_maps.docstring_type_map import get_type_from_docstring
 
 
 def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
@@ -42,7 +44,9 @@ def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
     return methods
 
 
-def parse_attributes(resource: Boto3ServiceResource) -> List[Attribute]:
+def parse_attributes(
+    service_name: ServiceName, resource_name: str, resource: Boto3ServiceResource
+) -> List[Attribute]:
     """
     Extract attributes from boto3 resource.
 
@@ -63,11 +67,12 @@ def parse_attributes(resource: Boto3ServiceResource) -> List[Attribute]:
         shape = service_model.shape_for(resource.meta.resource_model.shape)
         attributes = resource.meta.resource_model.get_attributes(shape)
         for name, attribute in attributes.items():
-            result.append(
-                Attribute(
-                    name, DocstringParser.parse_type(attribute[1].type_name, name)
-                )
+            argument_type = get_method_type_stub(
+                service_name, resource_name, "_attributes", name
             )
+            if argument_type is None:
+                argument_type = get_type_from_docstring(attribute[1].type_name)
+            result.append(Attribute(name, argument_type))
 
     return result
 
@@ -96,11 +101,13 @@ def parse_method(
     arguments = get_method_arguments_stub(service_name, parent_name, name)
     if arguments is None:
         arguments = arg_spec_parser.get_arguments(parent_name, name, method)
-        docstring_parser = DocstringParser(prefix, arguments)
+        docstring_parser = DocstringParser(service_name, parent_name, name, arguments)
         arguments = docstring_parser.get_arguments(docstring)
 
     return_type = arg_spec_parser.get_return_type(parent_name, name)
     if return_type is None:
-        return_type = DocstringParser(prefix, []).get_return_type(docstring)
+        return_type = DocstringParser(
+            service_name, parent_name, name, []
+        ).get_return_type(docstring)
 
     return Method(name=name, arguments=arguments, return_type=return_type)

@@ -21,11 +21,11 @@ __all__ = ("get_method_type_stub",)
 ArgumentTypeMap = Dict[str, FakeAnnotation]
 MethodTypeMap = Dict[str, ArgumentTypeMap]
 ClassTypeMap = Dict[str, MethodTypeMap]
-ServiceTypeMap = Dict[str, ClassTypeMap]
+ServiceTypeMap = Dict[ServiceName, ClassTypeMap]
 
 
 TYPE_MAP: ServiceTypeMap = {
-    ServiceNameCatalog.ec2.boto3_name: {
+    ServiceNameCatalog.ec2: {
         "*": {
             "create_tags": {
                 "Resources": TypeSubscript(Type.List, [Type.Any]),
@@ -41,7 +41,7 @@ TYPE_MAP: ServiceTypeMap = {
             },
         },
     },
-    ServiceNameCatalog.s3.boto3_name: {
+    ServiceNameCatalog.s3: {
         "Client": {
             "copy_object": {
                 "CopySource": TypeSubscript(Type.Union, [Type.str, s3_copy_source_type])
@@ -49,9 +49,12 @@ TYPE_MAP: ServiceTypeMap = {
             "upload_part_copy": {
                 "CopySource": TypeSubscript(Type.Union, [Type.str, s3_copy_source_type])
             },
+            "copy": {"CopySource": s3_copy_source_type},
         },
+        "Bucket": {"copy": {"CopySource": s3_copy_source_type}},
+        "Object": {"copy": {"CopySource": s3_copy_source_type}},
     },
-    ServiceNameCatalog.dynamodb.boto3_name: {
+    ServiceNameCatalog.dynamodb: {
         "Table": {
             "batch_writer": {
                 "return": ExternalImport(
@@ -97,27 +100,29 @@ def _get_from_service_map(
     argument_name: str,
     service_type_map: ServiceTypeMap,
 ) -> Optional[FakeAnnotation]:
-    if service_name.boto3_name in service_type_map:
-        result = _get_from_class_map(
-            class_name,
-            method_name,
-            argument_name,
-            service_type_map[service_name.boto3_name],
-        )
-        if result:
-            return result
-    if "*" in service_type_map:
-        result = _get_from_class_map(
-            class_name, method_name, argument_name, service_type_map["*"]
-        )
-        if result:
-            return result
-    return None
+    if service_name not in service_type_map:
+        return None
+
+    return _get_from_class_map(
+        class_name, method_name, argument_name, service_type_map[service_name],
+    )
 
 
 def get_method_type_stub(
     service_name: ServiceName, class_name: str, method_name: str, argument_name: str
 ) -> Optional[FakeAnnotation]:
+    """
+    Get stub type for method argument.
+
+    Arguments:
+        service_name -- Service name.
+        class_name -- Parent class name.
+        method_name -- Method name.
+        argument_name -- Argument name.
+
+    Returns:
+        Type annotation or None.
+    """
     return _get_from_service_map(
         service_name, class_name, method_name, argument_name, TYPE_MAP
     )

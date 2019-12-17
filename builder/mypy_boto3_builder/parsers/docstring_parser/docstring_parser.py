@@ -9,9 +9,10 @@ from typing import Dict, List, Optional, Pattern
 
 from pyparsing import ParseException
 
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.structures.argument import Argument
-from mypy_boto3_builder.type_maps.type_map import TYPE_MAP
-from mypy_boto3_builder.type_maps.argument_type_map import ARGUMENT_TYPE_MAP
+from mypy_boto3_builder.type_maps.docstring_type_map import get_type_from_docstring
+from mypy_boto3_builder.type_maps.method_type_map import get_method_type_stub
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
@@ -31,14 +32,25 @@ class DocstringParser:
 
     Arguments:
         prefix -- Prefix for generated TypeDict names.
+        class_name -- Parent class name.
+        method_name -- Method name.
         arguments -- List of arguments extracted from argspec.
     """
 
     # Regexp to parse `:param <name>` definitions
     RE_PARAM: Pattern[str] = re.compile("\n:param ")
 
-    def __init__(self, prefix: str, arguments: List[Argument]) -> None:
-        self.prefix = prefix
+    def __init__(
+        self,
+        service_name: ServiceName,
+        class_name: str,
+        method_name: str,
+        arguments: List[Argument],
+    ) -> None:
+        self.prefix = f"{get_class_prefix(class_name)}{get_class_prefix(method_name)}"
+        self.service_name = service_name
+        self.class_name = class_name
+        self.method_name = method_name
         self.logger = get_logger()
         self.arguments_map: Dict[str, Argument] = {
             f"{a.prefix}{a.name}": a for a in arguments
@@ -106,7 +118,13 @@ class DocstringParser:
             argument_name = match_dict["name"]
             type_str = match_dict["type_name"]
             argument = self._find_argument_or_append(argument_name)
-            argument.type = self.parse_type(type_str, argument_name)
+            type_stub = get_method_type_stub(
+                self.service_name, self.class_name, self.method_name, argument_name
+            )
+            if type_stub:
+                argument.type = type_stub
+            else:
+                argument.type = get_type_from_docstring(type_str)
 
     def _parse_params(self, input_string: str) -> None:
         if ":param " not in input_string:
@@ -164,7 +182,7 @@ class DocstringParser:
             attribute = typed_dict.get_attribute(line.name)
             attribute.required = line.required
             if attribute.type_annotation is Type.Any:
-                attribute.type_annotation = TYPE_MAP[line.type_name]
+                attribute.type_annotation = get_type_from_docstring(line.type_name)
             if not line.indented:
                 continue
 
@@ -231,13 +249,7 @@ class DocstringParser:
             return None
 
         type_name = match.asDict()["type_name"]
-        if type_name not in TYPE_MAP:
-            self.logger.warning(
-                f"Cannot parse rtype value for {self.prefix}: {type_name}"
-            )
-            return None
-
-        return TYPE_MAP[type_name]
+        return get_type_from_docstring(type_name)
 
     def _parse_response_syntax(self, input_string: str) -> Optional[FakeAnnotation]:
         if "**Response Syntax**" not in input_string:
@@ -326,31 +338,3 @@ class DocstringParser:
             self._fix_keys(syntax_return_type, response_structure)
 
         return syntax_return_type
-
-    @staticmethod
-    def parse_type(type_str: str, name: Optional[str] = None) -> FakeAnnotation:
-        """
-        Get type annotation from type string.
-
-        Arguments:
-            type_str -- Type string.
-            name -- Argument name.
-
-        Returns:
-            A valid type annotation.
-
-        Raises:
-            ValueError -- If `type_str` is unknown.
-        """
-        if name is not None:
-            try:
-                result = ARGUMENT_TYPE_MAP[f"{name}: {type_str}"].copy()
-            except KeyError:
-                pass
-            else:
-                return result
-
-        try:
-            return TYPE_MAP[type_str].copy()
-        except KeyError:
-            raise ValueError(f"Unknown type: {type_str}")

@@ -4,7 +4,6 @@ Description for boto3 service.
 from typing import Tuple
 from mypy_boto3_builder.constants import PYPI_NAME, MODULE_NAME
 
-
 __all__ = (
     "ServiceName",
     "ServiceNameCatalog",
@@ -34,6 +33,9 @@ class ServiceName:
         self.import_name = self.IMPORT_NAMES.get(name, name.replace("-", "_"))
         self.class_name = class_name
         self.boto3_version = "latest"
+
+    def __hash__(self) -> int:
+        return hash(self.name)
 
     @property
     def boto3_name(self) -> str:

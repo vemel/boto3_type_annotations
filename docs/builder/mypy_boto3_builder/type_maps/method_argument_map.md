@@ -18,3 +18,15 @@ def get_method_arguments_stub(
     method_name: str,
 ) -> Optional[List[Argument]]:
 ```
+
+Get arguments list for method stub.
+
+#### Arguments
+
+- `service_name` - Service name.
+- `class_name` - Parent class name.
+- `method_name` - Method name.
+
+#### Returns
+
+A list of arguments or None.

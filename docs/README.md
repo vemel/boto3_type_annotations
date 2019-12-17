@@ -278,10 +278,6 @@ python -m pip install boto3-stubs[essential]
 
 # install ec2, s3 and sqs type annotations
 python -m pip install boto3-stubs[s3,ec2,sqs]
-
-# build service index. You should execute this command everytime
-# you install or remove service packages
-python -m mypy_boto3
 ```
 
 ### List of all sub-modules

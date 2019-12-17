@@ -15,11 +15,11 @@ __all__ = ("get_method_arguments_stub",)
 
 MethodTypeMap = Dict[str, List[Argument]]
 ClassTypeMap = Dict[str, MethodTypeMap]
-ServiceTypeMap = Dict[str, ClassTypeMap]
+ServiceTypeMap = Dict[ServiceName, ClassTypeMap]
 
 
 METHOD_MAP: ServiceTypeMap = {
-    ServiceNameCatalog.ec2.boto3_name: {
+    ServiceNameCatalog.ec2: {
         "Instance": {
             "delete_tags": [
                 Argument("Resources", TypeSubscript(Type.List, [Type.Any])),
@@ -34,6 +34,15 @@ METHOD_MAP: ServiceTypeMap = {
 def get_method_arguments_stub(
     service_name: ServiceName, class_name: str, method_name: str
 ) -> Optional[List[Argument]]:
-    return (
-        METHOD_MAP.get(service_name.boto3_name, {}).get(class_name, {}).get(method_name)
-    )
+    """
+    Get arguments list for method stub.
+
+    Arguments:
+        service_name -- Service name.
+        class_name -- Parent class name.
+        method_name -- Method name.
+
+    Returns:
+        A list of arguments or None.
+    """
+    return METHOD_MAP.get(service_name, {}).get(class_name, {}).get(method_name)

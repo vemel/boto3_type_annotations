@@ -14,7 +14,7 @@ from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
 
 
-TYPE_MAP: Dict[str, FakeAnnotation] = {
+DOCSTRING_TYPE_MAP: Dict[str, FakeAnnotation] = {
     "bytes": Type.bytes,
     "blob": Type.bytes,
     "boolean": Type.bool,
@@ -77,8 +77,12 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
     "list(:py:class:`opsworks.Layer`)": TypeSubscript(
         Type.List, [InternalImport("Layer", ServiceNameCatalog.opsworks)]
     ),
-    ":py:class:`iam.GroupPolicy`": InternalImport("GroupPolicy", ServiceNameCatalog.iam),
-    ":py:class:`IAM.GroupPolicy`": InternalImport("GroupPolicy", ServiceNameCatalog.iam),
+    ":py:class:`iam.GroupPolicy`": InternalImport(
+        "GroupPolicy", ServiceNameCatalog.iam
+    ),
+    ":py:class:`IAM.GroupPolicy`": InternalImport(
+        "GroupPolicy", ServiceNameCatalog.iam
+    ),
     "list(:py:class:`iam.SigningCertificate`)": TypeSubscript(
         Type.List, [InternalImport("SigningCertificate", ServiceNameCatalog.iam)]
     ),
@@ -302,8 +306,12 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
     "list(:py:class:`iam.SamlProvider`)": TypeSubscript(
         Type.List, [InternalImport("SamlProvider", ServiceNameCatalog.iam)]
     ),
-    ":py:class:`glacier.Archive`": InternalImport("Archive", ServiceNameCatalog.glacier),
-    ":py:class:`Glacier.Archive`": InternalImport("Archive", ServiceNameCatalog.glacier),
+    ":py:class:`glacier.Archive`": InternalImport(
+        "Archive", ServiceNameCatalog.glacier
+    ),
+    ":py:class:`Glacier.Archive`": InternalImport(
+        "Archive", ServiceNameCatalog.glacier
+    ),
     ":py:class:`ec2.NetworkInterface`": InternalImport(
         "NetworkInterface", ServiceNameCatalog.ec2
     ),
@@ -372,7 +380,9 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
     ":py:class:`S3.ObjectVersion`": InternalImport(
         "ObjectVersion", ServiceNameCatalog.s3
     ),
-    ":py:class:`S3.BucketPolicy`": InternalImport("BucketPolicy", ServiceNameCatalog.s3),
+    ":py:class:`S3.BucketPolicy`": InternalImport(
+        "BucketPolicy", ServiceNameCatalog.s3
+    ),
     ":py:class:`EC2.RouteTableAssociation`": InternalImport(
         "RouteTableAssociation", ServiceNameCatalog.ec2
     ),
@@ -380,7 +390,9 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
         "RouteTableAssociation", ServiceNameCatalog.ec2
     ),
     ":py:class:`IAM.RolePolicy`": InternalImport("RolePolicy", ServiceNameCatalog.iam),
-    ":py:class:`IAM.CurrentUser`": InternalImport("CurrentUser", ServiceNameCatalog.iam),
+    ":py:class:`IAM.CurrentUser`": InternalImport(
+        "CurrentUser", ServiceNameCatalog.iam
+    ),
     ":py:class:`EC2.InternetGateway`": InternalImport(
         "InternetGateway", ServiceNameCatalog.ec2
     ),
@@ -416,8 +428,12 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
     ":py:class:`S3.MultipartUploadPart`": InternalImport(
         "MultipartUploadPart", ServiceNameCatalog.s3
     ),
-    ":py:class:`ec2.KeyPairInfo`": InternalImport("KeyPairInfo", ServiceNameCatalog.ec2),
-    ":py:class:`EC2.KeyPairInfo`": InternalImport("KeyPairInfo", ServiceNameCatalog.ec2),
+    ":py:class:`ec2.KeyPairInfo`": InternalImport(
+        "KeyPairInfo", ServiceNameCatalog.ec2
+    ),
+    ":py:class:`EC2.KeyPairInfo`": InternalImport(
+        "KeyPairInfo", ServiceNameCatalog.ec2
+    ),
     ":py:class:`iam.InstanceProfile`": InternalImport(
         "InstanceProfile", ServiceNameCatalog.iam
     ),
@@ -470,12 +486,18 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
     ":py:class:`iam.VirtualMfaDevice`": InternalImport(
         "VirtualMfaDevice", ServiceNameCatalog.iam
     ),
-    ":py:class:`Glacier.Account`": InternalImport("Account", ServiceNameCatalog.glacier),
+    ":py:class:`Glacier.Account`": InternalImport(
+        "Account", ServiceNameCatalog.glacier
+    ),
     ":py:class:`S3.BucketLifecycle`": InternalImport(
         "BucketLifecycle", ServiceNameCatalog.s3
     ),
-    ":py:class:`EC2.DhcpOptions`": InternalImport("DhcpOptions", ServiceNameCatalog.ec2),
-    ":py:class:`ec2.DhcpOptions`": InternalImport("DhcpOptions", ServiceNameCatalog.ec2),
+    ":py:class:`EC2.DhcpOptions`": InternalImport(
+        "DhcpOptions", ServiceNameCatalog.ec2
+    ),
+    ":py:class:`ec2.DhcpOptions`": InternalImport(
+        "DhcpOptions", ServiceNameCatalog.ec2
+    ),
     ":py:class:`S3.BucketLogging`": InternalImport(
         "BucketLogging", ServiceNameCatalog.s3
     ),
@@ -506,3 +528,19 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
     ),
     "callable": TypeSubscript(Type.Callable, [Type.Ellipsis, Type.Any]),
 }
+
+
+def get_type_from_docstring(type_str: str) -> FakeAnnotation:
+    """
+    Get type annotation for a string extracted from docstring.
+
+    Arguments:
+        type_str -- Type name in docstring.
+
+    Raises:
+        ValueError -- If type_str not found in map.
+    """
+    try:
+        return DOCSTRING_TYPE_MAP[type_str].copy()
+    except KeyError:
+        raise ValueError(f"Unknown type: {type_str}")
