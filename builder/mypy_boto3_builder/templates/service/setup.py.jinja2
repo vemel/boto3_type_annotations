@@ -2,9 +2,7 @@ from setuptools import setup
 from setuptools.command.install import install
 
 
-LONG_DESCRIPTION = """
-See [{{ master_module_name}}](https://pypi.org/project/mypy-boto3/) for more info.
-"""
+LONG_DESCRIPTION = open(dirname(abspath(__file__)) + "/README.md", "r").read()
 
 
 class PostInstallCommand(install):

@@ -45,6 +45,13 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Typing :: Typed",
     ],
+    keywords="boto3 type-annotations mypy mypy-stubs",
+    python_requires=">=3.8",
+    project_urls={
+        "Documentation": "https://mypy-boto3.readthedocs.io/en/latest/",
+        "Source": "https://github.com/vemel/mypy_boto3",
+        "Tracker": "https://github.com/vemel/mypy_boto3/issues",
+    },
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     entry_points={
