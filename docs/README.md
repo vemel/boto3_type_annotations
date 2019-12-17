@@ -15,7 +15,6 @@ Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-
 - [mypy_boto3](#mypyboto3)
   - [Installation](#installation)
     - [Build services index manually](#build-services-index-manually)
-  - [Latest changes](#latest-changes)
   - [Usage](#usage)
     - [Setup your IDE](#setup-your-ide)
     - [VSCode](#vscode)
@@ -27,6 +26,9 @@ Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-
     - [Locally](#locally)
     - [With Docker image](#with-docker-image)
   - [Differences from boto3-type-annotations](#differences-from-boto3-type-annotations)
+  - [What's new](#whats-new)
+    - [Latest changes](#latest-changes)
+    - [Versioning](#versioning)
   - [Thank you](#thank-you)
   - [Sub-modules](#sub-modules)
     - [Examples](#examples)
@@ -58,10 +60,6 @@ you can build services index manually.
 # Use this command when you add or remove service packages
 python -m mypy_boto3
 ```
-
-## Latest changes
-
-Full changelog can be found in [Releases](https://github.com/vemel/mypy_boto3/releases).
 
 ## Usage
 
@@ -174,21 +172,21 @@ describe_volumes_paginator: ec2.DescribeVolumesPaginator = ec2_client.get_pagina
 It is totally safe to use `TYPE_CHECKING` flag in order to avoid `boto3-stubs`
 dependency in production.
 However, there is an issue in `pylint` that it complains about undefined
-variables. To fix it, set all types to `Any` in non-`TYPE_CHECKING` mode.
+variables. To fix it, set all types to `object` in non-`TYPE_CHECKING` mode.
 
 ```python
 import boto3
-from typing import Any, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from mypy_boto3.ec2 import EC2Client, EC2ServiceResource
     from mypy_boto3.ec2.waiters import BundleTaskCompleteWaiter
     from mypy_boto3.ec2.paginators import DescribeVolumesPaginator
 else:
-    EC2Client = Any
-    EC2ServiceResource = Any
-    BundleTaskCompleteWaiter = Any
-    DescribeVolumesPaginator = Any
+    EC2Client = object
+    EC2ServiceResource = object
+    BundleTaskCompleteWaiter = object
+    DescribeVolumesPaginator = object
 
 ...
 ```
@@ -255,6 +253,20 @@ docker run -e BOTO3_VERSION=1.10.18 BOTOCORE_VERSION=1.13.18 -v `pwd`/output:/ou
 - Type annotations for return structures
 - Correct annotations for `client.get_waiter` and `client.get_paginator`
 - Helper functions for IDEs with no `overload` support (Hi, VSCode!)
+
+## What's new
+
+### Latest changes
+
+Full changelog can be found in [Releases](https://github.com/vemel/mypy_boto3/releases).
+
+### Versioning
+
+`mypy_boto3_builder` version is not related to `boto3` version and follows
+[Semantic Versioning](https://semver.org/).
+
+Generated packages use format `<boto3_version>.<build>`, e.g. for `boto3 1.10.40`,
+`mypy_boto3` versions are is `1.10.40.0` and `1.10.40.1`.
 
 ## Thank you
 
