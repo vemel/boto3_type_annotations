@@ -6,7 +6,7 @@
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mypy-boto3.svg?color=blue&style=for-the-badge)](https://pypi.org/project/mypy-boto3)
 [![Docs](https://img.shields.io/readthedocs/mypy-boto3.svg?color=blue&style=for-the-badge)](https://mypy-boto3.readthedocs.io/)
 
-`mypy`-friendly type annotations for `boto3`.
+Type annotations for [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) compatible with [mypy](https://github.com/python/mypy), [VSCode](https://code.visualstudio.com/), [PyCharm](https://www.jetbrains.com/pycharm/) and other tools. 
 
 Based on [boto3_type_annotations](https://github.com/alliefitter/boto3_type_annotations) by [@alliefitter](https://github.com/alliefitter).
 
@@ -113,9 +113,9 @@ paginator: s3.ListMultipartUploadsPaginator = client.get_paginator(
 - Install [mypy](https://github.com/python/mypy)
 - Activate `mypy` checking in settings: `"python.linting.mypyEnabled": true`
 - Install `boto3-stubs` with `boto3` services you use
-- Run `python -m mypy_boto3`
 - Use [explicit type annotations](#explicit-type-annotations) because
-  function overload is not fully supported yet
+  function overload [is not fully supported](https://github.com/microsoft/python-language-server/issues/1648)
+  in `Python` extension.
 
 ### PyCharm
 
@@ -123,14 +123,20 @@ paginator: s3.ListMultipartUploadsPaginator = client.get_paginator(
 - Install [mypy](https://github.com/python/mypy)
 - Set path to `mypy` in `mypy plugin` settings
 - Install `boto3-stubs` with `boto3` services you use
-- Run `python -m mypy_boto3`
+- Use [explicit type annotations](#explicit-type-annotations) for
+  `session.client` and `session.resource` calls
 
 Official `mypy` plugin does not work for some reason for me. If you know
 how to setup it correctly, please hep me to update this section.
 
 ### Other IDEs
 
-Please help me to extend this section.
+- Install [mypy](https://github.com/python/mypy)
+- Set path to `mypy` in `mypy plugin` settings
+- Install `boto3-stubs` with `boto3` services you use
+
+You need [explicit type annotations](#explicit-type-annotations) for code
+auto-complete, but `mypy` works even without them.
 
 ### Explicit type annotations
 
@@ -147,8 +153,8 @@ from mypy_boto3 import ec2
 # covered by boto3-stubs, no explicit type required
 session = boto3.session.Session(region_name="us-west-1")
 
-# by default it is botocore.client.BaseClient, but we explicitly
-# set it to EC2.EC2Client
+# by default it is Any, but we explicitly set it to EC2Client
+# to make method auto-complete work
 ec2_client: ec2.EC2Client = boto3.client("ec2", region_name="us-west-1")
 
 # same for resource
@@ -175,12 +181,12 @@ import boto3
 from typing import Any, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from mypy_boto3.ec2 import Client, ServiceResource
+    from mypy_boto3.ec2 import EC2Client, EC2ServiceResource
     from mypy_boto3.ec2.waiters import BundleTaskCompleteWaiter
     from mypy_boto3.ec2.paginators import DescribeVolumesPaginator
 else:
-    Client = Any
-    ServiceResource = Any
+    EC2Client = Any
+    EC2ServiceResource = Any
     BundleTaskCompleteWaiter = Any
     DescribeVolumesPaginator = Any
 

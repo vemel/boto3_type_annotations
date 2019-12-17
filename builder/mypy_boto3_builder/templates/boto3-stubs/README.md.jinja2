@@ -1,7 +1,11 @@
 # boto3-stubs
 
-Mypy-friendly type annotations for `boto3 {{ boto3_version }}`.
-More information can be found [here](https://github.com/vemel/mypy_boto3).
+Type annotations for
+[boto3 {{ boto3_version }}](https://boto3.amazonaws.com/v1/documentation/api/{{ boto3_version }}/index.html)
+compatible with [mypy](https://github.com/python/mypy), [VSCode](https://code.visualstudio.com/),
+[PyCharm](https://www.jetbrains.com/pycharm/) and other tools.
+
+More information can be found [here](https://vemel.github.io/mypy_boto3/).
 
 - [boto3-stubs](#boto3-stubs)
   - [How to use](#how-to-use)
@@ -12,7 +16,7 @@ More information can be found [here](https://github.com/vemel/mypy_boto3).
 
 Make sure you have [mypy](https://github.com/python/mypy) installed and activated in your IDE.
 
-Install `boto3-stubs`, it will add type annotations for `boto3` package, no services included.
+Install `boto3-stubs`, to add type annotations for `boto3` package.
 
 ```bash
 # install type annotations just for boto3
@@ -47,10 +51,11 @@ Fully automated [builder](https://github.com/vemel/mypy_boto3) carefully generat
 type annotations for each service, patiently waiting for `boto3` updates. It delivers
 a drop-in type annotations for you and makes sure that:
 
-- Latest version of `boto3` is used.
+- All available `boto3` services are covered.
 - Each public class and method of every `boto3` service gets valid type annotations
-  extracted from latest documentation (blame `botocore` docs if types are incorrect).
+  extracted from the documentation (blame `botocore` docs if types are incorrect).
 - Type annotations include up-to-date documentation.
+- Link to documentation is provided for every method.
 - Code is processed by [black](https://github.com/psf/black) for readability.
 
 ## Submodules

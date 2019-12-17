@@ -1,7 +1,11 @@
 # {{ service_name.pypi_name }}
 
-Mypy-friendly auto-generated type annotations for `boto3 {{ service_name.boto3_name }} {{ boto3_version }}` service.
-More information can be found [here](https://github.com/vemel/mypy_boto3).
+Type annotations for
+[boto3.{{ service_name.class_name }} {{ boto3_version }}]({{ service_name.doc_link }}) service
+compatible with [mypy](https://github.com/python/mypy), [VSCode](https://code.visualstudio.com/),
+[PyCharm](https://www.jetbrains.com/pycharm/) and other tools.
+
+More information can be found [here](https://vemel.github.io/mypy_boto3/).
 
 - [{{ service_name.pypi_name }}](#{{ service_name.pypi_name }})
   - [How to use](#how-to-use)
@@ -15,13 +19,13 @@ More information can be found [here](https://github.com/vemel/mypy_boto3).
 
 Make sure you have [mypy](https://github.com/python/mypy) installed and activated in your IDE.
 
-Install `boto3-stubs` for `{{ service_name.boto3_name }}` service.
+Install `boto3-stubs` for `{{ service_name.class_name }}` service.
 
 ```bash
 python -m pip install boto3-stubs[{{service_name.pypi_name}}]
 ```
 
-Use `boto3` with `{{ master_module_name }}` in your project and enjoy type checking.
+Use `boto3` with `{{ master_module_name }}` in your project and enjoy type checking and auto-complete.
 
 ```python
 import boto3
@@ -68,8 +72,9 @@ Fully automated [builder](https://github.com/vemel/mypy_boto3) carefully generat
 type annotations for each service, patiently waiting for `boto3` updates. It delivers
 a drop-in type annotations for you and makes sure that:
 
-- Latest version of `boto3` is used.
+- All available `boto3` services are covered.
 - Each public class and method of every `boto3` service gets valid type annotations
-  extracted from latest documentation (blame `botocore` docs if types are incorrect).
+  extracted from the documentation (blame `botocore` docs if types are incorrect).
 - Type annotations include up-to-date documentation.
+- Link to documentation is provided for every method.
 - Code is processed by [black](https://github.com/psf/black) for readability.
