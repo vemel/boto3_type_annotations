@@ -76,7 +76,7 @@ jobs:
           cd builder
           rm -rf build *.egg-info dist/*
           python setup.py build sdist bdist_wheel
-          twine upload dist/*
+          twine upload  --non-interactive dist/*
           rm -rf build *.egg-info dist/*
       - name: Build packages
         env:

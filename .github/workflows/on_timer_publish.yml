@@ -70,6 +70,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [[ "${SKIP}" != "" ]]; then exit 0; fi
+          pipenv update
           git config --global user.email "volshebnyi@gmail.com"
           git config --global user.name ${GITHUB_ACTOR}
           git add Pipfile.lock
