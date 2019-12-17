@@ -46,12 +46,6 @@ TYPE_MAP: ServiceTypeMap = {
             },
         },
     },
-    ServiceNameCatalog.ec2.boto3_name: {
-        "*": {
-            "create_tags": {"Tags": TypeSubscript(Type.List, [ec2_tag_type])},
-            "delete_tags": {"Tags": TypeSubscript(Type.List, [ec2_tag_type])},
-        }
-    },
     ServiceNameCatalog.dynamodb.boto3_name: {
         "Table": {
             "batch_writer": {

@@ -48,6 +48,10 @@ def parse_resource(
             method = shape_methods_map[method_name]
         else:
             method = parse_method(name, method_name, public_method, service_name)
+        method.docstring = (
+            f"[{name}.{method_name} documentation]"
+            f"({service_name.doc_link}.{name}.{method_name})"
+        )
         result.methods.append(method)
 
     result.attributes.extend(parse_attributes(resource))
