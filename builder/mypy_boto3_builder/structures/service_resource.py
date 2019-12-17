@@ -7,8 +7,6 @@ from typing import List, Set, Optional
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 
 from mypy_boto3_builder.service_name import ServiceName, ServiceNameCatalog
-from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
-from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
@@ -50,18 +48,6 @@ class ServiceResource(ClassRecord):
             types.update(sub_resource.get_types())
 
         return types
-
-    def get_import_records(self) -> Set[ImportRecord]:
-        import_records: Set[ImportRecord] = set()
-        source = ImportString(
-            self.service_name.module_name, ServiceModuleName.service_resource.name
-        )
-
-        import_records.add(ImportRecord(source, "ServiceResource"))
-        for resource in self.sub_resources:
-            import_records.add(ImportRecord(source, resource.name))
-
-        return import_records
 
     def get_all_names(self) -> List[str]:
         result = [self.name]
