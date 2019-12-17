@@ -47,7 +47,7 @@ def parse_resource(
         if method_name in shape_methods_map:
             method = shape_methods_map[method_name]
         else:
-            method = parse_method(name, method_name, public_method)
+            method = parse_method(name, method_name, public_method, service_name)
         result.methods.append(method)
 
     result.attributes.extend(parse_attributes(resource))

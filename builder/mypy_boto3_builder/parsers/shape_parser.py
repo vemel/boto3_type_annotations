@@ -1,7 +1,7 @@
 """
 Parser for botocore shape files.
 """
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 
 from boto3.session import Session
 from botocore.exceptions import UnknownServiceError
@@ -29,7 +29,7 @@ from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.logger import get_logger
-from mypy_boto3_builder.type_maps.operation_type_map import get_argument_type_stub
+from mypy_boto3_builder.type_maps.method_type_map import get_method_type_stub
 from mypy_boto3_builder.type_maps.typed_dicts import (
     waiter_config_type,
     paginator_config_type,
@@ -172,7 +172,11 @@ class ShapeParser:
         return operation_map[argument_name]
 
     def _parse_arguments(
-        self, operation_name: str, shape: StructureShape
+        self,
+        class_name: str,
+        method_name: str,
+        operation_name: str,
+        shape: StructureShape,
     ) -> List[Argument]:
         result: List[Argument] = []
         required = shape.required_members
@@ -180,7 +184,9 @@ class ShapeParser:
             argument_alias = self._get_argument_alias(operation_name, argument_name)
             if argument_alias == "None":
                 continue
-            argument_type_stub = get_argument_type_stub(operation_name, argument_name)
+            argument_type_stub = get_method_type_stub(
+                self.service_name, class_name, method_name, argument_name
+            )
             if argument_type_stub is not None:
                 argument_type = argument_type_stub
             else:
@@ -193,8 +199,19 @@ class ShapeParser:
         result.sort(key=lambda x: not x.required)
         return result
 
-    def _parse_return_type(self, shape: Shape) -> FakeAnnotation:
-        return self._parse_shape(shape)
+    def _parse_return_type(
+        self, class_name: str, method_name: str, shape: Optional[Shape]
+    ) -> FakeAnnotation:
+        argument_type_stub = get_method_type_stub(
+            self.service_name, class_name, method_name, "return"
+        )
+        if argument_type_stub is not None:
+            return argument_type_stub
+
+        if shape:
+            return self._parse_shape(shape)
+
+        return Type.none
 
     def get_client_method_map(self) -> Dict[str, Method]:
         """
@@ -212,18 +229,23 @@ class ShapeParser:
         }
         for operation_name in self._get_operation_names():
             operation_model = self._get_operation(operation_name)
-            return_type: FakeAnnotation = Type.none
             arguments: List[Argument] = [Argument("self", None)]
+            method_name = xform_name(operation_name)
 
             if operation_model.input_shape is not None:
                 arguments.extend(
-                    self._parse_arguments(operation_name, operation_model.input_shape)
+                    self._parse_arguments(
+                        "Client",
+                        method_name,
+                        operation_name,
+                        operation_model.input_shape,
+                    )
                 )
 
-            if operation_model.output_shape is not None:
-                return_type = self._parse_return_type(operation_model.output_shape)
+            return_type = self._parse_return_type(
+                "Client", method_name, operation_model.output_shape
+            )
 
-            method_name = xform_name(operation_name)
             method = Method(
                 name=method_name, arguments=arguments, return_type=return_type
             )
@@ -326,7 +348,7 @@ class ShapeParser:
 
         if operation_shape.input_shape is not None:
             for argument in self._parse_arguments(
-                operation_name, operation_shape.input_shape
+                "Paginator", "paginate", operation_name, operation_shape.input_shape
             ):
                 if argument.name in skip_argument_names:
                     continue
@@ -339,7 +361,9 @@ class ShapeParser:
             return_type = TypeSubscript(
                 Type.Generator,
                 [
-                    self._parse_return_type(operation_shape.output_shape),
+                    self._parse_return_type(
+                        "Paginator", "paginate", operation_shape.output_shape
+                    ),
                     Type.none,
                     Type.none,
                 ],
@@ -364,7 +388,9 @@ class ShapeParser:
 
         if operation_shape.input_shape is not None:
             arguments.extend(
-                self._parse_arguments(operation_name, operation_shape.input_shape)
+                self._parse_arguments(
+                    "Waiter", "wait", operation_name, operation_shape.input_shape
+                )
             )
 
         arguments.append(Argument("WaiterConfig", waiter_config_type, Type.none))
@@ -389,7 +415,9 @@ class ShapeParser:
         for action_name, action_shape in service_resource_shape.get(
             "actions", {}
         ).items():
-            method = self._get_resource_method(action_name, action_shape)
+            method = self._get_resource_method(
+                "ServiceResource", action_name, action_shape
+            )
             result[method.name] = method
 
         return result
@@ -416,7 +444,7 @@ class ShapeParser:
         }
 
         for action_name, action_shape in resource_shape.get("actions", {}).items():
-            method = self._get_resource_method(action_name, action_shape)
+            method = self._get_resource_method(resource_name, action_name, action_shape)
             result[method.name] = method
 
         for waiter_name in resource_shape.get("waiters", {}):
@@ -430,13 +458,14 @@ class ShapeParser:
         return result
 
     def _get_resource_method(
-        self, action_name: str, action_shape: Dict[str, Any]
+        self, resource_name: str, action_name: str, action_shape: Dict[str, Any]
     ) -> Method:
         return_type: FakeAnnotation = Type.none
+        method_name = xform_name(action_name)
         arguments: List[Argument] = [Argument("self", None)]
         if "resource" in action_shape:
             return_type = self._parse_return_type(
-                Shape("resource", action_shape["resource"])
+                resource_name, method_name, Shape("resource", action_shape["resource"])
             )
 
         if "request" in action_shape:
@@ -449,13 +478,14 @@ class ShapeParser:
             ]
             if operation_shape.input_shape is not None:
                 for argument in self._parse_arguments(
-                    operation_name, operation_shape.input_shape
+                    resource_name,
+                    method_name,
+                    operation_name,
+                    operation_shape.input_shape,
                 ):
                     if argument.name not in skip_argument_names:
                         arguments.append(argument)
             if operation_shape.output_shape is not None:
                 return_type = self._parse_shape(operation_shape.output_shape)
 
-        return Method(
-            name=xform_name(action_name), arguments=arguments, return_type=return_type
-        )
+        return Method(name=method_name, arguments=arguments, return_type=return_type)

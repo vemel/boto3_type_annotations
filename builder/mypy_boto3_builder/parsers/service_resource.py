@@ -61,7 +61,9 @@ def parse_service_resource(
         if method_name in shape_methods_map:
             method = shape_methods_map[method_name]
         else:
-            method = parse_method("ServiceResource", method_name, public_method)
+            method = parse_method(
+                "ServiceResource", method_name, public_method, service_name
+            )
         method.docstring = (
             f"[ServiceResource.{method_name} documentation]"
             f"({service_name.doc_link}.ServiceResource.{method_name})"

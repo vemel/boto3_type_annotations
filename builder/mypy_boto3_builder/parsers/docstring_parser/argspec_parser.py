@@ -6,11 +6,13 @@ from typing import List, Optional
 from types import FunctionType
 
 
+from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.structures.argument import Argument
+from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
-from mypy_boto3_builder.type_maps.method_type_map import METHOD_TYPE_MAP
+from mypy_boto3_builder.type_maps.method_type_map import get_method_type_stub
 
 
 class ArgSpecParser:
@@ -18,8 +20,9 @@ class ArgSpecParser:
     Converter of function argspec to `Argument` list.
     """
 
-    def __init__(self, prefix: str) -> None:
+    def __init__(self, prefix: str, service_name: ServiceName) -> None:
         self.prefix = prefix
+        self.service_name = service_name
 
     @staticmethod
     def _get_arguments_from_argspec(func: FunctionType) -> List[Argument]:
@@ -52,16 +55,30 @@ class ArgSpecParser:
             arguments.append(Argument(argspec.varkw, Type.Any, prefix="**"))
         return arguments
 
-    def get_function_arguments(self, func: FunctionType) -> List[Argument]:
-        func_name = func.__name__
+    def get_arguments(
+        self, class_name: str, method_name: str, func: FunctionType
+    ) -> List[Argument]:
         arguments = self._get_arguments_from_argspec(func)
 
         for argument in arguments:
             if argument.type is not Type.Any:
                 continue
 
-            method_type = f"{func_name}: {argument.name}"
-            if method_type in METHOD_TYPE_MAP:
-                argument.type = METHOD_TYPE_MAP[method_type]
+            type_stub = get_method_type_stub(
+                self.service_name, class_name, method_name, argument.name
+            )
+            if type_stub is not None:
+                argument.type = type_stub
 
         return arguments
+
+    def get_return_type(
+        self, class_name: str, method_name: str
+    ) -> Optional[FakeAnnotation]:
+        type_stub = get_method_type_stub(
+            self.service_name, class_name, method_name, "return"
+        )
+        if type_stub:
+            return type_stub
+
+        return None
