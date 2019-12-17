@@ -24,7 +24,6 @@ class Paginator(ClassRecord):
     """
 
     operation_name: str = "operation_name"
-    boto3_paginator: Boto3Paginator = None
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [TypeClass(Boto3Paginator, alias="Boto3Paginator")]
     )

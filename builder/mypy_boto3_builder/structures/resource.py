@@ -2,14 +2,13 @@
 Boto3 ServiceResource sub-Resource.
 """
 from dataclasses import dataclass, field
-from typing import Set, List, Optional
+from typing import Set, List
 
 from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.structures.class_record import ClassRecord
 from mypy_boto3_builder.structures.collection import Collection
-from mypy_boto3_builder.structures.method import Method
 
 
 @dataclass
@@ -28,7 +27,6 @@ class Resource(ClassRecord):
         ]
     )
     collections: List[Collection] = field(default_factory=lambda: [])
-    init_method: Optional[Method] = None
 
     def get_types(self) -> Set[FakeAnnotation]:
         types = super().get_types()

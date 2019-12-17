@@ -53,7 +53,6 @@ def parse_service_package(
                 f"({service_name.doc_link}.Waiter.{waiter.name})"
             ),
             waiter_name=waiter_name,
-            boto3_waiter=waiter,
         )
 
         wait_method = shape_parser.get_wait_method(waiter.name)
@@ -71,7 +70,6 @@ def parse_service_package(
         paginator_record = Paginator(
             name=f"{paginator_name}Paginator",
             operation_name=operation_name,
-            boto3_paginator=paginator,
             docstring=(
                 f"[Paginator.{paginator_name} documentation]"
                 f"({service_name.doc_link}.Paginator.{paginator_name})"

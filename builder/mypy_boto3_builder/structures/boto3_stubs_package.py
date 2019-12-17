@@ -5,9 +5,8 @@ Structure for boto3-stubs module.
 from dataclasses import dataclass
 from typing import List, Tuple
 
-from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.service_name import ServiceName, ServiceNameCatalog
-from mypy_boto3_builder.constants import BOTO3_STUBS_NAME, MODULE_NAME, TYPE_DEFS_NAME
+from mypy_boto3_builder.constants import BOTO3_STUBS_NAME
 from mypy_boto3_builder.structures.package import Package
 
 
@@ -19,9 +18,6 @@ class Boto3StubsPackage(Package):
 
     name: str = BOTO3_STUBS_NAME
     pypi_name: str = BOTO3_STUBS_NAME
-
-    MASTER_IMPORT_STRING = ImportString(MODULE_NAME)
-    MASTER_TYPE_DEFS_IMPORT_STRING = ImportString(MODULE_NAME, TYPE_DEFS_NAME)
 
     @property
     def essential_service_names(self) -> List[ServiceName]:

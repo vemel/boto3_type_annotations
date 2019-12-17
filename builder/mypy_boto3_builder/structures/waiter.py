@@ -24,7 +24,6 @@ class Waiter(ClassRecord):
     """
 
     waiter_name: str = "waiter_name"
-    boto3_waiter: Boto3Waiter = None
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [TypeClass(Boto3Waiter, alias="Boto3Waiter")]
     )
