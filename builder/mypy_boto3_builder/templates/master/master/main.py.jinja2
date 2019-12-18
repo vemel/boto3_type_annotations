@@ -10,7 +10,7 @@ from typing import List, Dict
 from {{ master_module_name }}.version import __version__ as version
 from {{ master_module_name }}.submodules import (
     SUBMODULES,
-    INSTALLED_SUBMODULES,
+    Submodule,
     CACHE_KEY,
 )
 
@@ -96,10 +96,28 @@ def main() -> None:
                 logger.info('Removing file %s', file_path)
                 file_path.unlink()
         for submodule in SUBMODULES:
-            submodule_path = ROOT_PATH / submodule["import_name"]
+            submodule_path = ROOT_PATH / submodule.import_name
             if submodule_path.exists():
                 logger.info('Removing folder %s', submodule_path)
                 shutil.rmtree(submodule_path)
+
+        package_names = [
+            "boto3-stubs",
+            "mypy-boto3",
+        ]
+        for submodule in SUBMODULES:
+            if submodule.is_installed:
+                package_names.append(submodule.pip_name)
+
+        logger.info(
+            (
+                "You can now uninstall boto3-stubs with:\n\n"
+                "    python -m pip uninstall %s\n\n"
+                "If you want to continue using it and recreate index, run:\n\n"
+                "    mypy_boto3\n"
+            ),
+            " ".join(package_names),
+        )
         return
     build_index(log_level)
     set_cache_key()
@@ -151,55 +169,62 @@ def build_index(log_level: int = logging.CRITICAL) -> None:
     session_client_functions: List[str] = []
     session_resource_functions: List[str] = []
     imports: List[str] = []
-    for submodule in INSTALLED_SUBMODULES:
+    installed_submodules: List[Submodule] = []
+    for submodule in SUBMODULES:
+        if not submodule.is_installed:
+            continue
+
+        installed_submodules.append(submodule)
         logger.info(
-            "Discovered %s subresource in %s",
-            submodule["boto3_name"],
-            submodule["module_name"],
+            "Discovered %s submodule in %s",
+            submodule.boto3_name,
+            submodule.module_name,
         )
 
-    for submodule in INSTALLED_SUBMODULES:
+    for submodule in SUBMODULES:
+        if not submodule.is_installed:
+            continue
         init_client_functions.append(
             FUNCTION_TEMPLATE.format(
-                overload="@overload\n" if len(INSTALLED_SUBMODULES) > 1 else "",
+                overload="@overload\n" if len(installed_submodules) > 1 else "",
                 name="client",
-                service_name_type='Literal["{}"]'.format(submodule["boto3_name"]),
-                return_type="{}Client".format(submodule["class_name"]),
+                service_name_type='Literal["{}"]'.format(submodule.boto3_name),
+                return_type="{}Client".format(submodule.class_name),
             )
         )
         session_client_functions.append(
             METHOD_TEMPLATE.format(
-                overload="@overload\n    " if len(INSTALLED_SUBMODULES) > 1 else "",
+                overload="@overload\n    " if len(installed_submodules) > 1 else "",
                 name="client",
-                service_name_type='Literal["{}"]'.format(submodule["boto3_name"]),
-                return_type="{}Client".format(submodule["class_name"]),
+                service_name_type='Literal["{}"]'.format(submodule.boto3_name),
+                return_type="{}Client".format(submodule.class_name),
             )
         )
         imports.append(
             "from {{ master_module_name }}.{} import {}Client".format(
-                submodule["import_name"], submodule["class_name"],
+                submodule.import_name, submodule.class_name,
             )
         )
-        if submodule["has_resource"]:
+        if submodule.has_resource:
             init_resource_functions.append(
                 FUNCTION_TEMPLATE.format(
-                    overload="@overload\n" if len(INSTALLED_SUBMODULES) > 1 else "",
+                    overload="@overload\n" if len(installed_submodules) > 1 else "",
                     name="resource",
-                    service_name_type='Literal["{}"]'.format(submodule["boto3_name"]),
-                    return_type="{}ServiceResource".format(submodule["class_name"]),
+                    service_name_type='Literal["{}"]'.format(submodule.boto3_name),
+                    return_type="{}ServiceResource".format(submodule.class_name),
                 )
             )
             session_resource_functions.append(
                 METHOD_TEMPLATE.format(
-                    overload="@overload\n    " if len(INSTALLED_SUBMODULES) > 1 else "",
+                    overload="@overload\n    " if len(installed_submodules) > 1 else "",
                     name="resource",
-                    service_name_type='Literal["{}"]'.format(submodule["boto3_name"]),
-                    return_type="{}ServiceResource".format(submodule["class_name"]),
+                    service_name_type='Literal["{}"]'.format(submodule.boto3_name),
+                    return_type="{}ServiceResource".format(submodule.class_name),
                 )
             )
             imports.append(
                 "from {{ master_module_name }}.{} import {}ServiceResource".format(
-                    submodule["import_name"], submodule["class_name"],
+                    submodule.import_name, submodule.class_name,
                 )
             )
 
@@ -272,8 +297,8 @@ def build_index(log_level: int = logging.CRITICAL) -> None:
         path.write_text(text)
 
     for submodule in SUBMODULES:
-        submodule_path = ROOT_PATH / submodule["import_name"]
-        if submodule not in INSTALLED_SUBMODULES:
+        submodule_path = ROOT_PATH / submodule.import_name
+        if not submodule.is_installed:
             if submodule_path.exists():
                 logger.debug("Removing directory for deleted service %s", submodule_path)
                 shutil.rmtree(submodule_path)
@@ -283,40 +308,40 @@ def build_index(log_level: int = logging.CRITICAL) -> None:
             logger.debug("Creating directory %s", submodule_path)
             submodule_path.mkdir(exist_ok=True)
 
-        write_text(submodule_path / '__init__.py', _get_proxy_contents(submodule["module_name"]))
-        write_text(submodule_path / 'client.py', _get_proxy_contents("{}.client".format(submodule["module_name"])))
-        write_text(submodule_path / 'type_defs.py', _get_proxy_contents("{}.type_defs".format(submodule["module_name"])))
-        if submodule["has_resource"]:
+        write_text(submodule_path / '__init__.py', _get_proxy_contents(submodule.module_name))
+        write_text(submodule_path / 'client.py', _get_proxy_contents("{}.client".format(submodule.module_name)))
+        write_text(submodule_path / 'type_defs.py', _get_proxy_contents("{}.type_defs".format(submodule.module_name)))
+        if submodule.has_resource:
             write_text(
                 submodule_path / 'service_resource.py',
-                _get_proxy_contents("{}.service_resource".format(submodule["module_name"])),
+                _get_proxy_contents("{}.service_resource".format(submodule.module_name)),
             )
-        if submodule["has_waiter"]:
+        if submodule.has_waiter:
             write_text(
                 submodule_path / 'waiter.py',
-                _get_proxy_contents("{}.waiter".format(submodule["module_name"])),
+                _get_proxy_contents("{}.waiter".format(submodule.module_name)),
             )
-        if submodule["has_paginator"]:
+        if submodule.has_paginator:
             write_text(
                 submodule_path / 'paginator.py',
-                _get_proxy_contents("{}.paginator".format(submodule["module_name"])),
+                _get_proxy_contents("{}.paginator".format(submodule.module_name)),
             )
 
     write_text(ROOT_PATH / "boto3_init_gen.py", "\n".join(init_contents))
     write_text(ROOT_PATH / "boto3_session_gen.py", "\n".join(session_contents))
 
-    if not INSTALLED_SUBMODULES:
+    if not installed_submodules:
         logger.warning("No services submodules discovered, install the ones you use and run this command again")
         logger.info("https://mypy-boto3.readthedocs.io/en/latest/#sub-modules")
         sys.exit()
 
     names_str = ""
-    for i, submodule in enumerate(INSTALLED_SUBMODULES):
-        name = submodule["boto3_name"]
+    for i, submodule in enumerate(installed_submodules):
+        name = submodule.boto3_name
         if not i:
             names_str = name
             continue
-        if i < len(INSTALLED_SUBMODULES) - 1:
+        if i < len(installed_submodules) - 1:
             names_str = "{}, {}".format(names_str, name)
             continue
 
