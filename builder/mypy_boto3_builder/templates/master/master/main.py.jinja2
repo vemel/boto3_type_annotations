@@ -1,6 +1,7 @@
 import argparse
 import pathlib
 import logging
+import importlib
 import re
 import sys
 import shutil
@@ -128,6 +129,13 @@ def maybe_build_index() -> bool:
         set_cache_key()
 
     return is_required
+
+
+def _get_proxy_contents(module_name: str) -> str:
+    service_module = importlib.import_module(module_name)
+    all_names = "\n    ".join(['"{}",'.format(i) for i in service_module.__all__])
+    import_names = "\n    ".join(["{},".format(i) for i in service_module.__all__])
+    return 'from {} import (\n    {}\n)\n\n__all__ = (\n    {}\n)\n'.format(module_name, import_names, all_names)
 
 
 def build_index(log_level: int = logging.CRITICAL) -> None:
@@ -275,23 +283,23 @@ def build_index(log_level: int = logging.CRITICAL) -> None:
             logger.debug("Creating directory %s", submodule_path)
             submodule_path.mkdir(exist_ok=True)
 
-        write_text(submodule_path / '__init__.py', 'from {} import *'.format(submodule["module_name"]))
-        write_text(submodule_path / 'client.py', 'from {}.client import *'.format(submodule["module_name"]))
-        write_text(submodule_path / 'type_defs.py', 'from {}.type_defs import *'.format(submodule["module_name"]))
+        write_text(submodule_path / '__init__.py', _get_proxy_contents(submodule["module_name"]))
+        write_text(submodule_path / 'client.py', _get_proxy_contents("{}.client".format(submodule["module_name"])))
+        write_text(submodule_path / 'type_defs.py', _get_proxy_contents("{}.type_defs".format(submodule["module_name"])))
         if submodule["has_resource"]:
             write_text(
                 submodule_path / 'service_resource.py',
-                'from {}.service_resource import *'.format(submodule["module_name"]),
+                _get_proxy_contents("{}.service_resource".format(submodule["module_name"])),
             )
         if submodule["has_waiter"]:
             write_text(
                 submodule_path / 'waiter.py',
-                'from {}.waiter import *'.format(submodule["module_name"]),
+                _get_proxy_contents("{}.waiter".format(submodule["module_name"])),
             )
         if submodule["has_paginator"]:
             write_text(
                 submodule_path / 'paginator.py',
-                'from {}.paginator import *'.format(submodule["module_name"]),
+                _get_proxy_contents("{}.paginator".format(submodule["module_name"])),
             )
 
     write_text(ROOT_PATH / "boto3_init_gen.py", "\n".join(init_contents))
