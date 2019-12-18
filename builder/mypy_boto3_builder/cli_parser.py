@@ -53,7 +53,7 @@ def get_cli_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "-b",
         "--build-version",
-        help="Set custom pacakges version, otherwise boto3 version is used.",
+        help="Set custom output version, otherwise boto3 version is used.",
     )
     parser.add_argument("-v", "--version", action="version", version=version)
     parser.add_argument(

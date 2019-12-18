@@ -60,6 +60,7 @@ def get_parser() -> argparse.ArgumentParser:
     parser.add_argument("-v", "--version", action="version", version=version)
     parser.add_argument("-d", "--debug", action="store_true", help="Hide log output")
     parser.add_argument("-q", "--quiet", action="store_true", help="Verbose log output")
+    parser.add_argument("-c", "--clean", action="store_true", help="Remove all generated files")
     return parser
 
 
@@ -82,6 +83,23 @@ def main() -> None:
         log_level = logging.DEBUG
     if args.quiet:
         log_level = logging.CRITICAL
+    if args.clean:
+        logger = get_logger(log_level)
+        file_paths = [
+            ROOT_PATH / "cache.txt",
+            ROOT_PATH / "boto3_init_gen.py",
+            ROOT_PATH / "boto3_session_gen.py",
+        ]
+        for file_path in file_paths:
+            if file_path.exists():
+                logger.info('Removing file %s', file_path)
+                file_path.unlink()
+        for submodule in SUBMODULES:
+            submodule_path = ROOT_PATH / submodule["import_name"]
+            if submodule_path.exists():
+                logger.info('Removing folder %s', submodule_path)
+                shutil.rmtree(submodule_path)
+        return
     build_index(log_level)
     set_cache_key()
 

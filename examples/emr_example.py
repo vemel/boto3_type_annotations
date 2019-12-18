@@ -1,11 +1,11 @@
 # install `pip install boto3-stubs[emr]`
 
 import boto3
-from mypy_boto3.emr import Client
+from mypy_boto3.emr import EMRClient
 
 
 def emr_client_example() -> None:
-    client: Client = boto3.client("emr")
+    client: EMRClient = boto3.client("emr")
     client.cancel_steps("cluster_id", [123])
 
     list_steps_paginator = client.get_paginator("list_steps")
