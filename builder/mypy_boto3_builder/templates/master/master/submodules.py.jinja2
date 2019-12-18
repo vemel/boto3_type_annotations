@@ -10,6 +10,7 @@ class Submodule:
         import_name: str,
         boto3_name: str,
         class_name: str,
+        pypi_name: str,
         has_resource: bool,
         has_waiter: bool,
         has_paginator: bool,
@@ -18,6 +19,7 @@ class Submodule:
         self.import_name = import_name
         self.boto3_name = boto3_name
         self.class_name = class_name
+        self.pypi_name = pypi_name
         self.has_resource = has_resource
         self.has_waiter = has_waiter
         self.has_paginator = has_paginator
@@ -27,10 +29,6 @@ class Submodule:
         service_module = importlib.import_module(self.module_name)
         return service_module.__all__
 
-    @property
-    def pip_name(self) -> str:
-        return self.module_name.replace("_", "-")
-
 SUBMODULES: List[Submodule] = [
     {% for service_package in package.service_packages -%}
     Submodule(
@@ -38,6 +36,7 @@ SUBMODULES: List[Submodule] = [
         import_name="{{ service_package.service_name.import_name }}",
         boto3_name="{{ service_package.service_name.boto3_name }}",
         class_name="{{ service_package.service_name.class_name }}",
+        pypi_name="{{ service_package.service_name.pypi_name }}",
         has_resource={{ "True" if service_package.service_resource else "False" }},
         has_waiter={{ "True" if service_package.waiters else "False" }},
         has_paginator={{ "True" if service_package.paginators else "False" }},
