@@ -73,6 +73,8 @@ python -m pip uninstall -y boto3-stubs
 python -m pip freeze | grep mypy-boto3 | xargs python -m pip uninstall -y
 ```
 
+Alternatively you can just remove `mypy_boto3` folder from `site-packages` after uninstall.
+
 ## Usage
 
 - Install [mypy](https://github.com/python/mypy) and optionally enable it in your IDE
