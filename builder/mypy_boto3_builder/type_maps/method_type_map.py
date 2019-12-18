@@ -58,7 +58,7 @@ TYPE_MAP: ServiceTypeMap = {
         "Table": {
             "batch_writer": {
                 "return": ExternalImport(
-                    ImportString("boto3", "dynamodb"), "BatchWriter"
+                    ImportString("boto3", "dynamodb", "table"), "BatchWriter"
                 )
             }
         }
