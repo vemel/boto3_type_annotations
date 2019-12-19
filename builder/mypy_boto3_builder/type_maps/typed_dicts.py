@@ -1,3 +1,6 @@
+"""
+Collection of TypedDicts added by boto3
+"""
 from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.type_annotations.type_typed_dict import (
     TypeTypedDict,
