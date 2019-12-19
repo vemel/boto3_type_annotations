@@ -22,8 +22,8 @@ Based on [boto3_type_annotations](https://github.com/alliefitter/boto3_type_anno
   - [How to build](#how-to-build)
     - [Locally](#locally)
     - [With Docker image](#with-docker-image)
-  - [Differences from boto3-type-annotations](#differences-from-boto3-type-annotations)
   - [What's new](#whats-new)
+    - [Implemented features](#implemented-features)
     - [Latest changes](#latest-changes)
     - [Versioning](#versioning)
   - [Thank you](#thank-you)
@@ -259,20 +259,23 @@ docker run -e BOTO3_VERSION=1.10.18 BOTOCORE_VERSION=1.13.18 -v `pwd`/output:/ou
 
 - Install packages from `output` directory as described above
 
-## Differences from boto3-type-annotations
-
-- `mypy` compatibility
-- Fully type annotated
-- No need to set types explicitly (depends on your IDE)
-- Generated types for return values and arguments
-- Added `ServiceResource` sub-collections
-- Support service-specific sub-modules
-- Modules documentation
-- Type annotations for return structures
-- Correct annotations for `client.get_waiter` and `client.get_paginator`
-- Helper functions for IDEs with no `overload` support (Hi, VSCode!)
-
 ## What's new
+
+### Implemented features
+
+- `mypy`, `VSCode` and `PyCharm` compatibility
+- Fully type annotated `boto3` library
+- `Client` type annotations for each service
+- `ServiceResource` type annotations for each service
+- `Resource` type annotations for each service
+- `Waiter` type annotations for each service
+- `Paginator` type annotations for each service
+- Generated `TypeDefs` for each service
+- Auto discovery of types for `boto3.client` and `boto3.session` calls
+- Auto discovery of types for `session.client` and `session.session` calls
+- Auto discovery of types for `client.get_waiter` and `client.get_paginator` calls
+- Auto discovery of types for `ServiceResource` and `Resource` collections
+- CLI for managing installed submodules
 
 ### Latest changes
 
