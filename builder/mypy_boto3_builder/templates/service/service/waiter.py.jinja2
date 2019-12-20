@@ -10,6 +10,8 @@ Usage::
     {% endfor -%}
     )
 
+    client: {{ package.client.name }} = boto3.client("{{ package.service_name.boto3_name }}")
+
 {% for waiter in package.waiters -%}
     {{ "    " -}}
     {{ waiter.waiter_name }}_waiter: {{ waiter.name }} = client.get_waiter("{{ waiter.waiter_name }}")
