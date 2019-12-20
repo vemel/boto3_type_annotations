@@ -5,7 +5,6 @@ from pathlib import Path
 
 from boto3.session import Session
 
-from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.parsers.master_package import parse_master_package
 from mypy_boto3_builder.parsers.service_package import parse_service_package
@@ -85,11 +84,7 @@ def process_service(
     logger.debug(f"Writing {service_name.boto3_name} to {NicePath(output_path)}")
 
     modified_paths = write_service_package(service_module, output_path)
-    module_file_names = [i.value for i in ServiceModuleName]
     for modified_path in modified_paths:
-        if modified_path.stem in module_file_names:
-            logger.info(f"Updated {NicePath(modified_path)}")
-        else:
-            logger.debug(f"Updated {NicePath(modified_path)}")
+        logger.debug(f"Updated {NicePath(modified_path)}")
 
     return service_module
