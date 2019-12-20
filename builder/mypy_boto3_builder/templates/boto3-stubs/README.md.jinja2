@@ -24,7 +24,7 @@ python -m pip install boto3-stubs
 
 # install `boto3` type annotations
 # for ec2, s3, rds, lambda, sqs, dynamo and cloudformation
-# Consumes ~10 MB of space
+# Consumes ~7 MB of space
 python -m pip install boto3-stubs[essential]
 
 # or install annotations for services you use
@@ -38,7 +38,7 @@ import boto3
 
 from {{ master_module_name }} import dynamodb
 
-# Enjoy auto-complete for now
+# Enjoy auto-complete from now
 client: dynamodb.DynamoDBClient = boto3.client("dynamodb")
 
 # argument hints and correct return type is provided by boto3-stubs
