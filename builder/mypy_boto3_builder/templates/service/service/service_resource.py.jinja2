@@ -5,9 +5,17 @@ Usage::
 
     import boto3
     from {{ master_module_name }}.{{ package.service_name.import_name }} import {{ package.service_resource.name }}
+    import {{ master_module_name }}.{{ package.service_name.import_name }}.service_resource as {{ package.service_name.import_name }}_resources
 
     resource: {{ package.service_resource.name }} = boto3.resource("{{ package.service_name.boto3_name }}")
     session_resource: {{ package.service_resource.name }} = session.resource("{{ package.service_name.boto3_name }}")
+{% if package.service_resource.sub_resources -%}
+{% with sub_resource = package.service_resource.sub_resources[0] -%}
+    {{ "\n    " -}}
+    {{ sub_resource.name }}: {{ package.service_name.import_name }}_resources.{{ sub_resource.name }} = resource.{{ sub_resource.name }}(...)
+    ...
+{% endwith -%}
+{% endif -%}
 """
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
 from __future__ import annotations
