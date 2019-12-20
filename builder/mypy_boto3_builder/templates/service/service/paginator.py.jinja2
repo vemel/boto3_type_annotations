@@ -1,4 +1,21 @@
-"Main interface for {{ package.service_name.boto3_name }} service Paginators"
+"""
+Main interface for {{ package.service_name.boto3_name }} service client paginators.
+
+Usage::
+
+    import boto3
+    from {{ master_module_name }}.{{ package.service_name.import_name }} import (
+    {% for paginator in package.paginators -%}
+        {{ "    " -}}{{ paginator.name -}},
+    {% endfor -%}
+    )
+
+{% for paginator in package.paginators -%}
+    {{ "    " -}}
+    {{ paginator.operation_name }}_paginator: {{ paginator.name }} = client.get_paginator("{{ paginator.operation_name }}")
+{% endfor -%}
+"""
+# pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
 from __future__ import annotations
 
 {% with import_record_groups=package.get_paginator_required_import_record_groups() -%}

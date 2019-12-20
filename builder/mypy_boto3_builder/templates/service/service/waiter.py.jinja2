@@ -1,4 +1,21 @@
-"Main interface for {{ package.service_name.boto3_name }} service Waiters"
+"""
+Main interface for {{ package.service_name.boto3_name }} service client waiters.
+
+Usage::
+
+    import boto3
+    from {{ master_module_name }}.{{ package.service_name.import_name }} import (
+    {% for waiter in package.waiters -%}
+        {{ "    " -}}{{ waiter.name -}},
+    {% endfor -%}
+    )
+
+{% for waiter in package.waiters -%}
+    {{ "    " -}}
+    {{ waiter.waiter_name }}_waiter: {{ waiter.name }} = client.get_waiter("{{ waiter.waiter_name }}")
+{% endfor -%}
+"""
+# pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
 from __future__ import annotations
 
 {% with import_record_groups=package.get_waiter_required_import_record_groups() -%}

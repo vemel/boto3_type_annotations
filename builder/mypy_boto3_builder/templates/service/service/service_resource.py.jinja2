@@ -1,4 +1,15 @@
-"Main interface for {{ package.service_name.boto3_name }} service ServiceResource"
+"""
+Main interface for {{ package.service_name.boto3_name }} service ServiceResource
+
+Usage::
+
+    import boto3
+    from {{ master_module_name }}.{{ package.service_name.import_name }} import {{ package.service_resource.name }}
+
+    resource: {{ package.service_resource.name }} = boto3.resource("{{ package.service_name.boto3_name }}")
+    session_resource: {{ package.service_resource.name }} = session.resource("{{ package.service_name.boto3_name }}")
+"""
+# pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
 from __future__ import annotations
 
 {% with import_record_groups=package.get_service_resource_required_import_record_groups() -%}

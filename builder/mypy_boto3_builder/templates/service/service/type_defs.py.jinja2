@@ -1,4 +1,12 @@
-"Main interface for {{ package.service_name.boto3_name }} service type defs"
+"""
+Main interface for {{ package.service_name.boto3_name }} service type definitions.
+
+Usage::
+
+    from {{ master_module_name }}.{{ package.service_name.import_name }}.type_defs import {{ package.typed_dicts[0].name }}
+
+    data: {{ package.typed_dicts[0].name }} = {...}
+"""
 from __future__ import annotations
 
 {% with import_record_groups=package.get_type_defs_required_import_record_groups() -%}
