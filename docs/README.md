@@ -360,6 +360,7 @@ python -m pip install boto3-stubs[s3,ec2,sqs]
 - `boto3-stubs[codeguruprofiler]` - Type annotations for [CodeGuruProfiler](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codeguruprofiler.html#CodeGuruProfiler) service.
 - `boto3-stubs[codepipeline]` - Type annotations for [CodePipeline](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codepipeline.html#CodePipeline) service.
 - `boto3-stubs[codestar]` - Type annotations for [CodeStar](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codestar.html#CodeStar) service.
+- `boto3-stubs[codestar-connections]` - Type annotations for [CodeStarconnections](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codestar-connections.html#CodeStarconnections) service.
 - `boto3-stubs[codestar-notifications]` - Type annotations for [CodeStarNotifications](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/codestar-notifications.html#CodeStarNotifications) service.
 - `boto3-stubs[cognito-identity]` - Type annotations for [CognitoIdentity](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-identity.html#CognitoIdentity) service.
 - `boto3-stubs[cognito-idp]` - Type annotations for [CognitoIdentityProvider](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-idp.html#CognitoIdentityProvider) service.
