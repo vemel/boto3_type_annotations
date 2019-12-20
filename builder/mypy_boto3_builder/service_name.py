@@ -118,6 +118,7 @@ class ServiceNameCatalog:
         ServiceName("codeguruprofiler", "CodeGuruProfiler"),
         ServiceName("codepipeline", "CodePipeline"),
         ServiceName("codestar", "CodeStar"),
+        ServiceName("codestar-connections", "CodeStarconnections"),
         ServiceName("codestar-notifications", "CodeStarNotifications"),
         ServiceName("cognito-identity", "CognitoIdentity"),
         ServiceName("cognito-idp", "CognitoIdentityProvider"),
