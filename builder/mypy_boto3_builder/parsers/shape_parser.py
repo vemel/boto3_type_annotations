@@ -25,6 +25,7 @@ from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.type_literal import TypeLiteral
+from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
@@ -226,7 +227,18 @@ class ShapeParser:
                 "can_paginate",
                 [Argument("self", None), Argument("operation_name", Type.str)],
                 Type.bool,
-            )
+            ),
+            "generate_presigned_url": Method(
+                "generate_presigned_url",
+                [
+                    Argument("self", None),
+                    Argument("ClientMethod", Type.str),
+                    Argument("Params", Type.DictStrAny, Type.none),
+                    Argument("ExpiresIn", Type.int, TypeConstant(3600)),
+                    Argument("HttpMethod", Type.str, Type.none),
+                ],
+                Type.str,
+            ),
         }
         for operation_name in self._get_operation_names():
             operation_model = self._get_operation(operation_name)
@@ -279,7 +291,7 @@ class ShapeParser:
 
     def _parse_shape_structure(self, shape: StructureShape) -> FakeAnnotation:
         if not shape.members.items():
-            return TypeSubscript(Type.Dict, [Type.str, Type.Any])
+            return Type.DictStrAny
 
         required = shape.required_members
         typed_dict_name = f"{shape.name}TypeDef"

@@ -68,7 +68,7 @@ class TypeValue:
 
     def _get_type_dict(self) -> FakeAnnotation:
         if not self.dict_items:
-            return TypeSubscript(Type.Dict, [Type.str, Type.Any])
+            return Type.DictStrAny
 
         first_key = self.dict_items[0]["key"]
         if first_key in SYNTAX_TYPE_MAP:
