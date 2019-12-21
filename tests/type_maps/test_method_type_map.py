@@ -21,3 +21,8 @@ class MethodTypeMapTestCase(unittest.TestCase):
                 ServiceNameCatalog.s3, "Client", "copy_object", "Unknown"
             )
         )
+        self.assertIsNone(
+            get_method_type_stub(
+                ServiceNameCatalog.logs, "Client", "copy_object", "Unknown"
+            )
+        )
