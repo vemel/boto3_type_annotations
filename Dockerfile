@@ -1,7 +1,6 @@
 FROM python:3.8.1-alpine3.10
 
 RUN apk add --no-cache gcc libc-dev
-RUN pip install -U pip
 
 RUN mkdir -p /builder/scripts
 WORKDIR /builder
