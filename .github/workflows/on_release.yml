@@ -62,7 +62,6 @@ jobs:
       - name: Dockerize
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{ steps.vars.outputs.version }}
         run: |
           scripts/dockerize.sh
       - name: Install dependencies for publishing
