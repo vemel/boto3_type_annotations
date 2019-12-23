@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Optional
 
 import black
+from black import NothingChanged, InvalidInput
 
 from mypy_boto3_builder.constants import TEMPLATES_PATH, LINE_LENGTH
 from mypy_boto3_builder.service_name import ServiceName
@@ -37,12 +38,9 @@ def blackify(content: str, file_path: Path, fast: bool = True) -> str:
     )
     try:
         content = black.format_file_contents(content, fast=fast, mode=file_mode)
-    except black.NothingChanged:
+    except NothingChanged:
         pass
-    except IndentationError as e:
-        file_path.write_text(content)
-        raise ValueError(f"Cannot parse {file_path}: {e}")
-    except black.InvalidInput as e:
+    except (IndentationError, InvalidInput) as e:
         file_path.write_text(content)
         raise ValueError(f"Cannot parse {file_path}: {e}")
 

@@ -10,7 +10,7 @@ Jinja2 renderer and black formatter.
 
 ## blackify
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/utils.py#L15)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/utils.py#L16)
 
 ```python
 def blackify(content: str, file_path: Path, fast: bool = True) -> str:
@@ -36,7 +36,7 @@ Formatted python code.
 
 ## render_jinja2_template
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/utils.py#L52)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/utils.py#L50)
 
 ```python
 def render_jinja2_template(

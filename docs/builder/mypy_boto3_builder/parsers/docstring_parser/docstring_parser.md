@@ -52,7 +52,7 @@ A list of `Argument` structures.
 
 ### DocstringParser().get_return_type
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/docstring_parser.py#L307)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/docstring_parser/docstring_parser.py#L308)
 
 ```python
 def get_return_type(input_string: str) -> FakeAnnotation:

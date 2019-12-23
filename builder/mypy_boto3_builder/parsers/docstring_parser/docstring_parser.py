@@ -221,10 +221,11 @@ class DocstringParser:
         if ":return: " not in input_string and ":returns: " not in input_string:
             return None
         TypeDocGrammar.reset()
+        returns_string = input_string[input_string.index(":return") :].split("\n", 1)[0]
         try:
-            match = next(TypeDocGrammar.returns_definition.scanString(input_string))[0]
-        except StopIteration:
-            self.logger.warning(f"Cannot parse returns for {self.prefix}")
+            match = TypeDocGrammar.returns_definition.parseString(returns_string)
+        except ParseException as e:
+            self.logger.warning(f"Cannot parse returns for {self.prefix}: {e}")
             return None
 
         description = match.asDict()["description"]
