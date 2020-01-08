@@ -10,7 +10,7 @@ Boto3 Client.
 
 ## Client
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/client.py#L16)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/client.py#L13)
 
 ```python
 dataclass
@@ -21,7 +21,7 @@ Boto3 Client.
 
 ### Client().get_all_names
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/client.py#L38)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/client.py#L30)
 
 ```python
 def get_all_names() -> List[str]:
