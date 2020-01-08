@@ -8,7 +8,7 @@ from mypy_boto3.dynamodb.service_resource import Table
 
 def dynamodb_client_example() -> None:
     client: DynamoDBClient = boto3.client("dynamodb")
-    resource: DynamoDBServiceResource = boto3.client("dynamodb")
+    resource: DynamoDBServiceResource = boto3.resource("dynamodb")
 
     my_table: Table = resource.Table("my_table")
     print(my_table.name)
