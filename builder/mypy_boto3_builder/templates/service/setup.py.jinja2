@@ -12,9 +12,9 @@ class PostInstallCommand(install):
         install.run(self)
         print("{{ master_module_name }}: Running post-install script")
         try:
-            from {{ master_module_name }}.main import maybe_build_index
+            from {{ master_module_name }}.main import maybe_build_index, CACHE_KEY
             maybe_build_index()
-            print("{{ master_module_name }}: Package index updated")
+            print("{{ master_module_name }}: Package index updated for", CACHE_KEY)
         except Exception as e:
             print("{{ master_module_name }}: Package index update failed:", e)
 
