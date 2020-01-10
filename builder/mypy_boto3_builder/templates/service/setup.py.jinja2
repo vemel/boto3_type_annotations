@@ -13,7 +13,7 @@ class PostInstallCommand(install):
         print("{{ master_module_name }}: Running post-install script for {{ package.pypi_name }}")
         try:
             from {{ master_module_name }}.main import add_package_to_index
-            add_package_to_index("{{ package.pypi_name }}")
+            add_package_to_index("{{ package.boto3_name }}")
             print("{{ master_module_name }}: Package {{ package.pypi_name }} added to index")
         except Exception as e:
             print("{{ master_module_name }}: Package index update failed for {{ package.pypi_name }}:", e)

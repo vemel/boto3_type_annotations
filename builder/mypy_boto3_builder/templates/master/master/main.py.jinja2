@@ -127,20 +127,16 @@ def set_cache_key() -> None:
     CACHE_PATH.write_text(cache_key)
 
 
-def add_package_to_index(pypi_name: str) -> None:
+def add_package_to_index(boto3_name: str) -> None:
     """
     Add new package to index and rebuild it if package is new.
     """
-    cache_key = ""
+    installed_boto3_names: Set[str] = {boto3_name}
     if CACHE_PATH.exists():
-        cache_key = CACHE_PATH.read_text()
-
-    installed_pypi_names: Set[str] = {pypi_name}
-    for cache_key_pypi_name in cache_key.split(','):
-        installed_pypi_names.add(cache_key_pypi_name)
+        installed_boto3_names.update(CACHE_PATH.read_text().split(','))
 
     for submodule in SUBMODULES:
-        if submodule.pypi_name in installed_pypi_names:
+        if submodule.boto3_name in installed_boto3_names:
             submodule.is_installed = True
 
     build_index()
