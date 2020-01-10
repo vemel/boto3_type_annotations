@@ -44,5 +44,3 @@ SUBMODULES: List[Submodule] = [
     {{ ",\n" if not loop.last else "\n" -}}
     {% endfor -%}
 ]
-
-CACHE_KEY = ','.join([i.boto3_name for i in SUBMODULES if i.is_installed])

@@ -10,13 +10,13 @@ LONG_DESCRIPTION = open(dirname(abspath(__file__)) + "/README.md", "r").read()
 class PostInstallCommand(install):
     def run(self):
         install.run(self)
-        print("{{ master_module_name }}: Running post-install script")
+        print("{{ master_module_name }}: Running post-install script for {{ package.pypi_name }}")
         try:
-            from {{ master_module_name }}.main import maybe_build_index, CACHE_KEY
-            maybe_build_index()
-            print("{{ master_module_name }}: Package index updated for", CACHE_KEY)
+            from {{ master_module_name }}.main import add_package_to_index
+            add_package_to_index("{{ package.pypi_name }}")
+            print("{{ master_module_name }}: Package {{ package.pypi_name }} added to index")
         except Exception as e:
-            print("{{ master_module_name }}: Package index update failed:", e)
+            print("{{ master_module_name }}: Package index update failed for {{ package.pypi_name }}:", e)
 
 
 setup(

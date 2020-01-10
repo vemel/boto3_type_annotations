@@ -11,7 +11,6 @@ from {{ master_module_name }}.version import __version__ as version
 from {{ master_module_name }}.submodules import (
     SUBMODULES,
     Submodule,
-    CACHE_KEY,
 )
 
 ROOT_PATH = pathlib.Path(__file__).absolute().parent
@@ -123,30 +122,21 @@ def main() -> None:
     set_cache_key()
 
 
-def _is_build_required() -> bool:
-    if not CACHE_PATH.exists():
-        return True
-
-    if CACHE_PATH.read_text() != CACHE_KEY:
-        return True
-
-    return False
-
-
 def set_cache_key() -> None:
-    CACHE_PATH.write_text(CACHE_KEY)
+    cache_key = ','.join([i.boto3_name for i in SUBMODULES if i.is_installed])
+    CACHE_PATH.write_text(cache_key)
 
 
-def maybe_build_index() -> bool:
+def add_package_to_index(pypi_name: str) -> None:
     """
-    Check cache and build index if cache is outdated.
+    Add new package to index and rebuild it if package is new.
     """
-    is_required = _is_build_required()
-    if is_required:
-        build_index()
-        set_cache_key()
+    for submodule in SUBMODULES:
+        if submodule.pypi_name == pypi_name:
+            submodule.is_installed = True
 
-    return is_required
+    build_index()
+    set_cache_key()
 
 
 def _get_proxy_contents(module_name: str) -> str:

@@ -26,6 +26,6 @@ for package in $PACKAGES
 do
     echo Installing $(basename ${package})
     cd ${package}
-    python -m pip install .
+    python -m pip install . -v
     cd -
 done
