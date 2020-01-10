@@ -131,8 +131,16 @@ def add_package_to_index(pypi_name: str) -> None:
     """
     Add new package to index and rebuild it if package is new.
     """
+    cache_key = ""
+    if CACHE_PATH.exists():
+        cache_key = CACHE_PATH.read_text()
+
+    installed_pypi_names: Set[str] = {pypi_name}
+    for cache_key_pypi_name in cache_key.split(','):
+        installed_pypi_names.add(cache_key_pypi_name)
+
     for submodule in SUBMODULES:
-        if submodule.pypi_name == pypi_name:
+        if submodule.pypi_name in installed_pypi_names:
             submodule.is_installed = True
 
     build_index()
