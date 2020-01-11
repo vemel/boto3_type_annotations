@@ -121,7 +121,14 @@ def main() -> None:
         )
         return
     build_package_methods(logger)
-    build_package_stubs(logger)
+    for submodule in SUBMODULES:
+        if not submodule.is_installed:
+            submodule_path = ROOT_PATH / submodule.import_name
+            if submodule_path.exists():
+                logger.debug("Removing directory for deleted service %s", submodule_path)
+                shutil.rmtree(submodule_path)
+            continue
+        build_package_stubs(submodule, logger)
     set_cache_key()
     log_install_info(logger)
 
@@ -136,6 +143,7 @@ def add_package_to_index(boto3_name: str) -> None:
     Add new package to index and rebuild it if package is new.
     """
     active_boto3_names: Set[str] = {boto3_name}
+    active_submodule = None
     logger = get_logger(logging.INFO)
     if CACHE_PATH.exists():
         active_boto3_names.update(CACHE_PATH.read_text().split(','))
@@ -144,12 +152,14 @@ def add_package_to_index(boto3_name: str) -> None:
         if submodule.boto3_name in active_boto3_names:
             submodule.is_active = True
         if submodule.boto3_name == boto3_name:
+            submodule.is_active = True
             submodule.is_installed = True
+            active_submodule = submodule
 
     logger.info("Active packages: %s", ", ".join([i.boto3_name for i in SUBMODULES if i.is_active]))
     logger.info("Installed packages: %s", ", ".join([i.boto3_name for i in SUBMODULES if i.is_installed]))
     build_package_methods(logger)
-    build_package_stubs(logger)
+    build_package_stubs(active_submodule, logger)
     set_cache_key()
     log_install_info(logger)
 
@@ -297,55 +307,49 @@ def write_text(path: pathlib.Path, text: str, logger: logging.Logger) -> None:
     path.write_text(text)
 
 
-def build_package_stubs(logger: logging.Logger) -> None:
+def build_package_stubs(submodule: Submodule, logger: logging.Logger) -> None:
     """
     Build index for installed services.
     """
-    for submodule in SUBMODULES:
-        submodule_path = ROOT_PATH / submodule.import_name
-        if not submodule.is_installed:
-            if submodule_path.exists():
-                logger.debug("Removing directory for deleted service %s", submodule_path)
-                shutil.rmtree(submodule_path)
-            continue
+    submodule_path = ROOT_PATH / submodule.import_name
 
-        if not submodule_path.exists():
-            logger.debug("Creating directory %s", submodule_path)
-            submodule_path.mkdir(exist_ok=True)
+    if not submodule_path.exists():
+        logger.debug("Creating directory %s", submodule_path)
+        submodule_path.mkdir(exist_ok=True)
 
+    write_text(
+        submodule_path / '__init__.py',
+        _get_proxy_contents(submodule.module_name),
+        logger,
+    )
+    write_text(
+        submodule_path / 'client.py',
+        _get_proxy_contents("{}.client".format(submodule.module_name)),
+        logger,
+    )
+    write_text(
+        submodule_path / 'type_defs.py',
+        _get_proxy_contents("{}.type_defs".format(submodule.module_name)),
+        logger,
+    )
+    if submodule.has_resource:
         write_text(
-            submodule_path / '__init__.py',
-            _get_proxy_contents(submodule.module_name),
+            submodule_path / 'service_resource.py',
+            _get_proxy_contents("{}.service_resource".format(submodule.module_name)),
             logger,
         )
+    if submodule.has_waiter:
         write_text(
-            submodule_path / 'client.py',
-            _get_proxy_contents("{}.client".format(submodule.module_name)),
+            submodule_path / 'waiter.py',
+            _get_proxy_contents("{}.waiter".format(submodule.module_name)),
             logger,
         )
+    if submodule.has_paginator:
         write_text(
-            submodule_path / 'type_defs.py',
-            _get_proxy_contents("{}.type_defs".format(submodule.module_name)),
+            submodule_path / 'paginator.py',
+            _get_proxy_contents("{}.paginator".format(submodule.module_name)),
             logger,
         )
-        if submodule.has_resource:
-            write_text(
-                submodule_path / 'service_resource.py',
-                _get_proxy_contents("{}.service_resource".format(submodule.module_name)),
-                logger,
-            )
-        if submodule.has_waiter:
-            write_text(
-                submodule_path / 'waiter.py',
-                _get_proxy_contents("{}.waiter".format(submodule.module_name)),
-                logger,
-            )
-        if submodule.has_paginator:
-            write_text(
-                submodule_path / 'paginator.py',
-                _get_proxy_contents("{}.paginator".format(submodule.module_name)),
-                logger,
-            )
 
 
 def log_install_info(logger: logging.Logger) -> None:
