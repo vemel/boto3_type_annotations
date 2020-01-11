@@ -24,6 +24,7 @@ class Submodule:
         self.has_waiter = has_waiter
         self.has_paginator = has_paginator
         self.is_installed = importlib.util.find_spec(module_name) is not None
+        self.is_active = self.is_installed
 
     def get_all_names(self) -> List[str]:
         service_module = importlib.import_module(self.module_name)
