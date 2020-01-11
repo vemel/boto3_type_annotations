@@ -127,7 +127,7 @@ def main() -> None:
 
 
 def set_cache_key() -> None:
-    cache_key = ','.join([i.boto3_name for i in SUBMODULES if i.is_installed])
+    cache_key = ','.join([i.boto3_name for i in SUBMODULES if i.is_active])
     CACHE_PATH.write_text(cache_key)
 
 
@@ -151,6 +151,7 @@ def add_package_to_index(boto3_name: str) -> None:
     build_package_methods(logger)
     build_package_stubs(logger)
     set_cache_key()
+    log_install_info(logger)
 
 
 def _get_proxy_contents(module_name: str) -> str:
