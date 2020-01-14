@@ -48,8 +48,8 @@ jobs:
           python -m pip install pylint mypy pytest
       - name: Lint
         run: |
-          # pylint builder/mypy_boto3_builder
-          # mypy builder/mypy_boto3_builder
+          pylint builder/mypy_boto3_builder
+          mypy builder/mypy_boto3_builder
       - name: Unit tests
         run: |
           pytest
