@@ -76,3 +76,31 @@ class ShapeParserTestCase(unittest.TestCase):
         self.assertEqual(result.arguments[1].name, "required_arg")
         self.assertEqual(result.arguments[2].name, "optional_arg")
         self.assertEqual(result.arguments[3].name, "PaginationConfig")
+
+    @patch("mypy_boto3_builder.parsers.shape_parser.ServiceModel")
+    def test_get_collection_filter_method(self, ServiceModelMock: MagicMock) -> None:
+        session_mock = MagicMock()
+        service_name_mock = MagicMock()
+        operation_model_mock = MagicMock()
+        required_arg_shape_mock = MagicMock()
+        optional_arg_shape_mock = MagicMock()
+        operation_model_mock.input_shape.required_members = ["required_arg"]
+        operation_model_mock.input_shape.members.items.return_value = [
+            ("required_arg", required_arg_shape_mock,),
+            ("optional_arg", optional_arg_shape_mock,),
+            ("InputToken", optional_arg_shape_mock,),
+        ]
+        ServiceModelMock().operation_names = ["my_operation"]
+        ServiceModelMock().operation_model.return_value = operation_model_mock
+        collection_mock = MagicMock()
+        collection_mock.request.operation = "my_operation"
+        shape_parser = ShapeParser(session_mock, service_name_mock)
+        result = shape_parser.get_collection_filter_method(
+            "MyCollection", collection_mock
+        )
+        self.assertEqual(result.name, "filter")
+        self.assertEqual(len(result.decorators), 1)
+        self.assertEqual(len(result.arguments), 3)
+        self.assertEqual(result.arguments[0].name, "cls")
+        self.assertEqual(result.arguments[1].name, "optional_arg")
+        self.assertEqual(result.arguments[2].name, "InputToken")
