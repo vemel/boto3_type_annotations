@@ -64,11 +64,14 @@ class Parameter:
         self.value: Union[str, int, float, bool, None]
 
 class Request(DefinitionWithParams):
-    def __init__(self, definition: RequestDefinition) -> None: ...
+    def __init__(self, definition: RequestDefinition) -> None:
+        self.operation: str
 
 class Waiter(DefinitionWithParams):
     PREFIX: Literal["WaitUntil"]
-    def __init__(self, name: str, definition: WaiterDefinition) -> None: ...
+    def __init__(self, name: str, definition: WaiterDefinition) -> None:
+        self.name: str
+        self.waiter_name: str
 
 class ResponseResource:
     def __init__(
