@@ -525,7 +525,7 @@ class ShapeParser:
         if not collection.request:
             return result
 
-        operation_name = collection.request.operation
+        operation_name = collection.request.operation # pylint: disable
         operation_model = self._get_operation(operation_name)
 
         if operation_model.input_shape is not None:
