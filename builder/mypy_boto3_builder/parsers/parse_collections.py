@@ -13,10 +13,14 @@ from mypy_boto3_builder.utils.strings import get_class_prefix
 from mypy_boto3_builder.type_annotations.type import Type
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
+from mypy_boto3_builder.parsers.shape_parser import ShapeParser
 
 
 def parse_collections(
-    parent_name: str, resource: Boto3ServiceResource, service_name: ServiceName
+    parent_name: str,
+    resource: Boto3ServiceResource,
+    service_name: ServiceName,
+    shape_parser: ShapeParser,
 ) -> List[Collection]:
     """
     Extract collections from boto3 resource.
@@ -54,22 +58,26 @@ def parse_collections(
                 decorators=[Type.classmethod],
             )
         )
-        collection_record.methods.append(
-            Method(
-                "filter",
-                [
-                    Argument("cls", None),
-                    Argument("Delimiter", Type.str, Type.none),
-                    Argument("EncodingType", Type.str, Type.none),
-                    Argument("KeyMarker", Type.str, Type.none),
-                    Argument("MaxUploads", Type.int, Type.none),
-                    Argument("Prefix", Type.str, Type.none),
-                    Argument("UploadIdMarker", Type.str, Type.none),
-                ],
-                self_type,
-                decorators=[Type.classmethod],
-            )
+        filter_method = shape_parser.get_collection_filter_method(
+            collection_record.name, collection
         )
+        collection_record.methods.append(filter_method)
+        # collection_record.methods.append(
+        #     Method(
+        #         "filter",
+        #         [
+        #             Argument("cls", None),
+        #             Argument("Delimiter", Type.str, Type.none),
+        #             Argument("EncodingType", Type.str, Type.none),
+        #             Argument("KeyMarker", Type.str, Type.none),
+        #             Argument("MaxUploads", Type.int, Type.none),
+        #             Argument("Prefix", Type.str, Type.none),
+        #             Argument("UploadIdMarker", Type.str, Type.none),
+        #         ],
+        #         self_type,
+        #         decorators=[Type.classmethod],
+        #     )
+        # )
         collection_record.methods.append(
             Method(
                 "limit",

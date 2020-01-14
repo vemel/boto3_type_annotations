@@ -4,6 +4,7 @@ Parser for botocore shape files.
 from typing import Dict, List, Any, Optional
 
 from boto3.session import Session
+from boto3.resources.model import Collection
 from botocore.exceptions import UnknownServiceError
 from botocore import xform_name
 from botocore.session import Session as BotocoreSession
@@ -502,3 +503,37 @@ class ShapeParser:
                 return_type = self._parse_shape(operation_shape.output_shape)
 
         return Method(name=method_name, arguments=arguments, return_type=return_type)
+
+    def get_collection_filter_method(self, name: str, collection: Collection) -> Method:
+        """
+        Get `filter` classmethod for Resource collection.
+
+        Arguments:
+            name -- Collection record name.
+            collection -- Boto3 Collection.
+
+        Returns:
+             Filter Method record.
+        """
+        arguments: List[Argument] = [Argument("cls", None)]
+        result = Method(
+            "filter",
+            arguments,
+            InternalImport(name=name, service_name=self.service_name),
+            decorators=[Type.classmethod],
+        )
+        if not collection.request:
+            return result
+
+        operation_name = collection.request.operation
+        operation_model = self._get_operation(operation_name)
+
+        if operation_model.input_shape is not None:
+            for argument in self._parse_arguments(
+                name, result.name, operation_name, operation_model.input_shape,
+            ):
+                if argument.required:
+                    continue
+                arguments.append(argument)
+
+        return result

@@ -77,7 +77,9 @@ def parse_service_resource(
     result.attributes.extend(parse_identifiers(service_resource))
 
     logger.debug(f"Parsing ServiceResource collections")
-    collections = parse_collections("ServiceResource", service_resource, service_name)
+    collections = parse_collections(
+        "ServiceResource", service_resource, service_name, shape_parser
+    )
     for collection in collections:
         result.collections.append(collection)
         result.attributes.append(
