@@ -46,6 +46,10 @@ jobs:
       - name: Install test dependencies
         run: |
           python -m pip install pylint mypy pytest
+      - name: Install unreleased boto3 stubs
+        run: |
+          ./scripts/build.sh --skip-services
+          ./scripts/install.sh master
       - name: Lint
         run: |
           pylint builder/mypy_boto3_builder
