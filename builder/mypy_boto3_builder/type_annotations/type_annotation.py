@@ -16,7 +16,7 @@ class TypeAnnotation(FakeAnnotation):
         wrapped_type -- Original type annotation.
     """
 
-    supported_types = [
+    supported_types = (
         Union,
         Any,
         Dict,
@@ -26,7 +26,19 @@ class TypeAnnotation(FakeAnnotation):
         Generator,
         IO,
         overload,
-    ]
+    )
+
+    type_name_map = (
+        (Union, "Union",),
+        (Any, "Any",),
+        (Dict, "Dict",),
+        (List, "List",),
+        (Optional, "Optional",),
+        (Callable, "Callable",),
+        (Generator, "Generator",),
+        (IO, "IO",),
+        (overload, "overload",),
+    )
 
     def __init__(self, wrapped_type: Any) -> None:
         if isinstance(wrapped_type, FakeAnnotation):
@@ -46,13 +58,10 @@ class TypeAnnotation(FakeAnnotation):
         return self.get_import_name()
 
     def get_import_name(self) -> str:
-        if self.wrapped_type is IO:
-            return "IO"
-        if self.wrapped_type is Callable:
-            return "Callable"
-        if self.wrapped_type is overload:
-            return "overload"
-        return str(getattr(self.wrapped_type, "_name"))
+        for type_class, type_name in self.type_name_map:
+            if self.wrapped_type is type_class:
+                return type_name
+        raise ValueError("Unknown type {}".format(self.wrapped_type))
 
     def get_import_record(self) -> ImportRecord:
         return ImportRecord(source=ImportString("typing"), name=self.get_import_name())

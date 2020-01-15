@@ -162,7 +162,7 @@ class TypeTypedDict(FakeAnnotation):
         """
         return TypeTypedDict(self.name, list(self.children), docstring=self.docstring)
 
-    def is_same(self, other: TypeTypedDict) -> bool:
+    def is_same(self, other: "TypeTypedDict") -> bool:
         children = [i.render() for i in self.children]
         other_children = [i.render() for i in other.children]
         return other_children == children

@@ -25,7 +25,7 @@ class ImportRecordGroup:
     @classmethod
     def from_import_records(
         cls, import_records: Iterable[ImportRecord]
-    ) -> List[ImportRecordGroup]:
+    ) -> List["ImportRecordGroup"]:
         """
         Get groups from `ImportRecord` list.
 

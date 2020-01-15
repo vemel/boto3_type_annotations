@@ -34,13 +34,15 @@ def main() -> None:
     session = Session(region_name=DUMMY_REGION)
     args.output_path.mkdir(exist_ok=True)
     service_names: List[ServiceName] = []
+    master_service_names = []
     available_services = session.get_available_services()
-    if len(args.service_names) == len(ServiceNameCatalog.ITEMS):
-        for available_service in available_services:
-            try:
-                ServiceNameCatalog.find(available_service)
-            except ValueError:
-                logger.info(f"Service {available_service} is not supported, skipping.")
+
+    for available_service in available_services:
+        try:
+            service_name = ServiceNameCatalog.find(available_service)
+            master_service_names.append(service_name)
+        except ValueError:
+            logger.info(f"Service {available_service} is not supported, skipping.")
 
     for service_name in args.service_names:
         if service_name.name not in available_services:
@@ -74,11 +76,11 @@ def main() -> None:
     if not args.skip_master:
         logger.info(f"Generating {MODULE_NAME} module")
         output_path = args.output_path / "master_package"
-        process_master(session, output_path)
+        process_master(session, output_path, master_service_names)
 
         logger.info(f"Generating {BOTO3_STUBS_NAME} module")
         output_path = args.output_path / "boto3_stubs_package"
-        process_boto3_stubs(output_path)
+        process_boto3_stubs(output_path, master_service_names)
 
     logger.info(f"Completed")
 

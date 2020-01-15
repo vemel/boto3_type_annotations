@@ -59,11 +59,11 @@ class ImportString:
     def __gt__(self, other: Any) -> bool:
         return str(self) > str(other)
 
-    def __add__(self, other: ImportString) -> ImportString:
+    def __add__(self, other: "ImportString") -> "ImportString":
         parts = self.parts + other.parts
         return ImportString(*parts)
 
-    def startswith(self, other: ImportString) -> bool:
+    def startswith(self, other: "ImportString") -> bool:
         """
         Check if import string starts with `other`.
 

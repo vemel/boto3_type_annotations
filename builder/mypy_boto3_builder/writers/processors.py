@@ -2,6 +2,7 @@
 Processors for parsing and writing modules.
 """
 from pathlib import Path
+from typing import List
 
 from boto3.session import Session
 
@@ -22,7 +23,9 @@ from mypy_boto3_builder.writers.service_package import write_service_package
 logger = get_logger()
 
 
-def process_boto3_stubs(output_path: Path) -> Boto3StubsPackage:
+def process_boto3_stubs(
+    output_path: Path, service_names: List[ServiceName]
+) -> Boto3StubsPackage:
     """
     Parse and write stubs package `boto3_stubs`.
 
@@ -33,7 +36,7 @@ def process_boto3_stubs(output_path: Path) -> Boto3StubsPackage:
         Parsed Boto3StubsPackage.
     """
     logger.debug(f"Parsing boto3 stubs")
-    boto3_stub_package = Boto3StubsPackage()
+    boto3_stub_package = Boto3StubsPackage(service_names=service_names)
     logger.debug(f"Writing boto3 stubs to {NicePath(output_path)}")
 
     modified_paths = write_boto3_stubs_package(boto3_stub_package, output_path)
@@ -43,7 +46,9 @@ def process_boto3_stubs(output_path: Path) -> Boto3StubsPackage:
     return boto3_stub_package
 
 
-def process_master(session: Session, output_path: Path) -> MasterPackage:
+def process_master(
+    session: Session, output_path: Path, service_names: List[ServiceName]
+) -> MasterPackage:
     """
     Parse and write master package `mypy_boto3`.
 
@@ -55,7 +60,7 @@ def process_master(session: Session, output_path: Path) -> MasterPackage:
         Parsed MasterPackage.
     """
     logger.debug(f"Parsing master")
-    master_package = parse_master_package(session)
+    master_package = parse_master_package(session, service_names)
     logger.debug(f"Writing master to {NicePath(output_path)}")
 
     modified_paths = write_master_package(master_package, output_path)

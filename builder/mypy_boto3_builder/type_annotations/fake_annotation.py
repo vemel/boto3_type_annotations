@@ -29,7 +29,7 @@ class FakeAnnotation:
 
         return not self == other
 
-    def __gt__(self, other: FakeAnnotation) -> bool:
+    def __gt__(self, other: "FakeAnnotation") -> bool:
         return str(self) > str(other)
 
     def __str__(self) -> str:
@@ -47,13 +47,13 @@ class FakeAnnotation:
         Get import record required for using type annotation.
         """
 
-    def get_types(self) -> Set[FakeAnnotation]:
+    def get_types(self) -> Set["FakeAnnotation"]:
         """
         Get all used type annotations recursively including self.
         """
         return {self}
 
-    def add_child(self, child: FakeAnnotation) -> None:
+    def add_child(self, child: "FakeAnnotation") -> None:
         """
         Add new child to `TypeSubscript` or `TypeTypedDict` annotation.
         """
@@ -82,7 +82,7 @@ class FakeAnnotation:
         return False
 
     @abstractmethod
-    def copy(self) -> FakeAnnotation:
+    def copy(self) -> "FakeAnnotation":
         """
         Create a copy of type annotation wrapper.
         """

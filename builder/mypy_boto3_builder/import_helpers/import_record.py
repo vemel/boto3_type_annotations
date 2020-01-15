@@ -34,7 +34,7 @@ class ImportRecord:
         name: str = "",
         alias: str = "",
         min_version: Tuple[int, ...] = (3, 8),
-        fallback: Optional[ImportRecord] = None,
+        fallback: Optional["ImportRecord"] = None,
     ) -> None:
         self.source = source
         self.name = name
@@ -46,7 +46,7 @@ class ImportRecord:
         return bool(self.source)
 
     @classmethod
-    def empty(cls) -> ImportRecord:
+    def empty(cls) -> "ImportRecord":
         return cls(ImportString.empty())
 
     def render(self) -> str:
@@ -76,7 +76,7 @@ class ImportRecord:
 
         return not self == other
 
-    def __gt__(self, other: ImportRecord) -> bool:
+    def __gt__(self, other: "ImportRecord") -> bool:
         if self.fallback is not None and other.fallback is None:
             return True
 
@@ -143,7 +143,7 @@ class ImportRecord:
 
         return False
 
-    def get_external(self, _module_name: str) -> ImportRecord:
+    def get_external(self, _module_name: str) -> "ImportRecord":
         """
         Get itself.
 

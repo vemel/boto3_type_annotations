@@ -31,7 +31,7 @@ class TypeDocLine:
         self._indented = indented
 
     @property
-    def indented(self) -> List[TypeDocLine]:
+    def indented(self) -> List["TypeDocLine"]:
         """
         Get indented lines list.
 
