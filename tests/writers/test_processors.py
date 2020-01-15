@@ -17,7 +17,7 @@ class ProcessorsTestCase(unittest.TestCase):
         self, _get_logger_mock: MagicMock, write_boto3_stubs_package_mock: MagicMock
     ) -> None:
         write_boto3_stubs_package_mock.return_value = [Path("modified_path")]
-        result = process_boto3_stubs(Path("my_path"))
+        result = process_boto3_stubs(Path("my_path"), ["service_name"])
         self.assertIsInstance(result, Boto3StubsPackage)
         write_boto3_stubs_package_mock.assert_called_with(result, Path("my_path"))
 
@@ -31,9 +31,9 @@ class ProcessorsTestCase(unittest.TestCase):
         parse_master_package_mock: MagicMock,
     ) -> None:
         write_master_package_mock.return_value = [Path("modified_path")]
-        result = process_master("session", Path("my_path"))
+        result = process_master("session", Path("my_path"), ["service_name"])
         write_master_package_mock.assert_called_with(result, Path("my_path"))
-        parse_master_package_mock.assert_called_with("session")
+        parse_master_package_mock.assert_called_with("session", ["service_name"])
         self.assertEqual(result, parse_master_package_mock())
 
     @patch("mypy_boto3_builder.writers.processors.parse_service_package")
