@@ -1,6 +1,6 @@
 # mypy_boto3
 
-[![PyPI - Handsdown](https://img.shields.io/pypi/v/mypy-boto3.svg?color=blue&style=for-the-badge)](https://pypi.org/project/mypy-boto3)
+[![PyPI - mypy-boto3](https://img.shields.io/pypi/v/mypy-boto3.svg?color=blue&style=for-the-badge)](https://pypi.org/project/mypy-boto3)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mypy-boto3.svg?color=blue&style=for-the-badge)](https://pypi.org/project/mypy-boto3)
 [![Docs](https://img.shields.io/readthedocs/mypy-boto3.svg?color=blue&style=for-the-badge)](https://mypy-boto3.readthedocs.io/)
 [![Coverage](https://img.shields.io/codecov/c/github/vemel/mypy_boto3?style=for-the-badge)](https://codecov.io/gh/vemel/mypy_boto3)
