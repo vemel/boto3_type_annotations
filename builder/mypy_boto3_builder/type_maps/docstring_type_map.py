@@ -19,6 +19,7 @@ DOCSTRING_TYPE_MAP: Dict[str, FakeAnnotation] = {
     "blob": Type.bytes,
     "boolean": Type.bool,
     "function": TypeSubscript(Type.Callable, [Type.Ellipsis, Type.Any]),
+    "method": TypeSubscript(Type.Callable, [Type.Ellipsis, Type.Any]),
     "botocore or boto3 Client": ExternalImport(
         source=ImportString("botocore", "client"), name="BaseClient"
     ),
