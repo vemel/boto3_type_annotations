@@ -42,7 +42,7 @@ class InternalImport(FakeAnnotation):
         Returns:
             A string with a valid type annotation.
         """
-        return f"{self.scope}.{self.name}"
+        return f'"{self.scope}.{self.name}"'
 
     @property
     def scope(self) -> str:
