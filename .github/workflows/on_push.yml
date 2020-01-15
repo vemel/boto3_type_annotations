@@ -8,7 +8,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.7, 3.8]
+        python-version: [3.6, 3.7, 3.8]
     steps:
       - uses: actions/checkout@v1
       - name: Set up Python ${{ matrix.python-version }}
@@ -27,6 +27,18 @@ jobs:
           cd builder
           python setup.py install
           cd -
+      - name: Build packages
+        env:
+          BUILD_VERSION: ${{ steps.vars.outputs.build_version }}
+          BOTO3_VERSION: ${{ steps.vars.outputs.boto3_version }}
+          BOTOCORE_VERSION: ${{ steps.vars.outputs.botocore_version }}
+        run: |
+          python -m pip install boto3 botocore
+          rm -rf mypy_boto3_output/*
+          scripts/build.sh --panic -s dynamodb ec2 emr s3 secretsmanager
+      - name: Integration tests
+        run: |
+          scripts/integration.sh
       - name: Test
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
