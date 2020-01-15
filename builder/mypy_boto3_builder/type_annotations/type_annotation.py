@@ -61,7 +61,7 @@ class TypeAnnotation(FakeAnnotation):
         for type_class, type_name in self.type_name_map:
             if self.wrapped_type is type_class:
                 return type_name
-        raise ValueError("Unknown type {}".format(self.wrapped_type))
+        raise ValueError(f"Unknown type {self.wrapped_type}")
 
     def get_import_record(self) -> ImportRecord:
         return ImportRecord(source=ImportString("typing"), name=self.get_import_name())

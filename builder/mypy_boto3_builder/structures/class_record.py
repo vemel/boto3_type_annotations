@@ -8,6 +8,7 @@ from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.structures.attribute import Attribute
 from mypy_boto3_builder.structures.method import Method
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
+from mypy_boto3_builder.import_helpers.import_string import ImportString
 
 
 @dataclass
@@ -40,6 +41,8 @@ class ClassRecord:
                 continue
             if import_record.is_builtins():
                 continue
+            if import_record.is_local():
+                result.add(ImportRecord(ImportString("typing"), "TYPE_CHECKING"))
             result.add(import_record)
 
         return result
