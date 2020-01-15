@@ -1,8 +1,6 @@
 """
 Structure for parsed as dict request or response syntax values.
 """
-from __future__ import annotations
-
 from typing import Dict, Any, List, Optional
 
 from mypy_boto3_builder.type_maps.syntax_type_map import SYNTAX_TYPE_MAP

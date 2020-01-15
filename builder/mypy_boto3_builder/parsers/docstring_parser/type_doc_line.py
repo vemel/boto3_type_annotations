@@ -1,8 +1,6 @@
 """
 Structure for parsed as dict `:type:` or `:rtype:` nested lines.
 """
-from __future__ import annotations
-
 from typing import Iterable, List, Any
 
 

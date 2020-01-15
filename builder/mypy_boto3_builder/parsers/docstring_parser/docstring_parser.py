@@ -1,8 +1,6 @@
 """
 Botocore docstring parser.
 """
-from __future__ import annotations
-
 import re
 import textwrap
 from typing import Dict, List, Optional, Pattern

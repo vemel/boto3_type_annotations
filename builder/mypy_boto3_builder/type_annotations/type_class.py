@@ -1,8 +1,6 @@
 """
 Wrapper for classes like `Paginator`.
 """
-from __future__ import annotations
-
 import inspect
 
 from mypy_boto3_builder.import_helpers.import_string import ImportString
@@ -50,7 +48,7 @@ class TypeClass(FakeAnnotation):
             alias=self.alias,
         )
 
-    def copy(self) -> TypeClass:
+    def copy(self) -> "TypeClass":
         """
         Create a copy of type annotation wrapper.
         """

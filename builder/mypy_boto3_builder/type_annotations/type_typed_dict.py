@@ -1,8 +1,6 @@
 """
 Wrapper for `typing/typing_extensions.TypedDict` type annotations.
 """
-from __future__ import annotations
-
 from typing import Iterable, Set, List
 
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
@@ -158,7 +156,7 @@ class TypeTypedDict(FakeAnnotation):
                 result.append(child)
         return result
 
-    def copy(self) -> TypeTypedDict:
+    def copy(self) -> "TypeTypedDict":
         """
         Create a copy of type annotation wrapper.
         """

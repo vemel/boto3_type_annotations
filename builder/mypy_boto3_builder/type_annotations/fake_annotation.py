@@ -1,8 +1,6 @@
 """
 Parent class for all type annotation wrappers.
 """
-from __future__ import annotations
-
 from abc import abstractmethod
 from typing import Set, Any
 from functools import total_ordering

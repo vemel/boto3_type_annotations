@@ -1,8 +1,6 @@
 """
 Grouped by `source` import records for nicer rendering.
 """
-from __future__ import annotations
-
 from typing import Iterable, List, Set
 
 from mypy_boto3_builder.import_helpers.import_string import ImportString

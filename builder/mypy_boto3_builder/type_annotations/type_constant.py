@@ -1,8 +1,6 @@
 """
 Wrapper for constant like `False` or `"test"`.
 """
-from __future__ import annotations
-
 from typing import Any
 
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
@@ -35,7 +33,7 @@ class TypeConstant(FakeAnnotation):
     def get_import_record(self) -> ImportRecord:
         return ImportRecord.empty()
 
-    def copy(self) -> TypeConstant:
+    def copy(self) -> "TypeConstant":
         """
         Create a copy of type annotation wrapper.
         """

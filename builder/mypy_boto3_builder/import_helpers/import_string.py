@@ -1,8 +1,6 @@
 """
 Wrapper for Python import strings.
 """
-from __future__ import annotations
-
 from typing import Any, List
 
 
@@ -37,11 +35,11 @@ class ImportString:
             self.parts.append(part)
 
     @classmethod
-    def from_str(cls, import_string: str) -> ImportString:
+    def from_str(cls, import_string: str) -> "ImportString":
         return cls(*import_string.split("."))
 
     @classmethod
-    def empty(cls) -> ImportString:
+    def empty(cls) -> "ImportString":
         result = cls("fake")
         result.parts.clear()
         return result

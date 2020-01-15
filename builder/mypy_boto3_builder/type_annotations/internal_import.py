@@ -1,8 +1,6 @@
 """
 Wrapper for simple type annotations from this module.
 """
-from __future__ import annotations
-
 from typing import Optional
 
 from mypy_boto3_builder.service_name import ServiceName
@@ -61,7 +59,7 @@ class InternalImport(FakeAnnotation):
             )
         return InternalImportRecord(self.module_name, alias=self.scope)
 
-    def copy(self) -> InternalImport:
+    def copy(self) -> "InternalImport":
         """
         Create a copy of type annotation wrapper.
         """

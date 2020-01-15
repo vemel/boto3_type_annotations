@@ -1,8 +1,6 @@
 """
 Wrapper for subscript type annotations, like `List[str]`.
 """
-from __future__ import annotations
-
 from typing import Set, Iterable
 
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
@@ -62,7 +60,7 @@ class TypeSubscript(FakeAnnotation):
     def is_list(self) -> bool:
         return self.parent.is_list()
 
-    def copy(self) -> TypeSubscript:
+    def copy(self) -> "TypeSubscript":
         """
         Create a copy of type annotation wrapper.
         """

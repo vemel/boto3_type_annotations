@@ -1,8 +1,6 @@
 """
 Helper for Python import strings.
 """
-from __future__ import annotations
-
 from typing import Any, Optional, Tuple
 from functools import total_ordering
 

@@ -1,8 +1,6 @@
 """
 Wrapper for `typing/typing_extensions.Literal` type annotations like `Literal['a', 'b']`
 """
-from __future__ import annotations
-
 from typing import Any
 
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
@@ -45,7 +43,7 @@ class TypeLiteral(FakeAnnotation):
             fallback=ImportRecord(ImportString("typing_extensions"), "Literal"),
         )
 
-    def copy(self) -> TypeLiteral:
+    def copy(self) -> "TypeLiteral":
         """
         Create a copy of type annotation wrapper.
         """
