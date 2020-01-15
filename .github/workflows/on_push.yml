@@ -27,6 +27,16 @@ jobs:
         run: |
           pylint builder/mypy_boto3_builder
           mypy builder/mypy_boto3_builder
+      - name: Test
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: |
+          pytest
+          PYTHON_VER=`python -V | grep -Po '\d+\.+\d+'`
+          if [[ "$PYTHON_VER" == "3.8" ]]; then
+            pytest --cov-report term --cov mypy_boto3_builder
+            codecov
+          fi
       - name: Build packages
         env:
           BUILD_VERSION: ${{ steps.vars.outputs.build_version }}
@@ -39,10 +49,3 @@ jobs:
       - name: Integration tests
         run: |
           scripts/integration.sh
-      - name: Test
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: |
-          pytest
-          pytest --cov-report term --cov mypy_boto3_builder
-          codecov
