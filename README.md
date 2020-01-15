@@ -50,7 +50,7 @@ This package generates a few source files depending on services that you install
 Generation is done by a post-install script, so as long as you use `pip`, `pipfile`
 or `poetry` everything should be done automatically.
 
-However, if you use any other way and notice that services stubs do not work,
+However, if you use any other way or notice that services stubs do not work,
 you can build services index manually.
 
 ```bash
