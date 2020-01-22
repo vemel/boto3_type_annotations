@@ -62,22 +62,11 @@ def parse_collections(
             collection_record.name, collection
         )
         collection_record.methods.append(filter_method)
-        # collection_record.methods.append(
-        #     Method(
-        #         "filter",
-        #         [
-        #             Argument("cls", None),
-        #             Argument("Delimiter", Type.str, Type.none),
-        #             Argument("EncodingType", Type.str, Type.none),
-        #             Argument("KeyMarker", Type.str, Type.none),
-        #             Argument("MaxUploads", Type.int, Type.none),
-        #             Argument("Prefix", Type.str, Type.none),
-        #             Argument("UploadIdMarker", Type.str, Type.none),
-        #         ],
-        #         self_type,
-        #         decorators=[Type.classmethod],
-        #     )
-        # )
+        batch_methods = shape_parser.get_collection_batch_methods(
+            collection_record.name, collection
+        )
+        for batch_method in batch_methods:
+            collection_record.methods.append(batch_method)
         collection_record.methods.append(
             Method(
                 "limit",

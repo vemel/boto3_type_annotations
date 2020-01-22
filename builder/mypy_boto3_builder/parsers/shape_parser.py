@@ -513,7 +513,7 @@ class ShapeParser:
             collection -- Boto3 Collection.
 
         Returns:
-             Filter Method record.
+            Filter Method record.
         """
         arguments: List[Argument] = [Argument("cls", None)]
         result = Method(
@@ -535,5 +535,46 @@ class ShapeParser:
                 if argument.required:
                     continue
                 arguments.append(argument)
+
+        return result
+
+    def get_collection_batch_methods(
+        self, name: str, collection: Collection
+    ) -> List[Method]:
+        """
+        Get batch operations for Resource collection.
+
+        Arguments:
+            name -- Collection record name.
+            collection -- Boto3 Collection.
+
+        Returns:
+            List of Method records.
+        """
+        result = []
+        for batch_action in collection.batch_actions:
+            method = Method(
+                batch_action.name,
+                [Argument("cls", None)],
+                Type.none,
+                decorators=[Type.classmethod],
+            )
+            result.append(method)
+            if batch_action.request:
+                operation_name = batch_action.request.operation
+                operation_model = self._get_operation(operation_name)
+                if operation_model.input_shape is not None:
+                    for argument in self._parse_arguments(
+                        name,
+                        batch_action.name,
+                        operation_name,
+                        operation_model.input_shape,
+                    ):
+                        if argument.required:
+                            continue
+                        method.arguments.append(argument)
+                if operation_model.output_shape is not None:
+                    return_type = self._parse_shape(operation_model.output_shape)
+                    method.return_type = return_type
 
         return result
