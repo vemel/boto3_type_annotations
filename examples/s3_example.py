@@ -13,6 +13,7 @@ def s3_resource_example() -> None:
 
     # IDE autocomplete suggests function name and arguments here
     bucket = resource.Bucket("bucket")
+    bucket.objects.delete(mfa="my_mfa", MFA="my_mfa")
 
     # (mypy) error: Unexpected keyword argument "key" for "upload_file" of "Bucket"
     bucket.upload_file(Filename="my.txt", key="my-txt")
