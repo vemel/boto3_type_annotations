@@ -18,7 +18,7 @@ Parent class for all type annotation wrappers.
 
 ## FakeAnnotation
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L13)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L11)
 
 ```python
 total_ordering
@@ -29,17 +29,17 @@ Parent class for all type annotation wrappers.
 
 ### FakeAnnotation().add_child
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L58)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L56)
 
 ```python
-def add_child(child: FakeAnnotation) -> None:
+def add_child(child: 'FakeAnnotation') -> None:
 ```
 
 Add new child to `TypeSubscript` or `TypeTypedDict` annotation.
 
 ### FakeAnnotation().add_literal_child
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L63)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L61)
 
 ```python
 def add_literal_child(child: Any) -> None:
@@ -49,18 +49,18 @@ Add new child to `TypeLiteral` annotation.
 
 ### FakeAnnotation().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L86)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L84)
 
 ```python
 @abstractmethod
-def copy() -> FakeAnnotation:
+def copy() -> 'FakeAnnotation':
 ```
 
 Create a copy of type annotation wrapper.
 
 ### FakeAnnotation().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L46)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L44)
 
 ```python
 @abstractmethod
@@ -71,17 +71,17 @@ Get import record required for using type annotation.
 
 ### FakeAnnotation().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L52)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L50)
 
 ```python
-def get_types() -> Set[FakeAnnotation]:
+def get_types() -> Set['FakeAnnotation']:
 ```
 
 Get all used type annotations recursively including self.
 
 ### FakeAnnotation().is_dict
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L68)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L66)
 
 ```python
 def is_dict() -> bool:
@@ -91,7 +91,7 @@ Whether type annotation is `Dict` or `TypedDict`.
 
 ### FakeAnnotation().is_list
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L74)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L72)
 
 ```python
 def is_list() -> bool:
@@ -101,7 +101,7 @@ Whether type annotation is `List`.
 
 ### FakeAnnotation().is_literal
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L80)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L78)
 
 ```python
 def is_literal() -> bool:
@@ -111,7 +111,7 @@ Whether type annotation is `Literal`.
 
 ### FakeAnnotation().render
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L40)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L38)
 
 ```python
 @abstractmethod

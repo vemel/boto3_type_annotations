@@ -13,7 +13,7 @@ Wrapper for simple type annotations from this module.
 
 ## InternalImport
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L18)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L16)
 
 ```python
 class InternalImport(FakeAnnotation):
@@ -34,17 +34,17 @@ Wrapper for simple type annotations from this module.
 
 ### InternalImport().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L64)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L62)
 
 ```python
-def copy() -> InternalImport:
+def copy() -> 'InternalImport':
 ```
 
 Create a copy of type annotation wrapper.
 
 ### InternalImport().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L51)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L49)
 
 ```python
 def get_import_record() -> ImportRecord:
@@ -54,7 +54,7 @@ Get import record required for using type annotation.
 
 ### InternalImport().render
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L38)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L36)
 
 ```python
 def render(parent_name: str = '') -> str:
@@ -68,7 +68,7 @@ A string with a valid type annotation.
 
 ### InternalImport().scope
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L47)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L45)
 
 ```python
 @property

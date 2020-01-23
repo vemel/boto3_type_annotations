@@ -14,7 +14,7 @@ Wrapper for Python import strings.
 
 ## ImportString
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L9)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L7)
 
 ```python
 class ImportString():
@@ -45,25 +45,25 @@ import_string.render()
 
 ### ImportString.empty
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L43)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L41)
 
 ```python
 @classmethod
-def empty() -> ImportString:
+def empty() -> 'ImportString':
 ```
 
 ### ImportString.from_str
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L39)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L37)
 
 ```python
 @classmethod
-def from_str(import_string: str) -> ImportString:
+def from_str(import_string: str) -> 'ImportString':
 ```
 
 ### ImportString().master_name
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L109)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L107)
 
 ```python
 @property
@@ -74,7 +74,7 @@ Get first import string part or `builtins`.
 
 ### ImportString().render
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L100)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L98)
 
 ```python
 def render() -> str:
@@ -88,10 +88,10 @@ Ready to use import string.
 
 ### ImportString().startswith
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L68)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L66)
 
 ```python
-def startswith(other: ImportString) -> bool:
+def startswith(other: 'ImportString') -> bool:
 ```
 
 Check if import string starts with `other`.

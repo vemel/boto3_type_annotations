@@ -9,10 +9,13 @@ Parser that produces `structures.MasterModule`.
 
 ## parse_master_package
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/master_package.py#L10)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/master_package.py#L13)
 
 ```python
-def parse_master_package(session: Session) -> MasterPackage:
+def parse_master_package(
+    session: Session,
+    service_names: List[ServiceName],
+) -> MasterPackage:
 ```
 
 Parse data for master package.

@@ -11,10 +11,13 @@ Processors for parsing and writing modules.
 
 ## process_boto3_stubs
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L25)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L26)
 
 ```python
-def process_boto3_stubs(output_path: Path) -> Boto3StubsPackage:
+def process_boto3_stubs(
+    output_path: Path,
+    service_names: List[ServiceName],
+) -> Boto3StubsPackage:
 ```
 
 Parse and write stubs package `boto3_stubs`.
@@ -29,10 +32,14 @@ Parsed Boto3StubsPackage.
 
 ## process_master
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L46)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L49)
 
 ```python
-def process_master(session: Session, output_path: Path) -> MasterPackage:
+def process_master(
+    session: Session,
+    output_path: Path,
+    service_names: List[ServiceName],
+) -> MasterPackage:
 ```
 
 Parse and write master package `mypy_boto3`.
@@ -48,7 +55,7 @@ Parsed MasterPackage.
 
 ## process_service
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L68)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L73)
 
 ```python
 def process_service(

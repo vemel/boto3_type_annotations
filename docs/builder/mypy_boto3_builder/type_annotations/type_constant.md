@@ -12,7 +12,7 @@ Wrapper for constant like `False` or `"test"`.
 
 ## TypeConstant
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L12)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L10)
 
 ```python
 class TypeConstant(FakeAnnotation):
@@ -27,17 +27,17 @@ Wrapper for constant like `False` or `"test"`.
 
 ### TypeConstant().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L38)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L36)
 
 ```python
-def copy() -> TypeConstant:
+def copy() -> 'TypeConstant':
 ```
 
 Create a copy of type annotation wrapper.
 
 ### TypeConstant().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L35)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L33)
 
 ```python
 def get_import_record() -> ImportRecord:
@@ -45,7 +45,7 @@ def get_import_record() -> ImportRecord:
 
 ### TypeConstant().render
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L23)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L21)
 
 ```python
 def render(parent_name: str = '') -> str:

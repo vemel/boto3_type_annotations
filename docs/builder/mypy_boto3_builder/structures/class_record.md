@@ -11,7 +11,7 @@ Base class for all structures that can be rendered to a class.
 
 ## ClassRecord
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/class_record.py#L13)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/class_record.py#L14)
 
 ```python
 dataclass
@@ -22,7 +22,7 @@ Base class for all structures that can be rendered to a class.
 
 ### ClassRecord().get_required_import_records
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/class_record.py#L35)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/class_record.py#L36)
 
 ```python
 def get_required_import_records() -> Set[ImportRecord]:
@@ -30,7 +30,7 @@ def get_required_import_records() -> Set[ImportRecord]:
 
 ### ClassRecord().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/class_record.py#L25)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/class_record.py#L26)
 
 ```python
 def get_types() -> Set[FakeAnnotation]:

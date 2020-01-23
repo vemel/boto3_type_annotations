@@ -2,7 +2,7 @@
 
 > Auto-generated documentation index.
 
-[![PyPI - Handsdown](https://img.shields.io/pypi/v/mypy-boto3.svg?color=blue&style=for-the-badge)](https://pypi.org/project/mypy-boto3)
+[![PyPI - mypy-boto3](https://img.shields.io/pypi/v/mypy-boto3.svg?color=blue&style=for-the-badge)](https://pypi.org/project/mypy-boto3)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mypy-boto3.svg?color=blue&style=for-the-badge)](https://pypi.org/project/mypy-boto3)
 [![Docs](https://img.shields.io/readthedocs/mypy-boto3.svg?color=blue&style=for-the-badge)](https://mypy-boto3.readthedocs.io/)
 [![Coverage](https://img.shields.io/codecov/c/github/vemel/mypy_boto3?style=for-the-badge)](https://codecov.io/gh/vemel/mypy_boto3)
@@ -55,11 +55,30 @@ This package generates a few source files depending on services that you install
 Generation is done by a post-install script, so as long as you use `pip`, `pipfile`
 or `poetry` everything should be done automatically.
 
-However, if you use any other way and notice that services stubs do not work,
+However, if you use any other way or notice that services stubs do not work,
 you can build services index manually.
 
 ```bash
 # Use this command when you add or remove service packages
+python -m mypy_boto3
+```
+
+If you generate `requirements.txt` from `Pipfile.lock`,  you also should build
+index manually because package installation order is not the same.
+
+```bash
+# Add boto3-stubs with services
+pipenv install 'boto3-stubs[s3,ec2]'
+
+# Generate requirements.txt file
+pipenv lock --requirements > requirements.txt
+
+...
+
+# Install pacakges to your new environment
+pip intall requirements.txt
+
+# Generate index
 python -m mypy_boto3
 ```
 
