@@ -1,7 +1,6 @@
 # install `pip install boto3-stubs[dynamodb]`
 
 import boto3
-from boto3.dynamodb.table import logger
 from mypy_boto3.dynamodb import DynamoDBClient, DynamoDBServiceResource
 from mypy_boto3.dynamodb.service_resource import Table
 
