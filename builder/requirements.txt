@@ -1,5 +1,5 @@
 black==19.10b0
-boto3
+boto3==1.17.90
 jinja2>=2.10.3
 typing_extensions; python_version < '3.8'
 pyparsing>=2.4.5
